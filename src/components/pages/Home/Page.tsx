@@ -1,10 +1,16 @@
-import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import React from 'react';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 
 const Page = () => {
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen12</Text>
+    <View style={styles.root}>
+      <ScrollView>
+        <View style={styles.inner}>
+          <View>
+            <Text>2020</Text>
+          </View>
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -12,8 +18,8 @@ const Page = () => {
 export default Page;
 
 const styles = StyleSheet.create({
-  root: {
-    alignItems: "center",
-    justifyContent: "center",
+  root: {},
+  inner: {
+    height: '100%',
   },
 });
