@@ -1,73 +1,40 @@
-import { TextStyle } from 'react-native';
 const SPACE = [2, 4, 8, 16, 32, 64, 128, 256, 512] as const;
-
-type ColorPalette1 = {
-  pale: string;
-  light: string;
-  main: string;
-  dark: string;
-};
-
-type ColorPalette2 = {
-  light: string;
-  main: string;
-  dark: string;
-};
-
-type ThemeColor = {
-  color: {
-    primary: ColorPalette1;
-    secondary: ColorPalette1;
-    base: ColorPalette1;
-    accent1: ColorPalette1;
-    accent2: ColorPalette1;
-    error: ColorPalette1;
-    background: ColorPalette2;
-    transparent: string;
-  };
-};
 
 const baseColor = {
   primary: {
-    pale: '#D5EEE2',
-    light: '#5DC894',
-    main: '#006835',
-    dark: '#003119',
+    light: '#F9E281',
+    main: '#E3C95D',
+    dark: '#D2B849',
   },
   secondary: {
-    pale: '#F4FFBE',
-    light: '#E6F599',
-    main: '#ADCF01',
-    dark: '#7F9705',
+    light: '#5E5166',
+    main: '#362740',
+    dark: '#2B1F32',
   },
   base: {
-    pale: '#DBDBDB',
-    light: '#9D9D9D',
-    main: '#4F4F4F',
-    dark: '#110f0f',
+    light: '#F2F2F2',
+    main: '#D8D7D6',
+    dark: '#B8B8B8',
   },
   accent1: {
-    pale: '#E5F0FF',
-    light: '#A8C9F5',
-    main: '#2F80ED',
-    dark: '#034092',
+    light: '#9DF18F',
+    main: '#59CC46',
+    dark: '#46AE35',
   },
   accent2: {
-    pale: '#FFFAEA',
-    light: '#FFEDB5',
-    main: '#F2C94C',
-    dark: '#BE9109',
+    light: '#FFEE5C',
+    main: '#FFE600',
+    dark: '#E5CE00',
   },
   error: {
-    pale: '#FFEBEB',
-    light: '#FFABAB',
-    main: '#E15757',
-    dark: '#A81A1A',
+    light: '#F680B2',
+    main: '#E93581',
+    dark: '#CA1D65',
   },
   background: {
-    light: '#FAFAFA',
-    main: '#ffffff',
-    dark: '#000000',
+    light: '#FFFFFF',
+    main: '#F2F2F2',
+    dark: '#D8D7D6',
   },
   transparent: 'transparent',
 };
@@ -110,6 +77,36 @@ const theme = () => {
     fontWeights: FONT_WEIGHT,
     fontColors: FONT_COLOR,
   };
+};
+
+export const variants = {
+  text: {
+    small: {
+      size: theme().fontSizes.xs,
+      fontWeight: theme().fontWeights.bold,
+      color: theme().fontColors.secondary,
+    },
+    body: {
+      size: theme().fontSizes.base,
+      fontWeight: theme().fontWeights.bold,
+      color: theme().fontColors.secondary,
+    },
+    middle: {
+      size: theme().fontSizes.lg,
+      fontWeight: theme().fontWeights.bold,
+      color: theme().fontColors.secondary,
+    },
+    large: {
+      size: theme().fontSizes.xl,
+      fontWeight: theme().fontWeights.bold,
+      color: theme().fontColors.secondary,
+    },
+    logo: {
+      size: theme().fontSizes.xl2,
+      fontWeight: theme().fontWeights.bold,
+      color: theme().fontColors.secondary,
+    },
+  },
 };
 
 export default theme;

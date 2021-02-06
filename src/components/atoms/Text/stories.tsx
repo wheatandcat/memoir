@@ -26,14 +26,20 @@ storiesOf('atoms', module).add('Text', () => (
     <Text color="error" size="lg" fontWeight="bold">
       color:error
     </Text>
-    <Text color="base" size="lg" fontWeight="bold">
+    <Text size="lg" fontWeight="bold">
       fontWeight:bold
     </Text>
-    <Text color="base" size="lg" fontWeight="normal">
+    <Text size="lg" fontWeight="normal">
       fontWeight:normal
     </Text>
-    <Text color="base" size="lg" fontWeight="thin">
+    <Text size="lg" fontWeight="thin">
       fontWeight:thin
     </Text>
+    <Text variants="small">variants:small</Text>
+    <Text variants="body">variants:body</Text>
+    <Text variants="middle">variants:middle</Text>
+    <Text variants="large">variants:large</Text>
+    <Text variants="logo">variants:logo</Text>
+    <Text>default</Text>
   </View>
 ));
