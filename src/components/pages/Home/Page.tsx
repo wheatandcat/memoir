@@ -1,9 +1,12 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Text from 'components/atoms/Text';
+import Divider from 'components/atoms/Divider';
+import View from 'components/atoms/View';
 import theme from 'config/theme';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
+import 'dayjs/locale/ja';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -36,6 +39,7 @@ const Page = () => {
                 </TouchableOpacity>
               ))}
             </View>
+            <Divider my={2} />
             <View style={styles.months}>
               {months.map((month) => (
                 <TouchableOpacity key={month}>
@@ -45,6 +49,7 @@ const Page = () => {
                 </TouchableOpacity>
               ))}
             </View>
+            <Divider my={2} />
             <View style={styles.days}>
               {days.map((day) => (
                 <TouchableOpacity key={day}>

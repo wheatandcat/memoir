@@ -12,7 +12,7 @@
     "storybook:android": "yarn init:storybook && expo start --android",
     "prestorybook": "rnstl",
     "build-storybook": "build-storybook",
-    "lint": "eslint --ext .js,.ts,.tsx,.gql 'src/**'"
+    "lint": "eslint --ext .js,.ts,.tsx 'src/**'"
   },
   "dependencies": {
     "@react-native-community/masked-view": "0.1.10",
