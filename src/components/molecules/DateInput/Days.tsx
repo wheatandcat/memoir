@@ -17,30 +17,51 @@ type Props = {
 };
 
 const DayInput: React.FC<Props> = (props) => {
+  const getDayOfWeekColor = (day: string, selected: boolean) => {
+    const dayOfWeek = dayjs(day).format('dd');
+
+    if (selected) {
+      return 'primary';
+    } else if (dayOfWeek === '土') {
+      return 'accent1';
+    } else if (dayOfWeek === '日') {
+      return 'error';
+    }
+
+    return 'secondary';
+  };
+
   return (
     <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
       <View style={styles.days}>
-        {props.days.map((day) => (
-          <TouchableOpacity
-            key={day}
-            onPress={() => props.onPress(dayjs(day).format('DD'))}
-          >
-            <View style={styles.dayItem}>
-              <Text
-                textAlign="center"
-                color={
-                  dayjs(day).format('D') === dayjs(props.date).format('D')
-                    ? 'primary'
-                    : 'secondary'
-                }
-              >
-                {dayjs(day).format('D')}
-                {'\n'}
-                {dayjs(day).format('dd')}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
+        {props.days.map((day) => {
+          const selected =
+            dayjs(day).format('D') === dayjs(props.date).format('D');
+
+          return (
+            <TouchableOpacity
+              key={day}
+              onPress={() => props.onPress(dayjs(day).format('DD'))}
+            >
+              <View style={styles.dayItem}>
+                <Text
+                  textAlign="center"
+                  color={selected ? 'primary' : 'secondary'}
+                >
+                  {dayjs(day).format('D')}
+                  {'\n'}
+                  <Text
+                    textAlign="center"
+                    variants="small"
+                    color={getDayOfWeekColor(day, selected)}
+                  >
+                    {dayjs(day).format('dd')}
+                  </Text>
+                </Text>
+              </View>
+            </TouchableOpacity>
+          );
+        })}
       </View>
     </ScrollView>
   );
