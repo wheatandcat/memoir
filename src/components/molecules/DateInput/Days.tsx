@@ -12,25 +12,31 @@ dayjs.extend(advancedFormat);
 
 type Props = {
   date: string;
-  years: number[];
-  onPress: (year: number) => void;
+  days: string[];
+  onPress: (day: string) => void;
 };
 
-const YearInput: React.FC<Props> = (props) => {
+const DayInput: React.FC<Props> = (props) => {
   return (
-    <ScrollView horizontal={true}>
-      <View style={styles.years}>
-        {props.years.map((year) => (
-          <TouchableOpacity key={year} onPress={() => props.onPress(year)}>
-            <View style={styles.yearItem}>
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.days}>
+        {props.days.map((day) => (
+          <TouchableOpacity
+            key={day}
+            onPress={() => props.onPress(dayjs(day).format('DD'))}
+          >
+            <View style={styles.dayItem}>
               <Text
+                textAlign="center"
                 color={
-                  String(year) === dayjs(props.date).format('YYYY')
+                  dayjs(day).format('D') === dayjs(props.date).format('D')
                     ? 'primary'
                     : 'secondary'
                 }
               >
-                {year}
+                {dayjs(day).format('D')}
+                {'\n'}
+                {dayjs(day).format('dd')}
               </Text>
             </View>
           </TouchableOpacity>
@@ -40,13 +46,14 @@ const YearInput: React.FC<Props> = (props) => {
   );
 };
 
-export default memo(YearInput);
+export default memo(DayInput);
 
 const styles = StyleSheet.create({
-  years: {
+  days: {
     flexDirection: 'row',
+    paddingTop: theme().space(2),
   },
-  yearItem: {
-    paddingRight: theme().space(2),
+  dayItem: {
+    paddingRight: theme().space(4),
   },
 });

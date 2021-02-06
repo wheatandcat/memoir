@@ -10,27 +10,35 @@ import 'dayjs/locale/ja';
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {
-  date: string;
-  years: number[];
-  onPress: (year: number) => void;
+type Month = {
+  label: string;
+  value: number;
 };
 
-const YearInput: React.FC<Props> = (props) => {
+type Props = {
+  date: string;
+  months: Month[];
+  onPress: (month: string) => void;
+};
+
+const MonthInput: React.FC<Props> = (props) => {
   return (
-    <ScrollView horizontal={true}>
-      <View style={styles.years}>
-        {props.years.map((year) => (
-          <TouchableOpacity key={year} onPress={() => props.onPress(year)}>
-            <View style={styles.yearItem}>
+    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
+      <View style={styles.months}>
+        {props.months.map((month) => (
+          <TouchableOpacity
+            key={month.value}
+            onPress={() => props.onPress(('00' + month.value).slice(-2))}
+          >
+            <View style={styles.monthItem}>
               <Text
                 color={
-                  String(year) === dayjs(props.date).format('YYYY')
+                  String(month.value) === dayjs(props.date).format('M')
                     ? 'primary'
                     : 'secondary'
                 }
               >
-                {year}
+                {month.label}
               </Text>
             </View>
           </TouchableOpacity>
@@ -40,13 +48,14 @@ const YearInput: React.FC<Props> = (props) => {
   );
 };
 
-export default memo(YearInput);
+export default memo(MonthInput);
 
 const styles = StyleSheet.create({
-  years: {
+  months: {
     flexDirection: 'row',
+    paddingTop: theme().space(2),
   },
-  yearItem: {
-    paddingRight: theme().space(2),
+  monthItem: {
+    paddingRight: theme().space(3),
   },
 });

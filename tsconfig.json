@@ -12,7 +12,8 @@
     "paths": {
       "components/*": ["src/components/*"],
       "config/*": ["src/config/*"],
-      "lib/*": ["src/lib/*"]
+      "lib/*": ["src/lib/*"],
+      "storyBookUtils/*": ["src/storyBookUtils/*"]
     }
   }
 }

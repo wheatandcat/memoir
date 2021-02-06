@@ -10,6 +10,7 @@ module.exports = function (api) {
             components: './src/components',
             lib: './src/lib',
             config: './src/config',
+            storyBookUtils: './src/storyBookUtils',
           },
         },
       ],
