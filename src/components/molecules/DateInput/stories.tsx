@@ -37,6 +37,30 @@ storiesOf('molecules/DateInput', module)
           label: '6/May',
           value: 6,
         },
+        {
+          label: '7/Jul',
+          value: 7,
+        },
+        {
+          label: '8/Aug',
+          value: 8,
+        },
+        {
+          label: '9/Sep',
+          value: 9,
+        },
+        {
+          label: '10/Oct',
+          value: 10,
+        },
+        {
+          label: '11/Nov',
+          value: 11,
+        },
+        {
+          label: '12/Dec',
+          value: 12,
+        },
       ]}
       onPress={mockFn('onPress')}
     />

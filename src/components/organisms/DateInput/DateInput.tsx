@@ -123,7 +123,7 @@ const DateInput: React.FC<Props> = (props) => {
         <InputYear date={state.date} years={years} onPress={onYear} />
       </View>
       <Divider my={2} />
-      <View pl={2} pb={2}>
+      <View pl={2}>
         <InputMonth date={state.date} months={months} onPress={onMonth} />
       </View>
       <Divider my={2} />

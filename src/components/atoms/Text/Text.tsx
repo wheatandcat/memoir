@@ -19,7 +19,7 @@ type Props = {
 
 const Text: React.FC<Props> = (props) => {
   const [loaded] = useFonts({
-    Montserrat: require('../../../../assets/RobotoCondensed-Bold.ttf'),
+    RobotoCondensed: require('../../../../assets/RobotoCondensed-Bold.ttf'),
   });
 
   if (!loaded) {
@@ -39,7 +39,7 @@ const Text: React.FC<Props> = (props) => {
 const enhanceStyle = (style: TextStyle, props: Props) => {
   if (props.textAlign) style.textAlign = props.textAlign;
 
-  return style;
+  return { ...style, fontFamily: 'RobotoCondensed' };
 };
 
 Text.defaultProps = {

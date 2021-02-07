@@ -1,11 +1,17 @@
-import React, { memo } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { memo, useCallback } from 'react';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  useWindowDimensions,
+  ListRenderItemInfo,
+} from 'react-native';
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import Carousel from 'react-native-snap-carousel';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -21,40 +27,68 @@ type Props = {
   onPress: (month: string) => void;
 };
 
-const MonthInput: React.FC<Props> = (props) => {
+type RenderedItem = {
+  date: string;
+  month: Month;
+  onPress: (month: string) => void;
+};
+
+type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
+
+const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
   return (
-    <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-      <View style={styles.months}>
-        {props.months.map((month) => (
-          <TouchableOpacity
-            key={month.value}
-            onPress={() => props.onPress(('00' + month.value).slice(-2))}
-          >
-            <View style={styles.monthItem}>
-              <Text
-                color={
-                  String(month.value) === dayjs(props.date).format('M')
-                    ? 'primary'
-                    : 'secondary'
-                }
-              >
-                {month.label}
-              </Text>
-            </View>
-          </TouchableOpacity>
-        ))}
+    <TouchableOpacity
+      key={item.month.value}
+      onPress={() => item.onPress(('00' + item.month.value).slice(-2))}
+    >
+      <View style={styles.monthItem}>
+        <Text
+          color={
+            String(item.month.value) === dayjs(item.date).format('M')
+              ? 'primary'
+              : 'secondary'
+          }
+        >
+          {item.month.label}
+        </Text>
       </View>
-    </ScrollView>
+    </TouchableOpacity>
+  );
+};
+
+const MonthInput: React.FC<Props> = (props) => {
+  const windowWidth = useWindowDimensions().width;
+
+  const renderItemCall = useCallback(
+    (item: ListRenderItemInfo<RenderedItem>) => {
+      return renderItem(item);
+    },
+    []
+  );
+
+  return (
+    <Carousel
+      data={props.months.map((v) => ({
+        date: props.date,
+        month: v,
+        onPress: props.onPress,
+      }))}
+      renderItem={renderItemCall}
+      sliderWidth={windowWidth}
+      itemWidth={70}
+      layout="default"
+      inactiveSlideOpacity={1.0}
+      inactiveSlideScale={1.0}
+      firstItem={Number(dayjs(props.date).format('M')) - 1}
+      activeSlideAlignment="start"
+      loop
+    />
   );
 };
 
 export default memo(MonthInput);
 
 const styles = StyleSheet.create({
-  months: {
-    flexDirection: 'row',
-    paddingTop: theme().space(2),
-  },
   monthItem: {
     paddingRight: theme().space(3),
   },

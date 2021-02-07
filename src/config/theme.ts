@@ -39,6 +39,16 @@ const baseColor = {
   transparent: 'transparent',
 };
 
+const category = {
+  color: {
+    category1: '#FF8383',
+    category2: '#FFE600',
+    category3: '#9BDC5A',
+    category4: '#5AD4DC',
+    category5: '#DE9FE9',
+  },
+};
+
 export const FONT_SIZE = {
   xs: 12,
   sm: 14,
@@ -76,6 +86,7 @@ const theme = () => {
     fontSizes: FONT_SIZE,
     fontWeights: FONT_WEIGHT,
     fontColors: FONT_COLOR,
+    category: category,
   };
 };
 
