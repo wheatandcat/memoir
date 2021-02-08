@@ -1,20 +1,22 @@
 import React from 'react';
-import { Text as RNText, TextStyle } from 'react-native';
+import { Text as RNText, TextStyle, TextProps } from 'react-native';
 import { useFonts } from 'expo-font';
 import { FontSize, styleFontSize } from 'lib/styledSystem/styleFontSize';
 import { FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
 import { FontColor, styleFontColor } from 'lib/styledSystem/styleFontColor';
+import { styleFontLineHeight } from 'lib/styledSystem/styleFontLineHeight';
 import {
   FontVariants,
   styleFontVariant,
 } from 'lib/styledSystem/styleFontVariant';
 
-type Props = {
+type Props = TextProps & {
   variants?: FontVariants;
   size?: FontSize;
   fontWeight?: FontWeight;
   color?: FontColor;
   textAlign?: TextStyle['textAlign'];
+  lineHeight?: number;
 };
 
 const Text: React.FC<Props> = (props) => {
@@ -31,6 +33,7 @@ const Text: React.FC<Props> = (props) => {
     ...styleFontSize(props),
     ...styleFontWeight(props),
     ...styleFontColor(props),
+    ...styleFontLineHeight(props),
   } as TextStyle;
 
   return <RNText {...props} style={enhanceStyle(style, props)} />;

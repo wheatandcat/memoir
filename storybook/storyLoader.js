@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/components/molecules/DateInput/stories');
   require('../src/components/molecules/Home/stories');
   require('../src/components/organisms/Card/stories');
+  require('../src/components/organisms/Cards/stories');
   require('../src/components/organisms/DateInput/stories');
   require('../src/components/pages/Home/stories');
 }
@@ -23,6 +24,7 @@ const stories = [
   '../src/components/molecules/DateInput/stories',
   '../src/components/molecules/Home/stories',
   '../src/components/organisms/Card/stories',
+  '../src/components/organisms/Cards/stories',
   '../src/components/organisms/DateInput/stories',
   '../src/components/pages/Home/stories',
 ];

@@ -4,5 +4,5 @@ import { mockFn } from 'storyBookUtils/index';
 import Card from './Card';
 
 storiesOf('organisms/Card', module).add('Card', () => (
-  <Card onPress={mockFn('onPress')} />
+  <Card title="本を読んだ" onPress={mockFn('onPress')} />
 ));

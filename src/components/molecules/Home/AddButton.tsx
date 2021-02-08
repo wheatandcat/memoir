@@ -13,7 +13,7 @@ const AddButton: React.FC<Props> = (props) => {
     <TouchableOpacity onPress={props.onPress}>
       <View px={3} py={3}>
         <View style={styles.addButton}>
-          <MaterialIcons name="add" size={48} color={theme().color.base.dark} />
+          <MaterialIcons name="add" size={56} color={theme().color.base.dark} />
         </View>
       </View>
     </TouchableOpacity>
@@ -24,7 +24,7 @@ export default memo(AddButton);
 
 const styles = StyleSheet.create({
   addButton: {
-    backgroundColor: theme().color.base.light,
+    backgroundColor: theme().color.base.main,
     width: '100%',
     height: 75,
     justifyContent: 'center',
