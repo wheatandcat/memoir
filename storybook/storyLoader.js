@@ -13,7 +13,7 @@ function loadStories() {
   require('../src/components/organisms/Card/stories');
   require('../src/components/organisms/Cards/stories');
   require('../src/components/organisms/DateInput/stories');
-  require('../src/components/pages/Home/stories');
+  require('../src/components/templates/Home/stories');
 }
 
 const stories = [
@@ -26,7 +26,7 @@ const stories = [
   '../src/components/organisms/Card/stories',
   '../src/components/organisms/Cards/stories',
   '../src/components/organisms/DateInput/stories',
-  '../src/components/pages/Home/stories',
+  '../src/components/templates/Home/stories',
 ];
 
 module.exports = {

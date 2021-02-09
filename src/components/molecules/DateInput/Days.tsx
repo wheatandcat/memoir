@@ -18,14 +18,8 @@ type Props = {
 
 const DayInput: React.FC<Props> = (props) => {
   const getDayOfWeekColor = (day: string, selected: boolean) => {
-    const dayOfWeek = dayjs(day).format('dd');
-
     if (selected) {
       return 'primary';
-    } else if (dayOfWeek === '土') {
-      return 'accent1';
-    } else if (dayOfWeek === '日') {
-      return 'error';
     }
 
     return 'secondary';

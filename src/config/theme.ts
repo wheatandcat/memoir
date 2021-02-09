@@ -37,7 +37,7 @@ const baseColor = {
     dark: '#D8D7D6',
   },
   transparent: 'transparent',
-  gradation: ['#FFFFFF', '#F2F2F2', '#F5F5F5', '#B8B8B8'],
+  gradation: ['#F5F5F5', '#F2F2F2'],
 };
 
 const category = {

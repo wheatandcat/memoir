@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import DateInput from 'components/organisms/DateInput/DateInput';
+import MemoirButton from 'components/molecules/Home/MemoirButton.tsx';
 import Cards from 'components/organisms/Cards/Cards';
 import { LinearGradient } from 'expo-linear-gradient';
 import theme from 'config/theme';
@@ -15,13 +16,14 @@ dayjs.extend(advancedFormat);
 type Props = {
   onItem: () => void;
   onAddItem: () => void;
+  onMemoir: () => void;
 };
 
 const Page: React.FC<Props> = (props) => {
   return (
     <LinearGradient
       // Background Linear Gradient
-      colors={[theme().color.gradation[1], theme().color.gradation[2]]}
+      colors={[theme().color.gradation[0], theme().color.gradation[1]]}
       style={styles.root}
     >
       <ScrollView>
@@ -30,6 +32,7 @@ const Page: React.FC<Props> = (props) => {
           <Cards onItem={props.onItem} onAddItem={props.onAddItem} />
         </View>
       </ScrollView>
+      <MemoirButton onPress={props.onMemoir} />
     </LinearGradient>
   );
 };

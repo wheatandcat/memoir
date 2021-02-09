@@ -64,8 +64,6 @@ const months = [
 ];
 
 const getDays = (date: string): string[] => {
-  console.log(date);
-
   const end = dayjs(date).daysInMonth();
   const items = [];
   for (let i = 0; i < end; i++) {
