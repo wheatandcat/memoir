@@ -74,10 +74,55 @@ export const FONT_WEIGHT: FontWeight = {
 export const FONT_COLOR = {
   primary: baseColor.primary.main,
   secondary: baseColor.secondary.main,
+  secondaryLight: baseColor.secondary.light,
+  baseLight: baseColor.base.light,
   base: baseColor.base.main,
+  baseDark: baseColor.base.dark,
   accent1: baseColor.accent1.main,
   accent2: baseColor.accent2.main,
   error: baseColor.error.main,
+};
+
+type ButtonSizeType = {
+  fontSize: 'sm' | 'base' | 'lg' | 'xl';
+  padding: number;
+  borderRadius: number;
+  loadingSize: 'small' | 'large';
+  height: number;
+};
+
+type ButtonType = {
+  size: {
+    sm: ButtonSizeType;
+    base: ButtonSizeType;
+    lg: ButtonSizeType;
+  };
+};
+
+export const BUTTON: ButtonType = {
+  size: {
+    sm: {
+      fontSize: 'sm',
+      padding: SPACE[3],
+      borderRadius: 7,
+      loadingSize: 'small',
+      height: 40,
+    },
+    base: {
+      fontSize: 'base',
+      padding: SPACE[2],
+      borderRadius: 10,
+      loadingSize: 'small',
+      height: 50,
+    },
+    lg: {
+      fontSize: 'lg',
+      padding: SPACE[3],
+      borderRadius: 15,
+      loadingSize: 'large',
+      height: 80,
+    },
+  },
 };
 
 const theme = () => {
@@ -88,6 +133,7 @@ const theme = () => {
     fontWeights: FONT_WEIGHT,
     fontColors: FONT_COLOR,
     category: category,
+    button: BUTTON,
   };
 };
 

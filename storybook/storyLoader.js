@@ -4,6 +4,7 @@
 // https://github.com/elderfo/react-native-storybook-loader.git
 
 function loadStories() {
+  require('../src/components/atoms/Button/stories');
   require('../src/components/atoms/Divider/stories');
   require('../src/components/atoms/Image/stories');
   require('../src/components/atoms/Text/stories');
@@ -17,6 +18,7 @@ function loadStories() {
 }
 
 const stories = [
+  '../src/components/atoms/Button/stories',
   '../src/components/atoms/Divider/stories',
   '../src/components/atoms/Image/stories',
   '../src/components/atoms/Text/stories',
