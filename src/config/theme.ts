@@ -125,6 +125,14 @@ export const BUTTON: ButtonType = {
   },
 };
 
+export const ICON = {
+  size: {
+    sm: 20,
+    base: 30,
+    lg: 40,
+  },
+};
+
 const theme = () => {
   return {
     color: baseColor,
@@ -134,6 +142,7 @@ const theme = () => {
     fontColors: FONT_COLOR,
     category: category,
     button: BUTTON,
+    icon: ICON,
   };
 };
 

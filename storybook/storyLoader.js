@@ -11,6 +11,7 @@ function loadStories() {
   require('../src/components/atoms/View/stories');
   require('../src/components/molecules/DateInput/stories');
   require('../src/components/molecules/Home/stories');
+  require('../src/components/molecules/IconButton/stories');
   require('../src/components/organisms/Card/stories');
   require('../src/components/organisms/Cards/stories');
   require('../src/components/organisms/DateInput/stories');
@@ -25,6 +26,7 @@ const stories = [
   '../src/components/atoms/View/stories',
   '../src/components/molecules/DateInput/stories',
   '../src/components/molecules/Home/stories',
+  '../src/components/molecules/IconButton/stories',
   '../src/components/organisms/Card/stories',
   '../src/components/organisms/Cards/stories',
   '../src/components/organisms/DateInput/stories',
