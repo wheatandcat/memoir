@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo, useState } from 'react';
 import TemplateHome from 'components/templates/Home/Page.tsx';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
@@ -15,7 +15,17 @@ export type Props = {
   route: ScreenRouteProp;
 };
 
+type State = {
+  openSettingModal: boolean;
+};
+
+const initialState = (): State => ({
+  openSettingModal: false,
+});
+
 const Home: React.FC<Props> = ({ navigation }) => {
+  const [state, setState] = useState<State>(initialState());
+
   const onItem = () => {};
   const onAddItem = () => {};
   const onMemoir = () => {};
@@ -24,14 +34,26 @@ const Home: React.FC<Props> = ({ navigation }) => {
     navigation.setOptions({
       headerRight: () => (
         <View pr={2} pb={1}>
-          <IconButton name="more-vert" size="base" onPress={() => null} />
+          <IconButton
+            name="more-vert"
+            size="base"
+            onPress={() => setState((v) => ({ ...v, openSettingModal: true }))}
+          />
         </View>
       ),
     });
   }, [navigation]);
 
   return (
-    <TemplateHome onItem={onItem} onAddItem={onAddItem} onMemoir={onMemoir} />
+    <TemplateHome
+      onItem={onItem}
+      onAddItem={onAddItem}
+      onMemoir={onMemoir}
+      openSettingModal={state.openSettingModal}
+      onCloseSettingModal={() =>
+        setState((v) => ({ ...v, openSettingModal: false }))
+      }
+    />
   );
 };
 
@@ -44,4 +66,4 @@ export const HomeScreenOption = () => {
   };
 };
 
-export default Home;
+export default memo(Home);

@@ -10575,7 +10575,7 @@ react-native-modal-selector@^2.0.2:
   dependencies:
     prop-types "^15.5.10"
 
-react-native-modal@^11.0.2:
+react-native-modal@^11.0.2, react-native-modal@^11.6.1:
   version "11.6.1"
   resolved "https://registry.yarnpkg.com/react-native-modal/-/react-native-modal-11.6.1.tgz#6162a39731860fb3b6e8304059f72dc0a961f9fd"
   integrity sha512-Xsd79nuBvbLOYwpRuur4btwJFQ3WkV9zp5LbAREidUtjl/Ajlp4QbNBx888FOPjo+EpOO3+U0riCRqs1dkdIzQ==

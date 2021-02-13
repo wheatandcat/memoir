@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native';
 import theme from 'config/theme';
 import { MaterialIcons } from '@expo/vector-icons';
 
-type Name = 'more-vert';
+type Name = 'more-vert' | 'close';
 
 type Props = {
   name: Name;
