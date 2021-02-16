@@ -10,6 +10,8 @@ import {
   styleFontVariant,
 } from 'lib/styledSystem/styleFontVariant';
 
+export type FontFamily = 'RobotoCondensed-Bold' | 'NotoSansJP-Bold';
+
 type Props = TextProps & {
   variants?: FontVariants;
   size?: FontSize;
@@ -17,11 +19,13 @@ type Props = TextProps & {
   color?: FontColor;
   textAlign?: TextStyle['textAlign'];
   lineHeight?: number;
+  fontFamily?: FontFamily;
 };
 
 const Text: React.FC<Props> = (props) => {
   const [loaded] = useFonts({
-    RobotoCondensed: require('../../../../assets/RobotoCondensed-Bold.ttf'),
+    'RobotoCondensed-Bold': require('../../../../assets/RobotoCondensed-Bold.ttf'),
+    'NotoSansJP-Bold': require('../../../../assets/NotoSansJP-Bold.otf'),
   });
 
   if (!loaded) {
@@ -42,11 +46,12 @@ const Text: React.FC<Props> = (props) => {
 const enhanceStyle = (style: TextStyle, props: Props) => {
   if (props.textAlign) style.textAlign = props.textAlign;
 
-  return { ...style, fontFamily: 'RobotoCondensed' };
+  return { ...style, fontFamily: props.fontFamily };
 };
 
 Text.defaultProps = {
   variants: 'body',
+  fontFamily: 'RobotoCondensed-Bold',
 };
 
 export default Text;

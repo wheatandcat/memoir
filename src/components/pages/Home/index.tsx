@@ -27,7 +27,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
   const [state, setState] = useState<State>(initialState());
 
   const onItem = () => {};
-  const onAddItem = () => {};
+
   const onMemoir = () => {};
 
   React.useLayoutEffect(() => {
@@ -47,7 +47,6 @@ const Home: React.FC<Props> = ({ navigation }) => {
   return (
     <TemplateHome
       onItem={onItem}
-      onAddItem={onAddItem}
       onMemoir={onMemoir}
       openSettingModal={state.openSettingModal}
       onCloseSettingModal={() =>

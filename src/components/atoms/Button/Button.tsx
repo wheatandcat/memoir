@@ -7,7 +7,7 @@ import {
 } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
-import Text from 'components/atoms/Text';
+import Text, { FontFamily } from 'components/atoms/Text';
 
 type Props = {
   size?: 'sm' | 'base' | 'lg';
@@ -15,6 +15,7 @@ type Props = {
   title: string;
   loading?: boolean;
   disabled?: boolean;
+  fontFamily?: FontFamily;
   onPress: () => void;
 };
 
@@ -46,7 +47,13 @@ const Button: React.FC<Props> = (props) => {
   if (props.disabled) {
     return (
       <View style={[styles.disabledButton, buttonStyle]}>
-        <Text textAlign="center" size={configSize.fontSize} color="baseDark">
+        <Text
+          textAlign="center"
+          size={configSize.fontSize}
+          fontWeight="bold"
+          color="baseDark"
+          fontFamily={props.fontFamily}
+        >
           {props.title}
         </Text>
       </View>
@@ -56,7 +63,13 @@ const Button: React.FC<Props> = (props) => {
   return (
     <TouchableOpacity onPress={props.onPress}>
       <View style={[styles.button, buttonStyle]}>
-        <Text textAlign="center" size={configSize.fontSize}>
+        <Text
+          textAlign="center"
+          size={configSize.fontSize}
+          fontWeight="bold"
+          color="secondary"
+          fontFamily={props.fontFamily}
+        >
           {props.title}
         </Text>
       </View>
@@ -79,6 +92,7 @@ const styles = StyleSheet.create({
 
 Button.defaultProps = {
   size: 'base',
+  fontFamily: 'NotoSansJP-Bold',
 };
 
 export default Button;

@@ -8,7 +8,7 @@ import Categories from './Categories';
 storiesOf('organisms', module).add('Categories', () => (
   <View style={styles.root}>
     <View style={styles.inner}>
-      <Categories onPress={mockFn('onPress')} />
+      <Categories categoryID={null} onPress={mockFn('onPress')} />
     </View>
   </View>
 ));

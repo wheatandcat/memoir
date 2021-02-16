@@ -5,8 +5,9 @@ import Page from './Page';
 
 storiesOf('templates/Home', module).add('Page', () => (
   <Page
+    openSettingModal={false}
     onItem={mockFn('onItem')}
-    onAddItem={mockFn('onAdd')}
     onMemoir={mockFn('onMemoir')}
+    onCloseSettingModal={mockFn('onCloseSettingModal')}
   />
 ));

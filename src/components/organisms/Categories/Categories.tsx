@@ -4,8 +4,8 @@ import View from 'components/atoms/View';
 import CategoryButton from 'components/molecules/CategoryButton';
 
 type Props = {
-  selected?: boolean;
-  onPress: () => void;
+  categoryID: number | null;
+  onPress: (categoryID: number) => void;
 };
 
 const categoryItems = [
@@ -52,7 +52,11 @@ const Categories: React.FC<Props> = (props) => {
     <View style={styles.root}>
       {categoryItems.map((v) => (
         <View key={v.id} my={1}>
-          <CategoryButton name={v.name} onPress={props.onPress} />
+          <CategoryButton
+            selected={v.id === props.categoryID}
+            name={v.name}
+            onPress={() => props.onPress(v.id)}
+          />
         </View>
       ))}
     </View>

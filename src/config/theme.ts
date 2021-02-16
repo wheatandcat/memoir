@@ -120,7 +120,7 @@ export const BUTTON: ButtonType = {
       padding: SPACE[3],
       borderRadius: 15,
       loadingSize: 'large',
-      height: 80,
+      height: 58,
     },
   },
 };

@@ -18,7 +18,7 @@ const Card: React.FC<Props> = (props) => {
   const windowWidth = useWindowDimensions().width;
 
   const titleStyle = {
-    width: windowWidth - 93,
+    width: windowWidth - 120,
   };
 
   return (

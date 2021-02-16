@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import View from 'components/atoms/View';
 import dayjs from 'dayjs';
@@ -8,6 +8,7 @@ import DateInput from 'components/organisms/DateInput/DateInput';
 import MemoirButton from 'components/molecules/Home/MemoirButton.tsx';
 import Cards from 'components/organisms/Cards/Cards';
 import SettingModal from 'components/organisms/SettingModal';
+import AddItemModal from 'components/organisms/AddItemModal';
 import { LinearGradient } from 'expo-linear-gradient';
 import theme from 'config/theme';
 
@@ -17,12 +18,23 @@ dayjs.extend(advancedFormat);
 type Props = {
   openSettingModal: boolean;
   onItem: () => void;
-  onAddItem: () => void;
   onMemoir: () => void;
   onCloseSettingModal: () => void;
 };
 
+type State = {
+  openAddItemModal: boolean;
+};
+
+const initialState = (): State => ({
+  openAddItemModal: false,
+});
+
 const Page: React.FC<Props> = (props) => {
+  const [state, setState] = useState<State>(initialState());
+
+  const onAddItem = useCallback(() => {}, []);
+
   return (
     <LinearGradient
       // Background Linear Gradient
@@ -33,10 +45,21 @@ const Page: React.FC<Props> = (props) => {
         isVisible={props.openSettingModal}
         onClose={props.onCloseSettingModal}
       />
+      <AddItemModal
+        isVisible={state.openAddItemModal}
+        date={dayjs().format('YYYY-MM-DD')}
+        onAdd={onAddItem}
+        onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
+      />
       <ScrollView>
         <View style={styles.inner}>
           <DateInput date="2020-01-01" />
-          <Cards onItem={props.onItem} onAddItem={props.onAddItem} />
+          <Cards
+            onItem={props.onItem}
+            onAddItem={() =>
+              setState((s) => ({ ...s, openAddItemModal: true }))
+            }
+          />
         </View>
       </ScrollView>
       <MemoirButton onPress={props.onMemoir} />

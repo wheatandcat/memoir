@@ -3,13 +3,17 @@ import { StyleSheet, ScrollView } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
+import Button from 'components/atoms/Button';
 import RNModal from 'react-native-modal';
 import IconButton from 'components/molecules/IconButton';
 
 type Props = {
   isVisible: boolean;
   title: string;
+  buttonTitle?: string;
+  disabledButton?: boolean;
   onClose: () => void;
+  onPress?: () => void;
 };
 
 const Modal: React.FC<Props> = (props) => {
@@ -34,6 +38,16 @@ const Modal: React.FC<Props> = (props) => {
         <ScrollView>
           <View px={3}>{props.children}</View>
         </ScrollView>
+        {Boolean(props.buttonTitle) && (
+          <View mx={3} mb={3}>
+            <Button
+              title={props.buttonTitle || ''}
+              size="lg"
+              onPress={() => props.onPress?.()}
+              disabled={props.disabledButton}
+            />
+          </View>
+        )}
       </View>
     </RNModal>
   );
