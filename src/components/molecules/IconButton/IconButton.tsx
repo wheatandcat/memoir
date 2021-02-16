@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { TouchableOpacity } from 'react-native';
 import theme from 'config/theme';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -29,4 +29,4 @@ IconButton.defaultProps = {
   size: 'base',
 };
 
-export default IconButton;
+export default memo(IconButton);

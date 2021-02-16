@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Modal from 'components/organisms/Modal';
 import TextInput from 'components/atoms/TextInput';
+import Categories from 'components/organisms/Categories';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
@@ -14,6 +15,7 @@ type Props = {
   isVisible: boolean;
   date: string;
   onClose: () => void;
+  onCategory: () => void;
 };
 
 const AddItemModal: React.FC<Props> = (props) => {
@@ -25,6 +27,9 @@ const AddItemModal: React.FC<Props> = (props) => {
     >
       <View style={styles.root} p={1} px={3}>
         <TextInput placeholder="終了したタスク" />
+        <View py={2}>
+          <Categories onPress={props.onCategory} />
+        </View>
       </View>
     </Modal>
   );

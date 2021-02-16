@@ -6,6 +6,11 @@ import AddItemModal from './';
 
 storiesOf('organisms', module).add('AddItemModal', () => (
   <View>
-    <AddItemModal isVisible date="2020-01-01" onClose={mockFn('onClose')} />
+    <AddItemModal
+      isVisible
+      date="2020-01-01"
+      onClose={mockFn('onClose')}
+      onCategory={mockFn('onCategory')}
+    />
   </View>
 ));
