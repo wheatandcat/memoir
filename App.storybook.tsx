@@ -1,1 +1,2 @@
-export { default } from "./storybook";
+// @ts-ignore
+export { default } from './storybook';
