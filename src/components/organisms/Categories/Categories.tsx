@@ -2,60 +2,23 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import CategoryButton from 'components/molecules/CategoryButton';
+import setting from 'components/atoms/Category/setting';
+import theme from 'config/theme';
 
 type Props = {
   categoryID: number | null;
   onPress: (categoryID: number) => void;
 };
 
-const categoryItems = [
-  {
-    id: 1,
-    name: '趣味',
-  },
-  {
-    id: 2,
-    name: '家事',
-  },
-  {
-    id: 3,
-    name: '仕事',
-  },
-  {
-    id: 4,
-    name: '趣味',
-  },
-  {
-    id: 5,
-    name: '家事',
-  },
-  {
-    id: 6,
-    name: '仕事',
-  },
-  {
-    id: 7,
-    name: '趣味',
-  },
-  {
-    id: 8,
-    name: '家事',
-  },
-  {
-    id: 9,
-    name: '仕事',
-  },
-];
-
 const Categories: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      {categoryItems.map((v) => (
-        <View key={v.id} my={1}>
+      {setting().main.map((v) => (
+        <View key={v} my={1}>
           <CategoryButton
-            selected={v.id === props.categoryID}
-            name={v.name}
-            onPress={() => props.onPress(v.id)}
+            categoryID={v}
+            selected={v === props.categoryID}
+            onPress={() => props.onPress(v)}
           />
         </View>
       ))}
