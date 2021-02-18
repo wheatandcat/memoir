@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
-import Image from 'components/atoms/Image';
+import Category from 'components/atoms/Category';
 import theme from 'config/theme';
 
 type Props = {
@@ -25,11 +25,7 @@ const Card: React.FC<Props> = (props) => {
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.root}>
         <View mx={2}>
-          <Image
-            source={require('../../../img/categories/book.png')}
-            width={50}
-            height={50}
-          />
+          <Category categoryID={2} />
         </View>
         <View style={titleStyle}>
           <Text numberOfLines={2} ellipsizeMode="tail" lineHeight={25}>

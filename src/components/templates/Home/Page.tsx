@@ -53,9 +53,9 @@ const Page: React.FC<Props> = (props) => {
         onAdd={onAddItem}
         onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
       />
+      <DateInput date={props.date} onChange={props.onChangeDate} />
       <ScrollView>
         <View style={styles.inner}>
-          <DateInput date={props.date} onChange={props.onChangeDate} />
           <Cards
             onItem={props.onItem}
             onAddItem={() =>

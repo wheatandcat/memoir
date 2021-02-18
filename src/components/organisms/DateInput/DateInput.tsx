@@ -137,7 +137,7 @@ const DateInput: React.FC<Props> = (props) => {
           onPress={onDay}
         />
       </View>
-      <Divider my={2} />
+      <Divider mt={2} />
     </View>
   );
 };
