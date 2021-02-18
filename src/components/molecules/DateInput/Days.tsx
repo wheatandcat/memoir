@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   days: {
     flexDirection: 'row',
     paddingTop: theme().space(2),
+    height: 45,
   },
   dayItem: {
     paddingRight: theme().space(4),

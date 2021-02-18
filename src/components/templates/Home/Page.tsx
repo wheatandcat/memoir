@@ -16,10 +16,12 @@ dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
 type Props = {
+  date: string;
   openSettingModal: boolean;
   onItem: () => void;
   onMemoir: () => void;
   onCloseSettingModal: () => void;
+  onChangeDate: (date: string) => void;
 };
 
 type State = {
@@ -53,7 +55,7 @@ const Page: React.FC<Props> = (props) => {
       />
       <ScrollView>
         <View style={styles.inner}>
-          <DateInput date="2020-01-01" />
+          <DateInput date={props.date} onChange={props.onChangeDate} />
           <Cards
             onItem={props.onItem}
             onAddItem={() =>

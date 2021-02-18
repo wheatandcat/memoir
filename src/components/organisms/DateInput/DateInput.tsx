@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState, useCallback, useEffect } from 'react';
 import Divider from 'components/atoms/Divider';
 import View from 'components/atoms/View';
 import dayjs from 'dayjs';
@@ -75,6 +75,7 @@ const getDays = (date: string): string[] => {
 
 type Props = {
   date: string;
+  onChange: (date: string) => void;
 };
 
 type State = {
@@ -87,6 +88,10 @@ const initialState = (props: Props): State => ({
 
 const DateInput: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState(props));
+
+  useEffect(() => {
+    props.onChange(state.date);
+  }, [state.date, props]);
 
   const onYear = useCallback(
     (year: number) => {

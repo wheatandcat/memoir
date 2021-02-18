@@ -79,7 +79,6 @@ const MonthInput: React.FC<Props> = (props) => {
       layout="default"
       inactiveSlideOpacity={1.0}
       inactiveSlideScale={1.0}
-      firstItem={Number(dayjs(props.date).format('M')) - 1}
       activeSlideAlignment="start"
       loop
     />

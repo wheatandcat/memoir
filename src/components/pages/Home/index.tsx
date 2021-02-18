@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import TemplateHome from 'components/templates/Home/Page.tsx';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
@@ -6,6 +6,12 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import IconButton from 'components/molecules/IconButton';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
+import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import 'dayjs/locale/ja';
+
+dayjs.locale('ja');
+dayjs.extend(advancedFormat);
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
@@ -26,9 +32,11 @@ const initialState = (): State => ({
 const Home: React.FC<Props> = ({ navigation }) => {
   const [state, setState] = useState<State>(initialState());
 
-  const onItem = () => {};
+  const onItem = useCallback(() => {}, []);
 
-  const onMemoir = () => {};
+  const onMemoir = useCallback(() => {}, []);
+
+  const onChangeDate = useCallback(() => {}, []);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -46,12 +54,14 @@ const Home: React.FC<Props> = ({ navigation }) => {
 
   return (
     <TemplateHome
+      date={dayjs().format('YYYY-MM-DD')}
       onItem={onItem}
       onMemoir={onMemoir}
       openSettingModal={state.openSettingModal}
       onCloseSettingModal={() =>
         setState((v) => ({ ...v, openSettingModal: false }))
       }
+      onChangeDate={onChangeDate}
     />
   );
 };
