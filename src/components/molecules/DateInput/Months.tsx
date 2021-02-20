@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useRef } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -57,6 +57,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 };
 
 const MonthInput: React.FC<Props> = (props) => {
+  const carouselRef = useRef<Carousel<any>>(null);
   const windowWidth = useWindowDimensions().width;
 
   const renderItemCall = useCallback(
@@ -66,8 +67,11 @@ const MonthInput: React.FC<Props> = (props) => {
     []
   );
 
+  const index = Number(dayjs(props.date).format('M')) - 1;
+
   return (
     <Carousel
+      ref={carouselRef}
       data={props.months.map((v) => ({
         date: props.date,
         month: v,
@@ -81,6 +85,9 @@ const MonthInput: React.FC<Props> = (props) => {
       inactiveSlideScale={1.0}
       activeSlideAlignment="start"
       loop
+      onLayout={() => {
+        carouselRef.current?.snapToItem(index);
+      }}
     />
   );
 };

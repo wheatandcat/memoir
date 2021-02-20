@@ -21,9 +21,11 @@ function loadStories() {
   require('../src/components/organisms/Cards/stories');
   require('../src/components/organisms/Categories/stories');
   require('../src/components/organisms/DateInput/stories');
+  require('../src/components/organisms/InputDateWrap/stories');
   require('../src/components/organisms/Modal/stories');
   require('../src/components/organisms/SettingModal/stories');
   require('../src/components/templates/Home/stories');
+  require('../src/components/templates/ItemDetail/stories');
 }
 
 const stories = [
@@ -44,9 +46,11 @@ const stories = [
   '../src/components/organisms/Cards/stories',
   '../src/components/organisms/Categories/stories',
   '../src/components/organisms/DateInput/stories',
+  '../src/components/organisms/InputDateWrap/stories',
   '../src/components/organisms/Modal/stories',
   '../src/components/organisms/SettingModal/stories',
   '../src/components/templates/Home/stories',
+  '../src/components/templates/ItemDetail/stories',
 ];
 
 module.exports = {

@@ -4,13 +4,11 @@ import View from 'components/atoms/View';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import DateInput from 'components/organisms/DateInput/DateInput';
 import MemoirButton from 'components/molecules/Home/MemoirButton.tsx';
 import Cards from 'components/organisms/Cards/Cards';
 import SettingModal from 'components/organisms/SettingModal';
 import AddItemModal from 'components/organisms/AddItemModal';
-import { LinearGradient } from 'expo-linear-gradient';
-import theme from 'config/theme';
+import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -38,43 +36,37 @@ const Page: React.FC<Props> = (props) => {
   const onAddItem = useCallback(() => {}, []);
 
   return (
-    <LinearGradient
-      // Background Linear Gradient
-      colors={[theme().color.gradation[0], theme().color.gradation[1]]}
-      style={styles.root}
-    >
-      <SettingModal
-        isVisible={props.openSettingModal}
-        onClose={props.onCloseSettingModal}
-      />
-      <AddItemModal
-        isVisible={state.openAddItemModal}
-        date={dayjs().format('YYYY-MM-DD')}
-        onAdd={onAddItem}
-        onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
-      />
-      <DateInput date={props.date} onChange={props.onChangeDate} />
-      <ScrollView>
-        <View style={styles.inner}>
-          <Cards
-            onItem={props.onItem}
-            onAddItem={() =>
-              setState((s) => ({ ...s, openAddItemModal: true }))
-            }
-          />
-        </View>
-      </ScrollView>
-      <MemoirButton onPress={props.onMemoir} />
-    </LinearGradient>
+    <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
+      <>
+        <SettingModal
+          isVisible={props.openSettingModal}
+          onClose={props.onCloseSettingModal}
+        />
+        <AddItemModal
+          isVisible={state.openAddItemModal}
+          date={dayjs().format('YYYY-MM-DD')}
+          onAdd={onAddItem}
+          onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
+        />
+        <ScrollView>
+          <View style={styles.inner}>
+            <Cards
+              onItem={props.onItem}
+              onAddItem={() =>
+                setState((s) => ({ ...s, openAddItemModal: true }))
+              }
+            />
+          </View>
+        </ScrollView>
+        <MemoirButton onPress={props.onMemoir} />
+      </>
+    </InputDateWrap>
   );
 };
 
 export default memo(Page);
 
 const styles = StyleSheet.create({
-  root: {
-    height: '100%',
-  },
   inner: {
     height: '100%',
   },

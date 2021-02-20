@@ -29,17 +29,19 @@ const initialState = (): State => ({
   openSettingModal: false,
 });
 
-const Home: React.FC<Props> = ({ navigation }) => {
+const Home: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
-  const onItem = useCallback(() => {}, []);
+  const onItem = useCallback(() => {
+    props.navigation.navigate('ItemDetail');
+  }, [props.navigation]);
 
   const onMemoir = useCallback(() => {}, []);
 
   const onChangeDate = useCallback(() => {}, []);
 
   React.useLayoutEffect(() => {
-    navigation.setOptions({
+    props.navigation.setOptions({
       headerRight: () => (
         <View pr={2} pb={1}>
           <IconButton
@@ -50,7 +52,7 @@ const Home: React.FC<Props> = ({ navigation }) => {
         </View>
       ),
     });
-  }, [navigation]);
+  }, [props.navigation]);
 
   return (
     <TemplateHome
@@ -71,7 +73,10 @@ export const HomeScreenOption = () => {
     title: '',
     headerStyle: {
       backgroundColor: theme().color.primary.main,
+      color: theme().color.secondary.main,
     },
+    headerBackTitleVisible: false,
+    headerTintColor: theme().color.secondary.main,
   };
 };
 
