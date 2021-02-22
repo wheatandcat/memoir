@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home, { HomeScreenOption } from 'components/pages/Home';
 import ItemDetail from 'components/pages/ItemDetail';
+import Memoir from 'components/pages/Memoir';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,11 @@ function App() {
         <Stack.Screen
           name="ItemDetail"
           component={ItemDetail}
+          options={HomeScreenOption()}
+        />
+        <Stack.Screen
+          name="Memoir"
+          component={Memoir}
           options={HomeScreenOption()}
         />
       </Stack.Navigator>

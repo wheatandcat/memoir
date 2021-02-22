@@ -36,7 +36,9 @@ const Home: React.FC<Props> = (props) => {
     props.navigation.navigate('ItemDetail');
   }, [props.navigation]);
 
-  const onMemoir = useCallback(() => {}, []);
+  const onMemoir = useCallback(() => {
+    props.navigation.navigate('Memoir');
+  }, [props.navigation]);
 
   const onChangeDate = useCallback(() => {}, []);
 
