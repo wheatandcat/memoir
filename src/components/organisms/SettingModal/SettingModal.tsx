@@ -4,6 +4,7 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Modal from 'components/organisms/Modal';
 import Divider from 'components/atoms/Divider';
+
 import theme from 'config/theme';
 
 type Props = {

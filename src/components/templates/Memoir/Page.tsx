@@ -28,10 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.background.main,
   },
   inner: {
-    height: '100%',
+    height: '93%',
   },
   action: {
     bottom: 0,
+    height: '7%',
     position: 'absolute',
   },
 });

@@ -113,8 +113,6 @@ const DateCards: React.FC<Props> = (props) => {
     };
   });
 
-  console.log(dateItems);
-
   const data = dateItems
     .map((v1) => {
       const dateItem: RenderedItem = {
