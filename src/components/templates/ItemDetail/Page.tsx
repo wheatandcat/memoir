@@ -12,7 +12,11 @@ type Props = {
 
 const Page: React.FC<Props> = (props) => {
   return (
-    <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
+    <InputDateWrap
+      date={props.date}
+      onChangeDate={props.onChangeDate}
+      firstItem
+    >
       <ScrollView>
         <View style={styles.inner}>
           <CardDetail title="本を読んだ" />

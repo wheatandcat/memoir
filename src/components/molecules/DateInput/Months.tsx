@@ -25,12 +25,14 @@ type Props = {
   date: string;
   months: Month[];
   onPress: (month: string) => void;
+  firstItem?: boolean;
 };
 
 type RenderedItem = {
   date: string;
   month: Month;
   onPress: (month: string) => void;
+  firstItem?: boolean;
 };
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
@@ -85,6 +87,7 @@ const MonthInput: React.FC<Props> = (props) => {
       inactiveSlideScale={1.0}
       activeSlideAlignment="start"
       loop
+      firstItem={props.firstItem ? index : undefined}
       onLayout={() => {
         carouselRef.current?.snapToItem(index);
       }}

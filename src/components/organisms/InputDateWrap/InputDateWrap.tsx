@@ -6,6 +6,7 @@ import theme from 'config/theme';
 
 type Props = {
   date: string;
+  firstItem?: boolean;
   onChangeDate: (date: string) => void;
 };
 
@@ -15,7 +16,11 @@ const InputDateWrap: React.FC<Props> = (props) => {
       colors={[theme().color.gradation[0], theme().color.gradation[1]]}
       style={styles.root}
     >
-      <DateInput date={props.date} onChange={props.onChangeDate} />
+      <DateInput
+        date={props.date}
+        onChange={props.onChangeDate}
+        firstItem={props.firstItem}
+      />
       {props.children}
     </LinearGradient>
   );

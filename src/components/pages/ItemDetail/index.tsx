@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import TemplateHome from 'components/templates/ItemDetail/Page.tsx';
+import TemplateItemDetail from 'components/templates/ItemDetail/Page.tsx';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -26,7 +26,7 @@ const ItemDetail: React.FC<Props> = () => {
   const onChangeDate = useCallback(() => {}, []);
 
   return (
-    <TemplateHome
+    <TemplateItemDetail
       date={dayjs().format('YYYY-MM-DD')}
       onChangeDate={onChangeDate}
     />

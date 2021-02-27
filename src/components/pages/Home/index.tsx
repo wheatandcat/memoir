@@ -1,14 +1,18 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import TemplateHome from 'components/templates/Home/Page.tsx';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
-import { StackNavigationProp } from '@react-navigation/stack';
+import {
+  StackNavigationProp,
+  createStackNavigator,
+} from '@react-navigation/stack';
 import IconButton from 'components/molecules/IconButton';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import ItemDetail from 'components/pages/ItemDetail';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -75,11 +79,25 @@ export const HomeScreenOption = () => {
     title: '',
     headerStyle: {
       backgroundColor: theme().color.primary.main,
-      color: theme().color.secondary.main,
     },
     headerBackTitleVisible: false,
     headerTintColor: theme().color.secondary.main,
   };
 };
 
-export default memo(Home);
+const Stack = createStackNavigator<RootStackParamList>();
+
+const RootStack = () => {
+  return (
+    <Stack.Navigator initialRouteName="Home">
+      <Stack.Screen name="Home" component={Home} options={HomeScreenOption()} />
+      <Stack.Screen
+        name="ItemDetail"
+        component={ItemDetail}
+        options={HomeScreenOption()}
+      />
+    </Stack.Navigator>
+  );
+};
+
+export default RootStack;

@@ -1,5 +1,6 @@
-import React, { memo } from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Modal from 'components/organisms/Modal';
@@ -13,6 +14,14 @@ type Props = {
 };
 
 const SettingModal: React.FC<Props> = (props) => {
+  const navigation = useNavigation();
+
+  const onLicence = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('SettingLicence');
+  }, [navigation, props]);
+
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
       <View style={styles.root} p={3} pt={4}>
@@ -40,7 +49,7 @@ const SettingModal: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
         <Divider my={3} />
-        <TouchableOpacity style={styles.menuText}>
+        <TouchableOpacity style={styles.menuText} onPress={onLicence}>
           <View>
             <Text>著作権</Text>
           </View>

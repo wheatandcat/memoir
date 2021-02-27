@@ -20,12 +20,14 @@ type Props = {
   date: string;
   days: string[];
   onPress: (day: string) => void;
+  firstItem?: boolean;
 };
 
 type RenderedItem = {
   date: string;
   day: string;
   onPress: (day: string) => void;
+  firstItem?: boolean;
 };
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
@@ -90,6 +92,7 @@ const DayInput: React.FC<Props> = (props) => {
       inactiveSlideOpacity={1.0}
       inactiveSlideScale={1.0}
       activeSlideAlignment="start"
+      firstItem={props.firstItem ? index : undefined}
       onLayout={() => {
         carouselRef.current?.snapToItem(index);
       }}

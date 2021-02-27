@@ -75,6 +75,7 @@ const getDays = (date: string): string[] => {
 
 type Props = {
   date: string;
+  firstItem?: boolean;
   onChange: (date: string) => void;
 };
 
@@ -127,7 +128,12 @@ const DateInput: React.FC<Props> = (props) => {
       </View>
       <Divider my={2} />
       <View pl={2}>
-        <InputMonth date={state.date} months={months} onPress={onMonth} />
+        <InputMonth
+          date={state.date}
+          months={months}
+          onPress={onMonth}
+          firstItem={props.firstItem}
+        />
       </View>
       <Divider my={2} />
       <View pl={2} pb={2}>
@@ -135,6 +141,7 @@ const DateInput: React.FC<Props> = (props) => {
           date={state.date}
           days={getDays(state.date)}
           onPress={onDay}
+          firstItem={props.firstItem}
         />
       </View>
       <Divider mt={2} />

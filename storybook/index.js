@@ -1,4 +1,5 @@
 // if you use expo remove this line
+import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import {
   getStorybookUI,
@@ -30,4 +31,20 @@ const StorybookUIRoot = getStorybookUI({});
 // If you use Expo you should remove this line.
 AppRegistry.registerComponent('%APP_NAME%', () => StorybookUIRoot);
 
-export default StorybookUIRoot;
+class StorybookUIHMRRoot extends Component {
+  render() {
+    return (
+      <NavigationContainer independent={true}>
+        <Stack.Navigator>
+          <Stack.Screen
+            name="StorybookUIRoot"
+            component={StorybookUIRoot}
+            options={{ header: () => null }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
+}
+
+export default StorybookUIHMRRoot;

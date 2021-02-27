@@ -2,25 +2,31 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home, { HomeScreenOption } from 'components/pages/Home';
-import ItemDetail from 'components/pages/ItemDetail';
 import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
+import theme from 'config/theme';
 
 const Stack = createStackNavigator();
+
+export const HomeOption = () => {
+  return {
+    title: '',
+    headerStyle: {
+      backgroundColor: theme().color.primary.main,
+    },
+    headerBackTitleVisible: false,
+    headerTintColor: theme().color.secondary.main,
+  };
+};
 
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Home" mode="modal">
         <Stack.Screen
           name="Home"
           component={Home}
-          options={HomeScreenOption()}
-        />
-        <Stack.Screen
-          name="ItemDetail"
-          component={ItemDetail}
-          options={HomeScreenOption()}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Memoir"
