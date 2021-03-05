@@ -13,7 +13,8 @@
       "components/*": ["src/components/*"],
       "config/*": ["src/config/*"],
       "lib/*": ["src/lib/*"],
-      "storyBookUtils/*": ["src/storyBookUtils/*"]
+      "storyBookUtils/*": ["src/storyBookUtils/*"],
+      "store/*": ["src/store/*"]
     }
   }
 }

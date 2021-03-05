@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import View from 'components/atoms/View';
 import dayjs from 'dayjs';
@@ -16,6 +16,7 @@ dayjs.extend(advancedFormat);
 type Props = {
   date: string;
   openSettingModal: boolean;
+  onAddItem: () => void;
   onItem: () => void;
   onMemoir: () => void;
   onCloseSettingModal: () => void;
@@ -33,8 +34,6 @@ const initialState = (): State => ({
 const Page: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
-  const onAddItem = useCallback(() => {}, []);
-
   return (
     <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
       <>
@@ -45,7 +44,7 @@ const Page: React.FC<Props> = (props) => {
         <AddItemModal
           isVisible={state.openAddItemModal}
           date={dayjs().format('YYYY-MM-DD')}
-          onAdd={onAddItem}
+          onAdd={props.onAddItem}
           onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
         />
         <ScrollView>

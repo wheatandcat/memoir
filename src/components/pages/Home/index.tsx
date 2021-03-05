@@ -1,5 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import TemplateHome from 'components/templates/Home/Page.tsx';
+import React, { useState } from 'react';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import {
@@ -13,6 +12,7 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import ItemDetail from 'components/pages/ItemDetail';
+import Connected from './Connected';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -36,16 +36,6 @@ const initialState = (): State => ({
 const Home: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
-  const onItem = useCallback(() => {
-    props.navigation.navigate('ItemDetail');
-  }, [props.navigation]);
-
-  const onMemoir = useCallback(() => {
-    props.navigation.navigate('Memoir');
-  }, [props.navigation]);
-
-  const onChangeDate = useCallback(() => {}, []);
-
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
       headerRight: () => (
@@ -61,15 +51,12 @@ const Home: React.FC<Props> = (props) => {
   }, [props.navigation]);
 
   return (
-    <TemplateHome
-      date={dayjs().format('YYYY-MM-DD')}
-      onItem={onItem}
-      onMemoir={onMemoir}
+    <Connected
+      {...props}
       openSettingModal={state.openSettingModal}
       onCloseSettingModal={() =>
         setState((v) => ({ ...v, openSettingModal: false }))
       }
-      onChangeDate={onChangeDate}
     />
   );
 };
