@@ -11,6 +11,7 @@ module.exports = function (api) {
             lib: './src/lib',
             config: './src/config',
             storyBookUtils: './src/storyBookUtils',
+            store: './src/store',
           },
         },
       ],
