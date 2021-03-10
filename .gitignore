@@ -15,3 +15,9 @@ web-build/
 .expo-shared
 storyLoader.js
 .expo-shared/assets.json
+
+schema.json
+src/queries/api/index.ts
+schema.graphqls
+
+.env

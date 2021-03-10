@@ -12,6 +12,7 @@ module.exports = function (api) {
             config: './src/config',
             storyBookUtils: './src/storyBookUtils',
             store: './src/store',
+            hooks: './src/hooks',
           },
         },
       ],

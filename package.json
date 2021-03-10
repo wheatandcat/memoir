@@ -12,9 +12,13 @@
     "storybook:android": "yarn init:storybook && expo start --android",
     "prestorybook": "rnstl",
     "build-storybook": "build-storybook",
-    "lint": "eslint --ext .js,.ts,.tsx 'src/**'"
+    "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
+    "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
+    "codegen": "graphql-codegen",
+    "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.2",
@@ -26,6 +30,9 @@
     "expo-font": "~8.4.0",
     "expo-linking": "~2.0.1",
     "expo-status-bar": "~1.0.3",
+    "graphql": "^15.5.0",
+    "graphql-anywhere": "^4.2.7",
+    "graphql-tag": "^2.11.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
@@ -41,6 +48,10 @@
   },
   "devDependencies": {
     "@babel/core": "~7.9.0",
+    "@graphql-codegen/cli": "^1.21.2",
+    "@graphql-codegen/introspection": "^1.18.1",
+    "@graphql-codegen/typescript-operations": "^1.17.15",
+    "@graphql-codegen/typescript-react-apollo": "^2.2.2",
     "@react-native-community/eslint-config": "^2.0.0",
     "@react-native-community/eslint-plugin": "^1.1.0",
     "@storybook/addon-actions": "^5.3",
