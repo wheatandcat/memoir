@@ -13,6 +13,7 @@ module.exports = function (api) {
             storyBookUtils: './src/storyBookUtils',
             store: './src/store',
             hooks: './src/hooks',
+            queries: './src/queries',
           },
         },
       ],
