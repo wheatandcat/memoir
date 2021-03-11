@@ -19,7 +19,7 @@ export const HomeOption = () => {
   };
 };
 
-const Router = () => {
+const WithProvider = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" mode="modal">
@@ -43,4 +43,4 @@ const Router = () => {
   );
 };
 
-export default Router;
+export default WithProvider;
