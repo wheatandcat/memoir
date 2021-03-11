@@ -4,10 +4,27 @@ import { existUserID } from 'store/selectors';
 import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useCreateUserMutation } from 'queries/api/index';
 
 const useUser = () => {
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
+  const [createUserMutation] = useCreateUserMutation({
+    async onCompleted({ createUser }) {
+      setUser({ id: createUser.id });
+    },
+  });
+
+  const onSaveWhenNotLogin = useCallback(() => {
+    // ログインせずにチュートリアルを超えた場合は、こちらから保存
+    const variables = {
+      input: {
+        id: user?.id || '',
+      },
+    };
+
+    createUserMutation({ variables });
+  }, [user.id, createUserMutation]);
 
   const setup = useCallback(
     (id: string) => {
@@ -38,6 +55,7 @@ const useUser = () => {
 
   return {
     user,
+    onSaveWhenNotLogin,
   };
 };
 
