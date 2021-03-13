@@ -1,0 +1,25 @@
+overwrite: true
+schema:
+  - ./schema.graphqls
+documents:
+  - "./src/queries/**/*.gql"
+generates:
+  ./src/queries/api/index.ts:
+    hooks:
+      afterOneFileWrite:
+        - yarn codegen:lint:fix
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      skipTypename: false
+      withHooks: true
+      withHOC: false
+      withComponent: false
+      apolloReactHooksImportFrom: '@apollo/client'
+  ./schema.json:
+    plugins:
+      - introspection
+    config:
+      minify: true

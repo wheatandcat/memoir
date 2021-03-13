@@ -3,6 +3,7 @@ module.exports = function (api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      'inline-dotenv',
       [
         'module-resolver',
         {
@@ -12,6 +13,8 @@ module.exports = function (api) {
             config: './src/config',
             storyBookUtils: './src/storyBookUtils',
             store: './src/store',
+            hooks: './src/hooks',
+            queries: './src/queries',
           },
         },
       ],
