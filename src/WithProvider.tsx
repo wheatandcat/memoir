@@ -1,12 +1,16 @@
 import React from 'react';
 import useUser from 'hooks/useUser';
+import Tutorial from 'components/templates/Tutorial/Page';
 import Router from './Router';
 
 const WithProvider = () => {
-  const { user } = useUser();
+  const { loading, user, onSaveWhenNotLogin } = useUser();
+  if (loading) {
+    return null;
+  }
 
   if (!user.id) {
-    return null;
+    return <Tutorial onPress={onSaveWhenNotLogin} />;
   }
 
   return <Router />;

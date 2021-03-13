@@ -1,4 +1,4 @@
-import { useEffect, useCallback } from 'react';
+import { useEffect, useCallback, useState } from 'react';
 import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { existUserID } from 'store/selectors';
 import { v4 as uuidv4 } from 'uuid';
@@ -7,24 +7,28 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCreateUserMutation } from 'queries/api/index';
 
 const useUser = () => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
+      await AsyncStorage.setItem('USER_ID', createUser.id);
       setUser({ id: createUser.id });
     },
   });
 
   const onSaveWhenNotLogin = useCallback(() => {
     // ログインせずにチュートリアルを超えた場合は、こちらから保存
+    const u = uuidv4();
+
     const variables = {
       input: {
-        id: user?.id || '',
+        id: u,
       },
     };
 
     createUserMutation({ variables });
-  }, [user.id, createUserMutation]);
+  }, [createUserMutation]);
 
   const setup = useCallback(
     (id: string) => {
@@ -36,25 +40,18 @@ const useUser = () => {
     [setUser, user.id]
   );
 
-  const initUser = useCallback(async () => {
-    const u = uuidv4();
-    await AsyncStorage.setItem('USER_ID', u);
-    setup(u);
-  }, [setup]);
-
   useEffect(() => {
     if (userID.state === 'hasValue') {
       if (userID.contents) {
         setup(userID.contents);
-      } else {
-        // ユーザーIDを設定する
-        initUser();
       }
+      setLoading(false);
     }
-  }, [userID, initUser, setup]);
+  }, [userID, setup]);
 
   return {
     user,
+    loading,
     onSaveWhenNotLogin,
   };
 };

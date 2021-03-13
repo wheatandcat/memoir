@@ -4,7 +4,7 @@ import View from 'components/atoms/View';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import MemoirButton from 'components/molecules/Home/MemoirButton.tsx';
+import MemoirButton from 'components/molecules/Home/MemoirButton';
 import Cards from 'components/organisms/Cards/Cards';
 import SettingModal from 'components/organisms/SettingModal';
 import AddItemModal from 'components/organisms/AddItemModal';
