@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import makeApolloClient from 'lib/apollo';
-import WithProvider from './WithProvider';
 import useIsFirstRender from 'hooks/useIsFirstRender';
+import WithProvider from './WithProvider';
 
 type CacheShape = any;
 
