@@ -7,15 +7,17 @@ import Categories from 'components/organisms/Categories';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import { NewItem } from 'queries/api/index';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
 type Props = {
   isVisible: boolean;
+  loading: boolean;
   date: string;
   onClose: () => void;
-  onAdd: (state: State) => void;
+  onAdd: (newItem: NewItem) => void;
 };
 
 type State = {
@@ -39,6 +41,18 @@ const AddItemModal: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, title }));
   }, []);
 
+  const onAdd = useCallback(() => {
+    const item: NewItem = {
+      title: state.title,
+      categoryID: state.categoryID || 0,
+      date: dayjs(props.date).format('YYYY-MM-DDT00:00:00+09:00'),
+      like: false,
+      dislike: false,
+    };
+
+    props.onAdd(item);
+  }, [props, state]);
+
   const valid = useCallback(() => {
     if (state.title === '') {
       return false;
@@ -57,11 +71,16 @@ const AddItemModal: React.FC<Props> = (props) => {
       title={dayjs(props.date).format('YYYY.MM.DD / ddd')}
       onClose={props.onClose}
       buttonTitle="入力"
-      disabledButton={!valid()}
-      onPress={() => props.onAdd(state)}
+      disabledButton={!valid() && !props.loading}
+      onPress={onAdd}
+      loading={props.loading}
     >
       <View style={styles.root} p={1} px={3}>
-        <TextInput placeholder="終了したタスク" onChangeText={onChangeTitle} />
+        <TextInput
+          placeholder="終了したタスク"
+          onChangeText={onChangeTitle}
+          autoFocus
+        />
         <View py={2}>
           <Categories categoryID={state.categoryID} onPress={onCategory} />
         </View>

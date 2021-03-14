@@ -1,0 +1,12 @@
+query Item($id: ID!) {
+  item(id: $id) {
+    id
+    title
+    categoryID
+    date
+    like
+    dislike
+    createdAt
+    updatedAt
+  }
+}

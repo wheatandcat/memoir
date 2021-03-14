@@ -8,6 +8,7 @@ storiesOf('organisms', module).add('AddItemModal', () => (
   <View>
     <AddItemModal
       isVisible
+      loading={false}
       date="2020-01-01"
       onClose={mockFn('onClose')}
       onAdd={mockFn('onCategory')}

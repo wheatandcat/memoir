@@ -1,10 +1,9 @@
-import React, { memo, useCallback } from 'react';
-import TemplateHome from 'components/templates/Home/Page.tsx';
+import React, { memo, useCallback, useState } from 'react';
+import TemplateHome from 'components/templates/Home/Page';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import { useRecoilValue } from 'recoil';
-import { userIDState } from 'store/selectors';
+import { useCreateItemMutation, NewItem } from 'queries/api/index';
 import { Props as IndexProps } from './';
 
 dayjs.locale('ja');
@@ -15,16 +14,53 @@ type Props = IndexProps & {
   onCloseSettingModal: () => void;
 };
 
-export type ConnectedType = {
-  onAddItem: () => void;
+type State = {
+  openAddItemModal: boolean;
 };
 
-const Connected: React.FC<Props> = (props) => {
-  const userID = useRecoilValue(userIDState);
+export type ConnectedType = {
+  openSettingModal: boolean;
+  openAddItemModal: boolean;
+  onAddItem: (item: NewItem) => void;
+  onOpenAddItem: () => void;
+  onCloseAddItem: () => void;
+  onItem: () => void;
+  onMemoir: () => void;
+  onChangeDate: (date: string) => void;
+  onCloseSettingModal: () => void;
+};
 
-  const onAddItem = useCallback(() => {
-    console.log(userID);
-  }, [userID]);
+const initialState = (): State => ({
+  openAddItemModal: false,
+});
+
+const Connected: React.FC<Props> = (props) => {
+  const [state, setState] = useState<State>(initialState());
+
+  const onOpenAddItem = useCallback(() => {
+    setState((s) => ({ ...s, openAddItemModal: true }));
+  }, []);
+
+  const onCloseAddItem = useCallback(() => {
+    setState((s) => ({ ...s, openAddItemModal: false }));
+  }, []);
+
+  const [createItemMutation, createItemMutationData] = useCreateItemMutation({
+    onCompleted() {
+      onCloseAddItem();
+    },
+  });
+
+  const onAddItem = useCallback(
+    (newItem: NewItem) => {
+      const variables = {
+        input: newItem,
+      };
+
+      createItemMutation({ variables });
+    },
+    [createItemMutation]
+  );
 
   const onChangeDate = useCallback(() => {}, []);
 
@@ -38,11 +74,15 @@ const Connected: React.FC<Props> = (props) => {
 
   return (
     <TemplateHome
+      openAddItemModal={state.openAddItemModal}
+      addItemLoading={createItemMutationData.loading}
       date={dayjs().format('YYYY-MM-DD')}
       openSettingModal={props.openSettingModal}
       onAddItem={onAddItem}
       onChangeDate={onChangeDate}
       onCloseSettingModal={props.onCloseSettingModal}
+      onOpenAddItem={onOpenAddItem}
+      onCloseAddItem={onCloseAddItem}
       onItem={onItem}
       onMemoir={onMemoir}
     />

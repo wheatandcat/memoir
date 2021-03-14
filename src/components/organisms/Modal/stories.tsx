@@ -7,7 +7,12 @@ import Modal from './';
 
 storiesOf('organisms', module).add('Modal', () => (
   <View>
-    <Modal title="タイトル" isVisible={true} onClose={mockFn('onClose')}>
+    <Modal
+      title="タイトル"
+      isVisible={true}
+      onClose={mockFn('onClose')}
+      loading={false}
+    >
       <View pt={5}>
         <Text textAlign="center" variants="large">
           props.children

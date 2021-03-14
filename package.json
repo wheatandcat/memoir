@@ -15,11 +15,11 @@
     "build-storybook": "build-storybook",
     "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
-    "codegen": "graphql-codegen",
+    "codegen": "yarn download:schema.graphqls & graphql-codegen",
     "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts"
   },
   "dependencies": {
-    "@apollo/client": "^3.3.11",
+    "@apollo/client": "3.2.5",
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.2",

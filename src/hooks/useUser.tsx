@@ -45,7 +45,8 @@ const useUser = () => {
       if (userID.contents) {
         setup(userID.contents);
       }
-      setLoading(false);
+
+      setTimeout(() => setLoading(false), 1);
     }
   }, [userID, setup]);
 
