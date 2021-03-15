@@ -10,6 +10,9 @@ import SettingModal from 'components/organisms/SettingModal';
 import AddItemModal from 'components/organisms/AddItemModal';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
 import { ConnectedType } from 'components/pages/Home/Connected';
+import { ItemQuery } from 'queries/api/index';
+
+type Item = ItemQuery['item'];
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -17,6 +20,7 @@ dayjs.extend(advancedFormat);
 type Props = {
   addItemLoading: boolean;
   date: string;
+  items: Item[];
 } & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
@@ -36,7 +40,12 @@ const Page: React.FC<Props> = (props) => {
         />
         <ScrollView>
           <View style={styles.inner}>
-            <Cards onItem={props.onItem} onAddItem={props.onOpenAddItem} />
+            <Cards
+              loading={props.addItemLoading}
+              items={props.items}
+              onItem={props.onItem}
+              onAddItem={props.onOpenAddItem}
+            />
           </View>
         </ScrollView>
         <MemoirButton onPress={props.onMemoir} />

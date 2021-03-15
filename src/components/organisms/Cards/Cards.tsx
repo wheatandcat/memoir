@@ -1,32 +1,39 @@
 import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import { ActivityIndicator, StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Card from 'components/organisms/Card';
 import AddButton from 'components/molecules/Home/AddButton';
+import { ItemQuery } from 'queries/api/index';
+import theme from 'config/theme';
 
-type Props = {
+type Item = ItemQuery['item'];
+
+export type Props = {
+  loading: boolean;
+  items: Item[];
   onItem: () => void;
   onAddItem: () => void;
 };
-
-const items = [
-  {
-    title: '本読んだ',
-  },
-  {
-    title:
-      '「とても長いタイトルの本」を読んだんだけど、もっと長いタイトルの本です',
-  },
-];
 
 const Cards: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <AddButton onPress={props.onAddItem} />
+
+      {props.loading && (
+        <View style={styles.loading} mb={3} mx={3}>
+          <ActivityIndicator size="large" />
+        </View>
+      )}
+
       <View>
-        {items.map((v) => (
-          <View key={v.title} mb={3} mx={3}>
-            <Card title={v.title} onPress={props.onItem} />
+        {(props.items || []).map((v) => (
+          <View key={v?.id} mb={3} mx={3}>
+            <Card
+              title={v?.title || ''}
+              categoryID={v?.categoryID || 0}
+              onPress={props.onItem}
+            />
           </View>
         ))}
       </View>
@@ -38,4 +45,10 @@ export default memo(Cards);
 
 const styles = StyleSheet.create({
   root: {},
+  loading: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 75,
+    backgroundColor: theme().color.background.light,
+  },
 });

@@ -92,6 +92,7 @@ const renderItem = (
     <View mb={3} mx={3} key={`${index}-contents`}>
       <Card
         title={item?.contents?.title || ''}
+        categoryID={1}
         user={item?.contents?.user}
         onPress={props.onItem}
       />

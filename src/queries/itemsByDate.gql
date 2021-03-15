@@ -1,4 +1,4 @@
-query ItemByDate($date: Time!) {
+query ItemsByDate($date: Time!) {
   itemsByDate(date: $date) {
     id
     title

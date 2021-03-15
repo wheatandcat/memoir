@@ -1,10 +1,14 @@
 import React, { memo, useCallback, useState } from 'react';
-import TemplateHome from 'components/templates/Home/Page';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import { useCreateItemMutation, NewItem } from 'queries/api/index';
+import {
+  useCreateItemMutation,
+  NewItem,
+  useItemsByDateQuery,
+} from 'queries/api/index';
 import { Props as IndexProps } from './';
+import Plain from './Plain';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -16,26 +20,35 @@ type Props = IndexProps & {
 
 type State = {
   openAddItemModal: boolean;
+  date: string;
 };
 
 export type ConnectedType = {
-  openSettingModal: boolean;
+  addItemLoading: boolean;
+  date: string;
   openAddItemModal: boolean;
+  openSettingModal: boolean;
   onAddItem: (item: NewItem) => void;
-  onOpenAddItem: () => void;
+  onChangeDate: (date: string) => void;
   onCloseAddItem: () => void;
+  onCloseSettingModal: () => void;
   onItem: () => void;
   onMemoir: () => void;
-  onChangeDate: (date: string) => void;
-  onCloseSettingModal: () => void;
+  onOpenAddItem: () => void;
 };
 
 const initialState = (): State => ({
   openAddItemModal: false,
+  date: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
 });
 
 const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
+  const { loading, data, error, refetch } = useItemsByDateQuery({
+    variables: {
+      date: state.date,
+    },
+  });
 
   const onOpenAddItem = useCallback(() => {
     setState((s) => ({ ...s, openAddItemModal: true }));
@@ -45,8 +58,12 @@ const Connected: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, openAddItemModal: false }));
   }, []);
 
-  const [createItemMutation, createItemMutationData] = useCreateItemMutation({
-    onCompleted() {
+  const [createItemMutation] = useCreateItemMutation({
+    async onCompleted() {
+      console.log('onCompleted');
+
+      await refetch?.();
+
       onCloseAddItem();
     },
   });
@@ -73,18 +90,21 @@ const Connected: React.FC<Props> = (props) => {
   }, [props.navigation]);
 
   return (
-    <TemplateHome
-      openAddItemModal={state.openAddItemModal}
-      addItemLoading={createItemMutationData.loading}
+    <Plain
+      data={data}
+      loading={loading}
+      error={error}
+      addItemLoading={false}
       date={dayjs().format('YYYY-MM-DD')}
+      openAddItemModal={state.openAddItemModal}
       openSettingModal={props.openSettingModal}
       onAddItem={onAddItem}
       onChangeDate={onChangeDate}
-      onCloseSettingModal={props.onCloseSettingModal}
-      onOpenAddItem={onOpenAddItem}
       onCloseAddItem={onCloseAddItem}
+      onCloseSettingModal={props.onCloseSettingModal}
       onItem={onItem}
       onMemoir={onMemoir}
+      onOpenAddItem={onOpenAddItem}
     />
   );
 };

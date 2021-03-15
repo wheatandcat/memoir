@@ -1,5 +1,5 @@
 import React, { memo, useCallback } from 'react';
-import TemplateItemDetail from 'components/templates/ItemDetail/Page.tsx';
+import TemplateItemDetail from 'components/templates/ItemDetail/Page';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
