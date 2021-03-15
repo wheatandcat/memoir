@@ -32,7 +32,7 @@ export type ConnectedType = {
   onChangeDate: (date: string) => void;
   onCloseAddItem: () => void;
   onCloseSettingModal: () => void;
-  onItem: () => void;
+  onItem: (itemID: string) => void;
   onMemoir: () => void;
   onOpenAddItem: () => void;
 };
@@ -60,8 +60,6 @@ const Connected: React.FC<Props> = (props) => {
 
   const [createItemMutation] = useCreateItemMutation({
     async onCompleted() {
-      console.log('onCompleted');
-
       await refetch?.();
 
       onCloseAddItem();
@@ -79,11 +77,22 @@ const Connected: React.FC<Props> = (props) => {
     [createItemMutation]
   );
 
-  const onChangeDate = useCallback(() => {}, []);
+  const onChangeDate = useCallback((date: string) => {
+    setState((s) => ({
+      ...s,
+      date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+    }));
+  }, []);
 
-  const onItem = useCallback(() => {
-    props.navigation.navigate('ItemDetail');
-  }, [props.navigation]);
+  const onItem = useCallback(
+    (itemID: string) => {
+      props.navigation.navigate('ItemDetail', {
+        id: itemID,
+        date: state.date,
+      });
+    },
+    [props.navigation, state.date]
+  );
 
   const onMemoir = useCallback(() => {
     props.navigation.navigate('Memoir');

@@ -1,5 +1,4 @@
-import React, { memo, useCallback } from 'react';
-import TemplateItemDetail from 'components/templates/ItemDetail/Page';
+import React, { memo } from 'react';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,6 +6,7 @@ import theme from 'config/theme';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import Connected from './Connected';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -22,14 +22,9 @@ export type Props = {
   route: ScreenRouteProp;
 };
 
-const ItemDetail: React.FC<Props> = () => {
-  const onChangeDate = useCallback(() => {}, []);
-
+const ItemDetail: React.FC<Props> = (props) => {
   return (
-    <TemplateItemDetail
-      date={dayjs().format('YYYY-MM-DD')}
-      onChangeDate={onChangeDate}
-    />
+    <Connected date={props.route.params.date} itemID={props.route.params.id} />
   );
 };
 

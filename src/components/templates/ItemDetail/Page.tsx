@@ -4,8 +4,12 @@ import View from 'components/atoms/View';
 import CardDetail from 'components/organisms/CardDetail/CardDetail';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
 import theme from 'config/theme';
+import { ItemQuery } from 'queries/api/index';
 
-type Props = {
+type Item = NonNullable<ItemQuery['item']>;
+
+type Props = Pick<Item, 'categoryID' | 'title'> & {
+  loading: boolean;
   date: string;
   onChangeDate: (date: string) => void;
 };
@@ -19,7 +23,9 @@ const Page: React.FC<Props> = (props) => {
     >
       <ScrollView>
         <View style={styles.inner}>
-          <CardDetail title="本を読んだ" />
+          {props.loading && (
+            <CardDetail title={props.title} categoryID={props.categoryID} />
+          )}
         </View>
       </ScrollView>
     </InputDateWrap>

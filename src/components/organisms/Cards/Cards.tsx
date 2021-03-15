@@ -11,7 +11,7 @@ type Item = ItemQuery['item'];
 export type Props = {
   loading: boolean;
   items: Item[];
-  onItem: () => void;
+  onItem: (itemID: string) => void;
   onAddItem: () => void;
 };
 
@@ -32,7 +32,7 @@ const Cards: React.FC<Props> = (props) => {
             <Card
               title={v?.title || ''}
               categoryID={v?.categoryID || 0}
-              onPress={props.onItem}
+              onPress={() => props.onItem(v?.id || '')}
             />
           </View>
         ))}
