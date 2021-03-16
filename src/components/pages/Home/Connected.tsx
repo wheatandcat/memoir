@@ -104,7 +104,7 @@ const Connected: React.FC<Props> = (props) => {
       loading={loading}
       error={error}
       addItemLoading={false}
-      date={dayjs().format('YYYY-MM-DD')}
+      date={dayjs(state.date).format('YYYY-MM-DD')}
       openAddItemModal={state.openAddItemModal}
       openSettingModal={props.openSettingModal}
       onAddItem={onAddItem}

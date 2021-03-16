@@ -16,6 +16,7 @@ dayjs.extend(advancedFormat);
 
 type Props = {
   title: string;
+  date: string;
   categoryID: number;
 };
 
@@ -45,7 +46,7 @@ const CardDetail: React.FC<Props> = (props) => {
     <View style={categoryStyle}>
       <View style={styles.header}>
         <View>
-          <Text>{dayjs().format('YYYY.MM.DD / ddd')}</Text>
+          <Text>{dayjs(props.date).format('YYYY.MM.DD / ddd')}</Text>
         </View>
         <View>
           <IconButton name="more-horiz" size="base" onPress={() => null} />

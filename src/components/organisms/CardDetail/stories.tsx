@@ -9,6 +9,7 @@ import CardDetail from './CardDetail';
 storiesOf('organisms/CardDetail', module).add('CardDetail', () => (
   <View p={3} style={styles.root}>
     <CardDetail
+      date="2021-02-21"
       categoryID={1}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
     />

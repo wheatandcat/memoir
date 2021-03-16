@@ -24,7 +24,11 @@ const Page: React.FC<Props> = (props) => {
       <ScrollView>
         <View style={styles.inner}>
           {props.loading && (
-            <CardDetail title={props.title} categoryID={props.categoryID} />
+            <CardDetail
+              date={props.date}
+              title={props.title}
+              categoryID={props.categoryID}
+            />
           )}
         </View>
       </ScrollView>

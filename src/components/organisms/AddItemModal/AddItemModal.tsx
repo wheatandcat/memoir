@@ -80,6 +80,7 @@ const AddItemModal: React.FC<Props> = (props) => {
           placeholder="終了したタスク"
           onChangeText={onChangeTitle}
           autoFocus
+          returnKeyType="done"
         />
         <View py={2}>
           <Categories categoryID={state.categoryID} onPress={onCategory} />
