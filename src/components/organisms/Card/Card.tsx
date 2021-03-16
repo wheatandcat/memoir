@@ -10,6 +10,9 @@ import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
 import theme from 'config/theme';
 import Image from 'components/atoms/Image';
+import { Item } from 'queries/api/index';
+import master from 'lib/master';
+import setting from 'components/atoms/Category/setting';
 
 type User = {
   id: string;
@@ -17,7 +20,8 @@ type User = {
 };
 
 type Props = {
-  title: string;
+  title: Item['title'];
+  categoryID: Item['categoryID'];
   user?: User;
   onPress: () => void;
 };
@@ -38,11 +42,27 @@ const Card: React.FC<Props> = (props) => {
     rootStyle.height = 95;
   }
 
+  const category = setting().icon.find((v) => v.id === props.categoryID)
+    ?.category;
+
+  const categoryStyle: ViewStyle[] = [styles.root, rootStyle];
+  switch (category) {
+    case master.CATEGORY_1:
+      categoryStyle.push(styles.category1);
+      break;
+    case master.CATEGORY_2:
+      categoryStyle.push(styles.category2);
+      break;
+    case master.CATEGORY_3:
+      categoryStyle.push(styles.category3);
+      break;
+  }
+
   return (
     <TouchableOpacity onPress={props.onPress}>
-      <View style={[styles.root, rootStyle]}>
+      <View style={categoryStyle}>
         <View mx={2}>
-          <Category categoryID={2} />
+          <Category categoryID={props.categoryID} />
         </View>
         <View>
           <View style={[styles.title, titleStyle]}>
@@ -76,7 +96,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderLeftWidth: 5,
-    borderColor: theme().category.color.category1,
   },
   title: {
     paddingLeft: theme().space(0),
@@ -85,5 +104,14 @@ const styles = StyleSheet.create({
     paddingVertical: theme().space(2),
     flexDirection: 'row',
     alignItems: 'center',
+  },
+  category1: {
+    borderLeftColor: theme().category.color.category1,
+  },
+  category2: {
+    borderLeftColor: theme().category.color.category4,
+  },
+  category3: {
+    borderLeftColor: theme().category.color.category2,
   },
 });

@@ -1,11 +1,14 @@
-import React, { memo, useCallback } from 'react';
-import TemplateHome from 'components/templates/Home/Page.tsx';
+import React, { memo, useCallback, useState } from 'react';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import { useRecoilValue } from 'recoil';
-import { userIDState } from 'store/selectors';
+import {
+  useCreateItemMutation,
+  NewItem,
+  useItemsByDateQuery,
+} from 'queries/api/index';
 import { Props as IndexProps } from './';
+import Plain from './Plain';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -15,36 +18,102 @@ type Props = IndexProps & {
   onCloseSettingModal: () => void;
 };
 
-export type ConnectedType = {
-  onAddItem: () => void;
+type State = {
+  openAddItemModal: boolean;
+  date: string;
 };
 
+export type ConnectedType = {
+  addItemLoading: boolean;
+  date: string;
+  openAddItemModal: boolean;
+  openSettingModal: boolean;
+  onAddItem: (item: NewItem) => void;
+  onChangeDate: (date: string) => void;
+  onCloseAddItem: () => void;
+  onCloseSettingModal: () => void;
+  onItem: (itemID: string) => void;
+  onMemoir: () => void;
+  onOpenAddItem: () => void;
+};
+
+const initialState = (): State => ({
+  openAddItemModal: false,
+  date: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
+});
+
 const Connected: React.FC<Props> = (props) => {
-  const userID = useRecoilValue(userIDState);
+  const [state, setState] = useState<State>(initialState());
+  const { loading, data, error, refetch } = useItemsByDateQuery({
+    variables: {
+      date: state.date,
+    },
+  });
 
-  const onAddItem = useCallback(() => {
-    console.log(userID);
-  }, [userID]);
+  const onOpenAddItem = useCallback(() => {
+    setState((s) => ({ ...s, openAddItemModal: true }));
+  }, []);
 
-  const onChangeDate = useCallback(() => {}, []);
+  const onCloseAddItem = useCallback(() => {
+    setState((s) => ({ ...s, openAddItemModal: false }));
+  }, []);
 
-  const onItem = useCallback(() => {
-    props.navigation.navigate('ItemDetail');
-  }, [props.navigation]);
+  const [createItemMutation] = useCreateItemMutation({
+    async onCompleted() {
+      await refetch?.();
+
+      onCloseAddItem();
+    },
+  });
+
+  const onAddItem = useCallback(
+    (newItem: NewItem) => {
+      const variables = {
+        input: newItem,
+      };
+
+      createItemMutation({ variables });
+    },
+    [createItemMutation]
+  );
+
+  const onChangeDate = useCallback((date: string) => {
+    setState((s) => ({
+      ...s,
+      date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+    }));
+  }, []);
+
+  const onItem = useCallback(
+    (itemID: string) => {
+      props.navigation.navigate('ItemDetail', {
+        id: itemID,
+        date: state.date,
+      });
+    },
+    [props.navigation, state.date]
+  );
 
   const onMemoir = useCallback(() => {
     props.navigation.navigate('Memoir');
   }, [props.navigation]);
 
   return (
-    <TemplateHome
-      date={dayjs().format('YYYY-MM-DD')}
+    <Plain
+      data={data}
+      loading={loading}
+      error={error}
+      addItemLoading={false}
+      date={dayjs(state.date).format('YYYY-MM-DD')}
+      openAddItemModal={state.openAddItemModal}
       openSettingModal={props.openSettingModal}
       onAddItem={onAddItem}
       onChangeDate={onChangeDate}
+      onCloseAddItem={onCloseAddItem}
       onCloseSettingModal={props.onCloseSettingModal}
       onItem={onItem}
       onMemoir={onMemoir}
+      onOpenAddItem={onOpenAddItem}
     />
   );
 };

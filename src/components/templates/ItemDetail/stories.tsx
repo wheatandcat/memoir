@@ -4,5 +4,11 @@ import { mockFn } from 'storyBookUtils/index';
 import Page from './Page';
 
 storiesOf('templates/ItemDetail', module).add('Page', () => (
-  <Page date="2021-02-21" onChangeDate={mockFn} />
+  <Page
+    loading={false}
+    date="2021-02-21"
+    onChangeDate={mockFn}
+    title="本を読んだ"
+    categoryID={1}
+  />
 ));

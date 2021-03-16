@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
 import View from 'components/atoms/View';
 import dayjs from 'dayjs';
@@ -9,31 +9,21 @@ import Cards from 'components/organisms/Cards/Cards';
 import SettingModal from 'components/organisms/SettingModal';
 import AddItemModal from 'components/organisms/AddItemModal';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
+import { ConnectedType } from 'components/pages/Home/Connected';
+import { ItemQuery } from 'queries/api/index';
+
+type Item = ItemQuery['item'];
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
 type Props = {
+  addItemLoading: boolean;
   date: string;
-  openSettingModal: boolean;
-  onAddItem: () => void;
-  onItem: () => void;
-  onMemoir: () => void;
-  onCloseSettingModal: () => void;
-  onChangeDate: (date: string) => void;
-};
-
-type State = {
-  openAddItemModal: boolean;
-};
-
-const initialState = (): State => ({
-  openAddItemModal: false,
-});
+  items: Item[];
+} & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>(initialState());
-
   return (
     <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
       <>
@@ -42,18 +32,19 @@ const Page: React.FC<Props> = (props) => {
           onClose={props.onCloseSettingModal}
         />
         <AddItemModal
-          isVisible={state.openAddItemModal}
-          date={dayjs().format('YYYY-MM-DD')}
+          isVisible={props.openAddItemModal}
+          loading={props.addItemLoading}
+          date={dayjs(props.date).format('YYYY-MM-DD')}
           onAdd={props.onAddItem}
-          onClose={() => setState((s) => ({ ...s, openAddItemModal: false }))}
+          onClose={props.onCloseAddItem}
         />
         <ScrollView>
           <View style={styles.inner}>
             <Cards
+              loading={props.addItemLoading}
+              items={props.items}
               onItem={props.onItem}
-              onAddItem={() =>
-                setState((s) => ({ ...s, openAddItemModal: true }))
-              }
+              onAddItem={props.onOpenAddItem}
             />
           </View>
         </ScrollView>

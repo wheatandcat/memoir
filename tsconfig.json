@@ -16,7 +16,9 @@
       "storyBookUtils/*": ["src/storyBookUtils/*"],
       "store/*": ["src/store/*"],
       "hooks/*": ["src/hooks/*"],
-      "queries/*": ["src/queries/*"]
-    }
+      "queries/*": ["src/queries/*"],
+      "__mockData__/*": ["src/__mockData__/*"]
+    },
+    "typeRoots": ["node_modules/@types", "src/@types"]
   }
 }

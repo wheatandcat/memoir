@@ -1,0 +1,12 @@
+query ItemsByDate($date: Time!) {
+  itemsByDate(date: $date) {
+    id
+    title
+    categoryID
+    date
+    like
+    dislike
+    createdAt
+    updatedAt
+  }
+}

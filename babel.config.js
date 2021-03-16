@@ -15,6 +15,7 @@ module.exports = function (api) {
             store: './src/store',
             hooks: './src/hooks',
             queries: './src/queries',
+            __mockData__: './src/__mockData__',
           },
         },
       ],

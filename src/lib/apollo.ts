@@ -5,18 +5,23 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const makeApolloClient = async () => {
   const uri = `${process.env.API_HOST}/query`;
+  const uid = await AsyncStorage.getItem('USER_ID');
 
-  const authLink = setContext(async (_, { headers }) => {
-    const ctx = {
-      headers,
-    };
-
-    const uid = await AsyncStorage.getItem('USER_ID');
+  const authLink = setContext((_, { headers }) => {
     if (uid) {
-      ctx.headers.UserID = uid;
+      return {
+        headers: {
+          ...headers,
+          UserID: uid,
+        },
+      };
     }
 
-    return ctx;
+    return {
+      headers: {
+        ...headers,
+      },
+    };
   });
 
   const errorLink = onError((error) => {

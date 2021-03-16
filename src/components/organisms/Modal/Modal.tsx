@@ -9,6 +9,7 @@ import IconButton from 'components/molecules/IconButton';
 
 type Props = {
   isVisible: boolean;
+  loading?: boolean;
   title: string;
   buttonTitle?: string;
   disabledButton?: boolean;
@@ -45,6 +46,7 @@ const Modal: React.FC<Props> = (props) => {
               size="lg"
               onPress={() => props.onPress?.()}
               disabled={props.disabledButton}
+              loading={props.loading}
             />
           </View>
         )}
