@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSetRecoilState } from 'recoil';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
@@ -11,6 +12,8 @@ import {
   NewItem,
   DeleteItem,
 } from 'queries/api/index';
+import { homeDateState } from 'store/atoms';
+import useHomeItems from 'hooks/useHomeItems';
 import Plain from './Plain';
 
 dayjs.locale('ja');
@@ -19,7 +22,6 @@ dayjs.extend(advancedFormat);
 type Props = {
   itemID: string;
   date: string;
-  onChangeDate: (date: string) => void;
 };
 
 type State = {
@@ -44,6 +46,8 @@ const initialState = (): State => ({
 const Connected: React.FC<Props> = (props) => {
   const navigation = useNavigation();
   const [state, setState] = useState<State>(initialState());
+  const setHomeDate = useSetRecoilState(homeDateState);
+  const homeItems = useHomeItems();
 
   const { loading, data, error, refetch } = useItemQuery({
     variables: {
@@ -85,6 +89,7 @@ const Connected: React.FC<Props> = (props) => {
 
   const [deleteItemMutation] = useDeleteItemMutation({
     async onCompleted() {
+      await homeItems?.refetch?.();
       navigation.goBack();
     },
   });
@@ -104,11 +109,14 @@ const Connected: React.FC<Props> = (props) => {
     (date: string) => {
       const formatDate = dayjs(props.date).format('YYYY-MM-DD');
       if (formatDate !== date) {
-        props.onChangeDate(date);
+        setHomeDate({
+          date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+        });
+
         navigation.goBack();
       }
     },
-    [props, navigation]
+    [props, navigation, setHomeDate]
   );
 
   return (

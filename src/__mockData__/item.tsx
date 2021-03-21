@@ -1,5 +1,5 @@
 import { ItemQuery } from 'queries/api/index';
-type Item = ItemQuery['item'];
+type Item = NonNullable<ItemQuery['item']>;
 
 export const item = (option?: Partial<Item>): Item => ({
   id: '1',
@@ -15,5 +15,12 @@ export const item = (option?: Partial<Item>): Item => ({
 
 export const items = (): Item[] => [
   item(),
-  item({ id: '2', title: '本を読む', categoryID: 2 }),
+  item({
+    id: '2',
+    title: '本を読む',
+    categoryID: 2,
+    date: '',
+    dislike: false,
+    like: false,
+  }),
 ];

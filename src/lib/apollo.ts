@@ -3,6 +3,8 @@ import { onError } from '@apollo/client/link/error';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const cache = new InMemoryCache();
+
 const makeApolloClient = async () => {
   const uri = `${process.env.API_HOST}/query`;
   const uid = await AsyncStorage.getItem('USER_ID');
@@ -30,17 +32,7 @@ const makeApolloClient = async () => {
 
   return new ApolloClient({
     link: errorLink.concat(authLink.concat(createHttpLink({ uri }))),
-    cache: new InMemoryCache({
-      typePolicies: {
-        Query: {
-          fields: {
-            project: {
-              merge: true,
-            },
-          },
-        },
-      },
-    }),
+    cache: cache,
   });
 };
 
