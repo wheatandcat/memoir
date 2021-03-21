@@ -90,8 +90,7 @@ const Connected: React.FC<Props> = (props) => {
         id: itemID,
         date: state.date,
         onChangeDate: (date: string) => {
-          console.log(date);
-
+          // FIXME: 日付管理はrecoil管理に変更する
           setState((s) => ({
             ...s,
             date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),

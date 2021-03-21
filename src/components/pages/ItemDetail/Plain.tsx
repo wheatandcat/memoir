@@ -15,9 +15,7 @@ const Plain: React.FC<Props> = (props) => {
 
   return (
     <TemplateItemDetail
-      loading
-      date={props.date}
-      onChangeDate={props.onChangeDate}
+      {...props}
       title={item?.title || ''}
       categoryID={item?.categoryID || 0}
     />

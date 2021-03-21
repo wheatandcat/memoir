@@ -18,6 +18,7 @@ type Props = {
   title: string;
   date: string;
   categoryID: number;
+  onOpenUpdateItem: () => void;
 };
 
 const CardDetail: React.FC<Props> = (props) => {
@@ -43,7 +44,9 @@ const CardDetail: React.FC<Props> = (props) => {
     {
       text: '編集',
       color: 'secondary',
-      onPress: () => {},
+      onPress: () => {
+        props.onOpenUpdateItem();
+      },
     },
   ];
 

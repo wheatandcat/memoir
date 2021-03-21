@@ -13,6 +13,7 @@ dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
 type Props = {
+  item?: NewItem;
   isVisible: boolean;
   loading: boolean;
   date: string;
@@ -25,13 +26,15 @@ type State = {
   categoryID: number | null;
 };
 
-const initialState = (): State => ({
-  title: '',
-  categoryID: null,
-});
+const initialState = (item?: NewItem): State => {
+  return {
+    title: item?.title || '',
+    categoryID: item?.categoryID || null,
+  };
+};
 
 const AddItemModal: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>(initialState());
+  const [state, setState] = useState<State>(initialState(props.item));
 
   const onCategory = useCallback((categoryID: number) => {
     setState((s) => ({ ...s, categoryID }));
@@ -81,6 +84,7 @@ const AddItemModal: React.FC<Props> = (props) => {
           onChangeText={onChangeTitle}
           autoFocus
           returnKeyType="done"
+          defaultValue={state.title}
         />
         <View py={2}>
           <Categories categoryID={state.categoryID} onPress={onCategory} />

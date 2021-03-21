@@ -40,8 +40,11 @@ const Menu: React.FC<Props> = (props) => {
   }, []);
 
   const onPress = useCallback((item: Item) => {
+    setTimeout(() => {
+      // Modalは重複して表示できないのでanimationOutTimingを待つ
+      item.onPress();
+    }, 105);
     setOpen(false);
-    item.onPress();
   }, []);
 
   const style: ViewStyle = {
@@ -63,6 +66,7 @@ const Menu: React.FC<Props> = (props) => {
           animationIn="fadeInRight"
           animationOut="fadeOutRight"
           backdropOpacity={0}
+          animationOutTiming={100}
         >
           <View style={[style, styles.menuItem]}>
             {props.items.map((item, index) => (

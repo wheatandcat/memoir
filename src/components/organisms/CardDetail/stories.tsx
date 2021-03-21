@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react-native';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
+import { mockFn } from 'storyBookUtils/index';
 import CardDetail from './CardDetail';
 
 storiesOf('organisms/CardDetail', module).add('CardDetail', () => (
@@ -11,6 +12,7 @@ storiesOf('organisms/CardDetail', module).add('CardDetail', () => (
       date="2021-02-21"
       categoryID={1}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
+      onOpenUpdateItem={mockFn('onOpenUpdateItem')}
     />
   </View>
 ));

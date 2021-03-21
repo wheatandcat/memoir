@@ -10,5 +10,10 @@ storiesOf('templates/ItemDetail', module).add('Page', () => (
     onChangeDate={mockFn}
     title="本を読んだ"
     categoryID={1}
+    onCloseUpdateItem={mockFn('onCloseUpdateItem')}
+    onOpenUpdateItem={mockFn('onOpenUpdateItem')}
+    onUpdateItem={mockFn('onUpdateItem')}
+    openUpdateItemModal={false}
+    updateItemLoading={false}
   />
 ));
