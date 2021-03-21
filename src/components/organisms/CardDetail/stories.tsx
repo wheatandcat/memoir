@@ -1,7 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { StyleSheet } from 'react-native';
-//import { mockFn } from 'storyBookUtils/index';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
 import CardDetail from './CardDetail';
