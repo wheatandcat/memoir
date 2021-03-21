@@ -1,12 +1,11 @@
 import React, { memo, useCallback, useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
-import {
-  useCreateItemMutation,
-  NewItem,
-  useItemsByDateQuery,
-} from 'queries/api/index';
+import { useCreateItemMutation, NewItem } from 'queries/api/index';
+import { homeDateState, homeItemsState, Item } from 'store/atoms';
+import useHomeItems from 'hooks/useHomeItems';
 import { Props as IndexProps } from './';
 import Plain from './Plain';
 
@@ -20,10 +19,10 @@ type Props = IndexProps & {
 
 type State = {
   openAddItemModal: boolean;
-  date: string;
 };
 
 export type ConnectedType = {
+  items: Item[];
   addItemLoading: boolean;
   date: string;
   openAddItemModal: boolean;
@@ -39,16 +38,13 @@ export type ConnectedType = {
 
 const initialState = (): State => ({
   openAddItemModal: false,
-  date: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
 });
 
 const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
-  const { loading, data, error, refetch } = useItemsByDateQuery({
-    variables: {
-      date: state.date,
-    },
-  });
+  const [homeDate, setHomeDate] = useRecoilState(homeDateState);
+  const homeItems = useRecoilValue(homeItemsState);
+  const { loading, error, refetch } = useHomeItems();
 
   const onOpenAddItem = useCallback(() => {
     setState((s) => ({ ...s, openAddItemModal: true }));
@@ -77,21 +73,23 @@ const Connected: React.FC<Props> = (props) => {
     [createItemMutation]
   );
 
-  const onChangeDate = useCallback((date: string) => {
-    setState((s) => ({
-      ...s,
-      date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
-    }));
-  }, []);
+  const onChangeDate = useCallback(
+    (date: string) => {
+      setHomeDate({
+        date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+      });
+    },
+    [setHomeDate]
+  );
 
   const onItem = useCallback(
     (itemID: string) => {
       props.navigation.navigate('ItemDetail', {
         id: itemID,
-        date: state.date,
+        date: homeDate.date,
       });
     },
-    [props.navigation, state.date]
+    [props.navigation, homeDate.date]
   );
 
   const onMemoir = useCallback(() => {
@@ -100,11 +98,11 @@ const Connected: React.FC<Props> = (props) => {
 
   return (
     <Plain
-      data={data}
+      items={homeItems.items}
       loading={loading}
       error={error}
       addItemLoading={false}
-      date={dayjs(state.date).format('YYYY-MM-DD')}
+      date={dayjs(homeDate.date).format('YYYY-MM-DD')}
       openAddItemModal={state.openAddItemModal}
       openSettingModal={props.openSettingModal}
       onAddItem={onAddItem}

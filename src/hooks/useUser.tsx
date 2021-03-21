@@ -1,6 +1,7 @@
 import { useEffect, useCallback, useState } from 'react';
 import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { existUserID } from 'store/selectors';
+import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
 import AsyncStorage from '@react-native-async-storage/async-storage';

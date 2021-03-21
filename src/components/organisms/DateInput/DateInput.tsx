@@ -7,6 +7,7 @@ import 'dayjs/locale/ja';
 import InputYear from 'components/molecules/DateInput/Years';
 import InputMonth from 'components/molecules/DateInput/Months';
 import InputDay from 'components/molecules/DateInput/Days';
+import usePrevious from 'hooks/usePrevious';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -89,10 +90,15 @@ const initialState = (props: Props): State => ({
 
 const DateInput: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState(props));
+  const prevDate = usePrevious(props.date);
 
   useEffect(() => {
-    props.onChange(state.date);
-  }, [state.date, props]);
+    if (prevDate && prevDate !== props.date) {
+      setState((s) => ({ ...s, date: props.date }));
+    } else {
+      props.onChange(state.date);
+    }
+  }, [state.date, props, prevDate]);
 
   const onYear = useCallback(
     (year: number) => {
