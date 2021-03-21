@@ -3,6 +3,7 @@ export type RootStackParamList = {
   ItemDetail: {
     id: string;
     date: string;
+    onChangeDate: (date: string) => void;
   };
   Memoir: undefined;
   SettingLicence: undefined;

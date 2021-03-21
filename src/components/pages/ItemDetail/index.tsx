@@ -24,7 +24,11 @@ export type Props = {
 
 const ItemDetail: React.FC<Props> = (props) => {
   return (
-    <Connected date={props.route.params.date} itemID={props.route.params.id} />
+    <Connected
+      date={props.route.params.date}
+      itemID={props.route.params.id}
+      onChangeDate={props.route.params.onChangeDate}
+    />
   );
 };
 

@@ -89,6 +89,14 @@ const Connected: React.FC<Props> = (props) => {
       props.navigation.navigate('ItemDetail', {
         id: itemID,
         date: state.date,
+        onChangeDate: (date: string) => {
+          console.log(date);
+
+          setState((s) => ({
+            ...s,
+            date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+          }));
+        },
       });
     },
     [props.navigation, state.date]
