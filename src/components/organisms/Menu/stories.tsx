@@ -10,11 +10,13 @@ storiesOf('organisms/Menu', module).add('Menu', () => (
         text: '削除',
         color: 'error',
         onPress: mockFn('item1'),
+        removeMenu: true,
       },
       {
         text: '編集',
         color: 'secondary',
         onPress: mockFn('item2'),
+        removeMenu: true,
       },
     ]}
   />

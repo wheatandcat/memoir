@@ -13,6 +13,7 @@ storiesOf('organisms/CardDetail', module).add('CardDetail', () => (
       categoryID={1}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
       onOpenUpdateItem={mockFn('onOpenUpdateItem')}
+      onDeleteItem={mockFn('onDeleteItem')}
     />
   </View>
 ));

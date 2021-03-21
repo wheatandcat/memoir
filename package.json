@@ -28,6 +28,7 @@
     "@types/uuid": "^8.3.0",
     "dayjs": "^1.10.4",
     "expo": "~40.0.0",
+    "expo-app-loading": "^1.0.1",
     "expo-constants": "~9.3.3",
     "expo-font": "~8.4.0",
     "expo-linking": "~2.0.1",

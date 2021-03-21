@@ -1,4 +1,4 @@
-import React, { memo, useState, useCallback } from 'react';
+import React, { memo, useState, useCallback, useEffect } from 'react';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Modal from 'components/organisms/Modal';
@@ -8,6 +8,7 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import { NewItem } from 'queries/api/index';
+import usePrevious from 'hooks/usePrevious';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -35,6 +36,13 @@ const initialState = (item?: NewItem): State => {
 
 const AddItemModal: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState(props.item));
+  const prevIsVisible = usePrevious(props.isVisible);
+
+  useEffect(() => {
+    if (props.isVisible && props.isVisible !== prevIsVisible) {
+      setState(initialState(props.item));
+    }
+  }, [props.isVisible, props.item, prevIsVisible]);
 
   const onCategory = useCallback((categoryID: number) => {
     setState((s) => ({ ...s, categoryID }));
@@ -86,6 +94,7 @@ const AddItemModal: React.FC<Props> = (props) => {
           returnKeyType="done"
           defaultValue={state.title}
         />
+
         <View py={2}>
           <Categories categoryID={state.categoryID} onPress={onCategory} />
         </View>

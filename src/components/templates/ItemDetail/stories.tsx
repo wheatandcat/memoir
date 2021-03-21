@@ -13,6 +13,7 @@ storiesOf('templates/ItemDetail', module).add('Page', () => (
     onCloseUpdateItem={mockFn('onCloseUpdateItem')}
     onOpenUpdateItem={mockFn('onOpenUpdateItem')}
     onUpdateItem={mockFn('onUpdateItem')}
+    onDeleteItem={mockFn('onDeleteItem')}
     openUpdateItemModal={false}
     updateItemLoading={false}
   />

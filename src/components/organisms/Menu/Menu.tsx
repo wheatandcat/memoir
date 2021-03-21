@@ -17,6 +17,7 @@ export type Item = {
   text: string;
   color: FontColor;
   onPress: () => void;
+  removeMenu: boolean;
 };
 
 type Props = {
@@ -40,11 +41,15 @@ const Menu: React.FC<Props> = (props) => {
   }, []);
 
   const onPress = useCallback((item: Item) => {
-    setTimeout(() => {
-      // Modalは重複して表示できないのでanimationOutTimingを待つ
+    if (item.removeMenu) {
+      setTimeout(() => {
+        // Modalは重複して表示できないのでanimationOutTimingを待つ
+        item.onPress();
+      }, 105);
+      setOpen(false);
+    } else {
       item.onPress();
-    }, 105);
-    setOpen(false);
+    }
   }, []);
 
   const style: ViewStyle = {

@@ -52,6 +52,7 @@ const Page: React.FC<Props> = (props) => {
                 title={props.title}
                 categoryID={props.categoryID}
                 onOpenUpdateItem={props.onOpenUpdateItem}
+                onDeleteItem={props.onDeleteItem}
               />
             )}
           </View>

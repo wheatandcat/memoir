@@ -1,5 +1,10 @@
-import React, { memo } from 'react';
-import { StyleSheet, useWindowDimensions, ViewStyle } from 'react-native';
+import React, { memo, useCallback } from 'react';
+import {
+  StyleSheet,
+  useWindowDimensions,
+  ViewStyle,
+  Alert,
+} from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
@@ -19,6 +24,7 @@ type Props = {
   date: string;
   categoryID: number;
   onOpenUpdateItem: () => void;
+  onDeleteItem: () => void;
 };
 
 const CardDetail: React.FC<Props> = (props) => {
@@ -35,20 +41,43 @@ const CardDetail: React.FC<Props> = (props) => {
     categoryBorderStyle(category || 0),
   ];
 
-  const menuItem: MenuItem[] = [
-    {
-      text: '削除',
-      color: 'error',
-      onPress: () => {},
-    },
-    {
-      text: '編集',
-      color: 'secondary',
-      onPress: () => {
-        props.onOpenUpdateItem();
+  const menuItem = useCallback(
+    (): MenuItem[] => [
+      {
+        text: '削除',
+        color: 'error',
+        onPress: () => {
+          Alert.alert(
+            '削除しますか？',
+            '',
+            [
+              {
+                text: 'キャンセル',
+                style: 'cancel',
+              },
+              {
+                text: '削除する',
+                onPress: () => props.onDeleteItem(),
+              },
+            ],
+            {
+              cancelable: true,
+            }
+          );
+        },
+        removeMenu: false,
       },
-    },
-  ];
+      {
+        text: '編集',
+        color: 'secondary',
+        onPress: () => {
+          props.onOpenUpdateItem();
+        },
+        removeMenu: true,
+      },
+    ],
+    [props]
+  );
 
   return (
     <View style={categoryStyle}>
@@ -56,7 +85,7 @@ const CardDetail: React.FC<Props> = (props) => {
         <View>
           <Text>{dayjs(props.date).format('YYYY.MM.DD / ddd')}</Text>
         </View>
-        <Menu items={menuItem} />
+        <Menu items={menuItem()} />
       </View>
       <View style={styles.icon}>
         <Category categoryID={props.categoryID} />
