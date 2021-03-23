@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text as RNText, TextStyle, TextProps } from 'react-native';
-import { useFonts } from 'expo-font';
 import { FontSize, styleFontSize } from 'lib/styledSystem/styleFontSize';
 import { FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
 import { FontColor, styleFontColor } from 'lib/styledSystem/styleFontColor';
@@ -23,15 +22,6 @@ type Props = TextProps & {
 };
 
 const Text: React.FC<Props> = (props) => {
-  const [loaded] = useFonts({
-    'RobotoCondensed-Bold': require('../../../../assets/RobotoCondensed-Bold.ttf'),
-    'NotoSansJP-Bold': require('../../../../assets/NotoSansJP-Bold.otf'),
-  });
-
-  if (!loaded) {
-    return null;
-  }
-
   const style = {
     ...styleFontVariant(props),
     ...styleFontSize(props),

@@ -5,7 +5,6 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
 import { icon } from 'components/atoms/Category/setting';
-import setting from 'components/atoms/Category/setting';
 import { categoryBorderStyle } from 'lib/category';
 
 type Props = {
@@ -22,10 +21,9 @@ const CategoryButton: React.FC<Props> = (props) => {
 
   const s = icon(props.categoryID);
 
-  const category = setting().icon.find((v) => v.id === s.category)?.category;
   const categoryStyle: ViewStyle[] = [
     styles.category,
-    categoryBorderStyle(category || 0),
+    categoryBorderStyle(s.category || 0),
   ];
 
   return (

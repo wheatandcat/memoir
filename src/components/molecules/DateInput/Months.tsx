@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -59,6 +59,15 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 };
 
 const MonthInput: React.FC<Props> = (props) => {
+  const months = (): Month[] => {
+    const index = Number(dayjs(props.date).format('M'));
+    const first = props.months.slice(index, 12);
+    const last = props.months.slice(0, index);
+    return [...first, ...last];
+  };
+
+  const [monthItems] = useState(months());
+
   const carouselRef = useRef<Carousel<any>>(null);
   const windowWidth = useWindowDimensions().width;
 
@@ -69,28 +78,29 @@ const MonthInput: React.FC<Props> = (props) => {
     []
   );
 
-  const index = Number(dayjs(props.date).format('M')) - 1;
+  useEffect(() => {
+    const item = monthItems.findIndex(
+      (v) => Number(dayjs(props.date).format('M')) === v.value
+    );
+
+    carouselRef.current?.snapToItem(item);
+  }, [monthItems, props.date]);
 
   return (
     <Carousel
       ref={carouselRef}
-      data={props.months.map((v) => ({
+      data={monthItems.map((v) => ({
         date: props.date,
         month: v,
         onPress: props.onPress,
       }))}
       renderItem={renderItemCall}
       sliderWidth={windowWidth}
-      itemWidth={70}
+      itemWidth={75}
       layout="default"
-      inactiveSlideOpacity={1.0}
-      inactiveSlideScale={1.0}
       activeSlideAlignment="start"
+      initialNumToRender={3}
       loop
-      firstItem={props.firstItem ? index : undefined}
-      onLayout={() => {
-        carouselRef.current?.snapToItem(index);
-      }}
     />
   );
 };

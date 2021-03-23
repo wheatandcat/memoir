@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -65,6 +65,16 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 };
 
 const DayInput: React.FC<Props> = (props) => {
+  const index = Number(dayjs(props.date).format('D'));
+
+  const days = (): string[] => {
+    const first = props.days.slice(index, props.days.length);
+    const last = props.days.slice(0, index);
+    return [...first, ...last];
+  };
+
+  const [dayItems] = useState(days());
+
   const carouselRef = useRef<Carousel<any>>(null);
   const windowWidth = useWindowDimensions().width;
 
@@ -75,12 +85,18 @@ const DayInput: React.FC<Props> = (props) => {
     []
   );
 
-  const index = Number(dayjs(props.date).format('D')) - 1;
+  useEffect(() => {
+    const item = dayItems.findIndex(
+      (v) => dayjs(props.date).format('D') === dayjs(v).format('D')
+    );
+
+    carouselRef.current?.snapToItem(item);
+  }, [dayItems, props.date]);
 
   return (
     <Carousel
       ref={carouselRef}
-      data={props.days.map((v) => ({
+      data={dayItems.map((v) => ({
         date: props.date,
         day: v,
         onPress: props.onPress,
@@ -89,13 +105,9 @@ const DayInput: React.FC<Props> = (props) => {
       sliderWidth={windowWidth}
       itemWidth={55}
       layout="default"
-      inactiveSlideOpacity={1.0}
-      inactiveSlideScale={1.0}
       activeSlideAlignment="start"
-      firstItem={props.firstItem ? index : undefined}
-      onLayout={() => {
-        carouselRef.current?.snapToItem(index);
-      }}
+      initialNumToRender={3}
+      loop
     />
   );
 };
