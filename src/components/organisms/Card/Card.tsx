@@ -11,8 +11,8 @@ import Category from 'components/atoms/Category';
 import theme from 'config/theme';
 import Image from 'components/atoms/Image';
 import { Item } from 'queries/api/index';
-import master from 'lib/master';
 import setting from 'components/atoms/Category/setting';
+import { categoryBorderStyle } from 'lib/category';
 
 type User = {
   id: string;
@@ -44,19 +44,11 @@ const Card: React.FC<Props> = (props) => {
 
   const category = setting().icon.find((v) => v.id === props.categoryID)
     ?.category;
-
-  const categoryStyle: ViewStyle[] = [styles.root, rootStyle];
-  switch (category) {
-    case master.CATEGORY_1:
-      categoryStyle.push(styles.category1);
-      break;
-    case master.CATEGORY_2:
-      categoryStyle.push(styles.category2);
-      break;
-    case master.CATEGORY_3:
-      categoryStyle.push(styles.category3);
-      break;
-  }
+  const categoryStyle: ViewStyle[] = [
+    rootStyle,
+    styles.root,
+    categoryBorderStyle(category || 0),
+  ];
 
   return (
     <TouchableOpacity onPress={props.onPress}>
@@ -104,14 +96,5 @@ const styles = StyleSheet.create({
     paddingVertical: theme().space(2),
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  category1: {
-    borderLeftColor: theme().category.color.category1,
-  },
-  category2: {
-    borderLeftColor: theme().category.color.category4,
-  },
-  category3: {
-    borderLeftColor: theme().category.color.category2,
   },
 });

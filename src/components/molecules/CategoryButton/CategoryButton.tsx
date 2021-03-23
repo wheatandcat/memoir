@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
-import { TouchableOpacity, StyleSheet, ViewStyle } from 'react-native';
+import { TouchableWithoutFeedback, StyleSheet, ViewStyle } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
 import { icon } from 'components/atoms/Category/setting';
-import master from 'lib/master';
+import setting from 'components/atoms/Category/setting';
+import { categoryBorderStyle } from 'lib/category';
 
 type Props = {
   categoryID: number;
@@ -21,21 +22,14 @@ const CategoryButton: React.FC<Props> = (props) => {
 
   const s = icon(props.categoryID);
 
-  const categoryStyle: ViewStyle[] = [styles.category];
-  switch (s.category) {
-    case master.CATEGORY_1:
-      categoryStyle.push(styles.category1);
-      break;
-    case master.CATEGORY_2:
-      categoryStyle.push(styles.category2);
-      break;
-    case master.CATEGORY_3:
-      categoryStyle.push(styles.category3);
-      break;
-  }
+  const category = setting().icon.find((v) => v.id === s.category)?.category;
+  const categoryStyle: ViewStyle[] = [
+    styles.category,
+    categoryBorderStyle(category || 0),
+  ];
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableWithoutFeedback onPress={props.onPress}>
       <View>
         <View style={style}>
           <Category categoryID={props.categoryID} />
@@ -44,7 +38,7 @@ const CategoryButton: React.FC<Props> = (props) => {
           <Text variants="small">{s.name}</Text>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -57,15 +51,6 @@ const styles = StyleSheet.create({
     paddingLeft: theme().space(2),
     marginVertical: theme().space(1),
     justifyContent: 'center',
-  },
-  category1: {
-    borderLeftColor: theme().category.color.category1,
-  },
-  category2: {
-    borderLeftColor: theme().category.color.category4,
-  },
-  category3: {
-    borderLeftColor: theme().category.color.category2,
   },
   image: {
     width: 80,

@@ -18,6 +18,8 @@ const Plain: React.FC<Props> = (props) => {
       {...props}
       title={item?.title || ''}
       categoryID={item?.categoryID || 0}
+      like={item?.like || false}
+      dislike={item?.dislike || false}
     />
   );
 };
