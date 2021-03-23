@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
+import Image from 'components/atoms/Image';
 import Category from 'components/atoms/Category';
 import theme from 'config/theme';
 import dayjs from 'dayjs';
@@ -23,6 +24,8 @@ type Props = {
   title: string;
   date: string;
   categoryID: number;
+  like: boolean;
+  dislike: boolean;
   onOpenUpdateItem: () => void;
   onDeleteItem: () => void;
 };
@@ -89,6 +92,24 @@ const CardDetail: React.FC<Props> = (props) => {
       </View>
       <View style={styles.icon}>
         <Category categoryID={props.categoryID} />
+        {props.like && (
+          <View px={3}>
+            <Image
+              source={require('../../../img/icon/icon_like.png')}
+              width={40}
+              height={40}
+            />
+          </View>
+        )}
+        {props.dislike && (
+          <View px={3}>
+            <Image
+              source={require('../../../img/icon/icon_dislike.png')}
+              width={40}
+              height={40}
+            />
+          </View>
+        )}
       </View>
       <View style={[styles.title, titleStyle]}>
         <Text lineHeight={25}>{props.title}</Text>

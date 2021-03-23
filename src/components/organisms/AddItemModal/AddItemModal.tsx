@@ -4,6 +4,7 @@ import View from 'components/atoms/View';
 import Modal from 'components/organisms/Modal';
 import TextInput from 'components/atoms/TextInput';
 import Categories from 'components/organisms/Categories';
+import Compatibility from 'components/organisms/Compatibility/Compatibility';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
@@ -25,12 +26,16 @@ type Props = {
 type State = {
   title: string;
   categoryID: number | null;
+  like: boolean;
+  dislike: boolean;
 };
 
 const initialState = (item?: NewItem): State => {
   return {
     title: item?.title || '',
     categoryID: item?.categoryID || null,
+    like: item?.like || false,
+    dislike: item?.dislike || false,
   };
 };
 
@@ -52,13 +57,29 @@ const AddItemModal: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, title }));
   }, []);
 
+  const onLike = useCallback(() => {
+    setState((s) => ({
+      ...s,
+      like: !s.like,
+      dislike: !s.like ? false : s.dislike,
+    }));
+  }, []);
+
+  const onDislike = useCallback(() => {
+    setState((s) => ({
+      ...s,
+      dislike: !s.dislike,
+      like: !s.dislike ? false : s.like,
+    }));
+  }, []);
+
   const onAdd = useCallback(() => {
     const item: NewItem = {
       title: state.title,
       categoryID: state.categoryID || 0,
       date: dayjs(props.date).format('YYYY-MM-DDT00:00:00+09:00'),
-      like: false,
-      dislike: false,
+      like: state.like,
+      dislike: state.dislike,
     };
 
     props.onAdd(item);
@@ -95,8 +116,16 @@ const AddItemModal: React.FC<Props> = (props) => {
           defaultValue={state.title}
         />
 
-        <View py={2}>
+        <View py={3}>
           <Categories categoryID={state.categoryID} onPress={onCategory} />
+        </View>
+        <View py={3}>
+          <Compatibility
+            like={state.like}
+            dislike={state.dislike}
+            onLike={onLike}
+            onDislike={onDislike}
+          />
         </View>
       </View>
     </Modal>

@@ -16,7 +16,7 @@ dayjs.extend(advancedFormat);
 
 type Item = NonNullable<ItemQuery['item']>;
 
-type Props = Pick<Item, 'categoryID' | 'title'> & {
+type Props = Pick<Item, 'categoryID' | 'title' | 'like' | 'dislike'> & {
   loading: boolean;
 } & ConnectedType;
 
@@ -25,8 +25,8 @@ const Page: React.FC<Props> = (props) => {
     title: props.title,
     categoryID: props.categoryID,
     date: props.date,
-    like: false,
-    dislike: false,
+    like: props.like,
+    dislike: props.dislike,
   };
 
   return (
@@ -51,6 +51,8 @@ const Page: React.FC<Props> = (props) => {
                 date={props.date}
                 title={props.title}
                 categoryID={props.categoryID}
+                like={props.like}
+                dislike={props.dislike}
                 onOpenUpdateItem={props.onOpenUpdateItem}
                 onDeleteItem={props.onDeleteItem}
               />

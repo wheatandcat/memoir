@@ -28,6 +28,7 @@ type State = { viewX: number; viewY: number };
 
 const Menu: React.FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
+  const [key, setKey] = useState(0);
   const [state, setState] = useState<State>({ viewX: 0, viewY: 0 });
   const viewRef = useRef<RNView>(null);
 
@@ -40,17 +41,18 @@ const Menu: React.FC<Props> = (props) => {
     });
   }, []);
 
-  const onPress = useCallback((item: Item) => {
+  const onPress = useCallback((item: Item, index: number) => {
     if (item.removeMenu) {
-      setTimeout(() => {
-        // Modalは重複して表示できないのでanimationOutTimingを待つ
-        item.onPress();
-      }, 105);
+      setKey(index);
       setOpen(false);
     } else {
       item.onPress();
     }
   }, []);
+
+  const onModalHide = useCallback(() => {
+    props.items[key].onPress();
+  }, [props, key]);
 
   const style: ViewStyle = {
     top: state.viewY + 20,
@@ -72,11 +74,12 @@ const Menu: React.FC<Props> = (props) => {
           animationOut="fadeOutRight"
           backdropOpacity={0}
           animationOutTiming={100}
+          onModalHide={onModalHide}
         >
           <View style={[style, styles.menuItem]}>
             {props.items.map((item, index) => (
               <View key={item.text}>
-                <TouchableOpacity onPress={() => onPress(item)}>
+                <TouchableOpacity onPress={() => onPress(item, index)}>
                   <View p={3}>
                     <Text color={item.color}>{item.text}</Text>
                   </View>
