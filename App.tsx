@@ -7,6 +7,7 @@ const AppContainer = () => {
   let [fontsLoaded] = useFonts({
     'RobotoCondensed-Bold': require('./assets/RobotoCondensed-Bold.ttf'),
     'NotoSansJP-Bold': require('./assets/NotoSansJP-Bold.otf'),
+    'TrainOne-Regular': require('./assets/TrainOne-Regular.ttf'),
   });
 
   if (!fontsLoaded) {

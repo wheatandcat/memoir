@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
   useWindowDimensions,
   ListRenderItemInfo,
 } from 'react-native';
@@ -32,7 +32,7 @@ type RenderedItem = {
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
 
-const getDayOfWeekColor = (day: string, selected: boolean) => {
+const getDayOfWeekColor = (selected: boolean) => {
   if (selected) {
     return 'primary';
   }
@@ -44,7 +44,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
   const selected = dayjs(item.day).format('D') === dayjs(item.date).format('D');
 
   return (
-    <TouchableOpacity
+    <TouchableWithoutFeedback
       onPress={() => item.onPress(dayjs(item.day).format('DD'))}
     >
       <View style={styles.dayItem}>
@@ -54,13 +54,13 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
           <Text
             textAlign="center"
             variants="small"
-            color={getDayOfWeekColor(item.day, selected)}
+            color={getDayOfWeekColor(selected)}
           >
             {dayjs(item.day).format('dd')}
           </Text>
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -68,9 +68,11 @@ const DayInput: React.FC<Props> = (props) => {
   const index = Number(dayjs(props.date).format('D'));
 
   const days = (): string[] => {
-    const first = props.days.slice(index, props.days.length);
-    const last = props.days.slice(0, index);
-    return [...first, ...last];
+    const first = props.days.slice(index - 1, props.days.length);
+    const last = props.days.slice(0, index - 1);
+    const list = [...first, ...last];
+
+    return list;
   };
 
   const [dayItems] = useState(days());
@@ -85,14 +87,6 @@ const DayInput: React.FC<Props> = (props) => {
     []
   );
 
-  useEffect(() => {
-    const item = dayItems.findIndex(
-      (v) => dayjs(props.date).format('D') === dayjs(v).format('D')
-    );
-
-    carouselRef.current?.snapToItem(item);
-  }, [dayItems, props.date]);
-
   return (
     <Carousel
       ref={carouselRef}
@@ -106,7 +100,7 @@ const DayInput: React.FC<Props> = (props) => {
       itemWidth={55}
       layout="default"
       activeSlideAlignment="start"
-      initialNumToRender={3}
+      enableMomentum={false}
       loop
     />
   );

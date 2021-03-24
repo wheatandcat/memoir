@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
   useWindowDimensions,
   ListRenderItemInfo,
 } from 'react-native';
@@ -39,7 +39,7 @@ type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
 
 const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
   return (
-    <TouchableOpacity
+    <TouchableWithoutFeedback
       key={item.month.value}
       onPress={() => item.onPress(('00' + item.month.value).slice(-2))}
     >
@@ -54,15 +54,15 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
           {item.month.label}
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
 const MonthInput: React.FC<Props> = (props) => {
   const months = (): Month[] => {
     const index = Number(dayjs(props.date).format('M'));
-    const first = props.months.slice(index, 12);
-    const last = props.months.slice(0, index);
+    const first = props.months.slice(index - 1, 12);
+    const last = props.months.slice(0, index - 1);
     return [...first, ...last];
   };
 
@@ -78,14 +78,6 @@ const MonthInput: React.FC<Props> = (props) => {
     []
   );
 
-  useEffect(() => {
-    const item = monthItems.findIndex(
-      (v) => Number(dayjs(props.date).format('M')) === v.value
-    );
-
-    carouselRef.current?.snapToItem(item);
-  }, [monthItems, props.date]);
-
   return (
     <Carousel
       ref={carouselRef}
@@ -99,7 +91,6 @@ const MonthInput: React.FC<Props> = (props) => {
       itemWidth={75}
       layout="default"
       activeSlideAlignment="start"
-      initialNumToRender={3}
       loop
     />
   );

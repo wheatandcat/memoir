@@ -60,9 +60,9 @@ const styles = StyleSheet.create({
     height: 80,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 40,
   },
   selected: {
     backgroundColor: theme().color.primary.light,
+    borderRadius: 40,
   },
 });

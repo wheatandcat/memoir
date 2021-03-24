@@ -8,6 +8,7 @@
     "ios": "yarn init:app && expo start --ios",
     "web": "yarn init:app && expo start --web",
     "ios:clear": "yarn init:app && expo start --ios -c",
+    "android:clear": "yarn init:app && expo start --android -c",
     "storybook": "yarn init:storybook && start-storybook -p 7007",
     "storybook:ios": "yarn init:storybook && expo start --ios",
     "storybook:android": "yarn init:storybook && expo start --android",
