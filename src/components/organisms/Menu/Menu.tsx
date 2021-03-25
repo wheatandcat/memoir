@@ -28,7 +28,7 @@ type State = { viewX: number; viewY: number };
 
 const Menu: React.FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
-  const [key, setKey] = useState(0);
+  const [key, setKey] = useState<number | null>(null);
   const [state, setState] = useState<State>({ viewX: 0, viewY: 0 });
   const viewRef = useRef<RNView>(null);
 
@@ -51,6 +51,10 @@ const Menu: React.FC<Props> = (props) => {
   }, []);
 
   const onModalHide = useCallback(() => {
+    if (key === null) {
+      return;
+    }
+
     props.items[key].onPress();
   }, [props, key]);
 
@@ -59,14 +63,15 @@ const Menu: React.FC<Props> = (props) => {
     right: 0,
   };
 
+  const onOpen = useCallback(() => {
+    setKey(null);
+    setOpen(!open);
+  }, [open]);
+
   return (
     <>
       <RNView style={styles.menu} ref={viewRef} onLayout={onLayout}>
-        <IconButton
-          name="more-horiz"
-          size="base"
-          onPress={() => setOpen(!open)}
-        />
+        <IconButton name="more-horiz" size="base" onPress={onOpen} />
         <RNModal
           isVisible={open}
           onBackdropPress={() => setOpen(!open)}
