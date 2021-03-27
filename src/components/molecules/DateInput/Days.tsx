@@ -1,7 +1,7 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback, useRef, useState } from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
   useWindowDimensions,
   ListRenderItemInfo,
 } from 'react-native';
@@ -32,7 +32,7 @@ type RenderedItem = {
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
 
-const getDayOfWeekColor = (day: string, selected: boolean) => {
+const getDayOfWeekColor = (selected: boolean) => {
   if (selected) {
     return 'primary';
   }
@@ -44,7 +44,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
   const selected = dayjs(item.day).format('D') === dayjs(item.date).format('D');
 
   return (
-    <TouchableOpacity
+    <TouchableWithoutFeedback
       onPress={() => item.onPress(dayjs(item.day).format('DD'))}
     >
       <View style={styles.dayItem}>
@@ -54,17 +54,29 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
           <Text
             textAlign="center"
             variants="small"
-            color={getDayOfWeekColor(item.day, selected)}
+            color={getDayOfWeekColor(selected)}
           >
             {dayjs(item.day).format('dd')}
           </Text>
         </Text>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
 const DayInput: React.FC<Props> = (props) => {
+  const index = Number(dayjs(props.date).format('D'));
+
+  const days = (): string[] => {
+    const first = props.days.slice(index - 1, props.days.length);
+    const last = props.days.slice(0, index - 1);
+    const list = [...first, ...last];
+
+    return list;
+  };
+
+  const [dayItems] = useState(days());
+
   const carouselRef = useRef<Carousel<any>>(null);
   const windowWidth = useWindowDimensions().width;
 
@@ -75,12 +87,10 @@ const DayInput: React.FC<Props> = (props) => {
     []
   );
 
-  const index = Number(dayjs(props.date).format('D')) - 1;
-
   return (
     <Carousel
       ref={carouselRef}
-      data={props.days.map((v) => ({
+      data={dayItems.map((v) => ({
         date: props.date,
         day: v,
         onPress: props.onPress,
@@ -89,13 +99,9 @@ const DayInput: React.FC<Props> = (props) => {
       sliderWidth={windowWidth}
       itemWidth={55}
       layout="default"
-      inactiveSlideOpacity={1.0}
-      inactiveSlideScale={1.0}
       activeSlideAlignment="start"
-      firstItem={props.firstItem ? index : undefined}
-      onLayout={() => {
-        carouselRef.current?.snapToItem(index);
-      }}
+      enableMomentum={false}
+      loop
     />
   );
 };

@@ -7,9 +7,10 @@ export const cache = new InMemoryCache();
 
 const makeApolloClient = async () => {
   const uri = `${process.env.API_HOST}/query`;
-  const uid = await AsyncStorage.getItem('USER_ID');
 
-  const authLink = setContext((_, { headers }) => {
+  const authLink = setContext(async (_, { headers }) => {
+    const uid = await AsyncStorage.getItem('USER_ID');
+
     if (uid) {
       return {
         headers: {

@@ -8,6 +8,7 @@
     "ios": "yarn init:app && expo start --ios",
     "web": "yarn init:app && expo start --web",
     "ios:clear": "yarn init:app && expo start --ios -c",
+    "android:clear": "yarn init:app && expo start --android -c",
     "storybook": "yarn init:storybook && start-storybook -p 7007",
     "storybook:ios": "yarn init:storybook && expo start --ios",
     "storybook:android": "yarn init:storybook && expo start --android",
@@ -20,6 +21,7 @@
   },
   "dependencies": {
     "@apollo/client": "3.2.5",
+    "@expo-google-fonts/inter": "^0.1.0",
     "@react-native-async-storage/async-storage": "^1.14.1",
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/native": "^5.9.2",

@@ -1,10 +1,10 @@
 import React from 'react';
-import { Text as RNText, TextStyle, TextProps } from 'react-native';
-import { useFonts } from 'expo-font';
+import { Text as RNText, TextStyle, TextProps, Platform } from 'react-native';
 import { FontSize, styleFontSize } from 'lib/styledSystem/styleFontSize';
 import { FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
 import { FontColor, styleFontColor } from 'lib/styledSystem/styleFontColor';
 import { styleFontLineHeight } from 'lib/styledSystem/styleFontLineHeight';
+import { useFonts } from 'expo-font';
 import {
   FontVariants,
   styleFontVariant,
@@ -23,12 +23,12 @@ type Props = TextProps & {
 };
 
 const Text: React.FC<Props> = (props) => {
-  const [loaded] = useFonts({
+  let [fontsLoaded] = useFonts({
     'RobotoCondensed-Bold': require('../../../../assets/RobotoCondensed-Bold.ttf'),
     'NotoSansJP-Bold': require('../../../../assets/NotoSansJP-Bold.otf'),
   });
 
-  if (!loaded) {
+  if (!fontsLoaded) {
     return null;
   }
 
@@ -46,7 +46,13 @@ const Text: React.FC<Props> = (props) => {
 const enhanceStyle = (style: TextStyle, props: Props) => {
   if (props.textAlign) style.textAlign = props.textAlign;
 
-  return { ...style, fontFamily: props.fontFamily };
+  const r = { ...style, fontFamily: props.fontFamily };
+
+  if (Platform.OS === 'android') {
+    delete r.fontWeight;
+  }
+
+  return r;
 };
 
 Text.defaultProps = {

@@ -54,7 +54,7 @@ const Connected: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, openAddItemModal: false }));
   }, []);
 
-  const [createItemMutation] = useCreateItemMutation({
+  const [createItemMutation, createItemMutationData] = useCreateItemMutation({
     async onCompleted() {
       await refetch?.();
 
@@ -101,7 +101,7 @@ const Connected: React.FC<Props> = (props) => {
       items={homeItems.items}
       loading={loading}
       error={error}
-      addItemLoading={false}
+      addItemLoading={createItemMutationData.loading}
       date={dayjs(homeDate.date).format('YYYY-MM-DD')}
       openAddItemModal={state.openAddItemModal}
       openSettingModal={props.openSettingModal}

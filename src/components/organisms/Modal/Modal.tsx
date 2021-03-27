@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, Platform } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
@@ -60,10 +60,18 @@ export default Modal;
 const styles = StyleSheet.create({
   root: {
     width: '100%',
-    height: '80%',
+
     backgroundColor: theme().color.background.light,
     borderRadius: 30,
     position: 'relative',
+    ...Platform.select({
+      ios: {
+        height: '80%',
+      },
+      android: {
+        height: '100%',
+      },
+    }),
   },
   header: {
     alignItems: 'center',
