@@ -3,6 +3,7 @@ import { StyleSheet } from 'react-native';
 import DateInput from 'components/organisms/DateInput/DateInput';
 import { LinearGradient } from 'expo-linear-gradient';
 import theme from 'config/theme';
+import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 type Props = {
   date: string;
@@ -12,17 +13,23 @@ type Props = {
 
 const InputDateWrap: React.FC<Props> = (props) => {
   return (
-    <LinearGradient
-      colors={[theme().color.gradation[0], theme().color.gradation[1]]}
-      style={styles.root}
-    >
-      <DateInput
-        date={props.date}
-        onChange={props.onChangeDate}
-        firstItem={props.firstItem}
+    <>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        barStyle="light-content"
       />
-      {props.children}
-    </LinearGradient>
+      <LinearGradient
+        colors={[theme().color.gradation[0], theme().color.gradation[1]]}
+        style={styles.root}
+      >
+        <DateInput
+          date={props.date}
+          onChange={props.onChangeDate}
+          firstItem={props.firstItem}
+        />
+        {props.children}
+      </LinearGradient>
+    </>
   );
 };
 
