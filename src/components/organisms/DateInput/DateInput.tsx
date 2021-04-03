@@ -111,7 +111,12 @@ const DateInput: React.FC<Props> = (props) => {
 
   const onMonth = useCallback(
     (month: string) => {
-      const date = dayjs(state.date).format(`YYYY-${month}-DD`);
+      let date = dayjs(state.date).format(`YYYY-${month}-DD`);
+
+      if (dayjs(date).month() + 1 !== Number(month)) {
+        // 設定月に、その日が存在しない場合は、月の末日を設定
+        date = dayjs(date).add(-1, 'month').endOf('month').format('YYYY-MM-DD');
+      }
 
       setState((s) => ({ ...s, date }));
     },
