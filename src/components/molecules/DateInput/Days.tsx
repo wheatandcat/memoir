@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef, useState } from 'react';
+import React, { memo, useCallback, useRef, useState, useEffect } from 'react';
 import {
   StyleSheet,
   TouchableWithoutFeedback,
@@ -12,6 +12,7 @@ import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import Carousel from 'react-native-snap-carousel';
+import usePrevious from 'hooks/usePrevious';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -65,17 +66,30 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 };
 
 const DayInput: React.FC<Props> = (props) => {
+  const prevFirstDay = usePrevious(props.days[0]);
   const index = Number(dayjs(props.date).format('D'));
 
-  const days = (): string[] => {
+  const days = useCallback((): string[] => {
     const first = props.days.slice(index - 1, props.days.length);
     const last = props.days.slice(0, index - 1);
     const list = [...first, ...last];
 
     return list;
-  };
+  }, [props.days, index]);
 
-  const [dayItems] = useState(days());
+  const [dayItems, setDayItems] = useState(days());
+
+  useEffect(() => {
+    const firstDay = props.days[0];
+    if (!prevFirstDay) {
+      return;
+    }
+
+    if (firstDay !== prevFirstDay) {
+      setDayItems(days());
+      carouselRef.current?.snapToItem?.(0);
+    }
+  }, [props.days, prevFirstDay, setDayItems, days]);
 
   const carouselRef = useRef<Carousel<any>>(null);
   const windowWidth = useWindowDimensions().width;
@@ -100,7 +114,6 @@ const DayInput: React.FC<Props> = (props) => {
       itemWidth={55}
       layout="default"
       activeSlideAlignment="start"
-      enableMomentum={false}
       loop
     />
   );
