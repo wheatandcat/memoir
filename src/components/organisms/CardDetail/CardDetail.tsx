@@ -49,7 +49,7 @@ const CardDetail: React.FC<Props> = (props) => {
       {
         text: '削除',
         color: 'error',
-        onPress: () => {
+        onPress: (callback?: () => void) => {
           Alert.alert(
             '削除しますか？',
             '',
@@ -60,7 +60,10 @@ const CardDetail: React.FC<Props> = (props) => {
               },
               {
                 text: '削除する',
-                onPress: () => props.onDeleteItem(),
+                onPress: () => {
+                  props.onDeleteItem();
+                  callback?.();
+                },
               },
             ],
             {

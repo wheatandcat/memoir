@@ -16,7 +16,7 @@ import Divider from 'components/atoms/Divider';
 export type Item = {
   text: string;
   color: FontColor;
-  onPress: () => void;
+  onPress: (callback?: () => void) => void;
   removeMenu: boolean;
 };
 
@@ -46,7 +46,7 @@ const Menu: React.FC<Props> = (props) => {
       setKey(index);
       setOpen(false);
     } else {
-      item.onPress();
+      item.onPress(() => setOpen(false));
     }
   }, []);
 
