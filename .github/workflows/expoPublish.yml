@@ -1,6 +1,8 @@
 name: Expo Publish
 on: [push]
 
+env:
+  APP_CONFIG: ${{ secrets.APP_CONFIG }}
 jobs:
   publish:
     name: Install and publish
@@ -21,6 +23,8 @@ jobs:
       - name: Install node_modules
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
+      - name: Create serviceAccount.json file
+        run: echo $APP_CONFIG | base64 --decode -i > ./.env
       - name: codegen
         run: yarn codegen
       - uses: expo/expo-github-action@v5
