@@ -1,5 +1,8 @@
 name: Expo Publish
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
