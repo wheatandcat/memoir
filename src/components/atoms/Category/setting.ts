@@ -10,7 +10,7 @@ const setting = () => ({
       id: 1,
       image: require('../../../img/categories/category_aquarium.png'),
       category: master.CATEGORY_1,
-      name: '生活',
+      name: '生活2',
     },
     {
       id: 2,
