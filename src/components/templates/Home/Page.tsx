@@ -17,6 +17,7 @@ import AddItemModal from 'components/organisms/AddItemModal';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
 import { ConnectedType } from 'components/pages/Home/Connected';
 import { ItemQuery } from 'queries/api/index';
+import theme from 'config/theme';
 
 type Item = ItemQuery['item'];
 
@@ -32,7 +33,7 @@ type Props = {
 const Page: React.FC<Props> = (props) => {
   const windowHeight = useWindowDimensions().height;
 
-  const scrollViewStyle: ViewStyle = { height: windowHeight - 290 };
+  const scrollViewStyle: ViewStyle = { height: windowHeight - 250 };
 
   const onSwipeLeft = useCallback(() => {
     props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
@@ -56,12 +57,13 @@ const Page: React.FC<Props> = (props) => {
           onAdd={props.onAddItem}
           onClose={props.onCloseAddItem}
         />
-        <GestureRecognizer
-          onSwipeLeft={onSwipeLeft}
-          onSwipeRight={onSwipeRight}
-        >
-          <ScrollView style={scrollViewStyle}>
-            <View style={styles.inner}>
+
+        <ScrollView>
+          <GestureRecognizer
+            onSwipeLeft={onSwipeLeft}
+            onSwipeRight={onSwipeRight}
+          >
+            <View style={[styles.inner, scrollViewStyle]}>
               <Cards
                 loading={props.addItemLoading}
                 items={props.items}
@@ -69,8 +71,8 @@ const Page: React.FC<Props> = (props) => {
                 onAddItem={props.onOpenAddItem}
               />
             </View>
-          </ScrollView>
-        </GestureRecognizer>
+          </GestureRecognizer>
+        </ScrollView>
 
         <MemoirButton onPress={props.onMemoir} />
       </>
@@ -82,6 +84,6 @@ export default memo(Page);
 
 const styles = StyleSheet.create({
   inner: {
-    height: '100%',
+    marginBottom: theme().space(2),
   },
 });

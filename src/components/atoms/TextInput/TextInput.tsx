@@ -16,6 +16,7 @@ const TextInput: React.FC<Props> = (props) => {
         {...props}
         placeholderTextColor={theme().color.base.main}
         style={styles.text}
+        autoCapitalize="none"
       />
       <View style={styles.underLine} />
     </View>
