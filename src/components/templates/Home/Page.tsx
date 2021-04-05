@@ -1,6 +1,12 @@
-import React, { memo } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import React, { memo, useCallback } from 'react';
+import {
+  StyleSheet,
+  ScrollView,
+  useWindowDimensions,
+  ViewStyle,
+} from 'react-native';
 import View from 'components/atoms/View';
+import GestureRecognizer from 'react-native-swipe-gestures';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
@@ -24,6 +30,18 @@ type Props = {
 } & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
+  const windowHeight = useWindowDimensions().height;
+
+  const scrollViewStyle: ViewStyle = { height: windowHeight - 290 };
+
+  const onSwipeLeft = useCallback(() => {
+    props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
+  }, [props]);
+
+  const onSwipeRight = useCallback(() => {
+    props.onChangeDate(dayjs(props.date).add(-1, 'day').format('YYYY-MM-DD'));
+  }, [props]);
+
   return (
     <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
       <>
@@ -38,16 +56,22 @@ const Page: React.FC<Props> = (props) => {
           onAdd={props.onAddItem}
           onClose={props.onCloseAddItem}
         />
-        <ScrollView>
-          <View style={styles.inner}>
-            <Cards
-              loading={props.addItemLoading}
-              items={props.items}
-              onItem={props.onItem}
-              onAddItem={props.onOpenAddItem}
-            />
-          </View>
-        </ScrollView>
+        <GestureRecognizer
+          onSwipeLeft={onSwipeLeft}
+          onSwipeRight={onSwipeRight}
+        >
+          <ScrollView style={scrollViewStyle}>
+            <View style={styles.inner}>
+              <Cards
+                loading={props.addItemLoading}
+                items={props.items}
+                onItem={props.onItem}
+                onAddItem={props.onOpenAddItem}
+              />
+            </View>
+          </ScrollView>
+        </GestureRecognizer>
+
         <MemoirButton onPress={props.onMemoir} />
       </>
     </InputDateWrap>

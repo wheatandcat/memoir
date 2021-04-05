@@ -68,6 +68,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 const DayInput: React.FC<Props> = (props) => {
   const prevFirstDay = usePrevious(props.days[0]);
   const index = Number(dayjs(props.date).format('D'));
+  const carouselRef = useRef<Carousel<any>>(null);
 
   const days = useCallback((): string[] => {
     const first = props.days.slice(index - 1, props.days.length);
@@ -78,6 +79,10 @@ const DayInput: React.FC<Props> = (props) => {
   }, [props.days, index]);
 
   const [dayItems, setDayItems] = useState(days());
+
+  const selectIndex = dayItems.findIndex(
+    (v) => Number(dayjs(v).format('D')) === index
+  );
 
   useEffect(() => {
     const firstDay = props.days[0];
@@ -91,7 +96,18 @@ const DayInput: React.FC<Props> = (props) => {
     }
   }, [props.days, prevFirstDay, setDayItems, days]);
 
-  const carouselRef = useRef<Carousel<any>>(null);
+  useEffect(() => {
+    const currentIndex = carouselRef.current?.currentIndex || 0;
+
+    if (currentIndex === 0 && selectIndex >= 29) {
+      carouselRef.current?.snapToPrev?.();
+    } else if (currentIndex === selectIndex + 1) {
+      carouselRef.current?.snapToPrev?.();
+    } else if (currentIndex === selectIndex - 1) {
+      carouselRef.current?.snapToNext?.();
+    }
+  }, [index, selectIndex]);
+
   const windowWidth = useWindowDimensions().width;
 
   const renderItemCall = useCallback(
@@ -115,6 +131,7 @@ const DayInput: React.FC<Props> = (props) => {
       layout="default"
       activeSlideAlignment="start"
       loop
+      loopClonesPerSide={10}
     />
   );
 };
