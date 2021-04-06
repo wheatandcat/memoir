@@ -36,7 +36,7 @@ const Modal: React.FC<Props> = (props) => {
             </Text>
           </View>
         </View>
-        <ScrollView keyboardShouldPersistTaps="always">
+        <ScrollView keyboardShouldPersistTaps="always" removeClippedSubviews>
           <View px={3}>{props.children}</View>
         </ScrollView>
         {Boolean(props.buttonTitle) && (

@@ -4,6 +4,7 @@ import {
   TouchableWithoutFeedback,
   useWindowDimensions,
   ListRenderItemInfo,
+  Platform,
 } from 'react-native';
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
@@ -90,8 +91,11 @@ const MonthInput: React.FC<Props> = (props) => {
       sliderWidth={windowWidth}
       itemWidth={75}
       layout="default"
+      inactiveSlideOpacity={1.0}
+      inactiveSlideScale={1.0}
       activeSlideAlignment="start"
       loop
+      removeClippedSubviews={Platform.OS === 'android'}
     />
   );
 };

@@ -11580,10 +11580,9 @@ react-native-storybook-loader@^2.0.2:
     prettier "^2.0.5"
     yargs "^15.4.1"
 
-react-native-swipe-gestures@^1.0.4, react-native-swipe-gestures@^1.0.5:
+react-native-swipe-gestures@^1.0.4, "react-native-swipe-gestures@git+https://git@github.com/EatherToo/react-native-swipe-gestures":
   version "1.0.5"
-  resolved "https://registry.yarnpkg.com/react-native-swipe-gestures/-/react-native-swipe-gestures-1.0.5.tgz#a172cb0f3e7478ccd681fd36b8bfbcdd098bde7c"
-  integrity sha512-Ns7Bn9H/Tyw278+5SQx9oAblDZ7JixyzeOczcBK8dipQk2pD7Djkcfnf1nB/8RErAmMLL9iXgW0QHqiII8AhKw==
+  resolved "git+https://git@github.com/EatherToo/react-native-swipe-gestures#0bac903bb434406a4c8b065d98621b3c8d162203"
 
 react-native-web@~0.13.12:
   version "0.13.18"
