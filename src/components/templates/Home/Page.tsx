@@ -1,12 +1,5 @@
-import React, { memo, useCallback } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  useWindowDimensions,
-  ViewStyle,
-} from 'react-native';
-import View from 'components/atoms/View';
-import GestureRecognizer from 'react-native-swipe-gestures';
+import React, { memo } from 'react';
+import { StyleSheet, ViewStyle } from 'react-native';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
@@ -16,6 +9,7 @@ import SettingModal from 'components/organisms/SettingModal';
 import AddItemModal from 'components/organisms/AddItemModal';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
 import { ConnectedType } from 'components/pages/Home/Connected';
+import GestureRecognizerWrap from 'components/organisms/Home/GestureRecognizerWrap';
 import { ItemQuery } from 'queries/api/index';
 import theme from 'config/theme';
 
@@ -31,51 +25,39 @@ type Props = {
 } & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
-  const windowHeight = useWindowDimensions().height;
-
-  const scrollViewStyle: ViewStyle = { height: windowHeight - 250 };
-
-  const onSwipeLeft = useCallback(() => {
-    props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
-  }, [props]);
-
-  const onSwipeRight = useCallback(() => {
-    props.onChangeDate(dayjs(props.date).add(-1, 'day').format('YYYY-MM-DD'));
-  }, [props]);
+  const style: ViewStyle[] = [];
+  if (props.items.length > 3) {
+    style.push(styles.inner);
+  }
 
   return (
     <InputDateWrap date={props.date} onChangeDate={props.onChangeDate}>
-      <>
-        <SettingModal
-          isVisible={props.openSettingModal}
-          onClose={props.onCloseSettingModal}
-        />
-        <AddItemModal
-          isVisible={props.openAddItemModal}
+      <SettingModal
+        isVisible={props.openSettingModal}
+        onClose={props.onCloseSettingModal}
+      />
+      <AddItemModal
+        isVisible={props.openAddItemModal}
+        loading={props.addItemLoading}
+        date={dayjs(props.date).format('YYYY-MM-DD')}
+        onAdd={props.onAddItem}
+        onClose={props.onCloseAddItem}
+      />
+
+      <GestureRecognizerWrap
+        date={props.date}
+        items={props.items}
+        onChangeDate={props.onChangeDate}
+      >
+        <Cards
           loading={props.addItemLoading}
-          date={dayjs(props.date).format('YYYY-MM-DD')}
-          onAdd={props.onAddItem}
-          onClose={props.onCloseAddItem}
+          items={props.items}
+          onItem={props.onItem}
+          onAddItem={props.onOpenAddItem}
         />
+      </GestureRecognizerWrap>
 
-        <ScrollView>
-          <GestureRecognizer
-            onSwipeLeft={onSwipeLeft}
-            onSwipeRight={onSwipeRight}
-          >
-            <View style={[styles.inner, scrollViewStyle]}>
-              <Cards
-                loading={props.addItemLoading}
-                items={props.items}
-                onItem={props.onItem}
-                onAddItem={props.onOpenAddItem}
-              />
-            </View>
-          </GestureRecognizer>
-        </ScrollView>
-
-        <MemoirButton onPress={props.onMemoir} />
-      </>
+      <MemoirButton onPress={props.onMemoir} />
     </InputDateWrap>
   );
 };
@@ -84,6 +66,6 @@ export default memo(Page);
 
 const styles = StyleSheet.create({
   inner: {
-    marginBottom: theme().space(2),
+    marginBottom: theme().space(3),
   },
 });
