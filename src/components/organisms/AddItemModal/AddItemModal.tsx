@@ -10,6 +10,7 @@ import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import { NewItem } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
+import theme from 'config/theme';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -107,13 +108,14 @@ const AddItemModal: React.FC<Props> = (props) => {
       onPress={onAdd}
       loading={props.loading}
     >
-      <View style={styles.root} p={1} px={3}>
+      <View style={styles.root} py={2} px={3}>
         <TextInput
-          placeholder="終了したタスク"
+          placeholder="今日何やった？"
           onChangeText={onChangeTitle}
           autoFocus
           returnKeyType="done"
           defaultValue={state.title}
+          style={state.title ? styles.input : styles.placeholder}
         />
 
         <View py={3}>
@@ -136,4 +138,12 @@ export default memo(AddItemModal);
 
 const styles = StyleSheet.create({
   root: {},
+  placeholder: {
+    height: 40,
+    fontSize: theme().fontSizes.xl,
+  },
+  input: {
+    height: 40,
+    fontSize: theme().fontSizes.lg,
+  },
 });
