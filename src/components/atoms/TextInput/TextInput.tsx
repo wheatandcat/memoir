@@ -3,6 +3,7 @@ import {
   TextInput as RNTextInput,
   TextInputProps,
   StyleSheet,
+  TextStyle,
 } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
@@ -10,12 +11,17 @@ import theme from 'config/theme';
 type Props = TextInputProps;
 
 const TextInput: React.FC<Props> = (props) => {
+  const style: TextStyle[] = [styles.text];
+  if (props.style) {
+    style.push(props.style as TextStyle);
+  }
+
   return (
     <View>
       <RNTextInput
         {...props}
         placeholderTextColor={theme().color.base.main}
-        style={styles.text}
+        style={style}
         autoCapitalize="none"
       />
       <View style={styles.underLine} />

@@ -27,8 +27,9 @@ const Compatibility: React.FC<Props> = (props) => {
         <TouchableWithoutFeedback onPress={props.onLike}>
           <Image
             source={require('../../../img/icon/icon_like.png')}
-            width={50}
-            height={50}
+            width={64}
+            height={64}
+            resizeMode="contain"
           />
         </TouchableWithoutFeedback>
       </View>
@@ -36,8 +37,9 @@ const Compatibility: React.FC<Props> = (props) => {
         <TouchableWithoutFeedback onPress={props.onDislike}>
           <Image
             source={require('../../../img/icon/icon_dislike.png')}
-            width={50}
-            height={50}
+            width={64}
+            height={64}
+            resizeMode="contain"
           />
         </TouchableWithoutFeedback>
       </View>
@@ -56,13 +58,14 @@ const styles = StyleSheet.create({
     height: 95,
   },
   image: {
-    width: 80,
-    height: 80,
+    marginHorizontal: theme().space(2),
+    width: 90,
+    height: 90,
     justifyContent: 'center',
     alignItems: 'center',
   },
   selected: {
     backgroundColor: theme().color.primary.light,
-    borderRadius: 40,
+    borderRadius: 45,
   },
 });

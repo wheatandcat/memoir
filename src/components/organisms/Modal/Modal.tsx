@@ -6,6 +6,7 @@ import Text from 'components/atoms/Text';
 import Button from 'components/atoms/Button';
 import RNModal from 'react-native-modal';
 import IconButton from 'components/molecules/IconButton';
+import Image from 'components/atoms/Image';
 
 type Props = {
   isVisible: boolean;
@@ -30,10 +31,19 @@ const Modal: React.FC<Props> = (props) => {
           <View style={styles.close}>
             <IconButton name="close" onPress={props.onClose} />
           </View>
-          <View>
-            <Text variants="middle" textAlign="center">
-              {props.title}
-            </Text>
+          <View style={styles.dateTitle}>
+            <View>
+              <Text variants="middle" textAlign="center">
+                {props.title}
+              </Text>
+            </View>
+            <View pt={0} pl={2}>
+              <Image
+                source={require('../../../img/icon/icon_calender.png')}
+                width={23}
+                height={23}
+              />
+            </View>
           </View>
         </View>
         <ScrollView keyboardShouldPersistTaps="always" removeClippedSubviews>
@@ -75,6 +85,9 @@ const styles = StyleSheet.create({
   },
   header: {
     alignItems: 'center',
+  },
+  dateTitle: {
+    flexDirection: 'row',
   },
   close: {
     position: 'absolute',
