@@ -139,11 +139,11 @@ export default memo(AddItemModal);
 const styles = StyleSheet.create({
   root: {},
   placeholder: {
-    height: 40,
+    height: 60,
     fontSize: theme().fontSizes.xl,
   },
   input: {
-    height: 40,
+    height: 60,
     fontSize: theme().fontSizes.lg,
   },
 });
