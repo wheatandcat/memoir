@@ -17,7 +17,8 @@
     "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
     "codegen": "yarn download:schema.graphqls & graphql-codegen",
-    "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts"
+    "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts",
+    "test": "jest"
   },
   "dependencies": {
     "@apollo/client": "3.2.5",
@@ -68,6 +69,8 @@
     "@storybook/addon-ondevice-knobs": "^5.3.23",
     "@storybook/react-native": "^5.3.23",
     "@storybook/react-native-server": "^5.3.23",
+    "@types/enzyme": "^3.10.8",
+    "@types/jest": "^26.0.22",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
@@ -82,8 +85,12 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-native": "^3.10.0",
     "husky": "^4.0.7",
+    "identity-obj-proxy": "^3.0.0",
+    "jest-expo": "^40.0.2",
+    "jest-expo-enzyme": "^1.0.4",
     "lint-staged": "^9.2.5",
     "react-native-storybook-loader": "^2.0.2",
+    "ts-jest": "^26.5.4",
     "typescript": "~4.0.0"
   },
   "config": {
