@@ -18,7 +18,7 @@ type Item = ItemQuery['item'];
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {
+export type Props = {
   addItemLoading: boolean;
   date: string;
   items: Item[];
