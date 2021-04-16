@@ -1,0 +1,20 @@
+query ItemsInPeriod($input: InputItemsInPeriod!) {
+  itemsInPeriod(input: $input) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        id
+        title
+        date
+        categoryID
+        createdAt
+        like
+        id
+      }
+      cursor
+    }
+  }
+}
