@@ -4,10 +4,9 @@ import View from 'components/atoms/View';
 import DateCards from 'components/organisms/Memoir/DateCards';
 import theme from 'config/theme';
 import ShareButton from 'components/molecules/Memoir/ShareButton';
+import { Props as PlainProps } from 'components/pages/Memoir/Plain';
 
-type Props = {
-  onItem: () => void;
-};
+type Props = Pick<PlainProps, 'items' | 'loading' | 'onLoadMore' | 'onItem'>;
 
 const Page: React.FC<Props> = (props) => {
   return (

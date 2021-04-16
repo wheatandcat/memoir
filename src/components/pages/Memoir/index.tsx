@@ -1,5 +1,4 @@
-import React, { memo, useCallback } from 'react';
-import TemplateHome from 'components/templates/Memoir/Page.tsx';
+import React, { memo } from 'react';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -7,6 +6,7 @@ import dayjs from 'dayjs';
 import theme from 'config/theme';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import Connected from './Connected';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -20,8 +20,6 @@ export type Props = {
 };
 
 const Memoir: React.FC<Props> = (props) => {
-  const onItem = useCallback(() => {}, []);
-
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
       headerTitle: '2021.12.01 - 2021.12.07',
@@ -33,7 +31,7 @@ const Memoir: React.FC<Props> = (props) => {
     });
   }, [props.navigation]);
 
-  return <TemplateHome onItem={onItem} />;
+  return <Connected />;
 };
 
 export default memo(Memoir);

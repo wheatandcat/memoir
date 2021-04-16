@@ -93,7 +93,10 @@ const Connected: React.FC<Props> = (props) => {
   );
 
   const onMemoir = useCallback(() => {
-    props.navigation.navigate('Memoir');
+    props.navigation.navigate('Memoir', {
+      startDate: null,
+      endDate: null,
+    });
   }, [props.navigation]);
 
   return (
