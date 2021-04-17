@@ -6,69 +6,19 @@ import DateText from 'components/molecules/Memoir/DateText';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import { Props as PlainProps } from 'components/pages/Memoir/Plain';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {
-  onItem: () => void;
-};
+type Item = ArrayType<PlainProps['items']>;
 
-const items = [
-  {
-    date: '2021-01-01',
-    title: '本読んだ',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-01',
-    title:
-      '「とても長いタイトルの本」を読んだんだけど、もっと長いタイトルの本です',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-02',
-    title: 'ゴミを捨てた',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-03',
-    title: '公園に行った',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-03',
-    title: '体調が良くなかった',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-04',
-    title: '買い物に行った',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-];
+export type Props = Pick<
+  PlainProps,
+  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo'
+>;
 
-type Card = {
-  date: string;
-  title: string;
+type Card = Item & {
   user?: {
     id: string;
     name: string;
@@ -92,7 +42,7 @@ const renderItem = (
     <View mb={3} mx={3} key={`${index}-contents`}>
       <Card
         title={item?.contents?.title || ''}
-        categoryID={1}
+        categoryID={item?.contents?.categoryID || 0}
         user={item?.contents?.user}
         onPress={props.onItem}
       />
@@ -102,7 +52,7 @@ const renderItem = (
 
 const DateCards: React.FC<Props> = (props) => {
   const dates = Array.from(
-    new Set(items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
+    new Set(props.items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -119,8 +69,9 @@ const DateCards: React.FC<Props> = (props) => {
       const dateItem: RenderedItem = {
         date: v1.date,
       };
-      const item: RenderedItem[] = items
-        .filter((v2) => v2.date === v1.date)
+
+      const item: RenderedItem[] = props.items
+        .filter((v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date)
         .map((v2) => ({
           date: null,
           contents: v2,
@@ -137,6 +88,13 @@ const DateCards: React.FC<Props> = (props) => {
     [props]
   );
 
+  const handleLoadMore = useCallback(() => {
+    if (!props.pageInfo.hasNextPage) return;
+    if (props.loading) return;
+
+    props.onLoadMore(props?.pageInfo.endCursor);
+  }, [props]);
+
   return (
     <View style={styles.root}>
       <FlatList<RenderedItem>
@@ -144,6 +102,8 @@ const DateCards: React.FC<Props> = (props) => {
         data={data}
         renderItem={renderItemCall}
         ListFooterComponent={<View style={styles.footer} />}
+        onEndReachedThreshold={0.8}
+        onEndReached={handleLoadMore}
       />
     </View>
   );

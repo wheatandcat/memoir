@@ -32,7 +32,7 @@ const Connected: React.FC<Props> = () => {
       input: {
         startDate: '2021-04-05T00:00:00+09:00',
         endDate: '2021-04-20T00:00:00+09:00',
-        first: 10,
+        first: 8,
         after: state.after,
       },
     },

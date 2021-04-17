@@ -4,11 +4,23 @@ import { mockFn } from 'storyBookUtils/index';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import DateCards from './DateCards';
+import DateCards, { Props } from './DateCards';
+import { items } from '__mockData__/item';
+
+const props = (): Props => ({
+  items: items(),
+  pageInfo: {
+    hasNextPage: false,
+    endCursor: '',
+  },
+  onItem: mockFn('onItem'),
+  onLoadMore: mockFn('onLoadMore'),
+  loading: false,
+});
 
 storiesOf('organisms/Memoir', module).add('DateCards', () => (
   <View style={styles.root}>
-    <DateCards onItem={mockFn('onItem')} />
+    <DateCards {...props()} />
   </View>
 ));
 

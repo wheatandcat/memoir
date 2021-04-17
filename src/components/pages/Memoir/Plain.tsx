@@ -25,6 +25,7 @@ const Plain: React.FC<Props> = (props) => {
       onItem={props.onItem}
       items={props.items}
       onLoadMore={props.onLoadMore}
+      pageInfo={props.pageInfo}
     />
   );
 };
