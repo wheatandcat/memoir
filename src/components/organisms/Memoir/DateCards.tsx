@@ -2,73 +2,25 @@ import React, { memo, useCallback } from 'react';
 import { StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
 import View from 'components/atoms/View';
 import Card from 'components/organisms/Card';
+import Loading from 'components/atoms/Loading';
 import DateText from 'components/molecules/Memoir/DateText';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import { Props as PlainProps } from 'components/pages/Memoir/Plain';
+import theme from 'config/theme';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {
-  onItem: () => void;
-};
+type Item = ArrayType<PlainProps['items']>;
 
-const items = [
-  {
-    date: '2021-01-01',
-    title: '本読んだ',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-01',
-    title:
-      '「とても長いタイトルの本」を読んだんだけど、もっと長いタイトルの本です',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-02',
-    title: 'ゴミを捨てた',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-03',
-    title: '公園に行った',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-03',
-    title: '体調が良くなかった',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-  {
-    date: '2021-01-04',
-    title: '買い物に行った',
-    user: {
-      id: 'aaaa',
-      name: 'tanaka',
-    },
-  },
-];
+export type Props = Pick<
+  PlainProps,
+  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo'
+>;
 
-type Card = {
-  date: string;
-  title: string;
+type Card = Item & {
   user?: {
     id: string;
     name: string;
@@ -92,7 +44,7 @@ const renderItem = (
     <View mb={3} mx={3} key={`${index}-contents`}>
       <Card
         title={item?.contents?.title || ''}
-        categoryID={1}
+        categoryID={item?.contents?.categoryID || 0}
         user={item?.contents?.user}
         onPress={props.onItem}
       />
@@ -100,9 +52,21 @@ const renderItem = (
   );
 };
 
+const ListFooterComponent = memo<{ loading: boolean }>((props) => {
+  if (props.loading) {
+    return (
+      <View style={styles.footer}>
+        <Loading size="large" />
+      </View>
+    );
+  }
+
+  return <View style={styles.footer} />;
+});
+
 const DateCards: React.FC<Props> = (props) => {
   const dates = Array.from(
-    new Set(items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
+    new Set(props.items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -119,8 +83,9 @@ const DateCards: React.FC<Props> = (props) => {
       const dateItem: RenderedItem = {
         date: v1.date,
       };
-      const item: RenderedItem[] = items
-        .filter((v2) => v2.date === v1.date)
+
+      const item: RenderedItem[] = props.items
+        .filter((v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date)
         .map((v2) => ({
           date: null,
           contents: v2,
@@ -137,13 +102,22 @@ const DateCards: React.FC<Props> = (props) => {
     [props]
   );
 
+  const handleLoadMore = useCallback(() => {
+    if (!props.pageInfo.hasNextPage) return;
+    if (props.loading) return;
+
+    props.onLoadMore(props?.pageInfo.endCursor);
+  }, [props]);
+
   return (
     <View style={styles.root}>
       <FlatList<RenderedItem>
         keyExtractor={(_, index) => `search_${index}`}
         data={data}
         renderItem={renderItemCall}
-        ListFooterComponent={<View style={styles.footer} />}
+        ListFooterComponent={<ListFooterComponent loading={props.loading} />}
+        onEndReachedThreshold={0.8}
+        onEndReached={handleLoadMore}
       />
     </View>
   );
@@ -156,6 +130,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   footer: {
+    paddingTop: theme().space(2),
     height: 200,
   },
 });

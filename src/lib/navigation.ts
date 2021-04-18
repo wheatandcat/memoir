@@ -4,6 +4,9 @@ export type RootStackParamList = {
     id: string;
     date: string;
   };
-  Memoir: undefined;
+  Memoir: {
+    startDate: string;
+    endDate: string;
+  };
   SettingLicence: undefined;
 };
