@@ -2,11 +2,13 @@ import React, { memo, useCallback } from 'react';
 import { StyleSheet, FlatList, ListRenderItemInfo } from 'react-native';
 import View from 'components/atoms/View';
 import Card from 'components/organisms/Card';
+import Loading from 'components/atoms/Loading';
 import DateText from 'components/molecules/Memoir/DateText';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
 import { Props as PlainProps } from 'components/pages/Memoir/Plain';
+import theme from 'config/theme';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
@@ -49,6 +51,18 @@ const renderItem = (
     </View>
   );
 };
+
+const ListFooterComponent = memo<{ loading: boolean }>((props) => {
+  if (props.loading) {
+    return (
+      <View style={styles.footer}>
+        <Loading size="large" />
+      </View>
+    );
+  }
+
+  return <View style={styles.footer} />;
+});
 
 const DateCards: React.FC<Props> = (props) => {
   const dates = Array.from(
@@ -101,7 +115,7 @@ const DateCards: React.FC<Props> = (props) => {
         keyExtractor={(_, index) => `search_${index}`}
         data={data}
         renderItem={renderItemCall}
-        ListFooterComponent={<View style={styles.footer} />}
+        ListFooterComponent={<ListFooterComponent loading={props.loading} />}
         onEndReachedThreshold={0.8}
         onEndReached={handleLoadMore}
       />
@@ -116,6 +130,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   footer: {
+    paddingTop: theme().space(2),
     height: 200,
   },
 });

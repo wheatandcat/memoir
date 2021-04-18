@@ -5,8 +5,8 @@ export type RootStackParamList = {
     date: string;
   };
   Memoir: {
-    startDate: string | null;
-    endDate: string | null;
+    startDate: string;
+    endDate: string;
   };
   SettingLicence: undefined;
 };

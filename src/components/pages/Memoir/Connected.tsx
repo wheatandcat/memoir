@@ -9,13 +9,18 @@ import Plain from './Plain';
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {};
+type Props = {
+  startDate: string;
+  endDate: string;
+};
 
 export type State = {
   after: string | null;
 };
 
 export type ConnectedType = {
+  startDate: string;
+  endDate: string;
   onItem: () => void;
   onLoadMore: (after: string | null) => void;
 };
@@ -24,14 +29,14 @@ const initialState = () => ({
   after: '',
 });
 
-const Connected: React.FC<Props> = () => {
+const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
   const queryResult = useItemsInPeriodQuery({
     variables: {
       input: {
-        startDate: '2021-04-05T00:00:00+09:00',
-        endDate: '2021-04-20T00:00:00+09:00',
+        startDate: props.startDate,
+        endDate: props.endDate,
         first: 8,
         after: state.after,
       },
@@ -53,6 +58,8 @@ const Connected: React.FC<Props> = () => {
 
   return (
     <Plain
+      startDate={props.startDate}
+      endDate={props.endDate}
       items={items}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}

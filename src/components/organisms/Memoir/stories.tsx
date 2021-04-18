@@ -18,11 +18,17 @@ const props = (): Props => ({
   loading: false,
 });
 
-storiesOf('organisms/Memoir', module).add('DateCards', () => (
-  <View style={styles.root}>
-    <DateCards {...props()} />
-  </View>
-));
+storiesOf('organisms/Memoir/DateCards', module)
+  .add('default', () => (
+    <View style={styles.root}>
+      <DateCards {...props()} />
+    </View>
+  ))
+  .add('loading', () => (
+    <View style={styles.root}>
+      <DateCards {...props()} loading />
+    </View>
+  ));
 
 const styles = StyleSheet.create({
   root: {

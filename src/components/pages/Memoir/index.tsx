@@ -20,18 +20,22 @@ export type Props = {
 };
 
 const Memoir: React.FC<Props> = (props) => {
+  const { startDate, endDate } = props.route.params;
+
   React.useLayoutEffect(() => {
     props.navigation.setOptions({
-      headerTitle: '2021.12.01 - 2021.12.07',
+      headerTitle: `${dayjs(startDate).format('YYYY.MM.DD')} - ${dayjs(
+        endDate
+      ).format('YYYY.MM.DD')}`,
       headerTitleStyle: {
         fontSize: theme().fontSizes.lg,
         fontWeight: theme().fontWeights.bold,
         fontFamily: 'RobotoCondensed-Bold',
       },
     });
-  }, [props.navigation]);
+  }, [props.navigation, startDate, endDate]);
 
-  return <Connected />;
+  return <Connected startDate={startDate} endDate={endDate} />;
 };
 
 export default memo(Memoir);
