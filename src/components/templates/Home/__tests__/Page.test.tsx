@@ -5,6 +5,7 @@ import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   addItemLoading: false,
+  loading: false,
   date: '2020-01-01',
   items: items(),
   openAddItemModal: false,

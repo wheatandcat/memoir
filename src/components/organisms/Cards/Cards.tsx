@@ -4,11 +4,14 @@ import View from 'components/atoms/View';
 import Card from 'components/organisms/Card';
 import AddButton from 'components/molecules/Home/AddButton';
 import { ItemQuery } from 'queries/api/index';
+import NotFound from 'components/organisms/Home/NotFound';
 import theme from 'config/theme';
 
 type Item = ItemQuery['item'];
 
 export type Props = {
+  date: string;
+  addItemLoading: boolean;
   loading: boolean;
   items: Item[];
   onItem: (itemID: string) => void;
@@ -20,7 +23,7 @@ const Cards: React.FC<Props> = (props) => {
     <View style={styles.root}>
       <AddButton onPress={props.onAddItem} />
 
-      {props.loading && (
+      {props.addItemLoading && (
         <View style={styles.loading} mb={3} mx={3}>
           <ActivityIndicator size="large" />
         </View>
@@ -36,6 +39,9 @@ const Cards: React.FC<Props> = (props) => {
             />
           </View>
         ))}
+        {!props.loading && props.items.length === 0 && (
+          <NotFound date={props.date} />
+        )}
       </View>
     </View>
   );

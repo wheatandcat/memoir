@@ -50,7 +50,9 @@ const Page: React.FC<Props> = (props) => {
         onChangeDate={props.onChangeDate}
       >
         <Cards
-          loading={props.addItemLoading}
+          date={props.date}
+          addItemLoading={props.addItemLoading}
+          loading={props.loading}
           items={props.items}
           onItem={props.onItem}
           onAddItem={props.onOpenAddItem}

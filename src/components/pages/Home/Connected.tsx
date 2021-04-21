@@ -23,6 +23,7 @@ type State = {
 
 export type ConnectedType = {
   items: Item[];
+  loading: boolean;
   addItemLoading: boolean;
   date: string;
   openAddItemModal: boolean;

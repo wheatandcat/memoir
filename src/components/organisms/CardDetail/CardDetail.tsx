@@ -99,8 +99,9 @@ const CardDetail: React.FC<Props> = (props) => {
           <View px={3}>
             <Image
               source={require('../../../img/icon/icon_like.png')}
-              width={40}
-              height={40}
+              width={60}
+              height={60}
+              resizeMode="contain"
             />
           </View>
         )}
@@ -108,8 +109,9 @@ const CardDetail: React.FC<Props> = (props) => {
           <View px={3}>
             <Image
               source={require('../../../img/icon/icon_dislike.png')}
-              width={40}
-              height={40}
+              width={60}
+              height={60}
+              resizeMode="contain"
             />
           </View>
         )}
@@ -117,11 +119,7 @@ const CardDetail: React.FC<Props> = (props) => {
       <View style={[styles.title, titleStyle]}>
         <Text lineHeight={25}>{props.title}</Text>
       </View>
-      <View style={styles.footer}>
-        <View>
-          <Text>taro</Text>
-        </View>
-      </View>
+      <View style={styles.footer} />
     </View>
   );
 };
