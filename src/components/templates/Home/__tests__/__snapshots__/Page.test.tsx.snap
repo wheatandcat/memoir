@@ -65,6 +65,8 @@ exports[`components/templates/Home/Page.tsx 正常にrenderすること 1`] = `
     onChangeDate={[MockFunction]}
   >
     <Memo(Cards)
+      addItemLoading={false}
+      date="2020-01-01"
       items={
         Array [
           Object {

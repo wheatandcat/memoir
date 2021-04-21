@@ -7,7 +7,7 @@ const setting = () => ({
   main: [
     [1, 10, 4],
     [3, 2, 5],
-    [6, 11, 12],
+    [13, 6, 12],
   ],
   icon: [
     {
@@ -81,6 +81,12 @@ const setting = () => ({
       image: require('../../../img/categories/category_specialstar.png'),
       category: master.CATEGORY_3,
       name: '特別なこと',
+    },
+    {
+      id: 13,
+      image: require('../../../img/categories/category_study.png'),
+      category: master.CATEGORY_3,
+      name: '勉強した',
     },
   ],
 });

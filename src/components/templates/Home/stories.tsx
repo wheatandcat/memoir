@@ -7,6 +7,7 @@ import Page from './Page';
 storiesOf('templates/Home', module).add('Page', () => (
   <Page
     items={items()}
+    loading={false}
     date="2021-02-21"
     addItemLoading={false}
     openSettingModal={false}

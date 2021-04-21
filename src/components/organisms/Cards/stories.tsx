@@ -9,6 +9,8 @@ const props = (loading: boolean): Props => ({
   onItem: mockFn('onItem'),
   onAddItem: mockFn('onAddItem'),
   loading,
+  addItemLoading: false,
+  date: '2021-02-21',
 });
 
 storiesOf('organisms/Cards', module)

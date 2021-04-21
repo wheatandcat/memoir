@@ -1,7 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { useItemsByDateLazyQuery } from 'queries/api/index';
 import { homeDateState, homeItemsState } from 'store/atoms';
+import usePrevious from 'hooks/usePrevious';
 
 const useHomeItems = () => {
   const [
@@ -10,8 +11,11 @@ const useHomeItems = () => {
   ] = useItemsByDateLazyQuery();
   const homeDate = useRecoilValue(homeDateState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
+  const [apiLoading, setApiLoading] = useState(true);
+  const prevLoading = usePrevious(loading);
 
   useEffect(() => {
+    setApiLoading(true);
     getItemsByDate({
       variables: {
         date: homeDate.date,
@@ -20,7 +24,7 @@ const useHomeItems = () => {
   }, [homeDate.date, getItemsByDate]);
 
   useEffect(() => {
-    if (!loading) {
+    if (prevLoading !== null && !loading) {
       const items = (data?.itemsByDate || []).map((v) => ({
         id: v?.id || '',
         title: v?.title || '',
@@ -32,11 +36,12 @@ const useHomeItems = () => {
         updatedAt: v?.updatedAt || '',
       }));
       setHomeItemsState({ items });
+      setApiLoading(false);
     }
-  }, [loading, setHomeItemsState, data]);
+  }, [loading, prevLoading, setHomeItemsState, data]);
 
   return {
-    loading: loading,
+    loading: apiLoading,
     error: error,
     refetch: refetch,
   };
