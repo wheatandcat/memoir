@@ -47,3 +47,16 @@ export const homeItemsState = atom<HomeItems>({
   key: 'homeItemsState',
   default: initialHomeItemsState(),
 });
+
+export type AuthUser = {
+  uid: string | null;
+};
+
+const initialAuthUserState = (): AuthUser => ({
+  uid: null,
+});
+
+export const authUserState = atom<AuthUser>({
+  key: 'authUserState',
+  default: initialAuthUserState(),
+});

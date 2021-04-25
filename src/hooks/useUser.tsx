@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCreateUserMutation } from 'queries/api/index';
+import { storageKey } from 'lib/storage';
 
 const useUser = () => {
   const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ const useUser = () => {
   const userID = useRecoilValueLoadable(existUserID);
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
-      await AsyncStorage.setItem('USER_ID', createUser.id);
+      await AsyncStorage.setItem(storageKey.USER_ID_KEY, createUser.id);
       setUser({ id: createUser.id });
     },
   });
