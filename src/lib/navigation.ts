@@ -9,4 +9,6 @@ export type RootStackParamList = {
     endDate: string;
   };
   SettingLicence: undefined;
+  Login: undefined;
+  MyPage: undefined;
 };

@@ -1,13 +1,14 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
+import * as Crypto from 'expo-crypto';
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import firebase from 'lib/system/firebase';
+import 'lib/firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { storageKey } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState } from 'store/atoms';
 import Auth from 'lib/auth';
-import useIsFirstRender from 'hooks/useIsFirstRender';
 
 const auth = new Auth();
 
@@ -22,10 +23,11 @@ const nonceGen = (length: number) => {
   return result;
 };
 
+export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
+
 const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const setAuthUser = useSetRecoilState(authUserState);
-  const isFirstRender = useIsFirstRender();
   const [setup, setSetup] = useState(false);
 
   const setSession = useCallback(
@@ -61,7 +63,11 @@ const useFirebaseAuth = () => {
   );
 
   const onAppleLogin = useCallback(async () => {
-    const nonceString = nonceGen(32);
+    const nonce = nonceGen(32);
+    const digestedNonce = await Crypto.digestStringAsync(
+      Crypto.CryptoDigestAlgorithm.SHA256,
+      nonce
+    );
 
     try {
       const result = await AppleAuthentication.signInAsync({
@@ -69,12 +75,12 @@ const useFirebaseAuth = () => {
           AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
           AppleAuthentication.AppleAuthenticationScope.EMAIL,
         ],
-        state: nonceString,
+        nonce: digestedNonce,
       });
       const provider = new firebase.auth.OAuthProvider('apple.com');
       const credential = provider.credential({
         idToken: result.identityToken || '',
-        rawNonce: nonceString,
+        rawNonce: nonce,
       });
 
       await firebaseLogin(credential);
@@ -85,6 +91,13 @@ const useFirebaseAuth = () => {
     }
   }, [firebaseLogin]);
 
+  const onLogout = useCallback(async () => {
+    await auth.logout();
+    setAuthUser({
+      uid: null,
+    });
+  }, [setAuthUser]);
+
   useEffect(() => {
     if (authUserID.state === 'hasValue') {
       if (authUserID.contents) {
@@ -94,15 +107,17 @@ const useFirebaseAuth = () => {
   }, [authUserID, setAuthUser]);
 
   useEffect(() => {
-    if (!isFirstRender) return;
-
-    firebase.auth().onAuthStateChanged(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(() => {
       setSetup(true);
     });
-  }, [isFirstRender]);
+
+    return () => unsubscribe();
+  }, []);
+
   return {
     setup,
-    onAppleLogin: onAppleLogin,
+    onAppleLogin,
+    onLogout,
   };
 };
 

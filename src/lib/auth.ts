@@ -38,6 +38,13 @@ class Auth {
 
     return this.setSession(true);
   };
+  logout = async () => {
+    await firebase.auth().signOut();
+
+    await AsyncStorage.removeItem(storageKey.AUTH_UID_KEY);
+    await AsyncStorage.removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+    await AsyncStorage.removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+  };
 }
 
 export default Auth;

@@ -24,6 +24,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     userInterfaceStyle: 'automatic',
     buildNumber: dayjs().unix().toString(),
     bundleIdentifier: 'com.wheatandcat.memoir.beta',
+    infoPlist: {
+      CFBundleAllowMixedLocalizations: true,
+    },
   },
   android: {
     adaptiveIcon: {

@@ -8077,6 +8077,11 @@ expo-constants@~10.1.3:
     "@expo/config" "^3.3.35"
     uuid "^3.3.2"
 
+expo-crypto@~9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-9.1.0.tgz#be394dfab8d93dda6ee2bc17c0bb6d0c7a50689a"
+  integrity sha512-5N3W/B4L7sx8IT/DhUjkSlbAfY0eQXo9ApiQ/67n2VjUNW/NKna4b1kCvAIjetPuqugAR2CFLltcYIc8PinRmA==
+
 expo-error-recovery@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/expo-error-recovery/-/expo-error-recovery-2.1.0.tgz#7baf6cabc53162cdd2b36edb20b8aa6d1cdc1107"

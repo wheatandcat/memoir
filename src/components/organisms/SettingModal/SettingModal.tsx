@@ -23,10 +23,16 @@ const SettingModal: React.FC<Props> = (props) => {
     navigation.navigate('SettingLicence');
   }, [navigation, props]);
 
+  const onMyPage = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('MyPage');
+  }, [navigation, props]);
+
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
       <View style={styles.root} p={3} pt={4}>
-        <TouchableOpacity style={styles.menuText}>
+        <TouchableOpacity style={styles.menuText} onPress={onMyPage}>
           <View>
             <Text>アカウント設定</Text>
           </View>

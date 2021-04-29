@@ -1,6 +1,7 @@
 // if you use expo remove this line
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
+import { RecoilRoot } from 'recoil';
 import {
   getStorybookUI,
   configure,
@@ -34,15 +35,17 @@ AppRegistry.registerComponent('%APP_NAME%', () => StorybookUIRoot);
 class StorybookUIHMRRoot extends Component {
   render() {
     return (
-      <NavigationContainer independent={true}>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="StorybookUIRoot"
-            component={StorybookUIRoot}
-            options={{ header: () => null }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <RecoilRoot>
+        <NavigationContainer independent={true}>
+          <Stack.Navigator>
+            <Stack.Screen
+              name="StorybookUIRoot"
+              component={StorybookUIRoot}
+              options={{ header: () => null }}
+            />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </RecoilRoot>
     );
   }
 }

@@ -2,14 +2,23 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
-import Text from 'components/atoms/Text';
+import * as AppleAuthentication from 'expo-apple-authentication';
+import { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 
-export type Props = {};
+export type Props = {
+  onAppleLogin: UseFirebaseAuth['onAppleLogin'];
+};
 
-const Page: React.FC<Props> = () => {
+const Page: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      <Text>テスト</Text>
+      <AppleAuthentication.AppleAuthenticationButton
+        buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
+        buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+        cornerRadius={5}
+        style={styles.button}
+        onPress={props.onAppleLogin}
+      />
     </View>
   );
 };
@@ -19,7 +28,11 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.background.main,
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    padding: theme().space(4),
+  },
+  button: {
+    width: 200,
+    height: 44,
   },
 });
 

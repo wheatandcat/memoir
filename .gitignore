@@ -19,5 +19,5 @@ storyLoader.js
 schema.json
 src/queries/api/index.ts
 schema.graphqls
-
+GoogleService-Info.plist
 .env
