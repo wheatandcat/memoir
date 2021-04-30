@@ -10,7 +10,7 @@ type Props = {};
 export type ConnectedType = {};
 
 const Connected: React.FC<Props> = () => {
-  const { setup, onAppleLogin } = useFirebaseAuth();
+  const { setup, onAppleLogin, onGoogleLogin } = useFirebaseAuth();
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
   const navigation = useNavigation();
@@ -25,7 +25,9 @@ const Connected: React.FC<Props> = () => {
     return null;
   }
 
-  return <TemplateLogin onAppleLogin={onAppleLogin} />;
+  return (
+    <TemplateLogin onAppleLogin={onAppleLogin} onGoogleLogin={onGoogleLogin} />
+  );
 };
 
 export default memo(Connected);

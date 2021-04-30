@@ -1,7 +1,11 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
+import * as WebBrowser from 'expo-web-browser';
+import * as Google from 'expo-auth-session/providers/google';
+import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
 import { useRecoilValueLoadable, useSetRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
+import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
 import 'lib/firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -11,6 +15,8 @@ import { authUserState } from 'store/atoms';
 import Auth from 'lib/auth';
 
 const auth = new Auth();
+
+WebBrowser.maybeCompleteAuthSession();
 
 const nonceGen = (length: number) => {
   let result = '';
@@ -29,6 +35,11 @@ const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const setAuthUser = useSetRecoilState(authUserState);
   const [setup, setSetup] = useState(false);
+
+  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
+    responseType: ResponseType.IdToken,
+    expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
+  });
 
   const setSession = useCallback(
     async (refresh = false) => {
@@ -62,6 +73,17 @@ const useFirebaseAuth = () => {
     [setSession]
   );
 
+  useEffect(() => {
+    if (response?.type === 'success') {
+      const { id_token } = response.params;
+      const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+      firebaseLogin(credential);
+    } else if (response?.type === 'error') {
+      console.log('error:', response);
+      Alert.alert('ログインに失敗しました');
+    }
+  }, [response, firebaseLogin]);
+
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
@@ -83,13 +105,16 @@ const useFirebaseAuth = () => {
         rawNonce: nonce,
       });
 
-      await firebaseLogin(credential);
-      return await AsyncStorage.getItem(storageKey.AUTH_UID_KEY);
+      firebaseLogin(credential);
     } catch (e) {
-      console.log(e);
-      return null;
+      console.log('error:', e);
+      Alert.alert('ログインに失敗しました');
     }
   }, [firebaseLogin]);
+
+  const onGoogleLogin = useCallback(() => {
+    promptAsync();
+  }, [promptAsync]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();
@@ -116,7 +141,9 @@ const useFirebaseAuth = () => {
 
   return {
     setup,
+    request,
     onAppleLogin,
+    onGoogleLogin,
     onLogout,
   };
 };

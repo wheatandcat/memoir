@@ -5,6 +5,7 @@ import 'dayjs/locale/ja';
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'memoir',
+  scheme: 'memoir',
   slug: 'memoir',
   version: '1.0.0',
   orientation: 'portrait',
@@ -23,12 +24,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     usesAppleSignIn: true,
     userInterfaceStyle: 'automatic',
     buildNumber: dayjs().unix().toString(),
-    bundleIdentifier: 'com.wheatandcat.memoir.beta',
+    bundleIdentifier: 'com.wheatandcat.memoir',
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
     },
   },
   android: {
+    package: 'com.wheatandcat.memoir',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#FFFFFF',
