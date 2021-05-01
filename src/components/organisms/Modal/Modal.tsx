@@ -6,7 +6,6 @@ import Text from 'components/atoms/Text';
 import Button from 'components/atoms/Button';
 import RNModal from 'react-native-modal';
 import IconButton from 'components/molecules/IconButton';
-import Image from 'components/atoms/Image';
 
 type Props = {
   isVisible: boolean;
@@ -36,13 +35,6 @@ const Modal: React.FC<Props> = (props) => {
               <Text variants="middle" textAlign="center">
                 {props.title}
               </Text>
-            </View>
-            <View pt={0} pl={2}>
-              <Image
-                source={require('../../../img/icon/icon_calender.png')}
-                width={23}
-                height={23}
-              />
             </View>
           </View>
         </View>
