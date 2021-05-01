@@ -9,10 +9,11 @@ type Props = {
   error?: ApolloError;
 };
 
-const Error: React.FC<Props> = () => {
+const Error: React.FC<Props> = (props) => {
   return (
     <View>
       <Text style={styles.text}>エラーが発生しました</Text>
+      <Text>{props.error}</Text>
     </View>
   );
 };
