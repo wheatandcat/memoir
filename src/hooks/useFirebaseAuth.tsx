@@ -34,6 +34,7 @@ export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const setAuthUser = useSetRecoilState(authUserState);
+
   const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
