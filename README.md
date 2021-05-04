@@ -24,10 +24,15 @@ $ base64 -i .env | pbcopy
 
 ## 新規画面作成
 ```
-$ yarn hygen newPage new
+$ yarn hygen page new
+```
+
+## コンポーネント作成
+```
+$ yarn hygen component new
 ```
 
 ## テストコード追加
 ```
-$ yarn hygen testCode new
+$ yarn hygen test new
 ```
