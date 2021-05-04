@@ -1,22 +1,25 @@
+---
+to: <%= absPath %>/index.tsx
+---
 import React, { memo } from 'react';
-import TemplateHome from 'components/templates/Setting/Licence/Page';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
-  'SettingLicence'
+  '<%= navigationName %>'
 >;
-type ScreenRouteProp = RouteProp<RootStackParamList, 'SettingLicence'>;
+type ScreenRouteProp = RouteProp<RootStackParamList, '<%= navigationName %>'>;
 
 export type Props = {
   navigation: ScreenNavigationProp;
   route: ScreenRouteProp;
 };
 
-const SettingLicence: React.FC<Props> = () => {
-  return <TemplateHome />;
+const <%= navigationName %>: React.FC<Props> = (props) => {
+  return <Connected />;
 };
 
-export default memo(SettingLicence);
+export default memo(<%= navigationName %>);

@@ -1,17 +1,21 @@
+---
+to: <%= absPath %>/Plain.tsx
+---
 import React, { memo } from 'react';
-import { ItemsByDateQueryHookResult as QueryHookResult } from 'queries/api/index';
 import ErrorPage from 'components/organisms/Error/Error';
-import TemplateHome from 'components/templates/Home/Page';
+import Loading from 'components/atoms/Loading';
+import Template<%= navigationName %> from '<%= templatePath %>/Page';
 import { ConnectedType } from './Connected';
 
+type QueryHookResult = any;
 export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
-
 export type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
+  if (props.loading) return <Loading />;
 
-  return <TemplateHome {...props} />;
+  return <Template<%= navigationName %> />;
 };
 
-export default memo<Props>(Plain);
+export default memo(Plain);

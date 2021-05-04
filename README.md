@@ -18,3 +18,21 @@
 ```
 $ base64 -i .env | pbcopy
 ```
+
+# コード生成
+
+
+## 新規画面作成
+```
+$ yarn hygen page new
+```
+
+## コンポーネント作成
+```
+$ yarn hygen component new
+```
+
+## テストコード追加
+```
+$ yarn hygen test new
+```

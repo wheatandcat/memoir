@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Home/index.tsx Home 正常にrenderすること 1`] = `
+<Memo(Connected)
+  navigation={
+    Object {
+      "navigate": [MockFunction],
+      "setParams": [MockFunction],
+    }
+  }
+  onCloseSettingModal={[Function]}
+  openSettingModal={false}
+  route={
+    Object {
+      "params": Object {},
+    }
+  }
+/>
+`;
