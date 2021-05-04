@@ -23,4 +23,4 @@ jobs:
       - name: codegen
         run: yarn codegen
       - name: test coverage
-        run: yarn test
+        run: TZ=Asia/Tokyo yarn test
