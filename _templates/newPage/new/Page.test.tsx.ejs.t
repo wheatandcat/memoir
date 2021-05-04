@@ -18,6 +18,3 @@ describe('components/templates/<%= componentName %>/Page.tsx', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-
-
-

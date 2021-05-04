@@ -18,3 +18,11 @@
 ```
 $ base64 -i .env | pbcopy
 ```
+
+# コード生成
+
+
+## 新規画面作成
+```
+$ yarn hygen newPage new
+```

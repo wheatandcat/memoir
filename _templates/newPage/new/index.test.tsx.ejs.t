@@ -27,6 +27,3 @@ describe('components/pages/<%= componentName %>/index.tsx', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-
-
-

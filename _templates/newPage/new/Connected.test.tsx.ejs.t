@@ -11,13 +11,10 @@ describe('components/pages/<%= componentName %>/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
+    wrapper = shallow(<Connected {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-
-
-

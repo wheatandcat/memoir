@@ -3,21 +3,21 @@ to: <%= absPath %>/__tests__/Plain.test.tsx
 ---
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Connected, { Props } from '../Plain';
+import Plain, { Props } from '../Plain';
 
-const propsData = (): Props => ({});
+const propsData = (): Props => ({
+  loading: false,
+  error: null,
+});
 
-describe('components/pages/<%= componentName %>/Connected.tsx', () => {
+describe('components/pages/<%= componentName %>/Plain.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
+    wrapper = shallow(<Plain {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
-
-
-

@@ -19,8 +19,7 @@ export type Props = {
 };
 
 const <%= navigationName %>: React.FC<Props> = (props) => {
-  return <Connected {...props}/>;
+  return <Connected />;
 };
 
 export default memo(<%= navigationName %>);
-

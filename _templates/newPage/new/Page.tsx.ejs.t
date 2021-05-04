@@ -10,9 +10,9 @@ import theme from 'config/theme';
 
 export type Props = ConnectedType & {};
 
-const Page: React.FC<Props> = (props) => {
+const Page: React.FC<Props> = () => {
   return (
-    <View>
+    <View style={styles.root}>
       <Text>test</Text>
     </View>
   );
@@ -27,5 +27,3 @@ const styles = StyleSheet.create({
 });
 
 export default memo(Page);
-
-
