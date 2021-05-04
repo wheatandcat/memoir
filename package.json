@@ -97,6 +97,7 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-native": "^3.10.0",
     "husky": "^4.0.7",
+    "hygen": "^6.0.4",
     "identity-obj-proxy": "^3.0.0",
     "jest-expo": "^41.0.0",
     "jest-expo-enzyme": "^1.0.4",
