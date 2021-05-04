@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/ItemDetail/Plain.tsx 正常にrenderすること 1`] = `
+<Memo(Page)
+  categoryID={9}
+  data={
+    Object {
+      "item": Object {
+        "categoryID": 9,
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "date": "2021-01-01T00:00:00+09:00",
+        "dislike": false,
+        "id": "1",
+        "like": false,
+        "title": "買い物",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+      },
+    }
+  }
+  date="2020-01-01"
+  dislike={false}
+  like={false}
+  loading={false}
+  onChangeDate={[MockFunction]}
+  onCloseUpdateItem={[MockFunction]}
+  onDeleteItem={[MockFunction]}
+  onOpenUpdateItem={[MockFunction]}
+  onUpdateItem={[MockFunction]}
+  openUpdateItemModal={false}
+  title="買い物"
+  updateItemLoading={false}
+/>
+`;

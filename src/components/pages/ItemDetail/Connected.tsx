@@ -19,7 +19,7 @@ import Plain from './Plain';
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = {
+export type Props = {
   itemID: string;
   date: string;
 };
