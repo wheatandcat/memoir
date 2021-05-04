@@ -33,7 +33,7 @@ const initialState = (): State => ({
   openSettingModal: false,
 });
 
-const Home: React.FC<Props> = (props) => {
+export const Home: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
   React.useLayoutEffect(() => {

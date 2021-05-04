@@ -1,4 +1,5 @@
 import React, { memo, useCallback, useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
@@ -6,13 +7,12 @@ import 'dayjs/locale/ja';
 import { useCreateItemMutation, NewItem } from 'queries/api/index';
 import { homeDateState, homeItemsState, Item } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
-import { Props as IndexProps } from './';
 import Plain from './Plain';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
-type Props = IndexProps & {
+export type Props = {
   openSettingModal: boolean;
   onCloseSettingModal: () => void;
 };
@@ -46,6 +46,7 @@ const Connected: React.FC<Props> = (props) => {
   const [homeDate, setHomeDate] = useRecoilState(homeDateState);
   const homeItems = useRecoilValue(homeItemsState);
   const { loading, error, refetch } = useHomeItems();
+  const navigation = useNavigation();
 
   const onOpenAddItem = useCallback(() => {
     setState((s) => ({ ...s, openAddItemModal: true }));
@@ -85,20 +86,20 @@ const Connected: React.FC<Props> = (props) => {
 
   const onItem = useCallback(
     (itemID: string) => {
-      props.navigation.navigate('ItemDetail', {
+      navigation.navigate('ItemDetail', {
         id: itemID,
         date: homeDate.date,
       });
     },
-    [props.navigation, homeDate.date]
+    [navigation, homeDate.date]
   );
 
   const onMemoir = useCallback(() => {
-    props.navigation.navigate('Memoir', {
-      startDate: dayjs().add(-7, 'day').format('YYYY-MM-DDT00:00:00+09:00'),
+    navigation.navigate('Memoir', {
+      startDate: dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00'),
       endDate: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
     });
-  }, [props.navigation]);
+  }, [navigation]);
 
   return (
     <Plain

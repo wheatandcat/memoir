@@ -26,3 +26,8 @@ $ base64 -i .env | pbcopy
 ```
 $ yarn hygen newPage new
 ```
+
+## テストコード追加
+```
+$ yarn hygen testCode new
+```

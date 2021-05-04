@@ -16,7 +16,7 @@ dayjs.extend(advancedFormat);
 
 type Item = NonNullable<ItemQuery['item']>;
 
-type Props = Pick<Item, 'categoryID' | 'title' | 'like' | 'dislike'> & {
+export type Props = Pick<Item, 'categoryID' | 'title' | 'like' | 'dislike'> & {
   loading: boolean;
 } & ConnectedType;
 
