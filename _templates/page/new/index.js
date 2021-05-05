@@ -12,6 +12,7 @@ module.exports = {
       const path = `pages/${component_name}`;
       const navigationName = component_name.replace('/', '');
       const absPath = `src/components/${path}`;
+      const storiesPath = `templates/${component_name}`;
       const templatePath = `src/components/templates/${component_name}`;
       return {
         ...answers,
@@ -19,6 +20,7 @@ module.exports = {
         navigationName,
         absPath,
         templatePath,
+        storiesPath,
         componentName: component_name,
       };
     });

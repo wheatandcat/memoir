@@ -20,8 +20,8 @@ const icons = [
   require('../../../img/icon/icon_unicorn.png'),
 ];
 
-const Icon: React.FC<Props> = () => {
-  const no = dayjs().unix() % 10;
+const Icon: React.FC<Props> = (props) => {
+  const no = dayjs(props.date).unix() % 10;
 
   return (
     <Image source={icons[no]} width={90} height={90} resizeMode="contain" />

@@ -7,6 +7,6 @@ import <%= navigationName %>, { Props } from './<%= component_name %>';
 
 const props = (): Props => ({});
 
-storiesOf('<%= absPath %>', module).add('<%= component_name %>', () => (
+storiesOf('<%= storiesPath %>', module).add('<%= component_name %>', () => (
   <<%= navigationName %> {...props()} />
 ));

@@ -16,7 +16,7 @@ const InputDateWrap: React.FC<Props> = (props) => {
     <>
       <FocusAwareStatusBar
         backgroundColor={theme().color.primary.main}
-        barStyle="light-content"
+        style="light"
       />
       <LinearGradient
         colors={[theme().color.gradation[0], theme().color.gradation[1]]}

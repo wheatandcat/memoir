@@ -1,0 +1,88 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "marginBottom": 8,
+      }
+    }
+  >
+    <View>
+      <Memo(Category)
+        categoryID={1}
+      />
+    </View>
+    <View
+      pl={3}
+    >
+      <View
+        style={
+          Array [
+            Object {},
+            Object {
+              "width": 620,
+            },
+          ]
+        }
+      >
+        <Text
+          ellipsizeMode="tail"
+          fontFamily="RobotoCondensed-Bold"
+          lineHeight={25}
+          numberOfLines={2}
+          variants="body"
+        >
+          title
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "paddingVertical": 8,
+          }
+        }
+      >
+        <Image
+          height={20}
+          source={null}
+          width={20}
+        />
+        <View
+          pl={2}
+        >
+          <Text
+            fontFamily="RobotoCondensed-Bold"
+            variants="small"
+          >
+            test
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View>
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        size="sm"
+        textAlign="center"
+        variants="body"
+      >
+        0
+      </Text>
+      <Memo(IconButton)
+        color="#D8D7D6"
+        name="favorite"
+        onPress={[Function]}
+        size="base"
+      />
+    </View>
+  </View>
+</ForwardRef>
+`;

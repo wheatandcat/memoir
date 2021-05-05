@@ -21,6 +21,8 @@ const Plain: React.FC<Props> = (props) => {
 
   return (
     <TemplateMemoir
+      startDate={props.startDate}
+      endDate={props.endDate}
       loading={props.loading}
       onItem={props.onItem}
       items={props.items}
