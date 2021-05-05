@@ -32,7 +32,7 @@ const WithProvider = () => {
         <Stack.Screen
           name="Memoir"
           component={Memoir}
-          options={HomeScreenOption()}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="SettingLicence"

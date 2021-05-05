@@ -23,8 +23,16 @@ module.exports = {
       const path = `/${atomic}/${dir}`;
       const absPath = `src/components${path}`;
       const testName = `components${path}/${component_name}`;
+      const storiesPath = `${atomic}/${dir}`;
       const navigationName = component_name.replace('/', '');
-      return { ...answers, path, absPath, testName, navigationName };
+      return {
+        ...answers,
+        path,
+        absPath,
+        testName,
+        storiesPath,
+        navigationName,
+      };
     });
   },
 };

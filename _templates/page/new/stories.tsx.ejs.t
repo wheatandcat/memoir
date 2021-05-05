@@ -7,6 +7,6 @@ import Page, { Props } from './Page';
 
 const props = (): Props => ({});
 
-storiesOf('<%= templatePath %>', module).add('Page', () => (
+storiesOf('<%= storiesPath %>', module).add('Page', () => (
   <Page {...props()} />
 ));

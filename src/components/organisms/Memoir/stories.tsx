@@ -5,7 +5,8 @@ import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
 import DateCards, { Props } from './DateCards';
-import { items } from '__mockData__/item';
+import { items, item } from '__mockData__/item';
+import Card from './Card';
 
 const props = (): Props => ({
   items: items(),
@@ -16,6 +17,8 @@ const props = (): Props => ({
   onItem: mockFn('onItem'),
   onLoadMore: mockFn('onLoadMore'),
   loading: false,
+  startDate: '2020-01-01',
+  endDate: '2020-01-07',
 });
 
 storiesOf('organisms/Memoir/DateCards', module)
@@ -29,6 +32,14 @@ storiesOf('organisms/Memoir/DateCards', module)
       <DateCards {...props()} loading />
     </View>
   ));
+
+storiesOf('organisms/Memoir', module).add('Card', () => (
+  <Card
+    {...item()}
+    user={{ id: 'test', name: 'test太郎' }}
+    onPress={mockFn('onPress')}
+  />
+));
 
 const styles = StyleSheet.create({
   root: {

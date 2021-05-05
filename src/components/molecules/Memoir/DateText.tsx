@@ -2,28 +2,31 @@ import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
-import theme from 'config/theme';
 import dayjs from 'dayjs';
 import advancedFormat from 'dayjs/plugin/advancedFormat';
 import 'dayjs/locale/ja';
+import Category from 'components/atoms/Category';
+import theme from 'config/theme';
 
 dayjs.locale('ja');
 dayjs.extend(advancedFormat);
 
 type Props = {
   date: string;
+  categoryID: number;
 };
 
 const DateText: React.FC<Props> = (props) => {
   return (
-    <View style={styles.date}>
-      <View style={styles.divider} />
-      <View style={styles.dateText}>
-        <Text textAlign="center" variants="middle">
+    <View style={styles.root}>
+      <View my={3}>
+        <Category categoryID={props.categoryID} />
+      </View>
+      <View style={styles.date}>
+        <Text textAlign="center" variants="logo">
           {dayjs(props.date).format('YYYY.MM.DD / ddd')}
         </Text>
       </View>
-      <View style={styles.divider} />
     </View>
   );
 };
@@ -31,19 +34,13 @@ const DateText: React.FC<Props> = (props) => {
 export default memo(DateText);
 
 const styles = StyleSheet.create({
-  date: {
-    height: 70,
-    flexDirection: 'row',
+  root: {
     justifyContent: 'center',
     alignItems: 'center',
     width: '100%',
+    marginTop: theme().space(2),
   },
-  dateText: {
-    width: '50%',
-  },
-  divider: {
-    backgroundColor: theme().color.base.dark,
-    height: StyleSheet.hairlineWidth,
-    width: '20%',
+  date: {
+    height: 70,
   },
 });
