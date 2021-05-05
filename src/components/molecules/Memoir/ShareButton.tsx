@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import {
   StyleSheet,
-  TouchableOpacity,
+  TouchableWithoutFeedback,
   useWindowDimensions,
 } from 'react-native';
 import View from 'components/atoms/View';
@@ -18,7 +18,7 @@ const ShareButton: React.FC<Props> = (props) => {
   const style = { width: windowWidth };
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableWithoutFeedback onPress={props.onPress}>
       <View>
         <View style={[styles.memoirButton, style]}>
           <View>
@@ -26,7 +26,7 @@ const ShareButton: React.FC<Props> = (props) => {
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </TouchableWithoutFeedback>
   );
 };
 
