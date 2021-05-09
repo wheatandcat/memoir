@@ -42,6 +42,17 @@ const useFirebaseAuth = () => {
     expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
   });
 
+  const onGoogleLogin = useCallback(() => {
+    promptAsync();
+  }, [promptAsync]);
+
+  // FIXME: useIdTokenAuthRequestとRN debuggerを同時に使用するとエラーになる
+  // @see: https://github.com/expo/expo/issues/12712
+  /*
+  const request = {};
+  const onGoogleLogin = useCallback(() => {}, []);
+ */
+
   const setSession = useCallback(
     async (refresh = false) => {
       const idToken = await auth.setSession(refresh);
@@ -112,10 +123,6 @@ const useFirebaseAuth = () => {
       Alert.alert('ログインに失敗しました');
     }
   }, [firebaseLogin]);
-
-  const onGoogleLogin = useCallback(() => {
-    promptAsync();
-  }, [promptAsync]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();

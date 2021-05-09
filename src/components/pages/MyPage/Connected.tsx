@@ -18,6 +18,8 @@ const Connected: React.FC<Props> = () => {
     navigation.navigate('Login');
   }, [navigation]);
 
+  const onUpdateProfile = useCallback(() => {}, []);
+
   if (!setup) {
     return null;
   }
@@ -27,6 +29,7 @@ const Connected: React.FC<Props> = () => {
       authenticated={!!authUser.uid}
       onLogout={onLogout}
       onLogin={onLogin}
+      onUpdateProfile={onUpdateProfile}
     />
   );
 };
