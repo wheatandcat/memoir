@@ -1,0 +1,82 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F2F2F2",
+      "height": "100%",
+    }
+  }
+>
+  <View
+    mt={5}
+  >
+    <Image
+      height={125}
+      resizeMode="contain"
+      source={null}
+      width={125}
+    />
+    <View
+      my={3}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        size="sm"
+        textAlign="center"
+        variants="body"
+      >
+        写真を変更
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "justifyContent": "center",
+        "padding": 32,
+        "width": "100%",
+      }
+    }
+  >
+    <TextInput
+      defaultValue=""
+      onChangeText={[Function]}
+      placeholder="表示名"
+      returnKeyType="done"
+      style={
+        Object {
+          "fontSize": 36,
+          "textAlign": "center",
+        }
+      }
+    />
+    <View
+      my={3}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        size="sm"
+        textAlign="center"
+        variants="body"
+      >
+        表示名を入力したください
+      </Text>
+    </View>
+  </View>
+  <View
+    mb={3}
+    mt={6}
+  >
+    <Button
+      fontFamily="NotoSansJP-Bold"
+      onPress={[Function]}
+      size="lg"
+      title="保存"
+      width={200}
+    />
+  </View>
+</View>
+`;

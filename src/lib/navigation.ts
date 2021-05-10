@@ -11,4 +11,5 @@ export type RootStackParamList = {
   SettingLicence: undefined;
   Login: undefined;
   MyPage: undefined;
+  UpdateProfile: undefined;
 };

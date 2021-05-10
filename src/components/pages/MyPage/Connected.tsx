@@ -18,7 +18,9 @@ const Connected: React.FC<Props> = () => {
     navigation.navigate('Login');
   }, [navigation]);
 
-  const onUpdateProfile = useCallback(() => {}, []);
+  const onUpdateProfile = useCallback(() => {
+    navigation.navigate('UpdateProfile');
+  }, [navigation]);
 
   if (!setup) {
     return null;

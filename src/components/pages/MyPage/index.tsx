@@ -7,6 +7,7 @@ import {
 } from '@react-navigation/stack';
 import theme from 'config/theme';
 import Login from 'components/pages/Login';
+import UpdateProfile from 'components/pages/UpdateProfile';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
@@ -35,6 +36,11 @@ const RootStack = () => {
         name="Login"
         component={Login}
         options={MyPageScreenOption('サインイン')}
+      />
+      <Stack.Screen
+        name="UpdateProfile"
+        component={UpdateProfile}
+        options={MyPageScreenOption('プロフィール編集')}
       />
     </Stack.Navigator>
   );

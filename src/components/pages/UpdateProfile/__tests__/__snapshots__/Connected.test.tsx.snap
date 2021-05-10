@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/UpdateProfile/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Page)
+  loading={false}
+  onSave={[Function]}
+/>
+`;

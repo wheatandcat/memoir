@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F2F2F2",
+      "height": "100%",
+    }
+  }
+>
+  <View
+    m={4}
+  >
+    <Image
+      source={null}
+    />
+  </View>
+  <View
+    m={3}
+  >
+    <Button
+      fontFamily="NotoSansJP-Bold"
+      onPress={[MockFunction]}
+      size="base"
+      title="サインイン"
+      width={220}
+    />
+  </View>
+</View>
+`;
