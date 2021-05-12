@@ -3,7 +3,7 @@ import View from 'components/atoms/View';
 import { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import NotAuthenticated from 'components/organisms/MyPage/NotAuthenticated';
 import Authenticated from 'components/organisms/MyPage/Authenticated';
-import { User } from 'queries/api/index';
+import { User } from 'store/atoms';
 
 export type Props = {
   user?: User;

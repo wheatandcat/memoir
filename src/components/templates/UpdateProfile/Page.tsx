@@ -7,8 +7,10 @@ import Image from 'components/atoms/Image';
 import Button from 'components/atoms/Button';
 import TextInput from 'components/atoms/TextInput';
 import theme from 'config/theme';
+import { User } from 'store/atoms';
 
 export type Props = ConnectedType & {
+  user: User;
   loading: boolean;
 };
 
@@ -16,12 +18,12 @@ type State = {
   displayName: string;
 };
 
-const initialState = () => ({
-  displayName: '',
+const initialState = (user: User) => ({
+  displayName: user.displayName,
 });
 
 const Page: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>(initialState());
+  const [state, setState] = useState<State>(initialState(props.user));
 
   return (
     <View style={styles.root}>
@@ -61,7 +63,7 @@ const Page: React.FC<Props> = (props) => {
           width={200}
           disabled={props.loading}
           loading={props.loading}
-          onPress={() => props.onSave()}
+          onPress={() => props.onSave(state)}
         />
       </View>
     </View>

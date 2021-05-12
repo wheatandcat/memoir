@@ -4,5 +4,11 @@ exports[`components/pages/UpdateProfile/Connected.tsx 正常にrenderするこ�
 <Memo(Page)
   loading={false}
   onSave={[Function]}
+  user={
+    Object {
+      "displayName": "test-name",
+      "id": "test-id",
+    }
+  }
 />
 `;

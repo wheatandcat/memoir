@@ -5,17 +5,21 @@ import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useCreateUserMutation } from 'queries/api/index';
+import { useCreateUserMutation, useUserLazyQuery } from 'queries/api/index';
 import { storageKey } from 'lib/storage';
+import usePrevious from 'hooks/usePrevious';
 
 const useUser = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
+  const [getUser, userUserQuery] = useUserLazyQuery();
+  const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
+
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
       await AsyncStorage.setItem(storageKey.USER_ID_KEY, createUser.id);
-      setUser({ id: createUser.id });
+      setUser({ id: createUser.id, displayName: '' });
     },
   });
 
@@ -37,9 +41,10 @@ const useUser = () => {
       if (user.id) {
         return;
       }
-      setUser({ id });
+      getUser();
+      setUser({ id, displayName: '' });
     },
-    [setUser, user.id]
+    [setUser, user.id, getUser]
   );
 
   useEffect(() => {
@@ -51,6 +56,17 @@ const useUser = () => {
       setTimeout(() => setLoading(false), 1);
     }
   }, [userID, setup]);
+
+  useEffect(() => {
+    if (prevUserUserQueryLoading && !userUserQuery.loading) {
+      if (userUserQuery.data?.user?.id) {
+        setUser((s) => ({
+          ...s,
+          displayName: userUserQuery.data?.user?.displayName || '',
+        }));
+      }
+    }
+  }, [userUserQuery, setUser, prevUserUserQueryLoading]);
 
   return {
     user,

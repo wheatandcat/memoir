@@ -42,7 +42,7 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
     }
   >
     <TextInput
-      defaultValue=""
+      defaultValue="test-name"
       onChangeText={[Function]}
       placeholder="表示名"
       returnKeyType="done"
@@ -71,7 +71,9 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
     mt={6}
   >
     <Button
+      disabled={false}
       fontFamily="NotoSansJP-Bold"
+      loading={false}
       onPress={[Function]}
       size="lg"
       title="保存"

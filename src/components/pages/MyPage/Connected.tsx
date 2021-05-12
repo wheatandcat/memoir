@@ -4,6 +4,7 @@ import TemplateMyPage from 'components/templates/MyPage/Page';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { useRecoilValue } from 'recoil';
 import { authUserState } from 'store/atoms';
+import { userState } from 'store/atoms';
 
 type Props = {};
 
@@ -12,6 +13,7 @@ export type ConnectedType = {};
 const Connected: React.FC<Props> = () => {
   const { setup, onLogout } = useFirebaseAuth();
   const authUser = useRecoilValue(authUserState);
+  const user = useRecoilValue(userState);
   const navigation = useNavigation();
 
   const onLogin = useCallback(() => {
@@ -29,6 +31,7 @@ const Connected: React.FC<Props> = () => {
   return (
     <TemplateMyPage
       authenticated={!!authUser.uid}
+      user={user}
       onLogout={onLogout}
       onLogin={onLogin}
       onUpdateProfile={onUpdateProfile}

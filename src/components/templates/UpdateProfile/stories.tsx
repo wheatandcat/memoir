@@ -4,6 +4,10 @@ import { mockFn } from 'storyBookUtils/index';
 import Page, { Props } from './Page';
 
 const props = (): Props => ({
+  user: {
+    id: 'test-id',
+    displayName: 'test-name',
+  },
   loading: false,
   onSave: mockFn('onSave'),
 });

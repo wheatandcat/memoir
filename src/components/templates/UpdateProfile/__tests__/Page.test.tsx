@@ -4,6 +4,10 @@ import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   loading: false,
+  user: {
+    id: 'test-id',
+    displayName: 'test-name',
+  },
   onSave: jest.fn(),
 });
 

@@ -5,7 +5,7 @@ import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Image from 'components/atoms/Image';
-import { User } from 'queries/api/index';
+import { User } from 'store/atoms';
 
 export type Props = {
   user: User;
@@ -22,7 +22,7 @@ const Authenticated: React.FC<Props> = (props) => {
       <View m={4}>
         <TouchableOpacity onPress={props.onUpdateProfile}>
           <View style={styles.userInfo}>
-            <Text>{props.user.displayName}</Text>
+            <Text>{props.user?.displayName || '表示名の設定がありません'}</Text>
             <MaterialIcons
               name="chevron-right"
               size={23}
