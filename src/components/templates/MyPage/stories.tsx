@@ -6,6 +6,7 @@ import Page, { Props } from './Page';
 const props = (): Props => ({
   onLogin: mockFn('onLogin'),
   onLogout: mockFn('onLogout'),
+  onUpdateProfile: mockFn('onUpdateProfile'),
 });
 
 storiesOf('templates/MyPage', module)
