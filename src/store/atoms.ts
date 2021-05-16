@@ -12,11 +12,13 @@ dayjs.extend(advancedFormat);
 export type User = {
   id: string | null;
   displayName: string;
+  image: string;
 };
 
 const initialUserState = (): User => ({
   id: null,
   displayName: '',
+  image: '',
 });
 
 export const userState = atom<User>({

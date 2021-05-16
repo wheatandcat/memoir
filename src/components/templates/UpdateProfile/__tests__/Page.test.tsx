@@ -7,6 +7,7 @@ const propsData = (): Props => ({
   user: {
     id: 'test-id',
     displayName: 'test-name',
+    image: '',
   },
   onSave: jest.fn(),
 });

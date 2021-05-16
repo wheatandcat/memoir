@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { RecoilRoot } from 'recoil';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import makeApolloClient from 'lib/apollo';
 import useIsFirstRender from 'hooks/useIsFirstRender';
@@ -27,11 +28,13 @@ function App() {
   }
 
   return (
-    <ApolloProvider client={client}>
-      <RecoilRoot>
-        <WithProvider />
-      </RecoilRoot>
-    </ApolloProvider>
+    <ActionSheetProvider>
+      <ApolloProvider client={client}>
+        <RecoilRoot>
+          <WithProvider />
+        </RecoilRoot>
+      </ApolloProvider>
+    </ActionSheetProvider>
   );
 }
 

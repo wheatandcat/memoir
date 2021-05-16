@@ -8,11 +8,14 @@ import {
   useUpdateUserMutation,
   UpdateUserMutationVariables,
 } from 'queries/api/index';
+import { uploadImageAsync } from 'lib/image';
+import { User } from 'queries/api/index';
 
 export type Props = {};
 
 type Input = {
   displayName: string;
+  image: string;
 };
 
 export type ConnectedType = {
@@ -24,9 +27,17 @@ const Connected: React.FC<Props> = () => {
   const navigation = useNavigation();
   const [updateUserMutation, updateUserMutationData] = useUpdateUserMutation({
     async onCompleted(data) {
+      const param: Partial<User> = {
+        displayName: data.updateUser.displayName,
+      };
+
+      if (data.updateUser.image !== '') {
+        param.image = data.updateUser.image;
+      }
+
       setUser((s) => ({
         ...s,
-        displayName: data.updateUser.displayName,
+        ...param,
       }));
 
       navigation.goBack();
@@ -40,12 +51,20 @@ const Connected: React.FC<Props> = () => {
   const onSave = useCallback(
     async (input: Input) => {
       const variables: UpdateUserMutationVariables = {
-        input: input,
+        input: {
+          displayName: input.displayName,
+          image: '',
+        },
       };
+
+      if (input.image !== '' && user.image !== input.image) {
+        const image = await uploadImageAsync(input.image);
+        variables.input.image = image;
+      }
 
       updateUserMutation({ variables });
     },
-    [updateUserMutation]
+    [updateUserMutation, user.image]
   );
 
   return (

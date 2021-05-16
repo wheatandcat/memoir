@@ -13,8 +13,8 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
   <View
     mt={4}
   >
-    <Image
-      source={null}
+    <Memo(UserImage)
+      image=""
     />
   </View>
   <View

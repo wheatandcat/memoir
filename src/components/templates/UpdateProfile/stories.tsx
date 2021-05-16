@@ -7,6 +7,7 @@ const props = (): Props => ({
   user: {
     id: 'test-id',
     displayName: 'test-name',
+    image: '',
   },
   loading: false,
   onSave: mockFn('onSave'),
