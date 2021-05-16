@@ -1,10 +1,12 @@
 import firebase from 'lib/system/firebase';
 import 'lib/firebase';
 import * as ImageManipulator from 'expo-image-manipulator';
-import { v4 as uuidv4 } from 'uuid';
 import * as FileSystem from 'expo-file-system';
 
-export const uploadImageAsync = async (uri: string): Promise<string> => {
+export const uploadImageAsync = async (
+  uri: string,
+  fileName: string
+): Promise<string> => {
   console.log('uri:', uri);
 
   const blob: any = await new Promise((resolve, reject) => {
@@ -21,7 +23,7 @@ export const uploadImageAsync = async (uri: string): Promise<string> => {
     xhr.send(null);
   });
 
-  const ref = firebase.storage().ref().child(uuidv4());
+  const ref = firebase.storage().ref().child(fileName);
   const snapshot = await ref.put(blob);
 
   blob.close();

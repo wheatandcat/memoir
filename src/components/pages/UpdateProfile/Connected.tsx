@@ -2,6 +2,7 @@ import React, { memo, useCallback } from 'react';
 import { Alert } from 'react-native';
 import { useRecoilState } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
+import { v4 as uuidv4 } from 'uuid';
 import TemplateUpdateProfile from 'components/templates/UpdateProfile/Page';
 import { userState } from 'store/atoms';
 import {
@@ -58,13 +59,13 @@ const Connected: React.FC<Props> = () => {
       };
 
       if (input.image !== '' && user.image !== input.image) {
-        const image = await uploadImageAsync(input.image);
+        const image = await uploadImageAsync(input.image, user?.id || uuidv4());
         variables.input.image = image;
       }
 
       updateUserMutation({ variables });
     },
-    [updateUserMutation, user.image]
+    [updateUserMutation, user.image, user.id]
   );
 
   return (
