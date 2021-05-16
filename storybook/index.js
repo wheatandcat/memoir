@@ -8,6 +8,7 @@ import {
   addDecorator,
 } from '@storybook/react-native';
 import { withKnobs } from '@storybook/addon-knobs';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { loadStories } from './storyLoader';
@@ -35,17 +36,19 @@ AppRegistry.registerComponent('%APP_NAME%', () => StorybookUIRoot);
 class StorybookUIHMRRoot extends Component {
   render() {
     return (
-      <RecoilRoot>
-        <NavigationContainer independent={true}>
-          <Stack.Navigator>
-            <Stack.Screen
-              name="StorybookUIRoot"
-              component={StorybookUIRoot}
-              options={{ header: () => null }}
-            />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </RecoilRoot>
+      <ActionSheetProvider>
+        <RecoilRoot>
+          <NavigationContainer independent={true}>
+            <Stack.Navigator>
+              <Stack.Screen
+                name="StorybookUIRoot"
+                component={StorybookUIRoot}
+                options={{ header: () => null }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </RecoilRoot>
+      </ActionSheetProvider>
     );
   }
 }

@@ -10,28 +10,10 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
     }
   }
 >
-  <View
-    mt={5}
-  >
-    <Image
-      height={125}
-      resizeMode="contain"
-      source={null}
-      width={125}
-    />
-    <View
-      my={3}
-    >
-      <Text
-        fontFamily="RobotoCondensed-Bold"
-        size="sm"
-        textAlign="center"
-        variants="body"
-      >
-        写真を変更
-      </Text>
-    </View>
-  </View>
+  <ConnectedActionSheet
+    image=""
+    onChangeImage={[Function]}
+  />
   <View
     style={
       Object {

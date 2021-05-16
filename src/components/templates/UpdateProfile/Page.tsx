@@ -1,9 +1,9 @@
 import React, { memo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { ConnectedType } from 'components/pages/UpdateProfile/Connected';
+import ProfileImage from 'components/organisms/UpdateProfile/ProfileImage';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
-import Image from 'components/atoms/Image';
 import Button from 'components/atoms/Button';
 import TextInput from 'components/atoms/TextInput';
 import theme from 'config/theme';
@@ -16,10 +16,12 @@ export type Props = ConnectedType & {
 
 type State = {
   displayName: string;
+  image: string;
 };
 
 const initialState = (user: User) => ({
   displayName: user.displayName,
+  image: user.image,
 });
 
 const Page: React.FC<Props> = (props) => {
@@ -27,19 +29,10 @@ const Page: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.root}>
-      <View mt={5}>
-        <Image
-          source={require('../../../img/icon/icon_account_default.png')}
-          width={125}
-          height={125}
-          resizeMode="contain"
-        />
-        <View my={3}>
-          <Text textAlign="center" size="sm">
-            写真を変更
-          </Text>
-        </View>
-      </View>
+      <ProfileImage
+        image={props.user.image}
+        onChangeImage={(uri) => setState((s) => ({ ...s, image: uri }))}
+      />
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="表示名"

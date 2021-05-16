@@ -4,8 +4,8 @@ import { MaterialIcons } from '@expo/vector-icons';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
-import Image from 'components/atoms/Image';
 import { User } from 'store/atoms';
+import UserImage from 'components/molecules/User/Image';
 
 export type Props = {
   user: User;
@@ -17,7 +17,7 @@ const Authenticated: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <View mt={4}>
-        <Image source={require('../../../img/icon/icon_account_default.png')} />
+        <UserImage image={props.user.image} />
       </View>
       <View m={4}>
         <TouchableOpacity onPress={props.onUpdateProfile}>

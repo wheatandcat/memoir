@@ -27,6 +27,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundleIdentifier: 'com.wheatandcat.memoir',
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
+      NSPhotoLibraryUsageDescription: 'ユーザーの画像設定に使用します',
+      NSCameraUsageDescription:
+        'ユーザーの画像設定のためにカメラを使用します。',
+      CFBundleDevelopmentRegion: 'ja_JP',
     },
   },
   android: {

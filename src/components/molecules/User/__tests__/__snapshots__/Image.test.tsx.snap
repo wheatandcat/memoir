@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/User/Image.tsx 正常にrenderすること 1`] = `
+<Fragment>
+  <Image
+    height={100}
+    source={null}
+    width={100}
+  />
+</Fragment>
+`;

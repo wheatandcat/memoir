@@ -19,7 +19,7 @@ const useUser = () => {
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
       await AsyncStorage.setItem(storageKey.USER_ID_KEY, createUser.id);
-      setUser({ id: createUser.id, displayName: '' });
+      setUser({ id: createUser.id, displayName: '', image: '' });
     },
   });
 
@@ -42,7 +42,7 @@ const useUser = () => {
         return;
       }
       getUser();
-      setUser({ id, displayName: '' });
+      setUser({ id, displayName: '', image: '' });
     },
     [setUser, user.id, getUser]
   );
@@ -63,6 +63,7 @@ const useUser = () => {
         setUser((s) => ({
           ...s,
           displayName: userUserQuery.data?.user?.displayName || '',
+          image: userUserQuery.data?.user?.image || '',
         }));
       }
     }
