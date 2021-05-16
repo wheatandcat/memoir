@@ -80,7 +80,9 @@ const ProfileImage: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <View mt={5}>
-        <UserImage image={image} />
+        <TouchableOpacity onPress={onUpdateImage}>
+          <UserImage image={image} />
+        </TouchableOpacity>
         <View my={3}>
           <TouchableOpacity onPress={onUpdateImage}>
             <Text textAlign="center" size="sm">

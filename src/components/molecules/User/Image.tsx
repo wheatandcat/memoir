@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
 import Image from 'components/atoms/Image';
+import theme from 'config/theme';
 
 export type Props = {
   image: string | null;
@@ -31,6 +32,8 @@ const UserImage: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   image: {
     borderRadius: 60,
+    borderWidth: StyleSheet.hairlineWidth,
+    borderColor: theme().color.base.main,
   },
 });
 
