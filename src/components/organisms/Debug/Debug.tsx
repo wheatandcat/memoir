@@ -11,6 +11,9 @@ import Divider from 'components/atoms/Divider';
 import TextInput from 'components/atoms/TextInput';
 import Button from 'components/atoms/Button';
 import theme from 'config/theme';
+import Auth from 'lib/auth';
+
+const auth = new Auth();
 
 type Props = {};
 
@@ -22,6 +25,13 @@ const Menu: React.FC<Props> = () => {
     Clipboard.setString(user.id || '');
     Alert.alert('コピーしました');
   }, [user.id]);
+
+  const onCopyToken = useCallback(async () => {
+    const token = await auth.getIdToken();
+
+    Clipboard.setString(`Bearer ${token}`);
+    Alert.alert('コピーしました');
+  }, []);
 
   const onChangeUserID = useCallback(async () => {
     if (!userID || userID === '') {
@@ -42,6 +52,12 @@ const Menu: React.FC<Props> = () => {
       <TouchableOpacity onPress={onCopyUserID}>
         <View>
           <Text>ユーザーIDをコピーする</Text>
+        </View>
+      </TouchableOpacity>
+      <Divider my={3} />
+      <TouchableOpacity onPress={onCopyToken}>
+        <View>
+          <Text>トークンをコピーする</Text>
         </View>
       </TouchableOpacity>
       <Divider my={3} />
