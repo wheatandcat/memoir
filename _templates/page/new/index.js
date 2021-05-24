@@ -4,7 +4,7 @@ module.exports = {
       {
         type: 'input',
         name: 'component_name',
-        message: 'テストを作成する「ディレクトリ名」を指定してください。',
+        message: 'ページを作成する「ディレクトリ名」を指定してください。',
       },
     ];
     return inquirer.prompt(questions).then((answers) => {

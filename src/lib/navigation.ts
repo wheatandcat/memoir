@@ -12,4 +12,5 @@ export type RootStackParamList = {
   Login: undefined;
   MyPage: undefined;
   UpdateProfile: undefined;
+  SettingAddShareUser: undefined;
 };
