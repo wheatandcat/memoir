@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/AddShareUser/InputModal.tsx 正常にrenderすること 1`] = `
+<Modal
+  buttonTitle="確認"
+  disabledButton={true}
+  height={320}
+  isVisible={true}
+  onClose={[MockFunction]}
+  title="共有メンバー追加"
+>
+  <View
+    px={3}
+    py={2}
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "width": 320,
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "alignItems": "center",
+            "paddingBottom": 8,
+            "paddingTop": 16,
+          }
+        }
+      >
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          タスクを共有したいユーザーの
+          
+
+          招待コードを入力してください
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "marginLeft": 16,
+            "marginTop": 32,
+            "width": 280,
+          }
+        }
+      >
+        <Memo(InputCode)
+          onChange={[Function]}
+          value=""
+        />
+      </View>
+    </View>
+  </View>
+</Modal>
+`;

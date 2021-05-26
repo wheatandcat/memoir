@@ -4,33 +4,25 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Button from 'components/atoms/Button';
 import theme from 'config/theme';
-import UserImage from 'components/molecules/User/Image';
 
-export type Props = {};
+export type Props = {
+  onOpen: () => void;
+};
 
-const InviteCard: React.FC<Props> = () => {
+const InputInvite: React.FC<Props> = (props) => {
   return (
     <View style={styles.card}>
       <View style={styles.inner}>
-        <View style={styles.user}>
-          <UserImage image={''} size={80} />
-          <View py={3}>
-            <Text size="sm">田中太郎</Text>
-          </View>
+        <View mb={5}>
+          <Text textAlign="center">共有メンバーを追加</Text>
         </View>
         <View style={styles.invite}>
           <Text>
-            <Text size="sm" color="baseDark" textAlign="left">
-              招待コード
-            </Text>
-            {'\n'}
-            <Text size="lg" color="primary" textAlign="left">
-              AABBCCDD
-            </Text>
+            共有メンバーに追加したいユーザーの招待コードを入力してください
           </Text>
         </View>
         <View pt={4}>
-          <Button title="招待コードをコピー" onPress={() => null} />
+          <Button title="招待コードを入力" onPress={props.onOpen} />
         </View>
       </View>
     </View>
@@ -49,15 +41,10 @@ const styles = StyleSheet.create({
   inner: {
     width: 320,
   },
-  user: {
-    alignItems: 'center',
-  },
   invite: {
     alignItems: 'center',
-
-    paddingTop: theme().space(3),
-    paddingHorizontal: theme().space(5),
+    paddingVertical: theme().space(3),
   },
 });
 
-export default memo(InviteCard);
+export default memo(InputInvite);

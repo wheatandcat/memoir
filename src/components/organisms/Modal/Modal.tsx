@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView, Platform } from 'react-native';
+import { StyleSheet, ScrollView, Platform, ViewStyle } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
@@ -13,11 +13,17 @@ type Props = {
   title: string;
   buttonTitle?: string;
   disabledButton?: boolean;
+  height?: number;
   onClose: () => void;
   onPress?: () => void;
 };
 
 const Modal: React.FC<Props> = (props) => {
+  const style: ViewStyle[] = [styles.root];
+  if (props.height) {
+    style.push({ height: props.height });
+  }
+
   return (
     <RNModal
       isVisible={props.isVisible}
@@ -25,7 +31,7 @@ const Modal: React.FC<Props> = (props) => {
       animationIn="fadeInDown"
       animationOut="fadeOutUp"
     >
-      <View style={styles.root}>
+      <View style={style}>
         <View p={3} style={styles.header}>
           <View style={styles.close}>
             <IconButton name="close" onPress={props.onClose} />
