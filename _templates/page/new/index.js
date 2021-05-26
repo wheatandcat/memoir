@@ -14,12 +14,14 @@ module.exports = {
       const absPath = `src/components/${path}`;
       const storiesPath = `templates/${component_name}`;
       const templatePath = `src/components/templates/${component_name}`;
+      const templateImportPath = `components/templates/${component_name}`;
       return {
         ...answers,
         path,
         navigationName,
         absPath,
         templatePath,
+        templateImportPath,
         storiesPath,
         componentName: component_name,
       };

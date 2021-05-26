@@ -4,7 +4,7 @@ to: <%= absPath %>/Plain.tsx
 import React, { memo } from 'react';
 import ErrorPage from 'components/organisms/Error/Error';
 import Loading from 'components/atoms/Loading';
-import Template<%= navigationName %> from '<%= templatePath %>/Page';
+import Template<%= navigationName %> from '<%= templateImportPath %>/Page';
 import { ConnectedType } from './Connected';
 
 type QueryHookResult = any;

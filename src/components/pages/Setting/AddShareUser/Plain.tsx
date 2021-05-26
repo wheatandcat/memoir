@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import ErrorPage from 'components/organisms/Error/Error';
 import Loading from 'components/atoms/Loading';
-import TemplateSettingAddShareUser from 'src/components/templates/Setting/AddShareUser/Page';
+import TemplateSettingAddShareUser from 'components/templates/Setting/AddShareUser/Page';
 import { ConnectedType } from './Connected';
 
 type QueryHookResult = any;
