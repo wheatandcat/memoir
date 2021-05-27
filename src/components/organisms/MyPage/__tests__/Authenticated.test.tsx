@@ -7,6 +7,7 @@ const propsData = (): Props => ({
   user: user(),
   onUpdateProfile: jest.fn(),
   onLogout: jest.fn(),
+  onAddShareUser: jest.fn(),
 });
 
 describe('components/organisms/MyPage/Authenticated.tsx', () => {

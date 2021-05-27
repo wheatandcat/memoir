@@ -6,11 +6,16 @@ import theme from 'config/theme';
 import InviteCard from 'components/organisms/AddShareUser/InviteCard';
 import InputInvite from 'components/organisms/AddShareUser/InputInvite';
 import InputModal from 'components/organisms/AddShareUser/InputModal';
+import { Invite } from 'components/pages/Setting/AddShareUser/Connected';
 
-export type Props = ConnectedType & {};
+export type Props = ConnectedType & {
+  invite: Invite;
+};
 
-const Page: React.FC<Props> = () => {
+const Page: React.FC<Props> = (props) => {
   const [dialog, setDialog] = useState<boolean>(false);
+
+  console.log(props.invite);
 
   return (
     <>

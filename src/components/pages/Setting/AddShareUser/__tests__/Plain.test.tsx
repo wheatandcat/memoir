@@ -1,10 +1,14 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { invite } from '__mockData__/Invite';
 import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
   loading: false,
-  error: null,
+  error: undefined,
+  data: {
+    invite: invite(),
+  },
 });
 
 describe('components/pages/Setting/AddShareUser/Plain.tsx', () => {

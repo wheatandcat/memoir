@@ -1,12 +1,15 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { mockFn } from 'storyBookUtils/index';
+import { user } from '__mockData__/user';
 import Page, { Props } from './Page';
 
 const props = (): Props => ({
   onLogin: mockFn('onLogin'),
   onLogout: mockFn('onLogout'),
   onUpdateProfile: mockFn('onUpdateProfile'),
+  onAddShareUser: mockFn('onAddShareUser'),
+  user: user(),
 });
 
 storiesOf('templates/MyPage', module)

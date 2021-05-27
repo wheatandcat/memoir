@@ -1,7 +1,6 @@
 import React, { useRef, useState, useCallback, memo } from 'react';
 import {
   View,
-  ViewStyle,
   StyleSheet,
   TextInput,
   TouchableWithoutFeedback,
@@ -25,9 +24,6 @@ const InputCode: React.FC<Props> = (props) => {
   const [focused, setFocused] = useState<boolean>(false);
   const values = value.split('');
 
-  const selectedIndex =
-    value.length < CODE_LENGTH.length ? value.length : CODE_LENGTH.length - 1;
-
   const textInputRef = useRef<TextInput>(null);
 
   const handlePress = useCallback(() => {
@@ -45,8 +41,8 @@ const InputCode: React.FC<Props> = (props) => {
   const handleChange = useCallback(
     (text: string) => {
       if (value.length >= CODE_LENGTH.length) return null;
-      const r = (value + text).slice(0, CODE_LENGTH.length);
-      props.onChange(r.toUpperCase());
+
+      props.onChange(text.toUpperCase());
     },
     [value, props]
   );
@@ -61,16 +57,6 @@ const InputCode: React.FC<Props> = (props) => {
     },
     [props, value]
   );
-
-  const hideInput = !(values.length < CODE_LENGTH.length);
-
-  const inputStyle: ViewStyle[] = [
-    styles.input,
-    {
-      left: selectedIndex * boxWidth,
-      opacity: hideInput ? 0 : 1,
-    },
-  ];
 
   return (
     <View style={styles.container}>
@@ -110,14 +96,13 @@ const InputCode: React.FC<Props> = (props) => {
             );
           })}
           <TextInput
-            value=""
             autoFocus
             returnKeyType="done"
             blurOnSubmit
             ref={textInputRef}
             onFocus={handleFocus}
             onBlur={handleBlur}
-            style={inputStyle}
+            style={styles.input}
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
             selectionColor={theme().color.transparent}

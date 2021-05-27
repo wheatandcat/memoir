@@ -68,7 +68,6 @@ export default Modal;
 const styles = StyleSheet.create({
   root: {
     width: '100%',
-
     backgroundColor: theme().color.background.light,
     borderRadius: 30,
     position: 'relative',

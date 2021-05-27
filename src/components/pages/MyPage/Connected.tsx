@@ -24,6 +24,10 @@ const Connected: React.FC<Props> = () => {
     navigation.navigate('UpdateProfile');
   }, [navigation]);
 
+  const onAddShareUser = useCallback(() => {
+    navigation.navigate('SettingAddShareUser');
+  }, [navigation]);
+
   if (!setup) {
     return null;
   }
@@ -35,6 +39,7 @@ const Connected: React.FC<Props> = () => {
       onLogout={onLogout}
       onLogin={onLogin}
       onUpdateProfile={onUpdateProfile}
+      onAddShareUser={onAddShareUser}
     />
   );
 };
