@@ -233,24 +233,17 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
         returnKeyType="done"
         selectionColor="transparent"
         style={
-          Array [
-            Object {
-              "backgroundColor": "transparent",
-              "bottom": 0,
-              "color": "transparent",
-              "position": "absolute",
-              "textAlign": "center",
-              "top": 0,
-              "width": 32,
-            },
-            Object {
-              "left": 0,
-              "opacity": 1,
-            },
-          ]
+          Object {
+            "backgroundColor": "transparent",
+            "bottom": 0,
+            "color": "transparent",
+            "position": "absolute",
+            "textAlign": "center",
+            "top": 0,
+            "width": 32,
+          }
         }
         underlineColorAndroid="transparent"
-        value=""
       />
     </View>
   </TouchableWithoutFeedback>

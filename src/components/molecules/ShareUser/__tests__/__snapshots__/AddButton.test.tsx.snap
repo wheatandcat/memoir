@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/ShareUser/AddButton.tsx 正常にrenderすること 1`] = `
+<ForwardRef
+  onPress={[MockFunction]}
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D8D7D6",
+        "borderRadius": 50,
+        "height": 100,
+        "justifyContent": "center",
+        "width": 100,
+      }
+    }
+  >
+    <Icon
+      allowFontScaling={false}
+      color="#B8B8B8"
+      name="add"
+      size={50}
+    />
+  </View>
+</ForwardRef>
+`;

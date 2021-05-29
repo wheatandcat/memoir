@@ -15,7 +15,7 @@ const Plain: React.FC<Props> = (props) => {
 
   const invite = props.data?.invite as Invite;
 
-  return <TemplateSettingAddShareUser invite={invite} />;
+  return <TemplateSettingAddShareUser invite={invite} {...props} />;
 };
 
 export default memo(Plain);

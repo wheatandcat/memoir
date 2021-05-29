@@ -23,12 +23,12 @@ const makeApolloClient = async () => {
 
     if (token) {
       param.Authorization = `Bearer ${token}`;
-    }
+    } else {
+      const userID = await AsyncStorage.getItem(storageKey.USER_ID_KEY);
 
-    const userID = await AsyncStorage.getItem(storageKey.USER_ID_KEY);
-
-    if (userID) {
-      param.UserID = userID;
+      if (userID) {
+        param.UserID = userID;
+      }
     }
 
     return {

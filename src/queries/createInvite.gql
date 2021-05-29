@@ -1,0 +1,5 @@
+mutation CreateInvite {
+  createInvite {
+    code
+  }
+}

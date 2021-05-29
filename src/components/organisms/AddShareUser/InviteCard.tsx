@@ -1,39 +1,71 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Button from 'components/atoms/Button';
 import theme from 'config/theme';
 import UserImage from 'components/molecules/User/Image';
+import { User } from 'store/atoms';
+import { Invite } from 'components/pages/Setting/AddShareUser/Connected';
+import TutorialModal from './TutorialModal';
 
-export type Props = {};
+export type Props = {
+  user: User;
+  invite: Invite;
+  loading: boolean;
+  onCreateInvite: () => void;
+};
 
-const InviteCard: React.FC<Props> = () => {
+const InviteCard: React.FC<Props> = (props) => {
+  const [dialog, setDialog] = useState<boolean>(false);
+
   return (
-    <View style={styles.card}>
-      <View style={styles.inner}>
-        <View style={styles.user}>
-          <UserImage image={''} size={80} />
-          <View py={3}>
-            <Text size="sm">田中太郎</Text>
+    <>
+      <TutorialModal
+        isVisible={dialog}
+        onClose={() => setDialog(false)}
+        onPress={() => {
+          props.onCreateInvite();
+          setDialog(false);
+        }}
+      />
+      <View style={styles.card}>
+        <View style={styles.inner}>
+          <View style={styles.user}>
+            <UserImage image={props.user.image} size={80} />
+            <View py={3}>
+              <Text size="sm">{props.user.displayName}</Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.invite}>
-          <Text>
-            <Text size="sm" color="baseDark" textAlign="left">
-              招待コード
-            </Text>
-            {'\n'}
-            <Text size="lg" color="primary" textAlign="left">
-              AABBCCDD
-            </Text>
-          </Text>
-        </View>
-        <View pt={4}>
-          <Button title="招待コードをコピー" onPress={() => null} />
+          {props.invite.code === '' ? (
+            <View pt={4}>
+              <Button
+                title="招待コードを作成する"
+                loading={props.loading}
+                onPress={() => setDialog(true)}
+              />
+            </View>
+          ) : (
+            <View>
+              <View style={styles.invite}>
+                <Text>
+                  <Text size="sm" color="baseDark" textAlign="left">
+                    招待コード
+                  </Text>
+                  {'\n'}
+                  <Text size="lg" color="primary" textAlign="left">
+                    {props.invite.code}
+                  </Text>
+                </Text>
+              </View>
+              <View pt={4}>
+                <Button title="招待コードをコピー" onPress={() => null} />
+              </View>
+            </View>
+          )}
         </View>
       </View>
-    </View>
+    </>
   );
 };
 

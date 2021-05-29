@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Setting/AddShareUser/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Plain)
+  creating={false}
+  data={
+    Object {
+      "invite": Object {
+        "code": "AABBCCDD",
+        "userID": "1",
+      },
+    }
+  }
+  loading={false}
+  onCreateInvite={[Function]}
+  onUpdateInvite={[Function]}
+  updating={false}
+  user={
+    Object {
+      "displayName": "test-name",
+      "id": "test-id",
+    }
+  }
+/>
+`;

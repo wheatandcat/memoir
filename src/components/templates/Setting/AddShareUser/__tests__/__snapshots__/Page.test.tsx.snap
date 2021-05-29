@@ -12,6 +12,7 @@ exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderす�
         "alignItems": "center",
         "backgroundColor": "#F2F2F2",
         "height": "100%",
+        "marginTop": 16,
       }
     }
   >
@@ -23,7 +24,25 @@ exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderす�
         }
       }
     >
-      <Memo(InviteCard) />
+      <Memo(InviteCard)
+        invite={
+          Object {
+            "code": "AABBCCDD",
+            "userID": "1",
+          }
+        }
+        loading={false}
+        onCreateInvite={[Function]}
+        user={
+          Object {
+            "createdAt": "2021-01-01T00:00:00+09:00",
+            "displayName": "test",
+            "id": "1",
+            "image": "",
+            "updatedAt": "2021-01-01T00:00:00+09:00",
+          }
+        }
+      />
     </View>
     <View
       style={

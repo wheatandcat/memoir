@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/AddShareUser/TutorialModal.tsx 正常にrenderすること 1`] = `
+<Modal
+  buttonTitle="招待コードを作成する"
+  height={320}
+  isVisible={true}
+  onClose={[MockFunction]}
+  onPress={[MockFunction]}
+  title="招待コードを作成する"
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F2F2F2",
+      }
+    }
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      variants="body"
+    >
+      ここにテキストを挿入する
+    </Text>
+  </View>
+</Modal>
+`;

@@ -7,6 +7,7 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
       "alignItems": "center",
       "backgroundColor": "#F2F2F2",
       "height": "100%",
+      "width": "100%",
     }
   }
 >
@@ -46,6 +47,48 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
         />
       </View>
     </ForwardRef>
+  </View>
+  <View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        }
+      }
+    >
+      <View
+        style={
+          Object {
+            "backgroundColor": "#D8D7D6",
+            "height": 1,
+            "marginHorizontal": 16,
+            "width": "25%",
+          }
+        }
+      />
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          共有メンバー
+        </Text>
+      </View>
+      <View
+        style={
+          Object {
+            "backgroundColor": "#D8D7D6",
+            "height": 1,
+            "marginHorizontal": 16,
+            "width": "25%",
+          }
+        }
+      />
+    </View>
+    <Memo(List)
+      onAdd={[MockFunction]}
+    />
   </View>
   <View
     mt={5}

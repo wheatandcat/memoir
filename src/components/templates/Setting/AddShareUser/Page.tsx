@@ -15,14 +15,17 @@ export type Props = ConnectedType & {
 const Page: React.FC<Props> = (props) => {
   const [dialog, setDialog] = useState<boolean>(false);
 
-  console.log(props.invite);
-
   return (
     <>
       <InputModal isVisible={dialog} onClose={() => setDialog(false)} />
       <View style={styles.root}>
         <View style={styles.inner}>
-          <InviteCard />
+          <InviteCard
+            invite={props.invite}
+            user={props.user}
+            loading={false}
+            onCreateInvite={() => null}
+          />
         </View>
         <View style={styles.inner}>
           <InputInvite onOpen={() => setDialog(true)} />
@@ -37,6 +40,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.background.main,
     height: '100%',
     alignItems: 'center',
+    marginTop: theme().space(3),
   },
   inner: {
     width: '90%',
