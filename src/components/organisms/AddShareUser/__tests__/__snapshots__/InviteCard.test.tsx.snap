@@ -104,6 +104,7 @@ exports[`components/organisms/AddShareUser/InviteCard.tsx 正常にrenderする�
               <Memo(IconButton)
                 color="#E3C95D"
                 name="refresh"
+                onPress={[MockFunction]}
                 outline={true}
                 size="sm"
               />
