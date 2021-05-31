@@ -30,7 +30,7 @@ const TutorialModal: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: theme().color.background.main,
+    backgroundColor: theme().color.background.light,
   },
 });
 

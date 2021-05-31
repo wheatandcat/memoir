@@ -11,9 +11,10 @@ export type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
-  if (props.loading) return <Loading />;
 
   const invite = props.data?.invite as Invite;
+
+  if (props.loading && invite?.code === undefined) return <Loading />;
 
   return <TemplateSettingAddShareUser invite={invite} {...props} />;
 };

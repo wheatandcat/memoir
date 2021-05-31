@@ -12,7 +12,7 @@ exports[`components/organisms/AddShareUser/TutorialModal.tsx 正常にrenderす�
   <View
     style={
       Object {
-        "backgroundColor": "#F2F2F2",
+        "backgroundColor": "#FFFFFF",
       }
     }
   >

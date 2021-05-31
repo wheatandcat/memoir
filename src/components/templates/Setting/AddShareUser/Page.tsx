@@ -23,8 +23,11 @@ const Page: React.FC<Props> = (props) => {
           <InviteCard
             invite={props.invite}
             user={props.user}
-            loading={false}
-            onCreateInvite={() => null}
+            loading={props.loading}
+            creating={props.creating}
+            updating={props.updating}
+            onCreateInvite={props.onCreateInvite}
+            onUpdateInvite={props.onUpdateInvite}
           />
         </View>
         <View style={styles.inner}>

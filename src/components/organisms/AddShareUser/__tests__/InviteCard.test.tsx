@@ -6,9 +6,12 @@ import InviteCard, { Props } from '../InviteCard';
 
 const propsData = (): Props => ({
   loading: false,
+  creating: false,
+  updating: false,
   invite: invite(),
   user: user(),
   onCreateInvite: jest.fn(),
+  onUpdateInvite: jest.fn(),
 });
 
 describe('components/organisms/AddShareUser/InviteCard.tsx', () => {

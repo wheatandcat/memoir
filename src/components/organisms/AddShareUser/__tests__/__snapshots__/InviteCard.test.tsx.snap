@@ -59,31 +59,56 @@ exports[`components/organisms/AddShareUser/InviteCard.tsx 正常にrenderする�
             }
           }
         >
-          <Text
-            fontFamily="RobotoCondensed-Bold"
-            variants="body"
+          <View
+            style={
+              Object {
+                "alignItems": "flex-end",
+                "flexDirection": "row",
+                "height": 50,
+                "justifyContent": "space-around",
+                "width": 200,
+              }
+            }
           >
-            <Text
-              color="baseDark"
-              fontFamily="RobotoCondensed-Bold"
-              size="sm"
-              textAlign="left"
-              variants="body"
-            >
-              招待コード
-            </Text>
-            
-
-            <Text
-              color="primary"
-              fontFamily="RobotoCondensed-Bold"
-              size="lg"
-              textAlign="left"
-              variants="body"
-            >
-              AABBCCDD
-            </Text>
-          </Text>
+            <View>
+              <View
+                mb={1}
+              >
+                <Text
+                  color="baseDark"
+                  fontFamily="RobotoCondensed-Bold"
+                  size="sm"
+                  textAlign="left"
+                  variants="body"
+                >
+                  招待コード
+                </Text>
+              </View>
+              <Text
+                color="primary"
+                fontFamily="RobotoCondensed-Bold"
+                size="lg"
+                textAlign="left"
+                variants="body"
+              >
+                AA
+                 
+                BB
+                 
+                CC
+                 
+                DD
+              </Text>
+            </View>
+            <View>
+              <Memo(IconButton)
+                color="#E3C95D"
+                name="refresh"
+                outline={true}
+                size="sm"
+              />
+            </View>
+          </View>
         </View>
         <View
           pt={4}

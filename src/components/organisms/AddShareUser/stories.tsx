@@ -10,9 +10,12 @@ import TutorialModal, { Props as TutorialModalProps } from './TutorialModal';
 
 const inviteCardProps = (): InviteCardProps => ({
   loading: false,
+  creating: false,
+  updating: false,
   invite: invite(),
   user: user(),
   onCreateInvite: mockFn('onCreateInvite'),
+  onUpdateInvite: mockFn('onUpdateInvite'),
 });
 const inputInviteProps = (): InputInviteProps => ({
   onOpen: mockFn('onOpen'),
