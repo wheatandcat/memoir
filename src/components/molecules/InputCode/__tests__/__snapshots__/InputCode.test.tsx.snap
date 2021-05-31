@@ -1,0 +1,251 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flex": 1,
+      "justifyContent": "center",
+    }
+  }
+>
+  <TouchableWithoutFeedback
+    onPress={[Function]}
+  >
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "position": "relative",
+        }
+      }
+    >
+      <View
+        key="0"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          A
+        </Text>
+      </View>
+      <View
+        key="1"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          A
+        </Text>
+      </View>
+      <View
+        key="2"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          B
+        </Text>
+      </View>
+      <View
+        key="3"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          B
+        </Text>
+      </View>
+      <View
+        key="4"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          C
+        </Text>
+      </View>
+      <View
+        key="5"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          C
+        </Text>
+      </View>
+      <View
+        key="6"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          D
+        </Text>
+      </View>
+      <View
+        key="7"
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#FFFFFF",
+            "borderRadius": 5,
+            "borderWidth": 0.5,
+            "height": 42,
+            "justifyContent": "center",
+            "marginHorizontal": 4,
+            "overflow": "visible",
+            "position": "relative",
+            "width": 32,
+          }
+        }
+      >
+        <Text
+          color="base"
+          fontFamily="RobotoCondensed-Bold"
+          variants="middle"
+        >
+          D
+        </Text>
+      </View>
+      <Component
+        allowFontScaling={true}
+        autoFocus={true}
+        blurOnSubmit={true}
+        onBlur={[Function]}
+        onChangeText={[Function]}
+        onFocus={[Function]}
+        onKeyPress={[Function]}
+        rejectResponderTermination={true}
+        returnKeyType="done"
+        selectionColor="transparent"
+        style={
+          Object {
+            "backgroundColor": "transparent",
+            "bottom": 0,
+            "color": "transparent",
+            "position": "absolute",
+            "textAlign": "center",
+            "top": 0,
+            "width": 32,
+          }
+        }
+        underlineColorAndroid="transparent"
+      />
+    </View>
+  </TouchableWithoutFeedback>
+</View>
+`;

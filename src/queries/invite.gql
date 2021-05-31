@@ -1,0 +1,6 @@
+query Invite {
+  invite {
+    userID
+    code
+  }
+}

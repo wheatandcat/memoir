@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/ShareUser/List.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "padding": 16,
+      "width": "100%",
+    }
+  }
+>
+  <View>
+    <Memo(AddButton)
+      onAdd={[MockFunction]}
+    />
+  </View>
+</View>
+`;

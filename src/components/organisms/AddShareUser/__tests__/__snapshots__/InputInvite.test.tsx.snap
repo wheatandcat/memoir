@@ -1,0 +1,61 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/AddShareUser/InputInvite.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#D8D7D6",
+      "borderRadius": 25,
+      "borderWidth": 0.5,
+      "paddingVertical": 32,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "width": 320,
+      }
+    }
+  >
+    <View
+      mb={5}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        textAlign="center"
+        variants="body"
+      >
+        共有メンバーを追加
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="body"
+      >
+        共有メンバーに追加したいユーザーの招待コードを入力してください
+      </Text>
+    </View>
+    <View
+      pt={4}
+    >
+      <Button
+        fontFamily="NotoSansJP-Bold"
+        onPress={[MockFunction]}
+        size="base"
+        title="招待コードを入力"
+      />
+    </View>
+  </View>
+</View>
+`;

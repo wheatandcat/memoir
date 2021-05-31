@@ -5,6 +5,7 @@ import theme from 'config/theme';
 
 export type Props = {
   image: string | null;
+  size?: number;
 };
 
 const UserImage: React.FC<Props> = (props) => {
@@ -14,15 +15,15 @@ const UserImage: React.FC<Props> = (props) => {
         <Image
           source={{ uri: props.image }}
           style={styles.image}
-          width={100}
-          height={100}
+          width={props.size}
+          height={props.size}
           resizeMode="cover"
         />
       ) : (
         <Image
           source={require('../../../img/icon/icon_account_default.png')}
-          width={100}
-          height={100}
+          width={props.size}
+          height={props.size}
         />
       )}
     </>
@@ -36,5 +37,9 @@ const styles = StyleSheet.create({
     borderColor: theme().color.base.main,
   },
 });
+
+UserImage.defaultProps = {
+  size: 100,
+};
 
 export default memo(UserImage);

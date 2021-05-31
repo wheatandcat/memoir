@@ -6,11 +6,13 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import { User } from 'store/atoms';
 import UserImage from 'components/molecules/User/Image';
+import ShareUsers from 'components/organisms/ShareUser/List';
 
 export type Props = {
   user: User;
   onUpdateProfile: () => void;
   onLogout: () => void;
+  onAddShareUser: () => void;
 };
 
 const Authenticated: React.FC<Props> = (props) => {
@@ -31,6 +33,19 @@ const Authenticated: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
       </View>
+      <View>
+        <View style={styles.share}>
+          <View style={styles.divider} />
+
+          <View>
+            <Text variants="middle">共有メンバー</Text>
+          </View>
+
+          <View style={styles.divider} />
+        </View>
+        <ShareUsers onAdd={props.onAddShareUser} />
+      </View>
+
       <View mt={5}>
         <TouchableOpacity onPress={props.onLogout}>
           <View style={styles.logout}>
@@ -46,6 +61,7 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     height: '100%',
+    width: '100%',
     alignItems: 'center',
   },
   userInfo: {
@@ -60,6 +76,16 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  share: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  divider: {
+    height: 1,
+    backgroundColor: theme().color.base.main,
+    width: '25%',
+    marginHorizontal: theme().space(3),
   },
 });
 

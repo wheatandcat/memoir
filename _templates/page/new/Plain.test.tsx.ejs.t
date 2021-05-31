@@ -7,7 +7,7 @@ import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
   loading: false,
-  error: null,
+  error: undefined,
 });
 
 describe('components/pages/<%= componentName %>/Plain.tsx', () => {

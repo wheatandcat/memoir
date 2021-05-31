@@ -8,6 +8,7 @@ import {
 import theme from 'config/theme';
 import Login from 'components/pages/Login';
 import UpdateProfile from 'components/pages/UpdateProfile';
+import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
@@ -41,6 +42,11 @@ const RootStack = () => {
         name="UpdateProfile"
         component={UpdateProfile}
         options={MyPageScreenOption('プロフィール編集')}
+      />
+      <Stack.Screen
+        name="SettingAddShareUser"
+        component={SettingAddShareUser}
+        options={MyPageScreenOption('共有メンバー追加')}
       />
     </Stack.Navigator>
   );
