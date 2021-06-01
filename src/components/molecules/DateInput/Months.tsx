@@ -9,13 +9,8 @@ import {
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import Carousel from 'react-native-snap-carousel';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Month = {
   label: string;

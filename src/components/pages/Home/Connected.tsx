@@ -1,16 +1,11 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import { useCreateItemMutation, NewItem } from 'queries/api/index';
 import { homeDateState, homeItemsState, Item } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
 import Plain from './Plain';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 export type Props = {
   openSettingModal: boolean;

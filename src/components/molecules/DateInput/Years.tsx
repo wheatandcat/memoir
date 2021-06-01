@@ -3,12 +3,7 @@ import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
+import dayjs from 'lib/dayjs';
 
 type Props = {
   date: string;

@@ -3,13 +3,7 @@ import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import theme from 'config/theme';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
 import Connected from './Connected';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,

@@ -8,9 +8,7 @@ import {
 import View from 'components/atoms/View';
 import Loading from 'components/atoms/Loading';
 import DateText from 'components/molecules/Memoir/DateText';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import { Props as PlainProps } from 'components/pages/Memoir/Plain';
 import Header from 'components/molecules/Memoir/Header';
 import theme from 'config/theme';
@@ -18,9 +16,6 @@ import { getModeCountMax } from 'lib/utility';
 import Divider from 'components/atoms/Divider';
 import Image from 'components/atoms/Image';
 import Card from './Card';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Item = ArrayType<PlainProps['items']>;
 

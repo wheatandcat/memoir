@@ -1,8 +1,7 @@
 import firebase from 'lib/system/firebase';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { storageKey } from 'lib/storage';
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 
 class Auth {
   setSession = async (refresh = false) => {

@@ -8,14 +8,8 @@ import {
 import IconButton from 'components/molecules/IconButton';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
 import ItemDetail from 'components/pages/ItemDetail';
 import Connected from './Connected';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;

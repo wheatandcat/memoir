@@ -10,15 +10,10 @@ import Text from 'components/atoms/Text';
 import Image from 'components/atoms/Image';
 import Category from 'components/atoms/Category';
 import theme from 'config/theme';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import setting from 'components/atoms/Category/setting';
 import { categoryBorderStyle } from 'lib/category';
 import Menu, { Item as MenuItem } from 'components/organisms/Menu/Menu';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Props = {
   title: string;

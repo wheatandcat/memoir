@@ -1,9 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useSetRecoilState } from 'recoil';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import {
   useItemQuery,
   useUpdateItemMutation,
@@ -15,9 +13,6 @@ import {
 import { homeDateState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
 import Plain from './Plain';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 export type Props = {
   itemID: string;
