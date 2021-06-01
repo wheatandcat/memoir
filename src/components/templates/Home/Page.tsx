@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import MemoirButton from 'components/molecules/Home/MemoirButton';
 import Cards from 'components/organisms/Cards/Cards';
 import SettingModal from 'components/organisms/SettingModal';
@@ -14,9 +12,6 @@ import { ItemQuery } from 'queries/api/index';
 import theme from 'config/theme';
 
 type Item = ItemQuery['item'];
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 export type Props = {
   addItemLoading: boolean;

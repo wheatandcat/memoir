@@ -1,13 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
 import { useItemsInPeriodQuery } from 'queries/api/index';
 import useItemsInPeriodPaging from 'hooks/useItemsInPeriodPaging';
 import Plain from './Plain';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Props = {
   startDate: string;

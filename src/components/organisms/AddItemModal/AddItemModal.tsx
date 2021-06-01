@@ -5,15 +5,10 @@ import Modal from 'components/organisms/Modal';
 import TextInput from 'components/atoms/TextInput';
 import Categories from 'components/organisms/Categories';
 import Compatibility from 'components/organisms/Compatibility/Compatibility';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import { NewItem } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
 import theme from 'config/theme';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Props = {
   item?: NewItem;

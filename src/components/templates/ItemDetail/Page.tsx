@@ -1,8 +1,6 @@
 import React, { memo } from 'react';
 import { StyleSheet, ScrollView } from 'react-native';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import View from 'components/atoms/View';
 import CardDetail from 'components/organisms/CardDetail/CardDetail';
 import InputDateWrap from 'components/organisms/InputDateWrap/InputDateWrap';
@@ -10,9 +8,6 @@ import theme from 'config/theme';
 import { ItemQuery, NewItem } from 'queries/api/index';
 import { ConnectedType } from 'components/pages/ItemDetail/Connected';
 import AddItemModal from 'components/organisms/AddItemModal';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Item = NonNullable<ItemQuery['item']>;
 

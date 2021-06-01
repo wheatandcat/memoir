@@ -1,14 +1,9 @@
 import React, { memo } from 'react';
 import { StyleSheet } from 'react-native';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 export type Props = {
   startDate: string;

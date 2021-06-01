@@ -1,16 +1,11 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
 import Divider from 'components/atoms/Divider';
 import View from 'components/atoms/View';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import InputYear from 'components/molecules/DateInput/Years';
 import InputMonth from 'components/molecules/DateInput/Months';
 import InputDay from 'components/molecules/DateInput/Days';
 import usePrevious from 'hooks/usePrevious';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 const years = [2020, 2021];
 const months = [

@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import Image from 'components/atoms/Image';
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 
 type Props = {
   date: string;

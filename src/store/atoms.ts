@@ -1,13 +1,8 @@
 import { atom } from 'recoil';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import { ItemQuery } from 'queries/api/index';
 
 export type Item = NonNullable<ItemQuery['item']>;
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 export type User = {
   id: string | null;

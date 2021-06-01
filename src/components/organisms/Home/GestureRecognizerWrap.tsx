@@ -8,14 +8,9 @@ import {
 } from 'react-native';
 import View from 'components/atoms/View';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-import 'dayjs/locale/ja';
+import dayjs from 'lib/dayjs';
 import { ConnectedType } from 'components/pages/Home/Connected';
 import theme from 'config/theme';
-
-dayjs.locale('ja');
-dayjs.extend(advancedFormat);
 
 type Props = {
   date: string;
