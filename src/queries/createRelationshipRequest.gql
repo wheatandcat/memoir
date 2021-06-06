@@ -1,0 +1,10 @@
+mutation CreateRelationshipRequest($input: NewRelationshipRequest!) {
+  createRelationshipRequest(input: $input) {
+    id
+    followerId
+    followedId
+    status
+    createdAt
+    updatedAt
+  }
+}

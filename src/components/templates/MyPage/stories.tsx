@@ -10,6 +10,7 @@ const props = (): Props => ({
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
   user: user(),
+  relationshipRequestCount: 3,
 });
 
 storiesOf('templates/MyPage', module)

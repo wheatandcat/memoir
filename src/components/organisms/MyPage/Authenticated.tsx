@@ -7,9 +7,11 @@ import Text from 'components/atoms/Text';
 import { User } from 'store/atoms';
 import UserImage from 'components/molecules/User/Image';
 import ShareUsers from 'components/organisms/ShareUser/List';
+import Notification from 'components/organisms/RelationshipRequest/Notification';
 
 export type Props = {
   user: User;
+  relationshipRequestCount: number;
   onUpdateProfile: () => void;
   onLogout: () => void;
   onAddShareUser: () => void;
@@ -18,20 +20,24 @@ export type Props = {
 const Authenticated: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      <View mt={4}>
-        <UserImage image={props.user.image} />
-      </View>
-      <View m={4}>
-        <TouchableOpacity onPress={props.onUpdateProfile}>
-          <View style={styles.userInfo}>
-            <Text>{props.user?.displayName || '表示名の設定がありません'}</Text>
-            <MaterialIcons
-              name="chevron-right"
-              size={23}
-              color={theme().color.secondary.main}
-            />
-          </View>
-        </TouchableOpacity>
+      <View style={styles.user}>
+        <View mt={4}>
+          <UserImage image={props.user.image} />
+        </View>
+        <View m={4}>
+          <TouchableOpacity onPress={props.onUpdateProfile}>
+            <View style={styles.userInfo}>
+              <Text>
+                {props.user?.displayName || '表示名の設定がありません'}
+              </Text>
+              <MaterialIcons
+                name="chevron-right"
+                size={23}
+                color={theme().color.secondary.main}
+              />
+            </View>
+          </TouchableOpacity>
+        </View>
       </View>
       <View>
         <View style={styles.share}>
@@ -43,10 +49,19 @@ const Authenticated: React.FC<Props> = (props) => {
 
           <View style={styles.divider} />
         </View>
-        <ShareUsers onAdd={props.onAddShareUser} />
       </View>
+      {props.relationshipRequestCount !== 0 && (
+        <View mt={3} mb={2}>
+          <Notification
+            count={props.relationshipRequestCount}
+            onPress={() => null}
+          />
+        </View>
+      )}
 
-      <View mt={5}>
+      <ShareUsers onAdd={props.onAddShareUser} />
+
+      <View mt={5} style={styles.action}>
         <TouchableOpacity onPress={props.onLogout}>
           <View style={styles.logout}>
             <Text>ログアウト</Text>
@@ -61,6 +76,8 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     height: '100%',
+  },
+  user: {
     width: '100%',
     alignItems: 'center',
   },
@@ -86,6 +103,9 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.base.main,
     width: '25%',
     marginHorizontal: theme().space(3),
+  },
+  action: {
+    alignItems: 'center',
   },
 });
 

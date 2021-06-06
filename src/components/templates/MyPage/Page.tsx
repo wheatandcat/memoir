@@ -10,6 +10,7 @@ import theme from 'config/theme';
 export type Props = {
   user?: User;
   authenticated?: boolean;
+  relationshipRequestCount: number;
   onUpdateProfile: () => void;
   onLogin: () => void;
   onLogout: UseFirebaseAuth['onLogout'];
@@ -23,6 +24,7 @@ const Page: React.FC<Props> = (props) => {
         {props.authenticated ? (
           <Authenticated
             user={props.user as User}
+            relationshipRequestCount={props.relationshipRequestCount}
             onLogout={props.onLogout}
             onUpdateProfile={props.onUpdateProfile}
             onAddShareUser={props.onAddShareUser}
