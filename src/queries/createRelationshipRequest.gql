@@ -6,5 +6,9 @@ mutation CreateRelationshipRequest($input: NewRelationshipRequest!) {
     status
     createdAt
     updatedAt
+    user {
+      id
+      displayName
+    }
   }
 }

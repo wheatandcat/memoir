@@ -13,8 +13,11 @@ const propsData = (): Props => ({
   user: user(),
   creating: false,
   updating: false,
+  requesting: false,
+  requestUser: null,
   onCreateInvite: jest.fn(),
   onUpdateInvite: jest.fn(),
+  onSearchInviteCode: jest.fn(),
 });
 
 describe('components/pages/Setting/AddShareUser/Plain.tsx', () => {

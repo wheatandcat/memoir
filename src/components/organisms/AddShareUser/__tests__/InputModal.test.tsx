@@ -4,7 +4,10 @@ import InputDialog, { Props } from '../InputModal';
 
 const propsData = (): Props => ({
   isVisible: true,
+  displayName: '',
+  requesting: false,
   onClose: jest.fn(),
+  onSearchInviteCode: jest.fn(),
 });
 
 describe('components/organisms/AddShareUser/InputModal.tsx', () => {

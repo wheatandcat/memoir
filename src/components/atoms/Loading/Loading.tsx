@@ -9,13 +9,17 @@ type Props = {
 
 const Loading: React.FC<Props> = (props) => {
   return (
-    <View>
+    <View m={4}>
       <ActivityIndicator
         size={props.size}
         color={theme().color.secondary.light}
       />
     </View>
   );
+};
+
+Loading.defaultProps = {
+  size: 'large',
 };
 
 export default Loading;

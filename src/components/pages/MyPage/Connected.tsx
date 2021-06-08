@@ -30,6 +30,7 @@ const Connected: React.FC<Props> = () => {
     if (authUser.uid) {
       const variables: RelationshipRequestsQueryVariables = {
         input: {
+          after: '',
           first: 5,
         },
         skip: true,
