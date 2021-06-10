@@ -3,6 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
 import * as queries from 'queries/api/index';
 import { invite } from '__mockData__/Invite';
+import { user } from '__mockData__/user';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({});
@@ -28,6 +29,19 @@ describe('components/pages/Setting/AddShareUser/Connected.tsx', () => {
         invite: invite(),
       },
     }));
+    jest
+      .spyOn(queries, 'useCreateRelationshipRequestMutation')
+      .mockImplementation((): any => [
+        jest.fn(),
+        {
+          loading: false,
+          data: {
+            createRelationshipRequest: {
+              user: user(),
+            },
+          },
+        },
+      ]);
 
     wrapper = shallow(<Connected {...propsData()} />);
   });

@@ -19,7 +19,10 @@ exports[`components/pages/Setting/AddShareUser/Plain.tsx 正常にrenderする�
   }
   loading={false}
   onCreateInvite={[MockFunction]}
+  onSearchInviteCode={[MockFunction]}
   onUpdateInvite={[MockFunction]}
+  requestUser={null}
+  requesting={false}
   updating={false}
   user={
     Object {

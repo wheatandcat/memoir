@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/Setting/RelationshipRequests/Page.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "height": "100%",
+      "width": "100%",
+    }
+  }
+>
+  <Memo(List) />
+</View>
+`;

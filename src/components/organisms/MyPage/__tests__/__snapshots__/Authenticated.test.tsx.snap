@@ -4,49 +4,56 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
 <View
   style={
     Object {
-      "alignItems": "center",
       "backgroundColor": "#F2F2F2",
       "height": "100%",
-      "width": "100%",
     }
   }
 >
   <View
-    mt={4}
+    style={
+      Object {
+        "alignItems": "center",
+        "width": "100%",
+      }
+    }
   >
-    <Memo(UserImage)
-      image=""
-    />
-  </View>
-  <View
-    m={4}
-  >
-    <ForwardRef
-      onPress={[MockFunction]}
+    <View
+      mt={4}
     >
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "center",
-          }
-        }
+      <Memo(UserImage)
+        image=""
+      />
+    </View>
+    <View
+      m={4}
+    >
+      <ForwardRef
+        onPress={[MockFunction]}
       >
-        <Text
-          fontFamily="RobotoCondensed-Bold"
-          variants="body"
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
         >
-          test
-        </Text>
-        <Icon
-          allowFontScaling={false}
-          color="#362740"
-          name="chevron-right"
-          size={23}
-        />
-      </View>
-    </ForwardRef>
+          <Text
+            fontFamily="RobotoCondensed-Bold"
+            variants="body"
+          >
+            test
+          </Text>
+          <Icon
+            allowFontScaling={false}
+            color="#362740"
+            name="chevron-right"
+            size={23}
+          />
+        </View>
+      </ForwardRef>
+    </View>
   </View>
   <View>
     <View
@@ -86,12 +93,26 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
         }
       />
     </View>
-    <Memo(List)
-      onAdd={[MockFunction]}
-    />
   </View>
   <View
+    mb={2}
+    mt={3}
+  >
+    <Memo(Notification)
+      count={3}
+      onPress={[Function]}
+    />
+  </View>
+  <Memo(List)
+    onAdd={[MockFunction]}
+  />
+  <View
     mt={5}
+    style={
+      Object {
+        "alignItems": "center",
+      }
+    }
   >
     <ForwardRef
       onPress={[MockFunction]}

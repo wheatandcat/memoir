@@ -9,6 +9,8 @@ query RelationshipRequests($input: InputRelationshipRequests!, $skip: Boolean) {
         id
         followerId
         followedId
+        createdAt
+        updatedAt
         user(skip: $skip) {
           id
           displayName

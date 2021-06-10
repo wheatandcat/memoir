@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Setting/RelationshipRequests/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Plain)
+  items={Array []}
+  loading={false}
+  onLoadMore={[Function]}
+  onNG={[Function]}
+  onOK={[Function]}
+  pageInfo={
+    Object {
+      "endCursor": "",
+      "hasNextPage": false,
+    }
+  }
+/>
+`;
