@@ -9,6 +9,7 @@ const props = (): Props => ({
   onLogout: mockFn('onLogout'),
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
+  onRelationshipRequests: mockFn('onRelationshipRequests'),
   user: user(),
   relationshipRequestCount: 3,
 });

@@ -2,6 +2,75 @@
 
 exports[`components/pages/Setting/RelationshipRequests/Plain.tsx 正常にrenderすること 1`] = `
 <Memo(Page)
+  items={
+    Array [
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "followedId": "test",
+        "followerId": "test",
+        "id": "1",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "user": Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "test",
+          "id": "1",
+          "image": "",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        },
+      },
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "followedId": "test",
+        "followerId": "test",
+        "id": "2",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "user": Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "test",
+          "id": "1",
+          "image": "",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        },
+      },
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "followedId": "test",
+        "followerId": "test",
+        "id": "3",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "user": Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "test",
+          "id": "1",
+          "image": "",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        },
+      },
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "followedId": "test",
+        "followerId": "test",
+        "id": "4",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "user": Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "test",
+          "id": "1",
+          "image": "",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        },
+      },
+    ]
+  }
   loading={false}
+  onLoadMore={[MockFunction]}
+  onNG={[MockFunction]}
+  onOK={[MockFunction]}
+  pageInfo={
+    Object {
+      "endCursor": "",
+      "hasNextPage": false,
+    }
+  }
 />
 `;

@@ -1,21 +1,16 @@
 import React, { memo } from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
-import { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import NotAuthenticated from 'components/organisms/MyPage/NotAuthenticated';
 import Authenticated from 'components/organisms/MyPage/Authenticated';
 import { User } from 'store/atoms';
 import theme from 'config/theme';
+import { ConnectedType } from 'components/pages/MyPage/Connected';
 
 export type Props = {
   user?: User;
   authenticated?: boolean;
-  relationshipRequestCount: number;
-  onUpdateProfile: () => void;
-  onLogin: () => void;
-  onLogout: UseFirebaseAuth['onLogout'];
-  onAddShareUser: () => void;
-};
+} & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
   return (
@@ -28,6 +23,7 @@ const Page: React.FC<Props> = (props) => {
             onLogout={props.onLogout}
             onUpdateProfile={props.onUpdateProfile}
             onAddShareUser={props.onAddShareUser}
+            onRelationshipRequests={props.onRelationshipRequests}
           />
         ) : (
           <NotAuthenticated onLogin={props.onLogin} />

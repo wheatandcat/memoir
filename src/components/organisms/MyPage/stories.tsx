@@ -17,6 +17,7 @@ const props2 = (): AuthenticatedProps => ({
   onLogout: mockFn('onLogout'),
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
+  onRelationshipRequests: mockFn('onRelationshipRequests'),
 });
 
 storiesOf('organisms/MyPage', module)

@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import TemplateMyPage from 'components/templates/MyPage/Page';
-import useFirebaseAuth from 'hooks/useFirebaseAuth';
+import useFirebaseAuth, { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import { useRecoilValue } from 'recoil';
 import { authUserState } from 'store/atoms';
 import { userState } from 'store/atoms';
@@ -14,6 +14,11 @@ type Props = {};
 
 export type ConnectedType = {
   relationshipRequestCount: number;
+  onRelationshipRequests: () => void;
+  onUpdateProfile: () => void;
+  onLogin: () => void;
+  onLogout: UseFirebaseAuth['onLogout'];
+  onAddShareUser: () => void;
 };
 
 const Connected: React.FC<Props> = () => {
@@ -51,6 +56,10 @@ const Connected: React.FC<Props> = () => {
     navigation.navigate('SettingAddShareUser');
   }, [navigation]);
 
+  const onRelationshipRequests = useCallback(() => {
+    navigation.navigate('SettingRelationshipRequests');
+  }, [navigation]);
+
   if (!setup) {
     return null;
   }
@@ -68,6 +77,7 @@ const Connected: React.FC<Props> = () => {
       onLogin={onLogin}
       onUpdateProfile={onUpdateProfile}
       onAddShareUser={onAddShareUser}
+      onRelationshipRequests={onRelationshipRequests}
     />
   );
 };

@@ -15,6 +15,7 @@ export type Props = {
   onUpdateProfile: () => void;
   onLogout: () => void;
   onAddShareUser: () => void;
+  onRelationshipRequests: () => void;
 };
 
 const Authenticated: React.FC<Props> = (props) => {
@@ -54,7 +55,7 @@ const Authenticated: React.FC<Props> = (props) => {
         <View mt={3} mb={2}>
           <Notification
             count={props.relationshipRequestCount}
-            onPress={() => null}
+            onPress={props.onRelationshipRequests}
           />
         </View>
       )}

@@ -100,7 +100,7 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
   >
     <Memo(Notification)
       count={3}
-      onPress={[Function]}
+      onPress={[MockFunction]}
     />
   </View>
   <Memo(List)
