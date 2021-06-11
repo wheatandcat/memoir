@@ -3,9 +3,21 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { storageKey } from 'lib/storage';
 import dayjs from 'lib/dayjs';
 
+const initFirebaseAuth = (): Promise<firebase.User | null> => {
+  return new Promise((resolve) => {
+    var unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      // user オブジェクトを resolve
+      resolve(user);
+
+      // 登録解除
+      unsubscribe();
+    });
+  });
+};
+
 class Auth {
   setSession = async (refresh = false) => {
-    const user = firebase.auth().currentUser;
+    const user = await initFirebaseAuth();
     if (!user) {
       return null;
     }
@@ -31,6 +43,7 @@ class Auth {
     const expiration = await AsyncStorage.getItem(
       storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY
     );
+
     if (Number(expiration) > dayjs().unix()) {
       return idToken;
     }

@@ -1,4 +1,5 @@
 import { setContext } from '@apollo/client/link/context';
+import { Alert } from 'react-native';
 import { onError } from '@apollo/client/link/error';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -40,7 +41,15 @@ const makeApolloClient = async () => {
   });
 
   const errorLink = onError((error) => {
-    console.log(error);
+    console.log('aaa:', error.graphQLErrors);
+    if ((error.graphQLErrors || []).length > 0) {
+      const graphQLErrors = error.graphQLErrors || [
+        { message: 'エラー発生しました' },
+      ];
+
+      const message = graphQLErrors[0].message;
+      Alert.alert('エラー', message);
+    }
   });
 
   return new ApolloClient({

@@ -13,9 +13,11 @@ const props1 = (): NotAuthenticatedProps => ({
 
 const props2 = (): AuthenticatedProps => ({
   user: user(),
+  relationshipRequestCount: 3,
   onLogout: mockFn('onLogout'),
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
+  onRelationshipRequests: mockFn('onRelationshipRequests'),
 });
 
 storiesOf('organisms/MyPage', module)

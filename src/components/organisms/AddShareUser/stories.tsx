@@ -22,7 +22,10 @@ const inputInviteProps = (): InputInviteProps => ({
 });
 const inputModalProps = (): InputModalProps => ({
   isVisible: true,
+  displayName: '',
+  requesting: false,
   onClose: mockFn('onClose'),
+  onSearchInviteCode: mockFn('onSearchInviteCode'),
 });
 const tutorialModalProps = (): TutorialModalProps => ({
   isVisible: true,

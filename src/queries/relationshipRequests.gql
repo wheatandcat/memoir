@@ -1,0 +1,23 @@
+query RelationshipRequests($input: InputRelationshipRequests!, $skip: Boolean) {
+  relationshipRequests(input: $input) {
+    pageInfo {
+      hasNextPage
+      endCursor
+    }
+    edges {
+      node {
+        id
+        followerId
+        followedId
+        createdAt
+        updatedAt
+        user(skip: $skip) {
+          id
+          displayName
+          image
+        }
+      }
+      cursor
+    }
+  }
+}

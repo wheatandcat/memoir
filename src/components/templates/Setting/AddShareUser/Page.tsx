@@ -15,9 +15,17 @@ export type Props = ConnectedType & {
 const Page: React.FC<Props> = (props) => {
   const [dialog, setDialog] = useState<boolean>(false);
 
+  const displayName = props.requestUser?.displayName ?? '';
+
   return (
     <>
-      <InputModal isVisible={dialog} onClose={() => setDialog(false)} />
+      <InputModal
+        isVisible={dialog}
+        onClose={() => setDialog(false)}
+        onSearchInviteCode={props.onSearchInviteCode}
+        displayName={displayName}
+        requesting={props.requesting}
+      />
       <View style={styles.root}>
         <View style={styles.inner}>
           <InviteCard

@@ -11,8 +11,11 @@ const props = (): Props => ({
   loading: false,
   creating: false,
   updating: false,
+  requesting: false,
+  requestUser: null,
   onCreateInvite: mockFn('onCreateInvite'),
   onUpdateInvite: mockFn('onUpdateInvite'),
+  onSearchInviteCode: mockFn('onSearchInviteCode'),
 });
 
 storiesOf('templates/Setting/AddShareUser', module).add('Page', () => (

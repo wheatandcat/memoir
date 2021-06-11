@@ -3,8 +3,11 @@
 exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderすること 1`] = `
 <Fragment>
   <Memo(InputModal)
+    displayName=""
     isVisible={false}
     onClose={[Function]}
+    onSearchInviteCode={[MockFunction]}
+    requesting={false}
   />
   <View
     style={

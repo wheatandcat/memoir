@@ -2,11 +2,12 @@
 
 exports[`components/organisms/AddShareUser/InputModal.tsx 正常にrenderすること 1`] = `
 <Modal
-  buttonTitle="確認"
+  buttonTitle="送信"
   disabledButton={true}
   height={320}
   isVisible={true}
   onClose={[MockFunction]}
+  onPress={[Function]}
   title="共有メンバー追加"
 >
   <View
@@ -38,7 +39,7 @@ exports[`components/organisms/AddShareUser/InputModal.tsx 正常にrenderする�
           fontFamily="RobotoCondensed-Bold"
           variants="body"
         >
-          タスクを共有したいユーザーの
+          振り返りを共有したいユーザーの
           
 
           招待コードを入力してください

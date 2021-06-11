@@ -1,26 +1,19 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { invite } from '__mockData__/Invite';
-import { user } from '__mockData__/user';
+import { relationshipRequests } from '__mockData__/relationshipRequest';
 import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
+  items: relationshipRequests(),
+  pageInfo: { hasNextPage: false, endCursor: '' },
   loading: false,
   error: undefined,
-  data: {
-    invite: invite(),
-  },
-  user: user(),
-  creating: false,
-  updating: false,
-  requesting: false,
-  requestUser: null,
-  onCreateInvite: jest.fn(),
-  onUpdateInvite: jest.fn(),
-  onSearchInviteCode: jest.fn(),
+  onLoadMore: jest.fn(),
+  onOK: jest.fn(),
+  onNG: jest.fn(),
 });
 
-describe('components/pages/Setting/AddShareUser/Plain.tsx', () => {
+describe('components/pages/Setting/RelationshipRequests/Plain.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {

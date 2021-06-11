@@ -9,6 +9,7 @@ import theme from 'config/theme';
 import Login from 'components/pages/Login';
 import UpdateProfile from 'components/pages/UpdateProfile';
 import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
+import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
@@ -47,6 +48,11 @@ const RootStack = () => {
         name="SettingAddShareUser"
         component={SettingAddShareUser}
         options={MyPageScreenOption('共有メンバー追加')}
+      />
+      <Stack.Screen
+        name="SettingRelationshipRequests"
+        component={SettingRelationshipRequests}
+        options={MyPageScreenOption('共有メンバー申請')}
       />
     </Stack.Navigator>
   );

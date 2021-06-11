@@ -13,7 +13,18 @@ exports[`components/pages/Setting/AddShareUser/Connected.tsx 正常にrenderす�
   }
   loading={false}
   onCreateInvite={[Function]}
+  onSearchInviteCode={[Function]}
   onUpdateInvite={[Function]}
+  requestUser={
+    Object {
+      "createdAt": "2021-01-01T00:00:00+09:00",
+      "displayName": "test",
+      "id": "1",
+      "image": "",
+      "updatedAt": "2021-01-01T00:00:00+09:00",
+    }
+  }
+  requesting={false}
   updating={false}
   user={
     Object {

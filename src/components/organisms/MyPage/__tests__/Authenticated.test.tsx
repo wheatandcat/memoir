@@ -5,9 +5,11 @@ import Authenticated, { Props } from '../Authenticated';
 
 const propsData = (): Props => ({
   user: user(),
+  relationshipRequestCount: 3,
   onUpdateProfile: jest.fn(),
   onLogout: jest.fn(),
   onAddShareUser: jest.fn(),
+  onRelationshipRequests: jest.fn(),
 });
 
 describe('components/organisms/MyPage/Authenticated.tsx', () => {
