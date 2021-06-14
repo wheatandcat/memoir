@@ -20,6 +20,7 @@ const Page: React.FC<Props> = (props) => {
           <Authenticated
             user={props.user as User}
             relationshipRequestCount={props.relationshipRequestCount}
+            relationships={props.relationships}
             onLogout={props.onLogout}
             onUpdateProfile={props.onUpdateProfile}
             onAddShareUser={props.onAddShareUser}

@@ -14,6 +14,8 @@ const propsData = (): Props => ({
   loading: false,
   onOK: jest.fn(),
   onNG: jest.fn(),
+  ngRequesting: false,
+  acceptRequesting: false,
 });
 
 describe('components/organisms/RelationshipRequest/List.tsx', () => {

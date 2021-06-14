@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { mockFn } from 'storyBookUtils/index';
 import { user } from '__mockData__/user';
+import { relationships } from '__mockData__/relationship';
 import NotAuthenticated, {
   Props as NotAuthenticatedProps,
 } from './NotAuthenticated';
@@ -14,6 +15,7 @@ const props1 = (): NotAuthenticatedProps => ({
 const props2 = (): AuthenticatedProps => ({
   user: user(),
   relationshipRequestCount: 3,
+  relationships: relationships(),
   onLogout: mockFn('onLogout'),
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),

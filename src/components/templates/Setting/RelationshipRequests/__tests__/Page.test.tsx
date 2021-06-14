@@ -10,6 +10,8 @@ const propsData = (): Props => ({
   onLoadMore: jest.fn(),
   onOK: jest.fn(),
   onNG: jest.fn(),
+  ngRequesting: false,
+  acceptRequesting: false,
 });
 
 describe('components/templates/Setting/RelationshipRequests/Page.tsx', () => {

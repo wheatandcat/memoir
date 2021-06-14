@@ -8,15 +8,21 @@ import { User } from 'store/atoms';
 import UserImage from 'components/molecules/User/Image';
 import ShareUsers from 'components/organisms/ShareUser/List';
 import Notification from 'components/organisms/RelationshipRequest/Notification';
+import { ConnectedType } from 'components/pages/MyPage/Connected';
 
 export type Props = {
   user: User;
   relationshipRequestCount: number;
-  onUpdateProfile: () => void;
-  onLogout: () => void;
-  onAddShareUser: () => void;
-  onRelationshipRequests: () => void;
-};
+} & Pick<
+  ConnectedType,
+  | 'onUpdateProfile'
+  | 'onLogout'
+  | 'onLogout'
+  | 'onRelationshipRequests'
+  | 'onAddShareUser'
+  | 'relationshipRequestCount'
+  | 'relationships'
+>;
 
 const Authenticated: React.FC<Props> = (props) => {
   return (

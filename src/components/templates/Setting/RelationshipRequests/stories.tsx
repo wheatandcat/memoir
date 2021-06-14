@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { mockFn } from 'storyBookUtils/index';
 import { relationshipRequests } from '__mockData__/relationshipRequest';
+
 import Page, { Props } from './Page';
 
 const props = (): Props => ({
@@ -11,6 +12,8 @@ const props = (): Props => ({
   onLoadMore: mockFn('onLoadMore'),
   onOK: mockFn('onOK'),
   onNG: mockFn('onNG'),
+  ngRequesting: false,
+  acceptRequesting: false,
 });
 
 storiesOf('templates/Setting/RelationshipRequests', module).add('Page', () => (

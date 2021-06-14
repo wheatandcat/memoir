@@ -7,7 +7,15 @@ import { Props as PlainProps } from 'components/pages/Setting/RelationshipReques
 import List from 'components/organisms/RelationshipRequest/List';
 
 export type Props = ConnectedType &
-  Pick<PlainProps, 'items' | 'loading' | 'onLoadMore' | 'pageInfo'>;
+  Pick<
+    PlainProps,
+    | 'items'
+    | 'loading'
+    | 'onLoadMore'
+    | 'pageInfo'
+    | 'acceptRequesting'
+    | 'ngRequesting'
+  >;
 
 const Page: React.FC<Props> = (props) => {
   return (

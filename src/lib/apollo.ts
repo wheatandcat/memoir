@@ -41,7 +41,7 @@ const makeApolloClient = async () => {
   });
 
   const errorLink = onError((error) => {
-    console.log('aaa:', error.graphQLErrors);
+    console.log(error.graphQLErrors);
     if ((error.graphQLErrors || []).length > 0) {
       const graphQLErrors = error.graphQLErrors || [
         { message: 'エラー発生しました' },

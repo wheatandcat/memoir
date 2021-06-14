@@ -2,6 +2,7 @@ import React from 'react';
 import { storiesOf } from '@storybook/react-native';
 import { mockFn } from 'storyBookUtils/index';
 import { user } from '__mockData__/user';
+import { relationships } from '__mockData__/relationship';
 import Page, { Props } from './Page';
 
 const props = (): Props => ({
@@ -12,6 +13,7 @@ const props = (): Props => ({
   onRelationshipRequests: mockFn('onRelationshipRequests'),
   user: user(),
   relationshipRequestCount: 3,
+  relationships: relationships(),
 });
 
 storiesOf('templates/MyPage', module)

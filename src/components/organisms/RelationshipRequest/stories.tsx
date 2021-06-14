@@ -18,6 +18,8 @@ const cardProps = (): CardProps => ({
   ...relationshipRequest(),
   onOK: mockFn('onOK'),
   onNG: mockFn('onNG'),
+  ngRequesting: false,
+  acceptRequesting: false,
 });
 const listProps = (): ListProps => ({
   items: relationshipRequests(),
@@ -29,6 +31,8 @@ const listProps = (): ListProps => ({
   loading: false,
   onOK: mockFn('onOK'),
   onNG: mockFn('onNG'),
+  ngRequesting: false,
+  acceptRequesting: false,
 });
 
 storiesOf('organisms/RelationshipRequest', module)

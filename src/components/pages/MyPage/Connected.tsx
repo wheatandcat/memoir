@@ -7,13 +7,19 @@ import { authUserState } from 'store/atoms';
 import { userState } from 'store/atoms';
 import {
   useRelationshipRequestsLazyQuery,
-  RelationshipRequestsQueryVariables,
+  useRelationshipsLazyQuery,
+  RelationshipsQuery,
 } from 'queries/api/index';
 
 type Props = {};
 
+export type Relationship = NonNullable<
+  EdgesNode<RelationshipsQuery['relationships']>
+>;
+
 export type ConnectedType = {
   relationshipRequestCount: number;
+  relationships: Relationship[];
   onRelationshipRequests: () => void;
   onUpdateProfile: () => void;
   onLogin: () => void;
@@ -30,19 +36,30 @@ const Connected: React.FC<Props> = () => {
     getRelationshipRequests,
     relationshipRequestsData,
   ] = useRelationshipRequestsLazyQuery();
+  const [getRelationships, relationshipsData] = useRelationshipsLazyQuery();
 
   useEffect(() => {
     if (authUser.uid) {
-      const variables: RelationshipRequestsQueryVariables = {
-        input: {
-          after: '',
-          first: 5,
+      getRelationshipRequests({
+        variables: {
+          input: {
+            after: '',
+            first: 5,
+          },
+          skip: true,
         },
-        skip: true,
-      };
-      getRelationshipRequests({ variables });
+      });
+      getRelationships({
+        variables: {
+          input: {
+            after: '',
+            first: 5,
+          },
+          skip: false,
+        },
+      });
     }
-  }, [authUser.uid, getRelationshipRequests]);
+  }, [authUser.uid, getRelationshipRequests, getRelationships]);
 
   const onLogin = useCallback(() => {
     navigation.navigate('Login');
@@ -68,11 +85,17 @@ const Connected: React.FC<Props> = () => {
     relationshipRequestsData.data?.relationshipRequests?.edges ?? [];
   const relationshipRequestCount = relationshipRequests.length;
 
+  const relationshipEdges = relationshipsData?.data?.relationships?.edges ?? [];
+  const relationships = relationshipEdges.map((v) => v.node);
+
+  console.log(relationships);
+
   return (
     <TemplateMyPage
       authenticated={!!authUser.uid}
       user={user}
       relationshipRequestCount={relationshipRequestCount}
+      relationships={relationships as Relationship[]}
       onLogout={onLogout}
       onLogin={onLogin}
       onUpdateProfile={onUpdateProfile}
