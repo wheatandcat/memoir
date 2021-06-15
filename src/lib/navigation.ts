@@ -13,5 +13,7 @@ export type RootStackParamList = {
   MyPage: undefined;
   UpdateProfile: undefined;
   SettingAddShareUser: undefined;
-  SettingRelationshipRequests: undefined;
+  SettingRelationshipRequests: {
+    onCallback: () => void;
+  };
 };

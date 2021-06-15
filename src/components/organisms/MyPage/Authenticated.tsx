@@ -22,6 +22,8 @@ export type Props = {
   | 'onAddShareUser'
   | 'relationshipRequestCount'
   | 'relationships'
+  | 'deleting'
+  | 'onDeleteRelationship'
 >;
 
 const Authenticated: React.FC<Props> = (props) => {
@@ -66,7 +68,12 @@ const Authenticated: React.FC<Props> = (props) => {
         </View>
       )}
 
-      <ShareUsers onAdd={props.onAddShareUser} />
+      <ShareUsers
+        deleting={props.deleting}
+        onAdd={props.onAddShareUser}
+        relationships={props.relationships}
+        onDeleteRelationship={props.onDeleteRelationship}
+      />
 
       <View mt={5} style={styles.action}>
         <TouchableOpacity onPress={props.onLogout}>

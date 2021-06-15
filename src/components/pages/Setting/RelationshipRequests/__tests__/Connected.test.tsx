@@ -4,7 +4,9 @@ import * as queries from 'queries/api/index';
 import { relationshipRequest } from '__mockData__/relationshipRequest';
 import Connected, { Props } from '../Connected';
 
-const propsData = (): Props => ({});
+const propsData = (): Props => ({
+  onCallback: jest.fn(),
+});
 
 describe('components/pages/Setting/RelationshipRequests/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
@@ -32,7 +34,24 @@ describe('components/pages/Setting/RelationshipRequests/Connected.tsx', () => {
           },
         },
       }));
-
+    jest
+      .spyOn(queries, 'useAcceptRelationshipRequestMutation')
+      .mockImplementation((): any => [
+        jest.fn(),
+        {
+          loading: false,
+          error: undefined,
+        },
+      ]);
+    jest
+      .spyOn(queries, 'useNgRelationshipRequestMutation')
+      .mockImplementation((): any => [
+        jest.fn(),
+        {
+          loading: false,
+          error: undefined,
+        },
+      ]);
     wrapper = shallow(<Connected {...propsData()} />);
   });
 

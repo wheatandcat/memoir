@@ -24,6 +24,7 @@ const UserImage: React.FC<Props> = (props) => {
           source={require('../../../img/icon/icon_account_default.png')}
           width={props.size}
           height={props.size}
+          style={styles.noImage}
         />
       )}
     </>
@@ -35,6 +36,10 @@ const styles = StyleSheet.create({
     borderRadius: 60,
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme().color.base.main,
+  },
+  noImage: {
+    backgroundColor: theme().color.background.light,
+    borderRadius: 60,
   },
 });
 

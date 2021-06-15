@@ -20,6 +20,8 @@ const props2 = (): AuthenticatedProps => ({
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
   onRelationshipRequests: mockFn('onRelationshipRequests'),
+  deleting: false,
+  onDeleteRelationship: mockFn('onDeleteRelationship'),
 });
 
 storiesOf('organisms/MyPage', module)

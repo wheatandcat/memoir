@@ -18,8 +18,8 @@ export type Props = {
   route: ScreenRouteProp;
 };
 
-const SettingRelationshipRequests: React.FC<Props> = () => {
-  return <Connected />;
+const SettingRelationshipRequests: React.FC<Props> = (props) => {
+  return <Connected onCallback={props.route.params.onCallback} />;
 };
 
 export default memo(SettingRelationshipRequests);

@@ -9,7 +9,9 @@ import { v4 as uuidv4 } from 'uuid';
 import useRelationshipRequestsPaging from 'hooks/useRelationshipRequestsPaging';
 import Plain from './Plain';
 
-export type Props = {};
+export type Props = {
+  onCallback: () => void;
+};
 
 export type ConnectedType = {
   acceptRequesting: boolean;
@@ -19,7 +21,7 @@ export type ConnectedType = {
   onNG: (followedId: string) => void;
 };
 
-const Connected: React.FC<Props> = () => {
+const Connected: React.FC<Props> = (props) => {
   const [endCursor, setEndCursor] = useState('');
   const [reloadKey, setReloadKey] = useState('');
 
@@ -50,6 +52,7 @@ const Connected: React.FC<Props> = () => {
       reset();
       setEndCursor('');
       setReloadKey(uuidv4());
+      props.onCallback();
     },
   });
   const [
@@ -60,6 +63,7 @@ const Connected: React.FC<Props> = () => {
       reset();
       setEndCursor('');
       setReloadKey(uuidv4());
+      props.onCallback();
     },
   });
 

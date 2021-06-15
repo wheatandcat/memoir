@@ -1,20 +1,19 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import { relationships } from '__mockData__/relationship';
-import List, { Props } from '../List';
+import { user } from '__mockData__/user';
+import User, { Props } from '../User';
 
 const propsData = (): Props => ({
-  onAdd: jest.fn(),
-  deleting: false,
+  user: user(),
+  loading: false,
   onDeleteRelationship: jest.fn(),
-  relationships: relationships(),
 });
 
-describe('components/organisms/ShareUser/List.tsx', () => {
+describe('components/organisms/ShareUser/User.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<List {...propsData()} />);
+    wrapper = shallow(<User {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {

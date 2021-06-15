@@ -2,6 +2,10 @@
 
 exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderすること 1`] = `
 <Fragment>
+  <FocusAwareStatusBar
+    backgroundColor="#E3C95D"
+    style="light"
+  />
   <Memo(InputModal)
     displayName=""
     isVisible={false}

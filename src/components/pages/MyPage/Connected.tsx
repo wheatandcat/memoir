@@ -9,6 +9,7 @@ import {
   useRelationshipRequestsLazyQuery,
   useRelationshipsLazyQuery,
   RelationshipsQuery,
+  useDeleteRelationshipMutation,
 } from 'queries/api/index';
 
 type Props = {};
@@ -18,6 +19,7 @@ export type Relationship = NonNullable<
 >;
 
 export type ConnectedType = {
+  deleting: boolean;
   relationshipRequestCount: number;
   relationships: Relationship[];
   onRelationshipRequests: () => void;
@@ -25,6 +27,7 @@ export type ConnectedType = {
   onLogin: () => void;
   onLogout: UseFirebaseAuth['onLogout'];
   onAddShareUser: () => void;
+  onDeleteRelationship: (followedId: string) => void;
 };
 
 const Connected: React.FC<Props> = () => {
@@ -35,8 +38,20 @@ const Connected: React.FC<Props> = () => {
   const [
     getRelationshipRequests,
     relationshipRequestsData,
-  ] = useRelationshipRequestsLazyQuery();
-  const [getRelationships, relationshipsData] = useRelationshipsLazyQuery();
+  ] = useRelationshipRequestsLazyQuery({
+    fetchPolicy: 'network-only',
+  });
+  const [getRelationships, relationshipsData] = useRelationshipsLazyQuery({
+    fetchPolicy: 'network-only',
+  });
+  const [
+    deleteRelationshipMutation,
+    deleteRelationshipMutationData,
+  ] = useDeleteRelationshipMutation({
+    onCompleted() {
+      relationshipsData.refetch?.();
+    },
+  });
 
   useEffect(() => {
     if (authUser.uid) {
@@ -74,8 +89,24 @@ const Connected: React.FC<Props> = () => {
   }, [navigation]);
 
   const onRelationshipRequests = useCallback(() => {
-    navigation.navigate('SettingRelationshipRequests');
-  }, [navigation]);
+    navigation.navigate('SettingRelationshipRequests', {
+      onCallback: () => {
+        relationshipRequestsData.refetch?.();
+        relationshipsData.refetch?.();
+      },
+    });
+  }, [navigation, relationshipRequestsData, relationshipsData]);
+
+  const onDeleteRelationship = useCallback(
+    (followedId: string) => {
+      deleteRelationshipMutation({
+        variables: {
+          followedID: followedId,
+        },
+      });
+    },
+    [deleteRelationshipMutation]
+  );
 
   if (!setup) {
     return null;
@@ -88,19 +119,19 @@ const Connected: React.FC<Props> = () => {
   const relationshipEdges = relationshipsData?.data?.relationships?.edges ?? [];
   const relationships = relationshipEdges.map((v) => v.node);
 
-  console.log(relationships);
-
   return (
     <TemplateMyPage
       authenticated={!!authUser.uid}
       user={user}
       relationshipRequestCount={relationshipRequestCount}
       relationships={relationships as Relationship[]}
+      deleting={deleteRelationshipMutationData.loading}
       onLogout={onLogout}
       onLogin={onLogin}
       onUpdateProfile={onUpdateProfile}
       onAddShareUser={onAddShareUser}
       onRelationshipRequests={onRelationshipRequests}
+      onDeleteRelationship={onDeleteRelationship}
     />
   );
 };

@@ -12,6 +12,8 @@ const propsData = (): Props => ({
   onLogout: jest.fn(),
   onAddShareUser: jest.fn(),
   onRelationshipRequests: jest.fn(),
+  deleting: false,
+  onDeleteRelationship: jest.fn(),
 });
 
 describe('components/organisms/MyPage/Authenticated.tsx', () => {

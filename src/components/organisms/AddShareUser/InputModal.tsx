@@ -42,7 +42,10 @@ const InputModal: React.FC<Props> = (props) => {
     <Modal
       isVisible={props.isVisible}
       title={send ? '' : '共有メンバー追加'}
-      onClose={props.onClose}
+      onClose={() => {
+        setCode('');
+        props.onClose();
+      }}
       buttonTitle={send ? 'とじる' : '送信'}
       height={send ? 240 : 320}
       disabledButton={disabledButton()}

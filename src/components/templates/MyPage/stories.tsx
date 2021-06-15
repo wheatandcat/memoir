@@ -14,6 +14,8 @@ const props = (): Props => ({
   user: user(),
   relationshipRequestCount: 3,
   relationships: relationships(),
+  deleting: false,
+  onDeleteRelationship: mockFn('onDeleteRelationship'),
 });
 
 storiesOf('templates/MyPage', module)

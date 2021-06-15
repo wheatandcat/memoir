@@ -2,8 +2,10 @@
 
 exports[`components/pages/Setting/RelationshipRequests/Connected.tsx 正常にrenderすること 1`] = `
 <Memo(Plain)
+  acceptRequesting={false}
   items={Array []}
   loading={false}
+  ngRequesting={false}
   onLoadMore={[Function]}
   onNG={[Function]}
   onOK={[Function]}

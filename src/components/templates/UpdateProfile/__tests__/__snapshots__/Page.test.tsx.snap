@@ -10,6 +10,10 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
     }
   }
 >
+  <FocusAwareStatusBar
+    backgroundColor="#E3C95D"
+    style="light"
+  />
   <ConnectedActionSheet
     image=""
     onChangeImage={[Function]}
