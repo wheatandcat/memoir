@@ -5,13 +5,26 @@ import View from 'components/atoms/View';
 import theme from 'config/theme';
 import { Props as PlainProps } from 'components/pages/Setting/RelationshipRequests/Plain';
 import List from 'components/organisms/RelationshipRequest/List';
+import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 export type Props = ConnectedType &
-  Pick<PlainProps, 'items' | 'loading' | 'onLoadMore' | 'pageInfo'>;
+  Pick<
+    PlainProps,
+    | 'items'
+    | 'loading'
+    | 'onLoadMore'
+    | 'pageInfo'
+    | 'acceptRequesting'
+    | 'ngRequesting'
+  >;
 
 const Page: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="light"
+      />
       <List {...props} />
     </View>
   );

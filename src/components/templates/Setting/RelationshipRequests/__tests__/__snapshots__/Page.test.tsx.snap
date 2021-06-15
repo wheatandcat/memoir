@@ -10,7 +10,12 @@ exports[`components/templates/Setting/RelationshipRequests/Page.tsx 正常にren
     }
   }
 >
+  <FocusAwareStatusBar
+    backgroundColor="#E3C95D"
+    style="light"
+  />
   <Memo(List)
+    acceptRequesting={false}
     items={
       Array [
         Object {
@@ -72,6 +77,7 @@ exports[`components/templates/Setting/RelationshipRequests/Page.tsx 正常にren
       ]
     }
     loading={false}
+    ngRequesting={false}
     onLoadMore={[MockFunction]}
     onNG={[MockFunction]}
     onOK={[MockFunction]}

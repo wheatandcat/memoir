@@ -1,0 +1,7 @@
+mutation AcceptRelationshipRequest($followedID: String!) {
+  acceptRelationshipRequest(followedID: $followedID) {
+    id
+    followerId
+    followedId
+  }
+}

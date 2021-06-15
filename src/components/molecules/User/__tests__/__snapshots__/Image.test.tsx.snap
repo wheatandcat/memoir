@@ -5,6 +5,12 @@ exports[`components/molecules/User/Image.tsx 正常にrenderすること 1`] = `
   <Image
     height={100}
     source={null}
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderRadius": 60,
+      }
+    }
     width={100}
   />
 </Fragment>

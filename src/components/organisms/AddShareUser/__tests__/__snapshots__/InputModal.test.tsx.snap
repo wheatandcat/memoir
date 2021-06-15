@@ -6,7 +6,7 @@ exports[`components/organisms/AddShareUser/InputModal.tsx 正常にrenderする�
   disabledButton={true}
   height={320}
   isVisible={true}
-  onClose={[MockFunction]}
+  onClose={[Function]}
   onPress={[Function]}
   title="共有メンバー追加"
 >

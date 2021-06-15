@@ -2,6 +2,7 @@
 
 exports[`components/pages/Setting/RelationshipRequests/Plain.tsx 正常にrenderすること 1`] = `
 <Memo(Page)
+  acceptRequesting={false}
   items={
     Array [
       Object {
@@ -63,6 +64,7 @@ exports[`components/pages/Setting/RelationshipRequests/Plain.tsx 正常にrender
     ]
   }
   loading={false}
+  ngRequesting={false}
   onLoadMore={[MockFunction]}
   onNG={[MockFunction]}
   onOK={[MockFunction]}

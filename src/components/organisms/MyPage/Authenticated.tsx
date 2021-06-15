@@ -8,15 +8,23 @@ import { User } from 'store/atoms';
 import UserImage from 'components/molecules/User/Image';
 import ShareUsers from 'components/organisms/ShareUser/List';
 import Notification from 'components/organisms/RelationshipRequest/Notification';
+import { ConnectedType } from 'components/pages/MyPage/Connected';
 
 export type Props = {
   user: User;
   relationshipRequestCount: number;
-  onUpdateProfile: () => void;
-  onLogout: () => void;
-  onAddShareUser: () => void;
-  onRelationshipRequests: () => void;
-};
+} & Pick<
+  ConnectedType,
+  | 'onUpdateProfile'
+  | 'onLogout'
+  | 'onLogout'
+  | 'onRelationshipRequests'
+  | 'onAddShareUser'
+  | 'relationshipRequestCount'
+  | 'relationships'
+  | 'deleting'
+  | 'onDeleteRelationship'
+>;
 
 const Authenticated: React.FC<Props> = (props) => {
   return (
@@ -60,7 +68,12 @@ const Authenticated: React.FC<Props> = (props) => {
         </View>
       )}
 
-      <ShareUsers onAdd={props.onAddShareUser} />
+      <ShareUsers
+        deleting={props.deleting}
+        onAdd={props.onAddShareUser}
+        relationships={props.relationships}
+        onDeleteRelationship={props.onDeleteRelationship}
+      />
 
       <View mt={5} style={styles.action}>
         <TouchableOpacity onPress={props.onLogout}>

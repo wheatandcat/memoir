@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/RelationshipRequest/NotFound.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F2F2F2",
+      "height": 320,
+      "justifyContent": "center",
+      "width": "100%",
+    }
+  }
+>
+  <View
+    p={3}
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      textAlign="center"
+      variants="body"
+    >
+      申請はありません
+    </Text>
+  </View>
+  <View
+    p={3}
+  >
+    <Button
+      fontFamily="NotoSansJP-Bold"
+      onPress={[Function]}
+      size="base"
+      title="戻る"
+      width={200}
+    />
+  </View>
+</View>
+`;

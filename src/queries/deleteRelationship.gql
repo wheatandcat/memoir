@@ -1,0 +1,7 @@
+mutation DeleteRelationship($followedID: String!) {
+  deleteRelationship(followedID: $followedID) {
+    id
+    followerId
+    followedId
+  }
+}

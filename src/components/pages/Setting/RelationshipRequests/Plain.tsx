@@ -28,6 +28,8 @@ const Plain: React.FC<Props> = (props) => {
       onLoadMore={props.onLoadMore}
       pageInfo={props.pageInfo}
       loading={props.loading}
+      acceptRequesting={props.acceptRequesting}
+      ngRequesting={props.ngRequesting}
       onOK={props.onOK}
       onNG={props.onNG}
     />

@@ -7,6 +7,7 @@ import InviteCard from 'components/organisms/AddShareUser/InviteCard';
 import InputInvite from 'components/organisms/AddShareUser/InputInvite';
 import InputModal from 'components/organisms/AddShareUser/InputModal';
 import { Invite } from 'components/pages/Setting/AddShareUser/Connected';
+import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 export type Props = ConnectedType & {
   invite: Invite;
@@ -19,6 +20,10 @@ const Page: React.FC<Props> = (props) => {
 
   return (
     <>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="light"
+      />
       <InputModal
         isVisible={dialog}
         onClose={() => setDialog(false)}

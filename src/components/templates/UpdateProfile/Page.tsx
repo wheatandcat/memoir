@@ -8,6 +8,7 @@ import Button from 'components/atoms/Button';
 import TextInput from 'components/atoms/TextInput';
 import theme from 'config/theme';
 import { User } from 'store/atoms';
+import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 export type Props = ConnectedType & {
   user: User;
@@ -29,6 +30,10 @@ const Page: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.root}>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="light"
+      />
       <ProfileImage
         image={props.user.image}
         onChangeImage={(uri) => setState((s) => ({ ...s, image: uri }))}

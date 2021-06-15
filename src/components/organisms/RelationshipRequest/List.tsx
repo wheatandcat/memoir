@@ -4,6 +4,7 @@ import View from 'components/atoms/View';
 import Loading from 'components/atoms/Loading';
 import theme from 'config/theme';
 import Card from 'components/organisms/RelationshipRequest/Card';
+import NotFound from 'components/molecules/RelationshipRequest/NotFound';
 import { Props as TemplatesProps } from 'components/templates/Setting/RelationshipRequests/Page';
 
 export type Props = TemplatesProps;
@@ -18,8 +19,10 @@ const renderItem = (
     <View key={`${index}-contents`}>
       <Card
         {...item}
-        onOK={() => props.onOK(item.id)}
-        onNG={() => props.onNG(item.id)}
+        acceptRequesting={props.acceptRequesting}
+        ngRequesting={props.ngRequesting}
+        onOK={() => props.onOK(item.followerId)}
+        onNG={() => props.onNG(item.followerId)}
       />
     </View>
   );
@@ -61,6 +64,7 @@ const List: React.FC<Props> = (props) => {
         ListFooterComponent={<ListFooterComponent loading={props.loading} />}
         onEndReachedThreshold={0.8}
         onEndReached={handleLoadMore}
+        ListEmptyComponent={<NotFound loading={props.loading} />}
       />
     </View>
   );

@@ -5,6 +5,9 @@ exports[`components/organisms/ShareUser/List.tsx 正常にrenderすること 1`]
   style={
     Object {
       "backgroundColor": "#F2F2F2",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "space-around",
       "padding": 16,
       "width": "100%",
     }
@@ -15,5 +18,85 @@ exports[`components/organisms/ShareUser/List.tsx 正常にrenderすること 1`]
       onAdd={[MockFunction]}
     />
   </View>
+  <Memo(User)
+    key="0"
+    loading={false}
+    onDeleteRelationship={[MockFunction]}
+    user={
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "displayName": "test",
+        "id": "1",
+        "image": "",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+      }
+    }
+  />
+  <Memo(User)
+    key="1"
+    loading={false}
+    onDeleteRelationship={[MockFunction]}
+    user={
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "displayName": "test",
+        "id": "1",
+        "image": "",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+      }
+    }
+  />
+  <Memo(User)
+    key="2"
+    loading={false}
+    onDeleteRelationship={[MockFunction]}
+    user={
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "displayName": "test",
+        "id": "1",
+        "image": "",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+      }
+    }
+  />
+  <Memo(User)
+    key="3"
+    loading={false}
+    onDeleteRelationship={[MockFunction]}
+    user={
+      Object {
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "displayName": "test",
+        "id": "1",
+        "image": "",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+      }
+    }
+  />
+  <View
+    key="4"
+    style={
+      Object {
+        "width": 110,
+      }
+    }
+  />
+  <View
+    key="5"
+    style={
+      Object {
+        "width": 110,
+      }
+    }
+  />
+  <View
+    key="6"
+    style={
+      Object {
+        "width": 110,
+      }
+    }
+  />
 </View>
 `;

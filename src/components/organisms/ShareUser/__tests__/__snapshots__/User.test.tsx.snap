@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/ShareUser/User.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "justifyContent": "center",
+      "marginBottom": 16,
+      "width": 110,
+    }
+  }
+>
+  <View>
+    <Memo(UserImage)
+      image=""
+      size={100}
+    />
+  </View>
+  <View>
+    <View
+      my={2}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        textAlign="center"
+        variants="body"
+      >
+        test
+      </Text>
+    </View>
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        size="xs"
+        textAlign="center"
+        variants="body"
+      >
+        解除
+      </Text>
+    </ForwardRef>
+  </View>
+</View>
+`;

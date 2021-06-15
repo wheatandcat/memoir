@@ -1,0 +1,7 @@
+mutation NgRelationshipRequest($followedID: String!) {
+  ngRelationshipRequest(followedID: $followedID) {
+    id
+    followerId
+    followedId
+  }
+}

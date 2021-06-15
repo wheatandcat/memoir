@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
@@ -9,6 +9,8 @@ import { Props as TemplatesProps } from 'components/templates/Setting/Relationsh
 import dayjs from 'lib/dayjs';
 
 export type Props = ArrayType<TemplatesProps['items']> & {
+  acceptRequesting: boolean;
+  ngRequesting: boolean;
   onOK: () => void;
   onNG: () => void;
 };
@@ -47,16 +49,28 @@ const Card: React.FC<Props> = (props) => {
             <Text size="sm">共有メンバー申請が届いています</Text>
           </View>
           <View style={styles.buttonWrap}>
-            <TouchableOpacity onPress={props.onOK}>
+            {props.acceptRequesting ? (
               <View style={styles.applyButton}>
-                <Text size="sm">承諾する</Text>
+                <ActivityIndicator />
               </View>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={props.onNG}>
+            ) : (
+              <TouchableOpacity onPress={props.onOK}>
+                <View style={styles.applyButton}>
+                  <Text size="sm">承諾する</Text>
+                </View>
+              </TouchableOpacity>
+            )}
+            {props.ngRequesting ? (
               <View style={styles.removeButton}>
-                <Text size="sm">削除</Text>
+                <ActivityIndicator />
               </View>
-            </TouchableOpacity>
+            ) : (
+              <TouchableOpacity onPress={props.onNG}>
+                <View style={styles.removeButton}>
+                  <Text size="sm">削除</Text>
+                </View>
+              </TouchableOpacity>
+            )}
           </View>
         </View>
       </View>
