@@ -5,7 +5,11 @@ import Card, { Props } from '../Card';
 const propsData = (): Props => ({
   title: 'title',
   categoryID: 1,
-  user: { id: 'test', name: 'test' },
+  user: {
+    id: 'test',
+    displayName: 'suzuki',
+    image: '',
+  },
   onPress: jest.fn(),
 });
 

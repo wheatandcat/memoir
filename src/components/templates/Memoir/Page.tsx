@@ -13,7 +13,7 @@ import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 export type Props = Pick<
   PlainProps,
-  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo'
+  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo' | 'users'
 > & {
   startDate: string;
   endDate: string;
@@ -38,6 +38,7 @@ const Page: React.FC<Props> = (props) => {
             loading={props.loading}
             onItem={props.onItem}
             onLoadMore={props.onLoadMore}
+            users={props.users}
           />
         </View>
         <View style={styles.action}>

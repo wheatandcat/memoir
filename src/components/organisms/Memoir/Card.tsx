@@ -9,13 +9,14 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
 import theme from 'config/theme';
-import Image from 'components/atoms/Image';
 import IconButton from 'components/molecules/IconButton';
 import { Item } from 'queries/api/index';
+import UserImage from 'components/molecules/User/Image';
 
 type User = {
   id: string;
-  name: string;
+  displayName: string;
+  image: string;
 };
 
 export type Props = {
@@ -45,13 +46,9 @@ const Card: React.FC<Props> = (props) => {
             </Text>
           </View>
           <View style={styles.user}>
-            <Image
-              source={require('../../../img/icon/account.png')}
-              width={20}
-              height={20}
-            />
+            <UserImage image={props.user.image} size={20} />
             <View pl={2}>
-              <Text variants="small">{props.user?.name}</Text>
+              <Text variants="small">{props.user?.displayName}</Text>
             </View>
           </View>
         </View>

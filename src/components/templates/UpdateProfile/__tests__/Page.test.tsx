@@ -6,6 +6,7 @@ const propsData = (): Props => ({
   loading: false,
   user: {
     id: 'test-id',
+    userID: '',
     displayName: 'test-name',
     image: '',
   },

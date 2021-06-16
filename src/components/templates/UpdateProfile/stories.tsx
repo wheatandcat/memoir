@@ -6,6 +6,7 @@ import Page, { Props } from './Page';
 const props = (): Props => ({
   user: {
     id: 'test-id',
+    userID: '',
     displayName: 'test-name',
     image: '',
   },

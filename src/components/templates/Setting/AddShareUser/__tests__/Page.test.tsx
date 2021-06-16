@@ -6,7 +6,10 @@ import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   invite: invite(),
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   loading: false,
   creating: false,
   updating: false,

@@ -26,6 +26,7 @@ const Plain: React.FC<Props> = (props) => {
       loading={props.loading}
       onItem={props.onItem}
       items={props.items}
+      users={props.users}
       onLoadMore={props.onLoadMore}
       pageInfo={props.pageInfo}
     />

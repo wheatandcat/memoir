@@ -9,7 +9,10 @@ const propsData = (): Props => ({
   creating: false,
   updating: false,
   invite: invite(),
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   onCreateInvite: jest.fn(),
   onUpdateInvite: jest.fn(),
 });

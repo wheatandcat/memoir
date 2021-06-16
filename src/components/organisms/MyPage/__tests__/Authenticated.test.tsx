@@ -5,7 +5,10 @@ import { relationships } from '__mockData__/relationship';
 import Authenticated, { Props } from '../Authenticated';
 
 const propsData = (): Props => ({
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   relationships: relationships(),
   relationshipRequestCount: 3,
   onUpdateProfile: jest.fn(),

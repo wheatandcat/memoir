@@ -9,7 +9,7 @@ import { items, item } from '__mockData__/item';
 import Card from './Card';
 
 const props = (): Props => ({
-  items: items(),
+  items: items().map((v) => ({ ...v, userID: 'test' })),
   pageInfo: {
     hasNextPage: false,
     endCursor: '',
@@ -19,6 +19,13 @@ const props = (): Props => ({
   loading: false,
   startDate: '2020-01-01',
   endDate: '2020-01-07',
+  users: [
+    {
+      id: 'test',
+      displayName: 'suzuki',
+      image: 'https://placehold.jp/150x150.png',
+    },
+  ],
 });
 
 storiesOf('organisms/Memoir/DateCards', module)
@@ -36,7 +43,11 @@ storiesOf('organisms/Memoir/DateCards', module)
 storiesOf('organisms/Memoir', module).add('Card', () => (
   <Card
     {...item()}
-    user={{ id: 'test', name: 'test太郎' }}
+    user={{
+      id: 'test',
+      displayName: 'suzuki',
+      image: 'https://placehold.jp/150x150.png',
+    }}
     onPress={mockFn('onPress')}
   />
 ));
