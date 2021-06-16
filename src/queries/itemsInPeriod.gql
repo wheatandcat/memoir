@@ -13,6 +13,7 @@ query ItemsInPeriod($input: InputItemsInPeriod!) {
         createdAt
         like
         id
+        userID
       }
       cursor
     }

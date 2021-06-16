@@ -13,7 +13,10 @@ const props1 = (): NotAuthenticatedProps => ({
 });
 
 const props2 = (): AuthenticatedProps => ({
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   relationshipRequestCount: 3,
   relationships: relationships(),
   onLogout: mockFn('onLogout'),

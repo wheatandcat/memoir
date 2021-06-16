@@ -4,7 +4,10 @@ import { user } from '__mockData__/user';
 import User, { Props } from '../User';
 
 const propsData = (): Props => ({
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   loading: false,
   onDeleteRelationship: jest.fn(),
 });

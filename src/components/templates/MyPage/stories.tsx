@@ -11,7 +11,10 @@ const props = (): Props => ({
   onUpdateProfile: mockFn('onUpdateProfile'),
   onAddShareUser: mockFn('onAddShareUser'),
   onRelationshipRequests: mockFn('onRelationshipRequests'),
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   relationshipRequestCount: 3,
   relationships: relationships(),
   deleting: false,

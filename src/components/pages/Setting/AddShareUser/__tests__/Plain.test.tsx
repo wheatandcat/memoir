@@ -10,7 +10,10 @@ const propsData = (): Props => ({
   data: {
     invite: invite(),
   },
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   creating: false,
   updating: false,
   requesting: false,

@@ -14,7 +14,10 @@ const listProps = (): ListProps => ({
 });
 
 const userProps = (): UserProps => ({
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   loading: false,
   onDeleteRelationship: mockFn('onDeleteRelationship'),
 });

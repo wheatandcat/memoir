@@ -21,7 +21,7 @@ type Item = ArrayType<PlainProps['items']>;
 
 export type Props = Pick<
   PlainProps,
-  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo'
+  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo' | 'users'
 > & {
   startDate: string;
   endDate: string;
@@ -29,7 +29,8 @@ export type Props = Pick<
 
 type User = {
   id: string;
-  name: string;
+  displayName: string;
+  image: string;
 };
 
 type Card = Item & {
@@ -104,21 +105,29 @@ const DateCards: React.FC<Props> = (props) => {
 
   const data = dateItems
     .map((v1) => {
-      const user = { id: 'test', name: 'Nameless' };
-
       const sameDateItems = props.items.filter(
         (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
       );
 
-      const item: RenderedItem[] = sameDateItems.map((v2, index) => ({
-        date: null,
-        contents: {
-          ...v2,
-          user,
-        },
-        last: sameDateItems.length === index + 1,
-        width: windowWidth,
-      }));
+      const item: RenderedItem[] = sameDateItems.map((v2, index) => {
+        const user: User | undefined = props.users.find(
+          (v) => v.id === v2.userID
+        );
+
+        return {
+          date: null,
+          contents: {
+            ...v2,
+            user: user || {
+              id: '',
+              displayName: '',
+              image: '',
+            },
+          },
+          last: sameDateItems.length === index + 1,
+          width: windowWidth,
+        };
+      });
 
       const categoryID = item.map((v) => Number(v.contents?.categoryID));
 

@@ -50,6 +50,7 @@ exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderす�
             "id": "1",
             "image": "",
             "updatedAt": "2021-01-01T00:00:00+09:00",
+            "userID": "",
           }
         }
       />

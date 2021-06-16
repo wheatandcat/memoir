@@ -31,6 +31,7 @@ exports[`components/pages/Setting/AddShareUser/Plain.tsx 正常にrenderする�
       "id": "1",
       "image": "",
       "updatedAt": "2021-01-01T00:00:00+09:00",
+      "userID": "",
     }
   }
 />

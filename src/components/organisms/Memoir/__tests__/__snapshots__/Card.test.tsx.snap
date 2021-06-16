@@ -50,10 +50,9 @@ exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = 
           }
         }
       >
-        <Image
-          height={20}
-          source={null}
-          width={20}
+        <Memo(UserImage)
+          image=""
+          size={20}
         />
         <View
           pl={2}
@@ -62,7 +61,7 @@ exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = 
             fontFamily="RobotoCondensed-Bold"
             variants="small"
           >
-            test
+            suzuki
           </Text>
         </View>
       </View>

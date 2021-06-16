@@ -13,7 +13,10 @@ const inviteCardProps = (): InviteCardProps => ({
   creating: false,
   updating: false,
   invite: invite(),
-  user: user(),
+  user: {
+    ...user(),
+    userID: '',
+  },
   onCreateInvite: mockFn('onCreateInvite'),
   onUpdateInvite: mockFn('onUpdateInvite'),
 });
