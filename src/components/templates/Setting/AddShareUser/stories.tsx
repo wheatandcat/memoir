@@ -19,6 +19,8 @@ const props = (): Props => ({
   onCreateInvite: mockFn('onCreateInvite'),
   onUpdateInvite: mockFn('onUpdateInvite'),
   onSearchInviteCode: mockFn('onSearchInviteCode'),
+  onCreateRelationshipRequest: mockFn('onCreateRelationshipRequest'),
+  confirmUser: null,
 });
 
 storiesOf('templates/Setting/AddShareUser', module).add('Page', () => (

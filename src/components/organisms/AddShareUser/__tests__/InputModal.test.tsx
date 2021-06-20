@@ -8,6 +8,9 @@ const propsData = (): Props => ({
   requesting: false,
   onClose: jest.fn(),
   onSearchInviteCode: jest.fn(),
+  isConfirm: false,
+  confirmUser: null,
+  onCreateRelationshipRequest: jest.fn(),
 });
 
 describe('components/organisms/AddShareUser/InputModal.tsx', () => {

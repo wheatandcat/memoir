@@ -30,6 +30,9 @@ const Page: React.FC<Props> = (props) => {
         onSearchInviteCode={props.onSearchInviteCode}
         displayName={displayName}
         requesting={props.requesting}
+        isConfirm={!!props.confirmUser?.id}
+        confirmUser={props.confirmUser}
+        onCreateRelationshipRequest={props.onCreateRelationshipRequest}
       />
       <View style={styles.root}>
         <View style={styles.inner}>

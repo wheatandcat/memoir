@@ -3,6 +3,8 @@ import { Alert } from 'react-native';
 import {
   useInviteQuery,
   InviteQuery,
+  useInviteByCodeLazyQuery,
+  InviteByCodeQueryVariables,
   useCreateInviteMutation,
   useUpdateInviteMutation,
   CreateRelationshipRequestMutationVariables,
@@ -25,14 +27,24 @@ export type ConnectedType = {
   onCreateInvite: () => void;
   onUpdateInvite: () => void;
   onSearchInviteCode: (code: string) => void;
+  onCreateRelationshipRequest: (code: string) => void;
   creating: boolean;
   updating: boolean;
   loading: boolean;
   requesting: boolean;
+  confirmUser: {
+    id: string;
+    displayName: string;
+    image: string;
+  } | null;
 };
 
 const Connected: React.FC<Props> = () => {
   const { loading, data, error, refetch } = useInviteQuery();
+  const [getInviteByCode, inviteByCodeData] = useInviteByCodeLazyQuery({
+    fetchPolicy: 'network-only',
+  });
+
   const [
     createRelationshipRequestMutation,
     relationshipRequestMutationData,
@@ -82,6 +94,16 @@ const Connected: React.FC<Props> = () => {
     [createRelationshipRequestMutation]
   );
 
+  const onCreateRelationshipRequest = useCallback(
+    (code: string) => {
+      const variables: InviteByCodeQueryVariables = {
+        code,
+      };
+      getInviteByCode({ variables });
+    },
+    [getInviteByCode]
+  );
+
   return (
     <Plain
       loading={loading}
@@ -91,6 +113,8 @@ const Connected: React.FC<Props> = () => {
       onCreateInvite={onCreateInvite}
       onUpdateInvite={onUpdateInvite}
       onSearchInviteCode={onSearchInviteCode}
+      onCreateRelationshipRequest={onCreateRelationshipRequest}
+      confirmUser={inviteByCodeData.data?.inviteByCode ?? null}
       creating={createInviteMutationData.loading}
       updating={updateInviteMutationData.loading}
       requesting={relationshipRequestMutationData.loading}

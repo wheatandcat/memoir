@@ -18,6 +18,8 @@ const propsData = (): Props => ({
   onCreateInvite: jest.fn(),
   onUpdateInvite: jest.fn(),
   onSearchInviteCode: jest.fn(),
+  onCreateRelationshipRequest: jest.fn(),
+  confirmUser: null,
 });
 
 describe('components/templates/Setting/AddShareUser/Page.tsx', () => {
