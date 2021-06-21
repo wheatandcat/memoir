@@ -2,6 +2,7 @@
 
 exports[`components/pages/Setting/AddShareUser/Connected.tsx 正常にrenderすること 1`] = `
 <Memo(Plain)
+  confirmUser={null}
   creating={false}
   data={
     Object {
@@ -13,6 +14,7 @@ exports[`components/pages/Setting/AddShareUser/Connected.tsx 正常にrenderす�
   }
   loading={false}
   onCreateInvite={[Function]}
+  onCreateRelationshipRequest={[Function]}
   onSearchInviteCode={[Function]}
   onUpdateInvite={[Function]}
   requestUser={

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    paddingTop: theme().space(5),
+    paddingTop: theme().space(4),
   },
   removeButton: {
     backgroundColor: theme().color.base.main,

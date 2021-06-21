@@ -29,6 +29,7 @@ const InputModal: React.FC<Props> = (props) => {
 
   const onPress = useCallback(() => {
     if (send) {
+      setCode('');
       props.onClose();
     } else {
       props.onCreateRelationshipRequest(code);
@@ -99,7 +100,10 @@ const InputModal: React.FC<Props> = (props) => {
                   displayName={props.confirmUser?.displayName || ''}
                   image={props.confirmUser?.image || ''}
                   requesting={props.requesting}
-                  onNG={props.onClose}
+                  onNG={() => {
+                    setCode('');
+                    props.onClose();
+                  }}
                   onOK={() => props.onSearchInviteCode(code)}
                 />
               );
@@ -116,6 +120,9 @@ const InputModal: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.light,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inner: {
     width: 320,

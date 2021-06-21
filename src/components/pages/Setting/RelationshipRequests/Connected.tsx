@@ -1,4 +1,5 @@
 import React, { memo, useState, useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import {
   useRelationshipRequestsQuery,
   useAcceptRelationshipRequestMutation,
@@ -24,6 +25,7 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = (props) => {
   const [endCursor, setEndCursor] = useState('');
   const [reloadKey, setReloadKey] = useState('');
+  const navigation = useNavigation();
 
   const queryResult = useRelationshipRequestsQuery({
     variables: {
@@ -48,11 +50,19 @@ const Connected: React.FC<Props> = (props) => {
     acceptRelationshipRequestMutation,
     acceptRelationshipRequestMutationData,
   ] = useAcceptRelationshipRequestMutation({
-    onCompleted() {
+    onCompleted(data) {
       reset();
       setEndCursor('');
       setReloadKey(uuidv4());
       props.onCallback();
+
+      const followerId = data.acceptRelationshipRequest.followerId;
+      const user = items.find((v) => v.followerId === followerId);
+
+      navigation.navigate('SettingAcceptedRelationship', {
+        displayName: user?.user?.displayName || '',
+        image: user?.user?.image || '',
+      });
     },
   });
   const [

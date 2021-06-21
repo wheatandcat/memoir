@@ -10,6 +10,7 @@ import Login from 'components/pages/Login';
 import UpdateProfile from 'components/pages/UpdateProfile';
 import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
+import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
@@ -53,6 +54,11 @@ const RootStack = () => {
         name="SettingRelationshipRequests"
         component={SettingRelationshipRequests}
         options={MyPageScreenOption('共有メンバー申請')}
+      />
+      <Stack.Screen
+        name="SettingAcceptedRelationship"
+        component={SettingAcceptedRelationship}
+        options={MyPageScreenOption('')}
       />
     </Stack.Navigator>
   );

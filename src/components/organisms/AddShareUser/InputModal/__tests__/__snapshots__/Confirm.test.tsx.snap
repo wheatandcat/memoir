@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/AddShareUser/InputModal/Confirm.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "paddingBottom": 8,
+      "paddingTop": 16,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "justifyContent": "center",
+        "marginBottom": 16,
+      }
+    }
+  >
+    <Memo(UserImage)
+      image=""
+      size={50}
+    />
+  </View>
+  <Text
+    fontFamily="RobotoCondensed-Bold"
+    textAlign="center"
+    variants="body"
+  >
+    <Text
+      color="primary"
+      fontFamily="RobotoCondensed-Bold"
+      variants="body"
+    >
+      test
+    </Text>
+     さんに共有の申請を
+    
+
+    送りますか？
+  </Text>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingTop": 32,
+      }
+    }
+  >
+    <View
+      mx={2}
+    >
+      <Button
+        disabled={false}
+        fontFamily="NotoSansJP-Bold"
+        loading={false}
+        onPress={[MockFunction]}
+        size="sm"
+        title="送信する"
+        width={120}
+      />
+    </View>
+    <View
+      mx={2}
+    >
+      <ForwardRef
+        onPress={[MockFunction]}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#D8D7D6",
+              "borderRadius": 7,
+              "height": 40,
+              "justifyContent": "center",
+              "width": 120,
+            }
+          }
+        >
+          <Text
+            fontFamily="RobotoCondensed-Bold"
+            size="sm"
+            variants="body"
+          >
+            キャンセル
+          </Text>
+        </View>
+      </ForwardRef>
+    </View>
+  </View>
+</View>
+`;

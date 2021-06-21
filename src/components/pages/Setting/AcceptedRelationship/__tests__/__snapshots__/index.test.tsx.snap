@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Setting/AcceptedRelationship/index.tsx 正常にrenderすること 1`] = `
+<Memo(Page)
+  user={
+    Object {
+      "displayName": "test-name",
+      "id": "test-id",
+    }
+  }
+/>
+`;

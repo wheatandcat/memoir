@@ -225,6 +225,7 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
         allowFontScaling={true}
         autoFocus={true}
         blurOnSubmit={true}
+        maxLength={8}
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}

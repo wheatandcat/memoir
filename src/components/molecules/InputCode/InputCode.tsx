@@ -106,6 +106,7 @@ const InputCode: React.FC<Props> = (props) => {
             onChangeText={handleChange}
             onKeyPress={handleKeyPress}
             selectionColor={theme().color.transparent}
+            maxLength={8}
           />
         </View>
       </TouchableWithoutFeedback>

@@ -1,5 +1,5 @@
-import React, { memo, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import React, { memo, useState, useEffect } from 'react';
+import { StyleSheet, ScrollView } from 'react-native';
 import { ConnectedType } from 'components/pages/Setting/AddShareUser/Connected';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
@@ -8,6 +8,7 @@ import InputInvite from 'components/organisms/AddShareUser/InputInvite';
 import InputModal from 'components/organisms/AddShareUser/InputModal';
 import { Invite } from 'components/pages/Setting/AddShareUser/Connected';
 import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
+import usePrevious from 'hooks/usePrevious';
 
 export type Props = ConnectedType & {
   invite: Invite;
@@ -15,8 +16,27 @@ export type Props = ConnectedType & {
 
 const Page: React.FC<Props> = (props) => {
   const [dialog, setDialog] = useState<boolean>(false);
-
+  const [isConfirm, setConfirm] = useState<boolean>(false);
+  const confirmUserID = usePrevious(props.confirmUser?.id);
   const displayName = props.requestUser?.displayName ?? '';
+  const [sentDisplayName, setSent] = useState<string>('');
+  const preDisplayName = usePrevious(displayName);
+
+  useEffect(() => {
+    if (props.confirmUser?.id !== confirmUserID) {
+      if (props.confirmUser?.id) {
+        setConfirm(true);
+      } else {
+        setConfirm(false);
+      }
+    }
+  }, [props.confirmUser?.id, confirmUserID]);
+
+  useEffect(() => {
+    if (displayName !== preDisplayName) {
+      setSent(displayName);
+    }
+  }, [displayName, preDisplayName]);
 
   return (
     <>
@@ -26,30 +46,36 @@ const Page: React.FC<Props> = (props) => {
       />
       <InputModal
         isVisible={dialog}
-        onClose={() => setDialog(false)}
+        onClose={() => {
+          setDialog(false);
+          setConfirm(false);
+          setSent('');
+        }}
         onSearchInviteCode={props.onSearchInviteCode}
-        displayName={displayName}
+        displayName={sentDisplayName}
         requesting={props.requesting}
-        isConfirm={!!props.confirmUser?.id}
+        isConfirm={isConfirm}
         confirmUser={props.confirmUser}
         onCreateRelationshipRequest={props.onCreateRelationshipRequest}
       />
-      <View style={styles.root}>
-        <View style={styles.inner}>
-          <InviteCard
-            invite={props.invite}
-            user={props.user}
-            loading={props.loading}
-            creating={props.creating}
-            updating={props.updating}
-            onCreateInvite={props.onCreateInvite}
-            onUpdateInvite={props.onUpdateInvite}
-          />
+      <ScrollView>
+        <View style={styles.root}>
+          <View style={styles.inner}>
+            <InviteCard
+              invite={props.invite}
+              user={props.user}
+              loading={props.loading}
+              creating={props.creating}
+              updating={props.updating}
+              onCreateInvite={props.onCreateInvite}
+              onUpdateInvite={props.onUpdateInvite}
+            />
+          </View>
+          <View style={styles.inner}>
+            <InputInvite onOpen={() => setDialog(true)} />
+          </View>
         </View>
-        <View style={styles.inner}>
-          <InputInvite onOpen={() => setDialog(true)} />
-        </View>
-      </View>
+      </ScrollView>
     </>
   );
 };
