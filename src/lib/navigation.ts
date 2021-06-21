@@ -16,4 +16,8 @@ export type RootStackParamList = {
   SettingRelationshipRequests: {
     onCallback: () => void;
   };
+  SettingAcceptedRelationship: {
+    displayName: string;
+    image: string;
+  };
 };

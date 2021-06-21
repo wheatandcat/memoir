@@ -29,6 +29,7 @@ const inputModalProps = (): InputModalProps => ({
   requesting: false,
   onClose: mockFn('onClose'),
   onSearchInviteCode: mockFn('onSearchInviteCode'),
+  onCreateRelationshipRequest: mockFn('onCreateRelationshipRequest'),
 });
 const tutorialModalProps = (): TutorialModalProps => ({
   isVisible: true,
@@ -39,5 +40,18 @@ const tutorialModalProps = (): TutorialModalProps => ({
 storiesOf('organisms/AddShareUser', module)
   .add('InviteCard', () => <InviteCard {...inviteCardProps()} />)
   .add('InputInvite', () => <InputInvite {...inputInviteProps()} />)
-  .add('InputDialog', () => <InputModal {...inputModalProps()} />)
+
   .add('TutorialModal', () => <TutorialModal {...tutorialModalProps()} />);
+
+storiesOf('organisms/AddShareUser/InputModal', module)
+  .add('入力画面', () => <InputModal {...inputModalProps()} />)
+  .add('確認', () => (
+    <InputModal
+      {...inputModalProps()}
+      isConfirm={true}
+      confirmUser={{ displayName: 'suzuki', image: '' }}
+    />
+  ))
+  .add('送信後', () => (
+    <InputModal {...inputModalProps()} displayName="suzuki" />
+  ));

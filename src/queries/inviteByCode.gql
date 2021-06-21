@@ -2,5 +2,6 @@ query InviteByCode($code: String!) {
   inviteByCode(code: $code) {
     id
     displayName
+    image
   }
 }

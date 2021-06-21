@@ -2,6 +2,7 @@
 
 exports[`components/pages/Setting/AddShareUser/Plain.tsx 正常にrenderすること 1`] = `
 <Memo(Page)
+  confirmUser={null}
   creating={false}
   data={
     Object {
@@ -19,6 +20,7 @@ exports[`components/pages/Setting/AddShareUser/Plain.tsx 正常にrenderする�
   }
   loading={false}
   onCreateInvite={[MockFunction]}
+  onCreateRelationshipRequest={[MockFunction]}
   onSearchInviteCode={[MockFunction]}
   onUpdateInvite={[MockFunction]}
   requestUser={null}

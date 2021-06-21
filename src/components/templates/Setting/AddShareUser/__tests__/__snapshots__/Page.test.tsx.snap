@@ -7,66 +7,71 @@ exports[`components/templates/Setting/AddShareUser/Page.tsx 正常にrenderす�
     style="light"
   />
   <Memo(InputModal)
+    confirmUser={null}
     displayName=""
+    isConfirm={false}
     isVisible={false}
     onClose={[Function]}
+    onCreateRelationshipRequest={[MockFunction]}
     onSearchInviteCode={[MockFunction]}
     requesting={false}
   />
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "backgroundColor": "#F2F2F2",
-        "height": "100%",
-        "marginTop": 16,
-      }
-    }
-  >
+  <ScrollView>
     <View
       style={
         Object {
-          "marginBottom": 32,
-          "width": "90%",
+          "alignItems": "center",
+          "backgroundColor": "#F2F2F2",
+          "height": "100%",
+          "marginTop": 16,
         }
       }
     >
-      <Memo(InviteCard)
-        creating={false}
-        invite={
+      <View
+        style={
           Object {
-            "code": "AABBCCDD",
-            "userID": "1",
+            "marginBottom": 32,
+            "width": "90%",
           }
         }
-        loading={false}
-        onCreateInvite={[MockFunction]}
-        onUpdateInvite={[MockFunction]}
-        updating={false}
-        user={
+      >
+        <Memo(InviteCard)
+          creating={false}
+          invite={
+            Object {
+              "code": "AABBCCDD",
+              "userID": "1",
+            }
+          }
+          loading={false}
+          onCreateInvite={[MockFunction]}
+          onUpdateInvite={[MockFunction]}
+          updating={false}
+          user={
+            Object {
+              "createdAt": "2021-01-01T00:00:00+09:00",
+              "displayName": "test",
+              "id": "1",
+              "image": "",
+              "updatedAt": "2021-01-01T00:00:00+09:00",
+              "userID": "",
+            }
+          }
+        />
+      </View>
+      <View
+        style={
           Object {
-            "createdAt": "2021-01-01T00:00:00+09:00",
-            "displayName": "test",
-            "id": "1",
-            "image": "",
-            "updatedAt": "2021-01-01T00:00:00+09:00",
-            "userID": "",
+            "marginBottom": 32,
+            "width": "90%",
           }
         }
-      />
+      >
+        <Memo(InputInvite)
+          onOpen={[Function]}
+        />
+      </View>
     </View>
-    <View
-      style={
-        Object {
-          "marginBottom": 32,
-          "width": "90%",
-        }
-      }
-    >
-      <Memo(InputInvite)
-        onOpen={[Function]}
-      />
-    </View>
-  </View>
+  </ScrollView>
 </Fragment>
 `;
