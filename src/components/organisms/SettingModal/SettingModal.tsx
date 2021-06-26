@@ -1,13 +1,15 @@
 import React, { memo, useCallback } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Modal from 'components/organisms/Modal';
 import Divider from 'components/atoms/Divider';
 import Constants from 'expo-constants';
+import * as IntentLauncher from 'expo-intent-launcher';
 import theme from 'config/theme';
 import Debug from 'components/organisms/Debug/Debug';
+import { useNotification } from 'containers/Notification';
 
 type Props = {
   isVisible: boolean;
@@ -16,6 +18,7 @@ type Props = {
 
 const SettingModal: React.FC<Props> = (props) => {
   const navigation = useNavigation();
+  const { onPermissionRequest } = useNotification();
 
   const onLicence = useCallback(() => {
     props.onClose();
@@ -28,6 +31,34 @@ const SettingModal: React.FC<Props> = (props) => {
 
     navigation.navigate('MyPage');
   }, [navigation, props]);
+
+  const onNotificationSetting = useCallback(async () => {
+    if (!onPermissionRequest) {
+      return;
+    }
+
+    const ok = await onPermissionRequest();
+    if (!ok) {
+      return;
+    }
+
+    if (Platform.OS === 'ios') {
+      Linking.canOpenURL('app-settings:')
+        .then((supported) => {
+          if (supported) {
+            return Linking.openURL('app-settings:');
+          }
+
+          console.log('move to app-settings: not supported');
+          return;
+        })
+        .catch((err) => console.log(err));
+    } else {
+      IntentLauncher.startActivityAsync(
+        IntentLauncher.ACTION_NOTIFICATION_SETTINGS
+      );
+    }
+  }, [onPermissionRequest]);
 
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
@@ -47,6 +78,15 @@ const SettingModal: React.FC<Props> = (props) => {
         <TouchableOpacity style={styles.menuText}>
           <View>
             <Text>過去のmemoir一覧</Text>
+          </View>
+        </TouchableOpacity>
+        <Divider my={3} />
+        <TouchableOpacity
+          style={styles.menuText}
+          onPress={onNotificationSetting}
+        >
+          <View>
+            <Text>通知設定</Text>
           </View>
         </TouchableOpacity>
         <Divider my={3} />

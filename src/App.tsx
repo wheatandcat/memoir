@@ -5,6 +5,7 @@ import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import makeApolloClient from 'lib/apollo';
 import useIsFirstRender from 'hooks/useIsFirstRender';
+import Notification from 'containers/Notification';
 import WithProvider from './WithProvider';
 
 type CacheShape = any;
@@ -31,11 +32,13 @@ function App() {
   return (
     <ActionSheetProvider>
       <ApolloProvider client={client}>
-        <RecoilRoot>
-          <RootSiblingParent>
-            <WithProvider />
-          </RootSiblingParent>
-        </RecoilRoot>
+        <Notification>
+          <RecoilRoot>
+            <RootSiblingParent>
+              <WithProvider />
+            </RootSiblingParent>
+          </RecoilRoot>
+        </Notification>
       </ApolloProvider>
     </ActionSheetProvider>
   );
