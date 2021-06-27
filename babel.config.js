@@ -14,6 +14,7 @@ module.exports = function (api) {
             storyBookUtils: './src/storyBookUtils',
             store: './src/store',
             hooks: './src/hooks',
+            containers: './src/containers',
             queries: './src/queries',
             __mockData__: './src/__mockData__',
           },

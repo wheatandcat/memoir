@@ -1,0 +1,6 @@
+mutation CreatePushToken($input: NewPushToken!) {
+  createPushToken(input: $input) {
+    token
+    deviceID
+  }
+}
