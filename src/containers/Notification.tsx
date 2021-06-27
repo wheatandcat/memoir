@@ -1,4 +1,5 @@
 import Constants from 'expo-constants';
+import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import React, {
   memo,
@@ -9,12 +10,16 @@ import React, {
   createContext,
 } from 'react';
 import { Platform, Alert } from 'react-native';
+import {
+  useCreatePushTokenMutation,
+  CreatePushTokenMutationVariables,
+} from 'queries/api/index';
 
 export const Context = createContext<ContextProps>({});
 const { Provider } = Context;
 
 export type ContextProps = Partial<{
-  onPermissionRequest: () => Promise<boolean>;
+  onPermissionRequest: (callback: () => void) => Promise<boolean>;
 }>;
 
 type Props = {};
@@ -28,12 +33,19 @@ Notifications.setNotificationHandler({
 });
 
 const Notification: React.FC<Props> = memo((props) => {
+  const requestCallback = useRef<() => void>(() => {});
+
   const notificationListener = useRef<
     ReturnType<typeof Notifications.addNotificationReceivedListener>
   >();
   const responseListener = useRef<
     ReturnType<typeof Notifications.addNotificationResponseReceivedListener>
   >();
+  const [createPushTokenMutation] = useCreatePushTokenMutation({
+    onCompleted() {
+      requestCallback.current();
+    },
+  });
 
   useEffect(() => {
     notificationListener.current = Notifications.addNotificationReceivedListener(
@@ -62,41 +74,59 @@ const Notification: React.FC<Props> = memo((props) => {
     };
   }, []);
 
-  const onPermissionRequest = useCallback(async () => {
-    let token;
+  const onPermissionRequest = useCallback(
+    async (callback: () => void) => {
+      requestCallback.current = callback;
 
-    if (!Constants.isDevice) {
-      Alert.alert('端末から実行してくだださい');
-      return false;
-    }
+      let token;
 
-    const {
-      status: existingStatus,
-    } = await Notifications.getPermissionsAsync();
-    let finalStatus = existingStatus;
+      if (!Constants.isDevice) {
+        Alert.alert('端末から実行してくだださい');
+        return false;
+      }
 
-    if (existingStatus !== 'granted') {
-      const { status } = await Notifications.requestPermissionsAsync();
-      finalStatus = status;
-    }
+      const {
+        status: existingStatus,
+      } = await Notifications.getPermissionsAsync();
+      let finalStatus = existingStatus;
 
-    if (finalStatus !== 'granted') {
-      return false;
-    }
-    token = (await Notifications.getExpoPushTokenAsync()).data;
-    console.log(token);
+      if (existingStatus !== 'granted') {
+        const { status } = await Notifications.requestPermissionsAsync();
+        finalStatus = status;
+      }
 
-    if (Platform.OS === 'android') {
-      Notifications.setNotificationChannelAsync('default', {
-        name: 'default',
-        importance: Notifications.AndroidImportance.MAX,
-        vibrationPattern: [0, 250, 250, 250],
-        lightColor: '#FF231F7C',
+      if (finalStatus !== 'granted') {
+        return false;
+      }
+      token = (await Notifications.getExpoPushTokenAsync()).data;
+      console.log(token);
+
+      if (Platform.OS === 'android') {
+        Notifications.setNotificationChannelAsync('default', {
+          name: 'default',
+          importance: Notifications.AndroidImportance.MAX,
+          vibrationPattern: [0, 250, 250, 250],
+          lightColor: '#FF231F7C',
+        });
+      }
+
+      const variables: CreatePushTokenMutationVariables = {
+        input: {
+          token,
+          deviceID: `${Device.modelName?.replaceAll(' ', '')}-${String(
+            Device.osInternalBuildId
+          ).replaceAll(' ', '')}`,
+        },
+      };
+
+      createPushTokenMutation({
+        variables,
       });
-    }
 
-    return true;
-  }, []);
+      return true;
+    },
+    [createPushTokenMutation]
+  );
 
   return <Provider value={{ onPermissionRequest }}>{props.children}</Provider>;
 });

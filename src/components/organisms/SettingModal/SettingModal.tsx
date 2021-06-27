@@ -32,16 +32,7 @@ const SettingModal: React.FC<Props> = (props) => {
     navigation.navigate('MyPage');
   }, [navigation, props]);
 
-  const onNotificationSetting = useCallback(async () => {
-    if (!onPermissionRequest) {
-      return;
-    }
-
-    const ok = await onPermissionRequest();
-    if (!ok) {
-      return;
-    }
-
+  const onPushNotificationSetting = useCallback(() => {
     if (Platform.OS === 'ios') {
       Linking.canOpenURL('app-settings:')
         .then((supported) => {
@@ -58,7 +49,15 @@ const SettingModal: React.FC<Props> = (props) => {
         IntentLauncher.ACTION_NOTIFICATION_SETTINGS
       );
     }
-  }, [onPermissionRequest]);
+  }, []);
+
+  const onNotificationSetting = useCallback(async () => {
+    if (!onPermissionRequest) {
+      return;
+    }
+
+    onPermissionRequest(onPushNotificationSetting);
+  }, [onPermissionRequest, onPushNotificationSetting]);
 
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
