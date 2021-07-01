@@ -113,9 +113,11 @@ const Notification: React.FC<Props> = memo((props) => {
       const variables: CreatePushTokenMutationVariables = {
         input: {
           token,
-          deviceID: `${Device.modelName?.replaceAll(' ', '')}-${String(
-            Device.osInternalBuildId
-          ).replaceAll(' ', '')}`,
+          deviceID: `${(Device.modelName || '').split(' ').join('')}-${String(
+            Device.osInternalBuildId || ''
+          )
+            .split(' ')
+            .join('')}`,
         },
       };
 
