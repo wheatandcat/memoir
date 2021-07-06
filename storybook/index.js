@@ -11,7 +11,7 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Notification from 'containers/Notification';
+import Notification from './Notification';
 import { loadStories } from './storyLoader';
 
 import './rn-addons';

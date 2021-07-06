@@ -20,4 +20,5 @@ export type RootStackParamList = {
     displayName: string;
     image: string;
   };
+  SettingMemoir: undefined;
 };
