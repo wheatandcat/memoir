@@ -5,6 +5,7 @@ import Plain, { Props } from '../Plain';
 const propsData = (): Props => ({
   loading: false,
   error: undefined,
+  onSave: jest.fn(),
 });
 
 describe('components/pages/Setting/Memoir/Plain.tsx', () => {

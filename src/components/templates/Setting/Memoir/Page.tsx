@@ -6,10 +6,12 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import Input from 'components/organisms/Setting/Memoir/Input';
+import Button from 'components/atoms/Button';
+import dayjs from 'lib/dayjs';
 
 export type Props = ConnectedType & {};
 
-const Page: React.FC<Props> = () => {
+const Page: React.FC<Props> = (props) => {
   const [dayOfWeek, setDayOfWeek] = useState(0);
   const [time, setTime] = useState(new Date('0000-01-01T00:00:00'));
   const [push, setPush] = useState(0);
@@ -63,6 +65,20 @@ const Page: React.FC<Props> = () => {
               />
             </View>
           </View>
+          <View p={3} style={styles.action}>
+            <Button
+              title="保存"
+              onPress={() =>
+                props.onSave({
+                  dayOfWeek,
+                  hours: dayjs(time).hour(),
+                  minutes: dayjs(time).minute(),
+                  notification: push ? true : false,
+                })
+              }
+              width={200}
+            />
+          </View>
         </View>
       </ScrollView>
     </View>
@@ -100,6 +116,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
+  },
+  action: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '100%',
   },
 });
 

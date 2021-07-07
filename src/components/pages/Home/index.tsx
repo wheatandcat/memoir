@@ -55,9 +55,9 @@ export const Home: React.FC<Props> = (props) => {
   );
 };
 
-export const HomeScreenOption = () => {
+export const HomeScreenOption = (title: string = '') => {
   return {
-    title: '',
+    title,
     headerStyle: {
       backgroundColor: theme().color.primary.main,
     },

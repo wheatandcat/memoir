@@ -15,13 +15,13 @@ export type Props = {
 };
 
 const dayOfWeekItems = [
-  { label: '日', value: 0, key: 0 },
-  { label: '月', value: 1, key: 1 },
-  { label: '火', value: 2, key: 2 },
-  { label: '水', value: 3, key: 3 },
-  { label: '木', value: 4, key: 4 },
-  { label: '金', value: 5, key: 5 },
-  { label: '土', value: 6, key: 6 },
+  { label: '日', value: 1, key: 1 },
+  { label: '月', value: 2, key: 2 },
+  { label: '火', value: 3, key: 3 },
+  { label: '水', value: 4, key: 4 },
+  { label: '木', value: 5, key: 5 },
+  { label: '金', value: 6, key: 6 },
+  { label: '土', value: 7, key: 7 },
 ];
 
 const Input: React.FC<Props> = (props) => {

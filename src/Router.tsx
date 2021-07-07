@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home, { HomeScreenOption } from 'components/pages/Home';
 import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
+import SettingMemoir from 'components/pages/Setting/Memoir';
 import MyPage from 'components/pages/MyPage';
 import theme from 'config/theme';
 
@@ -43,6 +44,11 @@ const WithProvider = () => {
           name="MyPage"
           component={MyPage}
           options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="SettingMemoir"
+          component={SettingMemoir}
+          options={HomeScreenOption('振り返り通知設定')}
         />
       </Stack.Navigator>
     </NavigationContainer>

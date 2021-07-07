@@ -12,7 +12,7 @@ const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
   if (props.loading) return <Loading />;
 
-  return <TemplateSettingMemoir />;
+  return <TemplateSettingMemoir onSave={props.onSave} />;
 };
 
 export default memo(Plain);

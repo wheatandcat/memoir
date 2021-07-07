@@ -2,7 +2,9 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import Page, { Props } from '../Page';
 
-const propsData = (): Props => ({});
+const propsData = (): Props => ({
+  onSave: jest.fn(),
+});
 
 describe('components/templates/Setting/Memoir/Page.tsx', () => {
   let wrapper: ShallowWrapper;
