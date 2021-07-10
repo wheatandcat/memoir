@@ -53,8 +53,6 @@ const Connected: React.FC<Props> = () => {
         Notifications.cancelAllScheduledNotificationsAsync();
       }
 
-      console.log(input);
-
       memoirNotificationSetting.onSave(input);
 
       navigation.goBack();
