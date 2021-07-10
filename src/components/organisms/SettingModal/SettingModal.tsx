@@ -32,6 +32,12 @@ const SettingModal: React.FC<Props> = (props) => {
     navigation.navigate('MyPage');
   }, [navigation, props]);
 
+  const onSettingMemoir = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('SettingMemoir');
+  }, [navigation, props]);
+
   const onPushNotificationSetting = useCallback(() => {
     if (Platform.OS === 'ios') {
       Linking.canOpenURL('app-settings:')
@@ -68,7 +74,7 @@ const SettingModal: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
         <Divider my={3} />
-        <TouchableOpacity style={styles.menuText}>
+        <TouchableOpacity onPress={onSettingMemoir} style={styles.menuText}>
           <View>
             <Text>ふりかえり日時を変更する</Text>
           </View>

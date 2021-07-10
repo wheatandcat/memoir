@@ -1,6 +1,5 @@
 import firebase from 'lib/system/firebase';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { storageKey } from 'lib/storage';
+import { storageKey, setItem, getItem, removeItem } from 'lib/storage';
 import dayjs from 'lib/dayjs';
 
 const initFirebaseAuth = (): Promise<firebase.User | null> => {
@@ -22,12 +21,12 @@ class Auth {
       return null;
     }
 
-    await AsyncStorage.setItem(storageKey.AUTH_UID_KEY, user.uid);
+    await setItem(storageKey.AUTH_UID_KEY, user.uid);
 
     const result = await user.getIdTokenResult(refresh);
 
-    await AsyncStorage.setItem(storageKey.AUTH_ID_TOKEN_KEY, result.token);
-    await AsyncStorage.setItem(
+    await setItem(storageKey.AUTH_ID_TOKEN_KEY, result.token);
+    await setItem(
       storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY,
       String(result.claims.exp)
     );
@@ -35,14 +34,12 @@ class Auth {
     return result.token;
   };
   getIdToken = async () => {
-    const idToken = await AsyncStorage.getItem(storageKey.AUTH_ID_TOKEN_KEY);
+    const idToken = await getItem(storageKey.AUTH_ID_TOKEN_KEY);
     if (!idToken) {
       return null;
     }
 
-    const expiration = await AsyncStorage.getItem(
-      storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY
-    );
+    const expiration = await getItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
 
     if (Number(expiration) > dayjs().unix()) {
       return idToken;
@@ -53,9 +50,9 @@ class Auth {
   logout = async () => {
     await firebase.auth().signOut();
 
-    await AsyncStorage.removeItem(storageKey.AUTH_UID_KEY);
-    await AsyncStorage.removeItem(storageKey.AUTH_ID_TOKEN_KEY);
-    await AsyncStorage.removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+    await removeItem(storageKey.AUTH_UID_KEY);
+    await removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+    await removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
   };
 }
 

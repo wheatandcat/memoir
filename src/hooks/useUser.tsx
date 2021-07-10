@@ -4,9 +4,8 @@ import { existUserID } from 'store/selectors';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useCreateUserMutation, useUserLazyQuery } from 'queries/api/index';
-import { storageKey } from 'lib/storage';
+import { storageKey, setItem } from 'lib/storage';
 import usePrevious from 'hooks/usePrevious';
 
 const useUser = () => {
@@ -18,7 +17,7 @@ const useUser = () => {
 
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
-      await AsyncStorage.setItem(storageKey.USER_ID_KEY, createUser.id);
+      await setItem(storageKey.USER_ID_KEY, createUser.id);
       setUser({ id: createUser.id, userID: '', displayName: '', image: '' });
     },
   });

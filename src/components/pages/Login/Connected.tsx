@@ -1,8 +1,7 @@
 import React, { memo, useEffect, useCallback } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { storageKey } from 'lib/storage';
+import { storageKey, getItem } from 'lib/storage';
 import TemplateLogin from 'components/templates/Login/Page';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import useHomeItems from 'hooks/useHomeItems';
@@ -36,7 +35,7 @@ const Connected: React.FC<Props> = () => {
   });
 
   const createAuthUser = useCallback(async () => {
-    const userID = await AsyncStorage.getItem(storageKey.USER_ID_KEY);
+    const userID = await getItem(storageKey.USER_ID_KEY);
 
     const variables: CreateAuthUserMutationVariables = {
       input: {
