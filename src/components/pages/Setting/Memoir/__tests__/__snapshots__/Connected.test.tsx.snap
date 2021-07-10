@@ -4,13 +4,13 @@ exports[`components/pages/Setting/Memoir/Connected.tsx 正常にrenderするこ�
 <Memo(Plain)
   data={
     Object {
-      "dayOfWeek": 6,
-      "hours": 11,
-      "minutes": 45,
+      "dayOfWeek": 0,
+      "hours": 0,
+      "minutes": 0,
       "notification": false,
     }
   }
-  loading={true}
+  loading={false}
   onSave={[Function]}
 />
 `;
