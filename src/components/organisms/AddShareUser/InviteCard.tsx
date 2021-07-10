@@ -147,11 +147,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: 50,
   },
-  button: {
-    borderWidth: StyleSheet.hairlineWidth,
-    borderColor: theme().color.base.dark,
-    borderRadius: 25,
-  },
 });
 
 export default memo(InviteCard);

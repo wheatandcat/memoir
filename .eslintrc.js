@@ -1,5 +1,10 @@
 module.exports = {
   extends: '@react-native-community',
+  globals: {
+    EdgesNode: true,
+    PageInfo: true,
+    ArrayType: true,
+  },
   env: {
     jest: true,
   },
@@ -39,7 +44,6 @@ module.exports = {
           },
         ],
         '@graphql-eslint/no-deprecated': 'error',
-        '@graphql-eslint/prettier': 'error',
         '@graphql-eslint/no-unused-variables': 'error',
       },
     },
