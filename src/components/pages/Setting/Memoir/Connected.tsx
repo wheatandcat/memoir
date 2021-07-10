@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import * as Notifications from 'expo-notifications';
 import { useNavigation } from '@react-navigation/native';
+import useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
 import Plain from './Plain';
 
 export type Props = {};
@@ -18,6 +19,7 @@ export type Input = {
 
 const Connected: React.FC<Props> = () => {
   const navigation = useNavigation();
+  const memoirNotificationSetting = useMemoirNotificationSetting();
 
   const onSave = useCallback(
     async (input: Input) => {
@@ -50,18 +52,32 @@ const Connected: React.FC<Props> = () => {
             repeats: true,
           },
         });
+
         // NOTE: API出力
       } else {
         // 通知OFFの場合は、通知をキャンセルする
         Notifications.cancelAllScheduledNotificationsAsync();
       }
 
+      memoirNotificationSetting.onSave(input);
+
       navigation.goBack();
     },
-    [navigation]
+    [navigation, memoirNotificationSetting]
   );
 
-  return <Plain loading={false} error={null} onSave={onSave} />;
+  return (
+    <Plain
+      loading={memoirNotificationSetting.loading}
+      data={{
+        dayOfWeek: memoirNotificationSetting.dayOfWeek,
+        hours: memoirNotificationSetting.hours,
+        minutes: memoirNotificationSetting.minutes,
+        notification: memoirNotificationSetting.notification,
+      }}
+      onSave={onSave}
+    />
+  );
 };
 
 export default memo(Connected);

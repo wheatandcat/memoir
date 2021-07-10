@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { setItem, storageKey } from 'lib/storage';
 import * as Updates from 'expo-updates';
 import Clipboard from 'expo-clipboard';
 import { useRecoilValue } from 'recoil';
@@ -38,7 +38,7 @@ const Menu: React.FC<Props> = () => {
       Alert.alert('ユーザーIDの指定がありません');
       return;
     }
-    await AsyncStorage.setItem('USER_ID', userID);
+    await setItem(storageKey.USER_ID_KEY, userID);
     Alert.alert('アプリを再起動します');
     Updates.reloadAsync();
   }, [userID]);

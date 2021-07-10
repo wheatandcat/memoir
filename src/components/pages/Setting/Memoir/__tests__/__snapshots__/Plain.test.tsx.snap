@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Setting/Memoir/Plain.tsx 正常にrenderすること 1`] = `
+<Memo(Page)
+  dayOfWeek={0}
+  hours={0}
+  minutes={0}
+  notification={false}
+  onSave={[MockFunction]}
+/>
+`;

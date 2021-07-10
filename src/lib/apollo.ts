@@ -2,8 +2,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Alert } from 'react-native';
 import { onError } from '@apollo/client/link/error';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { storageKey } from 'lib/storage';
+import { storageKey, getItem } from 'lib/storage';
 import Auth from 'lib/auth';
 
 export const cache = new InMemoryCache();
@@ -25,7 +24,7 @@ const makeApolloClient = async () => {
     if (token) {
       param.Authorization = `Bearer ${token}`;
     } else {
-      const userID = await AsyncStorage.getItem(storageKey.USER_ID_KEY);
+      const userID = await getItem(storageKey.USER_ID_KEY);
 
       if (userID) {
         param.UserID = userID;

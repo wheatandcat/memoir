@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Setting/Memoir/Input.tsx 正常にrenderすること 1`] = `
+<View
+  pt={4}
+>
+  <View
+    style={
+      Object {
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      style={Object {}}
+    >
+      <RNPickerSelect
+        Icon={null}
+        InputAccessoryView={null}
+        disabled={false}
+        doneText="Done"
+        fixAndroidTouchableBug={true}
+        itemKey={null}
+        items={
+          Array [
+            Object {
+              "key": 1,
+              "label": "日",
+              "value": 1,
+            },
+            Object {
+              "key": 2,
+              "label": "月",
+              "value": 2,
+            },
+            Object {
+              "key": 3,
+              "label": "火",
+              "value": 3,
+            },
+            Object {
+              "key": 4,
+              "label": "水",
+              "value": 4,
+            },
+            Object {
+              "key": 5,
+              "label": "木",
+              "value": 5,
+            },
+            Object {
+              "key": 6,
+              "label": "金",
+              "value": 6,
+            },
+            Object {
+              "key": 7,
+              "label": "土",
+              "value": 7,
+            },
+          ]
+        }
+        modalProps={Object {}}
+        onClose={null}
+        onDonePress={null}
+        onDownArrow={null}
+        onOpen={null}
+        onUpArrow={null}
+        onValueChange={[MockFunction]}
+        pickerProps={Object {}}
+        placeholder={Object {}}
+        style={
+          Object {
+            "inputAndroid": Object {
+              "fontSize": 48,
+              "fontWeight": "bold",
+              "height": 50,
+              "paddingTop": 16,
+              "width": 40,
+            },
+            "inputIOS": Object {
+              "fontSize": 36,
+              "fontWeight": "bold",
+              "height": 50,
+              "paddingTop": 16,
+              "width": 40,
+            },
+            "placeholder": Object {
+              "color": "transparent",
+              "height": 50,
+              "width": 40,
+            },
+          }
+        }
+        textInputProps={Object {}}
+        touchableDoneProps={Object {}}
+        touchableWrapperProps={Object {}}
+        useNativeAndroidPickerStyle={false}
+        value={0}
+      />
+    </View>
+    <View
+      pt={4}
+      px={2}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="body"
+      >
+        曜日の
+      </Text>
+    </View>
+    <View
+      mt={1}
+      pt={2}
+    >
+      <ForwardRef>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          fontWeight="bold"
+          onPress={[Function]}
+          style={Object {}}
+          variants="large"
+        >
+          00:00
+        </Text>
+      </ForwardRef>
+      <DateTimePickerModal
+        cancelTextIOS="キャンセル"
+        confirmTextIOS="完了"
+        date={-000001-12-31T14:41:01.000Z}
+        headerTextIOS=""
+        is24Hour={true}
+        isHeaderVisibleIOS={false}
+        isVisible={false}
+        locale="ja"
+        modalPropsIOS={Object {}}
+        mode="time"
+        onCancel={[Function]}
+        onConfirm={[Function]}
+        pickerContainerStyleIOS={Object {}}
+        pickerStyleIOS={Object {}}
+      />
+    </View>
+    <View
+      pt={4}
+      px={2}
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="body"
+      >
+        から
+      </Text>
+    </View>
+  </View>
+</View>
+`;

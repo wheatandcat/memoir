@@ -1,7 +1,6 @@
 import { selector } from 'recoil';
 import { userState } from 'store/atoms';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { storageKey } from 'lib/storage';
+import { storageKey, getItem } from 'lib/storage';
 import { authUserState } from 'store/atoms';
 
 export const userIDState = selector({
@@ -16,7 +15,7 @@ export const userIDState = selector({
 export const existUserID = selector({
   key: 'existUser',
   get: async () => {
-    const uid = await AsyncStorage.getItem(storageKey.USER_ID_KEY);
+    const uid = await getItem(storageKey.USER_ID_KEY);
     if (uid) {
       return uid;
     }
@@ -29,7 +28,7 @@ export const existAuthUserID = selector({
   key: 'existAuthUser',
   get: async ({ get }) => {
     get(authUserState);
-    const uid = await AsyncStorage.getItem(storageKey.AUTH_UID_KEY);
+    const uid = await getItem(storageKey.AUTH_UID_KEY);
     if (uid) {
       return uid;
     }

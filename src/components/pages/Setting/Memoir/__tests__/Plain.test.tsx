@@ -1,11 +1,12 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
 import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
   loading: false,
-  error: undefined,
   onSave: jest.fn(),
+  data: memoirNotificationSetting(),
 });
 
 describe('components/pages/Setting/Memoir/Plain.tsx', () => {

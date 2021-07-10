@@ -9,12 +9,23 @@ import Input from 'components/organisms/Setting/Memoir/Input';
 import Button from 'components/atoms/Button';
 import dayjs from 'lib/dayjs';
 
-export type Props = ConnectedType & {};
+export type Props = ConnectedType & {
+  dayOfWeek: number;
+  hours: number;
+  minutes: number;
+  notification: boolean;
+};
 
 const Page: React.FC<Props> = (props) => {
-  const [dayOfWeek, setDayOfWeek] = useState(0);
-  const [time, setTime] = useState(new Date('0000-01-01T00:00:00'));
-  const [push, setPush] = useState(0);
+  const [dayOfWeek, setDayOfWeek] = useState(props.dayOfWeek);
+  const [time, setTime] = useState(
+    new Date(
+      `0000-01-01T${('00' + props.hours).slice(-2)}:${(
+        '00' + props.minutes
+      ).slice(-2)}:00`
+    )
+  );
+  const [push, setPush] = useState(props.notification ? 1 : 0);
 
   const options = [
     { label: 'OFF', value: 0 },

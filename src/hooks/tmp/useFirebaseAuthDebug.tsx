@@ -9,8 +9,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
 import 'lib/firebase';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { storageKey } from 'lib/storage';
+import { storageKey, getItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState } from 'store/atoms';
 import Auth from 'lib/auth';
@@ -46,7 +45,7 @@ const useFirebaseAuth = () => {
       const idToken = await auth.setSession(refresh);
 
       if (idToken) {
-        const authUID = await AsyncStorage.getItem(storageKey.AUTH_UID_KEY);
+        const authUID = await getItem(storageKey.AUTH_UID_KEY);
         setAuthUser({
           uid: authUID,
         });

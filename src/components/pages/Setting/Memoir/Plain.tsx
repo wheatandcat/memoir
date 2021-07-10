@@ -1,18 +1,26 @@
 import React, { memo } from 'react';
-import ErrorPage from 'components/organisms/Error/Error';
 import Loading from 'components/atoms/Loading';
 import TemplateSettingMemoir from 'components/templates/Setting/Memoir/Page';
+import { State as MemoirNotificationSettingState } from 'hooks/useMemoirNotificationSetting';
 import { ConnectedType } from './Connected';
 
-type QueryHookResult = any;
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
-export type Props = QueryProps & ConnectedType;
+export type Props = ConnectedType & {
+  data: MemoirNotificationSettingState;
+  loading: boolean;
+};
 
 const Plain: React.FC<Props> = (props) => {
-  if (props.error) return <ErrorPage error={props.error} />;
   if (props.loading) return <Loading />;
 
-  return <TemplateSettingMemoir onSave={props.onSave} />;
+  return (
+    <TemplateSettingMemoir
+      onSave={props.onSave}
+      dayOfWeek={props.data.dayOfWeek}
+      hours={props.data.hours}
+      minutes={props.data.minutes}
+      notification={props.data.notification}
+    />
+  );
 };
 
 export default memo(Plain);
