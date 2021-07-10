@@ -4,7 +4,7 @@ exports[`components/pages/Setting/Memoir/Connected.tsx 正常にrenderするこ�
 <Memo(Plain)
   data={
     Object {
-      "dayOfWeek": 0,
+      "dayOfWeek": 1,
       "hours": 0,
       "minutes": 0,
       "notification": false,

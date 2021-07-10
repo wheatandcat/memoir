@@ -29,7 +29,7 @@ exports[`components/templates/Setting/Memoir/Page.tsx 正常にrenderするこ�
           </Text>
         </View>
         <Memo(Input)
-          dayOfWeek={0}
+          dayOfWeek={1}
           onChangeDayOfWeek={[Function]}
           onChangeTime={[Function]}
           time={1899-12-31T15:00:00.000Z}
