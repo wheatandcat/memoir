@@ -29,8 +29,8 @@ const Input: React.FC<Props> = (props) => {
 
   const onChangeTime = useCallback(
     (val) => {
-      props.onChangeTime(val);
       setOpenTime(false);
+      props.onChangeTime(val);
     },
     [props]
   );
@@ -55,16 +55,19 @@ const Input: React.FC<Props> = (props) => {
               inputIOS: {
                 fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,
+                color: theme().color.secondary.main,
                 width: 40,
                 height: 50,
                 paddingTop: theme().space(3),
               },
               inputAndroid: {
-                fontSize: theme().fontSizes.xl2,
+                fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,
+                color: theme().color.secondary.main,
                 width: 40,
                 height: 50,
-                paddingTop: theme().space(3),
+                marginTop: theme().space(2),
+                paddingTop: theme().space(1),
               },
             }}
           />

@@ -2,6 +2,7 @@ import React, { memo, useCallback } from 'react';
 import * as Notifications from 'expo-notifications';
 import { useNavigation } from '@react-navigation/native';
 import useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
+import { useNotification } from 'containers/Notification';
 import Plain from './Plain';
 
 export type Props = {};
@@ -20,37 +21,30 @@ export type Input = {
 const Connected: React.FC<Props> = () => {
   const navigation = useNavigation();
   const memoirNotificationSetting = useMemoirNotificationSetting();
+  const { onPermissionRequest } = useNotification();
 
   const onSave = useCallback(
     async (input: Input) => {
       if (input.notification) {
-        const {
-          status: existingStatus,
-        } = await Notifications.getPermissionsAsync();
-        let finalStatus = existingStatus;
-
-        if (existingStatus !== 'granted') {
-          const { status } = await Notifications.requestPermissionsAsync();
-          finalStatus = status;
+        if (!onPermissionRequest) {
+          return;
         }
 
-        if (finalStatus !== 'granted') {
-          return false;
-        }
-
-        Notifications.scheduleNotificationAsync({
-          content: {
-            body: 'ふりかえりの時間になりました',
-            data: {
-              urlScheme: 'Memoir',
+        onPermissionRequest(() => {
+          Notifications.scheduleNotificationAsync({
+            content: {
+              body: 'ふりかえりの時間になりました',
+              data: {
+                urlScheme: 'Memoir',
+              },
             },
-          },
-          trigger: {
-            hour: input.hours,
-            minute: input.minutes,
-            weekday: input.dayOfWeek,
-            repeats: true,
-          },
+            trigger: {
+              hour: input.hours,
+              minute: input.minutes,
+              weekday: input.dayOfWeek,
+              repeats: true,
+            },
+          });
         });
 
         // NOTE: API出力
@@ -59,11 +53,13 @@ const Connected: React.FC<Props> = () => {
         Notifications.cancelAllScheduledNotificationsAsync();
       }
 
+      console.log(input);
+
       memoirNotificationSetting.onSave(input);
 
       navigation.goBack();
     },
-    [navigation, memoirNotificationSetting]
+    [navigation, memoirNotificationSetting, onPermissionRequest]
   );
 
   return (

@@ -19,12 +19,13 @@ export type Props = ConnectedType & {
 const Page: React.FC<Props> = (props) => {
   const [dayOfWeek, setDayOfWeek] = useState(props.dayOfWeek);
   const [time, setTime] = useState(
-    new Date(
+    dayjs(
       `0000-01-01T${('00' + props.hours).slice(-2)}:${(
         '00' + props.minutes
       ).slice(-2)}:00`
-    )
+    ).toDate()
   );
+
   const [push, setPush] = useState(props.notification ? 1 : 0);
 
   const options = [
@@ -131,7 +132,8 @@ const styles = StyleSheet.create({
   action: {
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%',
+    marginTop: theme().space(6),
+    marginBottom: theme().space(3),
   },
 });
 

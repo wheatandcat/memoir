@@ -26,6 +26,7 @@ const useMemoirNotificationSetting = () => {
     const setting = await getItem(storageKey.MEMOIR_NOTIFICATION_KEY);
     if (setting) {
       const json = JSON.parse(setting);
+
       const item: State = {
         dayOfWeek: json.dayOfWeek ?? state.dayOfWeek,
         hours: json.hours ?? state.hours,

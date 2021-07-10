@@ -73,13 +73,16 @@ exports[`components/organisms/Setting/Memoir/Input.tsx 正常にrenderするこ�
         style={
           Object {
             "inputAndroid": Object {
-              "fontSize": 48,
+              "color": "#362740",
+              "fontSize": 36,
               "fontWeight": "bold",
               "height": 50,
-              "paddingTop": 16,
+              "marginTop": 8,
+              "paddingTop": 4,
               "width": 40,
             },
             "inputIOS": Object {
+              "color": "#362740",
               "fontSize": 36,
               "fontWeight": "bold",
               "height": 50,
