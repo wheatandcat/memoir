@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import dayjs from 'lib/dayjs';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Memoir'>;
@@ -15,7 +16,14 @@ export type Props = {
 const Memoir: React.FC<Props> = (props) => {
   const { startDate, endDate } = props.route.params;
 
-  return <Connected startDate={startDate} endDate={endDate} />;
+  return (
+    <Connected
+      startDate={
+        startDate || dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00')
+      }
+      endDate={endDate || dayjs().format('YYYY-MM-DDT00:00:00+09:00')}
+    />
+  );
 };
 
 export default memo(Memoir);

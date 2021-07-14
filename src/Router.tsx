@@ -1,6 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
+import * as Notifications from 'expo-notifications';
 import { createStackNavigator } from '@react-navigation/stack';
+import * as Linking from 'expo-linking';
 import Home, { HomeScreenOption } from 'components/pages/Home';
 import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
@@ -9,6 +11,7 @@ import MyPage from 'components/pages/MyPage';
 import theme from 'config/theme';
 
 const Stack = createStackNavigator();
+const prefix = Linking.createURL('/');
 
 export const HomeOption = () => {
   return {
@@ -23,7 +26,34 @@ export const HomeOption = () => {
 
 const WithProvider = () => {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      linking={{
+        prefixes: [prefix],
+        subscribe(listener) {
+          const onReceiveURL = ({ url }: { url: string }) => {
+            listener(url);
+          };
+
+          Linking.addEventListener('url', onReceiveURL);
+
+          const subscription = Notifications.addNotificationResponseReceivedListener(
+            (response) => {
+              const url =
+                response.notification.request.content.data?.urlScheme ?? '';
+
+              if (url !== '') {
+                listener(`${prefix}${url}`);
+              }
+            }
+          );
+
+          return () => {
+            Linking.removeEventListener('url', onReceiveURL);
+            subscription.remove();
+          };
+        },
+      }}
+    >
       <Stack.Navigator initialRouteName="Home" mode="modal">
         <Stack.Screen
           name="Home"

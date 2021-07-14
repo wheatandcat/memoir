@@ -1,5 +1,6 @@
 import React, { memo, useCallback, useState } from 'react';
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
+import * as Notifications from 'expo-notifications';
 import { setItem, storageKey } from 'lib/storage';
 import * as Updates from 'expo-updates';
 import Clipboard from 'expo-clipboard';
@@ -43,6 +44,36 @@ const Menu: React.FC<Props> = () => {
     Updates.reloadAsync();
   }, [userID]);
 
+  const onLocalPushNotification = useCallback(async () => {
+    const {
+      status: existingStatus,
+    } = await Notifications.getPermissionsAsync();
+    let finalStatus = existingStatus;
+
+    if (existingStatus !== 'granted') {
+      const { status } = await Notifications.requestPermissionsAsync();
+      finalStatus = status;
+    }
+
+    if (finalStatus !== 'granted') {
+      return false;
+    }
+
+    Notifications.scheduleNotificationAsync({
+      content: {
+        body: 'Push通知テスト',
+        data: {
+          urlScheme: 'MyPage',
+        },
+      },
+      trigger: {
+        seconds: 3,
+      },
+    });
+
+    Alert.alert('3秒後に通知を設定しました');
+  }, []);
+
   return (
     <View style={styles.root} pt={2}>
       <View>
@@ -75,6 +106,12 @@ const Menu: React.FC<Props> = () => {
             <Button size="sm" title="変更" onPress={onChangeUserID} />
           </View>
         </View>
+        <TouchableOpacity onPress={onLocalPushNotification}>
+          <View>
+            <Text fontFamily="NotoSansJP-Bold">ローカルPush通知テスト</Text>
+          </View>
+        </TouchableOpacity>
+        <Divider my={3} />
       </View>
     </View>
   );

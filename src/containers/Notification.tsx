@@ -3,7 +3,6 @@ import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import React, {
   memo,
-  useEffect,
   useRef,
   useContext,
   useCallback,
@@ -35,44 +34,11 @@ Notifications.setNotificationHandler({
 const Notification: React.FC<Props> = memo((props) => {
   const requestCallback = useRef<() => void>(() => {});
 
-  const notificationListener = useRef<
-    ReturnType<typeof Notifications.addNotificationReceivedListener>
-  >();
-  const responseListener = useRef<
-    ReturnType<typeof Notifications.addNotificationResponseReceivedListener>
-  >();
   const [createPushTokenMutation] = useCreatePushTokenMutation({
     onCompleted() {
       requestCallback.current();
     },
   });
-
-  useEffect(() => {
-    notificationListener.current = Notifications.addNotificationReceivedListener(
-      (notification: Notifications.Notification) => {
-        const data = notification.request.content.data;
-
-        console.log(data);
-      }
-    );
-
-    responseListener.current = Notifications.addNotificationResponseReceivedListener(
-      (response) => {
-        console.log(response);
-      }
-    );
-
-    return () => {
-      if (notificationListener.current) {
-        Notifications.removeNotificationSubscription(
-          notificationListener.current
-        );
-      }
-      if (responseListener.current) {
-        Notifications.removeNotificationSubscription(responseListener.current);
-      }
-    };
-  }, []);
 
   const onPermissionRequest = useCallback(
     async (callback: () => void) => {
