@@ -1,0 +1,4 @@
+{
+  "baseUrl": "src",
+  "ignoreFiles": ["__mockData__"]
+}
