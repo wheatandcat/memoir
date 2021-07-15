@@ -19,7 +19,8 @@
     "codegen": "yarn download:schema.graphqls & graphql-codegen",
     "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts",
     "test": "jest",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "unused-exports": "node ./scripts/ts-unused-exports"
   },
   "dependencies": {
     "@apollo/client": "3.3.21",
