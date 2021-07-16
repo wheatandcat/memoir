@@ -2,7 +2,7 @@ name: unused-exports
 on: [push]
 
 jobs:
-  lint:
+  unused-exports:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
