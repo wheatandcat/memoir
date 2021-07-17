@@ -14,8 +14,6 @@ import {
 
 type Props = {};
 
-export type ConnectedType = {};
-
 const Connected: React.FC<Props> = () => {
   const { setup, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth();
   const { refetch } = useHomeItems();

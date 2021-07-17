@@ -8,7 +8,7 @@ import Connected from './Connected';
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Memoir'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Memoir'>;
 
-export type Props = {
+type Props = {
   navigation: ScreenNavigationProp;
   route: ScreenRouteProp;
 };

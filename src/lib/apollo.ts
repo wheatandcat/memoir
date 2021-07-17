@@ -5,7 +5,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { storageKey, getItem } from 'lib/storage';
 import Auth from 'lib/auth';
 
-export const cache = new InMemoryCache();
+const cache = new InMemoryCache();
 const auth = new Auth();
 
 type Param = {

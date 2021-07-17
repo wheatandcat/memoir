@@ -4,7 +4,7 @@ import ErrorPage from 'components/organisms/Error/Error';
 import TemplateHome from 'components/templates/Home/Page';
 import { ConnectedType } from './Connected';
 
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
 
 export type Props = QueryProps & ConnectedType;
 

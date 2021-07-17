@@ -50,7 +50,7 @@ const category = {
   },
 };
 
-export const FONT_SIZE = {
+const FONT_SIZE = {
   xs: 12,
   sm: 14,
   base: 18,
@@ -65,13 +65,13 @@ type FontWeight = {
   bold: 'bold';
 };
 
-export const FONT_WEIGHT: FontWeight = {
+const FONT_WEIGHT: FontWeight = {
   thin: '100',
   normal: '400',
   bold: 'bold',
 };
 
-export const FONT_COLOR = {
+const FONT_COLOR = {
   primary: baseColor.primary.main,
   secondary: baseColor.secondary.main,
   secondaryLight: baseColor.secondary.light,
@@ -99,7 +99,7 @@ type ButtonType = {
   };
 };
 
-export const BUTTON: ButtonType = {
+const BUTTON: ButtonType = {
   size: {
     sm: {
       fontSize: 'sm',
@@ -125,7 +125,7 @@ export const BUTTON: ButtonType = {
   },
 };
 
-export const ICON = {
+const ICON = {
   size: {
     sm: 20,
     base: 30,

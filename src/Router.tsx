@@ -8,21 +8,9 @@ import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
 import SettingMemoir from 'components/pages/Setting/Memoir';
 import MyPage from 'components/pages/MyPage';
-import theme from 'config/theme';
 
 const Stack = createStackNavigator();
 const prefix = Linking.createURL('/');
-
-export const HomeOption = () => {
-  return {
-    title: '',
-    headerStyle: {
-      backgroundColor: theme().color.primary.main,
-    },
-    headerBackTitleVisible: false,
-    headerTintColor: theme().color.secondary.main,
-  };
-};
 
 const WithProvider = () => {
   return (

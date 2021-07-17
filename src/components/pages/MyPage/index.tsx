@@ -16,7 +16,7 @@ import Connected from './Connected';
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'MyPage'>;
 
-export type Props = {
+type Props = {
   navigation: ScreenNavigationProp;
   route: ScreenRouteProp;
 };
@@ -64,7 +64,7 @@ const RootStack = () => {
   );
 };
 
-export const MyPageScreenOption = (title: string) => {
+const MyPageScreenOption = (title: string) => {
   return {
     title,
     headerStyle: {

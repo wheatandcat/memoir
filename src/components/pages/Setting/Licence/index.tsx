@@ -10,7 +10,7 @@ type ScreenNavigationProp = StackNavigationProp<
 >;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'SettingLicence'>;
 
-export type Props = {
+type Props = {
   navigation: ScreenNavigationProp;
   route: ScreenRouteProp;
 };
