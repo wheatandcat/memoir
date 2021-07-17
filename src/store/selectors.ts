@@ -1,16 +1,6 @@
 import { selector } from 'recoil';
-import { userState } from 'store/atoms';
 import { storageKey, getItem } from 'lib/storage';
 import { authUserState } from 'store/atoms';
-
-export const userIDState = selector({
-  key: 'userID',
-  get: ({ get }) => {
-    const user = get(userState);
-
-    return user.id;
-  },
-});
 
 export const existUserID = selector({
   key: 'existUser',

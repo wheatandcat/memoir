@@ -5,7 +5,7 @@ import { ConnectedType } from './Connected';
 import TemplateMemoir from 'components/templates/Memoir/Page';
 import { Item, ItemsInPeriodPageInfo } from 'hooks/useItemsInPeriodPaging';
 
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
 
 export type Props = QueryProps &
   ConnectedType & {

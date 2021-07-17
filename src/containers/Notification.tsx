@@ -14,10 +14,10 @@ import {
   CreatePushTokenMutationVariables,
 } from 'queries/api/index';
 
-export const Context = createContext<ContextProps>({});
+const Context = createContext<ContextProps>({});
 const { Provider } = Context;
 
-export type ContextProps = Partial<{
+type ContextProps = Partial<{
   onPermissionRequest: (callback: () => void) => Promise<boolean>;
 }>;
 
@@ -102,4 +102,3 @@ const Notification: React.FC<Props> = memo((props) => {
 export default Notification;
 
 export const useNotification = () => useContext(Context);
-export const Consumer = Context.Consumer;

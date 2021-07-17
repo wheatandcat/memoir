@@ -7,7 +7,7 @@ import Connected from './Connected';
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Login'>;
 
-export type Props = {
+type Props = {
   navigation: ScreenNavigationProp;
   route: ScreenRouteProp;
 };

@@ -6,7 +6,7 @@ import { InviteQueryHookResult } from 'queries/api/index';
 import { ConnectedType, Invite } from './Connected';
 
 type QueryHookResult = InviteQueryHookResult;
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
 export type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {

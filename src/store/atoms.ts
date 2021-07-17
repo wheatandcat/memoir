@@ -23,7 +23,7 @@ export const userState = atom<User>({
   default: initialUserState(),
 });
 
-export type HomeDate = {
+type HomeDate = {
   date: string;
 };
 
@@ -36,7 +36,7 @@ export const homeDateState = atom<HomeDate>({
   default: initialHomeDateState(),
 });
 
-export type HomeItems = {
+type HomeItems = {
   items: Item[];
 };
 
@@ -49,7 +49,7 @@ export const homeItemsState = atom<HomeItems>({
   default: initialHomeItemsState(),
 });
 
-export type AuthUser = {
+type AuthUser = {
   uid: string | null;
 };
 

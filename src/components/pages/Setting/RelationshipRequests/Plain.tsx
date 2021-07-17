@@ -9,7 +9,7 @@ import {
 import TemplateSettingRelationshipRequests from 'components/templates/Setting/RelationshipRequests/Page';
 import { ConnectedType } from './Connected';
 
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
 export type Props = QueryProps &
   ConnectedType & {
     items: RelationshipRequest[];

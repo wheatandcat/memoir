@@ -3,7 +3,7 @@ type Mode = {
   count: number;
 };
 
-export const modeCount = (data: number[]) => {
+const modeCount = (data: number[]) => {
   const mode: Mode[] = [];
   const valueArr: number[] = [];
   const dataSet = new Set(data);

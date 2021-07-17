@@ -11,7 +11,7 @@ export type ConnectedType = {
   onSave: (input: Input) => void;
 };
 
-export type Input = {
+type Input = {
   dayOfWeek: number;
   hours: number;
   minutes: number;

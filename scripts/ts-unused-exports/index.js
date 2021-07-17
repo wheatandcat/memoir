@@ -22,7 +22,12 @@ for (let i = 0; i < keys.length; i++) {
     continue;
   }
 
-  const ignore = ignoreFiles.find((v) => key.includes(v));
+  const ignore = ignoreFiles.find((v) => {
+    const path = key.replace(`${rootPath}/`, '');
+    const regexp = new RegExp(v + '(.*?)', 'g');
+
+    return regexp.test(path);
+  });
 
   if (ignore) {
     continue;

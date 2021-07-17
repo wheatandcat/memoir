@@ -13,7 +13,7 @@ type Props = {
   endDate: string;
 };
 
-export type State = {
+type State = {
   after: string | null;
 };
 

@@ -14,9 +14,7 @@ import {
 
 type Props = {};
 
-export type Relationship = NonNullable<
-  EdgesNode<RelationshipsQuery['relationships']>
->;
+type Relationship = NonNullable<EdgesNode<RelationshipsQuery['relationships']>>;
 
 export type ConnectedType = {
   deleting: boolean;
