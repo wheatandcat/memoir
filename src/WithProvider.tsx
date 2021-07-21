@@ -1,6 +1,6 @@
 import React from 'react';
 import useUser from 'hooks/useUser';
-import Tutorial from 'components/templates/Tutorial/Page';
+import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import Router from './Router';
 
@@ -11,8 +11,8 @@ const WithProvider = () => {
     return null;
   }
 
-  if (!user.id) {
-    return <Tutorial onPress={onSaveWhenNotLogin} />;
+  if (user.id) {
+    return <Top onSkip={onSaveWhenNotLogin} />;
   }
 
   return <Router />;

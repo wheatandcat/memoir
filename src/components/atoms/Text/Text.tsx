@@ -18,6 +18,7 @@ type Props = TextProps & {
   fontWeight?: FontWeight;
   color?: FontColor;
   textAlign?: TextStyle['textAlign'];
+  underline?: boolean;
   lineHeight?: number;
   fontFamily?: FontFamily;
 };
@@ -45,8 +46,12 @@ const Text: React.FC<Props> = (props) => {
 
 const enhanceStyle = (style: TextStyle, props: Props) => {
   if (props.textAlign) style.textAlign = props.textAlign;
+  if (props.underline) style.textDecorationLine = 'underline';
 
-  const r = { ...style, fontFamily: props.fontFamily };
+  const r = {
+    ...style,
+    fontFamily: props.fontFamily,
+  };
 
   if (Platform.OS === 'android') {
     delete r.fontWeight;
