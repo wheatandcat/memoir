@@ -6,6 +6,8 @@ const propsData = (): Props => ({
   onAppleLogin: jest.fn(),
   onGoogleLogin: jest.fn(),
   onSkip: jest.fn(),
+  onLogin: jest.fn(),
+  onCreate: jest.fn(),
 });
 
 describe('components/templates/Top/Page.tsx', () => {

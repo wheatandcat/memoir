@@ -48,7 +48,7 @@ const Connected: React.FC<Props> = () => {
     if (authenticated) {
       createAuthUser();
     }
-  }, [authenticated, navigation, createAuthUser]);
+  }, [authenticated, createAuthUser]);
 
   if (!setup) {
     return null;

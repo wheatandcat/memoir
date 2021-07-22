@@ -4,15 +4,21 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as WebBrowser from 'expo-web-browser';
 import * as Crypto from 'expo-crypto';
-import { useRecoilValueLoadable, useRecoilState } from 'recoil';
+import {
+  useRecoilValueLoadable,
+  useRecoilState,
+  useSetRecoilState,
+} from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
 import 'lib/firebase';
-import { storageKey, getItem } from 'lib/storage';
+import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
-import { authUserState } from 'store/atoms';
+import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
+import { useUserLazyQuery } from 'queries/api/index';
+import usePrevious from 'hooks/usePrevious';
 
 const auth = new Auth();
 
@@ -34,6 +40,10 @@ export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
+  const [getUser, userUserQuery] = useUserLazyQuery();
+  const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
+
+  const setUser = useSetRecoilState(userState);
 
   const [setup, setSetup] = useState(false);
 
@@ -102,10 +112,13 @@ const useFirebaseAuth = () => {
 
   const onLogout = useCallback(async () => {
     await auth.logout();
+    await removeItem(storageKey.USER_ID_KEY);
+
     setAuthUser({
       uid: null,
     });
-  }, [setAuthUser]);
+    setUser({ id: null, userID: '', displayName: '', image: '' });
+  }, [setAuthUser, setUser]);
 
   useEffect(() => {
     if (authUser.uid) {
@@ -114,9 +127,10 @@ const useFirebaseAuth = () => {
     if (authUserID.state === 'hasValue') {
       if (authUserID.contents) {
         setAuthUser({ uid: authUserID.contents });
+        getUser();
       }
     }
-  }, [authUserID, setAuthUser, authUser.uid]);
+  }, [authUserID, setAuthUser, authUser.uid, getUser]);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(() => {
@@ -125,6 +139,19 @@ const useFirebaseAuth = () => {
 
     return () => unsubscribe();
   }, []);
+
+  useEffect(() => {
+    if (prevUserUserQueryLoading && !userUserQuery.loading) {
+      if (userUserQuery.data?.user?.id) {
+        setUser((s) => ({
+          ...s,
+          userID: userUserQuery.data?.user?.id || '',
+          displayName: userUserQuery.data?.user?.displayName || '',
+          image: userUserQuery.data?.user?.image || '',
+        }));
+      }
+    }
+  }, [userUserQuery, setUser, prevUserUserQueryLoading]);
 
   return {
     setup,

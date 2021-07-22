@@ -3,75 +3,90 @@ import { StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import { ConnectedType } from 'components/pages/Top/Connected';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'config/theme';
 import Form, { Props as FormProps } from 'components/organisms/Login/Form';
+import { StatusBar } from 'expo-status-bar';
 
 export type Props = ConnectedType & FormProps & {};
 
 const Page: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      <ImageBackground
-        source={require('../../../img/common/frame.png')}
-        resizeMode="cover"
-        style={styles.image}
-      >
-        <View style={styles.title}>
-          <Text textAlign="center" variants="logo">
-            memoir
-          </Text>
-          <View style={styles.skip}>
-            <TouchableOpacity onPress={props.onSkip}>
-              <Text
-                variants="small"
-                style={styles.skipText}
-                fontFamily="NotoSansJP-Bold"
-                underline
-              >
-                スキップ
+      <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
+      <SafeAreaView>
+        <View style={styles.inner}>
+          <ImageBackground
+            source={require('../../../img/common/frame.png')}
+            resizeMode="cover"
+            style={styles.image}
+          >
+            <View style={styles.title}>
+              <Text textAlign="center" variants="logo">
+                memoir
               </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
+              <View style={styles.skip}>
+                <TouchableOpacity onPress={props.onSkip}>
+                  <Text
+                    variants="small"
+                    style={styles.skipText}
+                    fontFamily="NotoSansJP-Bold"
+                    underline
+                  >
+                    スキップ
+                  </Text>
+                </TouchableOpacity>
+              </View>
+            </View>
 
-        <View style={styles.contents}>
-          <View style={styles.contentsTitle}>
-            <View style={styles.divider} />
-            <View>
-              <Text variants="small">新規登録</Text>
+            <View style={styles.contents}>
+              <View style={styles.contentsTitle}>
+                <View style={styles.divider} />
+                <View>
+                  <Text variants="small">新規登録</Text>
+                </View>
+                <View style={styles.divider} />
+              </View>
+              <View style={styles.signed}>
+                <Form
+                  onAppleLogin={props.onAppleLogin}
+                  onGoogleLogin={props.onGoogleLogin}
+                />
+              </View>
+              <View style={styles.footer}>
+                <View style={styles.login}>
+                  <Text variants="small">
+                    すでにアカウントアカウントをお持ちの方
+                  </Text>
+                </View>
+                <View style={styles.loginText}>
+                  <TouchableOpacity onPress={props.onLogin}>
+                    <Text
+                      color="primary"
+                      fontFamily="NotoSansJP-Bold"
+                      underline
+                    >
+                      ログイン
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
             </View>
-            <View style={styles.divider} />
-          </View>
-          <View style={styles.signed}>
-            <Form
-              onAppleLogin={props.onAppleLogin}
-              onGoogleLogin={props.onGoogleLogin}
-            />
-          </View>
-          <View style={styles.footer}>
-            <View style={styles.login}>
-              <Text variants="small">
-                すでにアカウントアカウントをお持ちの方
-              </Text>
-            </View>
-            <View style={styles.loginText}>
-              <TouchableOpacity>
-                <Text color="primary" fontFamily="NotoSansJP-Bold" underline>
-                  ログイン
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
+          </ImageBackground>
         </View>
-      </ImageBackground>
+      </SafeAreaView>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   root: {
-    flex: 1,
-    position: 'relative',
+    height: '100%',
+    backgroundColor: theme().color.primary.main,
+  },
+  inner: {
+    height: '100%',
+    backgroundColor: theme().color.background.light,
   },
   image: {
     flex: 1,
