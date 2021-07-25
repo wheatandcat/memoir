@@ -16,8 +16,6 @@ import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
-import { useUserLazyQuery } from 'queries/api/index';
-import usePrevious from 'hooks/usePrevious';
 
 const auth = new Auth();
 
@@ -40,8 +38,6 @@ const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
   const setUser = useSetRecoilState(userState);
-  const [getUser, userUserQuery] = useUserLazyQuery();
-  const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
   const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -135,14 +131,6 @@ const useFirebaseAuth = () => {
     setUser({ id: null, userID: '', displayName: '', image: '' });
   }, [setAuthUser, setUser]);
 
-  if (
-    userUserQuery.error &&
-    userUserQuery.error.message === 'firebase auth invalid'
-  ) {
-    // authIDだけ合って、APIでエラーになる場合はログアウトさせる
-    onLogout();
-  }
-
   useEffect(() => {
     if (authUser.uid) {
       return;
@@ -150,10 +138,9 @@ const useFirebaseAuth = () => {
     if (authUserID.state === 'hasValue') {
       if (authUserID.contents) {
         setAuthUser({ uid: authUserID.contents });
-        getUser();
       }
     }
-  }, [authUserID, setAuthUser, authUser.uid, getUser]);
+  }, [authUserID, setAuthUser, authUser.uid]);
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(() => {
@@ -162,19 +149,6 @@ const useFirebaseAuth = () => {
 
     return () => unsubscribe();
   }, []);
-
-  useEffect(() => {
-    if (prevUserUserQueryLoading && !userUserQuery.loading) {
-      if (userUserQuery.data?.user?.id) {
-        setUser((s) => ({
-          ...s,
-          userID: userUserQuery.data?.user?.id || '',
-          displayName: userUserQuery.data?.user?.displayName || '',
-          image: userUserQuery.data?.user?.image || '',
-        }));
-      }
-    }
-  }, [userUserQuery, setUser, prevUserUserQueryLoading]);
 
   return {
     setup,
