@@ -3,14 +3,18 @@ import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
 import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
-import { useRecoilValueLoadable, useRecoilState } from 'recoil';
+import {
+  useRecoilValueLoadable,
+  useRecoilState,
+  useSetRecoilState,
+} from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
 import 'lib/firebase';
-import { storageKey, getItem } from 'lib/storage';
+import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
-import { authUserState } from 'store/atoms';
+import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
 
 const auth = new Auth();
@@ -33,7 +37,7 @@ export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 const useFirebaseAuth = () => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
-
+  const setUser = useSetRecoilState(userState);
   const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -84,6 +88,7 @@ const useFirebaseAuth = () => {
       firebaseLogin(credential);
     } else if (response?.type === 'error') {
       console.log('error:', response);
+
       Alert.alert('ログインに失敗しました');
     }
   }, [response, firebaseLogin]);
@@ -118,10 +123,13 @@ const useFirebaseAuth = () => {
 
   const onLogout = useCallback(async () => {
     await auth.logout();
+    await removeItem(storageKey.USER_ID_KEY);
+
     setAuthUser({
       uid: null,
     });
-  }, [setAuthUser]);
+    setUser({ id: null, userID: '', displayName: '', image: '' });
+  }, [setAuthUser, setUser]);
 
   useEffect(() => {
     if (authUser.uid) {

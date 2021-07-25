@@ -1,6 +1,6 @@
 import React, { memo, useState, useCallback } from 'react';
 import { StyleSheet, useWindowDimensions } from 'react-native';
-import Clipboard from 'expo-clipboard';
+import * as Clipboard from 'expo-clipboard';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Button from 'components/atoms/Button';

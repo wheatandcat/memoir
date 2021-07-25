@@ -1,5 +1,6 @@
 import React, { memo, useCallback } from 'react';
 import { StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
+import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
@@ -10,6 +11,8 @@ import * as IntentLauncher from 'expo-intent-launcher';
 import theme from 'config/theme';
 import Debug from 'components/organisms/Debug/Debug';
 import { useNotification } from 'containers/Notification';
+import { authUserState, userState } from 'store/atoms';
+import { storageKey, removeItem } from 'lib/storage';
 
 type Props = {
   isVisible: boolean;
@@ -19,6 +22,8 @@ type Props = {
 const SettingModal: React.FC<Props> = (props) => {
   const navigation = useNavigation();
   const { onPermissionRequest } = useNotification();
+  const authUser = useRecoilValue(authUserState);
+  const setUser = useSetRecoilState(userState);
 
   const onLicence = useCallback(() => {
     props.onClose();
@@ -37,6 +42,14 @@ const SettingModal: React.FC<Props> = (props) => {
 
     navigation.navigate('SettingMemoir');
   }, [navigation, props]);
+
+  const onLogout = useCallback(async () => {
+    await removeItem(storageKey.USER_ID_KEY);
+    await removeItem(storageKey.AUTH_UID_KEY);
+
+    setUser({ id: null, userID: '', displayName: '', image: '' });
+    console.log('OK');
+  }, [setUser]);
 
   const onPushNotificationSetting = useCallback(() => {
     if (Platform.OS === 'ios') {
@@ -107,6 +120,17 @@ const SettingModal: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
         <Divider my={3} />
+        {!authUser.uid && (
+          <>
+            <TouchableOpacity style={styles.menuText} onPress={onLogout}>
+              <View>
+                <Text color="error">ログアウト</Text>
+              </View>
+            </TouchableOpacity>
+            <Divider my={3} />
+          </>
+        )}
+
         {!Constants.isDevice && <Debug />}
       </View>
     </Modal>

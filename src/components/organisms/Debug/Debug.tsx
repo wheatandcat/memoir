@@ -3,7 +3,7 @@ import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { setItem, storageKey } from 'lib/storage';
 import * as Updates from 'expo-updates';
-import Clipboard from 'expo-clipboard';
+import * as Clipboard from 'expo-clipboard';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
 import View from 'components/atoms/View';
@@ -23,9 +23,9 @@ const Menu: React.FC<Props> = () => {
   const [userID, setUserID] = useState('');
 
   const onCopyUserID = useCallback(() => {
-    Clipboard.setString(user.id || '');
+    Clipboard.setString(user.userID || '');
     Alert.alert('コピーしました');
-  }, [user.id]);
+  }, [user.userID]);
 
   const onCopyToken = useCallback(async () => {
     const token = await auth.getIdToken();

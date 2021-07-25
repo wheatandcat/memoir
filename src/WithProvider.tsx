@@ -1,18 +1,28 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
+import { useRecoilValue } from 'recoil';
 import useUser from 'hooks/useUser';
-import Tutorial from 'components/templates/Tutorial/Page';
+import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
+import { authUserState } from 'store/atoms';
 import Router from './Router';
 
 const WithProvider = () => {
+  useFirebaseAuth();
   const { loading, user, onSaveWhenNotLogin } = useUser();
-  const { setup } = useFirebaseAuth();
-  if (loading || !setup) {
+  const [create, setCreate] = useState(false);
+
+  const authUser = useRecoilValue(authUserState);
+
+  const onCreate = useCallback((creating: boolean) => {
+    setCreate(creating);
+  }, []);
+
+  if (loading) {
     return null;
   }
 
-  if (!user.id) {
-    return <Tutorial onPress={onSaveWhenNotLogin} />;
+  if (!user.id && (!authUser.uid || create)) {
+    return <Top onSkip={onSaveWhenNotLogin} onCreate={onCreate} />;
   }
 
   return <Router />;
