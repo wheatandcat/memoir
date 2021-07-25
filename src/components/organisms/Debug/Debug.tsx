@@ -29,7 +29,6 @@ const Menu: React.FC<Props> = () => {
 
   const onCopyToken = useCallback(async () => {
     const token = await auth.getIdToken();
-    console.log('aaa:', token);
 
     Clipboard.setString(`Bearer ${token}`);
     Alert.alert('コピーしました');

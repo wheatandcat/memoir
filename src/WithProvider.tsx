@@ -21,8 +21,6 @@ const WithProvider = () => {
     return null;
   }
 
-  console.log('setup:', user.id, authUser.uid);
-
   if (!user.id && (!authUser.uid || create)) {
     return <Top onSkip={onSaveWhenNotLogin} onCreate={onCreate} />;
   }
