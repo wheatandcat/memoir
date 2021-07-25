@@ -42,7 +42,6 @@ const useFirebaseAuth = () => {
   const setUser = useSetRecoilState(userState);
   const [getUser, userUserQuery] = useUserLazyQuery();
   const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
-
   const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -135,6 +134,14 @@ const useFirebaseAuth = () => {
     });
     setUser({ id: null, userID: '', displayName: '', image: '' });
   }, [setAuthUser, setUser]);
+
+  if (
+    userUserQuery.error &&
+    userUserQuery.error.message === 'firebase auth invalid'
+  ) {
+    // authIDだけ合って、APIでエラーになる場合はログアウトさせる
+    onLogout();
+  }
 
   useEffect(() => {
     if (authUser.uid) {

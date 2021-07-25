@@ -4,12 +4,12 @@ import TemplateMyPage from 'components/templates/MyPage/Page';
 import useFirebaseAuth, { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import { useRecoilValue } from 'recoil';
 import { authUserState } from 'store/atoms';
-import { userState } from 'store/atoms';
 import {
   useRelationshipRequestsLazyQuery,
   useRelationshipsLazyQuery,
   RelationshipsQuery,
   useDeleteRelationshipMutation,
+  useUserQuery,
 } from 'queries/api/index';
 
 type Props = {};
@@ -31,7 +31,7 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = () => {
   const { setup, onLogout } = useFirebaseAuth();
   const authUser = useRecoilValue(authUserState);
-  const user = useRecoilValue(userState);
+  const userQuery = useUserQuery();
   const navigation = useNavigation();
   const [
     getRelationshipRequests,
@@ -106,7 +106,7 @@ const Connected: React.FC<Props> = () => {
     [deleteRelationshipMutation]
   );
 
-  if (!setup) {
+  if (!setup || userQuery.loading) {
     return null;
   }
 
@@ -116,6 +116,13 @@ const Connected: React.FC<Props> = () => {
 
   const relationshipEdges = relationshipsData?.data?.relationships?.edges ?? [];
   const relationships = relationshipEdges.map((v) => v.node);
+
+  const user = {
+    id: userQuery.data?.user?.id || '',
+    userID: userQuery.data?.user?.id || '',
+    displayName: userQuery.data?.user?.displayName || '',
+    image: userQuery.data?.user?.image || '',
+  };
 
   return (
     <TemplateMyPage

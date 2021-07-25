@@ -1,40 +1,63 @@
 import React, { memo, useEffect, useCallback, useRef } from 'react';
-import { Platform } from 'react-native';
+import { Platform, Alert } from 'react-native';
+import { v4 as uuidv4 } from 'uuid';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { authUserState, homeItemsState } from 'store/atoms';
 import TemplateTop from 'components/templates/Top/Page';
+import {
+  useCreateAuthUserMutation,
+  CreateAuthUserMutationVariables,
+  useExistAuthUserLazyQuery,
+} from 'queries/api/index';
+import { userState } from 'store/atoms';
 
 export type Props = {
   onSkip: () => void;
+  onCreate: (ok: boolean) => void;
 };
 
 export type ConnectedType = {
   onSkip: () => void;
   onLogin: () => void;
-  onCreate: () => void;
 };
 
 const Connected: React.FC<Props> = (props) => {
-  const { setup, onAppleLogin, onGoogleLogin } = useFirebaseAuth();
+  const { setup, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth();
+  const setUser = useSetRecoilState(userState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
-  const login = useRef(false);
+  const [getExistAuthUser, existAuthUserData] = useExistAuthUserLazyQuery();
+  const creating = useRef(false);
+
+  const [createAuthUserMutation] = useCreateAuthUserMutation({
+    async onCompleted(data) {
+      const id = data.createAuthUser.id;
+
+      setUser({
+        id,
+        userID: '',
+        displayName: '',
+        image: '',
+      });
+
+      props.onCreate(false);
+    },
+    async onError() {
+      // エラーになった場合はログアウトさせる
+      Alert.alert('エラー', 'ログインに失敗した');
+      onLogout();
+    },
+  });
 
   const onLogin = useCallback(() => {
-    login.current = true;
-
     if (Platform.OS === 'ios') {
       onAppleLogin();
     } else {
       onGoogleLogin();
     }
   }, [onAppleLogin, onGoogleLogin]);
-
-  const onCreate = useCallback(() => {
-    login.current = false;
-  }, []);
 
   const onSkip = useCallback(() => {
     setHomeItemsState({ items: [] });
@@ -43,11 +66,39 @@ const Connected: React.FC<Props> = (props) => {
 
   useEffect(() => {
     if (authenticated) {
-      if (login.current) {
-      } else {
+      if (!existAuthUserData.loading) {
+        if (existAuthUserData.data?.existAuthUser.exist === undefined) {
+          getExistAuthUser();
+        }
       }
     }
-  }, [authenticated]);
+  }, [authenticated, existAuthUserData, getExistAuthUser]);
+
+  useEffect(() => {
+    if (!creating.current) {
+      if (authenticated) {
+        if (!existAuthUserData.loading) {
+          if (existAuthUserData.data?.existAuthUser.exist === false) {
+            creating.current = true;
+
+            const u = uuidv4();
+            const variables: CreateAuthUserMutationVariables = {
+              input: {
+                id: u,
+                isNewUser: true,
+              },
+            };
+
+            console.log('variables:', variables);
+
+            createAuthUserMutation({
+              variables,
+            });
+          }
+        }
+      }
+    }
+  }, [authenticated, existAuthUserData, createAuthUserMutation]);
 
   if (!setup) {
     return null;
@@ -56,9 +107,14 @@ const Connected: React.FC<Props> = (props) => {
   return (
     <TemplateTop
       onLogin={onLogin}
-      onCreate={onCreate}
-      onAppleLogin={onAppleLogin}
-      onGoogleLogin={onGoogleLogin}
+      onAppleLogin={async () => {
+        props.onCreate(true);
+        await onAppleLogin();
+      }}
+      onGoogleLogin={async () => {
+        props.onCreate(true);
+        await onGoogleLogin();
+      }}
       onSkip={onSkip}
     />
   );

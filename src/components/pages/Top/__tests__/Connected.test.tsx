@@ -1,10 +1,13 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
 import Connected, { Props } from '../Connected';
+import * as queries from 'queries/api/index';
 
 const propsData = (): Props => ({
   onSkip: jest.fn(),
+  onCreate: jest.fn(),
 });
 
 describe('components/pages/Top/Connected.tsx', () => {
@@ -16,6 +19,18 @@ describe('components/pages/Top/Connected.tsx', () => {
       onAppleLogin: jest.fn(),
       onGoogleLogin: jest.fn(),
     }));
+    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
+      uid: null,
+    }));
+    jest
+      .spyOn(queries, 'useCreateAuthUserMutation')
+      .mockImplementation((): any => [jest.fn()]);
+    jest
+      .spyOn(queries, 'useExistAuthUserLazyQuery')
+      .mockImplementation((): any => [
+        jest.fn(),
+        { loading: false, data: null },
+      ]);
 
     wrapper = shallow(<Connected {...propsData()} />);
   });

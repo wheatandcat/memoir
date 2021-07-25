@@ -8,7 +8,6 @@ const props = (): Props => ({
   onGoogleLogin: mockFn('onGoogleLogin'),
   onSkip: mockFn('onSkip'),
   onLogin: mockFn('onLogin'),
-  onCreate: mockFn('onCreate'),
 });
 
 storiesOf('templates/Top', module).add('Page', () => <Page {...props()} />);

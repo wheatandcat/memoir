@@ -136,6 +136,14 @@ const useFirebaseAuth = () => {
     setUser({ id: null, userID: '', displayName: '', image: '' });
   }, [setAuthUser, setUser]);
 
+  if (
+    userUserQuery.error &&
+    userUserQuery.error.message === 'firebase auth invalid'
+  ) {
+    // authIDだけ合って、APIでエラーになる場合はログアウトさせる
+    onLogout();
+  }
+
   useEffect(() => {
     if (authUser.uid) {
       return;

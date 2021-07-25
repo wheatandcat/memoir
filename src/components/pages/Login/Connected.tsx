@@ -38,6 +38,7 @@ const Connected: React.FC<Props> = () => {
     const variables: CreateAuthUserMutationVariables = {
       input: {
         id: String(userID),
+        isNewUser: false,
       },
     };
 
