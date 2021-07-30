@@ -109,10 +109,6 @@ const Intro: React.FC<Props> = () => {
               onNext={onNext}
             />
           </ImageBackground>
-
-          <View style={style}>
-            <Text>Screen 6</Text>
-          </View>
         </ScrollView>
 
         <SafeAreaView style={styles.skip}>

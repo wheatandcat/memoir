@@ -1,7 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
-import Intro, { Props } from './Intro';
+import Intro from './Intro';
+import Notification from './Notification';
 
-const props = (): Props => ({});
+const props = () => ({});
 
-storiesOf('organisms/Intro', module).add('Intro', () => <Intro {...props()} />);
+storiesOf('organisms/Intro', module)
+  .add('Intro', () => <Intro {...props()} />)
+  .add('Notification', () => <Notification {...props()} />);
