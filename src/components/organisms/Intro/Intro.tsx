@@ -15,10 +15,18 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import IntroCard from 'components/molecules/Intro/Card';
+import { ConnectedType } from 'components/pages/Intro/Intro/Connected';
+import Notification from 'components/organisms/Intro/Notification';
 
-export type Props = {};
+export type Props = ConnectedType & {
+  onStep: (num: number) => void;
+  dayOfWeek: number;
+  hours: number;
+  minutes: number;
+  notification: boolean;
+};
 
-const Intro: React.FC<Props> = () => {
+const Intro: React.FC<Props> = (props) => {
   const scrollViewRef = useRef<ScrollView>(null);
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
@@ -30,24 +38,32 @@ const Intro: React.FC<Props> = () => {
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const { x } = event.nativeEvent.contentOffset;
       const nextPage = Math.floor(x / width);
-      if (nextPage !== page) {
+      if (nextPage > 4) {
+        props.onStep(1);
+      } else if (nextPage !== page) {
         setPage(nextPage);
       }
     },
-    [page, width]
+    [page, width, props]
   );
 
-  const onSkip = useCallback(() => {}, []);
+  const onSkip = useCallback(() => {
+    props.onStep(1);
+  }, [props]);
 
   const onNext = useCallback(() => {
-    const nextPage = page + 1;
-    scrollViewRef?.current?.scrollTo?.({
-      x: width * nextPage,
-      y: 0,
-      animated: true,
-    });
-    setPage(nextPage);
-  }, [width, page]);
+    if (page > 4) {
+      props.onStep(1);
+    } else {
+      const nextPage = page + 1;
+      scrollViewRef?.current?.scrollTo?.({
+        x: width * nextPage,
+        y: 0,
+        animated: true,
+      });
+      setPage(nextPage);
+    }
+  }, [width, page, props]);
 
   return (
     <>
@@ -109,6 +125,18 @@ const Intro: React.FC<Props> = () => {
               onNext={onNext}
             />
           </ImageBackground>
+          <View style={[style]}>
+            <Notification
+              dayOfWeek={props.dayOfWeek}
+              step={props.step}
+              hours={props.hours}
+              minutes={props.minutes}
+              notification={props.notification}
+              onSaveNotification={props.onSaveNotification}
+              onNext={onNext}
+              onStep={props.onStep}
+            />
+          </View>
         </ScrollView>
 
         <SafeAreaView style={styles.skip}>

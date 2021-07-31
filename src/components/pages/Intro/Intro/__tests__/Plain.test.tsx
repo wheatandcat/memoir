@@ -1,20 +1,21 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
-import Intro, { Props } from '../Intro';
+import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
-  ...memoirNotificationSetting(),
+  loading: false,
+  data: memoirNotificationSetting(),
   onSaveNotification: jest.fn(),
   onStep: jest.fn(),
   step: 0,
 });
 
-describe('components/organisms/Intro/Intro.tsx', () => {
+describe('components/pages/Intro/Intro/Plain.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Intro {...propsData()} />);
+    wrapper = shallow(<Plain {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {

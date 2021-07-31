@@ -4,6 +4,7 @@ import useUser from 'hooks/useUser';
 import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { authUserState } from 'store/atoms';
+import Intro from 'components/pages/Intro/Intro';
 import Router from './Router';
 
 const WithProvider = () => {
@@ -17,12 +18,21 @@ const WithProvider = () => {
     setCreate(creating);
   }, []);
 
+  const onSkip = useCallback(() => {
+    setCreate(true);
+    onSaveWhenNotLogin();
+  }, [onSaveWhenNotLogin]);
+
   if (loading) {
     return null;
   }
 
+  if (!create) {
+    return <Intro onFinish={() => onCreate(false)} />;
+  }
+
   if (!user.id && (!authUser.uid || create)) {
-    return <Top onSkip={onSaveWhenNotLogin} onCreate={onCreate} />;
+    return <Top onSkip={onSkip} onCreate={onCreate} />;
   }
 
   return <Router />;
