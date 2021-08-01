@@ -61,3 +61,16 @@ export const authUserState = atom<AuthUser>({
   key: 'authUserState',
   default: initialAuthUserState(),
 });
+
+type HomeState = {
+  openAddItemModal: boolean;
+};
+
+const initialHomeState = (): HomeState => ({
+  openAddItemModal: false,
+});
+
+export const homeState = atom<HomeState>({
+  key: 'homeState',
+  default: initialHomeState(),
+});

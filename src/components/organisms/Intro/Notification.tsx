@@ -1,22 +1,25 @@
 import React, { memo, useState } from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
-import { ConnectedType } from 'components/pages/Setting/Memoir/Connected';
+import { StyleSheet } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import Input from 'components/organisms/Setting/Memoir/Input';
-import Notification from 'components/organisms/Setting/Memoir/Notification';
+import NotificationToggle from 'components/organisms/Setting/Memoir/Notification';
+import { ConnectedType } from 'components/pages/Intro/Intro/Connected';
 import Button from 'components/atoms/Button';
 import dayjs from 'lib/dayjs';
 
-export type Props = ConnectedType & {
+export type Props = Omit<ConnectedType, 'onFinish'> & {
   dayOfWeek: number;
   hours: number;
   minutes: number;
   notification: boolean;
+  onNext: () => void;
 };
 
-const Page: React.FC<Props> = (props) => {
+const Notification: React.FC<Props> = (props) => {
   const [dayOfWeek, setDayOfWeek] = useState(props.dayOfWeek);
   const [time, setTime] = useState(
     dayjs(
@@ -25,12 +28,15 @@ const Page: React.FC<Props> = (props) => {
       ).slice(-2)}:00`
     ).toDate()
   );
-
   const [push, setPush] = useState(props.notification ? 1 : 0);
 
   return (
-    <View style={styles.root}>
-      <ScrollView>
+    <SafeAreaView style={styles.safeArea}>
+      <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
+      <View style={styles.header}>
+        <Text textAlign="center">初期設定</Text>
+      </View>
+      <View style={styles.root}>
         <View style={styles.inner}>
           <View>
             <View>
@@ -43,32 +49,44 @@ const Page: React.FC<Props> = (props) => {
               onChangeTime={setTime}
             />
           </View>
-          <Notification push={push} setPush={setPush} />
+          <NotificationToggle push={push} setPush={setPush} />
           <View p={3} style={styles.action}>
             <Button
-              title="保存"
+              title="次へ"
               onPress={() =>
-                props.onSave({
-                  dayOfWeek,
-                  hours: dayjs(time).hour(),
-                  minutes: dayjs(time).minute(),
-                  notification: push ? true : false,
-                })
+                props.onSaveNotification(
+                  {
+                    dayOfWeek,
+                    hours: dayjs(time).hour(),
+                    minutes: dayjs(time).minute(),
+                    notification: push ? true : false,
+                  },
+                  props.onNext
+                )
               }
               width={200}
             />
           </View>
         </View>
-      </ScrollView>
-    </View>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  safeArea: {
+    backgroundColor: theme().color.primary.main,
+  },
   root: {
     backgroundColor: theme().color.background.main,
     height: '100%',
     alignItems: 'center',
+  },
+  header: {
+    backgroundColor: theme().color.primary.main,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   inner: {
     paddingVertical: theme().space(3),
@@ -81,4 +99,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default memo(Page);
+export default memo(Notification);

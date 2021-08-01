@@ -23,7 +23,9 @@ export type ConnectedType = {
 };
 
 const Connected: React.FC<Props> = (props) => {
-  const { setup, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth();
+  const { setup, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth(() =>
+    props.onCreate(false)
+  );
   const setUser = useSetRecoilState(userState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const authUser = useRecoilValue(authUserState);
@@ -88,8 +90,6 @@ const Connected: React.FC<Props> = (props) => {
                 isNewUser: true,
               },
             };
-
-            console.log('variables:', variables);
 
             createAuthUserMutation({
               variables,

@@ -35,7 +35,7 @@ const nonceGen = (length: number) => {
 
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
-const useFirebaseAuth = () => {
+const useFirebaseAuth = (errorCallback?: () => void) => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
 
@@ -103,8 +103,9 @@ const useFirebaseAuth = () => {
     } catch (e) {
       console.log('error:', e);
       Alert.alert('ログインに失敗しました');
+      errorCallback?.();
     }
-  }, [firebaseLogin]);
+  }, [firebaseLogin, errorCallback]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();

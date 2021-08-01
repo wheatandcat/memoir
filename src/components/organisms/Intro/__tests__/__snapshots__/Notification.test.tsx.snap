@@ -1,16 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`components/templates/Setting/Memoir/Page.tsx 正常にrenderすること 1`] = `
-<View
+exports[`components/organisms/Intro/Notification.tsx 正常にrenderすること 1`] = `
+<RNCSafeAreaView
   style={
     Object {
-      "alignItems": "center",
-      "backgroundColor": "#F2F2F2",
-      "height": "100%",
+      "backgroundColor": "#E3C95D",
     }
   }
 >
-  <ScrollView>
+  <ExpoStatusBar
+    backgroundColor="#E3C95D"
+    style="dark"
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#E3C95D",
+        "height": 50,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      textAlign="center"
+      variants="body"
+    >
+      初期設定
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#F2F2F2",
+        "height": "100%",
+      }
+    }
+  >
     <View
       style={
         Object {
@@ -54,11 +82,11 @@ exports[`components/templates/Setting/Memoir/Page.tsx 正常にrenderするこ�
           fontFamily="NotoSansJP-Bold"
           onPress={[Function]}
           size="base"
-          title="保存"
+          title="次へ"
           width={200}
         />
       </View>
     </View>
-  </ScrollView>
-</View>
+  </View>
+</RNCSafeAreaView>
 `;

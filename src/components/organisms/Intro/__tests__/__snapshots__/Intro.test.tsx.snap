@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Intro/Intro.tsx 正常にrenderすること 1`] = `
+<Fragment>
+  <ExpoStatusBar
+    backgroundColor="#E3C95D"
+    style="dark"
+  />
+  <View
+    style={
+      Object {
+        "backgroundColor": "#E3C95D",
+        "flex": 1,
+        "height": "100%",
+        "position": "relative",
+      }
+    }
+  >
+    <ScrollView
+      horizontal={true}
+      onScroll={[Function]}
+      pagingEnabled={true}
+      scrollEventThrottle={16}
+      showsHorizontalScrollIndicator={false}
+      style={
+        Object {
+          "backgroundColor": "#E3C95D",
+          "flex": 1,
+          "height": "100%",
+          "position": "relative",
+        }
+      }
+    >
+      <ImageBackground
+        resizeMode="cover"
+        source={null}
+        style={
+          Array [
+            Object {
+              "height": "100%",
+              "justifyContent": "center",
+            },
+            Array [
+              Object {
+                "height": 1334,
+                "width": 750,
+              },
+            ],
+          ]
+        }
+      >
+        <Memo(Card)
+          onNext={[Function]}
+          source={null}
+          text="記録する
+ふりかえる
+共有する"
+        />
+      </ImageBackground>
+      <ImageBackground
+        resizeMode="cover"
+        source={null}
+        style={
+          Array [
+            Object {
+              "height": "100%",
+              "justifyContent": "center",
+            },
+            Array [
+              Object {
+                "height": 1334,
+                "width": 750,
+              },
+            ],
+          ]
+        }
+      >
+        <Memo(Card)
+          onNext={[Function]}
+          source={null}
+          text="memoirは
+タスクを記録して
+"
+        />
+      </ImageBackground>
+      <ImageBackground
+        resizeMode="cover"
+        source={null}
+        style={
+          Array [
+            Object {
+              "height": "100%",
+              "justifyContent": "center",
+            },
+            Array [
+              Object {
+                "height": 1334,
+                "width": 750,
+              },
+            ],
+          ]
+        }
+      >
+        <Memo(Card)
+          onNext={[Function]}
+          source={null}
+          text="定期的に
+「ふりかえる」
+アプリです"
+        />
+      </ImageBackground>
+      <ImageBackground
+        resizeMode="cover"
+        source={null}
+        style={
+          Array [
+            Object {
+              "height": "100%",
+              "justifyContent": "center",
+            },
+            Array [
+              Object {
+                "height": 1334,
+                "width": 750,
+              },
+            ],
+          ]
+        }
+      >
+        <Memo(Card)
+          onNext={[Function]}
+          source={null}
+          text="まずは
+初期設定を
+してください"
+        />
+      </ImageBackground>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 1334,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <Memo(Notification)
+          dayOfWeek={1}
+          hours={0}
+          minutes={0}
+          notification={false}
+          onNext={[Function]}
+          onSaveNotification={[MockFunction]}
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 1334,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <Memo(Task)
+          onFinish={[MockFunction]}
+        />
+      </View>
+    </ScrollView>
+    <RNCSafeAreaView
+      style={
+        Object {
+          "position": "absolute",
+          "right": 16,
+          "top": 16,
+        }
+      }
+    >
+      <TouchableWithoutFeedback
+        onPress={[Function]}
+      >
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          fontWeight="bold"
+          variants="body"
+        >
+          SKIP
+        </Text>
+      </TouchableWithoutFeedback>
+    </RNCSafeAreaView>
+  </View>
+</Fragment>
+`;

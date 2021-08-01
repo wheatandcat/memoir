@@ -34,10 +34,11 @@ const nonceGen = (length: number) => {
 
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
-const useFirebaseAuth = () => {
+const useFirebaseAuth = (errorCallback?: () => void) => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
   const setUser = useSetRecoilState(userState);
+
   const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
@@ -90,8 +91,9 @@ const useFirebaseAuth = () => {
       console.log('error:', response);
 
       Alert.alert('ログインに失敗しました');
+      errorCallback?.();
     }
-  }, [response, firebaseLogin]);
+  }, [response, firebaseLogin, errorCallback]);
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
