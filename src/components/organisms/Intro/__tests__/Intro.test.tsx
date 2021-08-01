@@ -6,8 +6,7 @@ import Intro, { Props } from '../Intro';
 const propsData = (): Props => ({
   ...memoirNotificationSetting(),
   onSaveNotification: jest.fn(),
-  onStep: jest.fn(),
-  step: 0,
+  onFinish: jest.fn(),
 });
 
 describe('components/organisms/Intro/Intro.tsx', () => {

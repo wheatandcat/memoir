@@ -5,9 +5,8 @@ import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   ...memoirNotificationSetting(),
-  step: 0,
   onSaveNotification: jest.fn(),
-  onStep: jest.fn(),
+  onFinish: jest.fn(),
 });
 
 describe('components/templates/Intro/Intro/Page.tsx', () => {

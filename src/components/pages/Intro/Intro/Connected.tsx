@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback } from 'react';
 import * as Notifications from 'expo-notifications';
 import useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
 import { useNotification } from 'containers/Notification';
@@ -9,9 +9,8 @@ export type Props = {
 };
 
 export type ConnectedType = {
-  step: number;
   onSaveNotification: (input: Input, callback: () => void) => void;
-  onStep: (num: number) => void;
+  onFinish: () => void;
 };
 
 type Input = {
@@ -21,15 +20,9 @@ type Input = {
   notification: boolean;
 };
 
-const Connected: React.FC<Props> = () => {
+const Connected: React.FC<Props> = (props) => {
   const memoirNotificationSetting = useMemoirNotificationSetting();
   const { onPermissionRequest } = useNotification();
-
-  const [step, setStep] = useState(0);
-
-  const onStep = useCallback((num: number) => {
-    setStep(num);
-  }, []);
 
   const onSaveNotification = useCallback(
     async (input: Input, callback: () => void) => {
@@ -77,8 +70,7 @@ const Connected: React.FC<Props> = () => {
         notification: memoirNotificationSetting.notification,
       }}
       onSaveNotification={onSaveNotification}
-      step={step}
-      onStep={onStep}
+      onFinish={props.onFinish}
     />
   );
 };

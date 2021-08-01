@@ -7,8 +7,7 @@ const propsData = (): Props => ({
   loading: false,
   data: memoirNotificationSetting(),
   onSaveNotification: jest.fn(),
-  onStep: jest.fn(),
-  step: 0,
+  onFinish: jest.fn(),
 });
 
 describe('components/pages/Intro/Intro/Plain.tsx', () => {

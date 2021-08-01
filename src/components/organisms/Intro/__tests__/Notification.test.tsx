@@ -6,8 +6,6 @@ import Notification, { Props } from '../Notification';
 const propsData = (): Props => ({
   ...memoirNotificationSetting(),
   onSaveNotification: jest.fn(),
-  onStep: jest.fn(),
-  step: 0,
   onNext: jest.fn(),
 });
 

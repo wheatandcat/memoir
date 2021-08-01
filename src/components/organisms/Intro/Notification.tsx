@@ -11,7 +11,7 @@ import { ConnectedType } from 'components/pages/Intro/Intro/Connected';
 import Button from 'components/atoms/Button';
 import dayjs from 'lib/dayjs';
 
-export type Props = ConnectedType & {
+export type Props = Omit<ConnectedType, 'onFinish'> & {
   dayOfWeek: number;
   hours: number;
   minutes: number;

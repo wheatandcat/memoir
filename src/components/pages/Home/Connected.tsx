@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import dayjs from 'lib/dayjs';
 import { useCreateItemMutation, NewItem } from 'queries/api/index';
-import { homeDateState, homeItemsState, Item } from 'store/atoms';
+import { homeDateState, homeItemsState, Item, homeState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
 import Plain from './Plain';
 
@@ -32,13 +32,17 @@ export type ConnectedType = {
   onOpenAddItem: () => void;
 };
 
-const initialState = (): State => ({
-  openAddItemModal: false,
+const initialState = (openAddItemModal: boolean): State => ({
+  openAddItemModal,
 });
 
 const Connected: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>(initialState());
+  const home = useRecoilValue(homeState);
+  const [state, setState] = useState<State>(
+    initialState(home.openAddItemModal)
+  );
   const [homeDate, setHomeDate] = useRecoilState(homeDateState);
+
   const homeItems = useRecoilValue(homeItemsState);
   const { loading, error, refetch } = useHomeItems();
   const navigation = useNavigation();

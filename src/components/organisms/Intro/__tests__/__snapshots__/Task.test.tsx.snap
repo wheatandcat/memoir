@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Intro/Task.tsx 正常にrenderすること 1`] = `
+<RNCSafeAreaView
+  style={
+    Object {
+      "backgroundColor": "#E3C95D",
+    }
+  }
+>
+  <ExpoStatusBar
+    backgroundColor="#E3C95D"
+    style="dark"
+  />
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#E3C95D",
+        "height": 50,
+        "justifyContent": "center",
+      }
+    }
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      textAlign="center"
+      variants="body"
+    >
+      初期設定
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#F2F2F2",
+        "height": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "45%",
+          "paddingVertical": 16,
+        }
+      }
+    >
+      <View
+        py={5}
+      >
+        <Image
+          height={95}
+          resizeMode="contain"
+          source={null}
+          width={95}
+        />
+      </View>
+      <View
+        mt={2}
+      >
+        <Text
+          fontFamily="NotoSansJP-Bold"
+          lineHeight={35}
+          textAlign="center"
+          variants="middle"
+        >
+          準備ができました
+          
+
+          さっそくタスクを
+          
+
+          追加してみましょう
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "paddingTop": 32,
+          "width": "100%",
+        }
+      }
+    >
+      <Memo(AddButton)
+        onPress={[MockFunction]}
+      />
+    </View>
+  </View>
+</RNCSafeAreaView>
+`;

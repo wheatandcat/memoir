@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Setting/Memoir/Notification.tsx 正常にrenderすること 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": 50,
+        "justifyContent": "space-around",
+        "marginTop": 64,
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "backgroundColor": "#B8B8B8",
+          "height": 0.5,
+          "marginHorizontal": 16,
+          "width": "30%",
+        }
+      }
+    />
+    <View>
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="body"
+      >
+        通知設定
+      </Text>
+    </View>
+    <View
+      style={
+        Object {
+          "backgroundColor": "#B8B8B8",
+          "height": 0.5,
+          "marginHorizontal": 16,
+          "width": "30%",
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-around",
+        "marginTop": 32,
+      }
+    }
+  >
+    <View>
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="small"
+      >
+        プッシュ通知
+      </Text>
+    </View>
+    <View>
+      <SwitchSelector
+        accessibilityLabel={null}
+        animationDuration={100}
+        backgroundColor="#D8D7D6"
+        bold={true}
+        borderColor="#C9C9C9"
+        borderRadius={50}
+        borderWidth={1}
+        buttonColor="#E3C95D"
+        buttonMargin={0}
+        disableValueChangeOnPress={false}
+        disabled={false}
+        fontSize={18}
+        hasPadding={false}
+        height={43}
+        imageStyle={Object {}}
+        initial={0}
+        onPress={[Function]}
+        options={
+          Array [
+            Object {
+              "label": "OFF",
+              "value": 0,
+            },
+            Object {
+              "label": "ON",
+              "value": 1,
+            },
+          ]
+        }
+        returnObject={false}
+        selectedColor="#362740"
+        selectedTextContainerStyle={Object {}}
+        selectedTextStyle={Object {}}
+        style={
+          Object {
+            "width": 139,
+          }
+        }
+        testID={null}
+        textColor="#F2F2F2"
+        textContainerStyle={Object {}}
+        textStyle={Object {}}
+        value={1}
+        valuePadding={1}
+      />
+    </View>
+  </View>
+</Fragment>
+`;

@@ -57,7 +57,6 @@ exports[`components/pages/Home/Connected.tsx 正常にrenderすること 1`] = `
   onItem={[Function]}
   onMemoir={[Function]}
   onOpenAddItem={[Function]}
-  openAddItemModal={false}
   openSettingModal={false}
 />
 `;

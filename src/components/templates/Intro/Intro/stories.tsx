@@ -6,11 +6,10 @@ import Page, { Props } from './Page';
 
 const props = (): Props => ({
   ...memoirNotificationSetting(),
-  onSaveNotification: mockFn('onSave'),
-  onStep: mockFn('onStep'),
-  step: 0,
+  onSaveNotification: mockFn('onSaveNotification'),
+  onFinish: mockFn('onFinish'),
 });
 
-storiesOf('templates/Intro/Notification', module).add('Page', () => (
+storiesOf('templates/Intro/Intro', module).add('Page', () => (
   <Page {...props()} />
 ));

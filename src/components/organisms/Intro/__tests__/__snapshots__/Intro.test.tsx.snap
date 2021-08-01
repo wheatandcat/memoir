@@ -145,12 +145,28 @@ exports[`components/organisms/Intro/Intro.tsx 正常にrenderすること 1`] = 
           ]
         }
       >
-        <Text
-          fontFamily="RobotoCondensed-Bold"
-          variants="body"
-        >
-          Screen 6
-        </Text>
+        <Memo(Notification)
+          dayOfWeek={1}
+          hours={0}
+          minutes={0}
+          notification={false}
+          onNext={[Function]}
+          onSaveNotification={[MockFunction]}
+        />
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "height": 1334,
+              "width": 750,
+            },
+          ]
+        }
+      >
+        <Memo(Task)
+          onFinish={[MockFunction]}
+        />
       </View>
     </ScrollView>
     <RNCSafeAreaView

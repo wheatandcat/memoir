@@ -17,9 +17,9 @@ import theme from 'config/theme';
 import IntroCard from 'components/molecules/Intro/Card';
 import { ConnectedType } from 'components/pages/Intro/Intro/Connected';
 import Notification from 'components/organisms/Intro/Notification';
+import Task from 'components/organisms/Intro/Task';
 
 export type Props = ConnectedType & {
-  onStep: (num: number) => void;
   dayOfWeek: number;
   hours: number;
   minutes: number;
@@ -38,8 +38,8 @@ const Intro: React.FC<Props> = (props) => {
     (event: NativeSyntheticEvent<NativeScrollEvent>) => {
       const { x } = event.nativeEvent.contentOffset;
       const nextPage = Math.floor(x / width);
-      if (nextPage > 4) {
-        props.onStep(1);
+      if (nextPage > 5) {
+        props.onFinish();
       } else if (nextPage !== page) {
         setPage(nextPage);
       }
@@ -48,12 +48,12 @@ const Intro: React.FC<Props> = (props) => {
   );
 
   const onSkip = useCallback(() => {
-    props.onStep(1);
+    props.onFinish();
   }, [props]);
 
   const onNext = useCallback(() => {
-    if (page > 4) {
-      props.onStep(1);
+    if (page > 5) {
+      props.onFinish();
     } else {
       const nextPage = page + 1;
       scrollViewRef?.current?.scrollTo?.({
@@ -125,17 +125,18 @@ const Intro: React.FC<Props> = (props) => {
               onNext={onNext}
             />
           </ImageBackground>
-          <View style={[style]}>
+          <View style={style}>
             <Notification
               dayOfWeek={props.dayOfWeek}
-              step={props.step}
               hours={props.hours}
               minutes={props.minutes}
               notification={props.notification}
               onSaveNotification={props.onSaveNotification}
               onNext={onNext}
-              onStep={props.onStep}
             />
+          </View>
+          <View style={style}>
+            <Task onFinish={props.onFinish} />
           </View>
         </ScrollView>
 
