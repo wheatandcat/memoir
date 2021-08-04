@@ -5,6 +5,9 @@ import { FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
 import { FontColor, styleFontColor } from 'lib/styledSystem/styleFontColor';
 import { styleFontLineHeight } from 'lib/styledSystem/styleFontLineHeight';
 import { useFonts } from 'expo-font';
+import { RobotoCondensed_700Bold } from '@expo-google-fonts/roboto-condensed';
+import { NotoSansJP_700Bold } from '@expo-google-fonts/noto-sans-jp';
+
 import {
   FontVariants,
   styleFontVariant,
@@ -25,8 +28,8 @@ type Props = TextProps & {
 
 const Text: React.FC<Props> = (props) => {
   let [fontsLoaded] = useFonts({
-    'RobotoCondensed-Bold': require('../../../../assets/RobotoCondensed-Bold.ttf'),
-    'NotoSansJP-Bold': require('../../../../assets/NotoSansJP-Bold.otf'),
+    'RobotoCondensed-Bold': RobotoCondensed_700Bold,
+    'NotoSansJP-Bold': NotoSansJP_700Bold,
   });
 
   if (!fontsLoaded) {
