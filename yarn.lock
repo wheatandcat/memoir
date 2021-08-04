@@ -1477,11 +1477,6 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto-condensed/-/roboto-condensed-0.2.0.tgz#e565af7c6cb608d6ad77def42bca4f9f09052248"
   integrity sha512-LeltvDXCWBKwwtpt4SH/8qqXHKrIoxFF4E8m4i+tC8LyulPqc7P16VPL+uhnxkXLCFZ6MPSprDwz7ECF+sfKkg==
 
-"@expo-google-fonts/roboto@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.0.tgz#00c5904eaa80d90b5b7b11b86c8d4a72a28e922e"
-  integrity sha512-dZ7e0OOHqbKI80htdxlXooAA6UrhqpJY/6w2JC/RW53nUt1U96PGMbE4F5uLXQt93stp3/fc+cvESKKk64kXKg==
-
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
