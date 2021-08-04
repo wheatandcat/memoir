@@ -25,6 +25,8 @@
   "dependencies": {
     "@apollo/client": "3.3.21",
     "@expo-google-fonts/inter": "^0.2.0",
+    "@expo-google-fonts/noto-sans-jp": "^0.2.0",
+    "@expo-google-fonts/roboto-condensed": "^0.2.0",
     "@expo/react-native-action-sheet": "^3.9.0",
     "@react-native-async-storage/async-storage": "~1.15.0",
     "@react-native-community/datetimepicker": "3.5.2",

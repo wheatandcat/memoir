@@ -1467,6 +1467,21 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/inter/-/inter-0.2.0.tgz#2934c1e510d58b652e3a5150ca7f76f55b89e84a"
   integrity sha512-gIjkti/NxHABPc4xB/AlgSpbLJod/8Iill7DfW+rh2CHv3jjz7I7SLQY8u/3NoF8zZk0GNU8gTZkVwGQibuWcQ==
 
+"@expo-google-fonts/noto-sans-jp@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/noto-sans-jp/-/noto-sans-jp-0.2.0.tgz#eb2214bdd360c1ea90a5693df7b116555837647b"
+  integrity sha512-MHzohmp8fffVZsfArVSe6mU9bgNPnQfljCZUAWr33xjbdOPO3kwVrn1OunaqOBkEm9WUJfftrQORbdpJg3v5hw==
+
+"@expo-google-fonts/roboto-condensed@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto-condensed/-/roboto-condensed-0.2.0.tgz#e565af7c6cb608d6ad77def42bca4f9f09052248"
+  integrity sha512-LeltvDXCWBKwwtpt4SH/8qqXHKrIoxFF4E8m4i+tC8LyulPqc7P16VPL+uhnxkXLCFZ6MPSprDwz7ECF+sfKkg==
+
+"@expo-google-fonts/roboto@^0.2.0":
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/roboto/-/roboto-0.2.0.tgz#00c5904eaa80d90b5b7b11b86c8d4a72a28e922e"
+  integrity sha512-dZ7e0OOHqbKI80htdxlXooAA6UrhqpJY/6w2JC/RW53nUt1U96PGMbE4F5uLXQt93stp3/fc+cvESKKk64kXKg==
+
 "@expo/config-plugins@2.0.4":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-2.0.4.tgz#955fd70a2aeefbe99ec71cecb1d7ea7b626dc79e"
