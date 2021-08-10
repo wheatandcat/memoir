@@ -77,6 +77,7 @@
     "react-native-snap-carousel": "^3.9.1",
     "react-native-swipe-gestures": "git+https://git@github.com/EatherToo/react-native-swipe-gestures",
     "react-native-switch-selector": "^2.1.4",
+    "react-native-view-shot": "3.1.2",
     "react-native-web": "~0.17.1",
     "recoil": "^0.3.1",
     "uuid": "^8.3.2"
