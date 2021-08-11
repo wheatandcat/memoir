@@ -1,16 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { items } from '__mockData__/item';
-import ScreenShot, { Props } from '../ScreenShot';
-
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
+import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   items: items().map((v) => ({ ...v, userID: 'test' })),
@@ -25,11 +16,11 @@ const propsData = (): Props => ({
   ],
 });
 
-describe('components/organisms/Memoir/ScreenShot.tsx', () => {
+describe('components/templates/Memoir/ScreenShot/Page.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<ScreenShot {...propsData()} />);
+    wrapper = shallow(<Page {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {

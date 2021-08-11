@@ -29,6 +29,7 @@ const Plain: React.FC<Props> = (props) => {
       users={props.users}
       onLoadMore={props.onLoadMore}
       pageInfo={props.pageInfo}
+      onScreenShot={props.onScreenShot}
     />
   );
 };

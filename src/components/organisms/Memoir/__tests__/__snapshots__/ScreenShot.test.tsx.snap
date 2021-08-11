@@ -6,6 +6,8 @@ exports[`components/organisms/Memoir/ScreenShot.tsx 正常にrenderすること 
     Object {
       "backgroundColor": "#F2F2F2",
       "flex": 1,
+      "paddingTop": 32,
+      "width": "100%",
     }
   }
 >

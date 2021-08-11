@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/Memoir/ScreenShot/Page.tsx 正常にrenderすること 1`] = `
+<Memo(ScreenShot)
+  endDate="2020-01-07"
+  items={
+    Array [
+      Object {
+        "categoryID": 9,
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "date": "2021-01-01T00:00:00+09:00",
+        "dislike": false,
+        "id": "1",
+        "like": false,
+        "title": "買い物",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "userID": "test",
+      },
+      Object {
+        "categoryID": 2,
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "date": "2021-01-01T00:00:00+09:00",
+        "dislike": false,
+        "id": "2",
+        "like": false,
+        "title": "本を読む",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "userID": "test",
+      },
+      Object {
+        "categoryID": 3,
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "date": "2021-01-02T00:00:00+09:00",
+        "dislike": false,
+        "id": "3",
+        "like": false,
+        "title": "公園に行った",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "userID": "test",
+      },
+      Object {
+        "categoryID": 4,
+        "createdAt": "2021-01-01T00:00:00+09:00",
+        "date": "2021-01-03T00:00:00+09:00",
+        "dislike": false,
+        "id": "4",
+        "like": false,
+        "title": "ジムに行った",
+        "updatedAt": "2021-01-01T00:00:00+09:00",
+        "userID": "test",
+      },
+    ]
+  }
+  startDate="2020-01-01"
+  users={
+    Array [
+      Object {
+        "displayName": "suzuki",
+        "id": "test",
+        "image": "https://placehold.jp/150x150.png",
+      },
+    ]
+  }
+/>
+`;

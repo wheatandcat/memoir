@@ -8,9 +8,10 @@ import {
 } from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import View from 'components/atoms/View';
+import { useNavigation } from '@react-navigation/native';
 import dayjs from 'lib/dayjs';
 import theme from 'config/theme';
-import { Props as PlainProps } from 'components/pages/Memoir/Plain';
+import { Props as PlainProps } from 'components/pages/Memoir/ScreenShot/Plain';
 import { User as TUser } from 'store/atoms';
 import Header from 'components/molecules/Memoir/Header';
 import { getModeCountMax } from 'lib/utility';
@@ -18,13 +19,13 @@ import DateText from 'components/molecules/Memoir/DateText';
 import Divider from 'components/atoms/Divider';
 import useIsFirstRender from 'hooks/useIsFirstRender';
 import * as ImageManipulator from 'expo-image-manipulator';
+import { Item } from 'hooks/useItemsInPeriodPaging';
 import Card from './Card';
 
-type Item = ArrayType<PlainProps['items']>;
-
-export type Props = Pick<PlainProps, 'items' | 'loading' | 'users'> & {
+export type Props = Pick<PlainProps, 'users'> & {
   startDate: string;
   endDate: string;
+  items: Item[];
 };
 
 type User = Omit<TUser, 'userID'> & {
@@ -66,6 +67,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 const ScreenShot: React.FC<Props> = (props) => {
   const viewShot = useRef<ViewShot>(null);
   const isFirstRender = useIsFirstRender();
+  const navigation = useNavigation();
 
   const windowWidth = useWindowDimensions().width;
 
@@ -120,33 +122,32 @@ const ScreenShot: React.FC<Props> = (props) => {
     })
     .flat();
 
-  const onShare = useCallback(async (uri: string) => {
-    const image = await ImageManipulator.manipulateAsync(uri, [], {
-      compress: 0,
-      base64: true,
-    });
-
-    const base64Data = `data:image/jpeg;base64,${image.base64}`;
-
-    try {
-      const result = await Share.share({
-        url: base64Data,
-        message:
-          'React Native | A framework for building native apps using React',
+  const onShare = useCallback(
+    async (uri: string) => {
+      const image = await ImageManipulator.manipulateAsync(uri, [], {
+        compress: 0,
+        base64: true,
       });
-      if (result.action === Share.sharedAction) {
-        if (result.activityType) {
-          // shared with activity type of result.activityType
-        } else {
-          // shared
+
+      const base64Data = `data:image/jpeg;base64,${image.base64}`;
+
+      try {
+        const result = await Share.share({
+          url: base64Data,
+          message:
+            'React Native | A framework for building native apps using React',
+        });
+        if (result.action === Share.sharedAction) {
+        } else if (result.action === Share.dismissedAction) {
         }
-      } else if (result.action === Share.dismissedAction) {
-        // dismissed
+
+        navigation.goBack();
+      } catch (error) {
+        Alert.alert(error.message);
       }
-    } catch (error) {
-      Alert.alert(error.message);
-    }
-  }, []);
+    },
+    [navigation]
+  );
 
   const onCapture = useCallback(async () => {
     const url = await viewShot.current?.capture?.();
@@ -157,7 +158,7 @@ const ScreenShot: React.FC<Props> = (props) => {
   useEffect(() => {
     if (!isFirstRender) return;
 
-    setTimeout(() => onCapture(), 1000);
+    setTimeout(() => onCapture(), 5000);
   }, [isFirstRender, onCapture]);
 
   return (
@@ -177,6 +178,8 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     flex: 1,
+    width: '100%',
+    paddingTop: theme().space(4),
   },
 });
 

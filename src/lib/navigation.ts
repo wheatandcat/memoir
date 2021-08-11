@@ -21,4 +21,8 @@ export type RootStackParamList = {
     image: string;
   };
   SettingMemoir: undefined;
+  MemoirScreenShot: {
+    startDate: string;
+    endDate: string;
+  };
 };

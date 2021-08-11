@@ -13,7 +13,13 @@ import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 export type Props = Pick<
   PlainProps,
-  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo' | 'users'
+  | 'items'
+  | 'loading'
+  | 'onLoadMore'
+  | 'onItem'
+  | 'pageInfo'
+  | 'users'
+  | 'onScreenShot'
 > & {
   startDate: string;
   endDate: string;
@@ -42,7 +48,7 @@ const Page: React.FC<Props> = (props) => {
           />
         </View>
         <View style={styles.action}>
-          <ShareButton onPress={() => {}} />
+          <ShareButton onPress={props.onScreenShot} />
         </View>
       </View>
       <View style={styles.close}>

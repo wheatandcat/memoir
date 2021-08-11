@@ -31,7 +31,6 @@ const props = (): Props => ({
 
 const screenShotProps = (): ScreenShotProps => ({
   items: items().map((v) => ({ ...v, userID: 'test' })),
-  loading: false,
   startDate: '2020-01-01',
   endDate: '2020-01-07',
   users: [
