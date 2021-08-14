@@ -48,7 +48,6 @@ const SettingModal: React.FC<Props> = (props) => {
     await removeItem(storageKey.AUTH_UID_KEY);
 
     setUser({ id: null, userID: '', displayName: '', image: '' });
-    console.log('OK');
   }, [setUser]);
 
   const onPushNotificationSetting = useCallback(() => {

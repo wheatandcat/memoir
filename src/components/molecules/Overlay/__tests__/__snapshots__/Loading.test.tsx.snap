@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/Overlay/Loading.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#2B1F3299",
+      "height": "100%",
+      "justifyContent": "center",
+      "left": 0,
+      "position": "absolute",
+      "top": 0,
+      "width": "100%",
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+        },
+        Object {
+          "paddingLeft": 325,
+        },
+      ]
+    }
+  >
+    <View
+      mt={1}
+    >
+      <ActivityIndicator
+        animating={true}
+        color="#F2F2F2"
+        hidesWhenStopped={true}
+        size="small"
+      />
+    </View>
+    <View
+      ml={2}
+    >
+      <Text
+        color="baseLight"
+        fontFamily="NotoSansJP-Bold"
+        variants="body"
+      >
+        テスト
+         
+        .
+      </Text>
+    </View>
+  </View>
+</View>
+`;

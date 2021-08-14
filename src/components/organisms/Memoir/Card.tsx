@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -24,10 +24,19 @@ export type Props = {
   categoryID: Item['categoryID'];
   user: User;
   onPress: () => void;
+  onLoadEnd?: () => void;
 };
 
 const Card: React.FC<Props> = (props) => {
+  const [endUserImage, setEndUserImage] = useState(false);
+  const [endCategoryImage, setEndCategoryImage] = useState(false);
   const windowWidth = useWindowDimensions().width;
+
+  useEffect(() => {
+    if (endCategoryImage && endUserImage) {
+      props.onLoadEnd?.();
+    }
+  }, [endCategoryImage, endUserImage, props]);
 
   const titleStyle: ViewStyle = {
     width: windowWidth - 130,
@@ -37,7 +46,10 @@ const Card: React.FC<Props> = (props) => {
     <TouchableOpacity onPress={props.onPress}>
       <View style={styles.root}>
         <View>
-          <Category categoryID={props.categoryID} />
+          <Category
+            categoryID={props.categoryID}
+            onLoadEnd={() => setEndCategoryImage(true)}
+          />
         </View>
         <View pl={3}>
           <View style={[styles.title, titleStyle]}>
@@ -46,7 +58,11 @@ const Card: React.FC<Props> = (props) => {
             </Text>
           </View>
           <View style={styles.user}>
-            <UserImage image={props.user.image} size={20} />
+            <UserImage
+              image={props.user.image}
+              size={20}
+              onLoadEnd={() => setEndUserImage(true)}
+            />
             <View pl={2}>
               <Text variants="small">{props.user?.displayName}</Text>
             </View>

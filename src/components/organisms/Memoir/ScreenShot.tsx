@@ -1,11 +1,11 @@
-import React, { memo, useRef, useCallback, useEffect } from 'react';
+import React, { memo, useRef, useCallback, useState } from 'react';
 import {
   StyleSheet,
   ScrollView,
   useWindowDimensions,
-  Share,
   Alert,
 } from 'react-native';
+import * as Sharing from 'expo-sharing';
 import ViewShot from 'react-native-view-shot';
 import View from 'components/atoms/View';
 import { useNavigation } from '@react-navigation/native';
@@ -17,8 +17,7 @@ import Header from 'components/molecules/Memoir/Header';
 import { getModeCountMax } from 'lib/utility';
 import DateText from 'components/molecules/Memoir/DateText';
 import Divider from 'components/atoms/Divider';
-import useIsFirstRender from 'hooks/useIsFirstRender';
-import * as ImageManipulator from 'expo-image-manipulator';
+import Loading from 'components/molecules/Overlay/Loading';
 import { Item } from 'hooks/useItemsInPeriodPaging';
 import Card from './Card';
 
@@ -42,6 +41,7 @@ type RenderedItem = {
   categoryID?: number;
   last?: boolean;
   width: number;
+  onLoadEnd: () => void;
 };
 
 const RenderItem: React.FC<RenderedItem> = (props) => {
@@ -57,6 +57,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
           categoryID={props?.contents?.categoryID || 0}
           user={props?.contents?.user as User}
           onPress={() => null}
+          onLoadEnd={props.onLoadEnd}
         />
         {!props?.last && <Divider />}
       </View>
@@ -66,10 +67,49 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 
 const ScreenShot: React.FC<Props> = (props) => {
   const viewShot = useRef<ViewShot>(null);
-  const isFirstRender = useIsFirstRender();
   const navigation = useNavigation();
+  const count = useRef(0);
+  const [loading, setLoading] = useState(true);
 
   const windowWidth = useWindowDimensions().width;
+
+  const onShare = useCallback(
+    async (uri: string) => {
+      const ok = await Sharing.isAvailableAsync();
+      if (!ok) {
+        Alert.alert('エラー', '共有機能を利用できませんでした', [
+          {
+            text: '戻る',
+            onPress: () => {
+              navigation.goBack();
+            },
+          },
+        ]);
+
+        return;
+      }
+
+      await Sharing.shareAsync(uri);
+
+      navigation.goBack();
+    },
+    [navigation]
+  );
+
+  const onCapture = useCallback(async () => {
+    const url = await viewShot.current?.capture?.();
+
+    if (url) onShare('file://' + url);
+  }, [onShare]);
+
+  const onLoadEnd = useCallback(() => {
+    count.current = count.current + 1;
+
+    if (props.items.length === count.current) {
+      setLoading(false);
+      setTimeout(() => onCapture(), 100);
+    }
+  }, [props.items, onCapture]);
 
   const dates = Array.from(
     new Set(props.items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
@@ -107,6 +147,7 @@ const ScreenShot: React.FC<Props> = (props) => {
           },
           last: sameDateItems.length === index + 1,
           width: windowWidth,
+          onLoadEnd: onLoadEnd,
         };
       });
 
@@ -116,61 +157,26 @@ const ScreenShot: React.FC<Props> = (props) => {
         date: v1.date,
         categoryID: getModeCountMax(categoryID),
         width: windowWidth,
+        onLoadEnd: () => null,
       };
 
       return [dateItem, ...item];
     })
     .flat();
 
-  const onShare = useCallback(
-    async (uri: string) => {
-      const image = await ImageManipulator.manipulateAsync(uri, [], {
-        compress: 0,
-        base64: true,
-      });
-
-      const base64Data = `data:image/jpeg;base64,${image.base64}`;
-
-      try {
-        const result = await Share.share({
-          url: base64Data,
-          message:
-            'React Native | A framework for building native apps using React',
-        });
-        if (result.action === Share.sharedAction) {
-        } else if (result.action === Share.dismissedAction) {
-        }
-
-        navigation.goBack();
-      } catch (error) {
-        Alert.alert(error.message);
-      }
-    },
-    [navigation]
-  );
-
-  const onCapture = useCallback(async () => {
-    const url = await viewShot.current?.capture?.();
-
-    if (url) onShare(url);
-  }, [onShare]);
-
-  useEffect(() => {
-    if (!isFirstRender) return;
-
-    setTimeout(() => onCapture(), 5000);
-  }, [isFirstRender, onCapture]);
-
   return (
-    <ScrollView style={styles.root}>
-      <ViewShot ref={viewShot} options={{ format: 'jpg' }}>
-        <Header startDate={props.startDate} endDate={props.endDate} />
-        {data.map((v, index) => (
-          <RenderItem {...v} key={index} />
-        ))}
-        <View />
-      </ViewShot>
-    </ScrollView>
+    <>
+      <ScrollView style={styles.root}>
+        <ViewShot ref={viewShot} options={{ format: 'jpg' }}>
+          <Header startDate={props.startDate} endDate={props.endDate} />
+          {data.map((v, index) => (
+            <RenderItem {...v} key={index} />
+          ))}
+          <View />
+        </ViewShot>
+      </ScrollView>
+      {loading && <Loading text="作成中" />}
+    </>
   );
 };
 
