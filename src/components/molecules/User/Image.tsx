@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageProps } from 'react-native';
 import Image from 'components/atoms/Image';
 import theme from 'config/theme';
 
 export type Props = {
   image: string | null;
   size?: number;
+  onLoadEnd?: ImageProps['onLoadEnd'];
 };
 
 const UserImage: React.FC<Props> = (props) => {
@@ -18,6 +19,7 @@ const UserImage: React.FC<Props> = (props) => {
           width={props.size}
           height={props.size}
           resizeMode="cover"
+          onLoadEnd={props.onLoadEnd}
         />
       ) : (
         <Image
@@ -25,6 +27,7 @@ const UserImage: React.FC<Props> = (props) => {
           width={props.size}
           height={props.size}
           style={styles.noImage}
+          onLoadEnd={props.onLoadEnd}
         />
       )}
     </>

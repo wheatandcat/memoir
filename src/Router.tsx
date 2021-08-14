@@ -7,6 +7,7 @@ import Home, { HomeScreenOption } from 'components/pages/Home';
 import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
 import SettingMemoir from 'components/pages/Setting/Memoir';
+import MemoirScreenShot from 'components/pages/Memoir/ScreenShot';
 import MyPage from 'components/pages/MyPage';
 
 const Stack = createStackNavigator();
@@ -51,6 +52,11 @@ const WithProvider = () => {
         <Stack.Screen
           name="Memoir"
           component={Memoir}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="MemoirScreenShot"
+          component={MemoirScreenShot}
           options={{ headerShown: false }}
         />
         <Stack.Screen

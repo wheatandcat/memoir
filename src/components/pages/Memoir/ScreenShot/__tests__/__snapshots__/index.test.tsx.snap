@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Memoir/ScreenShot/index.tsx 正常にrenderすること 1`] = `
+<Memo(Connected)
+  endDate="2020-01-07"
+  startDate="2020-01-01"
+/>
+`;

@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Memoir/ScreenShot/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Plain)
+  data={null}
+  endDate="2020-01-07"
+  loading={false}
+  startDate="2020-01-01"
+  users={
+    Array [
+      Object {
+        "displayName": "test",
+        "id": "",
+        "image": "",
+      },
+    ]
+  }
+/>
+`;

@@ -7,6 +7,7 @@ import theme from 'config/theme';
 import DateCards, { Props } from './DateCards';
 import { items, item } from '__mockData__/item';
 import Card from './Card';
+import ScreenShot, { Props as ScreenShotProps } from './ScreenShot';
 
 const props = (): Props => ({
   items: items().map((v) => ({ ...v, userID: 'test' })),
@@ -17,6 +18,19 @@ const props = (): Props => ({
   onItem: mockFn('onItem'),
   onLoadMore: mockFn('onLoadMore'),
   loading: false,
+  startDate: '2020-01-01',
+  endDate: '2020-01-07',
+  users: [
+    {
+      id: 'test',
+      displayName: 'suzuki',
+      image: 'https://placehold.jp/150x150.png',
+    },
+  ],
+});
+
+const screenShotProps = (): ScreenShotProps => ({
+  items: items().map((v) => ({ ...v, userID: 'test' })),
   startDate: '2020-01-01',
   endDate: '2020-01-07',
   users: [
@@ -50,6 +64,12 @@ storiesOf('organisms/Memoir', module).add('Card', () => (
     }}
     onPress={mockFn('onPress')}
   />
+));
+
+storiesOf('organisms/Memoir/ScreenShot', module).add('default', () => (
+  <View style={styles.root}>
+    <ScreenShot {...screenShotProps()} />
+  </View>
 ));
 
 const styles = StyleSheet.create({

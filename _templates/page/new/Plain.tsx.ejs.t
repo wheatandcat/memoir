@@ -8,7 +8,7 @@ import Template<%= navigationName %> from '<%= templateImportPath %>/Page';
 import { ConnectedType } from './Connected';
 
 type QueryHookResult = any;
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
 export type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {

@@ -3,6 +3,7 @@ import {
   useItemsInPeriodQuery,
   useRelationshipsQuery,
 } from 'queries/api/index';
+import { useNavigation } from '@react-navigation/native';
 import useItemsInPeriodPaging from 'hooks/useItemsInPeriodPaging';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
@@ -28,6 +29,7 @@ export type ConnectedType = {
   endDate: string;
   users: User[];
   onItem: () => void;
+  onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
 };
 
@@ -38,6 +40,8 @@ const initialState = () => ({
 const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
   const user = useRecoilValue(userState);
+  const navigation = useNavigation();
+
   const relationshipsQuery = useRelationshipsQuery({
     variables: {
       input: {
@@ -72,6 +76,13 @@ const Connected: React.FC<Props> = (props) => {
 
   const onItem = useCallback(() => {}, []);
 
+  const onScreenShot = useCallback(() => {
+    navigation.navigate('MemoirScreenShot', {
+      startDate: props.startDate,
+      endDate: props.endDate,
+    });
+  }, [props, navigation]);
+
   const users: User[] = [
     { id: user.userID || '', displayName: user.displayName, image: user.image },
   ];
@@ -94,6 +105,7 @@ const Connected: React.FC<Props> = (props) => {
       loading={queryResult.loading}
       error={queryResult.error}
       onItem={onItem}
+      onScreenShot={onScreenShot}
     />
   );
 };

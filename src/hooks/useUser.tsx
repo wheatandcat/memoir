@@ -35,25 +35,16 @@ const useUser = () => {
     createUserMutation({ variables });
   }, [createUserMutation]);
 
-  const setup = useCallback(
-    (id: string) => {
-      if (user.id) {
-        return;
-      }
-      getUser();
-
-      setUser({ id, userID: '', displayName: '', image: '' });
-    },
-    [setUser, user.id, getUser]
-  );
+  const setup = useCallback(() => {
+    if (user.id) {
+      return;
+    }
+    getUser();
+  }, [user.id, getUser]);
 
   useEffect(() => {
     if (userID.state === 'hasValue') {
-      if (userID.contents) {
-        setup(userID.contents);
-      }
-
-      setTimeout(() => setLoading(false), 1);
+      setup();
     }
   }, [userID, setup]);
 
@@ -66,6 +57,8 @@ const useUser = () => {
           displayName: userUserQuery.data?.user?.displayName || '',
           image: userUserQuery.data?.user?.image || '',
         }));
+
+        setLoading(false);
       }
     }
   }, [userUserQuery, setUser, prevUserUserQueryLoading]);

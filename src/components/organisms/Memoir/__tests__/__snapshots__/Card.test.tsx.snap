@@ -16,6 +16,7 @@ exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = 
     <View>
       <Memo(Category)
         categoryID={1}
+        onLoadEnd={[Function]}
       />
     </View>
     <View
@@ -52,6 +53,7 @@ exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = 
       >
         <Memo(UserImage)
           image=""
+          onLoadEnd={[Function]}
           size={20}
         />
         <View

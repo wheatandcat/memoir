@@ -8436,6 +8436,13 @@ expo-random@~11.2.0:
   dependencies:
     base64-js "^1.3.0"
 
+expo-sharing@~9.2.1:
+  version "9.2.1"
+  resolved "https://registry.yarnpkg.com/expo-sharing/-/expo-sharing-9.2.1.tgz#50267cd66f54d29f0ab3f185a05d92b197e5b60c"
+  integrity sha512-L0OR7qq8GJRKEFDMPrStc9UxVdOr3XRGMuK3vO2qgQgU3CCSb5QE5lHRdp4DFyJd22ILZqwL+3ghiUtFQD0eig==
+  dependencies:
+    expo-modules-core "~0.2.0"
+
 expo-splash-screen@~0.11.2:
   version "0.11.2"
   resolved "https://registry.yarnpkg.com/expo-splash-screen/-/expo-splash-screen-0.11.2.tgz#70c69052981cc982d12030f2a1df5b35af7ee752"
@@ -14776,6 +14783,11 @@ react-native-switch-selector@^2.1.4:
   integrity sha512-KcHxWoACJWcx3JxcGMjKEhfUHFrfmt+vSkzfH0JlPlhEB/3dz9cbOPAZI6eeQjLUvD5tnIYcE8jKtK7PW/2Usw==
   dependencies:
     prop-types "^15.7.2"
+
+react-native-view-shot@3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/react-native-view-shot/-/react-native-view-shot-3.1.2.tgz#8c8e84c67a4bc8b603e697dbbd59dbc9b4f84825"
+  integrity sha512-9u9fPtp6a52UMoZ/UCPrCjKZk8tnkI9To0Eh6yYnLKFEGkRZ7Chm6DqwDJbYJHeZrheCCopaD5oEOnRqhF4L2Q==
 
 react-native-web@~0.17.1:
   version "0.17.1"
