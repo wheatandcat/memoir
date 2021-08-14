@@ -6,7 +6,7 @@ import TemplateMemoirScreenShot from 'components/templates/Memoir/ScreenShot/Pag
 import { Item } from 'hooks/useItemsInPeriodPaging';
 import { ConnectedType } from './Connected';
 
-export type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
+type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
 export type Props = QueryProps & ConnectedType & {};
 
 const Plain: React.FC<Props> = (props) => {
