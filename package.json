@@ -145,12 +145,5 @@
     "*.{js,ts,tsx}": [
       "yarn eslint --fix"
     ]
-  },
-  "loki": {
-    "configurations": {
-      "ios.iphone11": {
-        "target": "ios.simulator"
-      }
-    }
   }
 }
