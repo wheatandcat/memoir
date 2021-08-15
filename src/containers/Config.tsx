@@ -1,6 +1,6 @@
 import React, { memo, useContext, createContext } from 'react';
 
-export const Context = createContext<ContextProps>({});
+const Context = createContext<ContextProps>({});
 const { Provider } = Context;
 
 type ContextProps = Partial<{
@@ -22,4 +22,3 @@ const Config = memo((props) => {
 export default Config;
 
 export const useConfig = () => useContext(Context);
-export const Consumer = Context.Consumer;
