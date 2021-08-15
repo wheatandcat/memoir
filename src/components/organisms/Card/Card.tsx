@@ -42,8 +42,9 @@ const Card: React.FC<Props> = (props) => {
     rootStyle.height = 95;
   }
 
-  const category = setting().icon.find((v) => v.id === props.categoryID)
-    ?.category;
+  const category = setting().icon.find(
+    (v) => v.id === props.categoryID
+  )?.category;
   const categoryStyle: ViewStyle[] = [
     rootStyle,
     styles.root,

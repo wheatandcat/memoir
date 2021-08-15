@@ -5,19 +5,23 @@ import Text from 'components/atoms/Text';
 import { mockFn } from 'storyBookUtils/index';
 import Modal from './';
 
-storiesOf('organisms', module).add('Modal', () => (
-  <View>
-    <Modal
-      title="タイトル"
-      isVisible={true}
-      onClose={mockFn('onClose')}
-      loading={false}
-    >
-      <View pt={5}>
-        <Text textAlign="center" variants="large">
-          props.children
-        </Text>
-      </View>
-    </Modal>
-  </View>
-));
+storiesOf('organisms', module).add(
+  'Modal',
+  () => (
+    <View>
+      <Modal
+        title="タイトル"
+        isVisible={true}
+        onClose={mockFn('onClose')}
+        loading={false}
+      >
+        <View pt={5}>
+          <Text textAlign="center" variants="large">
+            props.children
+          </Text>
+        </View>
+      </Modal>
+    </View>
+  ),
+  { loki: { skip: true } }
+);

@@ -32,8 +32,9 @@ const CardDetail: React.FC<Props> = (props) => {
     width: windowWidth - 60,
   };
 
-  const category = setting().icon.find((v) => v.id === props.categoryID)
-    ?.category;
+  const category = setting().icon.find(
+    (v) => v.id === props.categoryID
+  )?.category;
   const categoryStyle: ViewStyle[] = [
     styles.root,
     categoryBorderStyle(category || 0),

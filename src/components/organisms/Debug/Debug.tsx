@@ -45,9 +45,8 @@ const Menu: React.FC<Props> = () => {
   }, [userID]);
 
   const onLocalPushNotification = useCallback(async () => {
-    const {
-      status: existingStatus,
-    } = await Notifications.getPermissionsAsync();
+    const { status: existingStatus } =
+      await Notifications.getPermissionsAsync();
     let finalStatus = existingStatus;
 
     if (existingStatus !== 'granted') {

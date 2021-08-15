@@ -36,3 +36,23 @@ $ yarn hygen component new
 ```
 $ yarn hygen test new
 ```
+
+# Visual Testing
+
+## 画像更新 
+
+```
+$ yarn loki:update
+```
+
+## ローカル比較
+
+```
+$ yarn loki:test
+```
+
+## reg-suit
+
+```
+$ npx reg-suit run
+```

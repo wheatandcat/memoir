@@ -9,62 +9,66 @@ storiesOf('molecules/DateInput', module)
   .add('Years', () => (
     <Years date="2020-01-01" years={[2020, 2021]} onPress={mockFn('onPress')} />
   ))
-  .add('Months', () => (
-    <Months
-      date="2020-01-01"
-      months={[
-        {
-          label: '1/Jun',
-          value: 1,
-        },
-        {
-          label: '2/Feb',
-          value: 2,
-        },
-        {
-          label: '3/Mar',
-          value: 3,
-        },
-        {
-          label: '4/Apr',
-          value: 4,
-        },
-        {
-          label: '5/May',
-          value: 5,
-        },
-        {
-          label: '6/May',
-          value: 6,
-        },
-        {
-          label: '7/Jul',
-          value: 7,
-        },
-        {
-          label: '8/Aug',
-          value: 8,
-        },
-        {
-          label: '9/Sep',
-          value: 9,
-        },
-        {
-          label: '10/Oct',
-          value: 10,
-        },
-        {
-          label: '11/Nov',
-          value: 11,
-        },
-        {
-          label: '12/Dec',
-          value: 12,
-        },
-      ]}
-      onPress={mockFn('onPress')}
-    />
-  ))
+  .add(
+    'Months',
+    () => (
+      <Months
+        date="2020-01-01"
+        months={[
+          {
+            label: '1/Jun',
+            value: 1,
+          },
+          {
+            label: '2/Feb',
+            value: 2,
+          },
+          {
+            label: '3/Mar',
+            value: 3,
+          },
+          {
+            label: '4/Apr',
+            value: 4,
+          },
+          {
+            label: '5/May',
+            value: 5,
+          },
+          {
+            label: '6/May',
+            value: 6,
+          },
+          {
+            label: '7/Jul',
+            value: 7,
+          },
+          {
+            label: '8/Aug',
+            value: 8,
+          },
+          {
+            label: '9/Sep',
+            value: 9,
+          },
+          {
+            label: '10/Oct',
+            value: 10,
+          },
+          {
+            label: '11/Nov',
+            value: 11,
+          },
+          {
+            label: '12/Dec',
+            value: 12,
+          },
+        ]}
+        onPress={mockFn('onPress')}
+      />
+    ),
+    { loki: { skip: true } }
+  )
   .add('Days', () => (
     <Days
       date="2020-01-01"

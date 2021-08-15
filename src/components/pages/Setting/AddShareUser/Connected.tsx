@@ -45,34 +45,28 @@ const Connected: React.FC<Props> = () => {
     fetchPolicy: 'network-only',
   });
 
-  const [
-    createRelationshipRequestMutation,
-    relationshipRequestMutationData,
-  ] = useCreateRelationshipRequestMutation();
+  const [createRelationshipRequestMutation, relationshipRequestMutationData] =
+    useCreateRelationshipRequestMutation();
 
   const user = useRecoilValue(userState);
-  const [
-    createInviteMutation,
-    createInviteMutationData,
-  ] = useCreateInviteMutation({
-    onCompleted() {
-      refetch();
-    },
-    onError() {
-      Alert.alert('エラー', '作成に失敗しました');
-    },
-  });
-  const [
-    updateInviteMutation,
-    updateInviteMutationData,
-  ] = useUpdateInviteMutation({
-    onCompleted() {
-      refetch();
-    },
-    onError() {
-      Alert.alert('エラー', '更新に失敗しました');
-    },
-  });
+  const [createInviteMutation, createInviteMutationData] =
+    useCreateInviteMutation({
+      onCompleted() {
+        refetch();
+      },
+      onError() {
+        Alert.alert('エラー', '作成に失敗しました');
+      },
+    });
+  const [updateInviteMutation, updateInviteMutationData] =
+    useUpdateInviteMutation({
+      onCompleted() {
+        refetch();
+      },
+      onError() {
+        Alert.alert('エラー', '更新に失敗しました');
+      },
+    });
 
   const onCreateInvite = useCallback(() => {
     createInviteMutation();
