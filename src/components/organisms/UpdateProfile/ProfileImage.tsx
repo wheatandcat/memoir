@@ -21,7 +21,8 @@ const ProfileImage: React.FC<Props> = (props) => {
   const { showActionSheetWithOptions } = useActionSheet();
 
   const pickImageLibrary = useCallback(async () => {
-    const mediaLibrary = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    const mediaLibrary =
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (mediaLibrary.status !== 'granted') {
       Alert.alert('memoirアプリのカメラのアクセス許可をONにしてください');
       return;

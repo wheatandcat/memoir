@@ -25,16 +25,17 @@ const WithProvider = () => {
 
           Linking.addEventListener('url', onReceiveURL);
 
-          const subscription = Notifications.addNotificationResponseReceivedListener(
-            (response) => {
-              const url =
-                response.notification.request.content.data?.urlScheme ?? '';
+          const subscription =
+            Notifications.addNotificationResponseReceivedListener(
+              (response) => {
+                const url =
+                  response.notification.request.content.data?.urlScheme ?? '';
 
-              if (url !== '') {
-                listener(`${prefix}${url}`);
+                if (url !== '') {
+                  listener(`${prefix}${url}`);
+                }
               }
-            }
-          );
+            );
 
           return () => {
             Linking.removeEventListener('url', onReceiveURL);

@@ -51,9 +51,8 @@ const Notification: React.FC<Props> = memo((props) => {
         return false;
       }
 
-      const {
-        status: existingStatus,
-      } = await Notifications.getPermissionsAsync();
+      const { status: existingStatus } =
+        await Notifications.getPermissionsAsync();
       let finalStatus = existingStatus;
 
       if (existingStatus !== 'granted') {

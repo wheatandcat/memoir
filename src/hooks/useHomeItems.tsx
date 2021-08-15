@@ -5,10 +5,8 @@ import { homeDateState, homeItemsState } from 'store/atoms';
 import usePrevious from 'hooks/usePrevious';
 
 const useHomeItems = () => {
-  const [
-    getItemsByDate,
-    { data, loading, error, refetch },
-  ] = useItemsByDateLazyQuery();
+  const [getItemsByDate, { data, loading, error, refetch }] =
+    useItemsByDateLazyQuery();
   const homeDate = useRecoilValue(homeDateState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const [apiLoading, setApiLoading] = useState(true);

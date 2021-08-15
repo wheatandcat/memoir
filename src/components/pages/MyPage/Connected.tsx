@@ -33,23 +33,19 @@ const Connected: React.FC<Props> = () => {
   const authUser = useRecoilValue(authUserState);
   const userQuery = useUserQuery();
   const navigation = useNavigation();
-  const [
-    getRelationshipRequests,
-    relationshipRequestsData,
-  ] = useRelationshipRequestsLazyQuery({
-    fetchPolicy: 'network-only',
-  });
+  const [getRelationshipRequests, relationshipRequestsData] =
+    useRelationshipRequestsLazyQuery({
+      fetchPolicy: 'network-only',
+    });
   const [getRelationships, relationshipsData] = useRelationshipsLazyQuery({
     fetchPolicy: 'network-only',
   });
-  const [
-    deleteRelationshipMutation,
-    deleteRelationshipMutationData,
-  ] = useDeleteRelationshipMutation({
-    onCompleted() {
-      relationshipsData.refetch?.();
-    },
-  });
+  const [deleteRelationshipMutation, deleteRelationshipMutationData] =
+    useDeleteRelationshipMutation({
+      onCompleted() {
+        relationshipsData.refetch?.();
+      },
+    });
 
   useEffect(() => {
     if (authUser.uid) {

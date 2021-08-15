@@ -65,17 +65,15 @@ const Connected: React.FC<Props> = (props) => {
       });
     },
   });
-  const [
-    ngRelationshipRequestMutation,
-    ngRelationshipRequestMutationData,
-  ] = useNgRelationshipRequestMutation({
-    onCompleted() {
-      reset();
-      setEndCursor('');
-      setReloadKey(uuidv4());
-      props.onCallback();
-    },
-  });
+  const [ngRelationshipRequestMutation, ngRelationshipRequestMutationData] =
+    useNgRelationshipRequestMutation({
+      onCompleted() {
+        reset();
+        setEndCursor('');
+        setReloadKey(uuidv4());
+        props.onCallback();
+      },
+    });
 
   const onLoadMore = useCallback((after: string | null) => {
     setEndCursor(after || '');
