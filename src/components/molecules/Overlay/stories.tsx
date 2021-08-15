@@ -8,11 +8,15 @@ const props = (): Props => ({
   text: 'テスト',
 });
 
-storiesOf('molecules/Overlay', module).add('Loading', () => (
-  <>
-    <Loading {...props()} />
-    <View m={3}>
-      <Text>テスト</Text>
-    </View>
-  </>
-));
+storiesOf('molecules/Overlay', module).add(
+  'Loading',
+  () => (
+    <>
+      <Loading {...props()} />
+      <View m={3}>
+        <Text>テスト</Text>
+      </View>
+    </>
+  ),
+  { loki: { skip: true } }
+);

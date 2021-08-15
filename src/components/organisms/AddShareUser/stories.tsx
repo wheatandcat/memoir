@@ -41,17 +41,27 @@ storiesOf('organisms/AddShareUser', module)
   .add('InviteCard', () => <InviteCard {...inviteCardProps()} />)
   .add('InputInvite', () => <InputInvite {...inputInviteProps()} />)
 
-  .add('TutorialModal', () => <TutorialModal {...tutorialModalProps()} />);
+  .add('TutorialModal', () => <TutorialModal {...tutorialModalProps()} />, {
+    loki: { skip: true },
+  });
 
 storiesOf('organisms/AddShareUser/InputModal', module)
-  .add('入力画面', () => <InputModal {...inputModalProps()} />)
-  .add('確認', () => (
-    <InputModal
-      {...inputModalProps()}
-      isConfirm={true}
-      confirmUser={{ displayName: 'suzuki', image: '' }}
-    />
-  ))
-  .add('送信後', () => (
-    <InputModal {...inputModalProps()} displayName="suzuki" />
-  ));
+  .add('入力画面', () => <InputModal {...inputModalProps()} />, {
+    loki: { skip: true },
+  })
+  .add(
+    '確認',
+    () => (
+      <InputModal
+        {...inputModalProps()}
+        isConfirm={true}
+        confirmUser={{ displayName: 'suzuki', image: '' }}
+      />
+    ),
+    { loki: { skip: true } }
+  )
+  .add(
+    '送信後',
+    () => <InputModal {...inputModalProps()} displayName="suzuki" />,
+    { loki: { skip: true } }
+  );

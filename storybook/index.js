@@ -2,12 +2,7 @@
 import React, { Component } from 'react';
 import { AppRegistry } from 'react-native';
 import { RecoilRoot } from 'recoil';
-import {
-  getStorybookUI,
-  configure,
-  addDecorator,
-} from '@storybook/react-native';
-import { withKnobs } from '@storybook/addon-knobs';
+import { getStorybookUI, configure } from '@storybook/react-native';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -16,12 +11,7 @@ import Notification from './Notification';
 import Config from 'containers/Config';
 import { loadStories } from './storyLoader';
 
-import './rn-addons';
-
 const Stack = createStackNavigator();
-
-// enables knobs for all stories
-addDecorator(withKnobs);
 
 // import stories
 configure(() => {
@@ -30,7 +20,9 @@ configure(() => {
 
 // Refer to https://github.com/storybookjs/storybook/tree/master/app/react-native#start-command-parameters
 // To find allowed options for getStorybookUI
-const StorybookUIRoot = getStorybookUI({});
+const StorybookUIRoot = getStorybookUI({
+  onDeviceUI: false,
+});
 
 // If you are using React Native vanilla and after installation you don't see your app name here, write it manually.
 // If you use Expo you should remove this line.
