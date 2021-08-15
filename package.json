@@ -2,13 +2,15 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "init:app": "cp -r App.app.tsx App.tsx",
-    "init:storybook": "cp -r App.storybook.tsx App.tsx",
+    "init:storybook": "cp -r App.storybook.tsx App.tsx && sh scripts/storybook/setup.sh",
     "start": "yarn init:app && expo start",
     "android": "yarn init:app && expo start --android",
     "ios": "yarn init:app && expo start --ios",
     "web": "yarn init:app && expo start --web",
     "ios:clear": "yarn init:app && expo start --ios -c",
     "android:clear": "yarn init:app && expo start --android -c",
+    "loki:test": "sh scripts/visual-testing/setup.sh && yarn loki test && sh scripts/storybook/setup.sh",
+    "loki:update": "sh scripts/visual-testing/setup.sh && yarn loki update && sh scripts/storybook/setup.sh",
     "storybook": "yarn init:storybook && start-storybook -p 7007",
     "storybook:ios": "yarn init:storybook && expo start --ios -c",
     "storybook:android": "yarn init:storybook && expo start --android -c",
@@ -121,6 +123,7 @@
     "jest-expo": "^42.0.0",
     "jest-expo-enzyme": "^1.2.1",
     "lint-staged": "^11.0.0",
+    "loki": "^0.28.1",
     "react-native-storybook-loader": "^2.0.4",
     "ts-jest": "^27.0.3",
     "ts-unused-exports": "^7.0.3",
@@ -139,5 +142,12 @@
     "*.{js,ts,tsx}": [
       "yarn eslint --fix"
     ]
+  },
+  "loki": {
+    "configurations": {
+      "ios.iphone11": {
+        "target": "ios.simulator"
+      }
+    }
   }
 }

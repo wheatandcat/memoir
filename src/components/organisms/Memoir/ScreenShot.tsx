@@ -19,6 +19,7 @@ import DateText from 'components/molecules/Memoir/DateText';
 import Divider from 'components/atoms/Divider';
 import Loading from 'components/molecules/Overlay/Loading';
 import { Item } from 'hooks/useItemsInPeriodPaging';
+import { useConfig } from 'containers/Config';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {
@@ -66,6 +67,8 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 };
 
 const ScreenShot: React.FC<Props> = (props) => {
+  const { env } = useConfig();
+
   const viewShot = useRef<ViewShot>(null);
   const navigation = useNavigation();
   const count = useRef(0);
@@ -97,10 +100,15 @@ const ScreenShot: React.FC<Props> = (props) => {
   );
 
   const onCapture = useCallback(async () => {
+    if (env === 'storybook') {
+      //storybookの場合はスルーさせる
+      return;
+    }
+
     const url = await viewShot.current?.capture?.();
 
     if (url) onShare('file://' + url);
-  }, [onShare]);
+  }, [onShare, env]);
 
   const onLoadEnd = useCallback(() => {
     count.current = count.current + 1;

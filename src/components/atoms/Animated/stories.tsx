@@ -4,6 +4,8 @@ import Blinking, { Props } from './Blinking';
 
 const props = (): Props => ({});
 
-storiesOf('atoms/Animated', module).add('Blinking', () => (
-  <Blinking {...props()} />
-));
+storiesOf('atoms/Animated', module).add(
+  'Blinking',
+  () => <Blinking {...props()} />,
+  { loki: { skip: true } }
+);

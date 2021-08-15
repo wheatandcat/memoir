@@ -11,7 +11,9 @@ import { withKnobs } from '@storybook/addon-knobs';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import 'loki/configure-react-native';
 import Notification from './Notification';
+import Config from 'containers/Config';
 import { loadStories } from './storyLoader';
 
 import './rn-addons';
@@ -38,19 +40,21 @@ class StorybookUIHMRRoot extends Component {
   render() {
     return (
       <ActionSheetProvider>
-        <Notification>
-          <RecoilRoot>
-            <NavigationContainer independent={true}>
-              <Stack.Navigator>
-                <Stack.Screen
-                  name="StorybookUIRoot"
-                  component={StorybookUIRoot}
-                  options={{ header: () => null }}
-                />
-              </Stack.Navigator>
-            </NavigationContainer>
-          </RecoilRoot>
-        </Notification>
+        <Config>
+          <Notification>
+            <RecoilRoot>
+              <NavigationContainer independent={true}>
+                <Stack.Navigator>
+                  <Stack.Screen
+                    name="StorybookUIRoot"
+                    component={StorybookUIRoot}
+                    options={{ header: () => null }}
+                  />
+                </Stack.Navigator>
+              </NavigationContainer>
+            </RecoilRoot>
+          </Notification>
+        </Config>
       </ActionSheetProvider>
     );
   }
