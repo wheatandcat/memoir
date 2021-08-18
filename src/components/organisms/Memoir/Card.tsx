@@ -9,7 +9,6 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
 import theme from 'config/theme';
-import IconButton from 'components/molecules/IconButton';
 import { Item } from 'queries/api/index';
 import UserImage from 'components/molecules/User/Image';
 
@@ -67,17 +66,6 @@ const Card: React.FC<Props> = (props) => {
               <Text variants="small">{props.user?.displayName}</Text>
             </View>
           </View>
-        </View>
-        <View>
-          <Text textAlign="center" size="sm">
-            0
-          </Text>
-          <IconButton
-            name="favorite"
-            size="base"
-            color={theme().color.base.main}
-            onPress={() => null}
-          />
         </View>
       </View>
     </TouchableOpacity>

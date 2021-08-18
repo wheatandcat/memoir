@@ -9,8 +9,8 @@
     "web": "yarn init:app && expo start --web",
     "ios:clear": "yarn init:app && expo start --ios -c",
     "android:clear": "yarn init:app && expo start --android -c",
-    "loki:test": "sh scripts/visual-testing/setup.sh && yarn loki test && sh scripts/storybook/setup.sh",
-    "loki:update": "sh scripts/visual-testing/setup.sh && rm -rf .loki/reference/*.png && yarn loki update && sh scripts/storybook/setup.sh",
+    "loki:test": "sh scripts/visual-testing/setup.sh && yarn loki test ; sh scripts/storybook/setup.sh",
+    "loki:update": "sh scripts/visual-testing/setup.sh && rm -rf .loki/reference/*.png && yarn loki update ; sh scripts/storybook/setup.sh",
     "storybook-server": "(adb reverse tcp:7007 tcp:7007 > /dev/null || true) && echo 'y' | start-storybook -p 7007 | react-native start --projectRoot storybook --watchFolders $PWD",
     "storybook": "yarn init:storybook && yarn storybook-server",
     "storybook:ios": "yarn init:storybook && expo start --ios -c",
@@ -23,7 +23,8 @@
     "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts",
     "test": "jest",
     "prepare": "husky install",
-    "unused-exports": "node ./scripts/ts-unused-exports"
+    "unused-exports": "node ./scripts/ts-unused-exports",
+    "compare-images": "reg-suit sync-expected && reg-suit compare"
   },
   "dependencies": {
     "@apollo/client": "3.3.21",
