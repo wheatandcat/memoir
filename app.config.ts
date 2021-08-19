@@ -13,7 +13,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#E3C95D',
   },
   updates: {
     fallbackToCacheTimeout: 0,
@@ -37,7 +37,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     package: 'com.wheatandcat.memoir',
     adaptiveIcon: {
       foregroundImage: './assets/adaptive-icon.png',
-      backgroundColor: '#FFFFFF',
+      backgroundColor: '#E3C95D',
     },
   },
   web: {

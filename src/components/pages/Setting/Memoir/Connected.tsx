@@ -46,8 +46,6 @@ const Connected: React.FC<Props> = () => {
             },
           });
         });
-
-        // NOTE: API出力
       } else {
         // 通知OFFの場合は、通知をキャンセルする
         Notifications.cancelAllScheduledNotificationsAsync();
