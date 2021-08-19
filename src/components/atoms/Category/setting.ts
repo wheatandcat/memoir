@@ -42,7 +42,7 @@ const setting = () => ({
     },
     {
       id: 6,
-      image: require('../../../img/categories/category_money.png'),
+      image: require('../../../img/categories/category_shopping.png'),
       category: master.CATEGORY_3,
       name: '買った',
     },

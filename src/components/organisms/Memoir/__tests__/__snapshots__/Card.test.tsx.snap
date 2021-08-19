@@ -68,22 +68,6 @@ exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = 
         </View>
       </View>
     </View>
-    <View>
-      <Text
-        fontFamily="RobotoCondensed-Bold"
-        size="sm"
-        textAlign="center"
-        variants="body"
-      >
-        0
-      </Text>
-      <Memo(IconButton)
-        color="#D8D7D6"
-        name="favorite"
-        onPress={[Function]}
-        size="base"
-      />
-    </View>
   </View>
 </ForwardRef>
 `;
