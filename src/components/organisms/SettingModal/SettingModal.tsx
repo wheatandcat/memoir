@@ -91,12 +91,7 @@ const SettingModal: React.FC<Props> = (props) => {
             <Text>ふりかえり日時を変更する</Text>
           </View>
         </TouchableOpacity>
-        <Divider my={3} />
-        <TouchableOpacity style={styles.menuText}>
-          <View>
-            <Text>過去のmemoir一覧</Text>
-          </View>
-        </TouchableOpacity>
+
         <Divider my={3} />
         <TouchableOpacity
           style={styles.menuText}

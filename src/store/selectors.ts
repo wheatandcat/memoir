@@ -6,6 +6,7 @@ export const existUserID = selector({
   key: 'existUser',
   get: async () => {
     const uid = await getItem(storageKey.USER_ID_KEY);
+
     if (uid) {
       return uid;
     }

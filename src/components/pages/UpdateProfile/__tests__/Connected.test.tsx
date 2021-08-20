@@ -25,6 +25,9 @@ describe('components/pages/UpdateProfile/Connected.tsx', () => {
         { id: 'test-id', displayName: 'test-name' },
         jest.fn(),
       ]);
+    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
+      uid: 'test',
+    }));
     jest
       .spyOn(queries, 'useUpdateUserMutation')
       .mockImplementation((): any => [jest.fn(), { loading: false }]);

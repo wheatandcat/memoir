@@ -12,6 +12,7 @@ import { resizeImage } from 'lib/image';
 import UserImage from 'components/molecules/User/Image';
 
 export type Props = {
+  authenticated: boolean;
   image: string | null;
   onChangeImage: (uri: string) => void;
 };
@@ -24,11 +25,14 @@ const ProfileImage: React.FC<Props> = (props) => {
     const mediaLibrary =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (mediaLibrary.status !== 'granted') {
-      Alert.alert('memoirアプリのカメラのアクセス許可をONにしてください');
+      Alert.alert(
+        '注意',
+        'memoirアプリのカメラのアクセス許可をONにしてください'
+      );
       return;
     }
 
-    let result = await ImagePicker.launchImageLibraryAsync({
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
       allowMultipleSelection: false,
@@ -46,10 +50,13 @@ const ProfileImage: React.FC<Props> = (props) => {
   const pickImageCamera = useCallback(async () => {
     const camera = await ImagePicker.requestCameraPermissionsAsync();
     if (camera.status !== 'granted') {
-      Alert.alert('memoirアプリのカメラのアクセス許可をONにしてください');
+      Alert.alert(
+        '注意',
+        'memoirアプリのカメラのアクセス許可をONにしてください'
+      );
     }
 
-    let result = await ImagePicker.launchCameraAsync({
+    const result = await ImagePicker.launchCameraAsync({
       allowsEditing: true,
       aspect: [1, 1],
       quality: 1,
@@ -63,6 +70,11 @@ const ProfileImage: React.FC<Props> = (props) => {
   }, [props]);
 
   const onUpdateImage = useCallback(() => {
+    if (!props.authenticated) {
+      Alert.alert('注意', '画像はログインしないと変更できません');
+      return;
+    }
+
     showActionSheetWithOptions(
       {
         options: ['ライブラリから選択', '写真を撮る', 'キャンセル'],
@@ -76,7 +88,12 @@ const ProfileImage: React.FC<Props> = (props) => {
         }
       }
     );
-  }, [showActionSheetWithOptions, pickImageLibrary, pickImageCamera]);
+  }, [
+    showActionSheetWithOptions,
+    pickImageLibrary,
+    pickImageCamera,
+    props.authenticated,
+  ]);
 
   return (
     <View style={styles.root}>

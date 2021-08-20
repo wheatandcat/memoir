@@ -4,6 +4,7 @@ import { mockFn } from 'storyBookUtils/index';
 import Page, { Props } from './Page';
 
 const props = (): Props => ({
+  authenticated: true,
   user: {
     id: 'test-id',
     userID: '',

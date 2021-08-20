@@ -15,6 +15,7 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
     style="light"
   />
   <ConnectedActionSheet
+    authenticated={true}
     image=""
     onChangeImage={[Function]}
   />
