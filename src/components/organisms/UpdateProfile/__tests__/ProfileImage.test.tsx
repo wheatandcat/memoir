@@ -3,6 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import ProfileImage, { Props } from '../ProfileImage';
 
 const propsData = (): Props => ({
+  authenticated: true,
   image: '',
   onChangeImage: jest.fn(),
 });

@@ -11,22 +11,87 @@ exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderする�
   }
 >
   <View
-    m={4}
+    style={
+      Object {
+        "alignItems": "center",
+        "width": "100%",
+      }
+    }
   >
-    <Image
-      source={null}
-    />
+    <View
+      mt={4}
+    >
+      <Memo(UserImage)
+        image=""
+      />
+    </View>
+    <View
+      m={4}
+    >
+      <ForwardRef
+        onPress={[MockFunction]}
+      >
+        <View
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+            }
+          }
+        >
+          <Text
+            fontFamily="RobotoCondensed-Bold"
+            variants="body"
+          >
+            test
+          </Text>
+          <Icon
+            allowFontScaling={false}
+            color="#362740"
+            name="chevron-right"
+            size={23}
+          />
+        </View>
+      </ForwardRef>
+    </View>
   </View>
   <View
     m={3}
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "justifyContent": "center",
+      }
+    }
   >
-    <Button
-      fontFamily="NotoSansJP-Bold"
-      onPress={[MockFunction]}
-      size="base"
-      title="サインイン"
-      width={220}
-    />
+    <View
+      my={4}
+      style={
+        Object {
+          "width": 250,
+        }
+      }
+    >
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        lineHeight={15}
+        textAlign="center"
+        variants="small"
+      >
+        サインインすれば、他のユーザーとタスクを共有するこができます
+      </Text>
+    </View>
+    <View>
+      <Button
+        fontFamily="NotoSansJP-Bold"
+        onPress={[MockFunction]}
+        size="base"
+        title="サインイン"
+        width={220}
+      />
+    </View>
   </View>
 </View>
 `;

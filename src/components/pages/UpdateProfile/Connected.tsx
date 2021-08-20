@@ -1,6 +1,7 @@
 import React, { memo, useCallback } from 'react';
 import { Alert } from 'react-native';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { authUserState } from 'store/atoms';
 import { useNavigation } from '@react-navigation/native';
 import { v4 as uuidv4 } from 'uuid';
 import TemplateUpdateProfile from 'components/templates/UpdateProfile/Page';
@@ -20,11 +21,13 @@ type Input = {
 };
 
 export type ConnectedType = {
+  authenticated: boolean;
   onSave: (input: Input) => void;
 };
 
 const Connected: React.FC<Props> = () => {
   const [user, setUser] = useRecoilState(userState);
+  const authUser = useRecoilValue(authUserState);
   const navigation = useNavigation();
   const [updateUserMutation, updateUserMutationData] = useUpdateUserMutation({
     async onCompleted(data) {
@@ -70,6 +73,7 @@ const Connected: React.FC<Props> = () => {
 
   return (
     <TemplateUpdateProfile
+      authenticated={!!authUser.uid}
       loading={updateUserMutationData.loading}
       onSave={onSave}
       user={user}

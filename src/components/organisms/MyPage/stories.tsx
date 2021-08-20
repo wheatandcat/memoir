@@ -9,7 +9,12 @@ import NotAuthenticated, {
 import Authenticated, { Props as AuthenticatedProps } from './Authenticated';
 
 const props1 = (): NotAuthenticatedProps => ({
+  user: {
+    ...user(),
+    userID: '',
+  },
   onLogin: mockFn('onLogin'),
+  onUpdateProfile: mockFn('onLogin'),
 });
 
 const props2 = (): AuthenticatedProps => ({

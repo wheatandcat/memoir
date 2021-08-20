@@ -35,7 +35,11 @@ const Page: React.FC<Props> = (props) => {
               onDeleteRelationship={props.onDeleteRelationship}
             />
           ) : (
-            <NotAuthenticated onLogin={props.onLogin} />
+            <NotAuthenticated
+              user={props.user as User}
+              onUpdateProfile={props.onUpdateProfile}
+              onLogin={props.onLogin}
+            />
           )}
         </View>
       </ScrollView>

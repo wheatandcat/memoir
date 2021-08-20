@@ -35,6 +35,7 @@ const Page: React.FC<Props> = (props) => {
         style="light"
       />
       <ProfileImage
+        authenticated={props.authenticated}
         image={props.user.image}
         onChangeImage={(uri) => setState((s) => ({ ...s, image: uri }))}
       />

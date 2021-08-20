@@ -13,7 +13,7 @@ export const uploadImageAsync = async (
       resolve(xhr.response);
     };
     xhr.onerror = function (e) {
-      console.log(e);
+      console.log('image upload error:', e);
       reject(new TypeError('Network request failed'));
     };
     xhr.responseType = 'blob';

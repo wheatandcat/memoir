@@ -36,11 +36,13 @@ const useUser = () => {
   }, [createUserMutation]);
 
   const setup = useCallback(() => {
-    if (user.id) {
+    if (!user.id && !userID.contents) {
+      setLoading(false);
       return;
     }
+
     getUser();
-  }, [user.id, getUser]);
+  }, [user.id, getUser, userID.contents]);
 
   useEffect(() => {
     if (userID.state === 'hasValue') {
@@ -53,6 +55,7 @@ const useUser = () => {
       if (userUserQuery.data?.user?.id) {
         setUser((s) => ({
           ...s,
+          id: userUserQuery.data?.user?.id || '',
           userID: userUserQuery.data?.user?.id || '',
           displayName: userUserQuery.data?.user?.displayName || '',
           image: userUserQuery.data?.user?.image || '',

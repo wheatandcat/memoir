@@ -2,6 +2,7 @@
 
 exports[`components/pages/UpdateProfile/Connected.tsx 正常にrenderすること 1`] = `
 <Memo(Page)
+  authenticated={true}
   loading={false}
   onSave={[Function]}
   user={

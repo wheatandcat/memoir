@@ -4,6 +4,7 @@ import ProfileImage, { Props } from './ProfileImage';
 import { mockFn } from 'storyBookUtils/index';
 
 const props = (): Props => ({
+  authenticated: true,
   image: '',
   onChangeImage: mockFn('onChangeImage'),
 });

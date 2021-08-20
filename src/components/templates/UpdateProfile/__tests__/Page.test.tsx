@@ -3,6 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
+  authenticated: true,
   loading: false,
   user: {
     id: 'test-id',

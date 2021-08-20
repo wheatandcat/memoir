@@ -63,7 +63,9 @@ const Card: React.FC<Props> = (props) => {
               onLoadEnd={() => setEndUserImage(true)}
             />
             <View pl={2}>
-              <Text variants="small">{props.user?.displayName}</Text>
+              <Text variants="small">
+                {props.user?.displayName || '未設定'}
+              </Text>
             </View>
           </View>
         </View>
