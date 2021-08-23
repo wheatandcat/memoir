@@ -16,7 +16,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#E3C95D',
   },
   updates: {
-    fallbackToCacheTimeout: 0,
+    enabled: true,
+    checkAutomatically: 'ON_LOAD',
+    fallbackToCacheTimeout: 30000,
   },
   assetBundlePatterns: ['**/*'],
   ios: {
