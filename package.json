@@ -38,8 +38,10 @@
     "@react-native-picker/picker": "1.16.3",
     "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.5",
+    "@types/compare-versions": "^3.3.0",
     "@types/react-native-snap-carousel": "^3.8.4",
     "@types/uuid": "^8.3.1",
+    "compare-versions": "^3.6.0",
     "dayjs": "^1.10.6",
     "expo": "^42.0.0",
     "expo-app-loading": "^1.1.2",
@@ -70,6 +72,7 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+    "react-native-app-link": "^1.0.1",
     "react-native-gesture-handler": "~1.10.2",
     "react-native-get-random-values": "~1.7.0",
     "react-native-modal": "^12.0.2",
@@ -102,11 +105,14 @@
     "@storybook/addon-links": "^6.1",
     "@storybook/react-native": "^5.3.23",
     "@storybook/react-native-server": "^5.3.23",
+    "@types/babel__core": "~7.1.15",
     "@types/enzyme": "^3.10.9",
+    "@types/eslint": "^7.28.0",
     "@types/jest": "^26.0.24",
     "@types/react": "~16.9.35",
     "@types/react-dom": "~16.9.8",
     "@types/react-native": "~0.63.2",
+    "@types/react-native-app-link": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/eslint-plugin-tslint": "^4.28.2",
     "@typescript-eslint/parser": "^4.28.2",
@@ -131,7 +137,8 @@
     "reg-suit": "^0.10.16",
     "ts-jest": "^27.0.3",
     "ts-unused-exports": "^7.0.3",
-    "typescript": "~4.3.5"
+    "typescript": "~4.3.5",
+    "typesync": "^0.8.0"
   },
   "config": {
     "react-native-storybook-loader": {

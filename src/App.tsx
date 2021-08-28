@@ -11,6 +11,9 @@ import Config from 'containers/Config';
 import { getFireStore } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
+import ForceUpdate from 'components/templates/ForceUpdate/Page';
+import Constants from 'expo-constants';
+import compareVersions from 'compare-versions';
 import WithProvider from './WithProvider';
 
 type CacheShape = any;
@@ -65,6 +68,16 @@ function App() {
 
   if (appConfig.maintenance) {
     return <Maintenance {...appConfig} getMaintenance={getMaintenance} />;
+  }
+
+  if (
+    compareVersions.compare(
+      appConfig.supportVersion,
+      Constants?.manifest?.version || '1.0.0',
+      '>'
+    )
+  ) {
+    return <ForceUpdate />;
   }
 
   return (

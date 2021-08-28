@@ -1,12 +1,15 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { appConfig } from '__mockData__/appConfig';
 import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
-  maintenance: true,
-  maintenanceMessage:
-    'システムメンテナンス終了まで、もうしばらくお待ち下さい。',
-  maintenancePeriod: '2021年1月1日 10:00〜12:00',
+  ...appConfig({
+    maintenance: true,
+    maintenanceMessage:
+      'システムメンテナンス終了まで、もうしばらくお待ち下さい。',
+    maintenancePeriod: '2021年1月1日 10:00〜12:00',
+  }),
   getMaintenance: jest.fn(),
 });
 

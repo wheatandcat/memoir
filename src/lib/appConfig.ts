@@ -4,12 +4,14 @@ export type AppConfig = {
   maintenance: boolean;
   maintenanceMessage: string;
   maintenancePeriod: string | null;
+  supportVersion: string;
 };
 
 export const defaultAppConfig = () => ({
   maintenance: false,
   maintenanceMessage: '',
   maintenancePeriod: null,
+  supportVersion: '1.0.0',
 });
 
 export const getAppConfig = async (
