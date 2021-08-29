@@ -28,7 +28,7 @@ const dialog = () => {
 };
 
 const useUpdateExpo = () => {
-  const handleUpdate = useCallback(async () => {
+  const onUpdateApp = useCallback(async () => {
     const update = await Updates.checkForUpdateAsync();
     if (!update.isAvailable) {
       return;
@@ -58,7 +58,7 @@ const useUpdateExpo = () => {
   }, []);
 
   return {
-    handleUpdate,
+    onUpdateApp,
   };
 };
 

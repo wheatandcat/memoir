@@ -12,8 +12,8 @@ import { getFireStore } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
 import ForceUpdate from 'components/templates/ForceUpdate/Page';
+import useUpdateExpo from 'hooks/useUpdateExpo';
 import Constants from 'expo-constants';
-import * as Updates from 'expo-updates';
 import compareVersions from 'compare-versions';
 import WithProvider from './WithProvider';
 
@@ -25,6 +25,8 @@ function App() {
   const isFirstRender = useIsFirstRender();
   const [client, setClient] = useState<ApolloClient<CacheShape> | null>(null);
   const [appConfig, setAppConfig] = useState<AppConfig>(defaultAppConfig());
+  const { onUpdateApp } = useUpdateExpo();
+
   const forceUpdate = compareVersions.compare(
     appConfig.supportVersion,
     Constants?.manifest?.version || '1.0.0',
@@ -51,15 +53,12 @@ function App() {
             '>'
           )
         ) {
-          // メンテンナンス or 強制アップデートが有効でない場合に
-          const update = await Updates.checkForUpdateAsync();
-          if (!update.isAvailable) {
-            return;
-          }
+          //メンテンナンス or 強制アップデートが有効でない場合にOTAをチェック
+          onUpdateApp();
         }
       }
     },
-    [checkAppConfig]
+    [checkAppConfig, onUpdateApp]
   );
 
   const fetchSession = async () => {
