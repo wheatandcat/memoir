@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/ForceUpdate/Page.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#F2F2F2",
+      "height": "100%",
+      "padding": 16,
+    }
+  }
+>
+  <View
+    mx={3}
+    py={5}
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      lineHeight={30}
+      variants="body"
+    >
+      新しいバージョンがリリースされました。
+      
+
+      ストアからアプリのバージョンアップをして下さい。
+    </Text>
+  </View>
+  <Button
+    fontFamily="NotoSansJP-Bold"
+    onPress={[Function]}
+    size="base"
+    title="ストアへ"
+    width={250}
+  />
+</View>
+`;

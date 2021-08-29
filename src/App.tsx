@@ -11,6 +11,10 @@ import Config from 'containers/Config';
 import { getFireStore } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
+import ForceUpdate from 'components/templates/ForceUpdate/Page';
+import useUpdateExpo from 'hooks/useUpdateExpo';
+import Constants from 'expo-constants';
+import compareVersions from 'compare-versions';
 import WithProvider from './WithProvider';
 
 type CacheShape = any;
@@ -21,21 +25,40 @@ function App() {
   const isFirstRender = useIsFirstRender();
   const [client, setClient] = useState<ApolloClient<CacheShape> | null>(null);
   const [appConfig, setAppConfig] = useState<AppConfig>(defaultAppConfig());
+  const { onUpdateApp } = useUpdateExpo();
 
-  const getMaintenance = useCallback(async () => {
+  const forceUpdate = compareVersions.compare(
+    appConfig.supportVersion,
+    Constants?.manifest?.version || '1.0.0',
+    '>'
+  );
+
+  const checkAppConfig = useCallback(async () => {
     //フォアグラウンドになったときのみこの関数を実行
     const config = await getAppConfig(db);
     setAppConfig(config);
+
+    return config;
   }, []);
 
   const handleUpdate = useCallback(
     async (state: string) => {
       if (state === 'active') {
-        //フォアグラウンドになったときのみこの関数を実行
-        getMaintenance();
+        const config = await checkAppConfig();
+        if (
+          !config.maintenance &&
+          !compareVersions.compare(
+            config.supportVersion,
+            Constants?.manifest?.version || '1.0.0',
+            '>'
+          )
+        ) {
+          //メンテンナンス or 強制アップデートが有効でない場合にOTAをチェック
+          onUpdateApp();
+        }
       }
     },
-    [getMaintenance]
+    [checkAppConfig, onUpdateApp]
   );
 
   const fetchSession = async () => {
@@ -64,7 +87,11 @@ function App() {
   }
 
   if (appConfig.maintenance) {
-    return <Maintenance {...appConfig} getMaintenance={getMaintenance} />;
+    return <Maintenance {...appConfig} getMaintenance={checkAppConfig} />;
+  }
+
+  if (forceUpdate) {
+    return <ForceUpdate />;
   }
 
   return (

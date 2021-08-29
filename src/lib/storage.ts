@@ -10,6 +10,10 @@ const AUTH_ID_TOKEN_KEY = 'AUTH_ID_TOKEN' as const;
 const AUTH_ID_TOKEN_EXPIRATION_KEY = 'AUTH_ID_TOKEN_EXPIRATION' as const;
 // 振り返りの設定
 const MEMOIR_NOTIFICATION_KEY = 'MEMOIR_NOTIFICATION_KEY' as const;
+// OTA updateのリリース
+const UPDATES_RELEASE_KEY = 'RELEASE_KEY' as const;
+// OTA updateのリリーススキップ
+const UPDATES_SKIPPED_KEY = 'SKIPPED_KEY' as const;
 
 export const storageKey = {
   USER_ID_KEY,
@@ -17,6 +21,8 @@ export const storageKey = {
   AUTH_ID_TOKEN_KEY,
   AUTH_ID_TOKEN_EXPIRATION_KEY,
   MEMOIR_NOTIFICATION_KEY,
+  UPDATES_RELEASE_KEY,
+  UPDATES_SKIPPED_KEY,
 } as const;
 
 type StorageKey = typeof storageKey;
