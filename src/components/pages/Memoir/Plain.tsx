@@ -27,9 +27,11 @@ const Plain: React.FC<Props> = (props) => {
       onItem={props.onItem}
       items={props.items}
       users={props.users}
+      selectedUserIDList={props.selectedUserIDList}
       onLoadMore={props.onLoadMore}
       pageInfo={props.pageInfo}
       onScreenShot={props.onScreenShot}
+      onChangeUserID={props.onChangeUserID}
     />
   );
 };

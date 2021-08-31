@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/molecules/Memoir/Users.tsx 正常にrenderすること 1`] = `
+<ScrollView
+  horizontal={true}
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F2F2F2",
+        "flexDirection": "row",
+        "marginLeft": 32,
+      }
+    }
+  >
+    <View
+      key="test"
+      m={2}
+    >
+      <Memo(UserImage)
+        image="https://placehold.jp/150x150.png"
+        size={70}
+      />
+    </View>
+  </View>
+</ScrollView>
+`;

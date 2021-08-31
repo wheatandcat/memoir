@@ -16,6 +16,7 @@ type Props = {
 
 type State = {
   after: string | null;
+  userIDList?: string[];
 };
 
 type User = {
@@ -28,9 +29,11 @@ export type ConnectedType = {
   startDate: string;
   endDate: string;
   users: User[];
+  selectedUserIDList: string[];
   onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
+  onChangeUserID: (userIDList: string[]) => void;
 };
 
 const initialState = () => ({
@@ -59,11 +62,12 @@ const Connected: React.FC<Props> = (props) => {
         endDate: props.endDate,
         first: 8,
         after: state.after,
+        userIDList: state.userIDList,
       },
     },
   });
 
-  const { items, pageInfo } = useItemsInPeriodPaging(queryResult, {
+  const { items, pageInfo, reset } = useItemsInPeriodPaging(queryResult, {
     merge: true,
   });
 
@@ -75,6 +79,15 @@ const Connected: React.FC<Props> = (props) => {
   }, []);
 
   const onItem = useCallback(() => {}, []);
+
+  const onChangeUserID = useCallback(
+    (userIDList: string[]) => {
+      reset();
+
+      setState((s) => ({ ...s, userIDList }));
+    },
+    [reset]
+  );
 
   const onScreenShot = useCallback(() => {
     navigation.navigate('MemoirScreenShot', {
@@ -94,18 +107,22 @@ const Connected: React.FC<Props> = (props) => {
     image: v?.node?.user?.image || '',
   }));
 
+  const tUsers = [...users, ...relationshipUsers];
+
   return (
     <Plain
       startDate={props.startDate}
       endDate={props.endDate}
       items={items}
-      users={[...users, ...relationshipUsers]}
+      users={tUsers}
+      selectedUserIDList={state.userIDList || tUsers.map((v) => v.id)}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
       loading={queryResult.loading}
       error={queryResult.error}
       onItem={onItem}
       onScreenShot={onScreenShot}
+      onChangeUserID={onChangeUserID}
     />
   );
 };

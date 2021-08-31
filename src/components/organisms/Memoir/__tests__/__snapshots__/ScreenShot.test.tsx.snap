@@ -21,6 +21,7 @@ exports[`components/organisms/Memoir/ScreenShot.tsx 正常にrenderすること 
     >
       <Memo(Header)
         endDate="2020-01-07"
+        isTitle={true}
         startDate="2020-01-01"
       />
       <RenderItem
