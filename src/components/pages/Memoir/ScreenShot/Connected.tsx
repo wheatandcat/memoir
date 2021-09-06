@@ -11,9 +11,10 @@ import Plain from './Plain';
 export type Props = {
   startDate: string;
   endDate: string;
+  selectedUserIDList: string[];
 };
 
-export type ConnectedType = Props & {
+export type ConnectedType = Omit<Props, 'selectedUserIDList'> & {
   users: User[];
 };
 
@@ -39,6 +40,7 @@ const Connected: React.FC<Props> = (props) => {
       input: {
         startDate: props.startDate,
         endDate: props.endDate,
+        userIDList: props.selectedUserIDList,
         first: 200,
         after: '',
       },

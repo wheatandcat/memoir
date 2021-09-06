@@ -15,7 +15,7 @@ export type Props = QueryProps &
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
-  if (props.loading && props.items.length === 0) {
+  if (props.loading && props.items.length === 0 && !props.isFilter) {
     return null;
   }
 

@@ -30,6 +30,7 @@ export type ConnectedType = {
   endDate: string;
   users: User[];
   selectedUserIDList: string[];
+  isFilter: boolean;
   onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
@@ -42,6 +43,7 @@ const initialState = () => ({
 
 const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
+  const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
   const navigation = useNavigation();
 
@@ -82,19 +84,13 @@ const Connected: React.FC<Props> = (props) => {
 
   const onChangeUserID = useCallback(
     (userIDList: string[]) => {
+      setIsFilter(true);
       reset();
 
       setState((s) => ({ ...s, userIDList }));
     },
     [reset]
   );
-
-  const onScreenShot = useCallback(() => {
-    navigation.navigate('MemoirScreenShot', {
-      startDate: props.startDate,
-      endDate: props.endDate,
-    });
-  }, [props, navigation]);
 
   const users: User[] = [
     { id: user.userID || '', displayName: user.displayName, image: user.image },
@@ -108,14 +104,24 @@ const Connected: React.FC<Props> = (props) => {
   }));
 
   const tUsers = [...users, ...relationshipUsers];
+  const selectedUserIDList = state.userIDList || tUsers.map((v) => v.id);
+
+  const onScreenShot = useCallback(() => {
+    navigation.navigate('MemoirScreenShot', {
+      startDate: props.startDate,
+      endDate: props.endDate,
+      selectedUserIDList,
+    });
+  }, [props, navigation, selectedUserIDList]);
 
   return (
     <Plain
       startDate={props.startDate}
       endDate={props.endDate}
+      isFilter={isFilter}
       items={items}
       users={tUsers}
-      selectedUserIDList={state.userIDList || tUsers.map((v) => v.id)}
+      selectedUserIDList={selectedUserIDList}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
       loading={queryResult.loading}
