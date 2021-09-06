@@ -15,13 +15,21 @@ import theme from 'config/theme';
 import { getModeCountMax } from 'lib/utility';
 import Divider from 'components/atoms/Divider';
 import Image from 'components/atoms/Image';
+import Users from 'components/molecules/Memoir/Users';
 import Card from './Card';
 
 type Item = ArrayType<PlainProps['items']>;
 
 export type Props = Pick<
   PlainProps,
-  'items' | 'loading' | 'onLoadMore' | 'onItem' | 'pageInfo' | 'users'
+  | 'items'
+  | 'loading'
+  | 'onLoadMore'
+  | 'onItem'
+  | 'pageInfo'
+  | 'users'
+  | 'selectedUserIDList'
+  | 'onChangeUserID'
 > & {
   startDate: string;
   endDate: string;
@@ -155,6 +163,8 @@ const DateCards: React.FC<Props> = (props) => {
     props.onLoadMore(props?.pageInfo.endCursor);
   }, [props]);
 
+  const isUserFilter = props.users.length > 1;
+
   return (
     <View style={styles.root}>
       <FlatList<RenderedItem>
@@ -162,7 +172,20 @@ const DateCards: React.FC<Props> = (props) => {
         data={data}
         renderItem={renderItemCall}
         ListHeaderComponent={
-          <Header startDate={props.startDate} endDate={props.endDate} />
+          <View style={styles.header}>
+            {isUserFilter && (
+              <Users
+                users={props.users}
+                selectedUserIDList={props.selectedUserIDList}
+                onChangeUserID={props.onChangeUserID}
+              />
+            )}
+            <Header
+              startDate={props.startDate}
+              endDate={props.endDate}
+              isTitle={!isUserFilter}
+            />
+          </View>
         }
         ListFooterComponent={<ListFooterComponent loading={props.loading} />}
         onEndReachedThreshold={0.8}
@@ -181,5 +204,8 @@ const styles = StyleSheet.create({
   footer: {
     paddingTop: theme().space(2),
     height: 200,
+  },
+  header: {
+    flex: 1,
   },
 });

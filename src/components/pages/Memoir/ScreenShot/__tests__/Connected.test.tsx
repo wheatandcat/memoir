@@ -8,6 +8,7 @@ import Connected, { Props } from '../Connected';
 const propsData = (): Props => ({
   startDate: '2020-01-01',
   endDate: '2020-01-07',
+  selectedUserIDList: ['1'],
 });
 
 describe('components/pages/Memoir/ScreenShot/Connected.tsx', () => {

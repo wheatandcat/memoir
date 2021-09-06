@@ -27,6 +27,8 @@ const props = (): Props => ({
       image: 'https://placehold.jp/150x150.png',
     },
   ],
+  selectedUserIDList: ['test'],
+  onChangeUserID: mockFn('onChangeUserID'),
 });
 
 const screenShotProps = (): ScreenShotProps => ({

@@ -9,15 +9,6 @@ exports[`components/molecules/Memoir/Header.tsx 正常にrenderすること 1`] 
     }
   }
 >
-  <View>
-    <Text
-      fontFamily="RobotoCondensed-Bold"
-      textAlign="center"
-      variants="logo"
-    >
-      memoir
-    </Text>
-  </View>
   <View
     style={
       Object {

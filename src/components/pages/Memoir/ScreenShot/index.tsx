@@ -16,9 +16,15 @@ export type Props = {
 };
 
 const MemoirScreenShot: React.FC<Props> = (props) => {
-  const { startDate, endDate } = props.route.params;
+  const { startDate, endDate, selectedUserIDList } = props.route.params;
 
-  return <Connected startDate={startDate} endDate={endDate} />;
+  return (
+    <Connected
+      startDate={startDate}
+      endDate={endDate}
+      selectedUserIDList={selectedUserIDList}
+    />
+  );
 };
 
 export default memo(MemoirScreenShot);

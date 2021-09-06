@@ -22,7 +22,32 @@ const props = (): Props => ({
       image: 'https://placehold.jp/150x150.png',
     },
   ],
+  selectedUserIDList: ['test'],
+  onChangeUserID: mockFn('onChangeUserID'),
   onScreenShot: mockFn('onScreenShot'),
 });
 
-storiesOf('templates/Memoir', module).add('Page', () => <Page {...props()} />);
+storiesOf('templates/Memoir/Page', module)
+  .add('ユーザー:1人', () => <Page {...props()} />)
+  .add('ユーザー:複数', () => (
+    <Page
+      {...props()}
+      users={[
+        {
+          id: 'test',
+          displayName: 'suzuki',
+          image: 'https://placehold.jp/150x150.png',
+        },
+        {
+          id: 'test2',
+          displayName: 'suzuki',
+          image: 'https://placehold.jp/250x250.png',
+        },
+        {
+          id: 'test3',
+          displayName: 'suzuki',
+          image: 'https://placehold.jp/350x350.png',
+        },
+      ]}
+    />
+  ));

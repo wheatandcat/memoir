@@ -15,7 +15,7 @@ export type Props = QueryProps &
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
-  if (props.loading && props.items.length === 0) {
+  if (props.loading && props.items.length === 0 && !props.isFilter) {
     return null;
   }
 
@@ -27,9 +27,11 @@ const Plain: React.FC<Props> = (props) => {
       onItem={props.onItem}
       items={props.items}
       users={props.users}
+      selectedUserIDList={props.selectedUserIDList}
       onLoadMore={props.onLoadMore}
       pageInfo={props.pageInfo}
       onScreenShot={props.onScreenShot}
+      onChangeUserID={props.onChangeUserID}
     />
   );
 };

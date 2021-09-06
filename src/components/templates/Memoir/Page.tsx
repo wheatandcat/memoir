@@ -19,7 +19,9 @@ export type Props = Pick<
   | 'onItem'
   | 'pageInfo'
   | 'users'
+  | 'selectedUserIDList'
   | 'onScreenShot'
+  | 'onChangeUserID'
 > & {
   startDate: string;
   endDate: string;
@@ -45,6 +47,8 @@ const Page: React.FC<Props> = (props) => {
             onItem={props.onItem}
             onLoadMore={props.onLoadMore}
             users={props.users}
+            selectedUserIDList={props.selectedUserIDList}
+            onChangeUserID={props.onChangeUserID}
           />
         </View>
         <View style={styles.action}>

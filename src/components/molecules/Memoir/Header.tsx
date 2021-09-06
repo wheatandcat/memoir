@@ -8,16 +8,19 @@ import theme from 'config/theme';
 export type Props = {
   startDate: string;
   endDate: string;
+  isTitle?: boolean;
 };
 
 const Header: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      <View>
-        <Text variants="logo" textAlign="center">
-          memoir
-        </Text>
-      </View>
+      {!!props.isTitle && (
+        <View>
+          <Text variants="logo" textAlign="center">
+            memoir
+          </Text>
+        </View>
+      )}
       <View style={styles.date}>
         <Text variants="middle" textAlign="center" color="baseLight">
           {dayjs(props.startDate).format('YYYY.MM.DD')} -{' '}

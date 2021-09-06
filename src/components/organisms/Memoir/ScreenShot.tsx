@@ -176,7 +176,7 @@ const ScreenShot: React.FC<Props> = (props) => {
     <>
       <ScrollView style={styles.root}>
         <ViewShot ref={viewShot} options={{ format: 'jpg' }}>
-          <Header startDate={props.startDate} endDate={props.endDate} />
+          <Header startDate={props.startDate} endDate={props.endDate} isTitle />
           {data.map((v, index) => (
             <RenderItem {...v} key={index} />
           ))}

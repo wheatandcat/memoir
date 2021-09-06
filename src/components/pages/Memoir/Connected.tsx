@@ -16,6 +16,7 @@ type Props = {
 
 type State = {
   after: string | null;
+  userIDList?: string[];
 };
 
 type User = {
@@ -28,9 +29,12 @@ export type ConnectedType = {
   startDate: string;
   endDate: string;
   users: User[];
+  selectedUserIDList: string[];
+  isFilter: boolean;
   onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
+  onChangeUserID: (userIDList: string[]) => void;
 };
 
 const initialState = () => ({
@@ -39,6 +43,7 @@ const initialState = () => ({
 
 const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
+  const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
   const navigation = useNavigation();
 
@@ -59,11 +64,12 @@ const Connected: React.FC<Props> = (props) => {
         endDate: props.endDate,
         first: 8,
         after: state.after,
+        userIDList: state.userIDList,
       },
     },
   });
 
-  const { items, pageInfo } = useItemsInPeriodPaging(queryResult, {
+  const { items, pageInfo, reset } = useItemsInPeriodPaging(queryResult, {
     merge: true,
   });
 
@@ -76,12 +82,15 @@ const Connected: React.FC<Props> = (props) => {
 
   const onItem = useCallback(() => {}, []);
 
-  const onScreenShot = useCallback(() => {
-    navigation.navigate('MemoirScreenShot', {
-      startDate: props.startDate,
-      endDate: props.endDate,
-    });
-  }, [props, navigation]);
+  const onChangeUserID = useCallback(
+    (userIDList: string[]) => {
+      setIsFilter(true);
+      reset();
+
+      setState((s) => ({ ...s, userIDList }));
+    },
+    [reset]
+  );
 
   const users: User[] = [
     { id: user.userID || '', displayName: user.displayName, image: user.image },
@@ -94,18 +103,32 @@ const Connected: React.FC<Props> = (props) => {
     image: v?.node?.user?.image || '',
   }));
 
+  const tUsers = [...users, ...relationshipUsers];
+  const selectedUserIDList = state.userIDList || tUsers.map((v) => v.id);
+
+  const onScreenShot = useCallback(() => {
+    navigation.navigate('MemoirScreenShot', {
+      startDate: props.startDate,
+      endDate: props.endDate,
+      selectedUserIDList,
+    });
+  }, [props, navigation, selectedUserIDList]);
+
   return (
     <Plain
       startDate={props.startDate}
       endDate={props.endDate}
+      isFilter={isFilter}
       items={items}
-      users={[...users, ...relationshipUsers]}
+      users={tUsers}
+      selectedUserIDList={selectedUserIDList}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}
       loading={queryResult.loading}
       error={queryResult.error}
       onItem={onItem}
       onScreenShot={onScreenShot}
+      onChangeUserID={onChangeUserID}
     />
   );
 };

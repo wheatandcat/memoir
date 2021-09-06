@@ -1,9 +1,9 @@
 import { useEffect, useCallback, useState } from 'react';
-import { useRecoilValueLoadable, useRecoilState } from 'recoil';
+import { useRecoilValueLoadable, useRecoilState, useRecoilValue } from 'recoil';
 import { existUserID } from 'store/selectors';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { userState } from 'store/atoms';
+import { userState, authUserState } from 'store/atoms';
 import { useCreateUserMutation, useUserLazyQuery } from 'queries/api/index';
 import { storageKey, setItem } from 'lib/storage';
 import usePrevious from 'hooks/usePrevious';
@@ -12,6 +12,7 @@ const useUser = () => {
   const [loading, setLoading] = useState(true);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
+  const authUser = useRecoilValue(authUserState);
   const [getUser, userUserQuery] = useUserLazyQuery();
   const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
 
@@ -36,13 +37,13 @@ const useUser = () => {
   }, [createUserMutation]);
 
   const setup = useCallback(() => {
-    if (!user.id && !userID.contents) {
+    if (!user.id && !userID.contents && !authUser.uid) {
       setLoading(false);
       return;
     }
 
     getUser();
-  }, [user.id, getUser, userID.contents]);
+  }, [user.id, getUser, userID.contents, authUser.uid]);
 
   useEffect(() => {
     if (userID.state === 'hasValue') {

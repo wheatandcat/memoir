@@ -24,5 +24,6 @@ export type RootStackParamList = {
   MemoirScreenShot: {
     startDate: string;
     endDate: string;
+    selectedUserIDList: string[];
   };
 };
