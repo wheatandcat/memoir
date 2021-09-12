@@ -3,6 +3,7 @@ import TemplateHome from 'components/templates/Setting/Licence/Page';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
+import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 
 type ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
@@ -16,6 +17,8 @@ type Props = {
 };
 
 const SettingLicence: React.FC<Props> = () => {
+  useSentryBreadcrumb();
+
   return <TemplateHome />;
 };
 

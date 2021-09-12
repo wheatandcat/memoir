@@ -17,3 +17,15 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
  * and inspect the DOM in tests.
  */
 Enzyme.configure({ adapter: new Adapter() });
+
+jest.mock('@react-navigation/native', () => {
+  return {
+    ...jest.requireActual('@react-navigation/native'),
+    useNavigation: () => ({
+      navigation: jest.fn(),
+    }),
+    useRoute: () => ({
+      name: 'test',
+    }),
+  };
+});

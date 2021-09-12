@@ -1,5 +1,6 @@
 import { useEffect, useCallback, useState } from 'react';
 import { useRecoilValueLoadable, useRecoilState, useRecoilValue } from 'recoil';
+import * as Sentry from 'sentry-expo';
 import { existUserID } from 'store/selectors';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
@@ -15,6 +16,7 @@ const useUser = () => {
   const authUser = useRecoilValue(authUserState);
   const [getUser, userUserQuery] = useUserLazyQuery();
   const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
+  const prevUserID = usePrevious(user.id);
 
   const [createUserMutation] = useCreateUserMutation({
     async onCompleted({ createUser }) {
@@ -66,6 +68,16 @@ const useUser = () => {
       }
     }
   }, [userUserQuery, setUser, prevUserUserQueryLoading]);
+
+  useEffect(() => {
+    if (user.id) {
+      if (user.id !== prevUserID) {
+        Sentry.Native.setUser({
+          id: user.id,
+        });
+      }
+    }
+  }, [user.id, prevUserID]);
 
   return {
     user,

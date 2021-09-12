@@ -15,12 +15,17 @@
 
 ### CI環境
 
+#### アプリ内コンフィグ
 ```
 $ base64 -i .env | pbcopy
 ```
 
-# コード生成
+#### Expoコンフィグ
+```
+$ base64 -i scripts/appConfig.js | pbcopy
+```
 
+# コード生成
 
 ## 新規画面作成
 ```

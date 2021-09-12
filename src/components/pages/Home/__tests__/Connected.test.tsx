@@ -11,15 +11,6 @@ const propsData = (): Props => ({
   onCloseSettingModal: jest.fn(),
 });
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/pages/Home/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
 

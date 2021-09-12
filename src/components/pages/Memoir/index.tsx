@@ -3,6 +3,7 @@ import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import dayjs from 'lib/dayjs';
+import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Memoir'>;
@@ -14,6 +15,7 @@ type Props = {
 };
 
 const Memoir: React.FC<Props> = (props) => {
+  useSentryBreadcrumb();
   const { startDate, endDate } = props.route.params;
 
   return (

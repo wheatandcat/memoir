@@ -5,6 +5,7 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from '@react-navigation/stack';
+import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import IconButton from 'components/molecules/IconButton';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
@@ -28,6 +29,7 @@ const initialState = (): State => ({
 });
 
 export const Home: React.FC<Props> = (props) => {
+  useSentryBreadcrumb();
   const [state, setState] = useState<State>(initialState());
 
   React.useLayoutEffect(() => {

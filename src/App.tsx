@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { RecoilRoot } from 'recoil';
 import { AppState } from 'react-native';
+import * as Sentry from 'sentry-expo';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { RootSiblingParent } from 'react-native-root-siblings';
@@ -16,6 +17,12 @@ import useUpdateExpo from 'hooks/useUpdateExpo';
 import Constants from 'expo-constants';
 import compareVersions from 'compare-versions';
 import WithProvider from './WithProvider';
+
+Sentry.init({
+  dsn: process.env.SENTRY_DSN,
+  enableInExpoDevelopment: true,
+  debug: Constants.isDevice,
+});
 
 type CacheShape = any;
 

@@ -4,6 +4,7 @@ import { onError } from '@apollo/client/link/error';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { storageKey, getItem } from 'lib/storage';
 import Auth from 'lib/auth';
+import * as Sentry from 'sentry-expo';
 
 const cache = new InMemoryCache();
 const auth = new Auth();
@@ -40,13 +41,21 @@ const makeApolloClient = async () => {
   });
 
   const errorLink = onError((error) => {
-    console.log(error.graphQLErrors);
     if ((error.graphQLErrors || []).length > 0) {
       const graphQLErrors = error.graphQLErrors || [
         { message: 'エラー発生しました' },
       ];
 
       const message = graphQLErrors[0].message;
+
+      Sentry.Native.withScope((scope) => {
+        scope.setTag('kind', 'GraphQL');
+        scope.setTag('operationName', error.operation.operationName);
+        scope.setExtra('query', error.operation.query.loc?.source?.body || '');
+        scope.setExtra('variables', error.operation.variables);
+        Sentry.Native.captureMessage(message);
+      });
+
       Alert.alert('エラー', message);
     }
   });

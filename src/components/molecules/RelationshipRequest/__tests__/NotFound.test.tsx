@@ -4,15 +4,6 @@ import NotFound, { Props } from '../NotFound';
 
 const propsData = (): Props => ({ loading: false });
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/molecules/RelationshipRequest/NotFound.tsx', () => {
   let wrapper: ShallowWrapper;
 

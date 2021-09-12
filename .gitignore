@@ -24,3 +24,4 @@ GoogleService-Info.plist
 .reg
 regconfig.json
 .envrc
+scripts/appConfig.js
