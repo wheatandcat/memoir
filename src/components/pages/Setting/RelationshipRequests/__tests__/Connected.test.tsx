@@ -8,15 +8,6 @@ const propsData = (): Props => ({
   onCallback: jest.fn(),
 });
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/pages/Setting/RelationshipRequests/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
 

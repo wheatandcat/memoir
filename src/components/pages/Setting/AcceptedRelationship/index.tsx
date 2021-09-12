@@ -4,6 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
+import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import TemplateSettingAcceptedRelationship from 'components/templates/Setting/AcceptedRelationship/Page';
 
 type ScreenNavigationProp = StackNavigationProp<
@@ -21,6 +22,7 @@ export type Props = {
 };
 
 const SettingAcceptedRelationship: React.FC<Props> = (props) => {
+  useSentryBreadcrumb();
   const user = useRecoilValue(userState);
 
   return (

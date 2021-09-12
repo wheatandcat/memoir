@@ -1,6 +1,7 @@
 import { ExpoConfig, ConfigContext } from '@expo/config';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
+import { appConfig } from './scripts/appConfig';
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
@@ -46,4 +47,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: './assets/favicon.png',
   },
   description: '',
+  hooks: {
+    postPublish: [
+      {
+        file: 'sentry-expo/upload-sourcemaps',
+        config: {
+          organization: appConfig().SENTRY_ORGANIZATION,
+          project: appConfig().SENTRY_PROJECT,
+          authToken: appConfig().SENTRY_AUTH_TOKEN,
+        },
+      },
+    ],
+  },
 });

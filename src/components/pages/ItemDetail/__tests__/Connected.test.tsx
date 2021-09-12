@@ -11,15 +11,6 @@ const propsData = (): Props => ({
   date: '2020-01-01',
 });
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/pages/ItemDetail/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
 

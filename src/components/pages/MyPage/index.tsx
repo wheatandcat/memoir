@@ -11,6 +11,7 @@ import UpdateProfile from 'components/pages/UpdateProfile';
 import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
 import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
+import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import Connected from './Connected';
 
 type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
@@ -22,6 +23,8 @@ type Props = {
 };
 
 const MyPage: React.FC<Props> = () => {
+  useSentryBreadcrumb();
+
   return <Connected />;
 };
 

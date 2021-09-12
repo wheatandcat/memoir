@@ -6,15 +6,6 @@ import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({});
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/pages/UpdateProfile/Connected.tsx', () => {
   let wrapper: ShallowWrapper;
 

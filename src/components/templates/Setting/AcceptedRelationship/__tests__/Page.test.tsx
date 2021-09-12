@@ -12,15 +12,6 @@ const propsData = (): Props => ({
   image: '',
 });
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 describe('components/templates/Setting/AcceptedRelationship/Page.tsx', () => {
   let wrapper: ShallowWrapper;
 

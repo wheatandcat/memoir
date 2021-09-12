@@ -3,15 +3,6 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import { items } from '__mockData__/item';
 import ScreenShot, { Props } from '../ScreenShot';
 
-jest.mock('@react-navigation/native', () => {
-  return {
-    ...jest.requireActual('@react-navigation/native'),
-    useNavigation: () => ({
-      navigation: jest.fn(),
-    }),
-  };
-});
-
 const propsData = (): Props => ({
   items: items().map((v) => ({ ...v, userID: 'test' })),
   startDate: '2020-01-01',
