@@ -14,7 +14,10 @@ import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelati
 import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'MyPage'>;
+export type ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'MyPage'
+>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'MyPage'>;
 
 type Props = {

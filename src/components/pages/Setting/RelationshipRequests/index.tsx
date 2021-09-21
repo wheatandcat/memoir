@@ -4,7 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<
+export type ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'SettingRelationshipRequests'
 >;

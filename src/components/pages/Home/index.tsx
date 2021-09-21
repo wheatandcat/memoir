@@ -12,7 +12,10 @@ import theme from 'config/theme';
 import ItemDetail from 'components/pages/ItemDetail';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+export type ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
 
 export type Props = {

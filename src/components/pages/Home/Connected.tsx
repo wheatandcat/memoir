@@ -6,6 +6,7 @@ import { useCreateItemMutation, NewItem } from 'queries/api/index';
 import { homeDateState, homeItemsState, Item, homeState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
 import Plain from './Plain';
+import { ScreenNavigationProp as HomeScreenNavigationProp } from './';
 
 export type Props = {
   openSettingModal: boolean;
@@ -45,7 +46,7 @@ const Connected: React.FC<Props> = (props) => {
 
   const homeItems = useRecoilValue(homeItemsState);
   const { loading, error, refetch } = useHomeItems();
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
 
   const onOpenAddItem = useCallback(() => {
     setState((s) => ({ ...s, openAddItemModal: true }));

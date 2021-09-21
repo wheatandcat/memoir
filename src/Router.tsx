@@ -9,8 +9,9 @@ import SettingLicence from 'components/pages/Setting/Licence';
 import SettingMemoir from 'components/pages/Setting/Memoir';
 import MemoirScreenShot from 'components/pages/Memoir/ScreenShot';
 import MyPage from 'components/pages/MyPage';
+import { RootStackParamList } from 'lib/navigation';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
 
 const WithProvider = () => {
@@ -44,7 +45,10 @@ const WithProvider = () => {
         },
       }}
     >
-      <Stack.Navigator initialRouteName="Home" mode="modal">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ presentation: 'modal' }}
+      >
         <Stack.Screen
           name="Home"
           component={Home}

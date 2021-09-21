@@ -6,7 +6,10 @@ import dayjs from 'lib/dayjs';
 import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Memoir'>;
+export type ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Memoir'
+>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Memoir'>;
 
 type Props = {
