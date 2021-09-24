@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
-import {
-  StackNavigationProp,
-  createStackNavigator,
-} from '@react-navigation/stack';
+import { StackNavigationProp } from '@react-navigation/stack';
 import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import IconButton from 'components/molecules/IconButton';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import ItemDetail from 'components/pages/ItemDetail';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+export type ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Home'
+>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Home'>;
 
 export type Props = {
@@ -68,19 +67,4 @@ export const HomeScreenOption = (title: string = '') => {
   };
 };
 
-const Stack = createStackNavigator<RootStackParamList>();
-
-const RootStack = () => {
-  return (
-    <Stack.Navigator initialRouteName="Home">
-      <Stack.Screen name="Home" component={Home} options={HomeScreenOption()} />
-      <Stack.Screen
-        name="ItemDetail"
-        component={ItemDetail}
-        options={HomeScreenOption()}
-      />
-    </Stack.Navigator>
-  );
-};
-
-export default RootStack;
+export default Home;

@@ -11,6 +11,7 @@ import {
   useDeleteRelationshipMutation,
   useUserQuery,
 } from 'queries/api/index';
+import { ScreenNavigationProp as MyPageScreenNavigationProp } from './';
 
 type Props = {};
 
@@ -32,7 +33,7 @@ const Connected: React.FC<Props> = () => {
   const { setup, onLogout } = useFirebaseAuth();
   const authUser = useRecoilValue(authUserState);
   const userQuery = useUserQuery();
-  const navigation = useNavigation();
+  const navigation = useNavigation<MyPageScreenNavigationProp>();
   const [getRelationshipRequests, relationshipRequestsData] =
     useRelationshipRequestsLazyQuery({
       fetchPolicy: 'network-only',

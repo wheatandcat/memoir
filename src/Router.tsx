@@ -8,9 +8,16 @@ import Memoir from 'components/pages/Memoir';
 import SettingLicence from 'components/pages/Setting/Licence';
 import SettingMemoir from 'components/pages/Setting/Memoir';
 import MemoirScreenShot from 'components/pages/Memoir/ScreenShot';
-import MyPage from 'components/pages/MyPage';
+import MyPage, { MyPageScreenOption } from 'components/pages/MyPage';
+import { RootStackParamList } from 'lib/navigation';
+import ItemDetail from 'components/pages/ItemDetail';
+import Login from 'components/pages/Login';
+import UpdateProfile from 'components/pages/UpdateProfile';
+import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
+import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
+import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
 
 const WithProvider = () => {
@@ -44,37 +51,72 @@ const WithProvider = () => {
         },
       }}
     >
-      <Stack.Navigator initialRouteName="Home" mode="modal">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="Memoir"
-          component={Memoir}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="MemoirScreenShot"
-          component={MemoirScreenShot}
-          options={{ headerShown: false }}
-        />
-        <Stack.Screen
-          name="SettingLicence"
-          component={SettingLicence}
           options={HomeScreenOption()}
         />
         <Stack.Screen
-          name="MyPage"
-          component={MyPage}
-          options={{ headerShown: false }}
+          name="ItemDetail"
+          component={ItemDetail}
+          options={HomeScreenOption()}
         />
-        <Stack.Screen
-          name="SettingMemoir"
-          component={SettingMemoir}
-          options={HomeScreenOption('振り返り通知設定')}
-        />
+
+        <Stack.Group screenOptions={{ presentation: 'modal' }}>
+          <Stack.Group>
+            <Stack.Screen
+              name="MyPage"
+              component={MyPage}
+              options={MyPageScreenOption('マイページ')}
+            />
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={MyPageScreenOption('サインイン')}
+            />
+            <Stack.Screen
+              name="UpdateProfile"
+              component={UpdateProfile}
+              options={MyPageScreenOption('プロフィール編集')}
+            />
+            <Stack.Screen
+              name="SettingAddShareUser"
+              component={SettingAddShareUser}
+              options={MyPageScreenOption('共有メンバー追加')}
+            />
+            <Stack.Screen
+              name="SettingRelationshipRequests"
+              component={SettingRelationshipRequests}
+              options={MyPageScreenOption('共有メンバー申請')}
+            />
+            <Stack.Screen
+              name="SettingAcceptedRelationship"
+              component={SettingAcceptedRelationship}
+              options={MyPageScreenOption('')}
+            />
+          </Stack.Group>
+          <Stack.Screen
+            name="Memoir"
+            component={Memoir}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="MemoirScreenShot"
+            component={MemoirScreenShot}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="SettingLicence"
+            component={SettingLicence}
+            options={HomeScreenOption()}
+          />
+          <Stack.Screen
+            name="SettingMemoir"
+            component={SettingMemoir}
+            options={HomeScreenOption('振り返り通知設定')}
+          />
+        </Stack.Group>
       </Stack.Navigator>
     </NavigationContainer>
   );

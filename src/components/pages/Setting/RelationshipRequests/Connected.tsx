@@ -9,6 +9,7 @@ import {
 import { v4 as uuidv4 } from 'uuid';
 import useRelationshipRequestsPaging from 'hooks/useRelationshipRequestsPaging';
 import Plain from './Plain';
+import { ScreenNavigationProp as RelationshipRequestsScreenNavigationProp } from './';
 
 export type Props = {
   onCallback: () => void;
@@ -25,7 +26,7 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = (props) => {
   const [endCursor, setEndCursor] = useState('');
   const [reloadKey, setReloadKey] = useState('');
-  const navigation = useNavigation();
+  const navigation = useNavigation<RelationshipRequestsScreenNavigationProp>();
 
   const queryResult = useRelationshipRequestsQuery({
     variables: {

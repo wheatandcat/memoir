@@ -8,6 +8,7 @@ import useItemsInPeriodPaging from 'hooks/useItemsInPeriodPaging';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
 import Plain from './Plain';
+import { ScreenNavigationProp as MemoirScreenNavigationProp } from './';
 
 type Props = {
   startDate: string;
@@ -45,7 +46,7 @@ const Connected: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
   const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
-  const navigation = useNavigation();
+  const navigation = useNavigation<MemoirScreenNavigationProp>();
 
   const relationshipsQuery = useRelationshipsQuery({
     variables: {

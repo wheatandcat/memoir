@@ -13,6 +13,7 @@ import Debug from 'components/organisms/Debug/Debug';
 import { useNotification } from 'containers/Notification';
 import { authUserState, userState } from 'store/atoms';
 import { storageKey, removeItem } from 'lib/storage';
+import { ScreenNavigationProp as HomeScreenNavigationProp } from 'components/pages/Home';
 
 type Props = {
   isVisible: boolean;
@@ -20,7 +21,7 @@ type Props = {
 };
 
 const SettingModal: React.FC<Props> = (props) => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<HomeScreenNavigationProp>();
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
   const setUser = useSetRecoilState(userState);
