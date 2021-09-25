@@ -62,40 +62,39 @@ const WithProvider = () => {
           component={ItemDetail}
           options={HomeScreenOption()}
         />
+        <Stack.Screen
+          name="MyPage"
+          component={MyPage}
+          options={MyPageScreenOption('マイページ')}
+        />
+
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={MyPageScreenOption('サインイン')}
+        />
+        <Stack.Screen
+          name="UpdateProfile"
+          component={UpdateProfile}
+          options={MyPageScreenOption('プロフィール編集')}
+        />
+        <Stack.Screen
+          name="SettingAddShareUser"
+          component={SettingAddShareUser}
+          options={MyPageScreenOption('共有メンバー追加')}
+        />
+        <Stack.Screen
+          name="SettingRelationshipRequests"
+          component={SettingRelationshipRequests}
+          options={MyPageScreenOption('共有メンバー申請')}
+        />
+        <Stack.Screen
+          name="SettingAcceptedRelationship"
+          component={SettingAcceptedRelationship}
+          options={MyPageScreenOption('')}
+        />
 
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
-          <Stack.Group>
-            <Stack.Screen
-              name="MyPage"
-              component={MyPage}
-              options={MyPageScreenOption('マイページ')}
-            />
-            <Stack.Screen
-              name="Login"
-              component={Login}
-              options={MyPageScreenOption('サインイン')}
-            />
-            <Stack.Screen
-              name="UpdateProfile"
-              component={UpdateProfile}
-              options={MyPageScreenOption('プロフィール編集')}
-            />
-            <Stack.Screen
-              name="SettingAddShareUser"
-              component={SettingAddShareUser}
-              options={MyPageScreenOption('共有メンバー追加')}
-            />
-            <Stack.Screen
-              name="SettingRelationshipRequests"
-              component={SettingRelationshipRequests}
-              options={MyPageScreenOption('共有メンバー申請')}
-            />
-            <Stack.Screen
-              name="SettingAcceptedRelationship"
-              component={SettingAcceptedRelationship}
-              options={MyPageScreenOption('')}
-            />
-          </Stack.Group>
           <Stack.Screen
             name="Memoir"
             component={Memoir}
