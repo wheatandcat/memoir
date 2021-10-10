@@ -21,9 +21,9 @@ jobs:
         uses: actions/cache@preview
         with:
           path: ~/.cache/yarn
-          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          key: ${{ runner.os }}-memoir-production-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
           restore-keys:
-            ${{ runner.os }}-memoir-
+            ${{ runner.os }}-memoir-production
       - name: Install node_modules
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
