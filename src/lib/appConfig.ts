@@ -17,6 +17,8 @@ export const defaultAppConfig = () => ({
 export const getAppConfig = async (
   db: firebase.firestore.Firestore
 ): Promise<AppConfig> => {
+  console.log('getAppConfig');
+
   const qs = await db.collection('appConfig').limit(1).get();
 
   const records = qs.docs.map((elem) => {

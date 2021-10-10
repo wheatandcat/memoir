@@ -21,7 +21,10 @@ src/queries/api/index.ts
 schema.graphqls
 GoogleService-Info.plist
 .env
+.env.development
+.env.production
 .reg
 regconfig.json
 .envrc
 scripts/appConfig.js
+google-services.json

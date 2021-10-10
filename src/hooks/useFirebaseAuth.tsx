@@ -1,7 +1,8 @@
+// FIXME: useIdTokenAuthRequestとRN debuggerを同時に使用するとエラーになるので開発時はこちらを使用
+// @see: https://github.com/expo/expo/issues/12712
+
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as WebBrowser from 'expo-web-browser';
-import * as Google from 'expo-auth-session/providers/google';
-import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
 import {
   useRecoilValueLoadable,
@@ -37,18 +38,13 @@ export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 const useFirebaseAuth = (errorCallback?: () => void) => {
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
+
   const setUser = useSetRecoilState(userState);
 
   const [setup, setSetup] = useState(false);
 
-  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    responseType: ResponseType.IdToken,
-    expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
-  });
-
-  const onGoogleLogin = useCallback(() => {
-    promptAsync();
-  }, [promptAsync]);
+  const request = {};
+  const onGoogleLogin = useCallback(() => {}, []);
 
   const setSession = useCallback(
     async (refresh = false) => {
@@ -82,19 +78,6 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
     [setSession]
   );
 
-  useEffect(() => {
-    if (response?.type === 'success') {
-      const { id_token } = response.params;
-      const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
-      firebaseLogin(credential);
-    } else if (response?.type === 'error') {
-      console.log('error:', response);
-
-      Alert.alert('ログインに失敗しました');
-      errorCallback?.();
-    }
-  }, [response, firebaseLogin, errorCallback]);
-
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
@@ -120,8 +103,9 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
     } catch (e) {
       console.log('error:', e);
       Alert.alert('ログインに失敗しました');
+      errorCallback?.();
     }
-  }, [firebaseLogin]);
+  }, [firebaseLogin, errorCallback]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();

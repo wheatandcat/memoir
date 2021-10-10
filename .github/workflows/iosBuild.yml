@@ -1,9 +1,8 @@
-name: Expo Publish
+name: ios build
 on:
   push:
-    branches:
-      - main
-
+    tags:
+      - 'v*'
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
   EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}
@@ -39,4 +38,7 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
-      - run: APP_ENV=review expo publish
+      - run: yarn ios:build:ci
+        env:
+          EXPO_APPLE_ID: ${{ secrets.APPLE_ID }}
+          EXPO_APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}

@@ -3,6 +3,8 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 import { appConfig } from './scripts/appConfig';
 
+const version: string = '1.0.0';
+
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'memoir',
@@ -23,6 +25,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    googleServicesFile: './ios/GoogleService-Info.plist',
     supportsTablet: true,
     usesAppleSignIn: true,
     userInterfaceStyle: 'automatic',
@@ -38,9 +41,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     package: 'com.wheatandcat.memoir',
+    googleServicesFile: './android/google-services.json',
+    versionCode: Number(version.replace('.', '')),
     adaptiveIcon: {
-      foregroundImage: './assets/adaptive-icon.png',
       backgroundColor: '#E3C95D',
+      foregroundImage: './assets/adaptive-icon.png',
     },
   },
   web: {
