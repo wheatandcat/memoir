@@ -29,7 +29,7 @@ jobs:
           expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
-      - run: yarn ios:build:ci
+      - run: APP_ENV=production expo build:ios --release-channel production --no-wait --type archive
         env:
           EXPO_APPLE_ID: ${{ secrets.APPLE_ID }}
           EXPO_APPLE_PASSWORD: ${{ secrets.APPLE_PASSWORD }}
