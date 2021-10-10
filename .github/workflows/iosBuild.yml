@@ -4,7 +4,7 @@ on:
     tags:
       - 'v*'
 env:
-  APP_CONFIG: ${{ secrets.APP_CONFIG }}
+  APP_CONFIG: ${{ secrets.PRODUCTION_APP_CONFIG }}
   EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}
 jobs:
   publish:

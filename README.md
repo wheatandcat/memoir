@@ -16,9 +16,17 @@
 ### CI環境
 
 #### アプリ内コンフィグ
+
+##### レビュー環境
 ```
-$ base64 -i .env | pbcopy
+$ base64 -i .env.development | pbcopy
 ```
+
+##### 本番環境
+```
+$ base64 -i .env.production | pbcopy
+```
+
 
 #### Expoコンフィグ
 ```
