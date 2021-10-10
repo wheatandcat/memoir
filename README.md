@@ -70,11 +70,16 @@ $ yarn loki:test
 $ npx reg-suit run
 ```
 
-## 本番用ビルド作成
+## ビルド
+
+### iOS
 
 ```
-$ git checkout main
-$ git pull --ff-only origin main
-$ git tag -a v1.0.0 -m 'リリース内容'
-$ git push origin v1.0.0
+$ yarn ios:build
+```
+
+### Android
+
+```
+$ yarn android:build
 ```
