@@ -6,6 +6,7 @@ on:
 env:
   APP_CONFIG: ${{ secrets.PRODUCTION_APP_CONFIG }}
   EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}
+  YARN_CACHE_FOLDER: .cache/yarn
 jobs:
   publish:
     name: Install and publish
@@ -15,17 +16,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14.x
-      - uses: actions/checkout@v1
-      - name: Cache node_modules
-        uses: actions/cache@preview
-        with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-memoir-production-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
-          restore-keys:
-            ${{ runner.os }}-memoir-production-
-      - name: Install node_modules
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
+      - run: yarn install
       - name: Create .env file
         run: echo $APP_CONFIG | base64 --decode -i > ./.env
       - name: Create ./scripts/appConfig.js file
