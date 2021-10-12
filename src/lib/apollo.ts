@@ -2,7 +2,7 @@ import { setContext } from '@apollo/client/link/context';
 import { Alert } from 'react-native';
 import { onError } from '@apollo/client/link/error';
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
-import { storageKey, getItem } from 'lib/storage';
+import { storageKey, getItem, removeItem } from 'lib/storage';
 import Auth from 'lib/auth';
 import * as Sentry from 'sentry-expo';
 
@@ -56,7 +56,17 @@ const makeApolloClient = async () => {
         Sentry.Native.captureMessage(message);
       });
 
-      Alert.alert('エラー', message);
+      Alert.alert('エラー', message, [
+        {
+          text: 'OK',
+          onPress: async () => {
+            if (message.trim() === 'User Invalid') {
+              await auth.logout();
+              await removeItem(storageKey.USER_ID_KEY);
+            }
+          },
+        },
+      ]);
     }
   });
 

@@ -129,12 +129,19 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
   }, [authUserID, setAuthUser, authUser.uid]);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
       setSetup(true);
+      if (!user) {
+        // ログアウトした時
+        setAuthUser({
+          uid: null,
+        });
+        setUser({ id: null, userID: '', displayName: '', image: '' });
+      }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [setUser, setAuthUser]);
 
   return {
     setup,
