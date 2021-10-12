@@ -10,42 +10,27 @@
  - Icons by [Icons8](https://icons8.jp/)
 
 
-## セットアップ
 
 
-### CI環境
+## CI環境
 
-#### アプリ内コンフィグ
+### アプリ内コンフィグ
 
-##### レビュー環境
+#### レビュー環境
 ```
 $ base64 -i .env.development | pbcopy
 ```
 
-##### 本番環境
+#### 本番環境
 ```
 $ base64 -i .env.production | pbcopy
 ```
 
 
-#### Expoコンフィグ
+### Expoコンフィグ
 ```
 $ base64 -i scripts/appConfig.js | pbcopy
 ```
-
-#### Firebase config
-
-
-##### iOS
-```
-$ base64 -i ios/GoogleService-Info.plist | pbcopy
-```
-
-##### Android
-```
-$ base64 -i android/google-services.json | pbcopy
-```
-
 
 
 # コード生成
