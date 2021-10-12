@@ -1,6 +1,9 @@
 
 name: jest
-on: [push]
+on: 
+  push:
+    tags-ignore:
+      - 'v*'
 
 env:
   EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}

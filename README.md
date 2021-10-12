@@ -10,20 +10,28 @@
  - Icons by [Icons8](https://icons8.jp/)
 
 
-## セットアップ
 
 
-### CI環境
+## CI環境
 
-#### アプリ内コンフィグ
+### アプリ内コンフィグ
+
+#### レビュー環境
 ```
-$ base64 -i .env | pbcopy
+$ base64 -i .env.development | pbcopy
 ```
 
-#### Expoコンフィグ
+#### 本番環境
+```
+$ base64 -i .env.production | pbcopy
+```
+
+
+### Expoコンフィグ
 ```
 $ base64 -i scripts/appConfig.js | pbcopy
 ```
+
 
 # コード生成
 
@@ -60,4 +68,18 @@ $ yarn loki:test
 
 ```
 $ npx reg-suit run
+```
+
+## ビルド
+
+### iOS
+
+```
+$ yarn ios:build
+```
+
+### Android
+
+```
+$ yarn android:build
 ```
