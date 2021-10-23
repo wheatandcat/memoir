@@ -29,7 +29,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ['**/*'],
   ios: {
-    googleServicesFile: './ios/GoogleService-Info.plist',
+    ...appConfig().ios,
     supportsTablet: true,
     usesAppleSignIn: true,
     userInterfaceStyle: 'automatic',
@@ -44,8 +44,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
   android: {
+    ...appConfig().android,
     package: 'com.wheatandcat.memoir',
-    googleServicesFile: './android/google-services.json',
     versionCode: Number(version.replace('.', '')),
     adaptiveIcon: {
       backgroundColor: '#E3C95D',
