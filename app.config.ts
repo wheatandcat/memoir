@@ -12,7 +12,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   slug: 'memoir',
   version: '1.0.0',
   orientation: 'portrait',
-  icon: './assets/icon.png',
+  icon: './assets/ios-icon.png',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -22,6 +22,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     enabled: true,
     checkAutomatically: 'ON_LOAD',
     fallbackToCacheTimeout: 30000,
+  },
+  notification: {
+    icon: './assets/notification.png',
+    color: '#362740',
   },
   assetBundlePatterns: ['**/*'],
   ios: {
@@ -45,7 +49,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     versionCode: Number(version.replace('.', '')),
     adaptiveIcon: {
       backgroundColor: '#E3C95D',
-      foregroundImage: './assets/adaptive-icon.png',
+      foregroundImage: './assets/android-icon.png',
     },
   },
   web: {
