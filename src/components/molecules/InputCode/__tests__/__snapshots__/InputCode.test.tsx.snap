@@ -221,7 +221,7 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
           D
         </Text>
       </View>
-      <Component
+      <TextInput
         allowFontScaling={true}
         autoFocus={true}
         blurOnSubmit={true}
