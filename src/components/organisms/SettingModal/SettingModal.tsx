@@ -7,7 +7,7 @@ import Text from 'components/atoms/Text';
 import Modal from 'components/organisms/Modal';
 import Divider from 'components/atoms/Divider';
 import Constants from 'expo-constants';
-import * as IntentLauncher from 'expo-intent-launcher';
+import { startActivityAsync, ActivityAction } from 'expo-intent-launcher';
 import theme from 'config/theme';
 import Debug from 'components/organisms/Debug/Debug';
 import { useNotification } from 'containers/Notification';
@@ -64,9 +64,7 @@ const SettingModal: React.FC<Props> = (props) => {
         })
         .catch((err) => console.log(err));
     } else {
-      IntentLauncher.startActivityAsync(
-        IntentLauncher.ACTION_NOTIFICATION_SETTINGS
-      );
+      startActivityAsync(ActivityAction.NOTIFICATION_SETTINGS);
     }
   }, []);
 

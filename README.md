@@ -10,8 +10,6 @@
  - Icons by [Icons8](https://icons8.jp/)
 
 
-
-
 ## CI環境
 
 ### アプリ内コンフィグ
