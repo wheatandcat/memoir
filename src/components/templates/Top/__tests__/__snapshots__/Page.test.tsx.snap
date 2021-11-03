@@ -42,13 +42,13 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
             }
           }
         >
-          <Text
-            fontFamily="RobotoCondensed-Bold"
-            textAlign="center"
-            variants="logo"
-          >
-            memoir
-          </Text>
+          <View>
+            <Image
+              height={42}
+              source={null}
+              width={192}
+            />
+          </View>
           <View
             style={
               Object {

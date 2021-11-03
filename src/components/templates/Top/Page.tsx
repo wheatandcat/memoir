@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'config/theme';
 import Form, { Props as FormProps } from 'components/organisms/Login/Form';
 import { StatusBar } from 'expo-status-bar';
+import Image from 'components/atoms/Image';
 
 export type Props = ConnectedType & FormProps & {};
 
@@ -22,9 +23,14 @@ const Page: React.FC<Props> = (props) => {
             style={styles.image}
           >
             <View style={styles.title}>
-              <Text textAlign="center" variants="logo">
-                memoir
-              </Text>
+              <View>
+                <Image
+                  source={require('../../../img/common/logo.png')}
+                  width={384 / 2}
+                  height={84 / 2}
+                />
+              </View>
+
               <View style={styles.skip}>
                 <TouchableOpacity onPress={props.onSkip}>
                   <Text
