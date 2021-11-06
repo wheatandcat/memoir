@@ -13,143 +13,148 @@ exports[`components/organisms/Memoir/ScreenShot.tsx 正常にrenderすること 
     }
   >
     <ViewShot
+      key="0"
       options={
         Object {
           "format": "jpg",
         }
       }
     >
-      <Memo(Header)
-        endDate="2020-01-07"
-        isTitle={true}
-        startDate="2020-01-01"
-      />
-      <RenderItem
-        categoryID={9}
-        date="2021-01-01"
-        key="0"
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        contents={
+      <View
+        style={
           Object {
-            "categoryID": 9,
-            "createdAt": "2021-01-01T00:00:00+09:00",
-            "date": "2021-01-01T00:00:00+09:00",
-            "dislike": false,
-            "id": "1",
-            "like": false,
-            "title": "買い物",
-            "updatedAt": "2021-01-01T00:00:00+09:00",
-            "user": Object {
-              "displayName": "suzuki",
-              "id": "test",
-              "image": "https://placehold.jp/150x150.png",
-            },
-            "userID": "test",
+            "backgroundColor": "#F2F2F2",
           }
         }
-        date={null}
-        key="1"
-        last={false}
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        contents={
-          Object {
-            "categoryID": 2,
-            "createdAt": "2021-01-01T00:00:00+09:00",
-            "date": "2021-01-01T00:00:00+09:00",
-            "dislike": false,
-            "id": "2",
-            "like": false,
-            "title": "本を読む",
-            "updatedAt": "2021-01-01T00:00:00+09:00",
-            "user": Object {
-              "displayName": "suzuki",
-              "id": "test",
-              "image": "https://placehold.jp/150x150.png",
-            },
-            "userID": "test",
+      >
+        <Memo(Header)
+          endDate="2020-01-07"
+          isTitle={true}
+          startDate="2020-01-01"
+        />
+        <RenderItem
+          categoryID={9}
+          date="2021-01-01"
+          key="0_0"
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          contents={
+            Object {
+              "categoryID": 9,
+              "createdAt": "2021-01-01T00:00:00+09:00",
+              "date": "2021-01-01T00:00:00+09:00",
+              "dislike": false,
+              "id": "1",
+              "like": false,
+              "title": "買い物",
+              "updatedAt": "2021-01-01T00:00:00+09:00",
+              "user": Object {
+                "displayName": "suzuki",
+                "id": "test",
+                "image": "https://placehold.jp/150x150.png",
+              },
+              "userID": "test",
+            }
           }
-        }
-        date={null}
-        key="2"
-        last={true}
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        categoryID={3}
-        date="2021-01-02"
-        key="3"
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        contents={
-          Object {
-            "categoryID": 3,
-            "createdAt": "2021-01-01T00:00:00+09:00",
-            "date": "2021-01-02T00:00:00+09:00",
-            "dislike": false,
-            "id": "3",
-            "like": false,
-            "title": "公園に行った",
-            "updatedAt": "2021-01-01T00:00:00+09:00",
-            "user": Object {
-              "displayName": "suzuki",
-              "id": "test",
-              "image": "https://placehold.jp/150x150.png",
-            },
-            "userID": "test",
+          date={null}
+          key="0_1"
+          last={false}
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          contents={
+            Object {
+              "categoryID": 2,
+              "createdAt": "2021-01-01T00:00:00+09:00",
+              "date": "2021-01-01T00:00:00+09:00",
+              "dislike": false,
+              "id": "2",
+              "like": false,
+              "title": "本を読む",
+              "updatedAt": "2021-01-01T00:00:00+09:00",
+              "user": Object {
+                "displayName": "suzuki",
+                "id": "test",
+                "image": "https://placehold.jp/150x150.png",
+              },
+              "userID": "test",
+            }
           }
-        }
-        date={null}
-        key="4"
-        last={true}
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        categoryID={4}
-        date="2021-01-03"
-        key="5"
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <RenderItem
-        contents={
-          Object {
-            "categoryID": 4,
-            "createdAt": "2021-01-01T00:00:00+09:00",
-            "date": "2021-01-03T00:00:00+09:00",
-            "dislike": false,
-            "id": "4",
-            "like": false,
-            "title": "ジムに行った",
-            "updatedAt": "2021-01-01T00:00:00+09:00",
-            "user": Object {
-              "displayName": "suzuki",
-              "id": "test",
-              "image": "https://placehold.jp/150x150.png",
-            },
-            "userID": "test",
+          date={null}
+          key="0_2"
+          last={true}
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          categoryID={3}
+          date="2021-01-02"
+          key="0_3"
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          contents={
+            Object {
+              "categoryID": 3,
+              "createdAt": "2021-01-01T00:00:00+09:00",
+              "date": "2021-01-02T00:00:00+09:00",
+              "dislike": false,
+              "id": "3",
+              "like": false,
+              "title": "公園に行った",
+              "updatedAt": "2021-01-01T00:00:00+09:00",
+              "user": Object {
+                "displayName": "suzuki",
+                "id": "test",
+                "image": "https://placehold.jp/150x150.png",
+              },
+              "userID": "test",
+            }
           }
-        }
-        date={null}
-        key="6"
-        last={true}
-        onLoadEnd={[Function]}
-        width={750}
-      />
-      <View />
+          date={null}
+          key="0_4"
+          last={true}
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          categoryID={4}
+          date="2021-01-03"
+          key="0_5"
+          onLoadEnd={[Function]}
+          width={750}
+        />
+        <RenderItem
+          contents={
+            Object {
+              "categoryID": 4,
+              "createdAt": "2021-01-01T00:00:00+09:00",
+              "date": "2021-01-03T00:00:00+09:00",
+              "dislike": false,
+              "id": "4",
+              "like": false,
+              "title": "ジムに行った",
+              "updatedAt": "2021-01-01T00:00:00+09:00",
+              "user": Object {
+                "displayName": "suzuki",
+                "id": "test",
+                "image": "https://placehold.jp/150x150.png",
+              },
+              "userID": "test",
+            }
+          }
+          date={null}
+          key="0_6"
+          last={true}
+          onLoadEnd={[Function]}
+          width={750}
+        />
+      </View>
     </ViewShot>
   </ScrollView>
-  <Memo(Loading)
-    text="作成中"
-  />
 </Fragment>
 `;

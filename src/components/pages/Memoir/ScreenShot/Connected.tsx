@@ -41,7 +41,7 @@ const Connected: React.FC<Props> = (props) => {
         startDate: props.startDate,
         endDate: props.endDate,
         userIDList: props.selectedUserIDList,
-        first: 200,
+        first: 100,
         after: '',
       },
     },
