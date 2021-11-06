@@ -19,7 +19,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     backgroundColor: '#E3C95D',
   },
   updates: {
-    enabled: true,
+    enabled: false,
     checkAutomatically: 'ON_LOAD',
     fallbackToCacheTimeout: 30000,
   },

@@ -29,6 +29,10 @@ export const uploadImageAsync = async (
   return await snapshot.ref.getDownloadURL();
 };
 
+export const deleteImageAsync = async (uri: string) => {
+  await firebase.storage().refFromURL(uri).delete();
+};
+
 export const resizeImage = async (uri: string): Promise<string> => {
   const result = await ImageManipulator.manipulateAsync(
     uri,
