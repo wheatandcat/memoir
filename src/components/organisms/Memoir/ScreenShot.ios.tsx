@@ -210,6 +210,10 @@ const ScreenShot: React.FC<Props> = (props) => {
   const onLoadEnd = useCallback(() => {
     count.current = count.current + 1;
 
+    if (props.items.length === 0) {
+      return;
+    }
+
     if (props.items.length === count.current) {
       setLoading(false);
       setTimeout(() => onCapture(), 100);
