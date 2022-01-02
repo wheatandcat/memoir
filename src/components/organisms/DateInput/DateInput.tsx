@@ -7,7 +7,16 @@ import InputMonth from 'components/molecules/DateInput/Months';
 import InputDay from 'components/molecules/DateInput/Days';
 import usePrevious from 'hooks/usePrevious';
 
-const years = [2020, 2021];
+const years = () => {
+  const lastYear = dayjs().year();
+  const value: number[] = [];
+
+  for (let i = 2020; i <= lastYear; i++) {
+    value.push(i);
+  }
+
+  return value;
+};
 const months = [
   {
     label: '1/Jun',
@@ -130,7 +139,7 @@ const DateInput: React.FC<Props> = (props) => {
   return (
     <View>
       <View pl={2} py={2}>
-        <InputYear date={state.date} years={years} onPress={onYear} />
+        <InputYear date={state.date} years={years()} onPress={onYear} />
       </View>
       <Divider my={2} />
       <View pl={2}>
