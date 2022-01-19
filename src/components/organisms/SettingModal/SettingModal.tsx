@@ -6,7 +6,7 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Modal from 'components/organisms/Modal';
 import Divider from 'components/atoms/Divider';
-import Constants from 'expo-constants';
+import * as Device from 'expo-device';
 import { startActivityAsync, ActivityAction } from 'expo-intent-launcher';
 import theme from 'config/theme';
 import Debug from 'components/organisms/Debug/Debug';
@@ -124,7 +124,7 @@ const SettingModal: React.FC<Props> = (props) => {
           </>
         )}
 
-        {!Constants.isDevice && <Debug />}
+        {!Device.isDevice && <Debug />}
       </View>
     </Modal>
   );

@@ -4,7 +4,6 @@ import {
   TouchableWithoutFeedback,
   useWindowDimensions,
   ListRenderItemInfo,
-  Platform,
 } from 'react-native';
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
@@ -129,7 +128,7 @@ const DayInput: React.FC<Props> = (props) => {
       inactiveSlideOpacity={1.0}
       inactiveSlideScale={1.0}
       loop
-      removeClippedSubviews={Platform.OS === 'android'}
+      removeClippedSubviews
     />
   );
 };

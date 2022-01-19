@@ -1,4 +1,3 @@
-import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import React, {
@@ -46,7 +45,7 @@ const Notification: React.FC<Props> = memo((props) => {
 
       let token;
 
-      if (!Constants.isDevice) {
+      if (!Device.isDevice) {
         Alert.alert('端末から実行してくだださい');
         return false;
       }
