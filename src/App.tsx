@@ -15,13 +15,14 @@ import Maintenance from 'components/templates/Maintenance/Page';
 import ForceUpdate from 'components/templates/ForceUpdate/Page';
 import useUpdateExpo from 'hooks/useUpdateExpo';
 import Constants from 'expo-constants';
+import * as Device from 'expo-device';
 import compareVersions from 'compare-versions';
 import WithProvider from './WithProvider';
 
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
   enableInExpoDevelopment: true,
-  debug: Constants.isDevice,
+  debug: Device.isDevice,
 });
 
 type CacheShape = any;
