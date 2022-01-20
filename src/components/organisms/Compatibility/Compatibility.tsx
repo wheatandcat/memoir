@@ -7,6 +7,8 @@ import View from 'components/atoms/View';
 type Props = {
   like: boolean;
   dislike: boolean;
+  size?: number;
+  opacity?: boolean;
   onLike: () => void;
   onDislike: () => void;
 };
@@ -21,14 +23,22 @@ const Compatibility: React.FC<Props> = (props) => {
     dislikeStyle.push(styles.selected);
   }
 
+  if (props.opacity && !props.like) {
+    likeStyle.push(styles.opacity);
+  }
+
+  if (props.opacity && !props.dislike) {
+    dislikeStyle.push(styles.opacity);
+  }
+
   return (
     <View style={styles.root}>
       <View style={likeStyle}>
         <TouchableWithoutFeedback onPress={props.onLike}>
           <Image
             source={require('../../../img/icon/icon_like.png')}
-            width={64}
-            height={64}
+            width={props.size}
+            height={props.size}
             resizeMode="contain"
           />
         </TouchableWithoutFeedback>
@@ -37,14 +47,19 @@ const Compatibility: React.FC<Props> = (props) => {
         <TouchableWithoutFeedback onPress={props.onDislike}>
           <Image
             source={require('../../../img/icon/icon_dislike.png')}
-            width={64}
-            height={64}
+            width={props.size}
+            height={props.size}
             resizeMode="contain"
           />
         </TouchableWithoutFeedback>
       </View>
     </View>
   );
+};
+
+Compatibility.defaultProps = {
+  size: 64,
+  opacity: false,
 };
 
 export default memo(Compatibility);
@@ -67,5 +82,8 @@ const styles = StyleSheet.create({
   selected: {
     backgroundColor: theme().color.primary.light,
     borderRadius: 45,
+  },
+  opacity: {
+    opacity: 0.3,
   },
 });
