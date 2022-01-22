@@ -8,3 +8,27 @@ export const user = (option?: Partial<User>): User => ({
   createdAt: '2021-01-01T00:00:00+09:00',
   ...option,
 });
+
+export const users = (): User[] => [
+  {
+    id: 'test1',
+    displayName: 'suzuki1',
+    image: 'https://placehold.jp/150x150.png',
+    updatedAt: '2021-01-01T00:00:00+09:00',
+    createdAt: '2021-01-01T00:00:00+09:00',
+  },
+  {
+    id: 'test2',
+    displayName: 'suzuki2',
+    image: 'https://placehold.jp/150x150.png',
+    updatedAt: '2021-01-01T00:00:00+09:00',
+    createdAt: '2021-01-01T00:00:00+09:00',
+  },
+  {
+    id: 'test3',
+    displayName: 'suzuki2',
+    image: 'https://placehold.jp/150x150.png',
+    updatedAt: '2021-01-01T00:00:00+09:00',
+    createdAt: '2021-01-01T00:00:00+09:00',
+  },
+];

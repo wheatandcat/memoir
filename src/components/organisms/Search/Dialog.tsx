@@ -1,21 +1,40 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Divider from 'components/atoms/Divider';
 import InputUsers from 'components/organisms/Search/Input/InputUsers';
 import theme from 'config/theme';
-import { User } from 'store/atoms';
+import { User } from 'queries/api/index';
 import Compatibility from 'components/organisms/Compatibility/Compatibility';
 import Button from 'components/atoms/Button';
-import InputDate from 'components/organisms/Search/Input/InputDate';
+import InputDate, {
+  Props as InputDateProps,
+} from 'components/organisms/Search/Input/InputDate';
 import InputCategory from 'components/organisms/Search/Input/InputCategory';
+import dayjs from 'lib/dayjs';
 
 export type Props = {
-  users: Omit<User, 'userID'>[];
+  users: Pick<User, 'id' | 'image'>[];
 };
 
+type State = {
+  startDate: InputDateProps['startDate'];
+  endDate: InputDateProps['endDate'];
+  userIDList: string[];
+};
+
+const initialState = (): State => ({
+  startDate: new Date(
+    dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00')
+  ),
+  endDate: new Date(dayjs().format('YYYY-MM-DDT00:00:00+09:00')),
+  userIDList: [],
+});
+
 const Dialog: React.FC<Props> = (props) => {
+  const [state, setState] = useState<State>(initialState());
+
   return (
     <View style={styles.root}>
       <View pt={3}>
@@ -23,14 +42,35 @@ const Dialog: React.FC<Props> = (props) => {
           日付
         </Text>
       </View>
-      <InputDate />
+      <InputDate
+        startDate={state.startDate}
+        endDate={state.endDate}
+        onChangeStartDate={(startDate) => {
+          setState((s) => ({ ...s, startDate }));
+        }}
+        onChangeEndDate={(endDate) => {
+          setState((s) => ({ ...s, endDate }));
+        }}
+      />
       <View pt={4} pb={2}>
         <View pb={3}>
           <Text variants="small" textAlign="center" color="secondaryLight">
             共有メンバー
           </Text>
         </View>
-        <InputUsers users={props.users} />
+        <InputUsers
+          users={props.users}
+          userIDList={state.userIDList}
+          onAdd={(uid) => {
+            setState((s) => ({ ...s, userIDList: [...s.userIDList, uid] }));
+          }}
+          onRemove={(uid) => {
+            setState((s) => ({
+              ...s,
+              userIDList: s.userIDList.filter((v) => v !== uid),
+            }));
+          }}
+        />
       </View>
       <View py={2} style={styles.divider}>
         <Divider />

@@ -1,15 +1,10 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { users } from '__mockData__/user';
 import Dialog, { Props } from '../Dialog';
 
 const propsData = (): Props => ({
-  users: [
-    {
-      id: 'test',
-      displayName: 'suzuki',
-      image: '',
-    },
-  ],
+  users: users(),
 });
 
 describe('components/organisms/Search/Dialog.tsx', () => {

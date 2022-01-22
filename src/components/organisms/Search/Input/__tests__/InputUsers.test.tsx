@@ -1,20 +1,13 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
+import { users } from '__mockData__/user';
 import InputUsers, { Props } from '../InputUsers';
 
 const propsData = (): Props => ({
-  users: [
-    {
-      id: 'test1',
-      displayName: 'suzuki',
-      image: 'https://placehold.jp/150x150.png',
-    },
-    {
-      id: 'test2',
-      displayName: 'suzuki',
-      image: 'https://placehold.jp/150x150.png',
-    },
-  ],
+  users: users(),
+  userIDList: [],
+  onAdd: jest.fn(),
+  onRemove: jest.fn(),
 });
 
 describe('components/organisms/Search/Input/InputUsers.tsx', () => {
