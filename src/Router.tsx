@@ -16,6 +16,7 @@ import UpdateProfile from 'components/pages/UpdateProfile';
 import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
 import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
+import Search from 'components/pages/Search';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
@@ -67,7 +68,11 @@ const WithProvider = () => {
           component={MyPage}
           options={MyPageScreenOption('マイページ')}
         />
-
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={MyPageScreenOption('検索条件を設定')}
+        />
         <Stack.Screen
           name="Login"
           component={Login}
@@ -93,7 +98,6 @@ const WithProvider = () => {
           component={SettingAcceptedRelationship}
           options={MyPageScreenOption('')}
         />
-
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen
             name="Memoir"

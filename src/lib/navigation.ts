@@ -26,4 +26,5 @@ export type RootStackParamList = {
     endDate: string;
     selectedUserIDList: string[];
   };
+  Search: undefined;
 };

@@ -1,18 +1,20 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { users } from '__mockData__/user';
-import Dialog, { Props } from '../Dialog';
+import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
+  loading: false,
+  error: undefined,
   users: users(),
   onSearch: jest.fn(),
 });
 
-describe('components/organisms/Search/Dialog.tsx', () => {
+describe('components/pages/Search/Plain.tsx', () => {
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
-    wrapper = shallow(<Dialog {...propsData()} />);
+    wrapper = shallow(<Plain {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {
