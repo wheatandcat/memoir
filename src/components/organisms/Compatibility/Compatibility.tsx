@@ -16,10 +16,10 @@ type Props = {
 const Compatibility: React.FC<Props> = (props) => {
   const likeStyle: ViewStyle[] = [styles.image];
   const dislikeStyle: ViewStyle[] = [styles.image];
-  if (props.like) {
+  if (props.like && !props.opacity) {
     likeStyle.push(styles.selected);
   }
-  if (props.dislike) {
+  if (props.dislike && !props.opacity) {
     dislikeStyle.push(styles.selected);
   }
 

@@ -16,12 +16,16 @@ import dayjs from 'lib/dayjs';
 
 export type Props = {
   users: Pick<User, 'id' | 'image'>[];
+  onSearch: (input: State) => void;
 };
 
 type State = {
   startDate: InputDateProps['startDate'];
   endDate: InputDateProps['endDate'];
   userIDList: string[];
+  categoryID: number;
+  like: boolean;
+  dislike: boolean;
 };
 
 const initialState = (): State => ({
@@ -30,6 +34,9 @@ const initialState = (): State => ({
   ),
   endDate: new Date(dayjs().format('YYYY-MM-DDT00:00:00+09:00')),
   userIDList: [],
+  categoryID: 0,
+  like: false,
+  dislike: false,
 });
 
 const Dialog: React.FC<Props> = (props) => {
@@ -75,7 +82,7 @@ const Dialog: React.FC<Props> = (props) => {
       <View py={2} style={styles.divider}>
         <Divider />
       </View>
-      <View py={1}>
+      <View pt={1}>
         <Text
           variants="small"
           textAlign="center"
@@ -85,7 +92,22 @@ const Dialog: React.FC<Props> = (props) => {
           カテゴリー{'\n'}※1つのみ選択可能
         </Text>
       </View>
-      <InputCategory />
+      <InputCategory
+        categoryID={state.categoryID}
+        onPress={(categoryID) => {
+          if (state.categoryID === categoryID) {
+            setState((s) => ({
+              ...s,
+              categoryID: 0,
+            }));
+          } else {
+            setState((s) => ({
+              ...s,
+              categoryID,
+            }));
+          }
+        }}
+      />
       <View py={2} style={styles.divider}>
         <Divider />
       </View>
@@ -97,16 +119,31 @@ const Dialog: React.FC<Props> = (props) => {
         </View>
         <View py={2}>
           <Compatibility
-            like={false}
-            dislike={false}
+            like={state.like}
+            dislike={state.dislike}
             opacity
-            onLike={() => null}
-            onDislike={() => null}
+            onLike={() =>
+              setState((s) => ({
+                ...s,
+                like: !s.like,
+              }))
+            }
+            onDislike={() =>
+              setState((s) => ({
+                ...s,
+                dislike: !s.dislike,
+              }))
+            }
           />
         </View>
       </View>
       <View mx={3} mt={4} style={styles.action}>
-        <Button title="検索" size="lg" onPress={() => null} />
+        <Button
+          title="検索"
+          size="lg"
+          disabled={state.userIDList.length === 0}
+          onPress={() => props.onSearch(state)}
+        />
       </View>
     </View>
   );

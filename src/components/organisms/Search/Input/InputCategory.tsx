@@ -4,9 +4,12 @@ import View from 'components/atoms/View';
 import setting from 'components/atoms/Category/setting';
 import CategoryButton from 'components/molecules/CategoryButton';
 
-export type Props = {};
+export type Props = {
+  categoryID: number;
+  onPress: (categoryID: number) => void;
+};
 
-const InputCategory: React.FC<Props> = () => {
+const InputCategory: React.FC<Props> = (props) => {
   const category1 = setting().main[0];
   const category2 = setting().main[1];
   const category3 = setting().main[2];
@@ -19,8 +22,8 @@ const InputCategory: React.FC<Props> = () => {
             <CategoryButton
               categoryID={v}
               selected={false}
-              opacity
-              onPress={() => null}
+              opacity={!(props.categoryID === v)}
+              onPress={() => props.onPress(v)}
               displayName={false}
             />
           </View>
@@ -32,8 +35,8 @@ const InputCategory: React.FC<Props> = () => {
             <CategoryButton
               categoryID={v}
               selected={false}
-              opacity
-              onPress={() => null}
+              opacity={!(props.categoryID === v)}
+              onPress={() => props.onPress(v)}
               displayName={false}
             />
           </View>
@@ -45,8 +48,8 @@ const InputCategory: React.FC<Props> = () => {
             <CategoryButton
               categoryID={v}
               selected={false}
-              opacity
-              onPress={() => null}
+              opacity={!(props.categoryID === v)}
+              onPress={() => props.onPress(v)}
               displayName={false}
             />
           </View>

@@ -2,7 +2,10 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import InputCategory, { Props } from '../InputCategory';
 
-const propsData = (): Props => ({});
+const propsData = (): Props => ({
+  categoryID: 0,
+  onPress: jest.fn(),
+});
 
 describe('components/organisms/Search/Input/InputCategory.tsx', () => {
   let wrapper: ShallowWrapper;

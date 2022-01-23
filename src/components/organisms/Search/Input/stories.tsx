@@ -34,7 +34,10 @@ const inputUsers = (): InputUsersProps => ({
   onAdd: mockFn('onAdd'),
   onRemove: mockFn('onRemove'),
 });
-const inputCategoryProps = (): InputCategoryProps => ({});
+const inputCategoryProps = (): InputCategoryProps => ({
+  categoryID: 1,
+  onPress: mockFn('onPress'),
+});
 
 storiesOf('organisms/Search/Input', module)
   .add('InputDate', () => <InputDate {...inputDateProps()} />)

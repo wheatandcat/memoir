@@ -5,6 +5,7 @@ import Dialog, { Props } from '../Dialog';
 
 const propsData = (): Props => ({
   users: users(),
+  onSearch: jest.fn(),
 });
 
 describe('components/organisms/Search/Dialog.tsx', () => {
