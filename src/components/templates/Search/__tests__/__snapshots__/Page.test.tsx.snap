@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/Search/Page.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFFFFF",
+      "height": "100%",
+    }
+  }
+>
+  <ScrollView>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    >
+      <View
+        pt={3}
+      >
+        <Text
+          color="secondaryLight"
+          fontFamily="RobotoCondensed-Bold"
+          variants="small"
+        >
+          日付
+        </Text>
+      </View>
+      <Memo(InputDate)
+        endDate={2022-01-24T15:00:00.000Z}
+        error={false}
+        onChangeEndDate={[Function]}
+        onChangeStartDate={[Function]}
+        startDate={2022-01-18T15:00:00.000Z}
+      />
+      <View
+        pb={2}
+        pt={4}
+      >
+        <View
+          pb={3}
+        >
+          <Text
+            color="secondaryLight"
+            fontFamily="RobotoCondensed-Bold"
+            textAlign="center"
+            variants="small"
+          >
+            共有メンバー
+          </Text>
+        </View>
+        <Memo(InputUsers)
+          onAdd={[Function]}
+          onRemove={[Function]}
+          userIDList={Array []}
+          users={
+            Array [
+              Object {
+                "createdAt": "2021-01-01T00:00:00+09:00",
+                "displayName": "suzuki1",
+                "id": "test1",
+                "image": "https://placehold.jp/150x150.png",
+                "updatedAt": "2021-01-01T00:00:00+09:00",
+              },
+              Object {
+                "createdAt": "2021-01-01T00:00:00+09:00",
+                "displayName": "suzuki2",
+                "id": "test2",
+                "image": "https://placehold.jp/150x150.png",
+                "updatedAt": "2021-01-01T00:00:00+09:00",
+              },
+              Object {
+                "createdAt": "2021-01-01T00:00:00+09:00",
+                "displayName": "suzuki2",
+                "id": "test3",
+                "image": "https://placehold.jp/150x150.png",
+                "updatedAt": "2021-01-01T00:00:00+09:00",
+              },
+            ]
+          }
+        />
+      </View>
+      <View
+        py={2}
+        style={
+          Object {
+            "width": "80%",
+          }
+        }
+      >
+        <Divider />
+      </View>
+      <View
+        pt={1}
+      >
+        <Text
+          color="secondaryLight"
+          fontFamily="RobotoCondensed-Bold"
+          lineHeight={20}
+          textAlign="center"
+          variants="small"
+        >
+          カテゴリー
+          
+
+          ※1つのみ選択可能
+        </Text>
+      </View>
+      <Memo(InputCategory)
+        categoryID={0}
+        onPress={[Function]}
+      />
+      <View
+        py={2}
+        style={
+          Object {
+            "width": "80%",
+          }
+        }
+      >
+        <Divider />
+      </View>
+      <View
+        pb={2}
+        pt={2}
+      >
+        <View>
+          <Text
+            color="secondaryLight"
+            fontFamily="RobotoCondensed-Bold"
+            textAlign="center"
+            variants="small"
+          >
+            Good / Bad
+          </Text>
+        </View>
+        <View
+          py={2}
+        >
+          <Memo(Compatibility)
+            dislike={false}
+            like={false}
+            onDislike={[Function]}
+            onLike={[Function]}
+            opacity={true}
+          />
+        </View>
+      </View>
+      <View
+        mt={2}
+        mx={3}
+        style={
+          Object {
+            "width": "80%",
+          }
+        }
+      >
+        <Button
+          disabled={true}
+          fontFamily="NotoSansJP-Bold"
+          onPress={[Function]}
+          size="lg"
+          title="検索"
+        />
+      </View>
+    </View>
+  </ScrollView>
+</View>
+`;

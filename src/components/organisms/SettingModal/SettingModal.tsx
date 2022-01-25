@@ -76,6 +76,12 @@ const SettingModal: React.FC<Props> = (props) => {
     onPermissionRequest(onPushNotificationSetting);
   }, [onPermissionRequest, onPushNotificationSetting]);
 
+  const onSearch = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('Search');
+  }, [navigation, props]);
+
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
       <View style={styles.root} p={3} pt={4}>
@@ -90,7 +96,12 @@ const SettingModal: React.FC<Props> = (props) => {
             <Text>ふりかえり日時を変更する</Text>
           </View>
         </TouchableOpacity>
-
+        <Divider my={3} />
+        <TouchableOpacity onPress={onSearch} style={styles.menuText}>
+          <View>
+            <Text>達成したタスクを検索する</Text>
+          </View>
+        </TouchableOpacity>
         <Divider my={3} />
         <TouchableOpacity
           style={styles.menuText}

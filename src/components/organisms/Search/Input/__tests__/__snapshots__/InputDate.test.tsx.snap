@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderすること 1`] = `
+<View
+  pt={3}
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "justifyContent": "center",
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "borderBottomWidth": 0.5,
+          "borderColor": "#362740",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <Text
+        color="secondary"
+        fontFamily="RobotoCondensed-Bold"
+        variants="middle"
+      >
+        2021.01.01
+      </Text>
+    </ForwardRef>
+    <DateTimePickerModal
+      cancelTextIOS="キャンセル"
+      confirmTextIOS="完了"
+      date={2020-12-31T15:00:00.000Z}
+      headerTextIOS=""
+      is24Hour={true}
+      isHeaderVisibleIOS={false}
+      isVisible={false}
+      locale="ja"
+      modalPropsIOS={Object {}}
+      mode="date"
+      onCancel={[Function]}
+      onConfirm={[Function]}
+      pickerContainerStyleIOS={Object {}}
+      pickerStyleIOS={Object {}}
+    />
+  </View>
+  <View
+    mx={2}
+  >
+    <Text
+      color="secondary"
+      fontFamily="RobotoCondensed-Bold"
+      variants="body"
+    >
+      -
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "borderBottomWidth": 0.5,
+          "borderColor": "#362740",
+        },
+      ]
+    }
+  >
+    <ForwardRef
+      onPress={[Function]}
+    >
+      <Text
+        color="secondary"
+        fontFamily="RobotoCondensed-Bold"
+        variants="middle"
+      >
+        2021.01.18
+      </Text>
+    </ForwardRef>
+    <DateTimePickerModal
+      cancelTextIOS="キャンセル"
+      confirmTextIOS="完了"
+      date={2021-01-17T15:00:00.000Z}
+      headerTextIOS=""
+      is24Hour={true}
+      isHeaderVisibleIOS={false}
+      isVisible={false}
+      locale="ja"
+      modalPropsIOS={Object {}}
+      mode="date"
+      onCancel={[Function]}
+      onConfirm={[Function]}
+      pickerContainerStyleIOS={Object {}}
+      pickerStyleIOS={Object {}}
+    />
+  </View>
+</View>
+`;

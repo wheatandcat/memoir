@@ -20,6 +20,7 @@ import Divider from 'components/atoms/Divider';
 import Loading from 'components/molecules/Overlay/Loading';
 import { Item } from 'hooks/useItemsInPeriodPaging';
 import { useConfig } from 'containers/Config';
+import Image from 'components/atoms/Image';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {
@@ -62,6 +63,13 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
         />
         {!props?.last && <Divider />}
       </View>
+      {!!props.last && (
+        <Image
+          source={require('../../../img/icon/border_dotted.png')}
+          width={props.width}
+          height={2}
+        />
+      )}
     </View>
   );
 };

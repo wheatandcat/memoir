@@ -24,6 +24,7 @@ import { Item } from 'hooks/useItemsInPeriodPaging';
 import { useConfig } from 'containers/Config';
 import { uploadImageAsync, deleteImageAsync, resizeImage } from 'lib/image';
 import { v4 as uuidv4 } from 'uuid';
+import Image from 'components/atoms/Image';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {
@@ -66,6 +67,13 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
         />
         {!props?.last && <Divider />}
       </View>
+      {!!props.last && (
+        <Image
+          source={require('../../../img/icon/border_dotted.png')}
+          width={props.width}
+          height={2}
+        />
+      )}
     </View>
   );
 };

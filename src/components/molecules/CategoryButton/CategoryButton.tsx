@@ -10,6 +10,8 @@ import { categoryBorderStyle } from 'lib/category';
 type Props = {
   categoryID: number;
   selected?: boolean;
+  displayName?: boolean;
+  opacity?: boolean;
   onPress: () => void;
 };
 
@@ -17,6 +19,10 @@ const CategoryButton: React.FC<Props> = (props) => {
   const style: ViewStyle[] = [styles.image];
   if (props.selected) {
     style.push(styles.selected);
+  }
+
+  if (props.opacity && !props.selected) {
+    style.push(styles.opacity);
   }
 
   const s = icon(props.categoryID);
@@ -32,12 +38,19 @@ const CategoryButton: React.FC<Props> = (props) => {
         <View style={style}>
           <Category categoryID={props.categoryID} />
         </View>
-        <View style={categoryStyle}>
-          <Text variants="small">{s.name}</Text>
-        </View>
+        {props.displayName && (
+          <View style={categoryStyle}>
+            <Text variants="small">{s.name}</Text>
+          </View>
+        )}
       </View>
     </TouchableWithoutFeedback>
   );
+};
+
+CategoryButton.defaultProps = {
+  displayName: true,
+  opacity: false,
 };
 
 export default memo(CategoryButton);
@@ -59,5 +72,8 @@ const styles = StyleSheet.create({
   selected: {
     backgroundColor: theme().color.primary.light,
     borderRadius: 40,
+  },
+  opacity: {
+    opacity: 0.3,
   },
 });

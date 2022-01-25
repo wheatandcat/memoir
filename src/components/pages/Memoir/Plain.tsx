@@ -24,6 +24,7 @@ const Plain: React.FC<Props> = (props) => {
       startDate={props.startDate}
       endDate={props.endDate}
       loading={props.loading}
+      search={props.search}
       onItem={props.onItem}
       items={props.items}
       users={props.users}

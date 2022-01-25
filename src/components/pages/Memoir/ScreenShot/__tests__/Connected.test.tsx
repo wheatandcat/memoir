@@ -9,6 +9,9 @@ const propsData = (): Props => ({
   startDate: '2020-01-01',
   endDate: '2020-01-07',
   selectedUserIDList: ['1'],
+  categoryID: 0,
+  like: true,
+  dislike: true,
 });
 
 describe('components/pages/Memoir/ScreenShot/Connected.tsx', () => {

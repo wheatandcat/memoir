@@ -25,6 +25,7 @@ const props = (): Props => ({
   selectedUserIDList: ['test'],
   onChangeUserID: mockFn('onChangeUserID'),
   onScreenShot: mockFn('onScreenShot'),
+  search: false,
 });
 
 storiesOf('templates/Memoir/Page', module)

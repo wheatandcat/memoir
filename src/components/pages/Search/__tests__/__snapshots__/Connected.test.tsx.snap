@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Search/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Plain)
+  error={null}
+  loading={false}
+  onSearch={[Function]}
+  users={
+    Array [
+      Object {
+        "id": "",
+        "image": "",
+      },
+      Object {
+        "id": "",
+        "image": "",
+      },
+      Object {
+        "id": "",
+        "image": "",
+      },
+      Object {
+        "id": "",
+        "image": "",
+      },
+      Object {
+        "id": "",
+        "image": "",
+      },
+    ]
+  }
+/>
+`;

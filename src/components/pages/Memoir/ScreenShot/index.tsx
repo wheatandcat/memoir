@@ -16,13 +16,17 @@ export type Props = {
 };
 
 const MemoirScreenShot: React.FC<Props> = (props) => {
-  const { startDate, endDate, selectedUserIDList } = props.route.params;
+  const { startDate, endDate, selectedUserIDList, categoryID, like, dislike } =
+    props.route.params;
 
   return (
     <Connected
       startDate={startDate}
       endDate={endDate}
       selectedUserIDList={selectedUserIDList}
+      categoryID={categoryID}
+      like={like}
+      dislike={dislike}
     />
   );
 };

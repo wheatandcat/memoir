@@ -1,10 +1,11 @@
 import React, { memo, useCallback } from 'react';
-import { StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, ScrollView, ViewStyle } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
 import { User } from 'queries/api/index';
 import UserImage from 'components/molecules/User/Image';
 import { Props as PlainProps } from 'components/pages/Memoir/Plain';
+import UserButton from 'components/molecules/User/Button';
 
 type Users = Pick<User, 'id' | 'image'>[];
 
@@ -12,6 +13,8 @@ export type Props = {
   users: Users;
   selectedUserIDList: PlainProps['selectedUserIDList'];
   onChangeUserID: PlainProps['onChangeUserID'];
+  center?: boolean;
+  size?: number;
 };
 
 const Users: React.FC<Props> = (props) => {
@@ -31,36 +34,39 @@ const Users: React.FC<Props> = (props) => {
     [props]
   );
 
+  const style: ViewStyle[] = [styles.root];
+
+  if (!props.center) {
+    style.push(styles.left);
+  }
+
   return (
     <ScrollView style={styles.wrap} horizontal>
-      <View style={styles.root}>
+      <View style={style}>
         {props.users.map((v) => {
-          const selected = props.selectedUserIDList.find((uid) => v.id === uid);
+          const selected = !!props.selectedUserIDList.find(
+            (uid) => v.id === uid
+          );
 
           if (selected) {
             if (props.selectedUserIDList.length === 1) {
               return (
                 <View key={v.id} m={2}>
-                  <UserImage size={70} image={v.image} />
+                  <UserImage size={props.size} image={v.image} />
                 </View>
               );
             }
-
-            return (
-              <View key={v.id} m={2}>
-                <TouchableOpacity onPress={() => onRemove(v.id)}>
-                  <UserImage size={70} image={v.image} />
-                </TouchableOpacity>
-              </View>
-            );
           }
 
           return (
-            <View key={v.id} m={2} style={styles.clear}>
-              <TouchableOpacity onPress={() => onAdd(v.id)}>
-                <UserImage size={70} image={v.image} />
-              </TouchableOpacity>
-            </View>
+            <UserButton
+              key={v.id}
+              user={v}
+              selected={selected}
+              size={props.size}
+              onAdd={onAdd}
+              onRemove={onRemove}
+            />
           );
         })}
       </View>
@@ -68,18 +74,21 @@ const Users: React.FC<Props> = (props) => {
   );
 };
 
+Users.defaultProps = {
+  center: false,
+  size: 70,
+};
+
+export default memo(Users);
+
 const styles = StyleSheet.create({
   root: {
-    backgroundColor: theme().color.background.main,
     flexDirection: 'row',
+  },
+  left: {
     marginLeft: theme().space(4),
   },
   wrap: {
     flex: 1,
   },
-  clear: {
-    opacity: 0.4,
-  },
 });
-
-export default memo(Users);

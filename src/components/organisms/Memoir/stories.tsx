@@ -29,6 +29,7 @@ const props = (): Props => ({
   ],
   selectedUserIDList: ['test'],
   onChangeUserID: mockFn('onChangeUserID'),
+  search: false,
 });
 
 const screenShotProps = (): ScreenShotProps => ({

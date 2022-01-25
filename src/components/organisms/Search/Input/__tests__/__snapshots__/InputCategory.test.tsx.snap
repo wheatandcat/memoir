@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Search/Input/InputCategory.tsx 正常にrenderすること 1`] = `
+<Fragment>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      key="1"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={1}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="10"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={10}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="4"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={4}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      key="3"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={3}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="2"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={2}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="5"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={5}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+      }
+    }
+  >
+    <View
+      key="13"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={13}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="6"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={6}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+    <View
+      key="12"
+      mx={2}
+    >
+      <Memo(CategoryButton)
+        categoryID={12}
+        displayName={false}
+        onPress={[Function]}
+        opacity={true}
+        selected={false}
+      />
+    </View>
+  </View>
+</Fragment>
+`;

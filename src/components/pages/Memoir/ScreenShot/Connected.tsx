@@ -12,9 +12,15 @@ export type Props = {
   startDate: string;
   endDate: string;
   selectedUserIDList: string[];
+  categoryID: number;
+  like: boolean;
+  dislike: boolean;
 };
 
-export type ConnectedType = Omit<Props, 'selectedUserIDList'> & {
+export type ConnectedType = Omit<
+  Props,
+  'selectedUserIDList' | 'categoryID' | 'like' | 'dislike'
+> & {
   users: User[];
 };
 
@@ -41,6 +47,9 @@ const Connected: React.FC<Props> = (props) => {
         startDate: props.startDate,
         endDate: props.endDate,
         userIDList: props.selectedUserIDList,
+        categoryID: props.categoryID,
+        like: props.like,
+        dislike: props.dislike,
         first: 100,
         after: '',
       },
