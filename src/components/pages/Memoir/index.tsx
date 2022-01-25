@@ -30,8 +30,8 @@ const Memoir: React.FC<Props> = (props) => {
       endDate={endDate || dayjs().format('YYYY-MM-DDT00:00:00+09:00')}
       userIDList={userIDList}
       categoryID={categoryID || 0}
-      like={like || true}
-      dislike={dislike || true}
+      like={like ?? true}
+      dislike={dislike ?? true}
       search={search || false}
     />
   );

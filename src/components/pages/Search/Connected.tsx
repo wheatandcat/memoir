@@ -33,7 +33,7 @@ const Connected: React.FC<Props> = () => {
 
   const onSearch = useCallback(
     (input: Input) => {
-      navigation.navigate('Memoir', {
+      const param = {
         startDate: dayjs(input.startDate).format('YYYY-MM-DDT00:00:00+09:00'),
         endDate: dayjs(input.endDate).format('YYYY-MM-DDT00:00:00+09:00'),
         userIDList: input.userIDList,
@@ -41,7 +41,8 @@ const Connected: React.FC<Props> = () => {
         like: input.like,
         dislike: input.dislike,
         search: true,
-      });
+      };
+      navigation.navigate('Memoir', param);
     },
     [navigation]
   );

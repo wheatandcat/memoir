@@ -65,18 +65,20 @@ const Connected: React.FC<Props> = (props) => {
     },
   });
 
+  const input = {
+    startDate: props.startDate,
+    endDate: props.endDate,
+    first: 8,
+    after: state.after,
+    userIDList: state.userIDList,
+    categoryID: props.categoryID,
+    like: props.like,
+    dislike: props.dislike,
+  };
+
   const queryResult = useItemsInPeriodQuery({
     variables: {
-      input: {
-        startDate: props.startDate,
-        endDate: props.endDate,
-        first: 8,
-        after: state.after,
-        userIDList: state.userIDList,
-        categoryID: props.categoryID,
-        like: props.like,
-        dislike: props.dislike,
-      },
+      input,
     },
   });
 
@@ -122,6 +124,9 @@ const Connected: React.FC<Props> = (props) => {
       startDate: props.startDate,
       endDate: props.endDate,
       selectedUserIDList,
+      categoryID: props.categoryID,
+      like: props.like,
+      dislike: props.dislike,
     });
   }, [props, navigation, selectedUserIDList]);
 

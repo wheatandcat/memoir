@@ -30,6 +30,9 @@ export type RootStackParamList = {
     startDate: string;
     endDate: string;
     selectedUserIDList: string[];
+    categoryID: number;
+    like: boolean;
+    dislike: boolean;
   };
   Search: undefined;
 };

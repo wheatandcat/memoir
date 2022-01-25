@@ -11,11 +11,14 @@ exports[`components/molecules/Memoir/Users.tsx 正常にrenderすること 1`] =
 >
   <View
     style={
-      Object {
-        "backgroundColor": "#F2F2F2",
-        "flexDirection": "row",
-        "marginLeft": 32,
-      }
+      Array [
+        Object {
+          "flexDirection": "row",
+        },
+        Object {
+          "marginLeft": 32,
+        },
+      ]
     }
   >
     <View

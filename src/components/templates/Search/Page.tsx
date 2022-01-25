@@ -42,6 +42,8 @@ const initialState = (): State => ({
 const Page: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
+  const error = dayjs(state.startDate).isAfter(state.endDate);
+
   return (
     <View style={styles.root}>
       <ScrollView>
@@ -52,6 +54,7 @@ const Page: React.FC<Props> = (props) => {
             </Text>
           </View>
           <InputDate
+            error={error}
             startDate={state.startDate}
             endDate={state.endDate}
             onChangeStartDate={(startDate) => {
@@ -61,6 +64,14 @@ const Page: React.FC<Props> = (props) => {
               setState((s) => ({ ...s, endDate }));
             }}
           />
+          {error && (
+            <View pt={3}>
+              <Text size="xs" textAlign="center" color="error">
+                開始日が終了日より前に設定されています
+              </Text>
+            </View>
+          )}
+
           <View pt={4} pb={2}>
             <View pb={3}>
               <Text variants="small" textAlign="center" color="secondaryLight">
@@ -143,7 +154,7 @@ const Page: React.FC<Props> = (props) => {
             <Button
               title="検索"
               size="lg"
-              disabled={state.userIDList.length === 0}
+              disabled={state.userIDList.length === 0 || error}
               onPress={() => props.onSearch(state)}
             />
           </View>

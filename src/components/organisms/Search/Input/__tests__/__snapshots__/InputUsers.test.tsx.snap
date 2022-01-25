@@ -1,0 +1,76 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Search/Input/InputUsers.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "flexWrap": "wrap",
+      "justifyContent": "center",
+      "width": "80%",
+    }
+  }
+>
+  <View
+    key="test1"
+    px={3}
+  >
+    <Memo(Users)
+      onAdd={[MockFunction]}
+      onRemove={[MockFunction]}
+      selected={false}
+      size={50}
+      user={
+        Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "suzuki1",
+          "id": "test1",
+          "image": "https://placehold.jp/150x150.png",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        }
+      }
+    />
+  </View>
+  <View
+    key="test2"
+    px={3}
+  >
+    <Memo(Users)
+      onAdd={[MockFunction]}
+      onRemove={[MockFunction]}
+      selected={false}
+      size={50}
+      user={
+        Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "suzuki2",
+          "id": "test2",
+          "image": "https://placehold.jp/150x150.png",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        }
+      }
+    />
+  </View>
+  <View
+    key="test3"
+    px={3}
+  >
+    <Memo(Users)
+      onAdd={[MockFunction]}
+      onRemove={[MockFunction]}
+      selected={false}
+      size={50}
+      user={
+        Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "suzuki2",
+          "id": "test3",
+          "image": "https://placehold.jp/150x150.png",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        }
+      }
+    />
+  </View>
+</View>
+`;
