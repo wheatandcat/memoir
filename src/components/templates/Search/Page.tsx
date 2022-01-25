@@ -19,7 +19,7 @@ export type Props = {
   onSearch: (input: State) => void;
 };
 
-type State = {
+export type State = {
   startDate: InputDateProps['startDate'];
   endDate: InputDateProps['endDate'];
   userIDList: string[];

@@ -13,6 +13,11 @@ import { ScreenNavigationProp as MemoirScreenNavigationProp } from './';
 type Props = {
   startDate: string;
   endDate: string;
+  userIDList: string[] | undefined;
+  categoryID: number;
+  like: boolean;
+  dislike: boolean;
+  search: boolean;
 };
 
 type State = {
@@ -32,18 +37,20 @@ export type ConnectedType = {
   users: User[];
   selectedUserIDList: string[];
   isFilter: boolean;
+  search: boolean;
   onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
   onChangeUserID: (userIDList: string[]) => void;
 };
 
-const initialState = () => ({
+const initialState = (userIDList: string[] | undefined) => ({
   after: '',
+  userIDList,
 });
 
 const Connected: React.FC<Props> = (props) => {
-  const [state, setState] = useState<State>(initialState());
+  const [state, setState] = useState<State>(initialState(props.userIDList));
   const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
   const navigation = useNavigation<MemoirScreenNavigationProp>();
@@ -66,6 +73,9 @@ const Connected: React.FC<Props> = (props) => {
         first: 8,
         after: state.after,
         userIDList: state.userIDList,
+        categoryID: props.categoryID,
+        like: props.like,
+        dislike: props.dislike,
       },
     },
   });
@@ -122,6 +132,7 @@ const Connected: React.FC<Props> = (props) => {
       isFilter={isFilter}
       items={items}
       users={tUsers}
+      search={props.search}
       selectedUserIDList={selectedUserIDList}
       pageInfo={pageInfo}
       onLoadMore={onLoadMore}

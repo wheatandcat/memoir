@@ -4,7 +4,10 @@ import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Search'>;
+export type ScreenNavigationProp = StackNavigationProp<
+  RootStackParamList,
+  'Search'
+>;
 type ScreenRouteProp = RouteProp<RootStackParamList, 'Search'>;
 
 export type Props = {

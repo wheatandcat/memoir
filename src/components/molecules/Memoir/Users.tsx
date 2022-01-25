@@ -60,6 +60,7 @@ const Users: React.FC<Props> = (props) => {
 
           return (
             <UserButton
+              key={v.id}
               user={v}
               selected={selected}
               size={props.size}

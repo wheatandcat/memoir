@@ -24,6 +24,7 @@ export type Props = Pick<
   PlainProps,
   | 'items'
   | 'loading'
+  | 'search'
   | 'onLoadMore'
   | 'onItem'
   | 'pageInfo'
@@ -163,7 +164,7 @@ const DateCards: React.FC<Props> = (props) => {
     props.onLoadMore(props?.pageInfo.endCursor);
   }, [props]);
 
-  const isUserFilter = props.users.length > 1;
+  const isUserFilter = props.search ? false : props.users.length > 1;
 
   return (
     <View style={styles.root}>

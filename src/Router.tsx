@@ -69,11 +69,6 @@ const WithProvider = () => {
           options={MyPageScreenOption('マイページ')}
         />
         <Stack.Screen
-          name="Search"
-          component={Search}
-          options={MyPageScreenOption('検索条件を設定')}
-        />
-        <Stack.Screen
           name="Login"
           component={Login}
           options={MyPageScreenOption('サインイン')}
@@ -99,6 +94,11 @@ const WithProvider = () => {
           options={MyPageScreenOption('')}
         />
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
+          <Stack.Screen
+            name="Search"
+            component={Search}
+            options={MyPageScreenOption('検索条件を設定')}
+          />
           <Stack.Screen
             name="Memoir"
             component={Memoir}

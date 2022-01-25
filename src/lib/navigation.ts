@@ -7,6 +7,11 @@ export type RootStackParamList = {
   Memoir: {
     startDate: string;
     endDate: string;
+    userIDList?: string[];
+    categoryID?: number;
+    like?: boolean;
+    dislike?: boolean;
+    search?: boolean;
   };
   SettingLicence: undefined;
   Login: undefined;
