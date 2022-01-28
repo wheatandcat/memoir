@@ -150,16 +150,18 @@ const Page: React.FC<Props> = (props) => {
               />
             </View>
           </View>
-          <View mx={3} mt={2} style={styles.action}>
-            <Button
-              title="検索"
-              size="lg"
-              disabled={state.userIDList.length === 0 || error}
-              onPress={() => props.onSearch(state)}
-            />
-          </View>
         </View>
       </ScrollView>
+      <View style={styles.actionContainer}>
+        <View style={styles.action}>
+          <Button
+            title="検索"
+            size="lg"
+            disabled={state.userIDList.length === 0 || error}
+            onPress={() => props.onSearch(state)}
+          />
+        </View>
+      </View>
     </View>
   );
 };
@@ -172,11 +174,18 @@ const styles = StyleSheet.create({
   inner: {
     alignItems: 'center',
     width: '100%',
-    height: '100%',
+    marginBottom: theme().space(6),
   },
   divider: {
     width: '80%',
   },
+  actionContainer: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    bottom: theme().space(3),
+  },
+
   action: {
     width: '80%',
   },

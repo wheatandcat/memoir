@@ -4,6 +4,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
   ViewStyle,
+  Platform,
 } from 'react-native';
 import theme from 'config/theme';
 import View from 'components/atoms/View';
@@ -50,6 +51,9 @@ const Button: React.FC<Props> = (props) => {
         <Text
           textAlign="center"
           size={configSize.fontSize}
+          lineHeight={
+            Platform.OS === 'android' && props.size === 'lg' ? 30 : undefined
+          }
           fontWeight="bold"
           color="baseDark"
           fontFamily={props.fontFamily}
@@ -65,6 +69,9 @@ const Button: React.FC<Props> = (props) => {
       <View style={[styles.button, buttonStyle]}>
         <Text
           textAlign="center"
+          lineHeight={
+            Platform.OS === 'android' && props.size === 'lg' ? 30 : undefined
+          }
           size={configSize.fontSize}
           fontWeight="bold"
           color="secondary"

@@ -1,5 +1,11 @@
 import React, { memo, useCallback } from 'react';
-import { StyleSheet, TouchableOpacity, Linking, Platform } from 'react-native';
+import {
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+  Platform,
+  Alert,
+} from 'react-native';
 import { useSetRecoilState, useRecoilValue } from 'recoil';
 import { useNavigation } from '@react-navigation/native';
 import View from 'components/atoms/View';
@@ -77,10 +83,28 @@ const SettingModal: React.FC<Props> = (props) => {
   }, [onPermissionRequest, onPushNotificationSetting]);
 
   const onSearch = useCallback(() => {
+    if (!authUser.uid) {
+      Alert.alert('確認', 'この機能はアカウント登録しないと実行できません', [
+        {
+          text: 'キャンセル',
+          style: 'cancel',
+        },
+        {
+          text: '登録する',
+          onPress: () => {
+            props.onClose();
+            navigation.navigate('MyPage');
+          },
+        },
+      ]);
+
+      return;
+    }
+
     props.onClose();
 
     navigation.navigate('Search');
-  }, [navigation, props]);
+  }, [navigation, props, authUser.uid]);
 
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>

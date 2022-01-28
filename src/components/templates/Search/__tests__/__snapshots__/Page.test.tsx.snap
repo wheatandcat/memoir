@@ -14,7 +14,7 @@ exports[`components/templates/Search/Page.tsx 正常にrenderすること 1`] = 
       style={
         Object {
           "alignItems": "center",
-          "height": "100%",
+          "marginBottom": 128,
           "width": "100%",
         }
       }
@@ -31,11 +31,11 @@ exports[`components/templates/Search/Page.tsx 正常にrenderすること 1`] = 
         </Text>
       </View>
       <Memo(InputDate)
-        endDate={2022-01-24T15:00:00.000Z}
+        endDate={2022-01-27T15:00:00.000Z}
         error={false}
         onChangeEndDate={[Function]}
         onChangeStartDate={[Function]}
-        startDate={2022-01-18T15:00:00.000Z}
+        startDate={2022-01-21T15:00:00.000Z}
       />
       <View
         pb={2}
@@ -150,24 +150,33 @@ exports[`components/templates/Search/Page.tsx 正常にrenderすること 1`] = 
           />
         </View>
       </View>
-      <View
-        mt={2}
-        mx={3}
-        style={
-          Object {
-            "width": "80%",
-          }
-        }
-      >
-        <Button
-          disabled={true}
-          fontFamily="NotoSansJP-Bold"
-          onPress={[Function]}
-          size="lg"
-          title="検索"
-        />
-      </View>
     </View>
   </ScrollView>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "bottom": 16,
+        "justifyContent": "center",
+        "width": "100%",
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "width": "80%",
+        }
+      }
+    >
+      <Button
+        disabled={true}
+        fontFamily="NotoSansJP-Bold"
+        onPress={[Function]}
+        size="lg"
+        title="検索"
+      />
+    </View>
+  </View>
 </View>
 `;
