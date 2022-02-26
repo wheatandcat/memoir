@@ -5,6 +5,7 @@ import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
 import { storageKey, getItem, removeItem } from 'lib/storage';
 import Auth from 'lib/auth';
 import * as Sentry from 'sentry-expo';
+import { errorCode } from 'lib/error';
 
 const cache = new InMemoryCache();
 const auth = new Auth();
@@ -43,16 +44,25 @@ const makeApolloClient = async () => {
   const errorLink = onError((error) => {
     if ((error.graphQLErrors || []).length > 0) {
       const graphQLErrors = error.graphQLErrors || [
-        { message: 'エラー発生しました' },
+        {
+          message: 'エラー発生しました',
+          extensions: { code: errorCode.CodeDefault },
+        },
       ];
 
-      const message = graphQLErrors[0].message;
+      const code = graphQLErrors[0]?.extensions?.code ?? errorCode.CodeDefault;
+
+      let message = graphQLErrors[0].message;
+      if (code === errorCode.CodeValidation) {
+        message = graphQLErrors[0].message.split(':')?.[1] || message;
+      }
 
       Sentry.Native.withScope((scope) => {
         scope.setTag('kind', 'GraphQL');
         scope.setTag('operationName', error.operation.operationName);
         scope.setExtra('query', error.operation.query.loc?.source?.body || '');
         scope.setExtra('variables', error.operation.variables);
+        scope.setExtra('errorCode', code);
         Sentry.Native.captureMessage(message);
       });
 
