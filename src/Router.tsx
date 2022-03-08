@@ -17,6 +17,8 @@ import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
 import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
 import Search from 'components/pages/Search';
+import Privacy from 'components/pages/Privacy';
+import Terms from 'components/pages/Terms';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
@@ -118,6 +120,16 @@ const WithProvider = () => {
             name="SettingMemoir"
             component={SettingMemoir}
             options={HomeScreenOption('振り返り通知設定')}
+          />
+          <Stack.Screen
+            name="Privacy"
+            component={Privacy}
+            options={HomeScreenOption('プライバシー・ポリシー')}
+          />
+          <Stack.Screen
+            name="Terms"
+            component={Terms}
+            options={HomeScreenOption('利用規約')}
           />
         </Stack.Group>
       </Stack.Navigator>
