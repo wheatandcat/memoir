@@ -28,3 +28,4 @@ regconfig.json
 .envrc
 scripts/appConfig.js
 google-services.json
+appConfig.js

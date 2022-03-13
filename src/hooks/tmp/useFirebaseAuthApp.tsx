@@ -43,6 +43,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     responseType: ResponseType.IdToken,
+    clientId: process.env.GOOGLE_CLIENT_ID,
     expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
   });
 

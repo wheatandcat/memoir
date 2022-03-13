@@ -6,12 +6,19 @@ import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { authUserState, homeState } from 'store/atoms';
 import Intro from 'components/pages/Intro/Intro';
 import Router from './Router';
+//import { storageKey, removeItem } from 'lib/storage';
 
 const WithProvider = () => {
   useFirebaseAuth();
   const { loading, user, onSaveWhenNotLogin } = useUser();
   const [create, setCreate] = useState(false);
   const setHomeState = useSetRecoilState(homeState);
+  /*
+  removeItem(storageKey.USER_ID_KEY);
+  removeItem(storageKey.AUTH_UID_KEY);
+  removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+  removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+  */
 
   const authUser = useRecoilValue(authUserState);
 

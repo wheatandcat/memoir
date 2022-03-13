@@ -1,7 +1,7 @@
 import { ExpoConfig, ConfigContext } from '@expo/config';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
-import { appConfig } from './scripts/appConfig';
+import { appConfig } from './appConfig';
 
 const version: string = '1.0.0';
 
