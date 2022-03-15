@@ -9,7 +9,7 @@
     "android": "yarn init:app:dev && yarn expo:start --android",
     "ios": "yarn init:app:dev && yarn expo:start --ios",
     "web": "yarn init:app:dev && yarn expo:start --web",
-    "ios:clear": "yarn init:app:production && yarn expo:start --ios -c",
+    "ios:clear": "yarn init:app:dev && yarn expo:start --ios -c",
     "android:clear": "yarn init:app:dev && yarn expo:start --android -c",
     "ios:build": "yarn init:app:production && APP_ENV=production expo build:ios --release-channel production -c",
     "ios:build:ci": "yarn init:app:production && APP_ENV=production expo build:ios --release-channel production --no-wait --type archive -c",

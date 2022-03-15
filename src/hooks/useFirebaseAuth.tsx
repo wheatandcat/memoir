@@ -1,6 +1,7 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
+import { v4 as uuidv4 } from 'uuid';
 import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
 import {
@@ -16,6 +17,12 @@ import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
+import {
+  useCreateAuthUserMutation,
+  CreateAuthUserMutationVariables,
+  useExistAuthUserLazyQuery,
+  useUserLazyQuery,
+} from 'queries/api/index';
 
 const auth = new Auth();
 
@@ -35,6 +42,57 @@ const nonceGen = (length: number) => {
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
 const useFirebaseAuth = (errorCallback?: () => void) => {
+  const [getUser] = useUserLazyQuery({
+    onCompleted: (data) => {
+      setUser((s) => ({
+        ...s,
+        id: data?.user?.id || '',
+        userID: data?.user?.id || '',
+        displayName: data?.user?.displayName || '',
+        image: data?.user?.image || '',
+      }));
+    },
+  });
+
+  const [createAuthUserMutation] = useCreateAuthUserMutation({
+    async onCompleted(data) {
+      const id = data.createAuthUser.id;
+
+      setUser({
+        id,
+        userID: '',
+        displayName: '',
+        image: '',
+      });
+    },
+    async onError() {
+      // エラーになった場合はログアウトさせる
+      Alert.alert('エラー', 'ログインに失敗した');
+      onLogout();
+    },
+  });
+
+  const [getExistAuthUser] = useExistAuthUserLazyQuery({
+    onCompleted: (data) => {
+      if (data.existAuthUser.exist === false) {
+        const u = uuidv4();
+        const variables: CreateAuthUserMutationVariables = {
+          input: {
+            id: u,
+            isNewUser: true,
+          },
+        };
+
+        createAuthUserMutation({
+          variables,
+        });
+      } else {
+        // ユーザー情報を設定
+        getUser();
+      }
+    },
+  });
+
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
   const setUser = useSetRecoilState(userState);
@@ -55,6 +113,8 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
     async (refresh = false) => {
       const idToken = await auth.setSession(refresh);
 
+      getExistAuthUser();
+
       if (idToken) {
         const authUID = await getItem(storageKey.AUTH_UID_KEY);
         setAuthUser({
@@ -64,7 +124,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser]
+    [setAuthUser, getExistAuthUser]
   );
 
   const firebaseLogin = useCallback(
@@ -78,7 +138,9 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
       console.log(data);
 
-      return await setSession(true);
+      const ok = await setSession(true);
+
+      return ok;
     },
     [setSession]
   );
@@ -90,7 +152,6 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
       firebaseLogin(credential);
     } else if (response?.type === 'error') {
       console.log('error:', response);
-
       Alert.alert('ログインに失敗しました');
       errorCallback?.();
     }
@@ -121,8 +182,9 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
     } catch (e) {
       console.log('error:', e);
       Alert.alert('ログインに失敗しました');
+      errorCallback?.();
     }
-  }, [firebaseLogin]);
+  }, [firebaseLogin, errorCallback]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();
