@@ -22,7 +22,7 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = (props) => {
   const setHomeState = useSetRecoilState(homeState);
 
-  const { setup, onAppleLogin, onGoogleLogin } = useFirebaseAuth(() =>
+  const { setupAuth, onAppleLogin, onGoogleLogin } = useFirebaseAuth(() =>
     props.setCreate(false)
   );
 
@@ -49,7 +49,7 @@ const Connected: React.FC<Props> = (props) => {
     props.setCreate(false);
   }, [setHomeState, props]);
 
-  if (!setup) {
+  if (!setupAuth) {
     return null;
   }
 

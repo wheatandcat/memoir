@@ -114,7 +114,7 @@ const WithProvider = () => {
           <Stack.Screen
             name="SettingLicence"
             component={SettingLicence}
-            options={HomeScreenOption()}
+            options={HomeScreenOption('ソフトウェアライセンス')}
           />
           <Stack.Screen
             name="SettingMemoir"

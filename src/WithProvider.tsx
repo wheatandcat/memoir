@@ -2,12 +2,13 @@ import React, { useState, useCallback } from 'react';
 import useUser from 'hooks/useUser';
 import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
+import AppLoading from 'components/templates/App/Loading';
 import Router from './Router';
 //import { storageKey, removeItem } from 'lib/storage';
 
 const WithProvider = () => {
-  useFirebaseAuth();
-  const { loading, user, onSaveWhenNotLogin } = useUser();
+  const { setupAuth } = useFirebaseAuth();
+  const { setupUser, user, onSaveWhenNotLogin } = useUser();
   const [create, setCreate] = useState(false);
 
   /*
@@ -22,8 +23,8 @@ const WithProvider = () => {
     onSaveWhenNotLogin();
   }, [onSaveWhenNotLogin]);
 
-  if (loading) {
-    return null;
+  if (!setupUser && !setupAuth) {
+    return <AppLoading />;
   }
 
   if (!user.id || create) {

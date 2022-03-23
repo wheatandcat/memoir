@@ -10,7 +10,7 @@ import { storageKey, setItem } from 'lib/storage';
 import usePrevious from 'hooks/usePrevious';
 
 const useUser = () => {
-  const [loading, setLoading] = useState(true);
+  const [setupUser, setSetupUser] = useState(false);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
   const [getUser] = useUserLazyQuery({
@@ -22,7 +22,7 @@ const useUser = () => {
         displayName: data?.user?.displayName || '',
         image: data?.user?.image || '',
       }));
-      setLoading(false);
+      setSetupUser(true);
     },
   });
 
@@ -50,7 +50,7 @@ const useUser = () => {
 
   const setup = useCallback(() => {
     if (!user.id && !userID.contents) {
-      setLoading(false);
+      setSetupUser(true);
       return;
     }
 
@@ -75,7 +75,7 @@ const useUser = () => {
 
   return {
     user,
-    loading,
+    setupUser,
     onSaveWhenNotLogin,
   };
 };

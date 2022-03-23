@@ -4,11 +4,7 @@ import * as Google from 'expo-auth-session/providers/google';
 import { v4 as uuidv4 } from 'uuid';
 import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
-import {
-  useRecoilValueLoadable,
-  useRecoilState,
-  useSetRecoilState,
-} from 'recoil';
+import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
@@ -42,6 +38,18 @@ const nonceGen = (length: number) => {
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
 const useFirebaseAuth = (errorCallback?: () => void) => {
+  const [setup, setSetup] = useState(false);
+  const authUserID = useRecoilValueLoadable(existAuthUserID);
+  const [authUser, setAuthUser] = useRecoilState(authUserState);
+  const [user, setUser] = useRecoilState(userState);
+
+  useEffect(() => {
+    if (user.id) {
+      // Auth認証後はuserの設定が完了した際にsetupを完了にする
+      setSetup(true);
+    }
+  }, [user.id]);
+
   const [getUser] = useUserLazyQuery({
     onCompleted: (data) => {
       setUser((s) => ({
@@ -64,6 +72,8 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
         displayName: '',
         image: '',
       });
+
+      setSetup(true);
     },
     async onError() {
       // エラーになった場合はログアウトさせる
@@ -92,12 +102,6 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
       }
     },
   });
-
-  const authUserID = useRecoilValueLoadable(existAuthUserID);
-  const [authUser, setAuthUser] = useRecoilState(authUserState);
-  const setUser = useSetRecoilState(userState);
-
-  const [setup, setSetup] = useState(false);
 
   const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
     responseType: ResponseType.IdToken,
@@ -209,21 +213,23 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      setSetup(true);
-      if (!user) {
+      if (user) {
+        setSession(true);
+      } else {
         // ログアウトした時
         setAuthUser({
           uid: null,
         });
         setUser({ id: null, userID: '', displayName: '', image: '' });
+        setSetup(true);
       }
     });
 
     return () => unsubscribe();
-  }, [setUser, setAuthUser]);
+  }, [setUser, setAuthUser, setSession]);
 
   return {
-    setup,
+    setupAuth: setup,
     request,
     onAppleLogin,
     onGoogleLogin,

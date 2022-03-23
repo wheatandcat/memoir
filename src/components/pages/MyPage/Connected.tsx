@@ -30,7 +30,7 @@ export type ConnectedType = {
 };
 
 const Connected: React.FC<Props> = () => {
-  const { setup, onLogout } = useFirebaseAuth();
+  const { setupAuth, onLogout } = useFirebaseAuth();
   const authUser = useRecoilValue(authUserState);
   const userQuery = useUserQuery();
   const navigation = useNavigation<MyPageScreenNavigationProp>();
@@ -103,7 +103,7 @@ const Connected: React.FC<Props> = () => {
     [deleteRelationshipMutation]
   );
 
-  if (!setup || userQuery.loading) {
+  if (!setupAuth || userQuery.loading) {
     return null;
   }
 

@@ -162,7 +162,7 @@ const SettingModal: React.FC<Props> = (props) => {
         <Divider my={3} />
         <TouchableOpacity style={styles.menuText} onPress={onLicence}>
           <View>
-            <Text>著作権</Text>
+            <Text>ライセンス</Text>
           </View>
         </TouchableOpacity>
         <Divider my={3} />
