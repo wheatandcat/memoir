@@ -13,6 +13,14 @@ const useUser = () => {
   const [setupUser, setSetupUser] = useState(false);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
+
+  useEffect(() => {
+    if (user.id) {
+      // userの設定が完了した際にsetupを完了にする
+      setSetupUser(true);
+    }
+  }, [user.id]);
+
   const [getUser] = useUserLazyQuery({
     onCompleted: (data) => {
       setUser((s) => ({
@@ -22,7 +30,6 @@ const useUser = () => {
         displayName: data?.user?.displayName || '',
         image: data?.user?.image || '',
       }));
-      setSetupUser(true);
     },
   });
 

@@ -37,7 +37,7 @@ const nonceGen = (length: number) => {
 
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
-const useFirebaseAuth = (errorCallback?: () => void) => {
+const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   const [setup, setSetup] = useState(false);
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
@@ -45,7 +45,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
   useEffect(() => {
     if (user.id) {
-      // Auth認証後はuserの設定が完了した際にsetupを完了にする
+      // Auth認証後にuserの設定が完了した際にsetupを完了にする
       setSetup(true);
     }
   }, [user.id]);
@@ -150,7 +150,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
   );
 
   useEffect(() => {
-    if (response?.type === 'success') {
+    if (response?.type === 'success' && !user.id) {
       const { id_token } = response.params;
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebaseLogin(credential);
@@ -159,7 +159,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
       Alert.alert('ログインに失敗しました');
       errorCallback?.();
     }
-  }, [response, firebaseLogin, errorCallback]);
+  }, [response, firebaseLogin, errorCallback, user.id]);
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
@@ -212,21 +212,24 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
   }, [authUserID, setAuthUser, authUser.uid]);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
+    const unsubscribe = firebase.auth().onAuthStateChanged((aUser) => {
+      if (aUser) {
         setSession(true);
       } else {
-        // ログアウトした時
-        setAuthUser({
-          uid: null,
-        });
-        setUser({ id: null, userID: '', displayName: '', image: '' });
+        if (!login) {
+          // ログアウトした時
+          setAuthUser({
+            uid: null,
+          });
+          setUser({ id: null, userID: '', displayName: '', image: '' });
+        }
+
         setSetup(true);
       }
     });
 
     return () => unsubscribe();
-  }, [setUser, setAuthUser, setSession]);
+  }, [setUser, setAuthUser, setSession, login]);
 
   return {
     setupAuth: setup,

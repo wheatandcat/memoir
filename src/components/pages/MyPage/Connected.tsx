@@ -30,7 +30,7 @@ export type ConnectedType = {
 };
 
 const Connected: React.FC<Props> = () => {
-  const { setupAuth, onLogout } = useFirebaseAuth();
+  const { setupAuth, onLogout } = useFirebaseAuth(true);
   const authUser = useRecoilValue(authUserState);
   const userQuery = useUserQuery();
   const navigation = useNavigation<MyPageScreenNavigationProp>();

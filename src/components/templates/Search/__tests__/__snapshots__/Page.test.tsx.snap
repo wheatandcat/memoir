@@ -31,11 +31,11 @@ exports[`components/templates/Search/Page.tsx 正常にrenderすること 1`] = 
         </Text>
       </View>
       <Memo(InputDate)
-        endDate={2022-03-14T15:00:00.000Z}
+        endDate={2022-03-23T15:00:00.000Z}
         error={false}
         onChangeEndDate={[Function]}
         onChangeStartDate={[Function]}
-        startDate={2022-03-08T15:00:00.000Z}
+        startDate={2022-03-17T15:00:00.000Z}
       />
       <View
         pb={2}

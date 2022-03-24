@@ -22,8 +22,9 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = (props) => {
   const setHomeState = useSetRecoilState(homeState);
 
-  const { setupAuth, onAppleLogin, onGoogleLogin } = useFirebaseAuth(() =>
-    props.setCreate(false)
+  const { setupAuth, onAppleLogin, onGoogleLogin } = useFirebaseAuth(
+    false,
+    () => props.setCreate(false)
   );
 
   const setHomeItemsState = useSetRecoilState(homeItemsState);

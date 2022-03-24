@@ -23,7 +23,7 @@ const WithProvider = () => {
     onSaveWhenNotLogin();
   }, [onSaveWhenNotLogin]);
 
-  if (!setupUser && !setupAuth) {
+  if (!setupUser || !setupAuth) {
     return <AppLoading />;
   }
 
