@@ -19,6 +19,7 @@ import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelati
 import Search from 'components/pages/Search';
 import Privacy from 'components/pages/Privacy';
 import Terms from 'components/pages/Terms';
+import Contact from 'components/pages/Contact';
 
 const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
@@ -130,6 +131,11 @@ const WithProvider = () => {
             name="Terms"
             component={Terms}
             options={HomeScreenOption('利用規約')}
+          />
+          <Stack.Screen
+            name="Contact"
+            component={Contact}
+            options={HomeScreenOption('フィードバックを送信')}
           />
         </Stack.Group>
       </Stack.Navigator>

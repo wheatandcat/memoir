@@ -37,4 +37,5 @@ export type RootStackParamList = {
   Search: undefined;
   Privacy: undefined;
   Terms: undefined;
+  Contact: undefined;
 };

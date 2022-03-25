@@ -50,7 +50,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     }
   }, [user.id]);
 
-  const [getUser] = useUserLazyQuery({
+  const [getUser, userQuery] = useUserLazyQuery({
     onCompleted: (data) => {
       setUser((s) => ({
         ...s,
@@ -82,7 +82,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     },
   });
 
-  const [getExistAuthUser] = useExistAuthUserLazyQuery({
+  const [getExistAuthUser, existAuthUserQuery] = useExistAuthUserLazyQuery({
     onCompleted: (data) => {
       if (data.existAuthUser.exist === false) {
         const u = uuidv4();
@@ -198,7 +198,10 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       uid: null,
     });
     setUser({ id: null, userID: '', displayName: '', image: '' });
-  }, [setAuthUser, setUser]);
+
+    userQuery.client?.clearStore();
+    existAuthUserQuery.client?.clearStore();
+  }, [setAuthUser, setUser, userQuery.client, existAuthUserQuery.client]);
 
   useEffect(() => {
     if (authUser.uid) {

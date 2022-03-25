@@ -4,13 +4,14 @@ import 'dayjs/locale/ja';
 import { appConfig } from './appConfig';
 
 const version: string = '1.0.0';
+const unix = dayjs().unix().toString();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'memoir',
   scheme: 'memoir',
   slug: 'memoir',
-  version: '1.0.0',
+  version,
   orientation: 'portrait',
   icon: './assets/ios-icon.png',
   splash: {
@@ -33,7 +34,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     supportsTablet: true,
     usesAppleSignIn: true,
     userInterfaceStyle: 'automatic',
-    buildNumber: dayjs().unix().toString(),
+    buildNumber: unix,
     bundleIdentifier: 'com.wheatandcat.memoir',
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
@@ -46,7 +47,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   android: {
     ...appConfig().android,
     package: 'com.wheatandcat.memoir',
-    versionCode: Number(version.replace('.', '')),
+    permissions: ['CAMERA', 'READ_EXTERNAL_STORAGE'],
+    versionCode: Number(unix.substring(0, unix.length - 3)),
     adaptiveIcon: {
       backgroundColor: '#E3C95D',
       foregroundImage: './assets/android-icon.png',
