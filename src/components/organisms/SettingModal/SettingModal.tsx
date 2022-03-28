@@ -62,6 +62,12 @@ const SettingModal: React.FC<Props> = (props) => {
     navigation.navigate('Terms');
   }, [navigation, props]);
 
+  const onContact = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('Contact');
+  }, [navigation, props]);
+
   const onLogout = useCallback(async () => {
     await removeItem(storageKey.USER_ID_KEY);
     await removeItem(storageKey.AUTH_UID_KEY);
@@ -148,6 +154,12 @@ const SettingModal: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
         <Divider my={3} />
+        <TouchableOpacity style={styles.menuText} onPress={onContact}>
+          <View>
+            <Text>フィードバックを送信</Text>
+          </View>
+        </TouchableOpacity>
+        <Divider my={3} />
         <TouchableOpacity style={styles.menuText} onPress={onTerms}>
           <View>
             <Text>利用規約</Text>
@@ -162,7 +174,7 @@ const SettingModal: React.FC<Props> = (props) => {
         <Divider my={3} />
         <TouchableOpacity style={styles.menuText} onPress={onLicence}>
           <View>
-            <Text>著作権</Text>
+            <Text>ライセンス</Text>
           </View>
         </TouchableOpacity>
         <Divider my={3} />

@@ -29,8 +29,8 @@ jobs:
         run: yarn install
       - name: Create .env file
         run: echo $APP_CONFIG | base64 --decode -i > ./.env
-      - name: Create ./scripts/appConfig.js file
-        run: echo $EXPO_CONFIG | base64 --decode -i > ./scripts/appConfig.js
+      - name: Create ./appConfig.js file
+        run: echo $EXPO_CONFIG | base64 --decode -i > ./appConfig.js
       - name: codegen
         run: yarn codegen
       - uses: expo/expo-github-action@v5

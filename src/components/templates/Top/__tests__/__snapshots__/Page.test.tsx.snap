@@ -167,7 +167,11 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
               </Text>
             </View>
             <View
-              style={Object {}}
+              style={
+                Object {
+                  "top": 0,
+                }
+              }
             >
               <ForwardRef
                 onPress={[MockFunction]}

@@ -1,50 +1,41 @@
 import React, { useState, useCallback } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useUser from 'hooks/useUser';
 import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
-import { authUserState, homeState } from 'store/atoms';
-import Intro from 'components/pages/Intro/Intro';
+import AppLoading from 'components/templates/App/Loading';
 import Router from './Router';
+//import { storageKey, removeItem } from 'lib/storage';
 
 const WithProvider = () => {
-  useFirebaseAuth();
-  const { loading, user, onSaveWhenNotLogin } = useUser();
+  const { setupAuth } = useFirebaseAuth();
+  const { setupUser, user, onSaveWhenNotLogin } = useUser();
   const [create, setCreate] = useState(false);
-  const setHomeState = useSetRecoilState(homeState);
 
-  const authUser = useRecoilValue(authUserState);
-
-  const onCreate = useCallback(
-    (creating: boolean) => {
-      setHomeState({
-        openAddItemModal: true,
-      });
-
-      setCreate(creating);
-    },
-    [setHomeState]
-  );
+  /*
+  removeItem(storageKey.USER_ID_KEY);
+  removeItem(storageKey.AUTH_UID_KEY);
+  removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+  removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+  */
 
   const onSkip = useCallback(() => {
     setCreate(true);
     onSaveWhenNotLogin();
   }, [onSaveWhenNotLogin]);
 
-  if (loading) {
-    return null;
+  if (!setupUser || !setupAuth) {
+    return <AppLoading />;
   }
 
-  if (create) {
-    if (!user.id && !authUser.uid) {
-      return null;
-    }
-
-    return <Intro onFinish={() => onCreate(false)} />;
-  }
-
-  if (!user.id && !authUser.uid) {
-    return <Top onSkip={onSkip} onCreate={onCreate} />;
+  if (!user.id || create) {
+    return (
+      <Top
+        onSkip={onSkip}
+        setCreate={setCreate}
+        create={create}
+        isExistUser={!!user.id}
+      />
+    );
   }
 
   return <Router />;

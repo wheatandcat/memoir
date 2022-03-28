@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   inputText: {
-    width: '80%',
+    width: '70%',
     marginVertical: theme().space(2),
   },
   inputButton: {
-    width: '20%',
+    width: '30%',
     margin: theme().space(2),
   },
 });

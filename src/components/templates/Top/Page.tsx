@@ -1,5 +1,10 @@
 import React, { memo } from 'react';
-import { StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  Platform,
+} from 'react-native';
 import { ConnectedType } from 'components/pages/Top/Connected';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
@@ -147,7 +152,9 @@ const styles = StyleSheet.create({
   login: {
     bottom: theme().space(1),
   },
-  loginText: {},
+  loginText: {
+    top: Platform.OS === 'ios' ? 0 : theme().space(2) + 3,
+  },
 });
 
 export default memo(Page);

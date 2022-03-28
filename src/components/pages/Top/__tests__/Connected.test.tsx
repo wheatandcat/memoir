@@ -7,7 +7,9 @@ import * as queries from 'queries/api/index';
 
 const propsData = (): Props => ({
   onSkip: jest.fn(),
-  onCreate: jest.fn(),
+  setCreate: jest.fn(),
+  create: false,
+  isExistUser: false,
 });
 
 describe('components/pages/Top/Connected.tsx', () => {

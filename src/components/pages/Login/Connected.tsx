@@ -15,7 +15,8 @@ import {
 type Props = {};
 
 const Connected: React.FC<Props> = () => {
-  const { setup, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth();
+  const { setupAuth, onAppleLogin, onGoogleLogin, onLogout } =
+    useFirebaseAuth(true);
   const { refetch } = useHomeItems();
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
@@ -51,7 +52,7 @@ const Connected: React.FC<Props> = () => {
     }
   }, [authenticated, createAuthUser]);
 
-  if (!setup) {
+  if (!setupAuth) {
     return null;
   }
 

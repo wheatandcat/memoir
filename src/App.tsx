@@ -17,6 +17,7 @@ import useUpdateExpo from 'hooks/useUpdateExpo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import compareVersions from 'compare-versions';
+import AppLoading from 'components/templates/App/Loading';
 import WithProvider from './WithProvider';
 
 Sentry.init({
@@ -91,7 +92,7 @@ function App() {
   }, [handleUpdate]);
 
   if (!client) {
-    return null;
+    return <AppLoading />;
   }
 
   if (appConfig.maintenance) {

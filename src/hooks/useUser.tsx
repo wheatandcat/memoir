@@ -1,21 +1,38 @@
 import { useEffect, useCallback, useState } from 'react';
-import { useRecoilValueLoadable, useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import * as Sentry from 'sentry-expo';
 import { existUserID } from 'store/selectors';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
-import { userState, authUserState } from 'store/atoms';
+import { userState } from 'store/atoms';
 import { useCreateUserMutation, useUserLazyQuery } from 'queries/api/index';
 import { storageKey, setItem } from 'lib/storage';
 import usePrevious from 'hooks/usePrevious';
 
 const useUser = () => {
-  const [loading, setLoading] = useState(true);
+  const [setupUser, setSetupUser] = useState(false);
   const [user, setUser] = useRecoilState(userState);
   const userID = useRecoilValueLoadable(existUserID);
-  const authUser = useRecoilValue(authUserState);
-  const [getUser, userUserQuery] = useUserLazyQuery();
-  const prevUserUserQueryLoading = usePrevious(userUserQuery.loading);
+
+  useEffect(() => {
+    if (user.id) {
+      // userの設定が完了した際にsetupを完了にする
+      setSetupUser(true);
+    }
+  }, [user.id]);
+
+  const [getUser] = useUserLazyQuery({
+    onCompleted: (data) => {
+      setUser((s) => ({
+        ...s,
+        id: data?.user?.id || '',
+        userID: data?.user?.id || '',
+        displayName: data?.user?.displayName || '',
+        image: data?.user?.image || '',
+      }));
+    },
+  });
+
   const prevUserID = usePrevious(user.id);
 
   const [createUserMutation] = useCreateUserMutation({
@@ -39,35 +56,19 @@ const useUser = () => {
   }, [createUserMutation]);
 
   const setup = useCallback(() => {
-    if (!user.id && !userID.contents && !authUser.uid) {
-      setLoading(false);
+    if (!user.id && !userID.contents) {
+      setSetupUser(true);
       return;
     }
 
     getUser();
-  }, [user.id, getUser, userID.contents, authUser.uid]);
+  }, [user.id, getUser, userID.contents]);
 
   useEffect(() => {
     if (userID.state === 'hasValue') {
       setup();
     }
   }, [userID, setup]);
-
-  useEffect(() => {
-    if (prevUserUserQueryLoading && !userUserQuery.loading) {
-      if (userUserQuery.data?.user?.id) {
-        setUser((s) => ({
-          ...s,
-          id: userUserQuery.data?.user?.id || '',
-          userID: userUserQuery.data?.user?.id || '',
-          displayName: userUserQuery.data?.user?.displayName || '',
-          image: userUserQuery.data?.user?.image || '',
-        }));
-
-        setLoading(false);
-      }
-    }
-  }, [userUserQuery, setUser, prevUserUserQueryLoading]);
 
   useEffect(() => {
     if (user.id) {
@@ -81,7 +82,7 @@ const useUser = () => {
 
   return {
     user,
-    loading,
+    setupUser,
     onSaveWhenNotLogin,
   };
 };

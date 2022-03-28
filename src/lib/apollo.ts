@@ -23,6 +23,8 @@ const makeApolloClient = async () => {
     const param: Param = {};
     const token = await auth.getIdToken();
 
+    console.log('token:', token);
+
     if (token) {
       param.Authorization = `Bearer ${token}`;
     } else {

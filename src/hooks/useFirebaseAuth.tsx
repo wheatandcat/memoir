@@ -1,13 +1,10 @@
 import * as AppleAuthentication from 'expo-apple-authentication';
 import * as WebBrowser from 'expo-web-browser';
 import * as Google from 'expo-auth-session/providers/google';
+import { v4 as uuidv4 } from 'uuid';
 import { ResponseType } from 'expo-auth-session';
 import * as Crypto from 'expo-crypto';
-import {
-  useRecoilValueLoadable,
-  useRecoilState,
-  useSetRecoilState,
-} from 'recoil';
+import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import firebase from 'lib/system/firebase';
@@ -16,6 +13,12 @@ import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
+import {
+  useCreateAuthUserMutation,
+  CreateAuthUserMutationVariables,
+  useExistAuthUserLazyQuery,
+  useUserLazyQuery,
+} from 'queries/api/index';
 
 const auth = new Auth();
 
@@ -34,25 +37,96 @@ const nonceGen = (length: number) => {
 
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
-const useFirebaseAuth = (errorCallback?: () => void) => {
+const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
+  const [setup, setSetup] = useState(false);
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
-  const setUser = useSetRecoilState(userState);
+  const [user, setUser] = useRecoilState(userState);
 
-  const [setup, setSetup] = useState(false);
+  useEffect(() => {
+    if (user.id) {
+      // Auth認証後にuserの設定が完了した際にsetupを完了にする
+      setSetup(true);
+    }
+  }, [user.id]);
 
-  const [request, response, promptAsync] = Google.useIdTokenAuthRequest({
-    responseType: ResponseType.IdToken,
-    expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
+  const [getUser, userQuery] = useUserLazyQuery({
+    onCompleted: (data) => {
+      setUser((s) => ({
+        ...s,
+        id: data?.user?.id || '',
+        userID: data?.user?.id || '',
+        displayName: data?.user?.displayName || '',
+        image: data?.user?.image || '',
+      }));
+    },
   });
 
-  const onGoogleLogin = useCallback(() => {
-    promptAsync();
+  const [createAuthUserMutation] = useCreateAuthUserMutation({
+    async onCompleted(data) {
+      const id = data.createAuthUser.id;
+
+      setUser({
+        id,
+        userID: '',
+        displayName: '',
+        image: '',
+      });
+
+      setSetup(true);
+    },
+    async onError() {
+      // エラーになった場合はログアウトさせる
+      Alert.alert('エラー', 'ログインに失敗した');
+      onLogout();
+    },
+  });
+
+  const [getExistAuthUser, existAuthUserQuery] = useExistAuthUserLazyQuery({
+    onCompleted: (data) => {
+      if (data.existAuthUser.exist === false) {
+        const u = uuidv4();
+        const variables: CreateAuthUserMutationVariables = {
+          input: {
+            id: u,
+            isNewUser: true,
+          },
+        };
+
+        createAuthUserMutation({
+          variables,
+        });
+      } else {
+        // ユーザー情報を設定
+        getUser();
+      }
+    },
+  });
+
+  const authParam: Partial<Google.GoogleAuthRequestConfig> = {
+    responseType: ResponseType.IdToken,
+    clientId: process.env.GOOGLE_CLIENT_ID,
+    expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
+  };
+
+  if (process.env.ENV === 'production') {
+    authParam.androidClientId = process.env.ANDROID_GOOGLE_CLIENT_ID;
+  }
+
+  console.log('authParam:', authParam);
+
+  const [request, response, promptAsync] =
+    Google.useIdTokenAuthRequest(authParam);
+
+  const onGoogleLogin = useCallback(async () => {
+    await promptAsync();
   }, [promptAsync]);
 
   const setSession = useCallback(
     async (refresh = false) => {
       const idToken = await auth.setSession(refresh);
+
+      getExistAuthUser();
 
       if (idToken) {
         const authUID = await getItem(storageKey.AUTH_UID_KEY);
@@ -63,7 +137,7 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser]
+    [setAuthUser, getExistAuthUser]
   );
 
   const firebaseLogin = useCallback(
@@ -77,23 +151,24 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
 
       console.log(data);
 
-      return await setSession(true);
+      const ok = await setSession(true);
+
+      return ok;
     },
     [setSession]
   );
 
   useEffect(() => {
-    if (response?.type === 'success') {
+    if (response?.type === 'success' && !user.id) {
       const { id_token } = response.params;
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebaseLogin(credential);
     } else if (response?.type === 'error') {
       console.log('error:', response);
-
       Alert.alert('ログインに失敗しました');
       errorCallback?.();
     }
-  }, [response, firebaseLogin, errorCallback]);
+  }, [response, firebaseLogin, errorCallback, user.id]);
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
@@ -120,8 +195,9 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
     } catch (e) {
       console.log('error:', e);
       Alert.alert('ログインに失敗しました');
+      errorCallback?.();
     }
-  }, [firebaseLogin]);
+  }, [firebaseLogin, errorCallback]);
 
   const onLogout = useCallback(async () => {
     await auth.logout();
@@ -131,7 +207,10 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
       uid: null,
     });
     setUser({ id: null, userID: '', displayName: '', image: '' });
-  }, [setAuthUser, setUser]);
+
+    userQuery.client?.clearStore();
+    existAuthUserQuery.client?.clearStore();
+  }, [setAuthUser, setUser, userQuery.client, existAuthUserQuery.client]);
 
   useEffect(() => {
     if (authUser.uid) {
@@ -145,22 +224,27 @@ const useFirebaseAuth = (errorCallback?: () => void) => {
   }, [authUserID, setAuthUser, authUser.uid]);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
-      setSetup(true);
-      if (!user) {
-        // ログアウトした時
-        setAuthUser({
-          uid: null,
-        });
-        setUser({ id: null, userID: '', displayName: '', image: '' });
+    const unsubscribe = firebase.auth().onAuthStateChanged((aUser) => {
+      if (aUser) {
+        setSession(true);
+      } else {
+        if (!login) {
+          // ログアウトした時
+          setAuthUser({
+            uid: null,
+          });
+          setUser({ id: null, userID: '', displayName: '', image: '' });
+        }
+
+        setSetup(true);
       }
     });
 
     return () => unsubscribe();
-  }, [setUser, setAuthUser]);
+  }, [setUser, setAuthUser, setSession, login]);
 
   return {
-    setup,
+    setupAuth: setup,
     request,
     onAppleLogin,
     onGoogleLogin,

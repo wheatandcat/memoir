@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#F2F2F2",
+      "height": "100%",
+      "paddingTop": 32,
+    }
+  }
+>
+  <View
+    pb={2}
+    pt={0}
+    style={
+      Object {
+        "paddingHorizontal": 16,
+        "paddingVertical": 4,
+      }
+    }
+  >
+    <Text
+      color="secondaryLight"
+      fontFamily="RobotoCondensed-Bold"
+      size="sm"
+      variants="body"
+    >
+      コメント
+    </Text>
+  </View>
+  <TextInput
+    allowFontScaling={true}
+    autoCapitalize="none"
+    autoFocus={true}
+    blurOnSubmit={false}
+    maxLength={300}
+    multiline={true}
+    onChangeText={[MockFunction]}
+    rejectResponderTermination={true}
+    style={
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderBottomWidth": 0.5,
+        "borderColor": "#5E5166",
+        "borderTopWidth": 0.5,
+        "color": "#362740",
+        "fontWeight": "bold",
+        "height": 250,
+        "lineHeight": 20,
+        "paddingBottom": 4,
+        "paddingHorizontal": 16,
+        "paddingTop": 8,
+      }
+    }
+    underlineColorAndroid="transparent"
+  />
+</View>
+`;

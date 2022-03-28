@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/Contact/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Page)
+  loading={false}
+  onChangeText={[Function]}
+  onContact={[Function]}
+  text=""
+  userID=""
+/>
+`;
