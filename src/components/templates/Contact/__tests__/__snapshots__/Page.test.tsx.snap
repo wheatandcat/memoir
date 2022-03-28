@@ -11,49 +11,8 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
   }
 >
   <View
-    style={
-      Object {
-        "paddingHorizontal": 16,
-        "paddingVertical": 4,
-      }
-    }
-  >
-    <Text
-      color="secondaryLight"
-      fontFamily="RobotoCondensed-Bold"
-      size="sm"
-      variants="body"
-    >
-      ユーザーID
-    </Text>
-  </View>
-  <View
-    style={
-      Object {
-        "backgroundColor": "#FFFFFF",
-        "borderBottomWidth": 0.5,
-        "borderColor": "#5E5166",
-        "borderTopWidth": 0.5,
-        "paddingHorizontal": 16,
-        "paddingVertical": 16,
-      }
-    }
-  >
-    <ForwardRef
-      onPress={[Function]}
-    >
-      <Text
-        fontFamily="RobotoCondensed-Bold"
-        size="sm"
-        variants="body"
-      >
-        abc
-      </Text>
-    </ForwardRef>
-  </View>
-  <View
     pb={2}
-    pt={4}
+    pt={0}
     style={
       Object {
         "paddingHorizontal": 16,
@@ -74,9 +33,10 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
     allowFontScaling={true}
     autoCapitalize="none"
     autoFocus={true}
+    blurOnSubmit={false}
     maxLength={300}
     multiline={true}
-    onChangeText={[Function]}
+    onChangeText={[MockFunction]}
     rejectResponderTermination={true}
     style={
       Object {
@@ -95,25 +55,5 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
     }
     underlineColorAndroid="transparent"
   />
-  <View
-    mx={2}
-    style={
-      Object {
-        "alignItems": "center",
-        "justifyContent": "center",
-        "paddingVertical": 32,
-      }
-    }
-  >
-    <Button
-      disabled={true}
-      fontFamily="NotoSansJP-Bold"
-      loading={false}
-      onPress={[Function]}
-      size="base"
-      title="送信する"
-      width={120}
-    />
-  </View>
 </View>
 `;

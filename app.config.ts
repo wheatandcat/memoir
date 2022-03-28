@@ -9,7 +9,7 @@ const unix = dayjs().unix().toString();
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: 'memoir',
-  scheme: 'memoir',
+  scheme: 'com.wheatandcat.memoir',
   slug: 'memoir',
   version,
   orientation: 'portrait',

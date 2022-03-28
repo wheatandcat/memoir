@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 import * as Clipboard from 'expo-clipboard';
 import { ConnectedType } from 'components/pages/Contact/Connected';
@@ -6,20 +6,19 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import { TextInput as RNTextInput } from 'react-native';
-import Button from 'components/atoms/Button';
 
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
-  const [text, setText] = useState('');
-
   const onCopyUserID = useCallback(() => {
     Clipboard.setString(props.userID);
   }, [props.userID]);
 
+  const debug = false;
+
   return (
     <View style={styles.root}>
-      {true && (
+      {debug && (
         <>
           <View style={styles.title}>
             <Text color="secondaryLight" size="sm">
@@ -34,7 +33,7 @@ const Page: React.FC<Props> = (props) => {
         </>
       )}
 
-      <View style={styles.title} pt={4} pb={2}>
+      <View style={styles.title} pt={debug ? 4 : 0} pb={2}>
         <Text color="secondaryLight" size="sm">
           コメント
         </Text>
@@ -43,20 +42,11 @@ const Page: React.FC<Props> = (props) => {
         multiline
         style={styles.inputText}
         autoCapitalize="none"
-        onChangeText={setText}
+        onChangeText={props.onChangeText}
         maxLength={300}
         autoFocus
+        blurOnSubmit={false}
       />
-
-      <View mx={2} style={styles.button}>
-        <Button
-          title="送信する"
-          width={120}
-          disabled={text.length === 0 || props.loading}
-          loading={props.loading}
-          onPress={() => props.onContact(text)}
-        />
-      </View>
     </View>
   );
 };
@@ -91,11 +81,6 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.background.light,
     lineHeight: 20,
     fontWeight: 'bold',
-  },
-  button: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingVertical: theme().space(4),
   },
 });
 
