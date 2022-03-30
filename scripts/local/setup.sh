@@ -2,4 +2,4 @@
 
 cp -r App.app.tsx App.tsx
 cp -r .env.development .env
-cp -r ./scripts/review/appConfig.js ./appConfig.js
+cp -r ./scripts/local/appConfig.js ./appConfig.js

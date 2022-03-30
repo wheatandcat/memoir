@@ -26,7 +26,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   notification: {
     icon: './assets/notification.png',
-    color: '#362740',
+    color: '#E3C95D',
   },
   assetBundlePatterns: ['**/*'],
   ios: {
@@ -41,13 +41,20 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       NSPhotoLibraryUsageDescription: 'ユーザーの画像設定に使用します',
       NSCameraUsageDescription:
         'ユーザーの画像設定のためにカメラを使用します。',
+      NSMicrophoneUsageDescription:
+        'ユーザーの画像設定のためにカメラを使用します。',
       CFBundleDevelopmentRegion: 'ja_JP',
     },
   },
   android: {
     ...appConfig().android,
     package: 'com.wheatandcat.memoir',
-    permissions: ['CAMERA', 'READ_EXTERNAL_STORAGE'],
+    permissions: [
+      'CAMERA',
+      'READ_EXTERNAL_STORAGE',
+      'WRITE_EXTERNAL_STORAGE',
+      'RECEIVE_BOOT_COMPLETED',
+    ],
     versionCode: Number(unix.substring(0, unix.length - 3)),
     adaptiveIcon: {
       backgroundColor: '#E3C95D',
