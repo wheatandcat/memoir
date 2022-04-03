@@ -105,19 +105,23 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const authParam: Partial<Google.GoogleAuthRequestConfig> = {
     responseType: ResponseType.IdToken,
-    clientId: process.env.GOOGLE_CLIENT_ID,
     expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
   };
 
   if (process.env.ENV === 'production') {
+    authParam.clientId = process.env.GOOGLE_CLIENT_ID;
     authParam.androidClientId = process.env.ANDROID_GOOGLE_CLIENT_ID;
   }
+
+  //console.log('authParam:', authParam);
 
   const [request, response, promptAsync] =
     Google.useIdTokenAuthRequest(authParam);
 
-  const onGoogleLogin = useCallback(async () => {
-    await promptAsync();
+  const onGoogleLogin = useCallback(() => {
+    console.log('onGoogleLogin');
+
+    promptAsync();
   }, [promptAsync]);
 
   const setSession = useCallback(
