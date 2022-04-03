@@ -113,8 +113,6 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     authParam.androidClientId = process.env.ANDROID_GOOGLE_CLIENT_ID;
   }
 
-  console.log('authParam:', authParam);
-
   const [request, response, promptAsync] =
     Google.useIdTokenAuthRequest(authParam);
 
