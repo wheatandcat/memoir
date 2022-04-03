@@ -51,6 +51,7 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
         "paddingBottom": 4,
         "paddingHorizontal": 16,
         "paddingTop": 8,
+        "textAlignVertical": "top",
       }
     }
     underlineColorAndroid="transparent"

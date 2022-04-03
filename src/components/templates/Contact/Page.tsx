@@ -81,6 +81,7 @@ const styles = StyleSheet.create({
     backgroundColor: theme().color.background.light,
     lineHeight: 20,
     fontWeight: 'bold',
+    textAlignVertical: 'top',
   },
 });
 
