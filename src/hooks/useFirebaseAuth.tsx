@@ -119,8 +119,6 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     Google.useIdTokenAuthRequest(authParam);
 
   const onGoogleLogin = useCallback(() => {
-    console.log('onGoogleLogin');
-
     promptAsync();
   }, [promptAsync]);
 

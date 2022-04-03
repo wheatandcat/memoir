@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { users } from '__mockData__/user';
 import Page, { Props } from '../Page';
+import mockdate from 'mockdate';
 
 const propsData = (): Props => ({
   users: users(),
@@ -9,6 +10,7 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/Search/Page.tsx', () => {
+  mockdate.set('2020-01-01 00:00:00');
   let wrapper: ShallowWrapper;
 
   beforeEach(() => {
