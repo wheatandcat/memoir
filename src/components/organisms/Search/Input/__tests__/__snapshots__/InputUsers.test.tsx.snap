@@ -3,13 +3,14 @@
 exports[`components/organisms/Search/Input/InputUsers.tsx 正常にrenderすること 1`] = `
 <View
   style={
-    Object {
-      "alignItems": "center",
-      "flexDirection": "row",
-      "flexWrap": "wrap",
-      "justifyContent": "center",
-      "width": "80%",
-    }
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "flexWrap": "wrap",
+        "width": "80%",
+      },
+    ]
   }
 >
   <View

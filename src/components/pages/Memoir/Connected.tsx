@@ -80,6 +80,7 @@ const Connected: React.FC<Props> = (props) => {
     variables: {
       input,
     },
+    fetchPolicy: 'network-only',
   });
 
   const { items, pageInfo, reset } = useItemsInPeriodPaging(queryResult, {

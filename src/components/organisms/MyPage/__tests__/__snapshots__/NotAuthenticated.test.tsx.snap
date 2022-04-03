@@ -21,9 +21,13 @@ exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderする�
     <View
       mt={4}
     >
-      <Memo(UserImage)
-        image=""
-      />
+      <ForwardRef
+        onPress={[MockFunction]}
+      >
+        <Memo(UserImage)
+          image=""
+        />
+      </ForwardRef>
     </View>
     <View
       m={4}

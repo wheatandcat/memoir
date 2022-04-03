@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import View from 'components/atoms/View';
 import { User } from 'queries/api/index';
 import UserButton, {
@@ -12,8 +12,14 @@ export type Props = {
 } & Pick<UserButtonProps, 'onAdd' | 'onRemove'>;
 
 const InputUsers: React.FC<Props> = (props) => {
+  const style: ViewStyle[] = [styles.users];
+
+  if (props.userIDList.length > 1) {
+    style.push(styles.userMulti);
+  }
+
   return (
-    <View style={styles.users}>
+    <View style={style}>
       {props.users.map((v) => (
         <View px={3} key={v.id}>
           <UserButton
@@ -31,11 +37,13 @@ const InputUsers: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   users: {
-    justifyContent: 'center',
     flexWrap: 'wrap',
     alignItems: 'center',
     flexDirection: 'row',
     width: '80%',
+  },
+  userMulti: {
+    justifyContent: 'center',
   },
 });
 
