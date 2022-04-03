@@ -183,7 +183,11 @@ const ScreenShot: React.FC<Props> = (props) => {
   return (
     <>
       <ScrollView style={styles.root}>
-        <ViewShot ref={viewShot} options={{ format: 'jpg' }}>
+        <ViewShot
+          ref={viewShot}
+          options={{ format: 'jpg' }}
+          style={styles.screen}
+        >
           <Header startDate={props.startDate} endDate={props.endDate} isTitle />
           {data.map((v, index) => (
             <RenderItem {...v} key={index} />
@@ -202,6 +206,9 @@ const styles = StyleSheet.create({
     flex: 1,
     width: '100%',
     paddingTop: theme().space(4),
+  },
+  screen: {
+    backgroundColor: theme().color.background.main,
   },
 });
 
