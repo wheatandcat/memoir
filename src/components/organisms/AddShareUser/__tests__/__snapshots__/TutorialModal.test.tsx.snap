@@ -13,14 +13,20 @@ exports[`components/organisms/AddShareUser/TutorialModal.tsx 正常にrenderす�
     style={
       Object {
         "backgroundColor": "#FFFFFF",
+        "width": "100%",
       }
     }
   >
     <Text
       fontFamily="RobotoCondensed-Bold"
+      lineHeight={24}
       variants="body"
     >
-      ここにテキストを挿入する
+      招待コードを作成して、達成したタスクをフレンドと共有しよう。
+      
+
+
+      招待コードを入力することで共有メンバーになれます。フレンドと一緒に一週間を振り返ろう！
     </Text>
   </View>
 </Modal>
