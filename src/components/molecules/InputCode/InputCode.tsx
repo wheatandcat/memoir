@@ -98,6 +98,7 @@ const InputCode: React.FC<Props> = (props) => {
           <TextInput
             autoFocus
             returnKeyType="done"
+            keyboardType="visible-password"
             blurOnSubmit
             ref={textInputRef}
             onFocus={handleFocus}

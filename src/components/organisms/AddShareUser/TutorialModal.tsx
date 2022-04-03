@@ -22,7 +22,10 @@ const TutorialModal: React.FC<Props> = (props) => {
       height={320}
     >
       <View style={styles.root}>
-        <Text>ここにテキストを挿入する</Text>
+        <Text lineHeight={24}>
+          招待コードを作成して、達成したタスクをフレンドと共有しよう。{'\n\n'}
+          招待コードを入力することで共有メンバーになれます。フレンドと一緒に一週間を振り返ろう！
+        </Text>
       </View>
     </Modal>
   );
@@ -31,6 +34,7 @@ const TutorialModal: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.light,
+    width: '100%',
   },
 });
 
