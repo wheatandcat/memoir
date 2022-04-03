@@ -31,7 +31,9 @@ const Authenticated: React.FC<Props> = (props) => {
     <View style={styles.root}>
       <View style={styles.user}>
         <View mt={4}>
-          <UserImage image={props.user.image} />
+          <TouchableOpacity onPress={props.onUpdateProfile}>
+            <UserImage image={props.user.image} />
+          </TouchableOpacity>
         </View>
         <View m={4}>
           <TouchableOpacity onPress={props.onUpdateProfile}>
