@@ -1,73 +1,69 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/organisms/Memoir/Card.tsx 正常にrenderすること 1`] = `
-<ForwardRef
-  onPress={[MockFunction]}
->
-  <View
-    style={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "row",
-        "marginBottom": 8,
-      }
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "flexDirection": "row",
+      "marginBottom": 8,
     }
+  }
+>
+  <View>
+    <Memo(Category)
+      categoryID={1}
+      onLoadEnd={[Function]}
+    />
+  </View>
+  <View
+    pl={3}
   >
-    <View>
-      <Memo(Category)
-        categoryID={1}
-        onLoadEnd={[Function]}
-      />
+    <View
+      style={
+        Array [
+          Object {},
+          Object {
+            "width": 620,
+          },
+        ]
+      }
+    >
+      <Text
+        ellipsizeMode="tail"
+        fontFamily="RobotoCondensed-Bold"
+        lineHeight={25}
+        numberOfLines={2}
+        variants="body"
+      >
+        title
+      </Text>
     </View>
     <View
-      pl={3}
-    >
-      <View
-        style={
-          Array [
-            Object {},
-            Object {
-              "width": 620,
-            },
-          ]
+      style={
+        Object {
+          "alignItems": "center",
+          "flexDirection": "row",
+          "paddingVertical": 8,
         }
+      }
+    >
+      <Memo(UserImage)
+        image=""
+        onLoadEnd={[Function]}
+        size={20}
+      />
+      <View
+        pl={2}
       >
         <Text
-          ellipsizeMode="tail"
           fontFamily="RobotoCondensed-Bold"
-          lineHeight={25}
-          numberOfLines={2}
-          variants="body"
+          variants="small"
         >
-          title
+          suzuki
         </Text>
-      </View>
-      <View
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "paddingVertical": 8,
-          }
-        }
-      >
-        <Memo(UserImage)
-          image=""
-          onLoadEnd={[Function]}
-          size={20}
-        />
-        <View
-          pl={2}
-        >
-          <Text
-            fontFamily="RobotoCondensed-Bold"
-            variants="small"
-          >
-            suzuki
-          </Text>
-        </View>
       </View>
     </View>
   </View>
-</ForwardRef>
+</View>
 `;

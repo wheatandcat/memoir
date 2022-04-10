@@ -10,6 +10,9 @@ exports[`components/organisms/Search/Input/InputUsers.tsx 正常にrenderする�
         "flexWrap": "wrap",
         "width": "80%",
       },
+      Object {
+        "justifyContent": "center",
+      },
     ]
   }
 >

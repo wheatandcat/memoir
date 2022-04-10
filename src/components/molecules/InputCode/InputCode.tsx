@@ -8,6 +8,7 @@ import {
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import Blinking from 'components/atoms/Animated/Blinking';
+import { useFocusEffect } from '@react-navigation/native';
 
 export type Props = {
   value: string;
@@ -25,6 +26,19 @@ const InputCode: React.FC<Props> = (props) => {
   const values = value.split('');
 
   const textInputRef = useRef<TextInput>(null);
+  const timeout = useRef<number | null>(null);
+
+  useFocusEffect(() => {
+    timeout.current = Number(
+      setTimeout(() => textInputRef.current?.focus(), 300)
+    );
+
+    return () => {
+      if (timeout.current) {
+        clearTimeout(timeout.current);
+      }
+    };
+  });
 
   const handlePress = useCallback(() => {
     textInputRef?.current?.focus();
@@ -96,7 +110,6 @@ const InputCode: React.FC<Props> = (props) => {
             );
           })}
           <TextInput
-            autoFocus
             returnKeyType="done"
             keyboardType="visible-password"
             blurOnSubmit
