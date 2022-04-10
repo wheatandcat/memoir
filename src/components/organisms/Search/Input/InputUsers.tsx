@@ -14,7 +14,7 @@ export type Props = {
 const InputUsers: React.FC<Props> = (props) => {
   const style: ViewStyle[] = [styles.users];
 
-  if (props.userIDList.length > 1) {
+  if (props.users.length > 1) {
     style.push(styles.userMulti);
   }
 

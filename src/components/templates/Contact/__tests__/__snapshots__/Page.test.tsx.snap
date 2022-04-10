@@ -32,7 +32,7 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
   <TextInput
     allowFontScaling={true}
     autoCapitalize="none"
-    autoFocus={true}
+    autoFocus={false}
     blurOnSubmit={false}
     maxLength={300}
     multiline={true}

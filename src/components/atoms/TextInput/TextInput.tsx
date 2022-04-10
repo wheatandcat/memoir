@@ -7,10 +7,13 @@ import {
 } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
+import useAutoFocusInput from 'hooks/useAutoFocusInput';
 
 type Props = TextInputProps;
 
 const TextInput: React.FC<Props> = (props) => {
+  const autoFocusProps = useAutoFocusInput(props.autoFocus || false);
+
   const style: TextStyle[] = [styles.text];
   if (props.style) {
     style.push(props.style as TextStyle);
@@ -20,6 +23,7 @@ const TextInput: React.FC<Props> = (props) => {
     <View>
       <RNTextInput
         {...props}
+        {...autoFocusProps}
         placeholderTextColor={theme().color.base.main}
         style={style}
         autoCapitalize="none"

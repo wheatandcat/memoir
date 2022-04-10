@@ -6,10 +6,13 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 import { TextInput as RNTextInput } from 'react-native';
+import useAutoFocusInput from 'hooks/useAutoFocusInput';
 
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
+  const autoFocusProps = useAutoFocusInput(true);
+
   const onCopyUserID = useCallback(() => {
     Clipboard.setString(props.userID);
   }, [props.userID]);
@@ -44,8 +47,8 @@ const Page: React.FC<Props> = (props) => {
         autoCapitalize="none"
         onChangeText={props.onChangeText}
         maxLength={300}
-        autoFocus
         blurOnSubmit={false}
+        {...autoFocusProps}
       />
     </View>
   );

@@ -1,10 +1,5 @@
 import React, { memo, useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  TouchableOpacity,
-  useWindowDimensions,
-  ViewStyle,
-} from 'react-native';
+import { StyleSheet, useWindowDimensions, ViewStyle } from 'react-native';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Category from 'components/atoms/Category';
@@ -42,35 +37,31 @@ const Card: React.FC<Props> = (props) => {
   };
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View style={styles.root}>
-        <View>
-          <Category
-            categoryID={props.categoryID}
-            onLoadEnd={() => setEndCategoryImage(true)}
-          />
+    <View style={styles.root}>
+      <View>
+        <Category
+          categoryID={props.categoryID}
+          onLoadEnd={() => setEndCategoryImage(true)}
+        />
+      </View>
+      <View pl={3}>
+        <View style={[styles.title, titleStyle]}>
+          <Text numberOfLines={2} ellipsizeMode="tail" lineHeight={25}>
+            {props.title}
+          </Text>
         </View>
-        <View pl={3}>
-          <View style={[styles.title, titleStyle]}>
-            <Text numberOfLines={2} ellipsizeMode="tail" lineHeight={25}>
-              {props.title}
-            </Text>
-          </View>
-          <View style={styles.user}>
-            <UserImage
-              image={props.user.image}
-              size={20}
-              onLoadEnd={() => setEndUserImage(true)}
-            />
-            <View pl={2}>
-              <Text variants="small">
-                {props.user?.displayName || '未設定'}
-              </Text>
-            </View>
+        <View style={styles.user}>
+          <UserImage
+            image={props.user.image}
+            size={20}
+            onLoadEnd={() => setEndUserImage(true)}
+          />
+          <View pl={2}>
+            <Text variants="small">{props.user?.displayName || '未設定'}</Text>
           </View>
         </View>
       </View>
-    </TouchableOpacity>
+    </View>
   );
 };
 
