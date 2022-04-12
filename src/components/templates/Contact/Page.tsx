@@ -11,7 +11,7 @@ import useAutoFocusInput from 'hooks/useAutoFocusInput';
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
-  const autoFocusProps = useAutoFocusInput(true);
+  const autoFocusProps = useAutoFocusInput(true, 500);
 
   const onCopyUserID = useCallback(() => {
     Clipboard.setString(props.userID);
