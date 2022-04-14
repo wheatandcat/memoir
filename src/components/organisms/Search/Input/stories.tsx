@@ -1,5 +1,7 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react-native';
+import { StyleSheet } from 'react-native';
+import View from 'components/atoms/View';
 import InputDate, { Props as InputDateProps } from './InputDate';
 import InputUsers, { Props as InputUsersProps } from './InputUsers';
 import InputCategory, { Props as InputCategoryProps } from './InputCategory';
@@ -29,6 +31,10 @@ const inputUsers = (): InputUsersProps => ({
       id: 'test4',
       image: 'https://placehold.jp/150x150.png',
     },
+    {
+      id: 'test5',
+      image: 'https://placehold.jp/150x150.png',
+    },
   ],
   userIDList: [],
   onAdd: mockFn('onAdd'),
@@ -41,5 +47,40 @@ const inputCategoryProps = (): InputCategoryProps => ({
 
 storiesOf('organisms/Search/Input', module)
   .add('InputDate', () => <InputDate {...inputDateProps()} />)
-  .add('InputUsers', () => <InputUsers {...inputUsers()} />)
+
   .add('InputCategory', () => <InputCategory {...inputCategoryProps()} />);
+
+storiesOf('organisms/Search/Input/InputUsers', module)
+  .add('1人', () => (
+    <View style={styles.center}>
+      <InputUsers {...inputUsers()} users={inputUsers().users.slice(0, 1)} />
+    </View>
+  ))
+  .add('2人', () => (
+    <View style={styles.center}>
+      <InputUsers {...inputUsers()} users={inputUsers().users.slice(0, 2)} />
+    </View>
+  ))
+  .add('3人', () => (
+    <View style={styles.center}>
+      <InputUsers {...inputUsers()} users={inputUsers().users.slice(0, 3)} />
+    </View>
+  ))
+  .add('4人', () => (
+    <View style={styles.center}>
+      <InputUsers {...inputUsers()} users={inputUsers().users.slice(0, 4)} />
+    </View>
+  ))
+  .add('5人', () => (
+    <View style={styles.center}>
+      <InputUsers {...inputUsers()} />
+    </View>
+  ));
+
+const styles = StyleSheet.create({
+  center: {
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});

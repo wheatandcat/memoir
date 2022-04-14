@@ -13,8 +13,7 @@ export type Props = {
 
 const InputUsers: React.FC<Props> = (props) => {
   const style: ViewStyle[] = [styles.users];
-
-  if (props.users.length > 1) {
+  if (props.users.length > 3) {
     style.push(styles.userMulti);
   }
 
@@ -40,11 +39,9 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     alignItems: 'center',
     flexDirection: 'row',
-    width: '80%',
-  },
-  userMulti: {
     justifyContent: 'center',
   },
+  userMulti: { width: '80%' },
 });
 
 export default memo(InputUsers);

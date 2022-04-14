@@ -7,7 +7,6 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'loki/configure-react-native';
-import theme from 'config/theme';
 import Config from 'containers/Config';
 import { loadStories } from './storyLoader';
 import Notification from './Notification';
