@@ -8,10 +8,10 @@ exports[`components/organisms/Search/Input/InputUsers.tsx 正常にrenderする�
         "alignItems": "center",
         "flexDirection": "row",
         "flexWrap": "wrap",
-        "width": "80%",
+        "justifyContent": "center",
       },
       Object {
-        "justifyContent": "center",
+        "width": "80%",
       },
     ]
   }
@@ -68,8 +68,48 @@ exports[`components/organisms/Search/Input/InputUsers.tsx 正常にrenderする�
       user={
         Object {
           "createdAt": "2021-01-01T00:00:00+09:00",
-          "displayName": "suzuki2",
+          "displayName": "suzuki4",
           "id": "test3",
+          "image": "https://placehold.jp/150x150.png",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        }
+      }
+    />
+  </View>
+  <View
+    key="test4"
+    px={3}
+  >
+    <Memo(Users)
+      onAdd={[MockFunction]}
+      onRemove={[MockFunction]}
+      selected={false}
+      size={50}
+      user={
+        Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "suzuki4",
+          "id": "test4",
+          "image": "https://placehold.jp/150x150.png",
+          "updatedAt": "2021-01-01T00:00:00+09:00",
+        }
+      }
+    />
+  </View>
+  <View
+    key="test5"
+    px={3}
+  >
+    <Memo(Users)
+      onAdd={[MockFunction]}
+      onRemove={[MockFunction]}
+      selected={false}
+      size={50}
+      user={
+        Object {
+          "createdAt": "2021-01-01T00:00:00+09:00",
+          "displayName": "suzuki5",
+          "id": "test5",
           "image": "https://placehold.jp/150x150.png",
           "updatedAt": "2021-01-01T00:00:00+09:00",
         }

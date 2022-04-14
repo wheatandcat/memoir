@@ -4,6 +4,7 @@ import {
   StyleSheet,
   TextInput,
   TouchableWithoutFeedback,
+  Platform,
 } from 'react-native';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
@@ -111,7 +112,9 @@ const InputCode: React.FC<Props> = (props) => {
           })}
           <TextInput
             returnKeyType="done"
-            keyboardType="visible-password"
+            keyboardType={
+              Platform.OS === 'ios' ? 'ascii-capable' : 'visible-password'
+            }
             blurOnSubmit
             ref={textInputRef}
             onFocus={handleFocus}

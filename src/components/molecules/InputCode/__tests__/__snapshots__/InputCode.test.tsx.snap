@@ -224,7 +224,7 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
       <TextInput
         allowFontScaling={true}
         blurOnSubmit={true}
-        keyboardType="visible-password"
+        keyboardType="ascii-capable"
         maxLength={8}
         onBlur={[Function]}
         onChangeText={[Function]}
