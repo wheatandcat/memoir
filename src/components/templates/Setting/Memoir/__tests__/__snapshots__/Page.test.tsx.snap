@@ -7,6 +7,7 @@ exports[`components/templates/Setting/Memoir/Page.tsx 正常にrenderするこ�
       "alignItems": "center",
       "backgroundColor": "#F2F2F2",
       "height": "100%",
+      "width": "100%",
     }
   }
 >

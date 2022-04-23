@@ -9,6 +9,7 @@ import Text from 'components/atoms/Text';
 import theme from 'config/theme';
 
 type Props = {
+  disabled?: boolean;
   onPress: () => void;
 };
 
@@ -16,6 +17,18 @@ const ShareButton: React.FC<Props> = (props) => {
   const windowWidth = useWindowDimensions().width;
 
   const style = { width: windowWidth };
+
+  if (props.disabled) {
+    return (
+      <View>
+        <View style={[styles.memoirButton, styles.disabledButton, style]}>
+          <View>
+            <Text color="baseLight">共有する</Text>
+          </View>
+        </View>
+      </View>
+    );
+  }
 
   return (
     <TouchableWithoutFeedback onPress={props.onPress}>
@@ -40,5 +53,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
+  },
+  disabledButton: {
+    backgroundColor: theme().color.base.dark,
   },
 });

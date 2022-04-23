@@ -16,6 +16,8 @@ import { getModeCountMax } from 'lib/utility';
 import Divider from 'components/atoms/Divider';
 import Image from 'components/atoms/Image';
 import Users from 'components/molecules/Memoir/Users';
+import NotFound from 'components/organisms/Memoir/NotFound';
+import Delayed from 'components/molecules/Delayed/Delayed';
 import Card from './Card';
 
 type Item = ArrayType<PlainProps['items']>;
@@ -186,6 +188,11 @@ const DateCards: React.FC<Props> = (props) => {
               endDate={props.endDate}
               isTitle={!isUserFilter}
             />
+            {props.items.length === 0 && (
+              <Delayed delayCount={3}>
+                <NotFound date={props.startDate} />
+              </Delayed>
+            )}
           </View>
         }
         ListFooterComponent={<ListFooterComponent loading={props.loading} />}
