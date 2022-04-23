@@ -10,7 +10,6 @@ exports[`components/organisms/Setting/Memoir/Notification.tsx 正常にrenderす
         "height": 50,
         "justifyContent": "space-around",
         "marginTop": 64,
-        "width": "100%",
       }
     }
   >
@@ -48,8 +47,9 @@ exports[`components/organisms/Setting/Memoir/Notification.tsx 正常にrenderす
       Object {
         "alignItems": "center",
         "flexDirection": "row",
-        "justifyContent": "space-around",
+        "justifyContent": "space-between",
         "marginTop": 32,
+        "paddingHorizontal": 32,
       }
     }
   >

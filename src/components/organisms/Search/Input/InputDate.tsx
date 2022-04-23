@@ -67,7 +67,7 @@ const InputDate: React.FC<Props> = (props) => {
           is24Hour={true}
           date={props.endDate}
           onConfirm={(v) => {
-            setOpenStartDate(false);
+            setOpenEndDate(false);
             props.onChangeEndDate(v);
           }}
           onCancel={() => setOpenEndDate(false)}

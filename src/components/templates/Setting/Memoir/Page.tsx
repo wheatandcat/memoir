@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     height: '100%',
+    width: '100%',
     alignItems: 'center',
   },
   inner: {

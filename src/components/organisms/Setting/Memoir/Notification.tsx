@@ -56,7 +56,6 @@ const styles = StyleSheet.create({
     marginTop: theme().space(5),
     flexDirection: 'row',
     height: 50,
-    width: '100%',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
@@ -68,9 +67,10 @@ const styles = StyleSheet.create({
   },
   push: {
     marginTop: theme().space(4),
+    paddingHorizontal: theme().space(4),
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
   pushInput: {
     width: 139,

@@ -54,7 +54,10 @@ const Page: React.FC<Props> = (props) => {
           />
         </View>
         <View style={styles.action}>
-          <ShareButton onPress={props.onScreenShot} />
+          <ShareButton
+            onPress={props.onScreenShot}
+            disabled={props.items.length === 0}
+          />
         </View>
       </View>
       <View style={styles.close}>
