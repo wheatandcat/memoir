@@ -31,7 +31,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   assetBundlePatterns: ['**/*'],
   ios: {
     ...appConfig().ios,
-    supportsTablet: true,
+    supportsTablet: false,
     usesAppleSignIn: true,
     userInterfaceStyle: 'automatic',
     buildNumber: unix,
