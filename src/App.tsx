@@ -13,7 +13,6 @@ import { getFireStore } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
 import ForceUpdate from 'components/templates/ForceUpdate/Page';
-import useUpdateExpo from 'hooks/useUpdateExpo';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import compareVersions from 'compare-versions';
@@ -34,7 +33,6 @@ function App() {
   const isFirstRender = useIsFirstRender();
   const [client, setClient] = useState<ApolloClient<CacheShape> | null>(null);
   const [appConfig, setAppConfig] = useState<AppConfig>(defaultAppConfig());
-  const { onUpdateApp } = useUpdateExpo();
 
   const forceUpdate = compareVersions.compare(
     appConfig.supportVersion,
@@ -45,29 +43,22 @@ function App() {
   const checkAppConfig = useCallback(async () => {
     //フォアグラウンドになったときのみこの関数を実行
     const config = await getAppConfig(db);
+    if (!config.maintenance && appConfig.maintenance) {
+      // メンテナンスから非メンテナンスになった
+      client?.cache.reset();
+    }
     setAppConfig(config);
 
     return config;
-  }, []);
+  }, [appConfig, client]);
 
   const handleUpdate = useCallback(
     async (state: string) => {
       if (state === 'active') {
-        const config = await checkAppConfig();
-        if (
-          !config.maintenance &&
-          !compareVersions.compare(
-            config.supportVersion,
-            Constants?.manifest?.version || '1.0.0',
-            '>'
-          )
-        ) {
-          //メンテンナンス or 強制アップデートが有効でない場合にOTAをチェック
-          onUpdateApp();
-        }
+        checkAppConfig();
       }
     },
-    [checkAppConfig, onUpdateApp]
+    [checkAppConfig]
   );
 
   const fetchSession = async () => {
