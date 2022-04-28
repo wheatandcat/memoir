@@ -7,14 +7,13 @@ import AppLink from 'react-native-app-link';
 import Button from 'components/atoms/Button';
 
 export type Props = {};
-// FIXME: appStoreIdは公開前に変更
-const appStoreId = 1460583871;
+const appStoreId = 1613532672;
 const playStoreId = 'com.wheatandcat.memoir';
 
 const Page: React.FC<Props> = () => {
   const onPress = useCallback(() => {
     AppLink.openInStore({
-      appName: 'ペペロミア',
+      appName: 'memoir',
       appStoreId,
       appStoreLocale: 'jp',
       playStoreId,
