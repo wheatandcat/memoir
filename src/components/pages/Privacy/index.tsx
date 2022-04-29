@@ -17,7 +17,7 @@ const Privacy: React.FC<Props> = () => {
   return (
     <WebView
       style={styles.root}
-      source={{ uri: 'https://memoir-lp.vercel.app/privacy?app=true' }}
+      source={{ uri: 'https://memoir-app.dev/privacy/app' }}
     />
   );
 };

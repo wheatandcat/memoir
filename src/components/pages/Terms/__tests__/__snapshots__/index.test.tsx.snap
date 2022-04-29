@@ -12,7 +12,7 @@ exports[`components/pages/Privacy/index.tsx 正常にrenderすること 1`] = `
   }
   source={
     Object {
-      "uri": "https://memoir-lp.vercel.app/terms?app=true",
+      "uri": "https://memoir-app.dev/terms/app",
     }
   }
   style={
