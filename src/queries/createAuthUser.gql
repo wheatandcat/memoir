@@ -2,5 +2,6 @@ mutation CreateAuthUser($input: NewAuthUser!) {
   createAuthUser(input: $input) {
     id
     new
+    displayName
   }
 }

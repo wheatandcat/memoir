@@ -52,6 +52,7 @@ const Connected: React.FC<Props> = () => {
   useFocusEffect(
     useCallback(() => {
       if (authUser.uid) {
+        userQuery?.refetch?.();
         getRelationshipRequests({
           variables: {
             input: {
@@ -71,7 +72,7 @@ const Connected: React.FC<Props> = () => {
           },
         });
       }
-    }, [authUser.uid, getRelationshipRequests, getRelationships])
+    }, [authUser.uid, getRelationshipRequests, getRelationships, userQuery])
   );
 
   const onLogin = useCallback(() => {
