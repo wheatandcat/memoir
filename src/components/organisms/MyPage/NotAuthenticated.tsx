@@ -42,7 +42,7 @@ const NotAuthenticated: React.FC<Props> = (props) => {
       <View m={3} style={styles.action}>
         <View my={4} style={styles.text}>
           <Text variants="small" textAlign="center" lineHeight={15}>
-            サインインすれば、他のユーザーとタスクを共有するこができます
+            サインインすれば、他のユーザーとタスクを共有することができます。
           </Text>
         </View>
         <View>

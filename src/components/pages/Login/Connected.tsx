@@ -22,7 +22,8 @@ const Connected: React.FC<Props> = () => {
   const authenticated = !!authUser.uid;
   const navigation = useNavigation();
   const [createAuthUserMutation] = useCreateAuthUserMutation({
-    async onCompleted() {
+    async onCompleted(data) {
+      console.log('createAuthUserMutation', data);
       await refetch?.();
       navigation.goBack();
     },

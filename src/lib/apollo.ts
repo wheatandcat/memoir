@@ -1,7 +1,13 @@
 import { setContext } from '@apollo/client/link/context';
 import { Alert } from 'react-native';
 import { onError } from '@apollo/client/link/error';
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import {
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+  ApolloLink,
+  concat,
+} from '@apollo/client';
 import { storageKey, getItem, removeItem } from 'lib/storage';
 import Auth from 'lib/auth';
 import * as Sentry from 'sentry-expo';
@@ -23,7 +29,7 @@ const makeApolloClient = async () => {
     const param: Param = {};
     const token = await auth.getIdToken();
 
-    console.log('token:', token);
+    //console.log('token:', token);
 
     if (token) {
       param.Authorization = `Bearer ${token}`;
@@ -41,6 +47,15 @@ const makeApolloClient = async () => {
         ...param,
       },
     };
+  });
+
+  const middlewareLink = new ApolloLink((operation, forward) => {
+    console.log('operation:', operation.operationName);
+
+    return forward(operation).map((data) => {
+      //console.log('data:', data);
+      return data;
+    });
   });
 
   const errorLink = onError((error) => {
@@ -68,6 +83,8 @@ const makeApolloClient = async () => {
         Sentry.Native.captureMessage(message);
       });
 
+      console.log('error: operation:', error.operation.operationName, message);
+
       Alert.alert('エラー', message, [
         {
           text: 'OK',
@@ -83,7 +100,10 @@ const makeApolloClient = async () => {
   });
 
   return new ApolloClient({
-    link: errorLink.concat(authLink.concat(createHttpLink({ uri }))),
+    link: concat(
+      middlewareLink,
+      errorLink.concat(authLink.concat(createHttpLink({ uri })))
+    ),
     cache: cache,
   });
 };

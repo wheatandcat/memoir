@@ -6,6 +6,14 @@ import { NotoSansJP_700Bold } from '@expo-google-fonts/noto-sans-jp';
 import { LogBox } from 'react-native';
 import App from './src/App';
 
+/*
+import { storageKey, removeItem } from 'lib/storage';
+removeItem(storageKey.USER_ID_KEY);
+removeItem(storageKey.AUTH_UID_KEY);
+removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+*/
+
 LogBox.ignoreLogs([
   'Setting a timer',
   'Constants.deviceYearClass has been deprecated',
