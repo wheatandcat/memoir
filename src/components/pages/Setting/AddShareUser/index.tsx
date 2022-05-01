@@ -5,7 +5,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import Connected from './Connected';
 
-type ScreenNavigationProp = StackNavigationProp<
+export type ScreenNavigationProp = StackNavigationProp<
   RootStackParamList,
   'SettingAddShareUser'
 >;

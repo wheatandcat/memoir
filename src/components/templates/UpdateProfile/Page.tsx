@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { ConnectedType } from 'components/pages/UpdateProfile/Connected';
 import ProfileImage from 'components/organisms/UpdateProfile/ProfileImage';
@@ -28,6 +28,18 @@ const initialState = (user: User) => ({
 const Page: React.FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState(props.user));
 
+  const disabledButton = useCallback(() => {
+    if (state.displayName.length === 0) {
+      return true;
+    }
+
+    if (state.displayName.length > 20) {
+      return true;
+    }
+
+    return false;
+  }, [state.displayName]);
+
   return (
     <View style={styles.root}>
       <FocusAwareStatusBar
@@ -48,10 +60,11 @@ const Page: React.FC<Props> = (props) => {
           returnKeyType="done"
           defaultValue={state.displayName}
           style={styles.input}
+          maxLength={15}
         />
         <View my={3}>
           <Text textAlign="center" size="sm">
-            表示名を入力したください
+            表示名を入力してください
           </Text>
         </View>
       </View>
@@ -60,7 +73,7 @@ const Page: React.FC<Props> = (props) => {
           title="保存"
           size="lg"
           width={200}
-          disabled={props.loading}
+          disabled={props.loading || disabledButton()}
           loading={props.loading}
           onPress={() => props.onSave(state)}
         />

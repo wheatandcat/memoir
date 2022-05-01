@@ -30,6 +30,7 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
   >
     <TextInput
       defaultValue="test-name"
+      maxLength={15}
       onChangeText={[Function]}
       placeholder="表示名"
       returnKeyType="done"
@@ -49,7 +50,7 @@ exports[`components/templates/UpdateProfile/Page.tsx 正常にrenderすること
         textAlign="center"
         variants="body"
       >
-        表示名を入力したください
+        表示名を入力してください
       </Text>
     </View>
   </View>
