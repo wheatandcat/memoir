@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect } from 'react';
+import React, { memo, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import TemplateMyPage from 'components/templates/MyPage/Page';
 import useFirebaseAuth, { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
@@ -12,6 +12,7 @@ import {
   useUserQuery,
 } from 'queries/api/index';
 import { ScreenNavigationProp as MyPageScreenNavigationProp } from './';
+import { useFocusEffect } from '@react-navigation/native';
 
 type Props = {};
 
@@ -48,28 +49,30 @@ const Connected: React.FC<Props> = () => {
       },
     });
 
-  useEffect(() => {
-    if (authUser.uid) {
-      getRelationshipRequests({
-        variables: {
-          input: {
-            after: '',
-            first: 5,
+  useFocusEffect(
+    useCallback(() => {
+      if (authUser.uid) {
+        getRelationshipRequests({
+          variables: {
+            input: {
+              after: '',
+              first: 5,
+            },
+            skip: true,
           },
-          skip: true,
-        },
-      });
-      getRelationships({
-        variables: {
-          input: {
-            after: '',
-            first: 5,
+        });
+        getRelationships({
+          variables: {
+            input: {
+              after: '',
+              first: 5,
+            },
+            skip: false,
           },
-          skip: false,
-        },
-      });
-    }
-  }, [authUser.uid, getRelationshipRequests, getRelationships]);
+        });
+      }
+    }, [authUser.uid, getRelationshipRequests, getRelationships])
+  );
 
   const onLogin = useCallback(() => {
     navigation.navigate('Login');

@@ -84,7 +84,7 @@ exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderする�
         textAlign="center"
         variants="small"
       >
-        サインインすれば、他のユーザーとタスクを共有するこができます
+        サインインすれば、他のユーザーとタスクを共有することができます。
       </Text>
     </View>
     <View>
