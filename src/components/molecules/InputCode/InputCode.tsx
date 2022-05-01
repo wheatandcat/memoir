@@ -29,17 +29,19 @@ const InputCode: React.FC<Props> = (props) => {
   const textInputRef = useRef<TextInput>(null);
   const timeout = useRef<number | null>(null);
 
-  useFocusEffect(() => {
-    timeout.current = Number(
-      setTimeout(() => textInputRef.current?.focus(), 300)
-    );
+  useFocusEffect(
+    useCallback(() => {
+      timeout.current = Number(
+        setTimeout(() => textInputRef.current?.focus(), 300)
+      );
 
-    return () => {
-      if (timeout.current) {
-        clearTimeout(timeout.current);
-      }
-    };
-  });
+      return () => {
+        if (timeout.current) {
+          clearTimeout(timeout.current);
+        }
+      };
+    }, [])
+  );
 
   const handlePress = useCallback(() => {
     textInputRef?.current?.focus();

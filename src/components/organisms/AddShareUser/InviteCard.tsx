@@ -59,7 +59,7 @@ const InviteCard: React.FC<Props> = (props) => {
           <View style={styles.user}>
             <UserImage image={props.user.image} size={80} />
             <View py={3}>
-              <Text size="sm">{props.user.displayName}</Text>
+              <Text size="sm">{props.user.displayName || '未設定'}</Text>
             </View>
           </View>
           {props.invite.code === '' ? (
