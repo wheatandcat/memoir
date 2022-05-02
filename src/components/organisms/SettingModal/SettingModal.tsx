@@ -93,11 +93,7 @@ const SettingModal: React.FC<Props> = (props) => {
   }, []);
 
   const onNotificationSetting = useCallback(async () => {
-    if (!onPermissionRequest) {
-      return;
-    }
-
-    onPermissionRequest(onPushNotificationSetting);
+    onPermissionRequest?.(onPushNotificationSetting);
   }, [onPermissionRequest, onPushNotificationSetting]);
 
   const onSearch = useCallback(() => {

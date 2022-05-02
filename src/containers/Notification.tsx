@@ -7,11 +7,12 @@ import React, {
   useCallback,
   createContext,
 } from 'react';
-import { Platform, Alert } from 'react-native';
+import { Platform } from 'react-native';
 import {
   useCreatePushTokenMutation,
   CreatePushTokenMutationVariables,
 } from 'queries/api/index';
+import theme from 'config/theme';
 
 const Context = createContext<ContextProps>({});
 const { Provider } = Context;
@@ -46,8 +47,9 @@ const Notification: React.FC<Props> = memo((props) => {
       let token;
 
       if (!Device.isDevice) {
-        Alert.alert('端末から実行してくだださい');
-        return false;
+        //Alert.alert('端末から実行してくだださい');
+        requestCallback.current();
+        return true;
       }
 
       const { status: existingStatus } =
@@ -60,8 +62,10 @@ const Notification: React.FC<Props> = memo((props) => {
       }
 
       if (finalStatus !== 'granted') {
+        requestCallback.current();
         return false;
       }
+
       token = (await Notifications.getExpoPushTokenAsync()).data;
       console.log(token);
 
@@ -70,7 +74,7 @@ const Notification: React.FC<Props> = memo((props) => {
           name: 'default',
           importance: Notifications.AndroidImportance.MAX,
           vibrationPattern: [0, 250, 250, 250],
-          lightColor: '#FF231F7C',
+          lightColor: theme().color.primary.main,
         });
       }
 
