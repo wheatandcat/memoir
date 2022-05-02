@@ -24,8 +24,6 @@ import Contact from 'components/pages/Contact';
 const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
 
-console.log('prefix', prefix);
-
 const WithProvider = () => {
   return (
     <NavigationContainer
