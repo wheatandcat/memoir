@@ -51,7 +51,7 @@ const Card: React.FC<Props> = (props) => {
           <View style={styles.buttonWrap}>
             {props.acceptRequesting ? (
               <View style={styles.applyButton}>
-                <ActivityIndicator />
+                <ActivityIndicator color={theme().color.base.light} />
               </View>
             ) : (
               <TouchableOpacity onPress={props.onOK}>
@@ -62,7 +62,7 @@ const Card: React.FC<Props> = (props) => {
             )}
             {props.ngRequesting ? (
               <View style={styles.removeButton}>
-                <ActivityIndicator />
+                <ActivityIndicator color={theme().color.base.light} />
               </View>
             ) : (
               <TouchableOpacity onPress={props.onNG}>
