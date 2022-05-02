@@ -162,8 +162,6 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   );
 
   useEffect(() => {
-    console.log('useEffect:', response, authUser.uid);
-
     if (
       response?.type === 'success' &&
       prevResponseType !== 'success' &&
