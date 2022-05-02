@@ -31,6 +31,11 @@ const WithProvider = () => {
         prefixes: [prefix],
         subscribe(listener) {
           const onReceiveURL = ({ url }: { url: string }) => {
+            console.log('onReceiveURL', url);
+            if (url.includes('expo-auth-session')) {
+              // ログインからのコールバックは一致しないのでreturnする
+              return;
+            }
             listener(url);
           };
 
@@ -41,6 +46,7 @@ const WithProvider = () => {
               (response) => {
                 const url =
                   response.notification.request.content.data?.urlScheme ?? '';
+                console.log('Notifications URL:', url);
 
                 if (url !== '') {
                   listener(`${prefix}${url}`);

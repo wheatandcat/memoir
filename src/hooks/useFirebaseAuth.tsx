@@ -19,6 +19,7 @@ import {
   useExistAuthUserLazyQuery,
   useUserLazyQuery,
 } from 'queries/api/index';
+import usePrevious from 'hooks/usePrevious';
 
 const auth = new Auth();
 
@@ -118,6 +119,8 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   const [request, response, promptAsync] =
     Google.useIdTokenAuthRequest(authParam);
 
+  const prevResponseType = usePrevious(response?.type || null);
+
   const onGoogleLogin = useCallback(() => {
     promptAsync();
   }, [promptAsync]);
@@ -159,7 +162,11 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   );
 
   useEffect(() => {
-    if (response?.type === 'success' && !user.id) {
+    if (
+      response?.type === 'success' &&
+      prevResponseType !== 'success' &&
+      !authUser.uid
+    ) {
       const { id_token } = response.params;
       const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
       firebaseLogin(credential);
@@ -168,7 +175,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       Alert.alert('ログインに失敗しました');
       errorCallback?.();
     }
-  }, [response, firebaseLogin, errorCallback, user.id]);
+  }, [response, prevResponseType, firebaseLogin, errorCallback, authUser.uid]);
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
