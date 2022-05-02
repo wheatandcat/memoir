@@ -17,6 +17,7 @@ import Constants from 'expo-constants';
 import * as Device from 'expo-device';
 import compareVersions from 'compare-versions';
 import AppLoading from 'components/templates/App/Loading';
+import usePrevious from 'hooks/usePrevious';
 import WithProvider from './WithProvider';
 
 Sentry.init({
@@ -39,6 +40,7 @@ function App() {
     Constants?.manifest?.version || '1.0.0',
     '>'
   );
+  const prevForceUpdate = usePrevious(forceUpdate);
 
   const checkAppConfig = useCallback(async () => {
     //フォアグラウンドになったときのみこの関数を実行
@@ -47,6 +49,7 @@ function App() {
       // メンテナンスから非メンテナンスになった
       client?.cache.reset();
     }
+
     setAppConfig(config);
 
     return config;
@@ -74,6 +77,12 @@ function App() {
 
     fetchSession();
   }, [isFirstRender]);
+
+  useEffect(() => {
+    if (forceUpdate && !prevForceUpdate) {
+      client?.cache.reset();
+    }
+  }, [forceUpdate, prevForceUpdate, client]);
 
   useEffect(() => {
     AppState.addEventListener('change', handleUpdate);
