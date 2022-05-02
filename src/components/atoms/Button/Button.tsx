@@ -40,7 +40,10 @@ const Button: React.FC<Props> = (props) => {
   if (props.loading) {
     return (
       <View style={[styles.disabledButton, buttonStyle]}>
-        <ActivityIndicator size={configSize.loadingSize} />
+        <ActivityIndicator
+          size={configSize.loadingSize}
+          color={theme().color.base.light}
+        />
       </View>
     );
   }

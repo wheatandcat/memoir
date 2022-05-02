@@ -25,7 +25,7 @@ const Cards: React.FC<Props> = (props) => {
 
       {props.addItemLoading && (
         <View style={styles.loading} mb={3} mx={3}>
-          <ActivityIndicator size="large" />
+          <ActivityIndicator size="large" color={theme().color.base.light} />
         </View>
       )}
 
