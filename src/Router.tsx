@@ -35,7 +35,7 @@ const WithProvider = () => {
           const onReceiveURL = ({ url }: { url: string }) => {
             console.log('onReceiveURL', url);
             if (url.includes('expo-auth-session')) {
-              // ログインかたらコールバックは一致しないのでreturnする
+              // ログインからのコールバックは一致しないのでreturnする
               return;
             }
             listener(url);
