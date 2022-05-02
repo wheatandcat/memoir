@@ -18,6 +18,7 @@ import IntroCard from 'components/molecules/Intro/Card';
 import { ConnectedType } from 'components/pages/Intro/Intro/Connected';
 import Notification from 'components/organisms/Intro/Notification';
 import Task from 'components/organisms/Intro/Task';
+import { useNotification } from 'containers/Notification';
 
 export type Props = ConnectedType & {
   dayOfWeek: number;
@@ -27,6 +28,7 @@ export type Props = ConnectedType & {
 };
 
 const Intro: React.FC<Props> = (props) => {
+  const { onPermissionRequest } = useNotification();
   const scrollViewRef = useRef<ScrollView>(null);
   const width = useWindowDimensions().width;
   const height = useWindowDimensions().height;
@@ -48,8 +50,10 @@ const Intro: React.FC<Props> = (props) => {
   );
 
   const onSkip = useCallback(() => {
-    props.onFinish();
-  }, [props]);
+    onPermissionRequest?.(() => {
+      props.onFinish();
+    });
+  }, [props, onPermissionRequest]);
 
   const onNext = useCallback(() => {
     if (page > 5) {

@@ -11,6 +11,7 @@ import {
   useCreateAuthUserMutation,
   CreateAuthUserMutationVariables,
 } from 'queries/api/index';
+import { useNotification } from 'containers/Notification';
 
 type Props = {};
 
@@ -18,13 +19,16 @@ const Connected: React.FC<Props> = () => {
   const { setupAuth, onAppleLogin, onGoogleLogin, onLogout } =
     useFirebaseAuth(true);
   const { refetch } = useHomeItems();
+  const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
   const navigation = useNavigation();
   const [createAuthUserMutation] = useCreateAuthUserMutation({
     async onCompleted() {
-      await refetch?.();
-      navigation.goBack();
+      onPermissionRequest?.(async () => {
+        await refetch?.();
+        navigation.goBack();
+      });
     },
     async onError() {
       // エラーになった場合はログアウトさせる
