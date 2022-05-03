@@ -1,6 +1,6 @@
 # memoir
 
-終わったタスク、積み上げよう。
+終わったタスク、積み上げよう。1週間を振り返るアプリ。
 
 <div style="display:flex">
     <img src="./doc/001.jpg" width="320" style="padding:3px"/>
