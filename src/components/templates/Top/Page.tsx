@@ -66,9 +66,7 @@ const Page: React.FC<Props> = (props) => {
               </View>
               <View style={styles.footer}>
                 <View style={styles.login}>
-                  <Text variants="small">
-                    すでにアカウントアカウントをお持ちの方
-                  </Text>
+                  <Text variants="small">すでにアカウントをお持ちの方</Text>
                 </View>
                 <View style={styles.loginText}>
                   <TouchableOpacity onPress={props.onLogin}>
