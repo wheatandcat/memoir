@@ -163,7 +163,7 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
                 fontFamily="RobotoCondensed-Bold"
                 variants="small"
               >
-                すでにアカウントアカウントをお持ちの方
+                すでにアカウントをお持ちの方
               </Text>
             </View>
             <View
