@@ -2,7 +2,6 @@ import React, { memo } from 'react';
 import { StyleSheet, Platform } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
-import Constants from 'expo-constants';
 import View from 'components/atoms/View';
 import DateCards from 'components/organisms/Memoir/DateCards';
 import theme from 'config/theme';
@@ -33,46 +32,52 @@ const Page: React.FC<Props> = (props) => {
   const navigation = useNavigation();
 
   return (
-    <SafeAreaView>
+    <>
       <FocusAwareStatusBar
         backgroundColor={theme().color.background.main}
         style="dark"
       />
-      <View style={styles.root}>
-        <View style={styles.inner}>
-          <DateCards
-            startDate={props.startDate}
-            endDate={props.endDate}
-            items={props.items}
-            pageInfo={props.pageInfo}
-            loading={props.loading}
-            onItem={props.onItem}
-            onLoadMore={props.onLoadMore}
-            users={props.users}
-            search={props.search}
-            selectedUserIDList={props.selectedUserIDList}
-            onChangeUserID={props.onChangeUserID}
-          />
+      <SafeAreaView style={styles.safe}>
+        <View style={styles.root}>
+          <View style={styles.inner}>
+            <DateCards
+              startDate={props.startDate}
+              endDate={props.endDate}
+              items={props.items}
+              pageInfo={props.pageInfo}
+              loading={props.loading}
+              onItem={props.onItem}
+              onLoadMore={props.onLoadMore}
+              users={props.users}
+              search={props.search}
+              selectedUserIDList={props.selectedUserIDList}
+              onChangeUserID={props.onChangeUserID}
+            />
+          </View>
+          <View style={styles.action}>
+            <ShareButton
+              onPress={props.onScreenShot}
+              disabled={props.items.length === 0}
+            />
+          </View>
+          <View style={styles.close}>
+            <IconButton
+              name="highlight-off"
+              size="base"
+              onPress={() => navigation.goBack()}
+            />
+          </View>
         </View>
-        <View style={styles.action}>
-          <ShareButton
-            onPress={props.onScreenShot}
-            disabled={props.items.length === 0}
-          />
-        </View>
-      </View>
-      <View style={styles.close}>
-        <IconButton
-          name="highlight-off"
-          size="base"
-          onPress={() => navigation.goBack()}
-        />
-      </View>
-    </SafeAreaView>
+      </SafeAreaView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
+  safe: {
+    position: 'relative',
+    flex: 1,
+  },
   root: {
     height: '100%',
     backgroundColor: theme().color.background.main,
@@ -87,7 +92,7 @@ const styles = StyleSheet.create({
   },
   close: {
     position: 'absolute',
-    top: Constants.statusBarHeight,
+    top: 0,
     left: theme().space(2),
     backgroundColor: theme().color.background.main,
     borderRadius: 25,
