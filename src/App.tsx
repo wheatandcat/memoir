@@ -3,6 +3,7 @@ import { RecoilRoot } from 'recoil';
 import { AppState } from 'react-native';
 import * as Sentry from 'sentry-expo';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { ApolloClient, ApolloProvider } from '@apollo/client';
 import { RootSiblingParent } from 'react-native-root-siblings';
 import makeApolloClient from 'lib/apollo';
@@ -105,17 +106,19 @@ function App() {
 
   return (
     <ActionSheetProvider>
-      <ApolloProvider client={client}>
-        <Config>
-          <Notification>
-            <RecoilRoot>
-              <RootSiblingParent>
-                <WithProvider />
-              </RootSiblingParent>
-            </RecoilRoot>
-          </Notification>
-        </Config>
-      </ApolloProvider>
+      <SafeAreaProvider>
+        <ApolloProvider client={client}>
+          <Config>
+            <Notification>
+              <RecoilRoot>
+                <RootSiblingParent>
+                  <WithProvider />
+                </RootSiblingParent>
+              </RecoilRoot>
+            </Notification>
+          </Config>
+        </ApolloProvider>
+      </SafeAreaProvider>
     </ActionSheetProvider>
   );
 }
