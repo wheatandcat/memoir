@@ -10,6 +10,7 @@ import ShareButton from 'components/molecules/Memoir/ShareButton';
 import { Props as PlainProps } from 'components/pages/Memoir/Plain';
 import IconButton from 'components/molecules/IconButton';
 import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
+import { iosSelector } from 'lib/responsive';
 
 export type Props = Pick<
   PlainProps,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   action: {
-    bottom: 0,
+    bottom: iosSelector({ iPhone8: 30, other: 0 }),
     height: Platform.OS === 'ios' ? 22 : 55,
     position: 'absolute',
   },
