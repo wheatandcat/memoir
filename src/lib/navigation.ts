@@ -38,4 +38,5 @@ export type RootStackParamList = {
   Privacy: undefined;
   Terms: undefined;
   Contact: undefined;
+  SettingDataManagement: undefined;
 };

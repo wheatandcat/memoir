@@ -68,6 +68,12 @@ const SettingModal: React.FC<Props> = (props) => {
     navigation.navigate('Contact');
   }, [navigation, props]);
 
+  const onSettingDataManagement = useCallback(() => {
+    props.onClose();
+
+    navigation.navigate('SettingDataManagement');
+  }, [navigation, props]);
+
   const onLogout = useCallback(async () => {
     await removeItem(storageKey.USER_ID_KEY);
     await removeItem(storageKey.AUTH_UID_KEY);
@@ -150,6 +156,15 @@ const SettingModal: React.FC<Props> = (props) => {
           </View>
         </TouchableOpacity>
         <Divider my={3} />
+        <TouchableOpacity
+          style={styles.menuText}
+          onPress={onSettingDataManagement}
+        >
+          <View>
+            <Text>データ管理</Text>
+          </View>
+        </TouchableOpacity>
+        <Divider my={3} />
         <TouchableOpacity style={styles.menuText} onPress={onContact}>
           <View>
             <Text>フィードバックを送信</Text>
@@ -184,7 +199,6 @@ const SettingModal: React.FC<Props> = (props) => {
             <Divider my={3} />
           </>
         )}
-
         {!Device.isDevice && <Debug />}
       </View>
     </Modal>

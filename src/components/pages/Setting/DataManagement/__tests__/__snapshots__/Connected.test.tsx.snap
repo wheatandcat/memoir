@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/pages/DataManagement/Connected.tsx 正常にrenderすること 1`] = `
+<Memo(Plain)
+  disabledDeleteButton={false}
+  error={null}
+  loading={false}
+  onDelete={[Function]}
+/>
+`;

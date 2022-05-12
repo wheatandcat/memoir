@@ -8,10 +8,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'loki/configure-react-native';
 import Config from 'containers/Config';
+import * as Font from 'expo-font';
+import { RobotoCondensed_700Bold } from '@expo-google-fonts/roboto-condensed';
+import { NotoSansJP_700Bold } from '@expo-google-fonts/noto-sans-jp';
 import { loadStories } from './storyLoader';
 import Notification from './Notification';
 
 const Stack = createStackNavigator();
+
+Font.loadAsync({
+  'RobotoCondensed-Bold': RobotoCondensed_700Bold,
+  'NotoSansJP-Bold': NotoSansJP_700Bold,
+});
 
 // import stories
 configure(() => {

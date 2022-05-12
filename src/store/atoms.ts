@@ -74,3 +74,16 @@ export const homeState = atom<HomeState>({
   key: 'homeState',
   default: initialHomeState(),
 });
+
+type Screen = {
+  seeYouAgain: boolean;
+};
+
+const initialScreenState = (): Screen => ({
+  seeYouAgain: false,
+});
+
+export const screenState = atom<Screen>({
+  key: 'screenState',
+  default: initialScreenState(),
+});
