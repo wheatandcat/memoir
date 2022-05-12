@@ -9,6 +9,8 @@ const CodeNotFound = '000003' as const;
 const CodeAlreadyExists = '000004' as const;
 // 自身の招待コード
 const CodeMyInviteCode = '000005' as const;
+// ユーザー削除時に共有メンバーが存在する
+const HasRelationshipByDeleteUser = '000006' as const;
 
 export const errorCode = {
   CodeDefault,
@@ -17,4 +19,5 @@ export const errorCode = {
   CodeNotFound,
   CodeAlreadyExists,
   CodeMyInviteCode,
+  HasRelationshipByDeleteUser,
 };

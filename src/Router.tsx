@@ -16,6 +16,7 @@ import UpdateProfile from 'components/pages/UpdateProfile';
 import SettingAddShareUser from 'components/pages/Setting/AddShareUser';
 import SettingRelationshipRequests from 'components/pages/Setting/RelationshipRequests';
 import SettingAcceptedRelationship from 'components/pages/Setting/AcceptedRelationship';
+import SettingDataManagement from 'components/pages/Setting/DataManagement';
 import Search from 'components/pages/Search';
 import Privacy from 'components/pages/Privacy';
 import Terms from 'components/pages/Terms';
@@ -101,6 +102,11 @@ const WithProvider = () => {
           name="SettingAcceptedRelationship"
           component={SettingAcceptedRelationship}
           options={MyPageScreenOption('')}
+        />
+        <Stack.Screen
+          name="SettingDataManagement"
+          component={SettingDataManagement}
+          options={MyPageScreenOption('データ管理')}
         />
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen

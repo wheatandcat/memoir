@@ -3,11 +3,15 @@ import useUser from 'hooks/useUser';
 import Top from 'components/pages/Top/Connected';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import AppLoading from 'components/templates/App/Loading';
+import { screenState } from 'store/atoms';
+import { useRecoilValue } from 'recoil';
+import SeeYouAgain from 'components/templates/SeeYouAgain/SeeYouAgain';
 import Router from './Router';
 
 const WithProvider = () => {
   const { setupAuth } = useFirebaseAuth();
   const { setupUser, user, onSaveWhenNotLogin } = useUser();
+  const screenStateValue = useRecoilValue(screenState);
   const [create, setCreate] = useState(false);
 
   const onSkip = useCallback(() => {
@@ -17,6 +21,10 @@ const WithProvider = () => {
 
   if (!setupUser || !setupAuth) {
     return <AppLoading />;
+  }
+
+  if (screenStateValue.seeYouAgain) {
+    return <SeeYouAgain />;
   }
 
   if (!user.id || create) {
