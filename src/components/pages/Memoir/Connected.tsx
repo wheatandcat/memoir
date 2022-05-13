@@ -101,7 +101,11 @@ const Connected: React.FC<Props> = (props) => {
       setIsFilter(true);
       reset();
 
-      setState((s) => ({ ...s, userIDList }));
+      setState((s) => ({
+        ...s,
+        userIDList,
+        after: '',
+      }));
     },
     [reset]
   );
