@@ -96,7 +96,7 @@ const Connected: React.FC<Props> = (props) => {
 
   const onMemoir = useCallback(() => {
     navigation.navigate('Memoir', {
-      startDate: dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00'),
+      startDate: dayjs().add(-100, 'day').format('YYYY-MM-DDT00:00:00+09:00'),
       endDate: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
     });
   }, [navigation]);
