@@ -118,7 +118,7 @@ exports[`components/organisms/Setting/Memoir/Input.tsx 正常にrenderするこ�
       mt={1}
       pt={2}
     >
-      <ForwardRef>
+      <TouchableOpacity>
         <Text
           fontFamily="RobotoCondensed-Bold"
           fontWeight="bold"
@@ -128,7 +128,7 @@ exports[`components/organisms/Setting/Memoir/Input.tsx 正常にrenderするこ�
         >
           00:00
         </Text>
-      </ForwardRef>
+      </TouchableOpacity>
       <DateTimePickerModal
         cancelTextIOS="キャンセル"
         confirmTextIOS="完了"

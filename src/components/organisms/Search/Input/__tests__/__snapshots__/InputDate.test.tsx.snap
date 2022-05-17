@@ -21,7 +21,7 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       ]
     }
   >
-    <ForwardRef
+    <TouchableOpacity
       onPress={[Function]}
     >
       <Text
@@ -31,7 +31,7 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       >
         2021.01.01
       </Text>
-    </ForwardRef>
+    </TouchableOpacity>
     <DateTimePickerModal
       cancelTextIOS="キャンセル"
       confirmTextIOS="完了"
@@ -70,7 +70,7 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       ]
     }
   >
-    <ForwardRef
+    <TouchableOpacity
       onPress={[Function]}
     >
       <Text
@@ -80,7 +80,7 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       >
         2021.01.18
       </Text>
-    </ForwardRef>
+    </TouchableOpacity>
     <DateTimePickerModal
       cancelTextIOS="キャンセル"
       confirmTextIOS="完了"

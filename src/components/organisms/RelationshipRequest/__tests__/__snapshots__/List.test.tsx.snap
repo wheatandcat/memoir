@@ -80,19 +80,10 @@ exports[`components/organisms/RelationshipRequest/List.tsx 正常にrenderする
         },
       ]
     }
-    disableVirtualization={false}
-    horizontal={false}
-    initialNumToRender={10}
     keyExtractor={[Function]}
-    maxToRenderPerBatch={10}
-    numColumns={1}
     onEndReached={[Function]}
     onEndReachedThreshold={0.8}
-    removeClippedSubviews={false}
     renderItem={[Function]}
-    scrollEventThrottle={50}
-    updateCellsBatchingPeriod={50}
-    windowSize={21}
   />
 </View>
 `;

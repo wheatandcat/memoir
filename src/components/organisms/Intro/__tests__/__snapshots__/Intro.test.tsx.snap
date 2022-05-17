@@ -169,7 +169,7 @@ exports[`components/organisms/Intro/Intro.tsx 正常にrenderすること 1`] = 
         />
       </View>
     </ScrollView>
-    <RNCSafeAreaView
+    <ForwardRef
       style={
         Object {
           "position": "absolute",
@@ -189,7 +189,7 @@ exports[`components/organisms/Intro/Intro.tsx 正常にrenderすること 1`] = 
           SKIP
         </Text>
       </TouchableWithoutFeedback>
-    </RNCSafeAreaView>
+    </ForwardRef>
   </View>
 </Fragment>
 `;

@@ -31,10 +31,7 @@ exports[`components/molecules/Overlay/Loading.tsx 正常にrenderすること 1`
       mt={1}
     >
       <ActivityIndicator
-        animating={true}
         color="#F2F2F2"
-        hidesWhenStopped={true}
-        size="small"
       />
     </View>
     <View

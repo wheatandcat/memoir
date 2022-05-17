@@ -20,18 +20,18 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
     <View
       mt={4}
     >
-      <ForwardRef
+      <TouchableOpacity
         onPress={[MockFunction]}
       >
         <Memo(UserImage)
           image=""
         />
-      </ForwardRef>
+      </TouchableOpacity>
     </View>
     <View
       m={4}
     >
-      <ForwardRef
+      <TouchableOpacity
         onPress={[MockFunction]}
       >
         <View
@@ -56,7 +56,7 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
             size={23}
           />
         </View>
-      </ForwardRef>
+      </TouchableOpacity>
     </View>
   </View>
   <View>
@@ -180,7 +180,7 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
       }
     }
   >
-    <ForwardRef
+    <TouchableOpacity
       onPress={[MockFunction]}
     >
       <View
@@ -202,7 +202,7 @@ exports[`components/organisms/MyPage/Authenticated.tsx 正常にrenderするこ�
           ログアウト
         </Text>
       </View>
-    </ForwardRef>
+    </TouchableOpacity>
   </View>
 </View>
 `;

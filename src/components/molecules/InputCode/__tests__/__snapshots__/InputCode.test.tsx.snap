@@ -222,7 +222,6 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
         </Text>
       </View>
       <TextInput
-        allowFontScaling={true}
         blurOnSubmit={true}
         keyboardType="ascii-capable"
         maxLength={8}
@@ -230,7 +229,6 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
         onChangeText={[Function]}
         onFocus={[Function]}
         onKeyPress={[Function]}
-        rejectResponderTermination={true}
         returnKeyType="done"
         selectionColor="transparent"
         style={
@@ -244,7 +242,6 @@ exports[`components/molecules/InputCode/InputCode.tsx 正常にrenderするこ�
             "width": 32,
           }
         }
-        underlineColorAndroid="transparent"
       />
     </View>
   </TouchableWithoutFeedback>

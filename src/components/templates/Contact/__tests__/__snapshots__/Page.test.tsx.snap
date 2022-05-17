@@ -30,14 +30,12 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
     </Text>
   </View>
   <TextInput
-    allowFontScaling={true}
     autoCapitalize="none"
     autoFocus={false}
     blurOnSubmit={false}
     maxLength={300}
     multiline={true}
     onChangeText={[MockFunction]}
-    rejectResponderTermination={true}
     style={
       Object {
         "backgroundColor": "#FFFFFF",
@@ -54,7 +52,6 @@ exports[`components/templates/Contact/Page.tsx 正常にrenderすること 1`] =
         "textAlignVertical": "top",
       }
     }
-    underlineColorAndroid="transparent"
   />
 </View>
 `;

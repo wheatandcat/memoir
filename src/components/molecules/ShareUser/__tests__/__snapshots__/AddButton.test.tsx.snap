@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/molecules/ShareUser/AddButton.tsx 正常にrenderすること 1`] = `
-<ForwardRef
+<TouchableOpacity
   onPress={[MockFunction]}
 >
   <View
@@ -23,5 +23,5 @@ exports[`components/molecules/ShareUser/AddButton.tsx 正常にrenderするこ�
       size={50}
     />
   </View>
-</ForwardRef>
+</TouchableOpacity>
 `;

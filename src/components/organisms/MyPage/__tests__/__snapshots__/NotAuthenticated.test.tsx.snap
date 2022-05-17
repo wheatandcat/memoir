@@ -21,18 +21,18 @@ exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderする�
     <View
       mt={4}
     >
-      <ForwardRef
+      <TouchableOpacity
         onPress={[MockFunction]}
       >
         <Memo(UserImage)
           image=""
         />
-      </ForwardRef>
+      </TouchableOpacity>
     </View>
     <View
       m={4}
     >
-      <ForwardRef
+      <TouchableOpacity
         onPress={[MockFunction]}
       >
         <View
@@ -57,7 +57,7 @@ exports[`components/organisms/MyPage/NotAuthenticated.tsx 正常にrenderする�
             size={23}
           />
         </View>
-      </ForwardRef>
+      </TouchableOpacity>
     </View>
   </View>
   <View
