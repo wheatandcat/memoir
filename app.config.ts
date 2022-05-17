@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 import { appConfig } from './appConfig';
 
-const version: string = '1.1.0';
+const version: string = '1.2.0';
 const unix = dayjs().unix().toString();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
