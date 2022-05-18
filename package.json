@@ -4,6 +4,7 @@
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
     "expo:start": "APP_ENV=review expo start",
+    "eas-build-pre-install": "sh scripts/eas/setup.sh",
     "init:app:dev": "sh scripts/local/setup.sh",
     "init:app:review": "sh scripts/review/setup.sh",
     "init:app:production": "sh scripts/production/setup.sh",

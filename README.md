@@ -140,3 +140,13 @@ $ base64 -i .env.production | pbcopy
 ```bash
 $ base64 -i scripts/production/appConfig.js | pbcopy
 ```
+
+### EAS
+
+```bash
+$ base64 -i ios/GoogleService-Info.plist | pbcopy
+```
+
+```bash
+$ base64 -i android/google-services.json | pbcopy
+```
