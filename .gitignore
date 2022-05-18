@@ -23,6 +23,7 @@ GoogleService-Info.plist
 .env
 .env.development
 .env.production
+.env.local
 .reg
 regconfig.json
 .envrc

@@ -60,6 +60,7 @@
     "expo-clipboard": "~3.0.1",
     "expo-constants": "~13.1.1",
     "expo-crypto": "~10.2.0",
+    "expo-dev-client": "~0.9.5",
     "expo-device": "~4.2.0",
     "expo-file-system": "~14.0.0",
     "expo-font": "~10.1.0",
@@ -104,7 +105,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
-    "@expo/config": "^5.0.3",
+    "@expo/config": "^6.0.24",
     "@graphql-codegen/cli": "^1.21.6",
     "@graphql-codegen/introspection": "^1.18.2",
     "@graphql-codegen/typescript-operations": "^1.18.3",
