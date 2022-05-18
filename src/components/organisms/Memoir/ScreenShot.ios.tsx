@@ -25,6 +25,7 @@ import { useConfig } from 'containers/Config';
 import { uploadImageAsync, deleteImageAsync, resizeImage } from 'lib/image';
 import { v4 as uuidv4 } from 'uuid';
 import Image from 'components/atoms/Image';
+import Constants from 'expo-constants';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {
@@ -192,7 +193,7 @@ const ScreenShot: React.FC<Props> = (props) => {
       const uri = await resizeImage(url || '');
       const uploadURL = await uploadImageAsync(uri, `public/${uuidv4()}`);
       const u = uploadURL
-        .replace(process.env.STORAGE_URL || '', '')
+        .replace(Constants.manifest?.extra?.STORAGE_URL || '', '')
         .split('?')[0];
       urlList.push(u);
       deleteImageURL.push(uploadURL);
@@ -204,7 +205,7 @@ const ScreenShot: React.FC<Props> = (props) => {
     ).format('YYYYMMDD')}_memoir`;
 
     const res = await FileSystem.downloadAsync(
-      `${process.env.IMAGE_MERGE_API}?images=${param}`,
+      `${Constants.manifest?.extra?.IMAGE_MERGE_API}?images=${param}`,
       `${FileSystem.documentDirectory}${fileName}.png`
     );
 
