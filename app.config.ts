@@ -20,7 +20,7 @@ const appConfig = () => {
   return { ios, android };
 };
 
-console.log('process.env.API_HOST:', process.env.API_HOST);
+console.log('process.env.APP_ENV:', process.env.APP_ENV);
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,

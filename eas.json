@@ -4,6 +4,9 @@
   },
   "build": {
     "development": {
+      "env": {
+        "APP_ENV": "production"
+      },
       "developmentClient": true,
       "distribution": "internal",
       "ios": {
@@ -13,7 +16,11 @@
         "buildType": "apk"
       }
     },
-    "production": {}
+    "production": {
+      "env": {
+        "APP_ENV": "production"
+      }
+    }
   },
   "submit": {
     "production": {}
