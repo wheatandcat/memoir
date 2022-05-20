@@ -60,7 +60,7 @@
     "expo-clipboard": "~3.0.1",
     "expo-constants": "~13.1.1",
     "expo-crypto": "~10.2.0",
-    "expo-dev-client": "~0.9.5",
+    "expo-dev-client": "~0.9.6",
     "expo-device": "~4.2.0",
     "expo-file-system": "~14.0.0",
     "expo-font": "~10.1.0",
