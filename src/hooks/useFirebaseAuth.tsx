@@ -117,7 +117,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     authParam.iosClientId = Constants.manifest?.extra?.IOS_GOOGLE_CLIENT_ID;
   }
 
-  //console.log('authParam:', authParam);
+  console.log('authParam:', authParam);
 
   const [request, response, promptAsync] =
     Google.useIdTokenAuthRequest(authParam);
