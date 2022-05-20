@@ -114,6 +114,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     authParam.clientId = Constants.manifest?.extra?.GOOGLE_CLIENT_ID;
     authParam.androidClientId =
       Constants.manifest?.extra?.ANDROID_GOOGLE_CLIENT_ID;
+    authParam.iosClientId = Constants.manifest?.extra?.IOS_GOOGLE_CLIENT_ID;
   }
 
   //console.log('authParam:', authParam);
