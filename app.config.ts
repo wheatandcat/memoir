@@ -40,7 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     STORAGE_URL: process.env.STORAGE_URL,
     IMAGE_MERGE_API: process.env.IMAGE_MERGE_API,
     INQUIRY_API: process.env.INQUIRY_API,
-    ENV: process.env.ENV,
+    APP_ENV: process.env.APP_ENV,
   },
   name: 'memoir',
   scheme: 'com.wheatandcat.memoir',

@@ -110,7 +110,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     expoClientId: Constants.manifest?.extra?.EXPO_GOOGLE_CLIENT_ID,
   };
 
-  if (Constants.manifest?.extra?.ENV === 'production') {
+  if (Constants.manifest?.extra?.APP_ENV === 'production') {
     authParam.clientId = Constants.manifest?.extra?.GOOGLE_CLIENT_ID;
     authParam.androidClientId =
       Constants.manifest?.extra?.ANDROID_GOOGLE_CLIENT_ID;
