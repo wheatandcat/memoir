@@ -1,392 +1,392 @@
 {
-    "@apollo/client": {
-        "licenses": "MIT",
-        "repository": "https://github.com/apollographql/apollo-client",
-        "licenseUrl": "https://github.com/apollographql/apollo-client/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@expo-google-fonts/inter": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/google-fonts",
-        "licenseUrl": "https://github.com/expo/google-fonts",
-        "parents": "memoir"
-    },
-    "@expo-google-fonts/noto-sans-jp": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/google-fonts",
-        "licenseUrl": "https://github.com/expo/google-fonts",
-        "parents": "memoir"
-    },
-    "@expo-google-fonts/roboto-condensed": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/google-fonts",
-        "licenseUrl": "https://github.com/expo/google-fonts",
-        "parents": "memoir"
-    },
-    "@expo/react-native-action-sheet": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/react-native-action-sheet",
-        "licenseUrl": "https://github.com/expo/react-native-action-sheet/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@react-native-async-storage/async-storage": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-async-storage/async-storage",
-        "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@react-native-community/datetimepicker": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-community/datetimepicker",
-        "licenseUrl": "https://github.com/react-native-community/datetimepicker/raw/master/LICENSE.md",
-        "parents": "memoir"
-    },
-    "@react-native-community/masked-view": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-community/react-native-masked-view",
-        "licenseUrl": "https://github.com/react-native-community/react-native-masked-view",
-        "parents": "memoir"
-    },
-    "@react-native-picker/picker": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-picker/picker",
-        "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@react-navigation/native": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-navigation/react-navigation",
-        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@react-navigation/stack": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-navigation/react-navigation",
-        "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@types/compare-versions": {
-        "licenses": "MIT",
-        "repository": "https://github.com/omichelsen/compare-versions",
-        "licenseUrl": "https://github.com/omichelsen/compare-versions/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@types/react-native-snap-carousel": {
-        "licenses": "MIT",
-        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "@types/uuid": {
-        "licenses": "MIT",
-        "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
-        "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "compare-versions": {
-        "licenses": "MIT",
-        "repository": "https://github.com/omichelsen/compare-versions",
-        "licenseUrl": "https://github.com/omichelsen/compare-versions/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "dayjs": {
-        "licenses": "MIT",
-        "repository": "https://github.com/iamkun/dayjs",
-        "licenseUrl": "https://github.com/iamkun/dayjs/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "expo-app-loading": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-apple-authentication": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-application": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-auth-session": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-clipboard": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-constants": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-crypto": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-device": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-file-system": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-font": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-gl": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-image-manipulator": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-image-picker": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-intent-launcher": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-linear-gradient": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-linking": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-notifications": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-random": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-screen-capture": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-sharing": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-status-bar": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-updates": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-web-browser": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "firebase": {
-        "licenses": "Apache-2.0",
-        "repository": "https://github.com/firebase/firebase-js-sdk",
-        "licenseUrl": "https://github.com/firebase/firebase-js-sdk",
-        "parents": "memoir"
-    },
-    "graphql-anywhere": {
-        "licenses": "MIT",
-        "repository": "https://github.com/apollographql/apollo-client",
-        "licenseUrl": "https://github.com/apollographql/apollo-client/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "graphql-tag": {
-        "licenses": "MIT",
-        "repository": "https://github.com/apollographql/graphql-tag",
-        "licenseUrl": "https://github.com/apollographql/graphql-tag/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "graphql": {
-        "licenses": "MIT",
-        "repository": "https://github.com/graphql/graphql-js",
-        "licenseUrl": "https://github.com/graphql/graphql-js/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-dom": {
-        "licenses": "MIT",
-        "repository": "https://github.com/facebook/react",
-        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-app-link": {
-        "licenses": "MIT",
-        "repository": "https://github.com/datwheat/react-native-app-link",
-        "licenseUrl": "https://github.com/datwheat/react-native-app-link/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-gesture-handler": {
-        "licenses": "MIT",
-        "repository": "https://github.com/software-mansion/react-native-gesture-handler",
-        "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-get-random-values": {
-        "licenses": "MIT",
-        "repository": "https://github.com/LinusU/react-native-get-random-values",
-        "licenseUrl": "https://github.com/LinusU/react-native-get-random-values/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-modal-datetime-picker": {
-        "licenses": "MIT",
-        "repository": "https://github.com/mmazzarolo/react-native-modal-datetime-picker",
-        "licenseUrl": "https://github.com/mmazzarolo/react-native-modal-datetime-picker/raw/master/LICENSE.md",
-        "parents": "memoir"
-    },
-    "react-native-modal": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-community/react-native-modal",
-        "licenseUrl": "https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md",
-        "parents": "memoir"
-    },
-    "react-native-picker-select": {
-        "licenses": "MIT",
-        "repository": "https://github.com/lawnstarter/react-native-picker-select",
-        "licenseUrl": "https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-reanimated": {
-        "licenses": "MIT",
-        "repository": "https://github.com/software-mansion/react-native-reanimated",
-        "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-root-toast": {
-        "licenses": "MIT",
-        "repository": "https://github.com/magicismight/react-native-root-toast",
-        "licenseUrl": "https://github.com/magicismight/react-native-root-toast/raw/master/LICENSE.txt",
-        "parents": "memoir"
-    },
-    "react-native-safe-area-context": {
-        "licenses": "MIT",
-        "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
-        "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-screens": {
-        "licenses": "MIT",
-        "repository": "https://github.com/software-mansion/react-native-screens",
-        "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-snap-carousel": {
-        "licenses": "BSD-3-Clause",
-        "repository": "github.com/archriss/react-native-snap-carousel",
-        "licenseUrl": "github.com/archriss/react-native-snap-carousel/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-swipe-gestures": {
-        "licenses": "MIT",
-        "repository": "https://github.com/glepur/react-native-swipe-gestures",
-        "licenseUrl": "https://github.com/glepur/react-native-swipe-gestures/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-switch-selector": {
-        "licenses": "MIT",
-        "repository": "https://github.com/jkdrangel/react-native-switch-selector",
-        "licenseUrl": "https://github.com/jkdrangel/react-native-switch-selector/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-view-shot": {
-        "licenses": "MIT",
-        "repository": "https://github.com/gre/react-native-view-shot",
-        "licenseUrl": "https://github.com/gre/react-native-view-shot/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native-webview": {
-        "licenses": "MIT",
-        "repository": "https://github.com/react-native-webview/react-native-webview",
-        "licenseUrl": "https://github.com/react-native-webview/react-native-webview/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "react-native": {
-        "licenses": "MIT",
-        "repository": "github:facebook/react-native",
-        "licenseUrl": "github:facebook/react-native",
-        "parents": "memoir"
-    },
-    "react": {
-        "licenses": "MIT",
-        "repository": "https://github.com/facebook/react",
-        "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "recoil": {
-        "licenses": "MIT",
-        "repository": "https://github.com/facebookexperimental/recoil",
-        "licenseUrl": "https://github.com/facebookexperimental/recoil/raw/master/LICENSE",
-        "parents": "memoir"
-    },
-    "sentry-expo": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/sentry-expo",
-        "licenseUrl": "https://github.com/expo/sentry-expo",
-        "parents": "memoir"
-    },
-    "uuid": {
-        "licenses": "MIT",
-        "repository": "https://github.com/uuidjs/uuid",
-        "licenseUrl": "https://github.com/uuidjs/uuid/raw/master/LICENSE.md",
-        "parents": "memoir"
-    }
+  "@apollo/client": {
+    "licenses": "MIT",
+    "repository": "https://github.com/apollographql/apollo-client",
+    "licenseUrl": "https://github.com/apollographql/apollo-client/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@expo-google-fonts/inter": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/google-fonts",
+    "licenseUrl": "https://github.com/expo/google-fonts",
+    "parents": "memoir"
+  },
+  "@expo-google-fonts/noto-sans-jp": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/google-fonts",
+    "licenseUrl": "https://github.com/expo/google-fonts",
+    "parents": "memoir"
+  },
+  "@expo-google-fonts/roboto-condensed": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/google-fonts",
+    "licenseUrl": "https://github.com/expo/google-fonts",
+    "parents": "memoir"
+  },
+  "@expo/react-native-action-sheet": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/react-native-action-sheet",
+    "licenseUrl": "https://github.com/expo/react-native-action-sheet/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@react-native-async-storage/async-storage": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-async-storage/async-storage",
+    "licenseUrl": "https://github.com/react-native-async-storage/async-storage/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@react-native-community/datetimepicker": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-community/datetimepicker",
+    "licenseUrl": "https://github.com/react-native-community/datetimepicker/raw/master/LICENSE.md",
+    "parents": "memoir"
+  },
+  "@react-native-community/masked-view": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-community/react-native-masked-view",
+    "licenseUrl": "https://github.com/react-native-community/react-native-masked-view",
+    "parents": "memoir"
+  },
+  "@react-native-picker/picker": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-picker/picker",
+    "licenseUrl": "https://github.com/react-native-picker/picker/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@react-navigation/native": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-navigation/react-navigation",
+    "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@react-navigation/stack": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-navigation/react-navigation",
+    "licenseUrl": "https://github.com/react-navigation/react-navigation/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@types/compare-versions": {
+    "licenses": "MIT",
+    "repository": "https://github.com/omichelsen/compare-versions",
+    "licenseUrl": "https://github.com/omichelsen/compare-versions/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@types/react-native-snap-carousel": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "@types/uuid": {
+    "licenses": "MIT",
+    "repository": "https://github.com/DefinitelyTyped/DefinitelyTyped",
+    "licenseUrl": "https://github.com/DefinitelyTyped/DefinitelyTyped/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "compare-versions": {
+    "licenses": "MIT",
+    "repository": "https://github.com/omichelsen/compare-versions",
+    "licenseUrl": "https://github.com/omichelsen/compare-versions/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "dayjs": {
+    "licenses": "MIT",
+    "repository": "https://github.com/iamkun/dayjs",
+    "licenseUrl": "https://github.com/iamkun/dayjs/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "expo-app-loading": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-apple-authentication": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-application": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-auth-session": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-clipboard": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-constants": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-crypto": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-dev-client": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-device": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-file-system": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-font": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-gl": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-image-manipulator": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-image-picker": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-intent-launcher": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-linear-gradient": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-linking": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-notifications": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-random": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-sharing": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-status-bar": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-updates": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo-web-browser": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "expo": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/expo",
+    "licenseUrl": "https://github.com/expo/expo",
+    "parents": "memoir"
+  },
+  "firebase": {
+    "licenses": "Apache-2.0",
+    "repository": "https://github.com/firebase/firebase-js-sdk",
+    "licenseUrl": "https://github.com/firebase/firebase-js-sdk",
+    "parents": "memoir"
+  },
+  "graphql-anywhere": {
+    "licenses": "MIT",
+    "repository": "https://github.com/apollographql/apollo-client",
+    "licenseUrl": "https://github.com/apollographql/apollo-client/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "graphql-tag": {
+    "licenses": "MIT",
+    "repository": "https://github.com/apollographql/graphql-tag",
+    "licenseUrl": "https://github.com/apollographql/graphql-tag/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "graphql": {
+    "licenses": "MIT",
+    "repository": "https://github.com/graphql/graphql-js",
+    "licenseUrl": "https://github.com/graphql/graphql-js/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-dom": {
+    "licenses": "MIT",
+    "repository": "https://github.com/facebook/react",
+    "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-app-link": {
+    "licenses": "MIT",
+    "repository": "https://github.com/datwheat/react-native-app-link",
+    "licenseUrl": "https://github.com/datwheat/react-native-app-link/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-gesture-handler": {
+    "licenses": "MIT",
+    "repository": "https://github.com/software-mansion/react-native-gesture-handler",
+    "licenseUrl": "https://github.com/software-mansion/react-native-gesture-handler/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-get-random-values": {
+    "licenses": "MIT",
+    "repository": "https://github.com/LinusU/react-native-get-random-values",
+    "licenseUrl": "https://github.com/LinusU/react-native-get-random-values/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-modal-datetime-picker": {
+    "licenses": "MIT",
+    "repository": "https://github.com/mmazzarolo/react-native-modal-datetime-picker",
+    "licenseUrl": "https://github.com/mmazzarolo/react-native-modal-datetime-picker/raw/master/LICENSE.md",
+    "parents": "memoir"
+  },
+  "react-native-modal": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-community/react-native-modal",
+    "licenseUrl": "https://github.com/react-native-community/react-native-modal/raw/master/LICENSE.md",
+    "parents": "memoir"
+  },
+  "react-native-picker-select": {
+    "licenses": "MIT",
+    "repository": "https://github.com/lawnstarter/react-native-picker-select",
+    "licenseUrl": "https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-reanimated": {
+    "licenses": "MIT",
+    "repository": "https://github.com/software-mansion/react-native-reanimated",
+    "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-root-toast": {
+    "licenses": "MIT",
+    "repository": "https://github.com/magicismight/react-native-root-toast",
+    "licenseUrl": "https://github.com/magicismight/react-native-root-toast/raw/master/LICENSE.txt",
+    "parents": "memoir"
+  },
+  "react-native-safe-area-context": {
+    "licenses": "MIT",
+    "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
+    "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-screens": {
+    "licenses": "MIT",
+    "repository": "https://github.com/software-mansion/react-native-screens",
+    "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-snap-carousel": {
+    "licenses": "BSD-3-Clause",
+    "repository": "github.com/archriss/react-native-snap-carousel",
+    "licenseUrl": "github.com/archriss/react-native-snap-carousel/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-swipe-gestures": {
+    "licenses": "MIT",
+    "repository": "https://github.com/glepur/react-native-swipe-gestures",
+    "licenseUrl": "https://github.com/glepur/react-native-swipe-gestures/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-switch-selector": {
+    "licenses": "MIT",
+    "repository": "https://github.com/jkdrangel/react-native-switch-selector",
+    "licenseUrl": "https://github.com/jkdrangel/react-native-switch-selector/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-view-shot": {
+    "licenses": "MIT",
+    "repository": "https://github.com/gre/react-native-view-shot",
+    "licenseUrl": "https://github.com/gre/react-native-view-shot/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native-webview": {
+    "licenses": "MIT",
+    "repository": "https://github.com/react-native-webview/react-native-webview",
+    "licenseUrl": "https://github.com/react-native-webview/react-native-webview/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "react-native": {
+    "licenses": "MIT",
+    "repository": "github:facebook/react-native",
+    "licenseUrl": "github:facebook/react-native",
+    "parents": "memoir"
+  },
+  "react": {
+    "licenses": "MIT",
+    "repository": "https://github.com/facebook/react",
+    "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "recoil": {
+    "licenses": "MIT",
+    "repository": "https://github.com/facebookexperimental/recoil",
+    "licenseUrl": "https://github.com/facebookexperimental/recoil/raw/master/LICENSE",
+    "parents": "memoir"
+  },
+  "sentry-expo": {
+    "licenses": "MIT",
+    "repository": "https://github.com/expo/sentry-expo",
+    "licenseUrl": "https://github.com/expo/sentry-expo",
+    "parents": "memoir"
+  },
+  "uuid": {
+    "licenses": "MIT",
+    "repository": "https://github.com/uuidjs/uuid",
+    "licenseUrl": "https://github.com/uuidjs/uuid/raw/master/LICENSE.md",
+    "parents": "memoir"
+  }
 }
