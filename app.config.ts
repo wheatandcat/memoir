@@ -13,7 +13,7 @@ const appConfig = () => {
     ios.googleServicesFile = process.env.IOS_GOOGLE_SERVICES_FILE;
   }
   if (process.env.ANDROID_GOOGLE_SERVICES_FILE) {
-    android.googleServicesFile = process.env.IOS_GOOGLE_SERVICES_FILE;
+    android.googleServicesFile = process.env.ANDROID_GOOGLE_SERVICES_FILE;
   }
 
   return { ios, android };
