@@ -1,4 +1,5 @@
 import { ExpoConfig, ConfigContext } from '@expo/config';
+
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
 require('dotenv').config();
@@ -10,10 +11,10 @@ const appConfig = () => {
   const ios: any = {};
   const android: any = {};
   if (process.env.IOS_GOOGLE_SERVICES_FILE) {
-    ios.googleServicesFile = process.env.IOS_GOOGLE_SERVICES_FILE;
+    ios.googleServicesFile = './GoogleService-Info.plist';
   }
   if (process.env.ANDROID_GOOGLE_SERVICES_FILE) {
-    android.googleServicesFile = process.env.ANDROID_GOOGLE_SERVICES_FILE;
+    android.googleServicesFile = './google-services.json';
   }
 
   return { ios, android };
