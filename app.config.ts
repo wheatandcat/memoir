@@ -2,7 +2,9 @@ import { ExpoConfig, ConfigContext } from '@expo/config';
 
 import dayjs from 'dayjs';
 import 'dayjs/locale/ja';
-require('dotenv').config();
+if (process.env.APP_ENV !== 'production') {
+  require('dotenv').config();
+}
 
 const version: string = '1.2.0';
 const unix = dayjs().unix().toString();
@@ -19,8 +21,6 @@ const appConfig = () => {
 
   return { ios, android };
 };
-
-console.log('process.env.APP_ENV:', process.env.APP_ENV);
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,

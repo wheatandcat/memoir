@@ -17,6 +17,9 @@
       }
     },
     "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
       "env": {
         "APP_ENV": "production"
       }
