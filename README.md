@@ -58,11 +58,29 @@ $ yarn android
 
 ### iOS
 
+#### dev
+
+```bash
+$ yarn ios:build:dev
+$ expo start --dev-client
+```
+
+#### production
+
 ```bash
 $ yarn ios:build
 ```
 
 ### Android
+
+#### dev
+
+```bash
+$ yarn android:build:dev
+$ expo start --dev-client
+```
+
+#### production
 
 ```bash
 $ yarn android:build

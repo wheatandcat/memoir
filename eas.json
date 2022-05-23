@@ -22,7 +22,8 @@
       },
       "env": {
         "APP_ENV": "production"
-      }
+      },
+      "credentialsSource": "local"
     }
   },
   "submit": {
