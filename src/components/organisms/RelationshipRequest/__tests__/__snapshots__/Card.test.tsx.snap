@@ -89,7 +89,7 @@ exports[`components/organisms/RelationshipRequest/Card.tsx 正常にrenderする
           }
         }
       >
-        <ForwardRef
+        <TouchableOpacity
           onPress={[MockFunction]}
         >
           <View
@@ -112,8 +112,8 @@ exports[`components/organisms/RelationshipRequest/Card.tsx 正常にrenderする
               承諾する
             </Text>
           </View>
-        </ForwardRef>
-        <ForwardRef
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={[MockFunction]}
         >
           <View
@@ -136,7 +136,7 @@ exports[`components/organisms/RelationshipRequest/Card.tsx 正常にrenderする
               削除
             </Text>
           </View>
-        </ForwardRef>
+        </TouchableOpacity>
       </View>
     </View>
   </View>

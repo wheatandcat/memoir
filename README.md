@@ -58,11 +58,29 @@ $ yarn android
 
 ### iOS
 
+#### dev
+
+```bash
+$ yarn ios:build:dev
+$ expo start --dev-client
+```
+
+#### production
+
 ```bash
 $ yarn ios:build
 ```
 
 ### Android
+
+#### dev
+
+```bash
+$ yarn android:build:dev
+$ expo start --dev-client
+```
+
+#### production
 
 ```bash
 $ yarn android:build
@@ -122,21 +140,10 @@ $ npx reg-suit run
 $ base64 -i .env.development | pbcopy
 ```
 
-### Expoコンフィグ
-```bash
-$ base64 -i scripts/review/appConfig.js | pbcopy
-```
-
 ## 本番環境
 
 ### アプリ内コンフィグ 
 
 ```bash
 $ base64 -i .env.production | pbcopy
-```
-
-
-### Expoコンフィグ
-```bash
-$ base64 -i scripts/production/appConfig.js | pbcopy
 ```

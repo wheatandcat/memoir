@@ -12,6 +12,7 @@ import { storageKey, getItem, removeItem } from 'lib/storage';
 import Auth from 'lib/auth';
 import * as Sentry from 'sentry-expo';
 import { errorCode } from 'lib/error';
+import Constants from 'expo-constants';
 
 const cache = new InMemoryCache();
 const auth = new Auth();
@@ -22,7 +23,7 @@ type Param = {
 };
 
 const makeApolloClient = async () => {
-  const uri = `${process.env.API_HOST}/query`;
+  const uri = `${Constants.manifest?.extra?.API_HOST}/query`;
 
   const authLink = setContext(async (_, { headers }) => {
     const h = headers;

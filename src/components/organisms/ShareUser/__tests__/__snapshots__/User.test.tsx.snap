@@ -29,7 +29,7 @@ exports[`components/organisms/ShareUser/User.tsx 正常にrenderすること 1`]
         test
       </Text>
     </View>
-    <ForwardRef
+    <TouchableOpacity
       onPress={[Function]}
     >
       <Text
@@ -40,7 +40,7 @@ exports[`components/organisms/ShareUser/User.tsx 正常にrenderすること 1`]
       >
         解除
       </Text>
-    </ForwardRef>
+    </TouchableOpacity>
   </View>
 </View>
 `;

@@ -137,6 +137,12 @@
         "licenseUrl": "https://github.com/expo/expo",
         "parents": "memoir"
     },
+    "expo-dev-client": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "memoir"
+    },
     "expo-device": {
         "licenses": "MIT",
         "repository": "https://github.com/expo/expo",
@@ -198,12 +204,6 @@
         "parents": "memoir"
     },
     "expo-random": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
-    "expo-screen-capture": {
         "licenses": "MIT",
         "repository": "https://github.com/expo/expo",
         "licenseUrl": "https://github.com/expo/expo",
@@ -331,8 +331,8 @@
     },
     "react-native-snap-carousel": {
         "licenses": "BSD-3-Clause",
-        "repository": "github.com/archriss/react-native-snap-carousel",
-        "licenseUrl": "github.com/archriss/react-native-snap-carousel/raw/master/LICENSE",
+        "repository": "github.com/meliorence/react-native-snap-carousel",
+        "licenseUrl": "github.com/meliorence/react-native-snap-carousel/raw/master/LICENSE",
         "parents": "memoir"
     },
     "react-native-swipe-gestures": {

@@ -66,7 +66,7 @@ exports[`components/organisms/AddShareUser/InputModal/Confirm.tsx 正常にrende
     <View
       mx={2}
     >
-      <ForwardRef
+      <TouchableOpacity
         onPress={[MockFunction]}
       >
         <View
@@ -89,7 +89,7 @@ exports[`components/organisms/AddShareUser/InputModal/Confirm.tsx 正常にrende
             キャンセル
           </Text>
         </View>
-      </ForwardRef>
+      </TouchableOpacity>
     </View>
   </View>
 </View>

@@ -22,7 +22,7 @@ import usePrevious from 'hooks/usePrevious';
 import WithProvider from './WithProvider';
 
 Sentry.init({
-  dsn: process.env.SENTRY_DSN,
+  dsn: Constants.manifest?.extra?.SENTRY_DSN,
   enableInExpoDevelopment: true,
   debug: Device.isDevice,
 });
@@ -86,9 +86,9 @@ function App() {
   }, [forceUpdate, prevForceUpdate, client]);
 
   useEffect(() => {
-    AppState.addEventListener('change', handleUpdate);
+    const subscription = AppState.addEventListener('change', handleUpdate);
     return () => {
-      AppState.removeEventListener('change', handleUpdate);
+      subscription.remove();
     };
   }, [handleUpdate]);
 

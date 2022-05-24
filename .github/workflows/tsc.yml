@@ -6,8 +6,6 @@ on:
     tags-ignore:
       - 'v*'
 
-env:
-  EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}
 jobs:
   tsc:
     runs-on: ubuntu-latest
@@ -23,8 +21,6 @@ jobs:
       - name: Install node_modules
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install
-      - name: Create ./appConfig.js file
-        run: echo $EXPO_CONFIG | base64 --decode -i > ./appConfig.js
       - name: codegen
         run: yarn codegen
       - name: tsc

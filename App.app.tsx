@@ -18,6 +18,9 @@ LogBox.ignoreLogs([
   'Setting a timer',
   'Constants.deviceYearClass has been deprecated',
   'AsyncStorage has been extracted',
+  "exported from 'deprecated-react-native-prop-types'.",
+  'ViewPropTypes will be removed',
+  'ColorPropType will be removed',
 ]);
 
 const AppContainer = () => {

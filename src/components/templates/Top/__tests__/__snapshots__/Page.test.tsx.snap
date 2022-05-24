@@ -13,7 +13,7 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
     backgroundColor="#E3C95D"
     style="dark"
   />
-  <RNCSafeAreaView>
+  <ForwardRef>
     <View
       style={
         Object {
@@ -58,7 +58,7 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
               }
             }
           >
-            <ForwardRef
+            <TouchableOpacity
               onPress={[MockFunction]}
             >
               <Text
@@ -73,7 +73,7 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
               >
                 スキップ
               </Text>
-            </ForwardRef>
+            </TouchableOpacity>
           </View>
         </View>
         <View
@@ -173,7 +173,7 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
                 }
               }
             >
-              <ForwardRef
+              <TouchableOpacity
                 onPress={[MockFunction]}
               >
                 <Text
@@ -184,12 +184,12 @@ exports[`components/templates/Top/Page.tsx 正常にrenderすること 1`] = `
                 >
                   ログイン
                 </Text>
-              </ForwardRef>
+              </TouchableOpacity>
             </View>
           </View>
         </View>
       </ImageBackground>
     </View>
-  </RNCSafeAreaView>
+  </ForwardRef>
 </View>
 `;

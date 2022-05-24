@@ -1,16 +1,30 @@
 {
   "cli": {
-    "version": ">= 0.47.0"
+    "version": ">= 0.52.0"
   },
   "build": {
     "development": {
+      "env": {
+        "APP_ENV": "production"
+      },
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "ios": {
+        "simulator": true
+      },
+      "android": {
+        "buildType": "apk"
+      }
     },
-    "preview": {
-      "distribution": "internal"
-    },
-    "production": {}
+    "production": {
+      "android": {
+        "buildType": "app-bundle"
+      },
+      "env": {
+        "APP_ENV": "production"
+      },
+      "credentialsSource": "local"
+    }
   },
   "submit": {
     "production": {}

@@ -20,6 +20,7 @@ import {
   useUserLazyQuery,
 } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
+import Constants from 'expo-constants';
 
 const auth = new Auth();
 
@@ -106,12 +107,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const authParam: Partial<Google.GoogleAuthRequestConfig> = {
     responseType: ResponseType.IdToken,
-    expoClientId: process.env.EXPO_GOOGLE_CLIENT_ID,
+    expoClientId: Constants.manifest?.extra?.EXPO_GOOGLE_CLIENT_ID,
   };
 
-  if (process.env.ENV === 'production') {
-    authParam.clientId = process.env.GOOGLE_CLIENT_ID;
-    authParam.androidClientId = process.env.ANDROID_GOOGLE_CLIENT_ID;
+  if (Constants.manifest?.extra?.APP_ENV === 'production') {
+    authParam.clientId = Constants.manifest?.extra?.GOOGLE_CLIENT_ID;
+    authParam.androidClientId =
+      Constants.manifest?.extra?.ANDROID_GOOGLE_CLIENT_ID;
+    authParam.iosClientId = Constants.manifest?.extra?.IOS_GOOGLE_CLIENT_ID;
   }
 
   //console.log('authParam:', authParam);

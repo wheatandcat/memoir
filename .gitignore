@@ -23,9 +23,11 @@ GoogleService-Info.plist
 .env
 .env.development
 .env.production
+.env.local
 .reg
 regconfig.json
 .envrc
-scripts/appConfig.js
 google-services.json
-appConfig.js
+credentials.json
+release.keystore
+release.keystore2

@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`components/templates/SeeYouAgain/SeeYouAgain.tsx 正常にrenderすること 1`] = `
-<RNCSafeAreaView>
+<ForwardRef>
   <View
     style={
       Object {
@@ -62,5 +62,5 @@ exports[`components/templates/SeeYouAgain/SeeYouAgain.tsx 正常にrenderする�
       </View>
     </ScrollView>
   </View>
-</RNCSafeAreaView>
+</ForwardRef>
 `;

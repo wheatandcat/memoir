@@ -5,12 +5,13 @@ import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
 import * as Device from 'expo-device';
 import { Platform, Alert, TouchableOpacity } from 'react-native';
+import Constants from 'expo-constants';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 
 export type Props = {};
 
-const url = process.env.INQUIRY_API || '';
+const url = Constants.manifest?.extra?.INQUIRY_API || '';
 
 export type ConnectedType = {
   userID: string;
