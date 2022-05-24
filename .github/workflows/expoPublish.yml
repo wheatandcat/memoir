@@ -6,7 +6,6 @@ on:
 
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
-  EXPO_CONFIG: ${{ secrets.EXPO_CONFIG }}
 jobs:
   publish:
     name: Install and publish
@@ -29,8 +28,6 @@ jobs:
         run: yarn install
       - name: Create .env file
         run: echo $APP_CONFIG | base64 --decode -i > ./.env
-      - name: Create ./appConfig.js file
-        run: echo $EXPO_CONFIG | base64 --decode -i > ./appConfig.js
       - name: codegen
         run: yarn codegen
       - uses: expo/expo-github-action@v5

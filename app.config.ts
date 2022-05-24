@@ -12,10 +12,9 @@ const unix = dayjs().unix().toString();
 const appConfig = () => {
   const ios: any = {};
   const android: any = {};
-  if (process.env.IOS_GOOGLE_SERVICES_FILE) {
+
+  if (process.env.APP_ENV === 'production') {
     ios.googleServicesFile = './GoogleService-Info.plist';
-  }
-  if (process.env.ANDROID_GOOGLE_SERVICES_FILE) {
     android.googleServicesFile = './google-services.json';
   }
 

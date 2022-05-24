@@ -40,7 +40,10 @@ const WithProvider = () => {
             listener(url);
           };
 
-          Linking.addEventListener('url', onReceiveURL);
+          const subscriptionLinking = Linking.addEventListener(
+            'url',
+            onReceiveURL
+          );
 
           const subscription =
             Notifications.addNotificationResponseReceivedListener(
@@ -56,7 +59,7 @@ const WithProvider = () => {
             );
 
           return () => {
-            Linking.removeEventListener('url', onReceiveURL);
+            subscriptionLinking.remove();
             subscription.remove();
           };
         },

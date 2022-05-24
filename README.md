@@ -140,31 +140,10 @@ $ npx reg-suit run
 $ base64 -i .env.development | pbcopy
 ```
 
-### Expoコンフィグ
-```bash
-$ base64 -i scripts/review/appConfig.js | pbcopy
-```
-
 ## 本番環境
 
 ### アプリ内コンフィグ 
 
 ```bash
 $ base64 -i .env.production | pbcopy
-```
-
-
-### Expoコンフィグ
-```bash
-$ base64 -i scripts/production/appConfig.js | pbcopy
-```
-
-### EAS
-
-```bash
-$ base64 -i ios/GoogleService-Info.plist | pbcopy
-```
-
-```bash
-$ base64 -i android/google-services.json | pbcopy
 ```

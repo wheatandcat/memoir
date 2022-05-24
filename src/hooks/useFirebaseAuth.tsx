@@ -110,8 +110,6 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     expoClientId: Constants.manifest?.extra?.EXPO_GOOGLE_CLIENT_ID,
   };
 
-  console.log('APP_ENV:', Constants.manifest?.extra?.APP_ENV);
-
   if (Constants.manifest?.extra?.APP_ENV === 'production') {
     authParam.clientId = Constants.manifest?.extra?.GOOGLE_CLIENT_ID;
     authParam.androidClientId =
@@ -119,7 +117,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     authParam.iosClientId = Constants.manifest?.extra?.IOS_GOOGLE_CLIENT_ID;
   }
 
-  console.log('authParam:', authParam);
+  //console.log('authParam:', authParam);
 
   const [request, response, promptAsync] =
     Google.useIdTokenAuthRequest(authParam);

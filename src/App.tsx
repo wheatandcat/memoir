@@ -86,9 +86,9 @@ function App() {
   }, [forceUpdate, prevForceUpdate, client]);
 
   useEffect(() => {
-    AppState.addEventListener('change', handleUpdate);
+    const subscription = AppState.addEventListener('change', handleUpdate);
     return () => {
-      AppState.removeEventListener('change', handleUpdate);
+      subscription.remove();
     };
   }, [handleUpdate]);
 

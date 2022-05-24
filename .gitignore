@@ -27,9 +27,7 @@ GoogleService-Info.plist
 .reg
 regconfig.json
 .envrc
-scripts/appConfig.js
 google-services.json
-appConfig.js
 credentials.json
 release.keystore
 release.keystore2
