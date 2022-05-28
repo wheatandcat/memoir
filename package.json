@@ -18,6 +18,7 @@
     "ios:build:dev": "yarn init:app:production && eas build --profile=development -p=ios",
     "android:build": "yarn init:app:production && eas build --profile=production -p=android",
     "android:build:dev": "yarn init:app:production && eas build --profile=development -p=android",
+    "store:upload": "yarn init:app:production && npx eas build --profile=production  --platform all --non-interactive --auto-submit --no-wait",
     "loki:test": "sh scripts/visual-testing/setup.sh && yarn loki test ; sh scripts/storybook/setup.sh",
     "loki:update": "sh scripts/visual-testing/setup.sh && rm -rf .loki/reference/*.png && yarn loki update ; sh scripts/storybook/setup.sh",
     "storybook-server": "(adb reverse tcp:7007 tcp:7007 > /dev/null || true) && echo 'y' | start-storybook -p 7007 | react-native start --projectRoot storybook --watchFolders $PWD",
