@@ -86,6 +86,11 @@ $ expo start --dev-client
 $ yarn android:build
 ```
 
+## ビルド & ストアアップロード
+
+```bash
+$ yarn store:upload
+```
 
 # コード生成
 
@@ -147,3 +152,4 @@ $ base64 -i .env.development | pbcopy
 ```bash
 $ base64 -i .env.production | pbcopy
 ```
+

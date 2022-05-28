@@ -31,3 +31,5 @@ google-services.json
 credentials.json
 release.keystore
 release.keystore2
+eas.json
+release-service-account.json
