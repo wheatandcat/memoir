@@ -95,12 +95,6 @@
         "licenseUrl": "https://github.com/iamkun/dayjs/raw/master/LICENSE",
         "parents": "memoir"
     },
-    "expo-app-loading": {
-        "licenses": "MIT",
-        "repository": "https://github.com/expo/expo",
-        "licenseUrl": "https://github.com/expo/expo",
-        "parents": "memoir"
-    },
     "expo-apple-authentication": {
         "licenses": "MIT",
         "repository": "https://github.com/expo/expo",
@@ -210,6 +204,12 @@
         "parents": "memoir"
     },
     "expo-sharing": {
+        "licenses": "MIT",
+        "repository": "https://github.com/expo/expo",
+        "licenseUrl": "https://github.com/expo/expo",
+        "parents": "memoir"
+    },
+    "expo-splash-screen": {
         "licenses": "MIT",
         "repository": "https://github.com/expo/expo",
         "licenseUrl": "https://github.com/expo/expo",
