@@ -30,3 +30,11 @@ jest.mock('@react-navigation/native', () => {
     useFocusEffect: jest.fn(),
   };
 });
+
+jest.mock('lib/firebase', () => {
+  return {
+    getFirestoreApp: jest.fn(),
+    getFirebaseStorageApp: jest.fn(),
+    getFirebaseAuthApp: jest.fn(),
+  };
+});
