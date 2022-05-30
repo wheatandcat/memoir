@@ -1,10 +1,13 @@
-import firebase from 'lib/system/firebase';
+import { onAuthStateChanged, User, signOut } from 'firebase/auth';
 import { storageKey, setItem, getItem, removeItem } from 'lib/storage';
 import dayjs from 'lib/dayjs';
+import { getFirebaseAuthApp } from 'lib/firebase';
 
-const initFirebaseAuth = (): Promise<firebase.User | null> => {
+const auth = getFirebaseAuthApp();
+
+const initFirebaseAuth = (): Promise<User | null> => {
   return new Promise((resolve) => {
-    var unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
       // user オブジェクトを resolve
       resolve(user);
 
@@ -48,7 +51,7 @@ class Auth {
     return this.setSession(true);
   };
   logout = async () => {
-    await firebase.auth().signOut();
+    await signOut(auth);
 
     await removeItem(storageKey.AUTH_UID_KEY);
     await removeItem(storageKey.AUTH_ID_TOKEN_KEY);

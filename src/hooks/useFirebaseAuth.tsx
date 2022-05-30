@@ -7,8 +7,7 @@ import * as Crypto from 'expo-crypto';
 import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
-import firebase from 'lib/system/firebase';
-import 'lib/firebase';
+import { getFirebaseAuthApp } from 'lib/firebase';
 import { storageKey, getItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
@@ -21,8 +20,16 @@ import {
 } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
 import Constants from 'expo-constants';
+import {
+  OAuthCredential,
+  signInWithCredential,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  OAuthProvider,
+} from 'firebase/auth';
 
 const auth = new Auth();
+const appAuth = getFirebaseAuthApp();
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -147,13 +154,12 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   );
 
   const firebaseLogin = useCallback(
-    async (credential: firebase.auth.OAuthCredential) => {
-      const data = await firebase
-        .auth()
-        .signInWithCredential(credential)
-        .catch((error: any) => {
+    async (credential: OAuthCredential) => {
+      const data = await signInWithCredential(appAuth, credential).catch(
+        (error: any) => {
           console.log(error);
-        });
+        }
+      );
 
       console.log(data);
 
@@ -171,7 +177,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       !authUser.uid
     ) {
       const { id_token } = response.params;
-      const credential = firebase.auth.GoogleAuthProvider.credential(id_token);
+      const credential = GoogleAuthProvider.credential(id_token);
       firebaseLogin(credential);
     } else if (response?.type === 'error') {
       console.log('error:', response);
@@ -195,7 +201,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
         ],
         nonce: digestedNonce,
       });
-      const provider = new firebase.auth.OAuthProvider('apple.com');
+      const provider = new OAuthProvider('apple.com');
       const credential = provider.credential({
         idToken: result.identityToken || '',
         rawNonce: nonce,
@@ -234,7 +240,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   }, [authUserID, setAuthUser, authUser.uid]);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged((aUser) => {
+    const unsubscribe = onAuthStateChanged(appAuth, (aUser) => {
       if (aUser) {
         setSession(true);
       } else {

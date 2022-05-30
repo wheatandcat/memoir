@@ -1,5 +1,10 @@
-import firebase from 'lib/system/firebase';
-import 'lib/firebase';
+import { getFirebaseStorageApp } from 'lib/firebase';
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from 'firebase/storage';
 import * as ImageManipulator from 'expo-image-manipulator';
 import * as FileSystem from 'expo-file-system';
 
@@ -21,16 +26,18 @@ export const uploadImageAsync = async (
     xhr.send(null);
   });
 
-  const ref = firebase.storage().ref().child(fileName);
-  const snapshot = await ref.put(blob);
+  const storageRef = ref(getFirebaseStorageApp(), fileName);
+  const snapshot = await uploadBytes(storageRef, blob);
 
   blob.close();
 
-  return await snapshot.ref.getDownloadURL();
+  return await getDownloadURL(snapshot.ref);
 };
 
 export const deleteImageAsync = async (uri: string) => {
-  await firebase.storage().refFromURL(uri).delete();
+  const desertRef = ref(getFirebaseStorageApp(), uri);
+
+  await deleteObject(desertRef);
 };
 
 export const resizeImage = async (uri: string): Promise<string> => {
