@@ -23,7 +23,7 @@ const Loading: React.FC<Props> = (props) => {
     return () => clearInterval(interval);
   }, [count]);
 
-  const style = { paddingLeft: width / 2 - 50 };
+  const style = { paddingLeft: width / 2 - (props.text?.length || 0) * 14 };
 
   return (
     <View style={styles.root}>
@@ -32,7 +32,11 @@ const Loading: React.FC<Props> = (props) => {
           <ActivityIndicator color={theme().color.base.light} />
         </View>
         <View ml={2}>
-          <Text color="baseLight" fontFamily="NotoSansJP-Bold">
+          <Text
+            color="baseLight"
+            fontFamily="NotoSansJP-Bold"
+            textAlign="center"
+          >
             {props.text}{' '}
             {(() => {
               if (count % 3 === 0) {

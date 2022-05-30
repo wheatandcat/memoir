@@ -6,26 +6,31 @@ import Text from 'components/atoms/Text';
 import Divider from 'components/atoms/Divider';
 import { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import Form from 'components/organisms/Login/Form';
+import Loading from 'components/molecules/Overlay/Loading';
 
 export type Props = {
+  loading: boolean;
   onAppleLogin: UseFirebaseAuth['onAppleLogin'];
   onGoogleLogin: UseFirebaseAuth['onGoogleLogin'];
 };
 
 const Page: React.FC<Props> = (props) => {
   return (
-    <View style={styles.root}>
-      <View>
-        <Text size="xl">🎊 Memoirへようこそ </Text>
+    <>
+      <View style={styles.root}>
+        <View>
+          <Text size="xl">🎊 Memoirへようこそ </Text>
+        </View>
+        <View style={styles.divider}>
+          <Divider mt={2} mb={5} />
+        </View>
+        <Form
+          onAppleLogin={props.onAppleLogin}
+          onGoogleLogin={props.onGoogleLogin}
+        />
       </View>
-      <View style={styles.divider}>
-        <Divider mt={2} mb={5} />
-      </View>
-      <Form
-        onAppleLogin={props.onAppleLogin}
-        onGoogleLogin={props.onGoogleLogin}
-      />
-    </View>
+      {props.loading && <Loading text="ログイン中" />}
+    </>
   );
 };
 

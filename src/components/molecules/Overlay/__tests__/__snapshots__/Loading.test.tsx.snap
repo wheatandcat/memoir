@@ -22,7 +22,7 @@ exports[`components/molecules/Overlay/Loading.tsx 正常にrenderすること 1`
           "flexDirection": "row",
         },
         Object {
-          "paddingLeft": 325,
+          "paddingLeft": 333,
         },
       ]
     }
@@ -40,6 +40,7 @@ exports[`components/molecules/Overlay/Loading.tsx 正常にrenderすること 1`
       <Text
         color="baseLight"
         fontFamily="NotoSansJP-Bold"
+        textAlign="center"
         variants="body"
       >
         テスト
