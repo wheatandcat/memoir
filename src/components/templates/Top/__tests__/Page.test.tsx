@@ -3,6 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
+  loading: false,
   onAppleLogin: jest.fn(),
   onGoogleLogin: jest.fn(),
   onSkip: jest.fn(),

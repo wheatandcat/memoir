@@ -183,6 +183,10 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       console.log('error:', response);
       Alert.alert('ログインに失敗しました');
       errorCallback?.();
+    } else if (response?.type === 'dismiss') {
+      errorCallback?.();
+    } else if (response?.type === 'cancel') {
+      errorCallback?.();
     }
   }, [response, prevResponseType, firebaseLogin, errorCallback, authUser.uid]);
 

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useCallback } from 'react';
+import React, { memo, useEffect, useCallback, useState } from 'react';
 import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { storageKey, getItem } from 'lib/storage';
@@ -16,8 +16,13 @@ import { useNotification } from 'containers/Notification';
 type Props = {};
 
 const Connected: React.FC<Props> = () => {
-  const { setupAuth, onAppleLogin, onGoogleLogin, onLogout } =
-    useFirebaseAuth(true);
+  const [loading, setLoading] = useState(false);
+  const { setupAuth, onAppleLogin, onGoogleLogin, onLogout } = useFirebaseAuth(
+    true,
+    () => {
+      setLoading(false);
+    }
+  );
   const { refetch } = useHomeItems();
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
@@ -61,7 +66,17 @@ const Connected: React.FC<Props> = () => {
   }
 
   return (
-    <TemplateLogin onAppleLogin={onAppleLogin} onGoogleLogin={onGoogleLogin} />
+    <TemplateLogin
+      loading={loading}
+      onAppleLogin={async () => {
+        setLoading(true);
+        onAppleLogin();
+      }}
+      onGoogleLogin={() => {
+        setLoading(true);
+        onGoogleLogin();
+      }}
+    />
   );
 };
 

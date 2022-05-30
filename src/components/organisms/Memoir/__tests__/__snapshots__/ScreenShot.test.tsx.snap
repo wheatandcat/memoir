@@ -156,5 +156,8 @@ exports[`components/organisms/Memoir/ScreenShot.tsx 正常にrenderすること 
       </View>
     </ViewShot>
   </ScrollView>
+  <Memo(Loading)
+    text="作成中"
+  />
 </Fragment>
 `;

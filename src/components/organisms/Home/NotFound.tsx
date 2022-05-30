@@ -13,7 +13,7 @@ const NotFound: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <View>
-        <Text color="baseDark">
+        <Text color="baseDark" textAlign="center">
           {dayjs(props.date).isSame(dayjs(), 'day') ? '今日' : 'この日'}
           のタスクは
           {'\n'}まだありません

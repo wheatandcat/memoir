@@ -1,4 +1,4 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback, useState } from 'react';
 import { Platform } from 'react-native';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { useSetRecoilState } from 'recoil';
@@ -15,21 +15,28 @@ export type Props = {
 };
 
 export type ConnectedType = {
+  loading: boolean;
   onSkip: () => void;
   onLogin: () => void;
 };
 
 const Connected: React.FC<Props> = (props) => {
   const setHomeState = useSetRecoilState(homeState);
+  const [loading, setLoading] = useState(false);
 
   const { setupAuth, onAppleLogin, onGoogleLogin } = useFirebaseAuth(
     false,
-    () => props.setCreate(false)
+    () => {
+      setLoading(false);
+      props.setCreate(false);
+    }
   );
 
   const setHomeItemsState = useSetRecoilState(homeItemsState);
 
   const onLogin = useCallback(() => {
+    setLoading(true);
+
     if (Platform.OS === 'ios') {
       onAppleLogin();
     } else {
@@ -60,13 +67,16 @@ const Connected: React.FC<Props> = (props) => {
 
   return (
     <TemplateTop
+      loading={loading}
       onLogin={onLogin}
       onAppleLogin={async () => {
         props.setCreate(true);
+        setLoading(true);
         await onAppleLogin();
       }}
       onGoogleLogin={async () => {
         props.setCreate(true);
+        setLoading(true);
         await onGoogleLogin();
       }}
       onSkip={onSkip}
