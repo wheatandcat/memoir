@@ -49,6 +49,8 @@ const AppContainer = () => {
     }
 
     prepare();
+
+    return () => {};
   }, []);
 
   const onLayoutRootView = useCallback(async () => {

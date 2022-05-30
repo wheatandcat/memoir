@@ -10,7 +10,7 @@ import makeApolloClient from 'lib/apollo';
 import useIsFirstRender from 'hooks/useIsFirstRender';
 import Notification from 'containers/Notification';
 import Config from 'containers/Config';
-import { getFireStore } from 'lib/firebase';
+import { getFirestoreApp } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
 import ForceUpdate from 'components/templates/ForceUpdate/Page';
@@ -29,7 +29,7 @@ Sentry.init({
 
 type CacheShape = any;
 
-const db = getFireStore();
+const db = getFirestoreApp();
 
 function App() {
   const isFirstRender = useIsFirstRender();
