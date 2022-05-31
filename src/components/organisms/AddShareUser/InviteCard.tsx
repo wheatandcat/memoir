@@ -28,7 +28,7 @@ const InviteCard: React.FC<Props> = (props) => {
   const height = useWindowDimensions().height;
 
   const onCopyInviteCode = useCallback(() => {
-    Clipboard.setString(props.invite.code);
+    Clipboard.setStringAsync(props.invite.code);
 
     const toast = Toast.show('招待コードがコピーされました', {
       duration: Toast.durations.LONG,

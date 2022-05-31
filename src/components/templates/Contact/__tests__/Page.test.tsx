@@ -7,7 +7,9 @@ const propsData = (): Props => ({
   loading: false,
   onContact: jest.fn(),
   onChangeText: jest.fn(),
+  onClose: jest.fn(),
   text: '',
+  send: false,
 });
 
 describe('components/templates/Contact/Page.tsx', () => {
