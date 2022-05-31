@@ -8,7 +8,9 @@ const props = (): Props => ({
   loading: false,
   onContact: mockFn('onContact'),
   onChangeText: mockFn('onChangeText'),
+  onClose: mockFn('onClose'),
   text: '',
+  send: false,
 });
 
 storiesOf('templates/Contact', module).add('Page', () => <Page {...props()} />);

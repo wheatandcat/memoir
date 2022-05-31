@@ -16,9 +16,11 @@ const url = Constants.manifest?.extra?.INQUIRY_API || '';
 export type ConnectedType = {
   userID: string;
   loading: boolean;
+  send: boolean;
   text: string;
   onContact: (text: string) => void;
   onChangeText: (text: string) => void;
+  onClose: () => void;
 };
 
 type Request = {
@@ -35,6 +37,7 @@ const Connected: React.FC<Props> = () => {
   const user = useRecoilValue(userState);
   const navigation = useNavigation();
   const [loading, setLoading] = useState(false);
+  const [send, setSend] = useState(false);
   const [text, setText] = useState('');
 
   const onContact = useCallback(async () => {
@@ -75,8 +78,13 @@ const Connected: React.FC<Props> = () => {
       return;
     }
 
+    setSend(true);
+  }, [user, text, loading]);
+
+  const onClose = useCallback(() => {
+    setSend(false);
     navigation.goBack();
-  }, [navigation, user, text, loading]);
+  }, [navigation]);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
@@ -92,11 +100,13 @@ const Connected: React.FC<Props> = () => {
 
   return (
     <TemplateContact
+      send={send}
       userID={user.id ?? ''}
       loading={loading}
       onContact={onContact}
       text={text}
       onChangeText={setText}
+      onClose={onClose}
     />
   );
 };

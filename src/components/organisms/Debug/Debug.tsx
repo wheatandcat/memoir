@@ -23,14 +23,14 @@ const Menu: React.FC<Props> = () => {
   const [userID, setUserID] = useState('');
 
   const onCopyUserID = useCallback(() => {
-    Clipboard.setString(user.userID || '');
+    Clipboard.setStringAsync(user.userID || '');
     Alert.alert('コピーしました');
   }, [user.userID]);
 
   const onCopyToken = useCallback(async () => {
     const token = await auth.getIdToken();
 
-    Clipboard.setString(`Bearer ${token}`);
+    Clipboard.setStringAsync(`Bearer ${token}`);
     Alert.alert('コピーしました');
   }, []);
 
