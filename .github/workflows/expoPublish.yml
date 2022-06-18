@@ -3,8 +3,6 @@ on:
   push:
     branches:
       - main
-      - "223"
-
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
 jobs:
