@@ -11,12 +11,13 @@ jobs:
   jest:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.x
+          cache: yarn
       - name: Cache node_modules
-        uses: actions/cache@preview
+        uses: actions/cache@v3
         with:
           path: ~/.cache/yarn
           key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}

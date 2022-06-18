@@ -6,7 +6,7 @@ if (process.env.APP_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const version: string = '1.2.0';
+const version: string = '1.3.0';
 const unix = dayjs().unix().toString();
 
 const appConfig = () => {
