@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - main
-
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
 jobs:
@@ -11,13 +10,13 @@ jobs:
     name: Install and publish
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 16.x
-      - uses: actions/checkout@v1
+          cache: yarn
       - name: Cache node_modules
-        uses: actions/cache@preview
+        uses: actions/cache@v3
         with:
           path: ~/.cache/yarn
           key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
@@ -30,10 +29,8 @@ jobs:
         run: echo $APP_CONFIG | base64 --decode -i > ./.env
       - name: codegen
         run: yarn codegen
-      - uses: expo/expo-github-action@v5
+      - uses: expo/expo-github-action@v7
         with:
-          expo-version: 4.x
-          expo-username: ${{ secrets.EXPO_CLI_USERNAME }}
-          expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
-          expo-cache: true
-      - run: APP_ENV=review expo publish
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+      - run: expo publish --non-interactive

@@ -4,6 +4,7 @@
     "__mockData__",
     "hooks/tmp/*",
     "storyBookUtils/*",
-    "containers/tmp/*"
+    "containers/tmp/*",
+    "src/components/organisms/Memoir/ScreenShot.ios.tsx"
   ]
 }

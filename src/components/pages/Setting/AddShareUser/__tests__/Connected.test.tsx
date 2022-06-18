@@ -30,6 +30,12 @@ describe('components/pages/Setting/AddShareUser/Connected.tsx', () => {
       },
     }));
     jest
+      .spyOn(queries, 'useInviteByCodeLazyQuery')
+      .mockImplementation((): any => [
+        jest.fn(),
+        { loading: false, data: null },
+      ]);
+    jest
       .spyOn(queries, 'useCreateRelationshipRequestMutation')
       .mockImplementation((): any => [
         jest.fn(),
