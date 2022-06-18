@@ -8,12 +8,11 @@ const DEVICES = {
 const fetchDeviceWidth = () =>
   Dimensions.get('window').width * PixelRatio.get();
 
-export const devices = ['iPhoneSE', 'iPhone8', 'other'] as const;
+const devices = ['iPhoneSE', 'iPhone8', 'other'] as const;
 
-export type IosSelectorProps = {
+type IosSelectorProps = {
   [k in typeof devices[number]]?: any;
 };
-export type IosSelectors = keyof IosSelectorProps;
 
 const iosSelector = ({ iPhoneSE, iPhone8, other }: IosSelectorProps) => {
   if (iPhoneSE && DEVICES.iPhoneSe.width >= fetchDeviceWidth()) return iPhoneSE;
