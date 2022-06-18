@@ -2,7 +2,7 @@ name: Expo Publish
 on:
   push:
     branches:
-      - main
+      - main2
 env:
   APP_CONFIG: ${{ secrets.APP_CONFIG }}
 jobs:
