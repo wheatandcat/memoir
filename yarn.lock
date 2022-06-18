@@ -10508,40 +10508,40 @@ expo-crypto@~10.2.0:
   resolved "https://registry.yarnpkg.com/expo-crypto/-/expo-crypto-10.2.0.tgz#86d16e7e93b62af37d9ded3d344744e94d6ab4e4"
   integrity sha512-YVFp+DJXBtt4t6oZXepnzb+xwpKzFbXn3B9Oma1Tfh6J0rIlm/I20UW/5apdvEdbj44fxJ5DsiZeyADI3bcZkQ==
 
-expo-dev-client@~0.9.6:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-0.9.6.tgz#528bfb5a7ea28ed7db664ecdf74bd3bcb9b75f0f"
-  integrity sha512-0yqD70w5fsmHyYbetAv1waCAzoaowJjSMxzNQYTbPbhUKdpHinJl6TtcztMMvgvqoGXi2/B3cMtq2Hx7p3yp4w==
+expo-dev-client@~1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-client/-/expo-dev-client-1.0.0.tgz#89948d7f07adaceb4c77053535f5c4efc9a41a31"
+  integrity sha512-hqCf7IRaVOsiekFXoIifC+knGmS/hqnx6Kr+bdNbUi7UppJr7Wltww2+m0JQFIUSbjVpIEGLJIotClAi/1Vfew==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
-    expo-dev-launcher "0.11.6"
-    expo-dev-menu "0.10.7"
-    expo-dev-menu-interface "0.6.0"
+    expo-dev-launcher "1.0.0"
+    expo-dev-menu "1.0.0"
+    expo-dev-menu-interface "0.7.0"
     expo-manifests "~0.3.0"
     expo-updates-interface "~0.6.0"
 
-expo-dev-launcher@0.11.6:
-  version "0.11.6"
-  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-0.11.6.tgz#183e99b37e1f4f3fddaa8af2c14d576734926a79"
-  integrity sha512-3sF4wAI06CcBkqUkeF6QxITFNv/HZPlR19837sGbde/nkfiYi0xPAj063zjw8UiqG1yF7F+VLqRaMuQ7soSfLw==
+expo-dev-launcher@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-launcher/-/expo-dev-launcher-1.0.0.tgz#86b302320739df16c17defbdf4a1dba8dde05684"
+  integrity sha512-yRqDdhCo7gBJorFSypkur1o1JHrIiG1eRnAbMb3E7LXg7RdgcirwXJrgt7WtnWTrYHKR//2BBlTlqFBIG5pteA==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
-    expo-dev-menu "0.10.7"
+    expo-dev-menu "1.0.0"
     resolve-from "^5.0.0"
     semver "^7.3.5"
 
-expo-dev-menu-interface@0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.6.0.tgz#7721dc7e5bd3bbf3a570deb7c6464bc6fc5b5971"
-  integrity sha512-RRBDMhVVKR85zok1qUp5gUhIELwl1cnZXSRPsPT0qZBsk3pYz5ZlFqYewFfczPjnxXQsP8ISqqYjwwVCzr7Z+A==
+expo-dev-menu-interface@0.7.0:
+  version "0.7.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu-interface/-/expo-dev-menu-interface-0.7.0.tgz#e141a671c7a34b921e7255653665d5e8489dab08"
+  integrity sha512-f/9gWLpuvXvQPeVBHH0T7qm4v2/Ynygs7dzebxqSWGDcCabfqRhuX+dv/t7CGu85m6waC9xYYnjLG7l8LC/i3Q==
 
-expo-dev-menu@0.10.7:
-  version "0.10.7"
-  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-0.10.7.tgz#52cb149ca97379dd484e6a0cfa20f21031f8fc89"
-  integrity sha512-UyXWLUYq5frvEY5qrVmizVB+yyhESOoHZTq2Dx90d2frBA0oV3UppNKmC3asXqbt7GYE1kNZBT3NnycT9b9AiA==
+expo-dev-menu@1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/expo-dev-menu/-/expo-dev-menu-1.0.0.tgz#2b6709bea829b2363e3b6bc3bf5fccecb59676b7"
+  integrity sha512-1420lih/NZR5NHcA2tgCfx6M2UoWBDJB9fY9Bb5/XDGXVeSsrubmu6Ck80Y4qdpDpPesQ/saZxVuilkfzBoNmQ==
   dependencies:
     "@expo/config-plugins" "^4.0.14"
-    expo-dev-menu-interface "0.6.0"
+    expo-dev-menu-interface "0.7.0"
     semver "^7.3.5"
 
 expo-device@~4.2.0:
@@ -10728,10 +10728,10 @@ expo-updates-interface@~0.6.0:
   resolved "https://registry.yarnpkg.com/expo-updates-interface/-/expo-updates-interface-0.6.0.tgz#cef5250106e59572afdfcf245c534754c8c844ba"
   integrity sha512-oQcGTsE8mSkSxENPlWjZPGoJpt3RFDNPuO5d8shBDxBb4ZNH/W2ojavSFQMaLbNMoS0bYQQhzbRNEIBd306QMg==
 
-expo-updates@~0.13.1:
-  version "0.13.1"
-  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.13.1.tgz#ffed4216eda6afbc15f06399115a5b9e649102a6"
-  integrity sha512-6GTqgAco3da/rk0/AvDRFmrWxEIxlmIs7vvoCWWxyvifLBlQAaU08+AdZH5RwdN3aUaIep70pnqlc67xe/y0og==
+expo-updates@~0.13.2:
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/expo-updates/-/expo-updates-0.13.2.tgz#c96d664d8a97eb3af6841e46a137962b8bf06361"
+  integrity sha512-2ZthmyxYuN/c71y2oLNz9fdVXLf7ggxAw3Tfy+kwtGOTKNyOf/YoG+SwX7a0v+jZTJnuorEj5FuNf3wrniQ7+w==
   dependencies:
     "@expo/code-signing-certificates" "0.0.1"
     "@expo/config" "^6.0.14"
