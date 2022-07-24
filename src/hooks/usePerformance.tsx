@@ -1,10 +1,12 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 import dayjs from 'lib/dayjs';
 
 const TRACE_EVENT_VIEW_MEMOIR = 'trace_view_memoir';
+const TRACE_EVENT_VIEW_HOME_CHANGE_DATE = 'trace_view_home_change_date';
 
 export const traceEvent = {
   TRACE_EVENT_VIEW_MEMOIR,
+  TRACE_EVENT_VIEW_HOME_CHANGE_DATE,
 };
 
 type valueof<T> = T[keyof T];
@@ -21,11 +23,21 @@ type TraceItem = {
 const usePerformance = (props: Props) => {
   const startRef = useRef<number>(Number(dayjs().valueOf()));
   const traceItemRef = useRef<TraceItem>({ time: 0 });
+  const traceCountRef = useRef<number>(0);
+  const traceTimeoutIdRef = useRef<any>(null);
+
+  useEffect(() => {
+    return () => {
+      if (traceTimeoutIdRef.current) {
+        clearTimeout(traceTimeoutIdRef.current);
+      }
+    };
+  }, []);
 
   const onOutPutTraceData = useCallback(async () => {
     if (traceItemRef.current.time > 0) {
       console.log(
-        `action:${props.traceName} = time:${traceItemRef.current.time}ms`
+        `[action:${props.traceName}] time:${traceItemRef.current.time}ms,renderCount:${traceCountRef.current}`
       );
     }
   }, [props.traceName]);
@@ -33,9 +45,13 @@ const usePerformance = (props: Props) => {
   const onStartTrace = useCallback(
     async (timeout: number) => {
       startRef.current = Number(dayjs().valueOf());
+      traceCountRef.current = 0;
 
       if (timeout) {
-        setTimeout(onOutPutTraceData, timeout);
+        if (traceTimeoutIdRef.current) {
+          clearTimeout(traceTimeoutIdRef.current);
+        }
+        traceTimeoutIdRef.current = setTimeout(onOutPutTraceData, timeout);
       }
     },
     [onOutPutTraceData]
@@ -43,6 +59,7 @@ const usePerformance = (props: Props) => {
 
   const onEndTrace = useCallback(async (_?: any) => {
     const time = Number(dayjs().valueOf()) - startRef.current;
+    traceCountRef.current += 1;
 
     const ti: TraceItem = {
       time,

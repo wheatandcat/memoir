@@ -138,7 +138,15 @@ const Connected: React.FC<Props> = (props) => {
       like: props.like,
       dislike: props.dislike,
     });
-  }, [props, navigation, selectedUserIDList]);
+  }, [
+    props.startDate,
+    props.endDate,
+    props.categoryID,
+    props.like,
+    props.dislike,
+    navigation,
+    selectedUserIDList,
+  ]);
 
   const onRender = useCallback(
     (
