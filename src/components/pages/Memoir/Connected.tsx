@@ -40,7 +40,6 @@ export type ConnectedType = {
   selectedUserIDList: string[];
   isFilter: boolean;
   search: boolean;
-  onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
   onChangeUserID: (userIDList: string[]) => void;
@@ -98,8 +97,6 @@ const Connected: React.FC<Props> = (props) => {
       after,
     }));
   }, []);
-
-  const onItem = useCallback(() => {}, []);
 
   const onChangeUserID = useCallback(
     (userIDList: string[]) => {
@@ -190,7 +187,6 @@ const Connected: React.FC<Props> = (props) => {
         onLoadMore={onLoadMore}
         loading={queryResult.loading}
         error={queryResult.error}
-        onItem={onItem}
         onScreenShot={onScreenShot}
         onChangeUserID={onChangeUserID}
       />

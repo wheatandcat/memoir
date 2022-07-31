@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "expo:start": "APP_ENV=review expo start",
+    "expo:start": "APP_ENV=review expo start -i",
     "init:app:dev": "sh scripts/local/setup.sh",
     "init:app:review": "sh scripts/review/setup.sh",
     "init:app:production": "sh scripts/production/setup.sh",
     "init:storybook": "sh scripts/storybook/setup.sh",
-    "start": "yarn init:app:dev && yarn expo:start",
     "android": "yarn init:app:dev && yarn expo:start --android",
     "ios": "yarn init:app:dev && yarn expo:start --ios",
     "web": "yarn init:app:dev && yarn expo:start --web",

@@ -28,7 +28,6 @@ export type Props = Pick<
   | 'loading'
   | 'search'
   | 'onLoadMore'
-  | 'onItem'
   | 'pageInfo'
   | 'users'
   | 'selectedUserIDList'
@@ -56,22 +55,18 @@ type RenderedItem = {
   width: number;
 };
 
-const renderItem = (
-  { item, index }: ListRenderItemInfo<RenderedItem>,
-  props: Props
-) => {
+const renderItem = ({ item }: ListRenderItemInfo<RenderedItem>) => {
   if (item.date) {
     return <DateText date={item.date} categoryID={Number(item.categoryID)} />;
   }
 
   return (
-    <View key={`${index}-contents`}>
+    <View>
       <View mb={3} mx={3}>
         <Card
           title={item?.contents?.title || ''}
           categoryID={item?.contents?.categoryID || 0}
           user={item?.contents?.user as User}
-          onPress={props.onItem}
         />
         {!item?.last && <Divider />}
       </View>
@@ -154,9 +149,9 @@ const DateCards: React.FC<Props> = (props) => {
 
   const renderItemCall = useCallback(
     (item: ListRenderItemInfo<RenderedItem>) => {
-      return renderItem(item, props);
+      return renderItem(item);
     },
-    [props]
+    []
   );
 
   const handleLoadMore = useCallback(() => {

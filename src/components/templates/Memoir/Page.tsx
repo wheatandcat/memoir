@@ -16,7 +16,6 @@ export type Props = Pick<
   | 'items'
   | 'loading'
   | 'onLoadMore'
-  | 'onItem'
   | 'pageInfo'
   | 'users'
   | 'search'
@@ -46,7 +45,6 @@ const Page: React.FC<Props> = (props) => {
               items={props.items}
               pageInfo={props.pageInfo}
               loading={props.loading}
-              onItem={props.onItem}
               onLoadMore={props.onLoadMore}
               users={props.users}
               search={props.search}

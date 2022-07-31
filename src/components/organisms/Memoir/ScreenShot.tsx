@@ -58,7 +58,6 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
           title={props?.contents?.title || ''}
           categoryID={props?.contents?.categoryID || 0}
           user={props?.contents?.user as User}
-          onPress={() => null}
           onLoadEnd={props.onLoadEnd}
         />
         {!props?.last && <Divider />}
