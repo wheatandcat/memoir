@@ -89,6 +89,7 @@ const MonthInput: React.FC<Props> = (props) => {
       inactiveSlideScale={1.0}
       activeSlideAlignment="start"
       loop
+      loopClonesPerSide={10}
       removeClippedSubviews
     />
   );
