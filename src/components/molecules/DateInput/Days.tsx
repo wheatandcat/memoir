@@ -128,6 +128,7 @@ const DayInput: React.FC<Props> = (props) => {
       inactiveSlideOpacity={1.0}
       inactiveSlideScale={1.0}
       loop
+      loopClonesPerSide={10}
       removeClippedSubviews
     />
   );
