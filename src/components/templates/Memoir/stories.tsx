@@ -10,7 +10,6 @@ const props = (): Props => ({
     hasNextPage: false,
     endCursor: '',
   },
-  onItem: mockFn('onItem'),
   onLoadMore: mockFn('onLoadMore'),
   loading: false,
   startDate: '2020-01-01',

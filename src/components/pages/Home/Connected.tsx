@@ -5,6 +5,8 @@ import dayjs from 'lib/dayjs';
 import { useCreateItemMutation, NewItem } from 'queries/api/index';
 import { homeDateState, homeItemsState, Item, homeState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
+import usePerformance, { traceEvent } from 'hooks/usePerformance';
+import { Interaction as SchedulerInteraction } from 'scheduler/tracing';
 import Plain from './Plain';
 import { ScreenNavigationProp as HomeScreenNavigationProp } from './';
 
@@ -39,6 +41,10 @@ const initialState = (openAddItemModal: boolean): State => ({
 
 const Connected: React.FC<Props> = (props) => {
   const home = useRecoilValue(homeState);
+  const { onStartTrace, onEndTrace } = usePerformance({
+    traceName: traceEvent.TRACE_EVENT_VIEW_HOME_CHANGE_DATE,
+  });
+
   const [state, setState] = useState<State>(
     initialState(home.openAddItemModal)
   );
@@ -77,11 +83,13 @@ const Connected: React.FC<Props> = (props) => {
 
   const onChangeDate = useCallback(
     (date: string) => {
+      onStartTrace(1500);
+
       setHomeDate({
         date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
       });
     },
-    [setHomeDate]
+    [setHomeDate, onStartTrace]
   );
 
   const onItem = useCallback(
@@ -101,23 +109,49 @@ const Connected: React.FC<Props> = (props) => {
     });
   }, [navigation]);
 
+  const onRender = useCallback(
+    (
+      id: string,
+      _: 'mount' | 'update',
+      actualDuration: number,
+      baseDuration: number,
+      startTime: number,
+      commitTime: number,
+      interactions: Set<SchedulerInteraction>
+    ) => {
+      const data = {
+        id,
+        actualDuration,
+        baseDuration,
+        startTime,
+        commitTime,
+        interactions,
+      };
+
+      onEndTrace(data);
+    },
+    [onEndTrace]
+  );
+
   return (
-    <Plain
-      items={homeItems.items}
-      loading={loading}
-      error={error}
-      addItemLoading={createItemMutationData.loading}
-      date={dayjs(homeDate.date).format('YYYY-MM-DD')}
-      openAddItemModal={state.openAddItemModal}
-      openSettingModal={props.openSettingModal}
-      onAddItem={onAddItem}
-      onChangeDate={onChangeDate}
-      onCloseAddItem={onCloseAddItem}
-      onCloseSettingModal={props.onCloseSettingModal}
-      onItem={onItem}
-      onMemoir={onMemoir}
-      onOpenAddItem={onOpenAddItem}
-    />
+    <React.Profiler id="Home" onRender={onRender}>
+      <Plain
+        items={homeItems.items}
+        loading={loading}
+        error={error}
+        addItemLoading={createItemMutationData.loading}
+        date={dayjs(homeDate.date).format('YYYY-MM-DD')}
+        openAddItemModal={state.openAddItemModal}
+        openSettingModal={props.openSettingModal}
+        onAddItem={onAddItem}
+        onChangeDate={onChangeDate}
+        onCloseAddItem={onCloseAddItem}
+        onCloseSettingModal={props.onCloseSettingModal}
+        onItem={onItem}
+        onMemoir={onMemoir}
+        onOpenAddItem={onOpenAddItem}
+      />
+    </React.Profiler>
   );
 };
 
