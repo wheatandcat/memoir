@@ -13,6 +13,16 @@ type Props = {
   date: string;
 } & Pick<ConnectedType, 'onChangeDate' | 'items'>;
 
+const velocityThreshold = 0.3;
+const directionalOffsetThreshold = 80;
+
+const isValidSwipe = (velocity: number, directionalOffset: number) => {
+  return (
+    Math.abs(velocity) > velocityThreshold &&
+    Math.abs(directionalOffset) < directionalOffsetThreshold
+  );
+};
+
 const GestureRecognizerWrap: React.FC<Props> = (props) => {
   const scrollingRef = useRef<boolean>(false);
 
@@ -39,6 +49,15 @@ const GestureRecognizerWrap: React.FC<Props> = (props) => {
   const onPanGestureEvent = useCallback(
     (event) => {
       const { nativeEvent } = event;
+
+      if (Math.abs(nativeEvent.velocityY) > 300) {
+        return;
+      }
+
+      if (!isValidSwipe(nativeEvent.velocityX, nativeEvent.translationX)) {
+        return;
+      }
+
       if (nativeEvent.velocityX > 0) {
         onSwipeRight();
       } else {
