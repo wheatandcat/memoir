@@ -11,8 +11,8 @@ type Props = {
 
 const MemoirButton: React.FC<Props> = (props) => {
   return (
-    <TouchableOpacity onPress={props.onPress}>
-      <View>
+    <View style={styles.root}>
+      <TouchableOpacity onPress={props.onPress}>
         <View style={styles.memoirButton}>
           <View>
             <Image
@@ -25,14 +25,19 @@ const MemoirButton: React.FC<Props> = (props) => {
             <Text>今週のmemoirを確認する</Text>
           </View>
         </View>
-      </View>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 export default memo(MemoirButton);
 
 const styles = StyleSheet.create({
+  root: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%',
+  },
   memoirButton: {
     backgroundColor: theme().color.primary.main,
     width: '100%',
