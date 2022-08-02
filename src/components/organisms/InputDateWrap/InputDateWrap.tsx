@@ -34,5 +34,6 @@ export default memo<React.FC<Props>>(InputDateWrap);
 const styles = StyleSheet.create({
   root: {
     height: '100%',
+    position: 'relative',
   },
 });
