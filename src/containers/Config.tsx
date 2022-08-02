@@ -15,7 +15,7 @@ const Config: React.FC<Props> = (props) => {
   return (
     <Provider
       value={{
-        env: 'storybook',
+        env: 'app',
       }}
     >
       {props.children}
