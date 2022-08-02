@@ -8,6 +8,7 @@ type Props = {
   date: string;
   firstItem?: boolean;
   onChangeDate: (date: string) => void;
+  children?: React.ReactNode;
 };
 
 const InputDateWrap: React.FC<Props> = (props) => {

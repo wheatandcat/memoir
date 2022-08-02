@@ -16,6 +16,7 @@ type Props = {
   height?: number;
   onClose: () => void;
   onPress?: () => void;
+  children: React.ReactNode;
 };
 
 const Modal: React.FC<Props> = (props) => {
