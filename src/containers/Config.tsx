@@ -7,18 +7,22 @@ type ContextProps = Partial<{
   env: 'app' | 'storybook';
 }>;
 
-const Config = memo((props) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+const Config: React.FC<Props> = (props) => {
   return (
     <Provider
       value={{
-        env: 'app',
+        env: 'storybook',
       }}
     >
       {props.children}
     </Provider>
   );
-});
+};
 
-export default Config;
+export default memo(Config);
 
 export const useConfig = () => useContext(Context);

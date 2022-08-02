@@ -28,7 +28,7 @@ const Input: React.FC<Props> = (props) => {
   const [openTime, setOpenTime] = useState(false);
 
   const onChangeTime = useCallback(
-    (val) => {
+    (val: Date) => {
       setOpenTime(false);
       props.onChangeTime(val);
     },

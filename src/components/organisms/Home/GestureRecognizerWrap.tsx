@@ -7,10 +7,12 @@ import {
   GestureHandlerRootView,
   PanGestureHandler,
   ScrollView,
+  HandlerStateChangeEvent,
 } from 'react-native-gesture-handler';
 
 type Props = {
   date: string;
+  children: React.ReactNode;
 } & Pick<ConnectedType, 'onChangeDate' | 'items'>;
 
 const velocityThreshold = 0.3;
@@ -47,7 +49,7 @@ const GestureRecognizerWrap: React.FC<Props> = (props) => {
   }, [props]);
 
   const onPanGestureEvent = useCallback(
-    (event) => {
+    (event: HandlerStateChangeEvent<any>) => {
       const { nativeEvent } = event;
 
       if (Math.abs(nativeEvent.velocityY) > 300) {
