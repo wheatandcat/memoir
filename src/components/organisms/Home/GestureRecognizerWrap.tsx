@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useRef } from 'react';
+import React, { memo, useCallback } from 'react';
 import { StyleSheet, ViewStyle } from 'react-native';
 import View from 'components/atoms/View';
 import dayjs from 'lib/dayjs';
@@ -26,25 +26,11 @@ const isValidSwipe = (velocity: number, directionalOffset: number) => {
 };
 
 const GestureRecognizerWrap: React.FC<Props> = (props) => {
-  const scrollingRef = useRef<boolean>(false);
-
-  const onStartScroll = useCallback(() => {
-    scrollingRef.current = true;
-  }, []);
-
-  const onEndScroll = useCallback(() => {
-    scrollingRef.current = false;
-  }, []);
-
   const onSwipeLeft = useCallback(() => {
-    if (scrollingRef.current) return;
-
     props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
   }, [props]);
 
   const onSwipeRight = useCallback(() => {
-    if (scrollingRef.current) return;
-
     props.onChangeDate(dayjs(props.date).add(-1, 'day').format('YYYY-MM-DD'));
   }, [props]);
 
@@ -78,12 +64,7 @@ const GestureRecognizerWrap: React.FC<Props> = (props) => {
     <View style={styles.root}>
       <GestureHandlerRootView>
         <PanGestureHandler onActivated={onPanGestureEvent}>
-          <ScrollView
-            removeClippedSubviews
-            onScrollBeginDrag={onStartScroll}
-            onScrollEndDrag={onEndScroll}
-            style={styles.scroll}
-          >
+          <ScrollView removeClippedSubviews style={styles.scroll}>
             <View style={style}>{props.children}</View>
           </ScrollView>
         </PanGestureHandler>
