@@ -335,12 +335,6 @@
         "licenseUrl": "github.com/meliorence/react-native-snap-carousel/raw/master/LICENSE",
         "parents": "memoir"
     },
-    "react-native-swipe-gestures": {
-        "licenses": "MIT",
-        "repository": "https://github.com/glepur/react-native-swipe-gestures",
-        "licenseUrl": "https://github.com/glepur/react-native-swipe-gestures/raw/master/LICENSE",
-        "parents": "memoir"
-    },
     "react-native-switch-selector": {
         "licenses": "MIT",
         "repository": "https://github.com/jkdrangel/react-native-switch-selector",
@@ -373,8 +367,8 @@
     },
     "recoil": {
         "licenses": "MIT",
-        "repository": "https://github.com/facebookexperimental/recoil",
-        "licenseUrl": "https://github.com/facebookexperimental/recoil/raw/master/LICENSE",
+        "repository": "https://github.com/facebookexperimental/Recoil",
+        "licenseUrl": "https://github.com/facebookexperimental/Recoil/raw/master/LICENSE",
         "parents": "memoir"
     },
     "sentry-expo": {

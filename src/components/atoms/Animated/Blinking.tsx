@@ -2,7 +2,9 @@ import React, { useRef, useEffect, memo } from 'react';
 import { Animated } from 'react-native';
 import useIsFirstRender from 'hooks/useIsFirstRender';
 
-export type Props = {};
+export type Props = {
+  children?: React.ReactNode;
+};
 
 const fadeOut = (fadeAnim: Animated.Value) => {
   Animated.timing(fadeAnim, {

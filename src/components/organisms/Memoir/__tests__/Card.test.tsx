@@ -10,7 +10,6 @@ const propsData = (): Props => ({
     displayName: 'suzuki',
     image: '',
   },
-  onPress: jest.fn(),
 });
 
 describe('components/organisms/Memoir/Card.tsx', () => {

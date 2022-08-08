@@ -5,8 +5,10 @@ import {
 } from 'queries/api/index';
 import { useNavigation } from '@react-navigation/native';
 import useItemsInPeriodPaging from 'hooks/useItemsInPeriodPaging';
+import usePerformance, { traceEvent } from 'hooks/usePerformance';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
+import { Interaction as SchedulerInteraction } from 'scheduler/tracing';
 import Plain from './Plain';
 import { ScreenNavigationProp as MemoirScreenNavigationProp } from './';
 
@@ -38,7 +40,6 @@ export type ConnectedType = {
   selectedUserIDList: string[];
   isFilter: boolean;
   search: boolean;
-  onItem: () => void;
   onScreenShot: () => void;
   onLoadMore: (after: string | null) => void;
   onChangeUserID: (userIDList: string[]) => void;
@@ -54,6 +55,9 @@ const Connected: React.FC<Props> = (props) => {
   const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
   const navigation = useNavigation<MemoirScreenNavigationProp>();
+  const { onStartTrace, onEndTrace } = usePerformance({
+    traceName: traceEvent.TRACE_EVENT_VIEW_MEMOIR,
+  });
 
   const relationshipsQuery = useRelationshipsQuery({
     variables: {
@@ -94,8 +98,6 @@ const Connected: React.FC<Props> = (props) => {
     }));
   }, []);
 
-  const onItem = useCallback(() => {}, []);
-
   const onChangeUserID = useCallback(
     (userIDList: string[]) => {
       setIsFilter(true);
@@ -133,25 +135,62 @@ const Connected: React.FC<Props> = (props) => {
       like: props.like,
       dislike: props.dislike,
     });
-  }, [props, navigation, selectedUserIDList]);
+  }, [
+    props.startDate,
+    props.endDate,
+    props.categoryID,
+    props.like,
+    props.dislike,
+    navigation,
+    selectedUserIDList,
+  ]);
+
+  const onRender = useCallback(
+    (
+      id: string,
+      phase: 'mount' | 'update',
+      actualDuration: number,
+      baseDuration: number,
+      startTime: number,
+      commitTime: number,
+      interactions: Set<SchedulerInteraction>
+    ) => {
+      const data = {
+        id,
+        actualDuration,
+        baseDuration,
+        startTime,
+        commitTime,
+        interactions,
+      };
+
+      if (phase === 'mount') {
+        onStartTrace(3000);
+      } else if (phase === 'update') {
+        onEndTrace(data);
+      }
+    },
+    [onEndTrace, onStartTrace]
+  );
 
   return (
-    <Plain
-      startDate={props.startDate}
-      endDate={props.endDate}
-      isFilter={isFilter}
-      items={items}
-      users={tUsers}
-      search={props.search}
-      selectedUserIDList={selectedUserIDList}
-      pageInfo={pageInfo}
-      onLoadMore={onLoadMore}
-      loading={queryResult.loading}
-      error={queryResult.error}
-      onItem={onItem}
-      onScreenShot={onScreenShot}
-      onChangeUserID={onChangeUserID}
-    />
+    <React.Profiler id="Memoir" onRender={onRender}>
+      <Plain
+        startDate={props.startDate}
+        endDate={props.endDate}
+        isFilter={isFilter}
+        items={items}
+        users={tUsers}
+        search={props.search}
+        selectedUserIDList={selectedUserIDList}
+        pageInfo={pageInfo}
+        onLoadMore={onLoadMore}
+        loading={queryResult.loading}
+        error={queryResult.error}
+        onScreenShot={onScreenShot}
+        onChangeUserID={onChangeUserID}
+      />
+    </React.Profiler>
   );
 };
 

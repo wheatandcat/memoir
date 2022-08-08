@@ -5,6 +5,8 @@ import {
   TextInput,
   TouchableWithoutFeedback,
   Platform,
+  NativeSyntheticEvent,
+  TextInputKeyPressEventData,
 } from 'react-native';
 import Text from 'components/atoms/Text';
 import theme from 'config/theme';
@@ -65,7 +67,7 @@ const InputCode: React.FC<Props> = (props) => {
   );
 
   const handleKeyPress = useCallback(
-    (e) => {
+    (e: NativeSyntheticEvent<TextInputKeyPressEventData>) => {
       if (e.nativeEvent.key === 'Backspace') {
         const r = value.slice(0, value.length - 1);
 

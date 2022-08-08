@@ -1,24 +1,31 @@
 import React, { memo, useCallback } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  ViewStyle,
-  Platform,
-  useWindowDimensions,
-} from 'react-native';
+import { StyleSheet, ViewStyle } from 'react-native';
 import View from 'components/atoms/View';
-import GestureRecognizer from 'react-native-swipe-gestures';
 import dayjs from 'lib/dayjs';
 import { ConnectedType } from 'components/pages/Home/Connected';
-import theme from 'config/theme';
+import {
+  GestureHandlerRootView,
+  PanGestureHandler,
+  ScrollView,
+  HandlerStateChangeEvent,
+} from 'react-native-gesture-handler';
 
 type Props = {
   date: string;
+  children: React.ReactNode;
 } & Pick<ConnectedType, 'onChangeDate' | 'items'>;
 
-const GestureRecognizerWrap: React.FC<Props> = (props) => {
-  const height = useWindowDimensions().height;
+const velocityThreshold = 0.3;
+const directionalOffsetThreshold = 80;
 
+const isValidSwipe = (velocity: number, directionalOffset: number) => {
+  return (
+    Math.abs(velocity) > velocityThreshold &&
+    Math.abs(directionalOffset) < directionalOffsetThreshold
+  );
+};
+
+const GestureRecognizerWrap: React.FC<Props> = (props) => {
   const onSwipeLeft = useCallback(() => {
     props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
   }, [props]);
@@ -27,64 +34,42 @@ const GestureRecognizerWrap: React.FC<Props> = (props) => {
     props.onChangeDate(dayjs(props.date).add(-1, 'day').format('YYYY-MM-DD'));
   }, [props]);
 
-  const swipeStyle: ViewStyle[] = [
-    {
-      ...Platform.select({
-        ios: {
-          height:
-            props.items.length > 3
-              ? props.items.length * 120
-              : height * (2 / 3),
-        },
-        android: {
-          flex: 1,
-        },
-      }),
+  const onPanGestureEvent = useCallback(
+    (event: HandlerStateChangeEvent<any>) => {
+      const { nativeEvent } = event;
+
+      if (Math.abs(nativeEvent.velocityY) > 300) {
+        return;
+      }
+
+      if (!isValidSwipe(nativeEvent.velocityX, nativeEvent.translationX)) {
+        return;
+      }
+
+      if (nativeEvent.velocityX > 0) {
+        onSwipeRight();
+      } else {
+        onSwipeLeft();
+      }
     },
-  ];
+    [onSwipeRight, onSwipeLeft]
+  );
 
-  const style: ViewStyle[] = [];
+  const style: ViewStyle[] = [styles.inner];
   if (props.items.length > 3) {
-    style.push(styles.inner);
-  }
-
-  if (Platform.OS === 'ios') {
-    if (props.items.length > 3) {
-      swipeStyle.push({ paddingBottom: 100 });
-    }
-
-    return (
-      <ScrollView alwaysBounceVertical={false} style={style}>
-        <GestureRecognizer
-          onSwipeLeft={onSwipeLeft}
-          onSwipeRight={onSwipeRight}
-          config={{
-            velocityThreshold: 0.3,
-            directionalOffsetThreshold: 80,
-          }}
-          style={swipeStyle}
-        >
-          <View style={style}>{props.children}</View>
-        </GestureRecognizer>
-      </ScrollView>
-    );
+    style.push({ paddingBottom: (props.items.length - 2) * 55 });
   }
 
   return (
-    <GestureRecognizer
-      onSwipeLeft={onSwipeLeft}
-      onSwipeRight={onSwipeRight}
-      config={{
-        velocityThreshold: 0.3,
-        directionalOffsetThreshold: 80,
-        gestureIsClickThreshold: 30,
-      }}
-      style={swipeStyle}
-    >
-      <ScrollView removeClippedSubviews>
-        <View style={style}>{props.children}</View>
-      </ScrollView>
-    </GestureRecognizer>
+    <View style={styles.root}>
+      <GestureHandlerRootView>
+        <PanGestureHandler onActivated={onPanGestureEvent}>
+          <ScrollView removeClippedSubviews style={styles.scroll}>
+            <View style={style}>{props.children}</View>
+          </ScrollView>
+        </PanGestureHandler>
+      </GestureHandlerRootView>
+    </View>
   );
 };
 
@@ -92,6 +77,12 @@ export default memo<React.FC<Props>>(GestureRecognizerWrap);
 
 const styles = StyleSheet.create({
   inner: {
-    paddingBottom: theme().space(3),
+    height: '100%',
+  },
+  scroll: {
+    height: '100%',
+  },
+  root: {
+    height: '100%',
   },
 });

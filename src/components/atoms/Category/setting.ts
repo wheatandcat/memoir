@@ -44,7 +44,7 @@ const setting = () => ({
       id: 6,
       image: require('../../../img/categories/category_shopping.png'),
       category: master.CATEGORY_3,
-      name: '買った',
+      name: '売り買い',
     },
     {
       id: 7,

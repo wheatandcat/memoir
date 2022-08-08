@@ -15,7 +15,6 @@ const props = (): Props => ({
     hasNextPage: false,
     endCursor: '',
   },
-  onItem: mockFn('onItem'),
   onLoadMore: mockFn('onLoadMore'),
   loading: false,
   startDate: '2020-01-01',
@@ -65,7 +64,6 @@ storiesOf('organisms/Memoir', module).add('Card', () => (
       displayName: 'suzuki',
       image: 'https://placehold.jp/150x150.png',
     }}
-    onPress={mockFn('onPress')}
   />
 ));
 

@@ -21,7 +21,9 @@ type ContextProps = Partial<{
   onPermissionRequest: (callback: () => void) => Promise<boolean>;
 }>;
 
-type Props = {};
+type Props = {
+  children: React.ReactNode;
+};
 
 Notifications.setNotificationHandler({
   handleNotification: async () => ({

@@ -4,6 +4,7 @@ module.exports = function (api) {
     presets: ['babel-preset-expo'],
     plugins: [
       'inline-dotenv',
+      '@babel/plugin-proposal-export-namespace-from',
       [
         'module-resolver',
         {

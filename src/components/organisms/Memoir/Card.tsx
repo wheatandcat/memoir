@@ -17,7 +17,6 @@ export type Props = {
   title: Item['title'];
   categoryID: Item['categoryID'];
   user: User;
-  onPress: () => void;
   onLoadEnd?: () => void;
 };
 
