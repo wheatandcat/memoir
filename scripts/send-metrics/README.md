@@ -1,5 +1,6 @@
 #  メトリクスを送信する
 
+[ダッシュボード](https://jurassic.retool.com/embedded/public/ca1843e7-ce2b-41ad-92c1-1ca7ff8cd944)
 
 ## 実行
 

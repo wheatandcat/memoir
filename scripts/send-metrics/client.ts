@@ -1,5 +1,5 @@
 import { initializeApp, cert } from 'firebase-admin/app';
-import { getFirestore } from 'firebase-admin/firestore';
+import { getFirestore, Timestamp } from 'firebase-admin/firestore';
 import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const serviceAccount = require('./serviceAccount.json');
@@ -9,7 +9,7 @@ type MetricItem = {
   coverageFunctions: number;
   coverageLines: number;
   coverageStatements: number;
-  date: Date;
+  date: Timestamp;
 };
 
 initializeApp({

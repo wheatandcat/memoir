@@ -4,9 +4,6 @@ on:
   schedule:
     - cron:  '0 1 * * *'
   workflow_dispatch:
-  push:
-    branches:
-     - "225"
 
 env:
   METRICS_SERVICE_ACCOUNT_JSON: ${{ secrets.METRICS_SERVICE_ACCOUNT_JSON }}

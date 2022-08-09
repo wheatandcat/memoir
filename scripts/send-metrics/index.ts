@@ -1,5 +1,5 @@
 import dayjs from 'dayjs';
-
+import { Timestamp } from 'firebase-admin/firestore';
 import { aggregateCoverages } from './coverage.js';
 import { sendMetrics } from './client.js';
 
@@ -11,7 +11,7 @@ const aggregateMetricsAndSend = async () => {
     coverageFunctions: coverages.coverage_functions,
     coverageLines: coverages.coverage_lines,
     coverageStatements: coverages.coverage_statements,
-    date: dayjs(),
+    date: Timestamp.fromDate(new Date(dayjs().format())),
   };
 
   await sendMetrics(dayjs().format('YYYY-MM-DD'), metrics);
