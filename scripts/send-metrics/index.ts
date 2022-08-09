@@ -11,7 +11,7 @@ const aggregateMetricsAndSend = async () => {
     coverageFunctions: coverages.coverage_functions,
     coverageLines: coverages.coverage_lines,
     coverageStatements: coverages.coverage_statements,
-    date: dayjs().format(),
+    date: dayjs(),
   };
 
   await sendMetrics(dayjs().format('YYYY-MM-DD'), metrics);

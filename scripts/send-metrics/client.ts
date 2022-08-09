@@ -9,7 +9,7 @@ type MetricItem = {
   coverageFunctions: number;
   coverageLines: number;
   coverageStatements: number;
-  date: string;
+  date: Date;
 };
 
 initializeApp({
