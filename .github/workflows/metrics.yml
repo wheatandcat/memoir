@@ -8,6 +8,8 @@ on:
     branches:
      - "225"
 
+env:
+  METRICS_SERVICE_ACCOUNT_JSON: ${{ secrets.METRICS_SERVICE_ACCOUNT_JSON }}
 jobs:
   metrics:
     runs-on: ubuntu-latest
