@@ -34,3 +34,4 @@ release.keystore2
 eas.json
 release-service-account.json
 *.log
+coverage

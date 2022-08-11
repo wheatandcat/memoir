@@ -23,5 +23,6 @@
     },
     "typeRoots": ["node_modules/@types", "src/@types"]
   },
+  "exclude": ["node_modules", "scripts/send-metrics"],
   "extends": "expo/tsconfig.base"
 }
