@@ -35,3 +35,4 @@ eas.json
 release-service-account.json
 *.log
 coverage
+testResults.json
