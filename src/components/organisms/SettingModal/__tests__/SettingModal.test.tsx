@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
-import SettingModal, { Props } from '../SettingModal';
+import SettingModal, { Props } from '../';
 
 const propsData = (): Props => ({
   isVisible: true,

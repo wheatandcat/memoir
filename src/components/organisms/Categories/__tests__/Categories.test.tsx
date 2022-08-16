@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Categories, { Props } from '../Categories';
+import Categories, { Props } from '../';
 
 const propsData = (): Props => ({
   categoryID: 1,

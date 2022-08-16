@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { item } from '__mockData__/item';
 import { user } from '__mockData__/user';
-import Card, { Props } from '../Card';
+import Card, { Props } from '../';
 
 const propsData = (): Props => ({
   title: item().title,

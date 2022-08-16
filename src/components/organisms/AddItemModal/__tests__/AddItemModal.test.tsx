@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import { item } from '__mockData__/item';
-import AddItemModal, { Props } from '../AddItemModal';
+import AddItemModal, { Props } from '../';
 
 const propsData = (): Props => ({
   item: {

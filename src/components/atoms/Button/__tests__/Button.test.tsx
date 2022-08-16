@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Button, { Props } from '../Button';
+import Button, { Props } from '../';
 
 const propsData = (): Props => ({
   size: 'sm',

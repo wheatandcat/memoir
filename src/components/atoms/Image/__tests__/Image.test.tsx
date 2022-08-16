@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Image, { Props } from '../Image';
+import Image, { Props } from '../';
 
 const propsData = (): Props => ({
   source: require('../../../img/categories/category_book.png'),

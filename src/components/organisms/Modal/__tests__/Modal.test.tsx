@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import Modal, { Props } from '../Modal';
+import Modal, { Props } from '../';
 
 const propsData = (): Props => ({
   isVisible: true,
