@@ -21,7 +21,7 @@ import { authUserState, userState } from 'store/atoms';
 import { storageKey, removeItem } from 'lib/storage';
 import { ScreenNavigationProp as HomeScreenNavigationProp } from 'components/pages/Home';
 
-type Props = {
+export type Props = {
   isVisible: boolean;
   onClose: () => void;
 };

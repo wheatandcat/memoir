@@ -10,7 +10,7 @@ import { NewItem } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
 import theme from 'config/theme';
 
-type Props = {
+export type Props = {
   item?: NewItem;
   isVisible: boolean;
   loading: boolean;

@@ -5,7 +5,7 @@ import { aggregateCoverages } from './coverage.js';
 import { getJestResult } from './jestResult.js';
 import { sendMetrics } from './client.js';
 
-const add = -4;
+const add = 0;
 
 const aggregateMetricsAndSend = async () => {
   cd('../../');

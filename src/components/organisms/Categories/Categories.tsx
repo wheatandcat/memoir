@@ -4,7 +4,7 @@ import View from 'components/atoms/View';
 import CategoryButton from 'components/molecules/CategoryButton';
 import setting from 'components/atoms/Category/setting';
 
-type Props = {
+export type Props = {
   categoryID: number | null;
   onPress: (categoryID: number) => void;
 };

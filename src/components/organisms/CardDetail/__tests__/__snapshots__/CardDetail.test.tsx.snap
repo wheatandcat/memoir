@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/CardDetail/CardDetail.tsx 正常にrenderすること 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "#FFFFFF",
+        "borderLeftWidth": 5,
+        "paddingHorizontal": 16,
+        "paddingVertical": 8,
+      },
+      Object {
+        "borderLeftColor": "#FFE600",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+        "zIndex": 1,
+      }
+    }
+  >
+    <View>
+      <Text
+        fontFamily="RobotoCondensed-Bold"
+        variants="body"
+      >
+        2021.01.01 / 金
+      </Text>
+    </View>
+    <Memo(Menu)
+      items={
+        Array [
+          Object {
+            "color": "error",
+            "onPress": [Function],
+            "removeMenu": false,
+            "text": "削除",
+          },
+          Object {
+            "color": "secondary",
+            "onPress": [Function],
+            "removeMenu": true,
+            "text": "編集",
+          },
+        ]
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "center",
+        "paddingVertical": 32,
+      }
+    }
+  >
+    <Memo(Category)
+      categoryID={9}
+    />
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "paddingBottom": 32,
+        },
+        Object {
+          "width": 690,
+        },
+      ]
+    }
+  >
+    <Text
+      fontFamily="RobotoCondensed-Bold"
+      lineHeight={25}
+      variants="body"
+    >
+      買い物
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "flexDirection": "row",
+        "justifyContent": "space-between",
+      }
+    }
+  />
+</View>
+`;

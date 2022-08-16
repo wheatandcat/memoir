@@ -20,7 +20,7 @@ export type Item = {
   removeMenu: boolean;
 };
 
-type Props = {
+export type Props = {
   items: Item[];
 };
 

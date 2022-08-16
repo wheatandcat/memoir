@@ -19,7 +19,7 @@ type User = {
   name: string;
 };
 
-type Props = {
+export type Props = {
   title: Item['title'];
   categoryID: Item['categoryID'];
   user?: User;

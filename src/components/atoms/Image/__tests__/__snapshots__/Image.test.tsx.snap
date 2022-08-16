@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/atoms/Image/Image.tsx 正常にrenderすること 1`] = `
+<Image
+  source={null}
+  style={
+    Array [
+      Object {
+        "height": 100,
+        "width": 100,
+      },
+      undefined,
+    ]
+  }
+/>
+`;
