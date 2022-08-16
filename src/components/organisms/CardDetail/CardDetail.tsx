@@ -15,7 +15,7 @@ import setting from 'components/atoms/Category/setting';
 import { categoryBorderStyle } from 'lib/category';
 import Menu, { Item as MenuItem } from 'components/organisms/Menu/Menu';
 
-type Props = {
+export type Props = {
   title: string;
   date: string;
   categoryID: number;

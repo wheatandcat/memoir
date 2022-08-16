@@ -7,7 +7,7 @@ import Button from 'components/atoms/Button';
 import RNModal from 'react-native-modal';
 import IconButton from 'components/molecules/IconButton';
 
-type Props = {
+export type Props = {
   isVisible: boolean;
   loading?: boolean;
   title: string;

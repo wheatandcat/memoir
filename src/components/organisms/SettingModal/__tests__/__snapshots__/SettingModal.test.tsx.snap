@@ -1,0 +1,197 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms//SettingModal.tsx 正常にrenderすること 1`] = `
+<Modal
+  isVisible={true}
+  onClose={[MockFunction]}
+  title="設定"
+>
+  <View
+    p={3}
+    pt={4}
+    style={Object {}}
+  >
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          アカウント設定
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          ふりかえり日時を変更する
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          達成したタスクを検索する
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          通知設定
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          データ管理
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          フィードバックを送信
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          利用規約
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          プライバシー・ポリシー
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <TouchableOpacity
+      onPress={[Function]}
+      style={
+        Object {
+          "paddingLeft": 8,
+        }
+      }
+    >
+      <View>
+        <Text
+          fontFamily="RobotoCondensed-Bold"
+          variants="body"
+        >
+          ライセンス
+        </Text>
+      </View>
+    </TouchableOpacity>
+    <Divider
+      my={3}
+    />
+    <Memo(Menu) />
+  </View>
+</Modal>
+`;

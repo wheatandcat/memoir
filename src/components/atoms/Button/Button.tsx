@@ -10,7 +10,7 @@ import theme from 'config/theme';
 import View from 'components/atoms/View';
 import Text, { FontFamily } from 'components/atoms/Text';
 
-type Props = {
+export type Props = {
   size?: 'sm' | 'base' | 'lg';
   width?: number | string;
   title: string;

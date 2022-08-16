@@ -1,7 +1,7 @@
 import React from 'react';
 import { Image as RNImage, ImageProps, ImageStyle } from 'react-native';
 
-type Props = ImageProps & {
+export type Props = ImageProps & {
   style?: ImageStyle;
   width?: number | string;
   height?: number | string;

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Cards/Cards.tsx 正常にrenderすること 1`] = `
+<View
+  style={Object {}}
+>
+  <Memo(AddButton)
+    onPress={[MockFunction]}
+  />
+  <View>
+    <View
+      key="1"
+      mb={3}
+      mx={3}
+    >
+      <Memo(Card)
+        categoryID={9}
+        onPress={[Function]}
+        title="買い物"
+      />
+    </View>
+    <View
+      key="2"
+      mb={3}
+      mx={3}
+    >
+      <Memo(Card)
+        categoryID={2}
+        onPress={[Function]}
+        title="本を読む"
+      />
+    </View>
+    <View
+      key="3"
+      mb={3}
+      mx={3}
+    >
+      <Memo(Card)
+        categoryID={3}
+        onPress={[Function]}
+        title="公園に行った"
+      />
+    </View>
+    <View
+      key="4"
+      mb={3}
+      mx={3}
+    >
+      <Memo(Card)
+        categoryID={4}
+        onPress={[Function]}
+        title="ジムに行った"
+      />
+    </View>
+  </View>
+</View>
+`;

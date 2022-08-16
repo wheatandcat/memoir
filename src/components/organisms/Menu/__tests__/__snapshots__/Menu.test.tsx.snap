@@ -1,0 +1,99 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/organisms/Menu/Menu.tsx 正常にrenderすること 1`] = `
+<Fragment>
+  <View
+    onLayout={[Function]}
+    style={
+      Object {
+        "position": "relative",
+        "zIndex": 1,
+      }
+    }
+  >
+    <Memo(IconButton)
+      name="more-horiz"
+      onPress={[Function]}
+      size="base"
+    />
+    <ReactNativeModal
+      animationIn="fadeInRight"
+      animationInTiming={300}
+      animationOut="fadeOutRight"
+      animationOutTiming={100}
+      avoidKeyboard={false}
+      backdropColor="black"
+      backdropOpacity={0}
+      backdropTransitionInTiming={300}
+      backdropTransitionOutTiming={300}
+      coverScreen={true}
+      customBackdrop={null}
+      deviceHeight={null}
+      deviceWidth={null}
+      hasBackdrop={true}
+      hideModalContentWhileAnimating={false}
+      isVisible={false}
+      onBackButtonPress={[Function]}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalShow={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      panResponderThreshold={4}
+      propagateSwipe={false}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={false}
+      supportedOrientations={
+        Array [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      useNativeDriver={false}
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "right": 0,
+              "top": 20,
+            },
+            Object {
+              "backgroundColor": "#FFFFFF",
+              "borderColor": "#362740",
+              "borderRadius": 5,
+              "borderWidth": 0.5,
+              "position": "absolute",
+              "width": 200,
+            },
+          ]
+        }
+      >
+        <View
+          key="text"
+        >
+          <TouchableOpacity
+            onPress={[Function]}
+          >
+            <View
+              p={3}
+            >
+              <Text
+                color="primary"
+                fontFamily="RobotoCondensed-Bold"
+                variants="body"
+              >
+                text
+              </Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ReactNativeModal>
+  </View>
+</Fragment>
+`;
