@@ -9,10 +9,11 @@ import React, {
 } from 'react';
 import { Platform } from 'react-native';
 import {
-  useCreatePushTokenMutation,
+  CreatePushTokenDocument,
   CreatePushTokenMutationVariables,
 } from 'queries/api/index';
 import theme from 'config/theme';
+import { useMutation } from '@apollo/client';
 
 const Context = createContext<ContextProps>({});
 const { Provider } = Context;
@@ -36,7 +37,7 @@ Notifications.setNotificationHandler({
 const Notification: React.FC<Props> = memo((props) => {
   const requestCallback = useRef<() => void>(() => {});
 
-  const [createPushTokenMutation] = useCreatePushTokenMutation({
+  const [createPushTokenMutation] = useMutation(CreatePushTokenDocument, {
     onCompleted() {
       requestCallback.current();
     },

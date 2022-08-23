@@ -1,9 +1,14 @@
 import React, { memo } from 'react';
-import { ItemQueryHookResult as QueryHookResult } from 'queries/api/index';
+import {
+  ItemQuery as Query,
+  ItemQueryVariables as Variables,
+} from 'queries/api/index';
 import ErrorPage from 'components/organisms/Error/Error';
 import TemplateItemDetail from 'components/templates/ItemDetail/Page';
+import { QueryResult } from '@apollo/client';
 import { ConnectedType } from './Connected';
 
+type QueryHookResult = QueryResult<Query, Variables>;
 type QueryProps = Pick<QueryHookResult, 'data' | 'loading' | 'error'>;
 
 export type Props = QueryProps & ConnectedType;

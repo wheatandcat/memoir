@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
-import * as queries from 'queries/api/index';
+import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({});
@@ -20,7 +20,7 @@ describe('components/pages/UpdateProfile/Connected.tsx', () => {
       uid: 'test',
     }));
     jest
-      .spyOn(queries, 'useUpdateUserMutation')
+      .spyOn(client, 'useMutation')
       .mockImplementation((): any => [jest.fn(), { loading: false }]);
     wrapper = shallow(<Connected {...propsData()} />);
   });

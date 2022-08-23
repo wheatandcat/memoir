@@ -3,7 +3,7 @@ import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
 import { items } from '__mockData__/item';
 import * as useHomeItems from 'hooks/useHomeItems';
-import * as queries from 'queries/api/index';
+import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({
@@ -30,8 +30,14 @@ describe('components/pages/Home/Connected.tsx', () => {
       refetch: jest.fn(),
     }));
     jest
-      .spyOn(queries, 'useCreateItemMutation')
+      .spyOn(client, 'useQuery')
       .mockImplementation((): any => [jest.fn(), { loading: false }]);
+    jest.spyOn(client, 'useMutation').mockImplementation((): any => [
+      jest.fn(),
+      {
+        loading: false,
+      },
+    ]);
     wrapper = shallow(<Connected {...propsData()} />);
   });
 

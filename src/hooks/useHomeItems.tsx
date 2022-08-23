@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { useItemsByDateLazyQuery } from 'queries/api/index';
+import { ItemsByDateDocument } from 'queries/api/index';
 import { homeDateState, homeItemsState } from 'store/atoms';
 import usePrevious from 'hooks/usePrevious';
+import { useLazyQuery } from '@apollo/client';
 
 const useHomeItems = () => {
   const [getItemsByDate, { data, loading, error, refetch }] =
-    useItemsByDateLazyQuery();
+    useLazyQuery(ItemsByDateDocument);
   const homeDate = useRecoilValue(homeDateState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const [apiLoading, setApiLoading] = useState(true);

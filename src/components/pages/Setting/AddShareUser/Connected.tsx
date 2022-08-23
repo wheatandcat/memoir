@@ -1,18 +1,19 @@
 import React, { memo, useCallback } from 'react';
 import { Alert } from 'react-native';
 import {
-  useInviteQuery,
   InviteQuery,
-  useInviteByCodeLazyQuery,
   InviteByCodeQueryVariables,
-  useCreateInviteMutation,
-  useUpdateInviteMutation,
   CreateRelationshipRequestMutationVariables,
   CreateRelationshipRequestMutation,
-  useCreateRelationshipRequestMutation,
+  InviteDocument,
+  InviteByCodeDocument,
+  UpdateInviteDocument,
+  CreateInviteDocument,
+  CreateRelationshipRequestDocument,
 } from 'queries/api/index';
 import { useRecoilValue } from 'recoil';
 import { userState, User } from 'store/atoms';
+import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 
 export type Props = {};
@@ -40,33 +41,40 @@ export type ConnectedType = {
 };
 
 const Connected: React.FC<Props> = () => {
-  const { loading, data, error, refetch } = useInviteQuery();
-  const [getInviteByCode, inviteByCodeData] = useInviteByCodeLazyQuery({
-    fetchPolicy: 'network-only',
-  });
+  const { loading, data, error, refetch } = useQuery(InviteDocument);
+  const [getInviteByCode, inviteByCodeData] = useLazyQuery(
+    InviteByCodeDocument,
+    {
+      fetchPolicy: 'network-only',
+    }
+  );
 
   const [createRelationshipRequestMutation, relationshipRequestMutationData] =
-    useCreateRelationshipRequestMutation();
+    useMutation(CreateRelationshipRequestDocument);
 
   const user = useRecoilValue(userState);
-  const [createInviteMutation, createInviteMutationData] =
-    useCreateInviteMutation({
+  const [createInviteMutation, createInviteMutationData] = useMutation(
+    CreateInviteDocument,
+    {
       onCompleted() {
         refetch();
       },
       onError() {
         Alert.alert('エラー', '作成に失敗しました');
       },
-    });
-  const [updateInviteMutation, updateInviteMutationData] =
-    useUpdateInviteMutation({
+    }
+  );
+  const [updateInviteMutation, updateInviteMutationData] = useMutation(
+    UpdateInviteDocument,
+    {
       onCompleted() {
         refetch();
       },
       onError() {
         Alert.alert('エラー', '更新に失敗しました');
       },
-    });
+    }
+  );
 
   const onCreateInvite = useCallback(() => {
     createInviteMutation();

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
 import { user } from '__mockData__/user';
-import * as queries from 'queries/api/index';
+import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({
@@ -21,20 +21,11 @@ describe('components/pages/Memoir/ScreenShot/Connected.tsx', () => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       ...user(),
     }));
-    jest
-      .spyOn(queries, 'useItemsInPeriodQuery')
-      .mockImplementation((): any => ({
-        loading: false,
-        data: null,
-        error: undefined,
-      }));
-    jest
-      .spyOn(queries, 'useRelationshipsQuery')
-      .mockImplementation((): any => ({
-        loading: false,
-        data: null,
-        error: undefined,
-      }));
+    jest.spyOn(client, 'useQuery').mockImplementation((): any => ({
+      loading: false,
+      data: null,
+      error: undefined,
+    }));
 
     wrapper = shallow(<Connected {...propsData()} />);
   });

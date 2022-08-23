@@ -1,13 +1,16 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   ItemsInPeriodQuery as Query,
-  ItemsInPeriodQueryHookResult as QueryHookResult,
+  ItemsInPeriodQueryVariables as Variables,
 } from 'queries/api/index';
+import { QueryResult } from '@apollo/client';
+
+type QueryHookResult = QueryResult<Query, Variables>;
 
 export type Item = NonNullable<EdgesNode<Query['itemsInPeriod']>>;
 export type ItemsInPeriodPageInfo = PageInfo<Query['itemsInPeriod']>;
 
-type Props = QueryHookResult;
+type Props = Pick<QueryHookResult, 'data' | 'loading'>;
 type Option = {
   merge?: boolean;
 };

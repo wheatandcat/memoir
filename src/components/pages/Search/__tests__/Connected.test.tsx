@@ -1,9 +1,9 @@
 import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
-import * as queries from 'queries/api/index';
 import * as Recoil from 'recoil';
 import { user } from '__mockData__/user';
 import { relationships } from '__mockData__/relationship';
+import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({});
@@ -14,7 +14,7 @@ describe('components/pages/Search/Connected.tsx', () => {
   jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
     ...user(),
   }));
-  jest.spyOn(queries, 'useRelationshipsQuery').mockImplementation((): any => ({
+  jest.spyOn(client, 'useQuery').mockImplementation((): any => ({
     loading: false,
     data: {
       relationships: {

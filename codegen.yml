@@ -11,13 +11,7 @@ generates:
     plugins:
       - typescript
       - typescript-operations
-      - typescript-react-apollo
-    config:
-      skipTypename: false
-      withHooks: true
-      withHOC: false
-      withComponent: false
-      apolloReactHooksImportFrom: '@apollo/client'
+      - typed-document-node
   ./schema.json:
     plugins:
       - introspection

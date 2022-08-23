@@ -1,11 +1,12 @@
 import React, { memo, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { useRelationshipsQuery } from 'queries/api/index';
+import { RelationshipsDocument } from 'queries/api/index';
 import { User as TUser } from 'queries/api/index';
 import { userState } from 'store/atoms';
 import { useRecoilValue } from 'recoil';
 import { State as Input } from 'components/templates/Search/Page';
 import dayjs from 'lib/dayjs';
+import { useQuery } from '@apollo/client';
 import { ScreenNavigationProp as SearchNavigationProp } from './';
 import Plain from './Plain';
 
@@ -21,7 +22,7 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = () => {
   const navigation = useNavigation<SearchNavigationProp>();
   const user = useRecoilValue(userState);
-  const relationshipsQuery = useRelationshipsQuery({
+  const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
         after: '',
@@ -63,7 +64,6 @@ const Connected: React.FC<Props> = () => {
   return (
     <Plain
       loading={relationshipsQuery.loading}
-      error={null}
       users={tUsers}
       onSearch={onSearch}
     />

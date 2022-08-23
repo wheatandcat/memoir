@@ -1,15 +1,21 @@
 import React, { memo } from 'react';
 import ErrorPage from 'components/organisms/Error/Error';
-import { RelationshipRequestsQueryHookResult as QueryHookResult } from 'queries/api/index';
+import {
+  RelationshipRequestsQuery as Query,
+  RelationshipRequestsQueryVariables as Variables,
+} from 'queries/api/index';
 import Loading from 'components/atoms/Loading';
 import {
   RelationshipRequest,
   RelationshipRequestsPageInfo,
 } from 'hooks/useRelationshipRequestsPaging';
 import TemplateSettingRelationshipRequests from 'components/templates/Setting/RelationshipRequests/Page';
+import { QueryResult } from '@apollo/client';
 import { ConnectedType } from './Connected';
 
+type QueryHookResult = QueryResult<Query, Variables>;
 type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
+
 export type Props = QueryProps &
   ConnectedType & {
     items: RelationshipRequest[];

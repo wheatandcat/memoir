@@ -1,13 +1,14 @@
 import React, { memo, useState, useCallback } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import {
-  useRelationshipRequestsQuery,
-  useAcceptRelationshipRequestMutation,
-  useNgRelationshipRequestMutation,
+  RelationshipRequestsDocument,
+  AcceptRelationshipRequestDocument,
+  NgRelationshipRequestDocument,
   RelationshipRequestsQueryVariables as Variables,
 } from 'queries/api/index';
 import { v4 as uuidv4 } from 'uuid';
 import useRelationshipRequestsPaging from 'hooks/useRelationshipRequestsPaging';
+import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 import { ScreenNavigationProp as RelationshipRequestsScreenNavigationProp } from './';
 
@@ -28,7 +29,7 @@ const Connected: React.FC<Props> = (props) => {
   const [reloadKey, setReloadKey] = useState('');
   const navigation = useNavigation<RelationshipRequestsScreenNavigationProp>();
 
-  const queryResult = useRelationshipRequestsQuery({
+  const queryResult = useQuery(RelationshipRequestsDocument, {
     variables: {
       input: {
         first: 5,
@@ -50,7 +51,7 @@ const Connected: React.FC<Props> = (props) => {
   const [
     acceptRelationshipRequestMutation,
     acceptRelationshipRequestMutationData,
-  ] = useAcceptRelationshipRequestMutation({
+  ] = useMutation(AcceptRelationshipRequestDocument, {
     onCompleted(data) {
       reset();
       setEndCursor('');
@@ -67,7 +68,7 @@ const Connected: React.FC<Props> = (props) => {
     },
   });
   const [ngRelationshipRequestMutation, ngRelationshipRequestMutationData] =
-    useNgRelationshipRequestMutation({
+    useMutation(NgRelationshipRequestDocument, {
       onCompleted() {
         reset();
         setEndCursor('');

@@ -5,9 +5,10 @@ import { existUserID } from 'store/selectors';
 import 'react-native-get-random-values';
 import { v4 as uuidv4 } from 'uuid';
 import { userState } from 'store/atoms';
-import { useCreateUserMutation, useUserLazyQuery } from 'queries/api/index';
+import { CreateUserDocument, UserDocument } from 'queries/api/index';
 import { storageKey, setItem } from 'lib/storage';
 import usePrevious from 'hooks/usePrevious';
+import { useLazyQuery, useMutation } from '@apollo/client';
 
 const useUser = () => {
   const [setupUser, setSetupUser] = useState(false);
@@ -21,7 +22,7 @@ const useUser = () => {
     }
   }, [user.id]);
 
-  const [getUser] = useUserLazyQuery({
+  const [getUser] = useLazyQuery(UserDocument, {
     onCompleted: (data) => {
       setUser((s) => ({
         ...s,
@@ -35,7 +36,7 @@ const useUser = () => {
 
   const prevUserID = usePrevious(user.id);
 
-  const [createUserMutation] = useCreateUserMutation({
+  const [createUserMutation] = useMutation(CreateUserDocument, {
     async onCompleted({ createUser }) {
       await setItem(storageKey.USER_ID_KEY, createUser.id);
       setUser({ id: createUser.id, userID: '', displayName: '', image: '' });
