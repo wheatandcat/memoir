@@ -25,7 +25,7 @@ import Contact from 'components/pages/Contact';
 const Stack = createStackNavigator<RootStackParamList>();
 const prefix = Linking.createURL('/');
 
-const WithProvider = () => {
+const Router = () => {
   return (
     <NavigationContainer
       linking={{
@@ -158,4 +158,4 @@ const WithProvider = () => {
   );
 };
 
-export default WithProvider;
+export default Router;

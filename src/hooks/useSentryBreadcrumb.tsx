@@ -24,7 +24,7 @@ const useSentryBreadcrumb = () => {
       captureBreadcrumb();
     });
 
-    return unsubscribe;
+    return unsubscribe();
   }, [navigation, captureBreadcrumb]);
 };
 

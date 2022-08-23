@@ -57,13 +57,17 @@ const useUser = () => {
   }, [createUserMutation]);
 
   const setup = useCallback(() => {
+    if (setupUser) {
+      return;
+    }
+
     if (!user.id && !userID.contents) {
       setSetupUser(true);
       return;
     }
 
     getUser();
-  }, [user.id, getUser, userID.contents]);
+  }, [user.id, getUser, userID.contents, setupUser]);
 
   useEffect(() => {
     if (userID.state === 'hasValue') {
