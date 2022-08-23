@@ -8,7 +8,7 @@ import { useRecoilValue } from 'recoil';
 import SeeYouAgain from 'components/templates/SeeYouAgain/SeeYouAgain';
 import Router from './Router';
 
-const WithProvider2 = () => {
+const WithProvider = () => {
   const { setupAuth } = useFirebaseAuth();
   const { setupUser, user, onSaveWhenNotLogin } = useUser();
   const screenStateValue = useRecoilValue(screenState);
@@ -41,4 +41,4 @@ const WithProvider2 = () => {
   return <Router />;
 };
 
-export default WithProvider2;
+export default WithProvider;
