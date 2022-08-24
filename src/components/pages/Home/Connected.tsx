@@ -2,7 +2,8 @@ import React, { memo, useCallback, useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import dayjs from 'lib/dayjs';
-import { useCreateItemMutation, NewItem } from 'queries/api/index';
+import { NewItem, CreateItemDocument } from 'queries/api/index';
+import { useMutation } from '@apollo/client';
 import { homeDateState, homeItemsState, Item, homeState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
 import usePerformance, { traceEvent } from 'hooks/usePerformance';
@@ -62,13 +63,16 @@ const Connected: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, openAddItemModal: false }));
   }, []);
 
-  const [createItemMutation, createItemMutationData] = useCreateItemMutation({
-    async onCompleted() {
-      await refetch?.();
+  const [createItemMutation, createItemMutationData] = useMutation(
+    CreateItemDocument,
+    {
+      async onCompleted() {
+        await refetch?.();
 
-      onCloseAddItem();
-    },
-  });
+        onCloseAddItem();
+      },
+    }
+  );
 
   const onAddItem = useCallback(
     (newItem: NewItem) => {

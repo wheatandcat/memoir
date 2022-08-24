@@ -7,10 +7,11 @@ import { v4 as uuidv4 } from 'uuid';
 import TemplateUpdateProfile from 'components/templates/UpdateProfile/Page';
 import { userState } from 'store/atoms';
 import {
-  useUpdateUserMutation,
+  UpdateUserDocument,
   UpdateUserMutationVariables,
 } from 'queries/api/index';
 import { uploadImageAsync } from 'lib/image';
+import { useMutation } from '@apollo/client';
 import { User } from 'queries/api/index';
 
 export type Props = {};
@@ -29,28 +30,31 @@ const Connected: React.FC<Props> = () => {
   const [user, setUser] = useRecoilState(userState);
   const authUser = useRecoilValue(authUserState);
   const navigation = useNavigation();
-  const [updateUserMutation, updateUserMutationData] = useUpdateUserMutation({
-    async onCompleted(data) {
-      const param: Partial<User> = {
-        displayName: data.updateUser.displayName,
-      };
+  const [updateUserMutation, updateUserMutationData] = useMutation(
+    UpdateUserDocument,
+    {
+      async onCompleted(data) {
+        const param: Partial<User> = {
+          displayName: data.updateUser.displayName,
+        };
 
-      if (data.updateUser.image !== '') {
-        param.image = data.updateUser.image;
-      }
+        if (data.updateUser.image !== '') {
+          param.image = data.updateUser.image;
+        }
 
-      setUser((s) => ({
-        ...s,
-        ...param,
-      }));
+        setUser((s) => ({
+          ...s,
+          ...param,
+        }));
 
-      navigation.goBack();
-    },
-    async onError() {
-      // エラーになった場合はログアウトさせる
-      Alert.alert('エラー', '保存に失敗しました');
-    },
-  });
+        navigation.goBack();
+      },
+      async onError() {
+        // エラーになった場合はログアウトさせる
+        Alert.alert('エラー', '保存に失敗しました');
+      },
+    }
+  );
 
   const onSave = useCallback(
     async (input: Input) => {

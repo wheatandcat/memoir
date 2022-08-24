@@ -13,10 +13,10 @@ import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
 import {
-  useCreateAuthUserMutation,
+  CreateAuthUserDocument,
+  ExistAuthUserDocument,
+  UserDocument,
   CreateAuthUserMutationVariables,
-  useExistAuthUserLazyQuery,
-  useUserLazyQuery,
 } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
 import Constants from 'expo-constants';
@@ -27,6 +27,7 @@ import {
   GoogleAuthProvider,
   OAuthProvider,
 } from 'firebase/auth';
+import { useLazyQuery, useMutation } from '@apollo/client';
 
 const auth = new Auth();
 const appAuth = getFirebaseAuthApp();
@@ -59,7 +60,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     }
   }, [user.id]);
 
-  const [getUser, userQuery] = useUserLazyQuery({
+  const [getUser, userQuery] = useLazyQuery(UserDocument, {
     onCompleted: (data) => {
       setUser((s) => ({
         ...s,
@@ -71,7 +72,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     },
   });
 
-  const [createAuthUserMutation] = useCreateAuthUserMutation({
+  const [createAuthUserMutation] = useMutation(CreateAuthUserDocument, {
     async onCompleted(data) {
       const id = data.createAuthUser.id;
 
@@ -91,26 +92,29 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     },
   });
 
-  const [getExistAuthUser, existAuthUserQuery] = useExistAuthUserLazyQuery({
-    onCompleted: (data) => {
-      if (data.existAuthUser.exist === false) {
-        const u = uuidv4();
-        const variables: CreateAuthUserMutationVariables = {
-          input: {
-            id: u,
-            isNewUser: true,
-          },
-        };
+  const [getExistAuthUser, existAuthUserQuery] = useLazyQuery(
+    ExistAuthUserDocument,
+    {
+      onCompleted: (data) => {
+        if (data.existAuthUser.exist === false) {
+          const u = uuidv4();
+          const variables: CreateAuthUserMutationVariables = {
+            input: {
+              id: u,
+              isNewUser: true,
+            },
+          };
 
-        createAuthUserMutation({
-          variables,
-        });
-      } else {
-        // ユーザー情報を設定
-        getUser();
-      }
-    },
-  });
+          createAuthUserMutation({
+            variables,
+          });
+        } else {
+          // ユーザー情報を設定
+          getUser();
+        }
+      },
+    }
+  );
 
   const authParam: Partial<Google.GoogleAuthRequestConfig> = {
     responseType: ResponseType.IdToken,

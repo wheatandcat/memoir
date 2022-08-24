@@ -2,8 +2,8 @@ import React from 'react';
 import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
-import * as queries from 'queries/api/index';
 import { user } from '__mockData__/user';
+import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({});
@@ -20,23 +20,21 @@ describe('components/pages/DataManagement/Connected.tsx', () => {
       onLogout: jest.fn(),
     }));
     jest
-      .spyOn(queries, 'useDeleteUserMutation')
+      .spyOn(client, 'useMutation')
       .mockImplementation((): any => [
         jest.fn(),
         { loading: false, error: null },
       ]);
-    jest
-      .spyOn(queries, 'useRelationshipsQuery')
-      .mockImplementation((): any => ({
-        loading: false,
-        data: {
-          relationships: {
-            edges: [],
-          },
+    jest.spyOn(client, 'useQuery').mockImplementation((): any => ({
+      loading: false,
+      data: {
+        relationships: {
+          edges: [],
         },
-        error: undefined,
-        refetch: jest.fn(),
-      }));
+      },
+      error: undefined,
+      refetch: jest.fn(),
+    }));
     wrapper = shallow(<Connected {...propsData()} />);
   });
 

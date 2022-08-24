@@ -1,13 +1,11 @@
 import React, { memo, useCallback } from 'react';
-import {
-  useDeleteUserMutation,
-  useRelationshipsQuery,
-} from 'queries/api/index';
+import { DeleteUserDocument, RelationshipsDocument } from 'queries/api/index';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import useFirebaseAuth from 'hooks/useFirebaseAuth';
 import Loading from 'components/atoms/Loading';
 import { deleteImageAsync } from 'lib/image';
 import { userState, screenState } from 'store/atoms';
+import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 
 export type Props = {};
@@ -22,7 +20,7 @@ const Connected: React.FC<Props> = () => {
   const user = useRecoilValue(userState);
   const setScreenState = useSetRecoilState(screenState);
   const { setupAuth, onLogout } = useFirebaseAuth(true);
-  const relationshipsQuery = useRelationshipsQuery({
+  const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
         after: '',
@@ -31,15 +29,18 @@ const Connected: React.FC<Props> = () => {
       skip: true,
     },
   });
-  const [deleteUserMutation, deleteUserMutationData] = useDeleteUserMutation({
-    async onCompleted() {
-      if (user.image) {
-        await deleteImageAsync(user.image);
-      }
-      await onLogout();
-      setScreenState({ seeYouAgain: true });
-    },
-  });
+  const [deleteUserMutation, deleteUserMutationData] = useMutation(
+    DeleteUserDocument,
+    {
+      async onCompleted() {
+        if (user.image) {
+          await deleteImageAsync(user.image);
+        }
+        await onLogout();
+        setScreenState({ seeYouAgain: true });
+      },
+    }
+  );
 
   const onDelete = useCallback(() => {
     deleteUserMutation();

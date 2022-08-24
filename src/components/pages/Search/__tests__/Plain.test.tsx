@@ -5,7 +5,6 @@ import Plain, { Props } from '../Plain';
 
 const propsData = (): Props => ({
   loading: false,
-  error: undefined,
   users: users(),
   onSearch: jest.fn(),
 });

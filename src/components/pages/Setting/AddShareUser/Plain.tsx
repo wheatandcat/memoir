@@ -2,10 +2,14 @@ import React, { memo } from 'react';
 import ErrorPage from 'components/organisms/Error/Error';
 import Loading from 'components/atoms/Loading';
 import TemplateSettingAddShareUser from 'components/templates/Setting/AddShareUser/Page';
-import { InviteQueryHookResult } from 'queries/api/index';
+import {
+  InviteQuery as Query,
+  InviteQueryVariables as Variables,
+} from 'queries/api/index';
+import { QueryResult } from '@apollo/client';
 import { ConnectedType, Invite } from './Connected';
 
-type QueryHookResult = InviteQueryHookResult;
+type QueryHookResult = QueryResult<Query, Variables>;
 type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
 export type Props = QueryProps & ConnectedType;
 

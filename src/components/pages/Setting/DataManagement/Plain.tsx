@@ -1,11 +1,13 @@
 import React, { memo } from 'react';
 import ErrorPage from 'components/organisms/Error/Error';
 import TemplateDataManagement from 'components/templates/Setting/DataManagement/Page';
+import { ApolloError } from '@apollo/client';
 import { ConnectedType } from './Connected';
 
-type QueryHookResult = any;
-type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
-export type Props = QueryProps & ConnectedType;
+export type Props = ConnectedType & {
+  loading: boolean;
+  error?: ApolloError;
+};
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;

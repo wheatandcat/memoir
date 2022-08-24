@@ -1,8 +1,11 @@
 import { useState, useEffect, useCallback } from 'react';
 import {
   RelationshipRequestsQuery as Query,
-  RelationshipRequestsQueryHookResult as QueryHookResult,
+  RelationshipRequestsQueryVariables as Variables,
 } from 'queries/api/index';
+import { QueryResult } from '@apollo/client';
+
+type QueryHookResult = QueryResult<Query, Variables>;
 
 export type RelationshipRequest = NonNullable<
   EdgesNode<Query['relationshipRequests']>
@@ -11,7 +14,7 @@ export type RelationshipRequestsPageInfo = PageInfo<
   Query['relationshipRequests']
 >;
 
-type Props = QueryHookResult;
+type Props = Pick<QueryHookResult, 'data' | 'loading'>;
 type Option = {
   merge?: boolean;
 };

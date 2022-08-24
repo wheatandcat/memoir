@@ -1,7 +1,7 @@
 import React, { memo, useCallback, useState } from 'react';
 import {
-  useItemsInPeriodQuery,
-  useRelationshipsQuery,
+  ItemsInPeriodDocument,
+  RelationshipsDocument,
 } from 'queries/api/index';
 import { useNavigation } from '@react-navigation/native';
 import useItemsInPeriodPaging from 'hooks/useItemsInPeriodPaging';
@@ -9,6 +9,7 @@ import usePerformance, { traceEvent } from 'hooks/usePerformance';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
 import { Interaction as SchedulerInteraction } from 'scheduler/tracing';
+import { useQuery } from '@apollo/client';
 import Plain from './Plain';
 import { ScreenNavigationProp as MemoirScreenNavigationProp } from './';
 
@@ -59,7 +60,7 @@ const Connected: React.FC<Props> = (props) => {
     traceName: traceEvent.TRACE_EVENT_VIEW_MEMOIR,
   });
 
-  const relationshipsQuery = useRelationshipsQuery({
+  const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
         after: '',
@@ -80,7 +81,7 @@ const Connected: React.FC<Props> = (props) => {
     dislike: props.dislike,
   };
 
-  const queryResult = useItemsInPeriodQuery({
+  const queryResult = useQuery(ItemsInPeriodDocument, {
     variables: {
       input,
     },

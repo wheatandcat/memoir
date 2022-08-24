@@ -3,15 +3,16 @@ import { useNavigation } from '@react-navigation/native';
 import { useSetRecoilState } from 'recoil';
 import dayjs from 'lib/dayjs';
 import {
-  useItemQuery,
-  useUpdateItemMutation,
-  useDeleteItemMutation,
+  ItemDocument,
+  UpdateItemDocument,
+  DeleteItemDocument,
   UpdateItem,
   NewItem,
   DeleteItem,
 } from 'queries/api/index';
 import { homeDateState } from 'store/atoms';
 import useHomeItems from 'hooks/useHomeItems';
+import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 
 export type Props = {
@@ -44,7 +45,7 @@ const Connected: React.FC<Props> = (props) => {
   const setHomeDate = useSetRecoilState(homeDateState);
   const homeItems = useHomeItems();
 
-  const { loading, data, error, refetch } = useItemQuery({
+  const { loading, data, error, refetch } = useQuery(ItemDocument, {
     variables: {
       id: props.itemID,
     },
@@ -58,7 +59,7 @@ const Connected: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, openUpdateItemModal: false }));
   }, []);
 
-  const [updateItemMutation] = useUpdateItemMutation({
+  const [updateItemMutation] = useMutation(UpdateItemDocument, {
     async onCompleted() {
       await refetch?.();
 
@@ -82,7 +83,7 @@ const Connected: React.FC<Props> = (props) => {
     [updateItemMutation, props.itemID]
   );
 
-  const [deleteItemMutation] = useDeleteItemMutation({
+  const [deleteItemMutation] = useMutation(DeleteItemDocument, {
     async onCompleted() {
       await homeItems?.refetch?.();
       navigation.goBack();

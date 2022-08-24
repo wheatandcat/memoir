@@ -1,12 +1,17 @@
 import React, { memo } from 'react';
-import { ItemsInPeriodQueryHookResult as QueryHookResult } from 'queries/api/index';
+import {
+  ItemsInPeriodQuery as Query,
+  ItemsInPeriodQueryVariables as Variables,
+} from 'queries/api/index';
 import ErrorPage from 'components/organisms/Error/Error';
 import Loading from 'components/atoms/Loading';
 import TemplateMemoirScreenShot from 'components/templates/Memoir/ScreenShot/Page';
 import { Item } from 'hooks/useItemsInPeriodPaging';
+import { QueryResult } from '@apollo/client';
 import { ConnectedType } from './Connected';
 
-type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
+type QueryHookResult = QueryResult<Query, Variables>;
+type QueryProps = Pick<QueryHookResult, 'data' | 'loading' | 'error'>;
 export type Props = QueryProps & ConnectedType & {};
 
 const Plain: React.FC<Props> = (props) => {

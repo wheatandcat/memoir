@@ -5,6 +5,7 @@
     "hooks/tmp/*",
     "storyBookUtils/*",
     "containers/tmp/*",
+    "src/queries/api/index.ts",
     "src/components/organisms/Memoir/ScreenShot.ios.tsx"
   ]
 }

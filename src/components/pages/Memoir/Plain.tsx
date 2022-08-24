@@ -1,10 +1,15 @@
 import React, { memo } from 'react';
-import { ItemsInPeriodQueryHookResult as QueryHookResult } from 'queries/api/index';
+import {
+  ItemsInPeriodQuery as Query,
+  ItemsInPeriodQueryVariables as Variables,
+} from 'queries/api/index';
 import ErrorPage from 'components/organisms/Error/Error';
 import { ConnectedType } from './Connected';
 import TemplateMemoir from 'components/templates/Memoir/Page';
 import { Item, ItemsInPeriodPageInfo } from 'hooks/useItemsInPeriodPaging';
+import { QueryResult } from '@apollo/client';
 
+type QueryHookResult = QueryResult<Query, Variables>;
 type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
 
 export type Props = QueryProps &

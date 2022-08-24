@@ -1,11 +1,12 @@
 import React, { memo } from 'react';
 import {
-  useItemsInPeriodQuery,
-  useRelationshipsQuery,
+  ItemsInPeriodDocument,
+  RelationshipsDocument,
 } from 'queries/api/index';
 import { User as TUser } from 'store/atoms';
 import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
+import { useQuery } from '@apollo/client';
 import Plain from './Plain';
 
 export type Props = {
@@ -31,7 +32,7 @@ type User = Omit<TUser, 'userID'> & {
 const Connected: React.FC<Props> = (props) => {
   const user = useRecoilValue(userState);
 
-  const relationshipsQuery = useRelationshipsQuery({
+  const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
         after: '',
@@ -41,7 +42,7 @@ const Connected: React.FC<Props> = (props) => {
     },
   });
 
-  const { data, loading, error } = useItemsInPeriodQuery({
+  const { data, loading, error } = useQuery(ItemsInPeriodDocument, {
     variables: {
       input: {
         startDate: props.startDate,

@@ -5,14 +5,15 @@ import useFirebaseAuth, { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
 import { useRecoilValue } from 'recoil';
 import { authUserState } from 'store/atoms';
 import {
-  useRelationshipRequestsLazyQuery,
-  useRelationshipsLazyQuery,
+  RelationshipRequestsDocument,
+  RelationshipsDocument,
+  DeleteRelationshipDocument,
+  UserDocument,
   RelationshipsQuery,
-  useDeleteRelationshipMutation,
-  useUserQuery,
 } from 'queries/api/index';
-import { ScreenNavigationProp as MyPageScreenNavigationProp } from './';
+import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
 import { useFocusEffect } from '@react-navigation/native';
+import { ScreenNavigationProp as MyPageScreenNavigationProp } from './';
 
 type Props = {};
 
@@ -33,17 +34,22 @@ export type ConnectedType = {
 const Connected: React.FC<Props> = () => {
   const { setupAuth, onLogout } = useFirebaseAuth(true);
   const authUser = useRecoilValue(authUserState);
-  const userQuery = useUserQuery();
+  const userQuery = useQuery(UserDocument);
   const navigation = useNavigation<MyPageScreenNavigationProp>();
-  const [getRelationshipRequests, relationshipRequestsData] =
-    useRelationshipRequestsLazyQuery({
+  const [getRelationshipRequests, relationshipRequestsData] = useLazyQuery(
+    RelationshipRequestsDocument,
+    {
       fetchPolicy: 'network-only',
-    });
-  const [getRelationships, relationshipsData] = useRelationshipsLazyQuery({
-    fetchPolicy: 'network-only',
-  });
+    }
+  );
+  const [getRelationships, relationshipsData] = useLazyQuery(
+    RelationshipsDocument,
+    {
+      fetchPolicy: 'network-only',
+    }
+  );
   const [deleteRelationshipMutation, deleteRelationshipMutationData] =
-    useDeleteRelationshipMutation({
+    useMutation(DeleteRelationshipDocument, {
       onCompleted() {
         relationshipsData.refetch?.();
       },

@@ -8,10 +8,11 @@ import useHomeItems from 'hooks/useHomeItems';
 import { useRecoilValue } from 'recoil';
 import { authUserState } from 'store/atoms';
 import {
-  useCreateAuthUserMutation,
+  CreateAuthUserDocument,
   CreateAuthUserMutationVariables,
 } from 'queries/api/index';
 import { useNotification } from 'containers/Notification';
+import { useMutation } from '@apollo/client';
 
 type Props = {};
 
@@ -28,7 +29,7 @@ const Connected: React.FC<Props> = () => {
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
   const navigation = useNavigation();
-  const [createAuthUserMutation] = useCreateAuthUserMutation({
+  const [createAuthUserMutation] = useMutation(CreateAuthUserDocument, {
     async onCompleted() {
       onPermissionRequest?.(async () => {
         await refetch?.();
