@@ -18,6 +18,7 @@ module.exports = function (api) {
             containers: './src/containers',
             queries: './src/queries',
             __mockData__: './src/__mockData__',
+            mocks: './src/mocks',
           },
         },
       ],
