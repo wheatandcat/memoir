@@ -6,17 +6,19 @@ import {
   createHttpLink,
   InMemoryCache,
 } from '@apollo/client';
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react-native';
 import { server } from 'mocks/server';
+import fetch from 'cross-fetch';
 
 const link = createHttpLink({
-  uri: 'http://localhost:8080',
+  uri: '',
+  fetch,
   credentials: 'same-origin',
 });
 
 const client = new ApolloClient({
   link,
-  uri: 'http://localhost:8080',
+  uri: '',
   cache: new InMemoryCache(),
 });
 
