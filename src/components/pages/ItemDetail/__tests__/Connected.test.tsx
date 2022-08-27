@@ -15,9 +15,6 @@ const propsData = (props?: Partial<Props>): Props => ({
   ...props,
 });
 
-export const sleep = (ms: number) =>
-  new Promise((resolve) => setTimeout(resolve, ms));
-
 describe('components/pages/ItemDetail/Connected.tsx', () => {
   beforeEach(() => {
     jest
