@@ -11,14 +11,14 @@ import { server } from 'mocks/server';
 import fetch from 'cross-fetch';
 
 const link = createHttpLink({
-  uri: '',
+  uri: 'http://localhost:8080/query',
   fetch,
   credentials: 'same-origin',
 });
 
 const client = new ApolloClient({
   link,
-  uri: '',
+  uri: 'http://localhost:8080/query',
   cache: new InMemoryCache(),
 });
 
@@ -28,5 +28,5 @@ export const testRenderer =
     if (responseOverride) {
       server.use(responseOverride);
     }
-    render(<ApolloProvider client={client}>{children}</ApolloProvider>);
+    return render(<ApolloProvider client={client}>{children}</ApolloProvider>);
   };
