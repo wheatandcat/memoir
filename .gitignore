@@ -18,6 +18,7 @@ storyLoader.js
 
 schema.json
 src/queries/api/index.ts
+src/queries/api/mocks.ts
 schema.graphqls
 GoogleService-Info.plist
 .env

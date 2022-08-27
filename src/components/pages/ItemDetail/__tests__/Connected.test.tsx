@@ -1,19 +1,21 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
-import * as Recoil from 'recoil';
+import { graphql } from 'msw';
+import { ItemDocument } from 'queries/api/index';
 import { item } from '__mockData__/item';
+import * as Recoil from 'recoil';
 import * as useHomeItems from 'hooks/useHomeItems';
 import * as client from '@apollo/client';
+import { testRenderer } from 'lib/testUtil';
+import { screen, waitFor } from '@testing-library/react-native';
 import Connected, { Props } from '../Connected';
 
-const propsData = (): Props => ({
+const propsData = (props?: Partial<Props>): Props => ({
   itemID: 'test',
   date: '2020-01-01',
+  ...props,
 });
 
 describe('components/pages/ItemDetail/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest
       .spyOn(Recoil, 'useSetRecoilState')
@@ -23,24 +25,50 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
       error: null,
       refetch: jest.fn(),
     }));
-    jest.spyOn(client, 'useQuery').mockImplementation((): any => ({
-      loading: false,
-      data: {
-        item: item(),
-      },
-      error: undefined,
-      refetch: jest.fn(),
-    }));
     jest.spyOn(client, 'useMutation').mockImplementation((): any => [
       jest.fn(),
       {
         loading: false,
       },
     ]);
-    wrapper = shallow(<Connected {...propsData()} />);
   });
 
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('各項目が正しく表示される', async () => {
+    const renderPage = testRenderer(
+      <Connected
+        {...propsData({
+          itemID: 'test2',
+        })}
+      />
+    );
+
+    const queryInterceptor = jest.fn();
+
+    renderPage(
+      graphql.query(ItemDocument, (req, res, ctx) => {
+        queryInterceptor(req.variables);
+
+        return res(
+          ctx.data({
+            item: {
+              ...item(),
+              id: req.variables.id,
+              date: '2021-01-01T00:00:00+09:00',
+              title: '宝くじが当たった',
+              categoryID: 9,
+              like: true,
+            },
+          })
+        );
+      })
+    );
+
+    await waitFor(async () => {
+      expect(queryInterceptor).toHaveBeenCalledTimes(1);
+      expect(screen.getByText('宝くじが当たった')).toBeTruthy();
+      expect(screen.getByText('2020.01.01 / 水')).toBeTruthy();
+      expect(screen.getByTestId('like')).toBeTruthy();
+      expect(screen.getByTestId('category_id_9')).toBeTruthy();
+    });
   });
 });

@@ -17,6 +17,7 @@ const Category: React.FC<Props> = (props) => {
       width={50}
       height={50}
       onLoadEnd={props.onLoadEnd}
+      testID={`category_id_${props.categoryID}`}
     />
   );
 };

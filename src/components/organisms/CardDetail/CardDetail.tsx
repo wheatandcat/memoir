@@ -98,6 +98,7 @@ const CardDetail: React.FC<Props> = (props) => {
               width={60}
               height={60}
               resizeMode="contain"
+              testID="like"
             />
           </View>
         )}
@@ -108,6 +109,7 @@ const CardDetail: React.FC<Props> = (props) => {
               width={60}
               height={60}
               resizeMode="contain"
+              testID="dislike"
             />
           </View>
         )}

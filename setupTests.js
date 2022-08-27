@@ -5,6 +5,17 @@ import 'jest-enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme from 'enzyme';
 import 'react-native-gesture-handler/jestSetup';
+import { server } from 'mocks/server';
+
+beforeAll(() => {
+  server.listen();
+});
+
+afterEach(() => {
+  server.resetHandlers();
+});
+
+afterAll(() => server.close());
 
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
@@ -28,6 +39,7 @@ jest.mock('@react-navigation/native', () => {
       name: 'test',
     }),
     useFocusEffect: jest.fn(),
+    useIsFocused: jest.fn(),
   };
 });
 

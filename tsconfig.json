@@ -19,7 +19,8 @@
       "containers/*": ["src/containers/*"],
       "hooks/*": ["src/hooks/*"],
       "queries/*": ["src/queries/*"],
-      "__mockData__/*": ["src/__mockData__/*"]
+      "__mockData__/*": ["src/__mockData__/*"],
+      "mocks/*": ["src/mocks/*"]
     },
     "typeRoots": ["node_modules/@types", "src/@types"]
   },
