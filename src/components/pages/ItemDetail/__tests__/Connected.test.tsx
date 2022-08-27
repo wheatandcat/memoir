@@ -36,16 +36,7 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
     ]);
   });
 
-  it('正常にrenderすること', async () => {
-    const renderPage = testRenderer(<Connected {...propsData()} />);
-    renderPage();
-
-    await waitFor(() => {
-      expect(screen.getAllByText('買い物')).toBeTruthy();
-    });
-  });
-
-  it('LIKEが表示されている', async () => {
+  it('各項目が正しく表示される', async () => {
     const renderPage = testRenderer(
       <Connected
         {...propsData({
@@ -65,7 +56,9 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
             item: {
               ...item(),
               id: req.variables.id,
+              date: '2021-01-01T00:00:00+09:00',
               title: '宝くじが当たった',
+              categoryID: 9,
               like: true,
             },
           })
@@ -76,7 +69,9 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
     await waitFor(async () => {
       expect(queryInterceptor).toHaveBeenCalledTimes(1);
       expect(screen.getByText('宝くじが当たった')).toBeTruthy();
+      expect(screen.getByText('2020.01.01 / 水')).toBeTruthy();
       expect(screen.getByTestId('like')).toBeTruthy();
+      expect(screen.getByTestId('category_id_9')).toBeTruthy();
     });
   });
 });

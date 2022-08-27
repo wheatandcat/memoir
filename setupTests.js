@@ -8,7 +8,6 @@ import 'react-native-gesture-handler/jestSetup';
 import { server } from 'mocks/server';
 
 beforeAll(() => {
-  console.log('beforeAll');
   server.listen();
 });
 
