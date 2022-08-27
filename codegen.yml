@@ -17,3 +17,13 @@ generates:
       - introspection
     config:
       minify: true
+  ./src/queries/api/mocks.ts:
+    hooks:
+      afterOneFileWrite:
+        - yarn prettier --write ./src/queries/api/mocks.ts
+    plugins:
+      - typescript-mock-data:
+          typesFile: "./index.ts"
+          terminateCircularRelationships: true
+          scalars:
+            Time: moment
