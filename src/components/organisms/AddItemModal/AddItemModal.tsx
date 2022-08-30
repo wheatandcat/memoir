@@ -102,6 +102,7 @@ const AddItemModal: React.FC<Props> = (props) => {
       disabledButton={!valid() && !props.loading}
       onPress={onAdd}
       loading={props.loading}
+      testID="add_item_modal"
     >
       <View style={styles.root} py={2} px={3}>
         <TextInput

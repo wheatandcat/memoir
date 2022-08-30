@@ -16,6 +16,7 @@ type Name =
 type Props = {
   name: Name;
   size?: 'sm' | 'base' | 'lg';
+  testID?: string;
   color?: string;
   outline?: boolean;
   onPress: () => void;
@@ -31,7 +32,7 @@ const IconButton: React.FC<Props> = (props) => {
   }
 
   return (
-    <TouchableOpacity onPress={props.onPress}>
+    <TouchableOpacity onPress={props.onPress} testID={props.testID}>
       <View style={button}>
         <MaterialIcons
           name={props.name}

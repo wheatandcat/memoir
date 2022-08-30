@@ -47,6 +47,7 @@ exports[`components/organisms/CardDetail/CardDetail.tsx 正常にrenderするこ
             "color": "secondary",
             "onPress": [Function],
             "removeMenu": true,
+            "testID": "edit",
             "text": "編集",
           },
         ]

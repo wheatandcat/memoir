@@ -8,6 +8,7 @@ exports[`components/organisms/AddItemModal/AddItemModal.tsx 正常にrenderす�
   loading={false}
   onClose={[MockFunction]}
   onPress={[Function]}
+  testID="add_item_modal"
   title="2020.01.01 / 水"
 >
   <View

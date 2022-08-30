@@ -34,7 +34,7 @@ const Compatibility: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <View style={likeStyle}>
-        <TouchableWithoutFeedback onPress={props.onLike}>
+        <TouchableWithoutFeedback onPress={props.onLike} testID="input_like">
           <Image
             source={require('../../../img/icon/icon_like.png')}
             width={props.size}
@@ -44,7 +44,10 @@ const Compatibility: React.FC<Props> = (props) => {
         </TouchableWithoutFeedback>
       </View>
       <View style={dislikeStyle}>
-        <TouchableWithoutFeedback onPress={props.onDislike}>
+        <TouchableWithoutFeedback
+          onPress={props.onDislike}
+          testID="input_dislike"
+        >
           <Image
             source={require('../../../img/icon/icon_dislike.png')}
             width={props.size}

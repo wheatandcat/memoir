@@ -1,5 +1,9 @@
 import { graphql } from 'msw';
-import { ItemDocument } from 'queries/api/index';
+import {
+  ItemDocument,
+  UpdateItemDocument,
+  DeleteItemDocument,
+} from 'queries/api/index';
 import { anItem } from 'queries/api/mocks';
 
 export const handlers = [
@@ -9,6 +13,24 @@ export const handlers = [
         item: {
           ...anItem(),
           id: req.variables.id,
+        },
+      })
+    );
+  }),
+  graphql.mutation(UpdateItemDocument, (req, res, ctx) => {
+    return res(
+      ctx.data({
+        updateItem: {
+          id: req.variables.input.id,
+        },
+      })
+    );
+  }),
+  graphql.mutation(DeleteItemDocument, (req, res, ctx) => {
+    return res(
+      ctx.data({
+        deleteItem: {
+          id: req.variables.input.id,
         },
       })
     );

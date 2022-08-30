@@ -33,7 +33,10 @@ const CategoryButton: React.FC<Props> = (props) => {
   ];
 
   return (
-    <TouchableWithoutFeedback onPress={props.onPress}>
+    <TouchableWithoutFeedback
+      onPress={props.onPress}
+      testID={`input_category_id_${props.categoryID}`}
+    >
       <View>
         <View style={style}>
           <Category categoryID={props.categoryID} />
