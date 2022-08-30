@@ -15,6 +15,7 @@ exports[`components/organisms/Menu/Menu.tsx 正常にrenderすること 1`] = `
       name="more-horiz"
       onPress={[Function]}
       size="base"
+      testID="menu"
     />
     <ReactNativeModal
       animationIn="fadeInRight"
@@ -53,6 +54,7 @@ exports[`components/organisms/Menu/Menu.tsx 正常にrenderすること 1`] = `
         ]
       }
       swipeThreshold={100}
+      testID="menu_modal"
       useNativeDriver={false}
     >
       <View

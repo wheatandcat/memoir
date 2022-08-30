@@ -72,6 +72,7 @@ const CardDetail: React.FC<Props> = (props) => {
       {
         text: '編集',
         color: 'secondary',
+        testID: 'edit',
         onPress: () => {
           props.onOpenUpdateItem();
         },

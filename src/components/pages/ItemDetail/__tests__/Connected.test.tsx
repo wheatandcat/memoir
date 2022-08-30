@@ -1,12 +1,11 @@
 import React from 'react';
 import { graphql } from 'msw';
-import { ItemDocument } from 'queries/api/index';
+import { ItemDocument, UpdateItemDocument } from 'queries/api/index';
 import { item } from '__mockData__/item';
 import * as Recoil from 'recoil';
 import * as useHomeItems from 'hooks/useHomeItems';
-import * as client from '@apollo/client';
 import { testRenderer } from 'lib/testUtil';
-import { screen, waitFor } from '@testing-library/react-native';
+import { screen, waitFor, fireEvent } from '@testing-library/react-native';
 import Connected, { Props } from '../Connected';
 
 const propsData = (props?: Partial<Props>): Props => ({
@@ -25,19 +24,13 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
       error: null,
       refetch: jest.fn(),
     }));
-    jest.spyOn(client, 'useMutation').mockImplementation((): any => [
-      jest.fn(),
-      {
-        loading: false,
-      },
-    ]);
   });
 
   it('各項目が正しく表示される', async () => {
     const renderPage = testRenderer(
       <Connected
         {...propsData({
-          itemID: 'test2',
+          itemID: 'test1',
         })}
       />
     );
@@ -69,6 +62,58 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
       expect(screen.getByText('2020.01.01 / 水')).toBeTruthy();
       expect(screen.getByTestId('like')).toBeTruthy();
       expect(screen.getByTestId('category_id_9')).toBeTruthy();
+    });
+  });
+
+  it('アイテムを更新する', async () => {
+    const renderPage = testRenderer(
+      <Connected
+        {...propsData({
+          itemID: 'test1',
+        })}
+      />
+    );
+
+    const mutationInterceptor = jest.fn();
+
+    renderPage(
+      graphql.mutation(UpdateItemDocument, (req, res, ctx) => {
+        mutationInterceptor(req.variables);
+
+        return res(
+          ctx.data({
+            updateItem: {
+              id: req.variables.input.id,
+            },
+          })
+        );
+      })
+    );
+
+    await waitFor(async () => {
+      fireEvent.press(screen.getByTestId('menu'));
+      expect(screen.getByTestId('menu_modal').props.visible).toBeTruthy();
+      fireEvent.press(screen.getByTestId('edit'));
+      expect(screen.getByTestId('add_item_modal').props.visible).toBeTruthy();
+
+      fireEvent.changeText(
+        screen.getByPlaceholderText('今日何やった？'),
+        'コップを割った'
+      );
+      fireEvent.press(screen.getByTestId('input_category_id_1'));
+      fireEvent.press(screen.getByTestId('input_dislike'));
+      fireEvent.press(screen.getByText('入力'));
+
+      expect(mutationInterceptor).toHaveBeenCalledWith({
+        input: {
+          id: 'test1',
+          title: 'コップを割った',
+          categoryID: 1,
+          date: '2020-01-01T00:00:00+09:00',
+          like: false,
+          dislike: true,
+        },
+      });
     });
   });
 });

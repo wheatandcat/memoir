@@ -16,6 +16,7 @@ import Divider from 'components/atoms/Divider';
 export type Item = {
   text: string;
   color: FontColor;
+  testID?: string;
   onPress: (callback?: () => void) => void;
   removeMenu: boolean;
 };
@@ -71,7 +72,12 @@ const Menu: React.FC<Props> = (props) => {
   return (
     <>
       <RNView style={styles.menu} ref={viewRef} onLayout={onLayout}>
-        <IconButton name="more-horiz" size="base" onPress={onOpen} />
+        <IconButton
+          name="more-horiz"
+          size="base"
+          onPress={onOpen}
+          testID="menu"
+        />
         <RNModal
           isVisible={open}
           onBackdropPress={() => setOpen(!open)}
@@ -80,11 +86,15 @@ const Menu: React.FC<Props> = (props) => {
           backdropOpacity={0}
           animationOutTiming={100}
           onModalHide={onModalHide}
+          testID="menu_modal"
         >
           <View style={[style, styles.menuItem]}>
             {props.items.map((item, index) => (
               <View key={item.text}>
-                <TouchableOpacity onPress={() => onPress(item, index)}>
+                <TouchableOpacity
+                  onPress={() => onPress(item, index)}
+                  testID={item.testID}
+                >
                   <View p={3}>
                     <Text color={item.color}>{item.text}</Text>
                   </View>

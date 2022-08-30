@@ -17,6 +17,7 @@ export type Props = {
   onClose: () => void;
   onPress?: () => void;
   children: React.ReactNode;
+  testID?: string;
 };
 
 const Modal: React.FC<Props> = (props) => {
@@ -31,6 +32,7 @@ const Modal: React.FC<Props> = (props) => {
       onBackdropPress={props.onClose}
       animationIn="fadeInDown"
       animationOut="fadeOutUp"
+      testID={props.testID}
     >
       <View style={style}>
         <View p={3} style={styles.header}>
