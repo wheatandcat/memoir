@@ -30,25 +30,34 @@ const Connected: React.FC<Props> = () => {
           return;
         }
 
-        onPermissionRequest(() => {
-          Notifications.scheduleNotificationAsync({
-            content: {
-              body: 'ふりかえりの時間になりました',
-              data: {
-                urlScheme: 'Memoir',
+        const ok = await onPermissionRequest(() => null);
+        if (ok) {
+          await Notifications.cancelAllScheduledNotificationsAsync();
+
+          const trigger = {
+            hour: input.hours,
+            minute: input.minutes,
+            weekday: input.dayOfWeek + 1,
+            repeats: true,
+          };
+
+          try {
+            await Notifications.scheduleNotificationAsync({
+              content: {
+                body: 'ふりかえりの時間になりました',
+                data: {
+                  urlScheme: 'Memoir',
+                },
               },
-            },
-            trigger: {
-              hour: input.hours,
-              minute: input.minutes,
-              weekday: input.dayOfWeek,
-              repeats: true,
-            },
-          });
-        });
+              trigger,
+            });
+          } catch (e) {
+            console.log('err:', e);
+          }
+        }
       } else {
         // 通知OFFの場合は、通知をキャンセルする
-        Notifications.cancelAllScheduledNotificationsAsync();
+        await Notifications.cancelAllScheduledNotificationsAsync();
       }
 
       memoirNotificationSetting.onSave(input);
