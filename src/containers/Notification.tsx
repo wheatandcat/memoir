@@ -51,7 +51,7 @@ const Notification: React.FC<Props> = memo((props) => {
 
       if (!Device.isDevice) {
         //Alert.alert('端末から実行してくだださい');
-        requestCallback.current();
+        await requestCallback.current();
         return true;
       }
 
@@ -65,7 +65,7 @@ const Notification: React.FC<Props> = memo((props) => {
       }
 
       if (finalStatus !== 'granted') {
-        requestCallback.current();
+        await requestCallback.current();
         return false;
       }
 

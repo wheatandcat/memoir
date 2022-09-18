@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
+import * as Notifications from 'expo-notifications';
 import { RootStackParamList } from 'lib/navigation';
 import { RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -44,6 +45,26 @@ export const Home: React.FC<Props> = (props) => {
       ),
     });
   }, [props.navigation]);
+
+  const checkLocalNotification = useCallback(async () => {
+    const notifications =
+      await Notifications.getAllScheduledNotificationsAsync();
+
+    if (notifications.length > 1) {
+      // ローカルPushが複数存在する場合は削除
+      const ids = notifications
+        .map((v) => v.identifier)
+        .splice(0, notifications.length - 1);
+
+      for (const id of ids) {
+        await Notifications.cancelScheduledNotificationAsync(id);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    checkLocalNotification();
+  }, [checkLocalNotification]);
 
   return (
     <Connected
