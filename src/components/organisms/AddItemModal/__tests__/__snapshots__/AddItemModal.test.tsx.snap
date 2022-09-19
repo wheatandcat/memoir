@@ -16,6 +16,22 @@ exports[`components/organisms/AddItemModal/AddItemModal.tsx 正常にrenderす�
     py={2}
     style={Object {}}
   >
+    <DateTimePickerModal
+      backdropStyleIOS={Object {}}
+      cancelTextIOS="キャンセル"
+      confirmTextIOS="完了"
+      date={2020-01-01T00:00:00.000Z}
+      is24Hour={true}
+      isVisible={false}
+      locale="ja"
+      modalPropsIOS={Object {}}
+      mode="date"
+      onCancel={[Function]}
+      onConfirm={[Function]}
+      onResponderEnd={[Function]}
+      pickerContainerStyleIOS={Object {}}
+      pickerStyleIOS={Object {}}
+    />
     <TextInput
       autoFocus={true}
       defaultValue="買い物"

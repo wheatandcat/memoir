@@ -60,8 +60,36 @@ const Connected: React.FC<Props> = (props) => {
   }, []);
 
   const [updateItemMutation] = useMutation(UpdateItemDocument, {
-    async onCompleted() {
+    async onCompleted({ updateItem }) {
       await refetch?.();
+
+      console.log('updateItem', updateItem.date, props.date);
+
+      if (updateItem.date !== props.date) {
+        // 日付を更新した場合は、変更後と変更前の日付のアイテムのキャッシュを削除する
+        const cache = homeItems?.client?.cache;
+        if (cache) {
+          cache.evict({
+            id: 'ROOT_QUERY',
+            fieldName: 'itemsByDate',
+            args: {
+              date: props.date,
+            },
+            broadcast: false,
+          });
+          cache.evict({
+            id: 'ROOT_QUERY',
+            fieldName: 'itemsByDate',
+            args: {
+              date: updateItem.date,
+            },
+            broadcast: false,
+          });
+          cache.gc();
+
+          homeItems?.refetch?.();
+        }
+      }
 
       onCloseUpdateItem();
     },

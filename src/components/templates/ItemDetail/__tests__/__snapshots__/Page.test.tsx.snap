@@ -4,6 +4,7 @@ exports[`components/templates/ItemDetail/Page.tsx 正常にrenderすること 1`
 <Fragment>
   <Memo(AddItemModal)
     date="2021-01-01"
+    edit={true}
     isVisible={false}
     item={
       Object {

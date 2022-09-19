@@ -36,7 +36,6 @@ const InputDate: React.FC<Props> = (props) => {
           isVisible={openStartDate}
           mode="date"
           locale="ja"
-          headerTextIOS=""
           confirmTextIOS="完了"
           cancelTextIOS="キャンセル"
           is24Hour={true}
@@ -61,7 +60,6 @@ const InputDate: React.FC<Props> = (props) => {
           isVisible={openEndDate}
           mode="date"
           locale="ja"
-          headerTextIOS=""
           confirmTextIOS="完了"
           cancelTextIOS="キャンセル"
           is24Hour={true}

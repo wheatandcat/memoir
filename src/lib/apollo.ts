@@ -51,7 +51,12 @@ const makeApolloClient = async () => {
   });
 
   const middlewareLink = new ApolloLink((operation, forward) => {
-    console.log('operation:', operation.operationName);
+    console.log(
+      'operation:',
+      operation.operationName,
+      ',variables:',
+      operation.variables
+    );
 
     return forward(operation).map((data) => {
       //console.log('data:', data);

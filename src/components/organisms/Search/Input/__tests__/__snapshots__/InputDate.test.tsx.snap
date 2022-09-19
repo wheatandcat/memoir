@@ -33,12 +33,11 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       </Text>
     </TouchableOpacity>
     <DateTimePickerModal
+      backdropStyleIOS={Object {}}
       cancelTextIOS="キャンセル"
       confirmTextIOS="完了"
       date={2020-12-31T15:00:00.000Z}
-      headerTextIOS=""
       is24Hour={true}
-      isHeaderVisibleIOS={false}
       isVisible={false}
       locale="ja"
       modalPropsIOS={Object {}}
@@ -82,12 +81,11 @@ exports[`components/organisms/Search/Input/InputDate.tsx 正常にrenderする�
       </Text>
     </TouchableOpacity>
     <DateTimePickerModal
+      backdropStyleIOS={Object {}}
       cancelTextIOS="キャンセル"
       confirmTextIOS="完了"
       date={2021-01-17T15:00:00.000Z}
-      headerTextIOS=""
       is24Hour={true}
-      isHeaderVisibleIOS={false}
       isVisible={false}
       locale="ja"
       modalPropsIOS={Object {}}

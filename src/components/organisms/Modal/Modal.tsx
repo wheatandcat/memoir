@@ -11,6 +11,7 @@ export type Props = {
   isVisible: boolean;
   loading?: boolean;
   title: string;
+  titleElement?: React.ReactNode;
   buttonTitle?: string;
   disabledButton?: boolean;
   height?: number;
@@ -39,12 +40,16 @@ const Modal: React.FC<Props> = (props) => {
           <View style={styles.close}>
             <IconButton name="close" onPress={props.onClose} />
           </View>
-          <View style={styles.dateTitle}>
-            <View>
-              <Text variants="middle" textAlign="center">
-                {props.title}
-              </Text>
-            </View>
+          <View style={styles.title}>
+            {props.titleElement ? (
+              <>{props.titleElement}</>
+            ) : (
+              <View>
+                <Text variants="middle" textAlign="center">
+                  {props.title}
+                </Text>
+              </View>
+            )}
           </View>
         </View>
         <ScrollView keyboardShouldPersistTaps="always" removeClippedSubviews>
@@ -86,7 +91,7 @@ const styles = StyleSheet.create({
   header: {
     alignItems: 'center',
   },
-  dateTitle: {
+  title: {
     flexDirection: 'row',
   },
   close: {

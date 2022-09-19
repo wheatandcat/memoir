@@ -130,12 +130,11 @@ exports[`components/organisms/Setting/Memoir/Input.tsx 正常にrenderするこ�
         </Text>
       </TouchableOpacity>
       <DateTimePickerModal
+        backdropStyleIOS={Object {}}
         cancelTextIOS="キャンセル"
         confirmTextIOS="完了"
         date={-000001-12-31T14:41:01.000Z}
-        headerTextIOS=""
         is24Hour={true}
-        isHeaderVisibleIOS={false}
         isVisible={false}
         locale="ja"
         modalPropsIOS={Object {}}

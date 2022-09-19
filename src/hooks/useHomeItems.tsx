@@ -6,7 +6,7 @@ import usePrevious from 'hooks/usePrevious';
 import { useLazyQuery } from '@apollo/client';
 
 const useHomeItems = () => {
-  const [getItemsByDate, { data, loading, error, refetch }] =
+  const [getItemsByDate, { data, loading, error, refetch, client }] =
     useLazyQuery(ItemsByDateDocument);
   const homeDate = useRecoilValue(homeDateState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
@@ -43,6 +43,7 @@ const useHomeItems = () => {
     loading: apiLoading,
     error: error,
     refetch: refetch,
+    client: client,
   };
 };
 

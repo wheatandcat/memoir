@@ -5,6 +5,7 @@ import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({
   ...item(),
+  itemDate: item().date,
   loading: false,
   onChangeDate: jest.fn(),
   onCloseUpdateItem: jest.fn(),
