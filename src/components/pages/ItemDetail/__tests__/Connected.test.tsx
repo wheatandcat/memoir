@@ -59,7 +59,7 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
     await waitFor(async () => {
       expect(queryInterceptor).toHaveBeenCalledTimes(1);
       expect(screen.getByText('宝くじが当たった')).toBeTruthy();
-      expect(screen.getByText('2020.01.01 / 水')).toBeTruthy();
+      expect(screen.getByText('2021.01.01 / 金')).toBeTruthy();
       expect(screen.getByTestId('like')).toBeTruthy();
       expect(screen.getByTestId('category_id_9')).toBeTruthy();
     });
@@ -84,6 +84,7 @@ describe('components/pages/ItemDetail/Connected.tsx', () => {
           ctx.data({
             updateItem: {
               id: req.variables.input.id,
+              date: '2020-01-01T00:00:00+09:00',
             },
           })
         );

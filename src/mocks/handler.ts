@@ -22,6 +22,7 @@ export const handlers = [
       ctx.data({
         updateItem: {
           id: req.variables.input.id,
+          date: req.variables.input.date,
         },
       })
     );

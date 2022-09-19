@@ -90,7 +90,6 @@ const Input: React.FC<Props> = (props) => {
             isVisible={openTime}
             mode="time"
             locale="ja"
-            headerTextIOS=""
             confirmTextIOS="完了"
             cancelTextIOS="キャンセル"
             is24Hour={true}

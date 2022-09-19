@@ -1,5 +1,6 @@
 mutation UpdateItem($input: UpdateItem!) {
   updateItem(input: $input) {
     id
+    date
   }
 }

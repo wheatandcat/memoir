@@ -25,6 +25,7 @@ const Plain: React.FC<Props> = (props) => {
       categoryID={item?.categoryID || 0}
       like={item?.like || false}
       dislike={item?.dislike || false}
+      itemDate={item?.date || ''}
     />
   );
 };

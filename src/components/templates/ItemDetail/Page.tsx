@@ -13,6 +13,7 @@ type Item = NonNullable<ItemQuery['item']>;
 
 export type Props = Pick<Item, 'categoryID' | 'title' | 'like' | 'dislike'> & {
   loading: boolean;
+  itemDate: string;
 } & ConnectedType;
 
 const Page: React.FC<Props> = (props) => {
@@ -31,6 +32,7 @@ const Page: React.FC<Props> = (props) => {
         isVisible={props.openUpdateItemModal}
         loading={false}
         date={dayjs(props.date).format('YYYY-MM-DD')}
+        edit
         onAdd={props.onUpdateItem}
         onClose={props.onCloseUpdateItem}
       />
@@ -43,7 +45,7 @@ const Page: React.FC<Props> = (props) => {
           <View style={styles.inner}>
             {!props.loading && (
               <CardDetail
-                date={props.date}
+                date={props.itemDate}
                 title={props.title}
                 categoryID={props.categoryID}
                 like={props.like}
