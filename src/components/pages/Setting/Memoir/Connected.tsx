@@ -35,9 +35,10 @@ const Connected: React.FC<Props> = () => {
           await Notifications.cancelAllScheduledNotificationsAsync();
 
           const trigger = {
+            channelId: 'memoir',
             hour: input.hours,
             minute: input.minutes,
-            weekday: input.dayOfWeek + 1,
+            weekday: input.dayOfWeek,
             repeats: true,
           };
 

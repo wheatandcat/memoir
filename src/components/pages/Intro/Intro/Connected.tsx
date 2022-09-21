@@ -33,12 +33,12 @@ const Connected: React.FC<Props> = (props) => {
 
         const ok = await onPermissionRequest(() => null);
         if (ok) {
-          await Notifications.cancelAllScheduledNotificationsAsync();
+          //await Notifications.cancelAllScheduledNotificationsAsync();
 
           const trigger = {
             hour: input.hours,
             minute: input.minutes,
-            weekday: input.dayOfWeek + 1,
+            weekday: input.dayOfWeek,
             repeats: true,
           };
 

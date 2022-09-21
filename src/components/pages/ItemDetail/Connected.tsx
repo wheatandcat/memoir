@@ -63,8 +63,6 @@ const Connected: React.FC<Props> = (props) => {
     async onCompleted({ updateItem }) {
       await refetch?.();
 
-      console.log('updateItem', updateItem.date, props.date);
-
       if (updateItem.date !== props.date) {
         // 日付を更新した場合は、変更後と変更前の日付のアイテムのキャッシュを削除する
         const cache = homeItems?.client?.cache;
