@@ -128,10 +128,17 @@ const Connected: React.FC<Props> = (props) => {
   const selectedUserIDList = state.userIDList || tUsers.map((v) => v.id);
 
   const onScreenShot = useCallback(() => {
+    let tSelectedUserIDList: string[] | undefined = selectedUserIDList.filter(
+      (v) => v !== ''
+    );
+    if (tSelectedUserIDList.length === 0) {
+      tSelectedUserIDList = undefined;
+    }
+
     navigation.navigate('MemoirScreenShot', {
       startDate: props.startDate,
       endDate: props.endDate,
-      selectedUserIDList,
+      selectedUserIDList: tSelectedUserIDList,
       categoryID: props.categoryID,
       like: props.like,
       dislike: props.dislike,
