@@ -12,7 +12,7 @@ import Plain from './Plain';
 export type Props = {
   startDate: string;
   endDate: string;
-  selectedUserIDList: string[];
+  selectedUserIDList?: string[];
   categoryID: number;
   like: boolean;
   dislike: boolean;
