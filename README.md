@@ -1,5 +1,7 @@
 # memoir
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/K3K5E9FLI)
+
 終わったタスク、積み上げよう。1週間を振り返るアプリ。
 
 <div style="display:flex">
