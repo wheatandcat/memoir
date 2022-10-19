@@ -16,7 +16,7 @@ import Maintenance from 'components/templates/Maintenance/Page';
 import ForceUpdate from 'components/templates/ForceUpdate/Page';
 import Constants from 'expo-constants';
 import * as Device from 'expo-device';
-import compareVersions from 'compare-versions';
+import { compare } from 'compare-versions';
 import AppLoading from 'components/templates/App/Loading';
 import usePrevious from 'hooks/usePrevious';
 import WithProvider from './WithProvider';
@@ -36,7 +36,7 @@ function App() {
   const [client, setClient] = useState<ApolloClient<CacheShape> | null>(null);
   const [appConfig, setAppConfig] = useState<AppConfig>(defaultAppConfig());
 
-  const forceUpdate = compareVersions.compare(
+  const forceUpdate = compare(
     appConfig.supportVersion,
     Constants?.manifest?.version || '1.0.0',
     '>'
