@@ -8,7 +8,6 @@ import {
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
 import Carousel from 'react-native-snap-carousel';
 
 type Month = {
@@ -17,14 +16,14 @@ type Month = {
 };
 
 type Props = {
-  date: string;
+  month: string;
   months: Month[];
   onPress: (month: string) => void;
   firstItem?: boolean;
 };
 
 type RenderedItem = {
-  date: string;
+  value: string;
   month: Month;
   onPress: (month: string) => void;
   firstItem?: boolean;
@@ -41,9 +40,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
       <View style={styles.monthItem}>
         <Text
           color={
-            String(item.month.value) === dayjs(item.date).format('M')
-              ? 'primary'
-              : 'secondary'
+            String(item.month.value) === item.value ? 'primary' : 'secondary'
           }
         >
           {item.month.label}
@@ -55,7 +52,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 
 const MonthInput: React.FC<Props> = (props) => {
   const months = (): Month[] => {
-    const index = Number(dayjs(props.date).format('M'));
+    const index = Number(props.month);
     const first = props.months.slice(index - 1, 12);
     const last = props.months.slice(0, index - 1);
     return [...first, ...last];
@@ -77,7 +74,7 @@ const MonthInput: React.FC<Props> = (props) => {
     <Carousel
       ref={carouselRef}
       data={monthItems.map((v) => ({
-        date: props.date,
+        value: props.month,
         month: v,
         onPress: props.onPress,
       }))}

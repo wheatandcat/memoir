@@ -17,6 +17,7 @@ export type Props = {
   loading?: boolean;
   disabled?: boolean;
   fontFamily?: FontFamily;
+  radius?: number;
   onPress: () => void;
 };
 
@@ -29,7 +30,7 @@ const Button: React.FC<Props> = (props) => {
 
   const buttonStyle: ViewStyle = {
     paddingHorizontal: configSize.padding,
-    borderRadius: configSize.borderRadius,
+    borderRadius: props.radius ? props.radius : configSize.borderRadius,
     height: configSize.height,
   };
 

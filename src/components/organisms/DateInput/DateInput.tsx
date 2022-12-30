@@ -1,4 +1,5 @@
 import React, { memo, useState, useCallback, useEffect } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import Divider from 'components/atoms/Divider';
 import View from 'components/atoms/View';
 import dayjs from 'lib/dayjs';
@@ -6,6 +7,8 @@ import InputYear from 'components/molecules/DateInput/Years';
 import InputMonth from 'components/molecules/DateInput/Months';
 import InputDay from 'components/molecules/DateInput/Days';
 import usePrevious from 'hooks/usePrevious';
+import Text from 'components/atoms/Text';
+import theme from 'config/theme';
 
 const years = () => {
   const lastYear = dayjs().year();
@@ -100,7 +103,9 @@ const DateInput: React.FC<Props> = (props) => {
     if (prevDate && prevDate !== props.date) {
       setState((s) => ({ ...s, date: props.date }));
     } else {
-      props.onChange(state.date);
+      if (props.date !== state.date) {
+        props.onChange(state.date);
+      }
     }
   }, [state.date, props, prevDate]);
 
@@ -136,32 +141,78 @@ const DateInput: React.FC<Props> = (props) => {
     [state.date]
   );
 
+  const onToday = useCallback(() => {
+    const date = dayjs().format('YYYY-MM-DD');
+
+    setState((s) => ({ ...s, date }));
+  }, []);
+
   return (
     <View>
       <View pl={2} py={2}>
-        <InputYear date={state.date} years={years()} onPress={onYear} />
+        <InputYear
+          year={dayjs(state.date).format('YYYY')}
+          years={years()}
+          onPress={onYear}
+        />
       </View>
       <Divider my={2} />
       <View pl={2}>
         <InputMonth
-          date={state.date}
+          month={dayjs(state.date).format('M')}
           months={months}
           onPress={onMonth}
           firstItem={props.firstItem}
         />
-      </View>
-      <Divider my={2} />
-      <View pl={2} pb={2}>
-        <InputDay
-          date={state.date}
-          days={getDays(state.date)}
-          onPress={onDay}
-          firstItem={props.firstItem}
-        />
+
+        <Divider my={2} />
+        <View pb={2} style={styles.dateInput}>
+          <View style={styles.date}>
+            <InputDay
+              day={dayjs(state.date).format('D')}
+              days={getDays(state.date)}
+              onPress={onDay}
+              firstItem={props.firstItem}
+            />
+          </View>
+          <View style={styles.buttonRoot}>
+            <TouchableOpacity onPress={onToday}>
+              <View style={styles.button}>
+                <Text size="xs" textAlign="center">
+                  今日
+                </Text>
+              </View>
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
       <Divider mt={2} />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  dateInput: {
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    flexDirection: 'row',
+  },
+  date: {
+    width: '80%',
+    overflow: 'hidden',
+  },
+  buttonRoot: {
+    width: '20%',
+    marginHorizontal: theme().space(2),
+  },
+  button: {
+    backgroundColor: theme().color.primary.main,
+    borderRadius: 100,
+    height: 35,
+    width: 60,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
 
 export default memo(DateInput);

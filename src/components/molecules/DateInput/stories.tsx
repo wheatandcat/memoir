@@ -7,13 +7,13 @@ import Days from './Days';
 
 storiesOf('molecules/DateInput', module)
   .add('Years', () => (
-    <Years date="2020-01-01" years={[2020, 2021]} onPress={mockFn('onPress')} />
+    <Years year="2020" years={[2020, 2021]} onPress={mockFn('onPress')} />
   ))
   .add(
     'Months',
     () => (
       <Months
-        date="2020-01-01"
+        month="1"
         months={[
           {
             label: '1/Jun',
@@ -71,7 +71,7 @@ storiesOf('molecules/DateInput', module)
   )
   .add('Days', () => (
     <Days
-      date="2020-01-01"
+      day="1"
       days={[
         '2020-01-01',
         '2020-01-02',

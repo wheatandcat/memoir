@@ -13,14 +13,14 @@ import Carousel from 'react-native-snap-carousel';
 import usePrevious from 'hooks/usePrevious';
 
 type Props = {
-  date: string;
+  day: string;
   days: string[];
   onPress: (day: string) => void;
   firstItem?: boolean;
 };
 
 type RenderedItem = {
-  date: string;
+  value: string;
   day: string;
   onPress: (day: string) => void;
   firstItem?: boolean;
@@ -37,7 +37,7 @@ const getDayOfWeekColor = (selected: boolean) => {
 };
 
 const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
-  const selected = dayjs(item.day).format('D') === dayjs(item.date).format('D');
+  const selected = dayjs(item.day).format('D') === item.value;
 
   return (
     <TouchableWithoutFeedback
@@ -62,7 +62,7 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 
 const DayInput: React.FC<Props> = (props) => {
   const prevFirstDay = usePrevious(props.days[0]);
-  const index = Number(dayjs(props.date).format('D'));
+  const index = Number(props.day);
   const carouselRef = useRef<Carousel<any>>(null);
 
   const days = useCallback((): string[] => {
@@ -89,7 +89,7 @@ const DayInput: React.FC<Props> = (props) => {
       setDayItems(days());
       carouselRef.current?.snapToItem?.(0);
     }
-  }, [props.days, prevFirstDay, setDayItems, days]);
+  }, [props.days, prevFirstDay, days]);
 
   useEffect(() => {
     const currentIndex = carouselRef.current?.currentIndex || 0;
@@ -116,7 +116,7 @@ const DayInput: React.FC<Props> = (props) => {
     <Carousel
       ref={carouselRef}
       data={dayItems.map((v) => ({
-        date: props.date,
+        value: props.day,
         day: v,
         onPress: props.onPress,
       }))}

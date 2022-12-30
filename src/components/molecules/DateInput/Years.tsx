@@ -3,10 +3,9 @@ import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Text from 'components/atoms/Text';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
 
 type Props = {
-  date: string;
+  year: string;
   years: number[];
   onPress: (year: number) => void;
 };
@@ -19,11 +18,7 @@ const YearInput: React.FC<Props> = (props) => {
           <TouchableOpacity key={year} onPress={() => props.onPress(year)}>
             <View style={styles.yearItem}>
               <Text
-                color={
-                  String(year) === dayjs(props.date).format('YYYY')
-                    ? 'primary'
-                    : 'secondary'
-                }
+                color={String(year) === props.year ? 'primary' : 'secondary'}
               >
                 {year}
               </Text>

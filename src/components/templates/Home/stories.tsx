@@ -15,7 +15,7 @@ storiesOf('templates/Home', module).add('Page', () => (
     onItem={mockFn('onItem')}
     onMemoir={mockFn('onMemoir')}
     onCloseSettingModal={mockFn('onCloseSettingModal')}
-    onChangeDate={mockFn('onChangeDate')}
+    onChangeDate={() => null}
     onAddItem={mockFn('onAddItem')}
     onOpenAddItem={mockFn('onOpenAddItem')}
     onCloseAddItem={mockFn('onCloseAddItem')}
