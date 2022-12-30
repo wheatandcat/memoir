@@ -191,7 +191,6 @@ exports[`components/organisms//SettingModal.tsx 正常にrenderすること 1`] 
     <Divider
       my={3}
     />
-    <Memo(Menu) />
   </View>
 </Modal>
 `;
