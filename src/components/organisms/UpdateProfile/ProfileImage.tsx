@@ -35,13 +35,13 @@ const ProfileImage: React.FC<Props> = (props) => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      allowMultipleSelection: false,
+      allowsMultipleSelection: false,
       aspect: [1, 1],
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      const uri = await resizeImage(result.uri);
+    if (!result.canceled) {
+      const uri = await resizeImage(result.assets[0].uri);
       props.onChangeImage(uri);
       setImage(uri);
     }
@@ -62,8 +62,8 @@ const ProfileImage: React.FC<Props> = (props) => {
       quality: 1,
     });
 
-    if (!result.cancelled) {
-      const uri = await resizeImage(result.uri);
+    if (!result.canceled) {
+      const uri = await resizeImage(result.assets[0].uri);
       props.onChangeImage(uri);
       setImage(uri);
     }
