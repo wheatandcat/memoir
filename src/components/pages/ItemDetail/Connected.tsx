@@ -42,6 +42,7 @@ const initialState = (): State => ({
 const Connected: React.FC<Props> = (props) => {
   const navigation = useNavigation();
   const [state, setState] = useState<State>(initialState());
+  const [updateItemLoading, setUpdateItemLoading] = useState(false);
   const setHomeDate = useSetRecoilState(homeDateState);
   const homeItems = useHomeItems();
 
@@ -90,6 +91,10 @@ const Connected: React.FC<Props> = (props) => {
       }
 
       onCloseUpdateItem();
+      setUpdateItemLoading(false);
+    },
+    onError() {
+      setUpdateItemLoading(false);
     },
   });
 
@@ -104,6 +109,7 @@ const Connected: React.FC<Props> = (props) => {
         input: updateItem,
       };
 
+      setUpdateItemLoading(true);
       updateItemMutation({ variables });
     },
     [updateItemMutation, props.itemID]
@@ -146,7 +152,7 @@ const Connected: React.FC<Props> = (props) => {
       data={data}
       loading={loading}
       error={error}
-      updateItemLoading={false}
+      updateItemLoading={updateItemLoading}
       date={dayjs(props.date).format('YYYY-MM-DD')}
       openUpdateItemModal={state.openUpdateItemModal}
       onChangeDate={onChangeDate}

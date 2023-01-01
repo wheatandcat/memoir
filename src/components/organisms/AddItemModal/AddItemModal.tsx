@@ -103,7 +103,7 @@ const AddItemModal: React.FC<Props> = (props) => {
     }
 
     return true;
-  }, [state]);
+  }, [state.title, state.categoryID]);
 
   return (
     <Modal

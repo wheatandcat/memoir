@@ -45,6 +45,7 @@ const Connected: React.FC<Props> = (props) => {
   const { onStartTrace, onEndTrace } = usePerformance({
     traceName: traceEvent.TRACE_EVENT_VIEW_HOME_CHANGE_DATE,
   });
+  const [addItemLoading, setAddItemLoading] = useState(false);
 
   const [state, setState] = useState<State>(
     initialState(home.openAddItemModal)
@@ -63,16 +64,17 @@ const Connected: React.FC<Props> = (props) => {
     setState((s) => ({ ...s, openAddItemModal: false }));
   }, []);
 
-  const [createItemMutation, createItemMutationData] = useMutation(
-    CreateItemDocument,
-    {
-      async onCompleted() {
-        await refetch?.();
+  const [createItemMutation] = useMutation(CreateItemDocument, {
+    async onCompleted() {
+      await refetch?.();
 
-        onCloseAddItem();
-      },
-    }
-  );
+      onCloseAddItem();
+      setAddItemLoading(false);
+    },
+    onError() {
+      setAddItemLoading(false);
+    },
+  });
 
   const onAddItem = useCallback(
     (newItem: NewItem) => {
@@ -80,6 +82,7 @@ const Connected: React.FC<Props> = (props) => {
         input: newItem,
       };
 
+      setAddItemLoading(true);
       createItemMutation({ variables });
     },
     [createItemMutation]
@@ -143,7 +146,7 @@ const Connected: React.FC<Props> = (props) => {
         items={homeItems.items}
         loading={loading}
         error={error}
-        addItemLoading={createItemMutationData.loading}
+        addItemLoading={addItemLoading}
         date={dayjs(homeDate.date).format('YYYY-MM-DD')}
         openAddItemModal={state.openAddItemModal}
         openSettingModal={props.openSettingModal}
