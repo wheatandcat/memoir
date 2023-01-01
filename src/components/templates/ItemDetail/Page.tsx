@@ -30,7 +30,7 @@ const Page: React.FC<Props> = (props) => {
       <AddItemModal
         item={item}
         isVisible={props.openUpdateItemModal}
-        loading={false}
+        loading={props.updateItemLoading}
         date={dayjs(props.date).format('YYYY-MM-DD')}
         edit
         onAdd={props.onUpdateItem}
