@@ -21,7 +21,7 @@ exports[`components/templates/ItemDetail/Page.tsx 正常にrenderすること 1`
   />
   <Memo(InputDateWrap)
     date="2021-01-01T00:00:00+09:00"
-    firstItem={true}
+    isItemDetail={true}
     onChangeDate={[MockFunction]}
   >
     <ScrollView>

@@ -83,7 +83,7 @@ const getDays = (date: string): string[] => {
 
 type Props = {
   date: string;
-  firstItem?: boolean;
+  isItemDetail?: boolean;
   onChange: (date: string) => void;
 };
 
@@ -144,8 +144,12 @@ const DateInput: React.FC<Props> = (props) => {
   const onToday = useCallback(() => {
     const date = dayjs().format('YYYY-MM-DD');
 
-    setState((s) => ({ ...s, date }));
-  }, []);
+    if (props.isItemDetail) {
+      props.onChange(date);
+    } else {
+      setState((s) => ({ ...s, date }));
+    }
+  }, [props]);
 
   return (
     <View>
@@ -162,7 +166,6 @@ const DateInput: React.FC<Props> = (props) => {
           month={dayjs(state.date).format('M')}
           months={months}
           onPress={onMonth}
-          firstItem={props.firstItem}
         />
 
         <Divider my={2} />
@@ -172,7 +175,6 @@ const DateInput: React.FC<Props> = (props) => {
               day={dayjs(state.date).format('D')}
               days={getDays(state.date)}
               onPress={onDay}
-              firstItem={props.firstItem}
             />
           </View>
           <View style={styles.buttonRoot}>
@@ -193,7 +195,7 @@ const DateInput: React.FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   dateInput: {
-    alignItems: 'flex-start',
+    alignItems: 'center',
     justifyContent: 'flex-start',
     flexDirection: 'row',
   },
@@ -204,6 +206,7 @@ const styles = StyleSheet.create({
   buttonRoot: {
     width: '20%',
     marginHorizontal: theme().space(2),
+    height: 30,
   },
   button: {
     backgroundColor: theme().color.primary.main,
