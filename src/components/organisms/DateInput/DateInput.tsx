@@ -103,7 +103,6 @@ const DateInput: React.FC<Props> = (props) => {
     if (prevDate && prevDate !== props.date) {
       setState((s) => ({ ...s, date: props.date }));
     } else {
-      console.log('props.date:', props.date, 'state.date:', state.date);
       if (props.date !== state.date) {
         props.onChange(state.date);
       }
