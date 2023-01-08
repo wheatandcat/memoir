@@ -19,14 +19,12 @@ type Props = {
   month: string;
   months: Month[];
   onPress: (month: string) => void;
-  firstItem?: boolean;
 };
 
 type RenderedItem = {
   value: string;
   month: Month;
   onPress: (month: string) => void;
-  firstItem?: boolean;
 };
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;

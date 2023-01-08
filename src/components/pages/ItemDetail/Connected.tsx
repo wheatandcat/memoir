@@ -135,16 +135,13 @@ const Connected: React.FC<Props> = (props) => {
 
   const onChangeDate = useCallback(
     (date: string) => {
-      const formatDate = dayjs(props.date).format('YYYY-MM-DD');
-      if (formatDate !== date) {
-        setHomeDate({
-          date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
-        });
+      setHomeDate({
+        date: dayjs(date).format('YYYY-MM-DDT00:00:00+09:00'),
+      });
 
-        navigation.goBack();
-      }
+      navigation.goBack();
     },
-    [props, navigation, setHomeDate]
+    [navigation, setHomeDate]
   );
 
   return (

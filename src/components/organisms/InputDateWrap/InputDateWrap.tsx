@@ -6,7 +6,7 @@ import FocusAwareStatusBar from 'components/organisms/FocusAwareStatusBar';
 
 type Props = {
   date: string;
-  firstItem?: boolean;
+  isItemDetail?: boolean;
   onChangeDate: (date: string) => void;
   children?: React.ReactNode;
 };
@@ -22,7 +22,7 @@ const InputDateWrap: React.FC<Props> = (props) => {
         <DateInput
           date={props.date}
           onChange={props.onChangeDate}
-          firstItem={props.firstItem}
+          isItemDetail={props.isItemDetail}
         />
         {props.children}
       </View>

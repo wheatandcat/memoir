@@ -39,7 +39,7 @@ const Page: React.FC<Props> = (props) => {
       <InputDateWrap
         date={props.date}
         onChangeDate={props.onChangeDate}
-        firstItem
+        isItemDetail
       >
         <ScrollView>
           <View style={styles.inner}>

@@ -16,14 +16,12 @@ type Props = {
   day: string;
   days: string[];
   onPress: (day: string) => void;
-  firstItem?: boolean;
 };
 
 type RenderedItem = {
   value: string;
   day: string;
   onPress: (day: string) => void;
-  firstItem?: boolean;
 };
 
 type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
