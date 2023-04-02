@@ -13,6 +13,10 @@ const Image: React.FC<Props> = (props) => {
   if (width) style.width = width;
   if (height) style.height = height;
 
+  if (Object.keys(props.source).length === 0) {
+    return null;
+  }
+
   return <RNImage {...imageProps} style={[style, props.style]} />;
 };
 

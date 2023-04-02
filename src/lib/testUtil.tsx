@@ -32,7 +32,7 @@ export const testRenderer =
     }
     return render(
       <RecoilRoot>
-        <NavigationContainer independent={true}>
+        <NavigationContainer>
           <ApolloProvider client={client}>{children}</ApolloProvider>
         </NavigationContainer>
       </RecoilRoot>

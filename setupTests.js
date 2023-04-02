@@ -5,6 +5,7 @@ import 'react-native-gesture-handler/jestSetup';
 import { server } from 'mocks/server';
 
 beforeAll(() => {
+  jest.useFakeTimers();
   server.listen();
 });
 
@@ -12,7 +13,10 @@ afterEach(() => {
   server.resetHandlers();
 });
 
-afterAll(() => server.close());
+afterAll(() => {
+  server.close();
+  jest.useRealTimers();
+});
 
 jest.mock('expo-notifications', () => ({
   ...jest.requireActual('expo-notifications'),
@@ -31,13 +35,15 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
   removeItem: jest.fn(),
 }));
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
-  setItem: jest.fn(),
-  getItem: jest.fn(),
-  removeItem: jest.fn(),
-}));
-
 jest.mock('hooks/useSentryBreadcrumb', () => jest.fn());
+
+jest.mock('react-native/Libraries/Linking/Linking', () => ({
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  openURL: jest.fn(),
+  canOpenURL: jest.fn(),
+  getInitialURL: jest.fn(),
+}));
 
 jest.mock('@react-navigation/native', () => {
   const actualNav = jest.requireActual('@react-navigation/native');
