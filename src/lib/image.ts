@@ -53,8 +53,11 @@ export const resizeImage = async (uri: string): Promise<string> => {
     { compress: 0, format: ImageManipulator.SaveFormat.PNG }
   );
 
-  const fileInfo = await FileSystem.getInfoAsync(result.uri);
-  console.log('file-size:', fileInfo.size);
+  const fileInfo = await FileSystem.getInfoAsync(result.uri, { size: true });
+
+  const size = fileInfo.exists ? fileInfo.size : 0;
+
+  console.log('file-size:', size);
 
   return result.uri;
 };
