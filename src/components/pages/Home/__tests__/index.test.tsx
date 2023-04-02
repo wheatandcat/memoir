@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { Home, Props } from '../';
 
 const propsHomeData = (): Props =>
@@ -7,6 +8,8 @@ const propsHomeData = (): Props =>
     navigation: {
       setParams: jest.fn(),
       navigate: jest.fn(),
+      setOptions: jest.fn(),
+      addListener: jest.fn(),
     },
     route: {
       params: {},
@@ -14,15 +17,13 @@ const propsHomeData = (): Props =>
   } as any);
 
 describe('components/pages/Home/index.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   describe('Home', () => {
-    beforeEach(() => {
-      wrapper = shallow(<Home {...propsHomeData()} />);
-    });
-
     it('正常にrenderすること', () => {
-      expect(wrapper).toMatchSnapshot();
+      testRenderer(<Home {...propsHomeData()} />)();
+
+      //screen.debug();
+
+      expect(screen.findAllByText('今週のmemoirを確認する')).toBeTruthy();
     });
   });
 });

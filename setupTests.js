@@ -1,9 +1,6 @@
 // see https://airbnb.io/enzyme/docs/guides/react-native.html#example-configuration-for-jest
 
 import 'react-native';
-import 'jest-enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Enzyme from 'enzyme';
 import 'react-native-gesture-handler/jestSetup';
 import { server } from 'mocks/server';
 
@@ -17,23 +14,41 @@ afterEach(() => {
 
 afterAll(() => server.close());
 
+jest.mock('expo-notifications', () => ({
+  ...jest.requireActual('expo-notifications'),
+  getAllScheduledNotificationsAsync: () => [],
+}));
+
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  onAuthStateChanged: jest.fn(),
+  signOut: jest.fn(),
+}));
+
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
   getItem: jest.fn(),
   removeItem: jest.fn(),
 }));
 
-/**
- * Set up Enzyme to mount to DOM, simulate events,
- * and inspect the DOM in tests.
- */
-Enzyme.configure({ adapter: new Adapter() });
+jest.mock('@react-native-async-storage/async-storage', () => ({
+  setItem: jest.fn(),
+  getItem: jest.fn(),
+  removeItem: jest.fn(),
+}));
+
+jest.mock('hooks/useSentryBreadcrumb', () => jest.fn());
 
 jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native');
   return {
-    ...jest.requireActual('@react-navigation/native'),
+    ...actualNav,
     useNavigation: () => ({
-      navigation: jest.fn(),
+      navigation: {
+        ...actualNav.useNavigation().navigation,
+        addListener: jest.fn(),
+        removeEventListener: jest.fn(),
+      },
     }),
     useRoute: () => ({
       name: 'test',

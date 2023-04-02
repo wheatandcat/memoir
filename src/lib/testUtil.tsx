@@ -1,4 +1,5 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import { GraphQLHandler, GraphQLRequest } from 'msw';
 import {
   ApolloClient,
@@ -9,6 +10,7 @@ import {
 import { render } from '@testing-library/react-native';
 import { server } from 'mocks/server';
 import fetch from 'cross-fetch';
+import { NavigationContainer } from '@react-navigation/native';
 
 const link = createHttpLink({
   uri: 'http://localhost:8080/query',
@@ -28,5 +30,11 @@ export const testRenderer =
     if (responseOverride) {
       server.use(responseOverride);
     }
-    return render(<ApolloProvider client={client}>{children}</ApolloProvider>);
+    return render(
+      <RecoilRoot>
+        <NavigationContainer independent={true}>
+          <ApolloProvider client={client}>{children}</ApolloProvider>
+        </NavigationContainer>
+      </RecoilRoot>
+    );
   };

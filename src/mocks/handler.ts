@@ -3,6 +3,7 @@ import {
   ItemDocument,
   UpdateItemDocument,
   DeleteItemDocument,
+  ItemsByDateDocument,
 } from 'queries/api/index';
 import { anItem } from 'queries/api/mocks';
 
@@ -33,6 +34,13 @@ export const handlers = [
         deleteItem: {
           id: req.variables.input.id,
         },
+      })
+    );
+  }),
+  graphql.query(ItemsByDateDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        itemsByDate: [{ ...anItem(), categoryID: 1 }],
       })
     );
   }),
