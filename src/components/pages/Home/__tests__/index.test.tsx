@@ -20,9 +20,6 @@ describe('components/pages/Home/index.tsx', () => {
   describe('Home', () => {
     it('正常にrenderすること', () => {
       testRenderer(<Home {...propsHomeData()} />)();
-
-      //screen.debug();
-
       expect(screen.findAllByText('今週のmemoirを確認する')).toBeTruthy();
     });
   });

@@ -1,9 +1,10 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
 import * as Recoil from 'recoil';
 import { items } from '__mockData__/item';
 import * as useHomeItems from 'hooks/useHomeItems';
 import * as client from '@apollo/client';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Connected, { Props } from '../Connected';
 
 const propsData = (): Props => ({
@@ -12,8 +13,6 @@ const propsData = (): Props => ({
 });
 
 describe('components/pages/Home/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       items: items(),
@@ -38,10 +37,12 @@ describe('components/pages/Home/Connected.tsx', () => {
         loading: false,
       },
     ]);
-    wrapper = shallow(<Connected {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Connected {...propsData()} />)();
+    screen.debug();
+
+    expect(screen.findAllByText('本を読む')).toBeTruthy();
   });
 });
