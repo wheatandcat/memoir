@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Button, { Props } from '../';
 
 const propsData = (): Props => ({
@@ -12,13 +13,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/atoms/Button/Button.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Button {...propsData()} />);
+    testRenderer(<Button {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

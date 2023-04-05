@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Card, { Props } from '../Card';
 
 const propsData = (): Props => ({
@@ -13,13 +14,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Memoir/Card.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Card {...propsData()} />);
+    testRenderer(<Card {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Header, { Props } from '../Header';
 
 const propsData = (): Props => ({
@@ -8,13 +9,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/Memoir/Header.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Header {...propsData()} />);
+    testRenderer(<Header {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

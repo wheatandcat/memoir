@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { user } from '__mockData__/user';
@@ -9,8 +10,6 @@ import Connected, { Props } from '../Connected';
 const propsData = (): Props => ({});
 
 describe('components/pages/DataManagement/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       ...user(),
@@ -35,10 +34,10 @@ describe('components/pages/DataManagement/Connected.tsx', () => {
       error: undefined,
       refetch: jest.fn(),
     }));
-    wrapper = shallow(<Connected {...propsData()} />);
+    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

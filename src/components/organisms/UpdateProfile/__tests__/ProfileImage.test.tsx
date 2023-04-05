@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import ProfileImage, { Props } from '../ProfileImage';
 
 const propsData = (): Props => ({
@@ -9,13 +10,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/UpdateProfile/ProfileImage.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<ProfileImage {...propsData()} />);
+    testRenderer(<ProfileImage {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

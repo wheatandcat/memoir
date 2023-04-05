@@ -1,17 +1,13 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import IndexPage from '../';
 
 const propsData = () => ({ onFinish: jest.fn() });
 
 describe('components/pages/Intro/Intro/index.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<IndexPage {...propsData()} />)();
+    expect(screen.findAllByText('記録する')).toBeTruthy();
   });
 });

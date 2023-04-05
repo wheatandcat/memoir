@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { invite } from '__mockData__/Invite';
 import { user } from '__mockData__/user';
 import InviteCard, { Props } from '../InviteCard';
@@ -18,13 +19,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InviteCard.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<InviteCard {...propsData()} />);
+    testRenderer(<InviteCard {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

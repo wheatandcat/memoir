@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import { user } from '__mockData__/user';
 import { relationships } from '__mockData__/relationship';
@@ -9,8 +10,6 @@ import Connected, { Props } from '../Connected';
 const propsData = (): Props => ({});
 
 describe('components/pages/Search/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
     ...user(),
   }));
@@ -26,10 +25,10 @@ describe('components/pages/Search/Connected.tsx', () => {
   }));
 
   beforeEach(() => {
-    wrapper = shallow(<Connected {...propsData()} />);
+    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

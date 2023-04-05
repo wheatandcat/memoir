@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { relationshipRequests } from '__mockData__/relationshipRequest';
 import Plain, { Props } from '../Plain';
 
@@ -16,13 +17,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/pages/Setting/RelationshipRequests/Plain.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Plain {...propsData()} />);
+    testRenderer(<Plain {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

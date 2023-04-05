@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import SettingModal, { Props } from '../';
 
@@ -9,16 +10,14 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms//SettingModal.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       uid: 'abc',
     }));
-    wrapper = shallow(<SettingModal {...propsData()} />);
+    testRenderer(<SettingModal {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

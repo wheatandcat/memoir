@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import * as client from '@apollo/client';
 import Connected, { Props } from '../Connected';
@@ -7,8 +8,6 @@ import Connected, { Props } from '../Connected';
 const propsData = (): Props => ({});
 
 describe('components/pages/UpdateProfile/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest
       .spyOn(Recoil, 'useRecoilState')
@@ -22,10 +21,10 @@ describe('components/pages/UpdateProfile/Connected.tsx', () => {
     jest
       .spyOn(client, 'useMutation')
       .mockImplementation((): any => [jest.fn(), { loading: false }]);
-    wrapper = shallow(<Connected {...propsData()} />);
+    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -4,8 +4,15 @@ import {
   UpdateItemDocument,
   DeleteItemDocument,
   ItemsByDateDocument,
+  ItemsInPeriodDocument,
+  RelationshipsDocument,
 } from 'queries/api/index';
-import { anItem } from 'queries/api/mocks';
+import {
+  aPageInfo,
+  anItem,
+  anItemsInPeriodEdge,
+  aRelationshipEdge,
+} from 'queries/api/mocks';
 
 export const handlers = [
   graphql.query(ItemDocument, (req, res, ctx) => {
@@ -41,6 +48,26 @@ export const handlers = [
     return res(
       ctx.data({
         itemsByDate: [{ ...anItem(), categoryID: 1 }],
+      })
+    );
+  }),
+  graphql.query(ItemsInPeriodDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        itemsInPeriod: {
+          pageInfo: aPageInfo(),
+          edges: [anItemsInPeriodEdge()],
+        },
+      })
+    );
+  }),
+  graphql.query(RelationshipsDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        relationships: {
+          pageInfo: aPageInfo(),
+          edges: [aRelationshipEdge()],
+        },
       })
     );
   }),

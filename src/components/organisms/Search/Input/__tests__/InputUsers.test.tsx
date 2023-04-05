@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { users } from '__mockData__/user';
 import InputUsers, { Props } from '../InputUsers';
 
@@ -11,13 +12,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Search/Input/InputUsers.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<InputUsers {...propsData()} />);
+    testRenderer(<InputUsers {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

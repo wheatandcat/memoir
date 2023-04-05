@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import * as useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
 import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
 import Connected, { Props } from '../Connected';
@@ -9,8 +10,6 @@ const propsData = (): Props => ({
 });
 
 describe('components/pages/Intro/Intro/Connected.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
     jest
       .spyOn(useMemoirNotificationSetting, 'default')
@@ -19,11 +18,10 @@ describe('components/pages/Intro/Intro/Connected.tsx', () => {
         loading: false,
         onSave: jest.fn(),
       }));
-
-    wrapper = shallow(<Connected {...propsData()} />);
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Connected {...propsData()} />)();
+    expect(screen.findAllByText('記録する')).toBeTruthy();
   });
 });

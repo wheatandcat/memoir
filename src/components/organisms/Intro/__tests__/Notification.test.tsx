@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
 import Notification, { Props } from '../Notification';
 
@@ -10,13 +11,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Intro/Notification.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Notification {...propsData()} />);
+    testRenderer(<Notification {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

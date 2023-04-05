@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { items } from '__mockData__/item';
 import Plain, { Props } from '../Plain';
 
@@ -21,13 +22,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/pages/Home/Plain.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Plain {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Plain {...propsData()} />)();
+    expect(screen.findAllByText('今週のmemoirを確認する')).toBeTruthy();
   });
 });

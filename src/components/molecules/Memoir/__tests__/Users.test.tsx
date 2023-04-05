@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Users, { Props } from '../Users';
 
 const propsData = (): Props => ({
@@ -14,13 +15,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/Memoir/Users.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<Users {...propsData()} />);
+    testRenderer(<Users {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

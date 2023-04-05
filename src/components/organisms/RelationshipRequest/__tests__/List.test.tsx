@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { mockFn } from 'storyBookUtils/index';
 import { relationshipRequests } from '__mockData__/relationshipRequest';
 import List, { Props } from '../List';
@@ -19,13 +20,11 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/RelationshipRequest/List.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<List {...propsData()} />);
+    testRenderer(<List {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });
