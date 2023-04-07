@@ -21,11 +21,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/MyPage/Authenticated.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Authenticated {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Authenticated {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

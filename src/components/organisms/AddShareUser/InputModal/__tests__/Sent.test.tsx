@@ -8,11 +8,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputModal/Sent.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Sent {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<Sent {...propsData()} />)();
+    expect(screen.findAllByText('送りました')).toBeTruthy();
   });
 });

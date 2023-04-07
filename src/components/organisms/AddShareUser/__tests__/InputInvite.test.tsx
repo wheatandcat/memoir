@@ -8,11 +8,12 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputInvite.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<InputInvite {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<InputInvite {...propsData()} />)();
+    expect(
+      screen.findAllByText(
+        '共有メンバーに追加したいユーザーの招待コードを入力してください'
+      )
+    ).toBeTruthy();
   });
 });

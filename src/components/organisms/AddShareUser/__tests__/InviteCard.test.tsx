@@ -19,11 +19,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InviteCard.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<InviteCard {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<InviteCard {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

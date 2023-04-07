@@ -18,11 +18,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Memoir/ScreenShot.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<ScreenShot {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<ScreenShot {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

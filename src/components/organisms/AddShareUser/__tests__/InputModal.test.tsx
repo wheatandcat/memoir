@@ -15,11 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputModal.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<InputDialog {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<InputDialog {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

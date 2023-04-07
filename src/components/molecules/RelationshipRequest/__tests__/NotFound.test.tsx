@@ -6,11 +6,8 @@ import NotFound, { Props } from '../NotFound';
 const propsData = (): Props => ({ loading: false });
 
 describe('components/molecules/RelationshipRequest/NotFound.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<NotFound {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<NotFound {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

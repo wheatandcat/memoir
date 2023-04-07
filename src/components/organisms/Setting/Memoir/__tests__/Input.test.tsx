@@ -11,11 +11,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Setting/Memoir/Input.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Input {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Input {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

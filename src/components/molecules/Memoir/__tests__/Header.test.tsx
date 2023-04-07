@@ -9,11 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/Memoir/Header.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Header {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Header {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

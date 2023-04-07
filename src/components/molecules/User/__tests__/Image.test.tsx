@@ -6,11 +6,8 @@ import Image, { Props } from '../Image';
 const propsData = (): Props => ({ image: null });
 
 describe('components/molecules/User/Image.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Image {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Image {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

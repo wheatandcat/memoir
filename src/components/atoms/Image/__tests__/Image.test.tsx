@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/atoms/Image/Image.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Image {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Image {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

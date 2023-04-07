@@ -12,11 +12,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputModal/Confirm.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Confirm {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Confirm {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/TutorialModal.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<TutorialModal {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<TutorialModal {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

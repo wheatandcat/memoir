@@ -6,11 +6,8 @@ import Blinking, { Props } from '../Blinking';
 const propsData = (): Props => ({});
 
 describe('components/atoms/Animated/Blinking.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Blinking {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Blinking {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -20,11 +20,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddItemModal/AddItemModal.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<AddItemModal {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<AddItemModal {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

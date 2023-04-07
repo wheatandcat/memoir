@@ -9,11 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Search/Input/InputCategory.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<InputCategory {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<InputCategory {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

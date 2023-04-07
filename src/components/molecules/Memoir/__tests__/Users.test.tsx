@@ -15,11 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/Memoir/Users.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Users {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Users {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

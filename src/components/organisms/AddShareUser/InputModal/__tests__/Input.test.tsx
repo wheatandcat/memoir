@@ -9,11 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputModal/Input.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Input {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<Input {...propsData()} />)();
+    expect(screen.findAllByText('招待コードを入力してください')).toBeTruthy();
   });
 });

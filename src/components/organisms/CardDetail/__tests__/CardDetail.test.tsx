@@ -15,11 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/CardDetail/CardDetail.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<CardDetail {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<CardDetail {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

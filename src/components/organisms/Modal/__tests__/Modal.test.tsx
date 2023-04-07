@@ -16,11 +16,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Modal/Modal.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Modal {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Modal {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -14,11 +14,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/ShareUser/User.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<User {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<User {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

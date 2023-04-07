@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/UpdateProfile/ProfileImage.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<ProfileImage {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<ProfileImage {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

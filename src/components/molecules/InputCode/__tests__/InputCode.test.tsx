@@ -9,11 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/InputCode/InputCode.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<InputCode {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<InputCode {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

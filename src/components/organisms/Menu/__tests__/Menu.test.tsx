@@ -15,11 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Menu/Menu.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Menu {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Menu {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -14,11 +14,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/MyPage/NotAuthenticated.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<NotAuthenticated {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<NotAuthenticated {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

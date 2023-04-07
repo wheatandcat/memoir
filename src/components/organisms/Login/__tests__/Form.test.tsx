@@ -9,11 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Login/Form.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Form {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Form {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

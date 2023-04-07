@@ -11,11 +11,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Intro/Intro.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Intro {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Intro {...propsData()} />)();
     expect(screen.findAllByText('記録する')).toBeTruthy();
   });
 });

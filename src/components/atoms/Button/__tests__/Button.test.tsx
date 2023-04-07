@@ -13,11 +13,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/atoms/Button/Button.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Button {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Button {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

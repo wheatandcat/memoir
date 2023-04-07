@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/Intro/Card.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Card {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Card {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -8,11 +8,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Intro/Task.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Task {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Task {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

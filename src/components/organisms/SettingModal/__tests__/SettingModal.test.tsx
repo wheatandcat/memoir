@@ -14,10 +14,10 @@ describe('components/organisms//SettingModal.tsx', () => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       uid: 'abc',
     }));
-    testRenderer(<SettingModal {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
+    testRenderer(<SettingModal {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });
