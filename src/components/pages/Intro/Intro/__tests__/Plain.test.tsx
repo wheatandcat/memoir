@@ -14,6 +14,6 @@ const propsData = (): Props => ({
 describe('components/pages/Intro/Intro/Plain.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Plain {...propsData()} />)();
-    expect(screen.findAllByText('記録する')).toBeTruthy();
+    expect(screen.findAllByText('SKIP')).toBeTruthy();
   });
 });

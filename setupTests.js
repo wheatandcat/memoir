@@ -29,6 +29,11 @@ jest.mock('firebase/auth', () => ({
   signOut: jest.fn(),
 }));
 
+jest.mock('expo-font', () => ({
+  ...jest.requireActual('expo-font'),
+  loadAsync: jest.fn(),
+}));
+
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
   getItem: jest.fn(),
@@ -50,11 +55,10 @@ jest.mock('@react-navigation/native', () => {
   return {
     ...actualNav,
     useNavigation: () => ({
-      navigation: {
-        ...actualNav.useNavigation().navigation,
-        addListener: jest.fn(),
-        removeEventListener: jest.fn(),
-      },
+      ...actualNav.useNavigation().navigation,
+      addListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      setOptions: jest.fn(),
     }),
     useRoute: () => ({
       name: 'test',
@@ -71,3 +75,6 @@ jest.mock('lib/firebase', () => {
     getFirebaseAuthApp: jest.fn(),
   };
 });
+
+jest.mock('../../../img/common/frame.png');
+jest.mock('uuid');

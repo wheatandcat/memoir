@@ -41,8 +41,6 @@ describe('components/pages/Home/Connected.tsx', () => {
 
   it('正常にrenderすること', () => {
     testRenderer(<Connected {...propsData()} />)();
-    screen.debug();
-
     expect(screen.findAllByText('本を読む')).toBeTruthy();
   });
 });

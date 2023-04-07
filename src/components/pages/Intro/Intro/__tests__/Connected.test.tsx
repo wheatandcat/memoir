@@ -22,6 +22,6 @@ describe('components/pages/Intro/Intro/Connected.tsx', () => {
 
   it('正常にrenderすること', () => {
     testRenderer(<Connected {...propsData()} />)();
-    expect(screen.findAllByText('記録する')).toBeTruthy();
+    expect(screen.findAllByText('SKIP')).toBeTruthy();
   });
 });
