@@ -16,11 +16,10 @@ describe('components/pages/Setting/Memoir/Connected.tsx', () => {
         loading: false,
         onSave: jest.fn(),
       }));
-
-    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
+    testRenderer(<Connected {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

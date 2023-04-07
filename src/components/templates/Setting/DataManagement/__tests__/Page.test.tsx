@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/DataManagement/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Page {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

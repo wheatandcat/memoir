@@ -4,7 +4,6 @@ import { screen } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
 import Connected, { Props } from '../Connected';
-import * as client from '@apollo/client';
 
 const propsData = (): Props => ({
   onSkip: jest.fn(),
@@ -23,23 +22,10 @@ describe('components/pages/Top/Connected.tsx', () => {
     jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
       uid: null,
     }));
-    jest.spyOn(client, 'useMutation').mockImplementation((): any => [
-      jest.fn(),
-      {
-        loading: false,
-      },
-    ]);
-    jest
-      .spyOn(client, 'useLazyQuery')
-      .mockImplementation((): any => [
-        jest.fn(),
-        { loading: false, data: null },
-      ]);
-
-    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
+    testRenderer(<Connected {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

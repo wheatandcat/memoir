@@ -6,11 +6,8 @@ import Page, { Props } from '../Page';
 const propsData = (): Props => ({});
 
 describe('components/templates/ForceUpdate/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Page {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

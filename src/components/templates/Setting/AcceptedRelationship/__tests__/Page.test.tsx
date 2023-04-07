@@ -14,11 +14,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/Setting/AcceptedRelationship/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<Page {...propsData()} />)();
+    expect(screen.findAllByText('suzuki')).toBeTruthy();
   });
 });

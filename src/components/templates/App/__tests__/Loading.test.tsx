@@ -6,11 +6,8 @@ import Loading, { Props } from '../Loading';
 const propsData = (): Props => ({});
 
 describe('components/templates/App/Loading.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Loading {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Loading {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -6,12 +6,26 @@ import {
   ItemsByDateDocument,
   ItemsInPeriodDocument,
   RelationshipsDocument,
+  InviteDocument,
+  InviteByCodeDocument,
+  UpdateInviteDocument,
+  CreateInviteDocument,
+  CreateRelationshipRequestDocument,
+  DeleteUserDocument,
+  RelationshipRequestsDocument,
+  AcceptRelationshipRequestDocument,
+  NgRelationshipRequestDocument,
+  UpdateUserDocument,
 } from 'queries/api/index';
 import {
   aPageInfo,
   anItem,
   anItemsInPeriodEdge,
   aRelationshipEdge,
+  anInvite,
+  aUser,
+  aRelationshipRequest,
+  aRelationshipRequestEdge,
 } from 'queries/api/mocks';
 
 export const handlers = [
@@ -68,6 +82,79 @@ export const handlers = [
           pageInfo: aPageInfo(),
           edges: [aRelationshipEdge()],
         },
+      })
+    );
+  }),
+  graphql.query(InviteDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        invite: anInvite(),
+      })
+    );
+  }),
+  graphql.query(InviteByCodeDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        inviteByCode: aUser(),
+      })
+    );
+  }),
+  graphql.mutation(UpdateInviteDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        updateInvite: anInvite(),
+      })
+    );
+  }),
+  graphql.mutation(CreateInviteDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        createInvite: anInvite(),
+      })
+    );
+  }),
+  graphql.mutation(CreateRelationshipRequestDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        createRelationshipRequest: aRelationshipRequest(),
+      })
+    );
+  }),
+  graphql.mutation(DeleteUserDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        deleteUser: aUser(),
+      })
+    );
+  }),
+  graphql.query(RelationshipRequestsDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        relationshipRequests: {
+          pageInfo: aPageInfo(),
+          edges: [aRelationshipRequestEdge()],
+        },
+      })
+    );
+  }),
+  graphql.mutation(AcceptRelationshipRequestDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        acceptRelationshipRequest: aRelationshipRequest(),
+      })
+    );
+  }),
+  graphql.mutation(NgRelationshipRequestDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        ngRelationshipRequest: aRelationshipRequest(),
+      })
+    );
+  }),
+  graphql.mutation(UpdateUserDocument, (_, res, ctx) => {
+    return res(
+      ctx.data({
+        updateUser: aUser(),
       })
     );
   }),

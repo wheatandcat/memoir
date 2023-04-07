@@ -15,11 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/Maintenance/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<Page {...propsData()} />)();
+    expect(screen.findAllByText('2021年1月1日 10:00〜12:00')).toBeTruthy();
   });
 });

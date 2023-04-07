@@ -6,11 +6,8 @@ import SeeYouAgain, { Props } from '../SeeYouAgain';
 const propsData = (): Props => ({});
 
 describe('components/templates/SeeYouAgain/SeeYouAgain.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<SeeYouAgain {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<SeeYouAgain {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

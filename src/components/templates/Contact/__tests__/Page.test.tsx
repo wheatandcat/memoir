@@ -14,11 +14,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/Contact/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Page {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

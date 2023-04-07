@@ -21,10 +21,10 @@ describe('components/pages/Setting/AcceptedRelationship/index.tsx', () => {
       id: 'test-id',
       displayName: 'test-name',
     }));
-    testRenderer(<IndexPage {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
+    testRenderer(<IndexPage {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

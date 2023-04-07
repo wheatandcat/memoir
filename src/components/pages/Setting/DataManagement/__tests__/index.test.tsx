@@ -15,11 +15,8 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/DataManagement/index.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<IndexPage {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<IndexPage {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

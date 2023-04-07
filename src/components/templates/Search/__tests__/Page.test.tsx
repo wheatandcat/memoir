@@ -13,11 +13,8 @@ const propsData = (): Props => ({
 describe('components/templates/Search/Page.tsx', () => {
   mockdate.set('2020-01-01 00:00:00');
 
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Page {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

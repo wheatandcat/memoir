@@ -11,11 +11,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/pages/DataManagement/Plain.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Plain {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
+    testRenderer(<Plain {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });

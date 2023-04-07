@@ -39,11 +39,10 @@ describe('components/pages/Setting/AddShareUser/Connected.tsx', () => {
         },
       },
     ]);
-
-    testRenderer(<Connected {...propsData()} />)();
   });
 
   it('正常にrenderすること', () => {
+    testRenderer(<Connected {...propsData()} />)();
     expect(screen.findAllByText('')).toBeTruthy();
   });
 });
