@@ -1,7 +1,0 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
-
-exports[`components/organisms/UpdateProfile/ProfileImage.tsx 正常にrenderすること 1`] = `
-<ContextConsumer>
-  <Component />
-</ContextConsumer>
-`;
