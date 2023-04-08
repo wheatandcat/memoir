@@ -75,6 +75,3 @@ jest.mock('lib/firebase', () => {
     getFirebaseAuthApp: jest.fn(),
   };
 });
-
-jest.mock('../../../img/common/frame.png');
-jest.mock('uuid');
