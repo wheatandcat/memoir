@@ -16,6 +16,7 @@ export type Props = {
 const Privacy: React.FC<Props> = () => {
   return (
     <WebView
+      testID="privacy"
       style={styles.root}
       source={{ uri: 'https://memoir-app.dev/privacy/app' }}
     />

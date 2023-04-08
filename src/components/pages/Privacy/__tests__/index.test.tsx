@@ -17,6 +17,6 @@ const propsData = (): Props =>
 describe('components/pages/Privacy/index.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<IndexPage {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('privacy')).toBeTruthy();
   });
 });

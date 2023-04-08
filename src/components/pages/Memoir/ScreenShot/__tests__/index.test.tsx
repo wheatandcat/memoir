@@ -1,6 +1,6 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
+import { screen, waitFor } from '@testing-library/react-native';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -18,8 +18,15 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/Memoir/ScreenShot/index.tsx', () => {
-  it('正常にrenderすること', () => {
+  it('正常にrenderすること', async () => {
     testRenderer(<IndexPage {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    await waitFor(async () => {
+      expect(screen.findByTestId('atoms_loading')).toBeTruthy();
+
+      // ステート更新が終わるまで待つ
+      await new Promise((resolve) => {
+        setTimeout(resolve, 1000);
+      });
+    });
   });
 });

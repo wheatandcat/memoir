@@ -75,3 +75,19 @@ jest.mock('lib/firebase', () => {
     getFirebaseAuthApp: jest.fn(),
   };
 });
+jest.mock('firebase/storage', () => ({
+  ref: jest.fn(),
+  uploadBytes: jest.fn(),
+  getDownloadURL: jest.fn(),
+  deleteObject: jest.fn(),
+}));
+
+jest.mock('uuid', () => ({
+  v4: jest.fn(),
+}));
+
+jest.mock('../../../img/common/frame.png');
+jest.mock('../../../img/common/intro_01.png');
+jest.mock('../../../img/common/intro_02.png');
+jest.mock('../../../img/common/intro_03.png');
+jest.mock('../../../img/common/intro_04.png');
