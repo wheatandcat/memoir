@@ -16,6 +16,7 @@ export type Props = {
 const Terms: React.FC<Props> = () => {
   return (
     <WebView
+      testID="terms"
       style={styles.root}
       source={{ uri: 'https://memoir-app.dev/terms/app' }}
     />

@@ -1,6 +1,6 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
+import { waitFor } from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
 import Connected, { Props } from '../Connected';
@@ -24,8 +24,13 @@ describe('components/pages/Top/Connected.tsx', () => {
     }));
   });
 
-  it('正常にrenderすること', () => {
+  it('正常にrenderすること', async () => {
     testRenderer(<Connected {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    await waitFor(async () => {
+      // ステート更新が終わるまで待つ
+      await new Promise((resolve) => {
+        setTimeout(resolve, 500);
+      });
+    });
   });
 });

@@ -23,6 +23,6 @@ const propsData = (): Props => ({
 describe('components/templates/Home/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('今週のmemoirを確認する')).toBeTruthy();
   });
 });

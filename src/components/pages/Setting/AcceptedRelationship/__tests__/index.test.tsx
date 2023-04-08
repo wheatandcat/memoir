@@ -25,6 +25,6 @@ describe('components/pages/Setting/AcceptedRelationship/index.tsx', () => {
 
   it('正常にrenderすること', () => {
     testRenderer(<IndexPage {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('一覧に戻る')).toBeTruthy();
   });
 });

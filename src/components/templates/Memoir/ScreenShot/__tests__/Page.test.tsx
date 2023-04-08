@@ -20,6 +20,6 @@ const propsData = (): Props => ({
 describe('components/templates/Memoir/ScreenShot/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('ジムに行った')).toBeTruthy();
   });
 });

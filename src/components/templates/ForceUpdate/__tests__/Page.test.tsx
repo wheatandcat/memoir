@@ -8,6 +8,6 @@ const propsData = (): Props => ({});
 describe('components/templates/ForceUpdate/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('ストアへ')).toBeTruthy();
   });
 });

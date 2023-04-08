@@ -13,6 +13,6 @@ const propsData = (): Props => ({
 describe('components/templates/Intro/Intro/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('SKIP')).toBeTruthy();
   });
 });

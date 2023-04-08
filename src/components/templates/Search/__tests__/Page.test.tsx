@@ -15,6 +15,6 @@ describe('components/templates/Search/Page.tsx', () => {
 
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('共有メンバー')).toBeTruthy();
   });
 });

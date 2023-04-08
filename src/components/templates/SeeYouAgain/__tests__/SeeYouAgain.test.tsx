@@ -8,6 +8,6 @@ const propsData = (): Props => ({});
 describe('components/templates/SeeYouAgain/SeeYouAgain.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<SeeYouAgain {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('TOPに戻る')).toBeTruthy();
   });
 });

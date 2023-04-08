@@ -8,6 +8,6 @@ const propsData = (): Props => ({});
 describe('components/templates/App/Loading.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Loading {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('atoms_loading')).toBeTruthy();
   });
 });
