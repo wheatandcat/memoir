@@ -12,6 +12,6 @@ const propsData = (): Props => ({
 describe('components/organisms/UpdateProfile/ProfileImage.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<ProfileImage {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('写真を変更')).toBeTruthy();
   });
 });

@@ -13,6 +13,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Search/Input/InputDate.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InputDate {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('2021.01.01')).toBeTruthy();
   });
 });

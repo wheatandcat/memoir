@@ -26,7 +26,7 @@ const Loading: React.FC<Props> = (props) => {
   const style = { paddingLeft: width / 2 - (props.text?.length || 0) * 14 };
 
   return (
-    <View style={styles.root}>
+    <View style={styles.root} testID="overlay-loading">
       <View style={[styles.loading, style]}>
         <View mt={1}>
           <ActivityIndicator color={theme().color.base.light} />

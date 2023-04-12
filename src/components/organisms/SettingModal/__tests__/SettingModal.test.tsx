@@ -18,6 +18,6 @@ describe('components/organisms//SettingModal.tsx', () => {
 
   it('正常にrenderすること', () => {
     testRenderer(<SettingModal {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('データ管理')).toBeTruthy();
   });
 });

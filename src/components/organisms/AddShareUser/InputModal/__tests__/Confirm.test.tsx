@@ -14,6 +14,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/InputModal/Confirm.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Confirm {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('キャンセル')).toBeTruthy();
   });
 });

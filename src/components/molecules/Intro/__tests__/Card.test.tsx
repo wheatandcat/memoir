@@ -12,6 +12,6 @@ const propsData = (): Props => ({
 describe('components/molecules/Intro/Card.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Card {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('次へ')).toBeTruthy();
   });
 });

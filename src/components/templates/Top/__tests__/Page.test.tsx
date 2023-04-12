@@ -14,6 +14,6 @@ const propsData = (): Props => ({
 describe('components/templates/Top/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('ログイン')).toBeTruthy();
   });
 });

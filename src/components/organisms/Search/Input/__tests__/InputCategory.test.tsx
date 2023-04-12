@@ -11,6 +11,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Search/Input/InputCategory.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InputCategory {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('category_id_13')).toBeTruthy();
   });
 });

@@ -11,6 +11,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/InputModal/Input.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Input {...propsData()} />)();
-    expect(screen.findAllByText('招待コードを入力してください')).toBeTruthy();
+    expect(screen.findAllByText('D')).toBeTruthy();
   });
 });

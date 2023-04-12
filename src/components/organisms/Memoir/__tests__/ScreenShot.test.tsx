@@ -1,6 +1,6 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
+import { screen, waitFor } from '@testing-library/react-native';
 import { items } from '__mockData__/item';
 import ScreenShot, { Props } from '../ScreenShot';
 
@@ -18,8 +18,10 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Memoir/ScreenShot.tsx', () => {
-  it('正常にrenderすること', () => {
+  it('正常にrenderすること', async () => {
     testRenderer(<ScreenShot {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    await waitFor(async () => {
+      expect(screen.findByText('買い物')).toBeTruthy();
+    });
   });
 });

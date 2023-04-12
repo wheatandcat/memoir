@@ -5,7 +5,12 @@ import { item } from '__mockData__/item';
 import * as Recoil from 'recoil';
 import * as useHomeItems from 'hooks/useHomeItems';
 import { testRenderer } from 'lib/testUtil';
-import { screen, waitFor, fireEvent } from '@testing-library/react-native';
+import {
+  screen,
+  waitFor,
+  fireEvent,
+  waitForElementToBeRemoved,
+} from '@testing-library/react-native';
 import ItemDetail, { Props } from '../';
 import { Props as ConnectedProps } from '../Connected';
 
@@ -127,11 +132,8 @@ describe('components/pages/ItemDetail/index.tsx', () => {
           dislike: true,
         },
       });
-
-      // ステート更新が終わるまで待つ
-      await new Promise((resolve) => {
-        setTimeout(resolve, 50);
-      });
     });
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('button-loading'));
   });
 });

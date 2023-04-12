@@ -10,11 +10,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/templates/Setting/Memoir/Page.tsx', () => {
-  beforeEach(() => {
-    testRenderer(<Page {...propsData()} />)();
-  });
-
   it('正常にrenderすること', () => {
-    expect(screen.findAllByText('')).toBeTruthy();
+    testRenderer(<Page {...propsData()} />)();
+    expect(screen.findAllByText('保存')).toBeTruthy();
   });
 });

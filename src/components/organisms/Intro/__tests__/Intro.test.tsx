@@ -13,6 +13,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Intro/Intro.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Intro {...propsData()} />)();
-    expect(screen.findAllByText('記録する')).toBeTruthy();
+    expect(screen.findAllByText('SKIP')).toBeTruthy();
   });
 });

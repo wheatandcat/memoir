@@ -18,6 +18,6 @@ const propsData = (): Props => ({
 describe('components/templates/Setting/RelationshipRequests/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('削除')).toBeTruthy();
   });
 });

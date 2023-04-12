@@ -11,6 +11,6 @@ const propsData = (): Props => ({
 describe('components/molecules/InputCode/InputCode.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InputCode {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('input-code')).toBeTruthy();
   });
 });

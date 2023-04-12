@@ -12,6 +12,6 @@ const propsData = (): Props => ({
 describe('components/templates/DataManagement/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('アカウント削除')).toBeTruthy();
   });
 });

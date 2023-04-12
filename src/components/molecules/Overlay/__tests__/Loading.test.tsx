@@ -8,6 +8,6 @@ const propsData = (): Props => ({ text: 'テスト' });
 describe('components/molecules/Overlay/Loading.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Loading {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('overlay-loading')).toBeTruthy();
   });
 });

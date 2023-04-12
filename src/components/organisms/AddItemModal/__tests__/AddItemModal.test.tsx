@@ -22,6 +22,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddItemModal/AddItemModal.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<AddItemModal {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('入力')).toBeTruthy();
   });
 });

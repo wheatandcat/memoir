@@ -15,6 +15,6 @@ const propsData = (): Props => ({
 describe('components/organisms/RelationshipRequest/Card.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Card {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('共有メンバー申請が届いています')).toBeTruthy();
   });
 });

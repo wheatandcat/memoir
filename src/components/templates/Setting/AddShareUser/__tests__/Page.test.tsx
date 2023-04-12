@@ -26,6 +26,6 @@ const propsData = (): Props => ({
 describe('components/templates/Setting/AddShareUser/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('招待コードを入力')).toBeTruthy();
   });
 });

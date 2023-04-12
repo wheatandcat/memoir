@@ -17,6 +17,6 @@ const propsData = (): Props => ({
 describe('components/molecules/Memoir/Users.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Users {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('memoir-users')).toBeTruthy();
   });
 });

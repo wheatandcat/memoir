@@ -8,6 +8,6 @@ const propsData = (): Props => ({ image: null });
 describe('components/molecules/User/Image.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Image {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('default-user-image')).toBeTruthy();
   });
 });

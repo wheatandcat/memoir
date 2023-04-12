@@ -13,6 +13,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Intro/Notification.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Notification {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('次へ')).toBeTruthy();
   });
 });

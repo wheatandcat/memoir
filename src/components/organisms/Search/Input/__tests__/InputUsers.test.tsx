@@ -14,6 +14,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Search/Input/InputUsers.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InputUsers {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('input-users')).toBeTruthy();
   });
 });

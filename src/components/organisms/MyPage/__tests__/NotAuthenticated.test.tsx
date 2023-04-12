@@ -16,6 +16,6 @@ const propsData = (): Props => ({
 describe('components/organisms/MyPage/NotAuthenticated.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<NotAuthenticated {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('サインイン')).toBeTruthy();
   });
 });

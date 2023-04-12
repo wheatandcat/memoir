@@ -8,6 +8,6 @@ const propsData = (): Props => ({ loading: false });
 describe('components/molecules/RelationshipRequest/NotFound.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<NotFound {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('申請はありません')).toBeTruthy();
   });
 });

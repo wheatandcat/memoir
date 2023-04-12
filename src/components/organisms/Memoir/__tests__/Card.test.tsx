@@ -16,6 +16,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Memoir/Card.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Card {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('suzuki')).toBeTruthy();
   });
 });

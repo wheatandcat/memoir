@@ -12,6 +12,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/TutorialModal.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<TutorialModal {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('招待コードを作成する')).toBeTruthy();
   });
 });

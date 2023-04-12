@@ -14,6 +14,6 @@ const propsData = (): Props => ({
 describe('components/organisms/ShareUser/List.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<List {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('share-user-list')).toBeTruthy();
   });
 });

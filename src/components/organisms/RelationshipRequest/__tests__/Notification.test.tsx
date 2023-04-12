@@ -11,6 +11,6 @@ const propsData = (): Props => ({
 describe('components/organisms/RelationshipRequest/Notification.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Notification {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('招待申請が3件届いています')).toBeTruthy();
   });
 });

@@ -21,6 +21,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/InviteCard.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InviteCard {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('招待コードをコピー')).toBeTruthy();
   });
 });

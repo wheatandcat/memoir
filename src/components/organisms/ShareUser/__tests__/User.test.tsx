@@ -16,6 +16,6 @@ const propsData = (): Props => ({
 describe('components/organisms/ShareUser/User.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<User {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('解除')).toBeTruthy();
   });
 });

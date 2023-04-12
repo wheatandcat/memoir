@@ -10,6 +10,6 @@ const propsData = (): Props => ({
 describe('components/molecules/ShareUser/AddButton.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<AddButton {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('add-button')).toBeTruthy();
   });
 });

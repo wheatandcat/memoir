@@ -15,6 +15,6 @@ const propsData = (): Props => ({
 describe('components/atoms/Button/Button.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Button {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('title')).toBeTruthy();
   });
 });

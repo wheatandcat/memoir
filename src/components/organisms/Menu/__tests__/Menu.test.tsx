@@ -17,6 +17,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Menu/Menu.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Menu {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('menu_modal')).toBeTruthy();
   });
 });

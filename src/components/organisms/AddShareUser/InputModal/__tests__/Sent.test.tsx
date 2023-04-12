@@ -10,6 +10,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/InputModal/Sent.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Sent {...propsData()} />)();
-    expect(screen.findAllByText('送りました')).toBeTruthy();
+    expect(screen.findAllByText('test')).toBeTruthy();
   });
 });

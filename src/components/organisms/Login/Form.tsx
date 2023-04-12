@@ -22,6 +22,7 @@ const Form: React.FC<Props> = (props) => {
           cornerRadius={5}
           style={styles.button}
           onPress={props.onAppleLogin}
+          testID="apple-login"
         />
       )}
       {Platform.OS === 'android' && (

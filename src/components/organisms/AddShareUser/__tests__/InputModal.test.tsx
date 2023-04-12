@@ -17,6 +17,6 @@ const propsData = (): Props => ({
 describe('components/organisms/AddShareUser/InputModal.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<InputDialog {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('送信')).toBeTruthy();
   });
 });

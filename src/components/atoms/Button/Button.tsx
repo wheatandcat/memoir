@@ -44,6 +44,7 @@ const Button: React.FC<Props> = (props) => {
         <ActivityIndicator
           size={configSize.loadingSize}
           color={theme().color.base.light}
+          testID="button-loading"
         />
       </View>
     );

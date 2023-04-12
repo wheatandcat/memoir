@@ -8,6 +8,6 @@ const propsData = (): Props => ({});
 describe('components/atoms/Animated/Blinking.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Blinking {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findByTestId('blinking')).toBeTruthy();
   });
 });

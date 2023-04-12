@@ -22,6 +22,6 @@ const propsData = (): Props => ({
 describe('components/organisms/RelationshipRequest/List.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<List {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('削除')).toBeTruthy();
   });
 });

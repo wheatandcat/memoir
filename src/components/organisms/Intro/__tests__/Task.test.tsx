@@ -10,6 +10,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Intro/Task.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Task {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('初期設定')).toBeTruthy();
   });
 });

@@ -16,6 +16,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Cards/Cards.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Cards {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('ジムに行った')).toBeTruthy();
   });
 });

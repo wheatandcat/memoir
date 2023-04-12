@@ -13,6 +13,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Setting/Memoir/Input.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Input {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('曜日の')).toBeTruthy();
   });
 });

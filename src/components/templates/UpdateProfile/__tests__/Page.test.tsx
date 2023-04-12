@@ -18,6 +18,6 @@ const propsData = (): Props => ({
 describe('components/templates/UpdateProfile/Page.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('表示名を入力してください')).toBeTruthy();
   });
 });

@@ -11,6 +11,6 @@ const propsData = (): Props => ({
 describe('components/organisms/Categories/Categories.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Categories {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('特別なこと')).toBeTruthy();
   });
 });

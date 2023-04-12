@@ -23,6 +23,6 @@ const propsData = (): Props => ({
 describe('components/organisms/MyPage/Authenticated.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Authenticated {...propsData()} />)();
-    expect(screen.findAllByText('')).toBeTruthy();
+    expect(screen.findAllByText('共有メンバー')).toBeTruthy();
   });
 });
