@@ -1,6 +1,10 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
-import { screen, waitFor } from '@testing-library/react-native';
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react-native';
 import * as Recoil from 'recoil';
 import * as useFirebaseAuth from 'hooks/useFirebaseAuth';
 import { user } from '__mockData__/user';
@@ -30,12 +34,11 @@ describe('components/pages/DataManagement/index.tsx', () => {
 
   it('正常にrenderすること', async () => {
     testRenderer(<IndexPage {...propsData()} />)();
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('atoms_loading'));
+
     await waitFor(async () => {
-      expect(screen.findByTestId('atoms_loading')).toBeTruthy();
-      // ステート更新が終わるまで待つ
-      await new Promise((resolve) => {
-        setTimeout(resolve, 500);
-      });
+      expect(screen.findAllByText('アカウント削除')).toBeTruthy();
     });
   });
 });

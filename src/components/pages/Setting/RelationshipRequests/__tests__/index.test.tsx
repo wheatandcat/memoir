@@ -1,6 +1,10 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
-import { screen, waitFor } from '@testing-library/react-native';
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react-native';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -18,13 +22,10 @@ describe('components/pages/Setting/RelationshipRequests/index.tsx', () => {
   it('正常にrenderすること', async () => {
     testRenderer(<IndexPage {...propsData()} />)();
 
-    await waitFor(async () => {
-      expect(screen.findByTestId('atoms_loading')).toBeTruthy();
+    await waitForElementToBeRemoved(() => screen.getByTestId('atoms_loading'));
 
-      // ステート更新が終わるまで待つ
-      await new Promise((resolve) => {
-        setTimeout(resolve, 500);
-      });
+    await waitFor(async () => {
+      expect(screen.findAllByText('削除')).toBeTruthy();
     });
   });
 });
