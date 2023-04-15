@@ -4,7 +4,7 @@ import TemplateDataManagement from 'components/templates/Setting/DataManagement/
 import { ApolloError } from '@apollo/client';
 import { ConnectedType } from './Connected';
 
-export type Props = ConnectedType & {
+type Props = ConnectedType & {
   loading: boolean;
   error?: ApolloError;
 };

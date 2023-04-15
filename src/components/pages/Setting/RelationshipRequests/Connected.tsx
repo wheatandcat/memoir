@@ -12,7 +12,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 import { ScreenNavigationProp as RelationshipRequestsScreenNavigationProp } from './';
 
-export type Props = {
+type Props = {
   onCallback: () => void;
 };
 

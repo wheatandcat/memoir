@@ -9,7 +9,7 @@ import Constants from 'expo-constants';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 
-export type Props = {};
+type Props = {};
 
 const url = Constants.manifest?.extra?.INQUIRY_API || '';
 

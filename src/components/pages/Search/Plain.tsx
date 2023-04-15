@@ -3,7 +3,7 @@ import Loading from 'components/atoms/Loading';
 import TemplateSearch from 'components/templates/Search/Page';
 import { ConnectedType } from './Connected';
 
-export type Props = ConnectedType & {
+type Props = ConnectedType & {
   loading: boolean;
 };
 

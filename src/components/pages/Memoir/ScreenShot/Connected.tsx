@@ -9,7 +9,7 @@ import { userState } from 'store/atoms';
 import { useQuery } from '@apollo/client';
 import Plain from './Plain';
 
-export type Props = {
+type Props = {
   startDate: string;
   endDate: string;
   selectedUserIDList?: string[];

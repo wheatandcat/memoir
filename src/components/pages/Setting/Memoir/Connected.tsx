@@ -5,7 +5,7 @@ import useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
 import { useNotification } from 'containers/Notification';
 import Plain from './Plain';
 
-export type Props = {};
+type Props = {};
 
 export type ConnectedType = {
   onSave: (input: Input) => void;

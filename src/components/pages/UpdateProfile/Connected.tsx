@@ -14,7 +14,7 @@ import { uploadImageAsync } from 'lib/image';
 import { useMutation } from '@apollo/client';
 import { User } from 'queries/api/index';
 
-export type Props = {};
+type Props = {};
 
 type Input = {
   displayName: string;

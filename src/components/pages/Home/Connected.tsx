@@ -11,7 +11,7 @@ import { Interaction as SchedulerInteraction } from 'scheduler/tracing';
 import Plain from './Plain';
 import { ScreenNavigationProp as HomeScreenNavigationProp } from './';
 
-export type Props = {
+type Props = {
   openSettingModal: boolean;
   onCloseSettingModal: () => void;
 };

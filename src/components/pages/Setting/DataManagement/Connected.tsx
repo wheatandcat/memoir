@@ -8,7 +8,7 @@ import { userState, screenState } from 'store/atoms';
 import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 
-export type Props = {};
+type Props = {};
 
 export type ConnectedType = {
   loading: boolean;

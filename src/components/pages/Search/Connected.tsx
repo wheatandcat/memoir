@@ -12,7 +12,7 @@ import Plain from './Plain';
 
 type User = Pick<TUser, 'id' | 'image'>;
 
-export type Props = {};
+type Props = {};
 
 export type ConnectedType = {
   users: User[];
