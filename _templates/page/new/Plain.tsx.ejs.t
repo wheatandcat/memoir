@@ -9,7 +9,7 @@ import { ConnectedType } from './Connected';
 
 type QueryHookResult = any;
 type QueryProps = Pick<QueryHookResult, 'loading' | 'error'>;
-export type Props = QueryProps & ConnectedType;
+type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;

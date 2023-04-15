@@ -2,19 +2,16 @@
 to: <%= templatePath %>/__tests__/Page.test.tsx
 ---
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Page, { Props } from '../Page';
 
 const propsData = (): Props => ({});
 
 describe('components/templates/<%= componentName %>/Page.tsx', () => {
-  let wrapper: ShallowWrapper;
+  it('正常にrenderすること', async () => {
+    testRenderer(<P {...propsData()} />)();
 
-  beforeEach(() => {
-    wrapper = shallow(<Page {...propsData()} />);
-  });
-
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

@@ -1,5 +1,3 @@
-// see https://airbnb.io/enzyme/docs/guides/react-native.html#example-configuration-for-jest
-
 import 'react-native';
 import 'react-native-gesture-handler/jestSetup';
 import { server } from 'mocks/server';
