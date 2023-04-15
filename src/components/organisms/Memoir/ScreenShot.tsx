@@ -181,7 +181,7 @@ const ScreenShot: React.FC<Props> = (props) => {
 
   return (
     <>
-      <ScrollView style={styles.root}>
+      <ScrollView style={styles.root} testID="screen-shot">
         <ViewShot
           ref={viewShot}
           options={{ format: 'jpg' }}

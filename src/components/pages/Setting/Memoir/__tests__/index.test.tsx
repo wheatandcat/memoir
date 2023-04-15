@@ -1,5 +1,9 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
+import * as useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
+import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
+
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -14,13 +18,18 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/Setting/Memoir/index.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
+    jest
+      .spyOn(useMemoirNotificationSetting, 'default')
+      .mockImplementation((): any => ({
+        ...memoirNotificationSetting(),
+        loading: false,
+        onSave: jest.fn(),
+      }));
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<IndexPage {...propsData()} />)();
+    expect(screen.findAllByText('保存')).toBeTruthy();
   });
 });

@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Menu, { Props } from '../Menu';
 
 const propsData = (): Props => ({
@@ -14,13 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Menu/Menu.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Menu {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Menu {...propsData()} />)();
+    expect(screen.findByTestId('menu_modal')).toBeTruthy();
   });
 });

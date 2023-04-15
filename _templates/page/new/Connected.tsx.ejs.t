@@ -4,7 +4,7 @@ to: <%= absPath %>/Connected.tsx
 import React, { memo } from 'react';
 import Plain from './Plain';
 
-export type Props = {};
+type Props = {};
 
 export type ConnectedType = {};
 

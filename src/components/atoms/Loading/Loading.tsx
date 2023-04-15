@@ -13,6 +13,7 @@ const Loading: React.FC<Props> = (props) => {
       <ActivityIndicator
         size={props.size}
         color={theme().color.secondary.light}
+        testID="atoms_loading"
       />
     </View>
   );

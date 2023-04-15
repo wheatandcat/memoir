@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { user } from '__mockData__/user';
 import NotAuthenticated, { Props } from '../NotAuthenticated';
 
@@ -13,13 +14,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/MyPage/NotAuthenticated.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<NotAuthenticated {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<NotAuthenticated {...propsData()} />)();
+    expect(screen.findAllByText('サインイン')).toBeTruthy();
   });
 });

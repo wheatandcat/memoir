@@ -42,6 +42,10 @@ const Blinking: React.FC<Props> = (props) => {
 
   const style = { opacity: fadeAnim };
 
-  return <Animated.View style={style}>{props.children}</Animated.View>;
+  return (
+    <Animated.View style={style} testID="blinking">
+      {props.children}
+    </Animated.View>
+  );
 };
 export default memo<React.FC<Props>>(Blinking);

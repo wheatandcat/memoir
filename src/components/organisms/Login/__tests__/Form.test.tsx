@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Form, { Props } from '../Form';
 
 const propsData = (): Props => ({
@@ -8,13 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Login/Form.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Form {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Form {...propsData()} />)();
+    expect(screen.findByTestId('apple-login')).toBeTruthy();
   });
 });

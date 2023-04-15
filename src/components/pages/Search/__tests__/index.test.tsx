@@ -1,5 +1,12 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import * as Recoil from 'recoil';
+import { testRenderer } from 'lib/testUtil';
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react-native';
+import { user } from '__mockData__/user';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -14,13 +21,19 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/Search/index.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
+    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
+      ...user(),
+    }));
   });
 
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('正常にrenderすること', async () => {
+    testRenderer(<IndexPage {...propsData()} />)();
+
+    await waitForElementToBeRemoved(() => screen.getByTestId('atoms_loading'));
+
+    await waitFor(async () => {
+      expect(screen.findByText('検索')).toBeTruthy();
+    });
   });
 });

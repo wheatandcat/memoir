@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen, waitFor } from '@testing-library/react-native';
 import { items } from '__mockData__/item';
 import ScreenShot, { Props } from '../ScreenShot';
 
@@ -17,13 +18,10 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Memoir/ScreenShot.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<ScreenShot {...propsData()} />);
-  });
-
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+  it('正常にrenderすること', async () => {
+    testRenderer(<ScreenShot {...propsData()} />)();
+    await waitFor(async () => {
+      expect(screen.findByText('買い物')).toBeTruthy();
+    });
   });
 });

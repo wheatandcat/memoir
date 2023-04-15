@@ -28,6 +28,7 @@ const UserImage: React.FC<Props> = (props) => {
           height={props.size}
           style={styles.noImage}
           onLoadEnd={props.onLoadEnd}
+          testID="default-user-image"
         />
       )}
     </>

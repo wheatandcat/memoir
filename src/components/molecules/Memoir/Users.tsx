@@ -41,7 +41,7 @@ const Users: React.FC<Props> = (props) => {
   }
 
   return (
-    <ScrollView style={styles.wrap} horizontal>
+    <ScrollView style={styles.wrap} horizontal testID="memoir-users">
       <View style={style}>
         {props.users.map((v) => {
           const selected = !!props.selectedUserIDList.find(

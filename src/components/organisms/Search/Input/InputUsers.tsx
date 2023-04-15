@@ -18,7 +18,7 @@ const InputUsers: React.FC<Props> = (props) => {
   }
 
   return (
-    <View style={style}>
+    <View style={style} testID="input-users">
       {props.users.map((v) => (
         <View px={3} key={v.id}>
           <UserButton

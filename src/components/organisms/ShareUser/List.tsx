@@ -23,7 +23,7 @@ const List: React.FC<Props> = (props) => {
   }
 
   return (
-    <View style={styles.root}>
+    <View style={styles.root} testID="share-user-list">
       <View>
         <AddButton onAdd={props.onAdd} />
       </View>

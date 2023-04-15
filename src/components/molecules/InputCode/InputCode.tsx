@@ -78,7 +78,7 @@ const InputCode: React.FC<Props> = (props) => {
   );
 
   return (
-    <View style={styles.container}>
+    <View style={styles.container} testID="input-code">
       <TouchableWithoutFeedback onPress={handlePress}>
         <View style={styles.wrap}>
           {CODE_LENGTH.map((_, index) => {

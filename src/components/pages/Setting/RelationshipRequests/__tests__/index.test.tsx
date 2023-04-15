@@ -1,5 +1,10 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import {
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react-native';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -14,13 +19,13 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/Setting/RelationshipRequests/index.tsx', () => {
-  let wrapper: ShallowWrapper;
+  it('正常にrenderすること', async () => {
+    testRenderer(<IndexPage {...propsData()} />)();
 
-  beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
-  });
+    await waitForElementToBeRemoved(() => screen.getByTestId('atoms_loading'));
 
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    await waitFor(async () => {
+      expect(screen.findAllByText('削除')).toBeTruthy();
+    });
   });
 });

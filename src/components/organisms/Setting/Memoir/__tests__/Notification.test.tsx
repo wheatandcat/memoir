@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Notification, { Props } from '../Notification';
 
 const propsData = (): Props => ({
@@ -8,13 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/Setting/Memoir/Notification.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Notification {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Notification {...propsData()} />)();
+    expect(screen.findAllByText('プッシュ通知')).toBeTruthy();
   });
 });

@@ -10,7 +10,7 @@ export type Props = {
 
 const AddButton: React.FC<Props> = (props) => {
   return (
-    <TouchableOpacity onPress={props.onAdd}>
+    <TouchableOpacity onPress={props.onAdd} testID="add-button">
       <View style={styles.addButton}>
         <MaterialIcons name="add" size={50} color={theme().color.base.dark} />
       </View>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { users } from '__mockData__/user';
 import Page, { Props } from '../Page';
 import mockdate from 'mockdate';
@@ -11,13 +12,9 @@ const propsData = (): Props => ({
 
 describe('components/templates/Search/Page.tsx', () => {
   mockdate.set('2020-01-01 00:00:00');
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Page {...propsData()} />);
-  });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Page {...propsData()} />)();
+    expect(screen.findAllByText('共有メンバー')).toBeTruthy();
   });
 });

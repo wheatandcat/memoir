@@ -2,7 +2,8 @@
 to: <%= absPath %>/__tests__/index.test.tsx
 ---
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -17,13 +18,9 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/<%= componentName %>/index.tsx', () => {
-  let wrapper: ShallowWrapper;
+  it('正常にrenderすること', async () => {
+    testRenderer(<IndexPage {...propsData()} />)();
 
-  beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
-  });
-
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

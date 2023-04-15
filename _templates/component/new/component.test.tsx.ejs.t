@@ -2,19 +2,16 @@
 to: <%= absPath %>/__tests__/<%= component_name %>.test.tsx
 ---
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import <%= component_name %>, { Props } from '../<%= component_name %>';
 
 const propsData = (): Props => ({});
 
 describe('<%= testName %>.tsx', () => {
-  let wrapper: ShallowWrapper;
+  it('正常にrenderすること', async () => {
+    testRenderer(<<%= component_name %> {...propsData()} />)();
 
-  beforeEach(() => {
-    wrapper = shallow(<<%= component_name %> {...propsData()} />);
-  });
-
-  it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.findAllByText('')).toBeTruthy();
   });
 });

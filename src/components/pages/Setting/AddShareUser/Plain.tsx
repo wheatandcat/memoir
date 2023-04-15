@@ -11,7 +11,7 @@ import { ConnectedType, Invite } from './Connected';
 
 type QueryHookResult = QueryResult<Query, Variables>;
 type QueryProps = Pick<QueryHookResult, 'loading' | 'error' | 'data'>;
-export type Props = QueryProps & ConnectedType;
+type Props = QueryProps & ConnectedType;
 
 const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;

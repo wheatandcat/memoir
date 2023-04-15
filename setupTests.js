@@ -1,13 +1,9 @@
-// see https://airbnb.io/enzyme/docs/guides/react-native.html#example-configuration-for-jest
-
 import 'react-native';
-import 'jest-enzyme';
-import Adapter from 'enzyme-adapter-react-16';
-import Enzyme from 'enzyme';
 import 'react-native-gesture-handler/jestSetup';
 import { server } from 'mocks/server';
 
 beforeAll(() => {
+  jest.useFakeTimers();
   server.listen();
 });
 
@@ -15,7 +11,26 @@ afterEach(() => {
   server.resetHandlers();
 });
 
-afterAll(() => server.close());
+afterAll(() => {
+  server.close();
+  jest.useRealTimers();
+});
+
+jest.mock('expo-notifications', () => ({
+  ...jest.requireActual('expo-notifications'),
+  getAllScheduledNotificationsAsync: () => [],
+}));
+
+jest.mock('firebase/auth', () => ({
+  getAuth: jest.fn(),
+  onAuthStateChanged: jest.fn(),
+  signOut: jest.fn(),
+}));
+
+jest.mock('expo-font', () => ({
+  ...jest.requireActual('expo-font'),
+  loadAsync: jest.fn(),
+}));
 
 jest.mock('@react-native-async-storage/async-storage', () => ({
   setItem: jest.fn(),
@@ -23,17 +38,25 @@ jest.mock('@react-native-async-storage/async-storage', () => ({
   removeItem: jest.fn(),
 }));
 
-/**
- * Set up Enzyme to mount to DOM, simulate events,
- * and inspect the DOM in tests.
- */
-Enzyme.configure({ adapter: new Adapter() });
+jest.mock('hooks/useSentryBreadcrumb', () => jest.fn());
+
+jest.mock('react-native/Libraries/Linking/Linking', () => ({
+  addEventListener: jest.fn(),
+  removeEventListener: jest.fn(),
+  openURL: jest.fn(),
+  canOpenURL: jest.fn(),
+  getInitialURL: jest.fn(),
+}));
 
 jest.mock('@react-navigation/native', () => {
+  const actualNav = jest.requireActual('@react-navigation/native');
   return {
-    ...jest.requireActual('@react-navigation/native'),
+    ...actualNav,
     useNavigation: () => ({
-      navigation: jest.fn(),
+      ...actualNav.useNavigation().navigation,
+      addListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      setOptions: jest.fn(),
     }),
     useRoute: () => ({
       name: 'test',
@@ -50,3 +73,19 @@ jest.mock('lib/firebase', () => {
     getFirebaseAuthApp: jest.fn(),
   };
 });
+jest.mock('firebase/storage', () => ({
+  ref: jest.fn(),
+  uploadBytes: jest.fn(),
+  getDownloadURL: jest.fn(),
+  deleteObject: jest.fn(),
+}));
+
+jest.mock('uuid', () => ({
+  v4: jest.fn(),
+}));
+
+jest.mock('../../../img/common/frame.png');
+jest.mock('../../../img/common/intro_01.png');
+jest.mock('../../../img/common/intro_02.png');
+jest.mock('../../../img/common/intro_03.png');
+jest.mock('../../../img/common/intro_04.png');

@@ -6,7 +6,7 @@ import { State as MemoirNotificationSettingState } from 'hooks/useMemoirNotifica
 import View from 'components/atoms/View';
 import { ConnectedType } from './Connected';
 
-export type Props = ConnectedType & {
+type Props = ConnectedType & {
   data: MemoirNotificationSettingState;
   loading: boolean;
 };

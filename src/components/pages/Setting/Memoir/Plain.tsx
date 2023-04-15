@@ -4,7 +4,7 @@ import TemplateSettingMemoir from 'components/templates/Setting/Memoir/Page';
 import { State as MemoirNotificationSettingState } from 'hooks/useMemoirNotificationSetting';
 import { ConnectedType } from './Connected';
 
-export type Props = ConnectedType & {
+type Props = ConnectedType & {
   data: MemoirNotificationSettingState;
   loading: boolean;
 };

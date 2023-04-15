@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import InputCode, { Props } from '../InputCode';
 
 const propsData = (): Props => ({
@@ -8,13 +9,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/molecules/InputCode/InputCode.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<InputCode {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<InputCode {...propsData()} />)();
+    expect(screen.findByTestId('input-code')).toBeTruthy();
   });
 });

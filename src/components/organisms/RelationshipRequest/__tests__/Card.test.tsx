@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { relationshipRequest } from '__mockData__/relationshipRequest';
 import Card, { Props } from '../Card';
 
@@ -12,13 +13,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/RelationshipRequest/Card.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Card {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Card {...propsData()} />)();
+    expect(screen.findAllByText('共有メンバー申請が届いています')).toBeTruthy();
   });
 });

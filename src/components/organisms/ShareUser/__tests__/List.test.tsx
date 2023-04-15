@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { relationships } from '__mockData__/relationship';
 import List, { Props } from '../List';
 
@@ -11,13 +12,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/ShareUser/List.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<List {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<List {...propsData()} />)();
+    expect(screen.findByTestId('share-user-list')).toBeTruthy();
   });
 });

@@ -1,17 +1,13 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import SeeYouAgain, { Props } from '../SeeYouAgain';
 
 const propsData = (): Props => ({});
 
 describe('components/templates/SeeYouAgain/SeeYouAgain.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<SeeYouAgain {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<SeeYouAgain {...propsData()} />)();
+    expect(screen.findAllByText('TOPに戻る')).toBeTruthy();
   });
 });

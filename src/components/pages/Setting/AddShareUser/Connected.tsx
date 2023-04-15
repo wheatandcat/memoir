@@ -16,7 +16,7 @@ import { userState, User } from 'store/atoms';
 import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
 
-export type Props = {};
+type Props = {};
 
 export type Invite = InviteQuery['invite'];
 

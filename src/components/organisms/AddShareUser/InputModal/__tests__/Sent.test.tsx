@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import Sent, { Props } from '../Sent';
 
 const propsData = (): Props => ({
@@ -7,13 +8,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddShareUser/InputModal/Sent.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<Sent {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<Sent {...propsData()} />)();
+    expect(screen.findAllByText('test')).toBeTruthy();
   });
 });

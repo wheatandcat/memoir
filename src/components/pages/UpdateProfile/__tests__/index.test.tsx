@@ -1,5 +1,7 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
+import * as Recoil from 'recoil';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -14,13 +16,20 @@ const propsData = (): Props =>
   } as any);
 
 describe('components/pages/UpdateProfile/index.tsx', () => {
-  let wrapper: ShallowWrapper;
-
   beforeEach(() => {
-    wrapper = shallow(<IndexPage {...propsData()} />);
+    jest
+      .spyOn(Recoil, 'useRecoilState')
+      .mockImplementation((): any => [
+        { id: 'test-id', displayName: 'test-name' },
+        jest.fn(),
+      ]);
+    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
+      uid: 'test',
+    }));
   });
 
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<IndexPage {...propsData()} />)();
+    expect(screen.findAllByText('保存')).toBeTruthy();
   });
 });

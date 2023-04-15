@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { item } from '__mockData__/item';
 import CardDetail, { Props } from '../CardDetail';
 
@@ -14,13 +15,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/CardDetail/CardDetail.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<CardDetail {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<CardDetail {...propsData()} />)();
+    expect(screen.findAllByText('買い物')).toBeTruthy();
   });
 });

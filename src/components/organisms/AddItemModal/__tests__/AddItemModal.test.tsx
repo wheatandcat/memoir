@@ -1,5 +1,6 @@
 import React from 'react';
-import { shallow, ShallowWrapper } from 'enzyme';
+import { testRenderer } from 'lib/testUtil';
+import { screen } from '@testing-library/react-native';
 import { item } from '__mockData__/item';
 import AddItemModal, { Props } from '../';
 
@@ -19,13 +20,8 @@ const propsData = (): Props => ({
 });
 
 describe('components/organisms/AddItemModal/AddItemModal.tsx', () => {
-  let wrapper: ShallowWrapper;
-
-  beforeEach(() => {
-    wrapper = shallow(<AddItemModal {...propsData()} />);
-  });
-
   it('正常にrenderすること', () => {
-    expect(wrapper).toMatchSnapshot();
+    testRenderer(<AddItemModal {...propsData()} />)();
+    expect(screen.findAllByText('入力')).toBeTruthy();
   });
 });
