@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image as RNImage, ImageProps, ImageStyle } from 'react-native';
+import { Image as RNImage, ImageProps, ImageStyle } from 'expo-image';
 
 export type Props = ImageProps & {
   style?: ImageStyle;
@@ -13,11 +13,12 @@ const Image: React.FC<Props> = (props) => {
   if (width) style.width = width;
   if (height) style.height = height;
 
-  if (Object.keys(props.source).length === 0) {
-    return <RNImage {...imageProps} source={1} style={[style, props.style]} />;
+  const styles: ImageStyle[] = [style];
+  if (props.style) {
+    styles.push(props.style);
   }
 
-  return <RNImage {...imageProps} style={[style, props.style]} />;
+  return <RNImage {...imageProps} style={styles} />;
 };
 
 export default Image;

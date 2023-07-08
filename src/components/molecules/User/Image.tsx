@@ -18,7 +18,7 @@ const UserImage: React.FC<Props> = (props) => {
           style={styles.image}
           width={props.size}
           height={props.size}
-          resizeMode="cover"
+          contentFit="cover"
           onLoadEnd={props.onLoadEnd}
         />
       ) : (

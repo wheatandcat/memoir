@@ -23,7 +23,7 @@ type Param = {
 };
 
 const makeApolloClient = async () => {
-  const uri = `${Constants.manifest?.extra?.API_HOST}/query`;
+  const uri = `${Constants.expoConfig?.extra?.API_HOST}/query`;
 
   const authLink = setContext(async (_, { headers }) => {
     const h = headers;

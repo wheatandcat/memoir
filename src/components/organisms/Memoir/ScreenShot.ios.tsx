@@ -131,45 +131,43 @@ const ScreenShot: React.FC<Props> = (props) => {
 
   const getData = useCallback(
     (loadEnd?: () => void) => {
-      const data = dateItems
-        .map((v1) => {
-          const sameDateItems = props.items.filter(
-            (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+      const data = dateItems.flatMap((v1) => {
+        const sameDateItems = props.items.filter(
+          (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+        );
+
+        const item: RenderedItem[] = sameDateItems.map((v2, index) => {
+          const user: User | undefined = props.users.find(
+            (v) => v.id === v2.userID
           );
 
-          const item: RenderedItem[] = sameDateItems.map((v2, index) => {
-            const user: User | undefined = props.users.find(
-              (v) => v.id === v2.userID
-            );
-
-            return {
-              date: null,
-              contents: {
-                ...v2,
-                user: user || {
-                  id: '',
-                  displayName: '',
-                  image: '',
-                },
+          return {
+            date: null,
+            contents: {
+              ...v2,
+              user: user || {
+                id: '',
+                displayName: '',
+                image: '',
               },
-              last: sameDateItems.length === index + 1,
-              width: windowWidth,
-              onLoadEnd: loadEnd ? loadEnd : () => null,
-            };
-          });
-
-          const categoryID = item.map((v) => Number(v.contents?.categoryID));
-
-          const dateItem: RenderedItem = {
-            date: v1.date,
-            categoryID: getModeCountMax(categoryID),
+            },
+            last: sameDateItems.length === index + 1,
             width: windowWidth,
-            onLoadEnd: () => null,
+            onLoadEnd: loadEnd ? loadEnd : () => null,
           };
+        });
 
-          return [dateItem, ...item];
-        })
-        .flat();
+        const categoryID = item.map((v) => Number(v.contents?.categoryID));
+
+        const dateItem: RenderedItem = {
+          date: v1.date,
+          categoryID: getModeCountMax(categoryID),
+          width: windowWidth,
+          onLoadEnd: () => null,
+        };
+
+        return [dateItem, ...item];
+      });
 
       return data;
     },
@@ -192,7 +190,7 @@ const ScreenShot: React.FC<Props> = (props) => {
       const uri = await resizeImage(url || '');
       const uploadURL = await uploadImageAsync(uri, `public/${uuidv4()}`);
       const u = uploadURL
-        .replace(Constants.manifest?.extra?.STORAGE_URL || '', '')
+        .replace(Constants.expoConfig?.extra?.STORAGE_URL || '', '')
         .split('?')[0];
       urlList.push(u);
       deleteImageURL.push(uploadURL);
@@ -204,7 +202,7 @@ const ScreenShot: React.FC<Props> = (props) => {
     ).format('YYYYMMDD')}_memoir`;
 
     const res = await FileSystem.downloadAsync(
-      `${Constants.manifest?.extra?.IMAGE_MERGE_API}?images=${param}`,
+      `${Constants.expoConfig?.extra?.IMAGE_MERGE_API}?images=${param}`,
       `${FileSystem.documentDirectory}${fileName}.png`
     );
 

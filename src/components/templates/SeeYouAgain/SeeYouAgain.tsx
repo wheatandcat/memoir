@@ -24,7 +24,7 @@ const SeeYouAgain: React.FC<Props> = () => {
                 source={require('../../../img/icon/trust.png')}
                 width={100}
                 height={100}
-                resizeMode="contain"
+                contentFit="contain"
               />
             </View>
             <Text size="base">

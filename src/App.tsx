@@ -22,7 +22,7 @@ import usePrevious from 'hooks/usePrevious';
 import WithProvider from './WithProvider';
 
 Sentry.init({
-  dsn: Constants.manifest?.extra?.SENTRY_DSN,
+  dsn: Constants.expoConfig?.extra?.SENTRY_DSN,
   enableInExpoDevelopment: true,
   debug: Device.isDevice,
 });

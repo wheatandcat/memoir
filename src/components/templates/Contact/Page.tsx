@@ -67,7 +67,7 @@ const Page: React.FC<Props> = (props) => {
             source={require('../../../img/common/intro_06.png')}
             width={100}
             height={100}
-            resizeMode="contain"
+            contentFit="contain"
           />
           <View pt={4}>
             <Text textAlign="center">送信完了しました！</Text>

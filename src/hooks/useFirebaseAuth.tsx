@@ -36,9 +36,9 @@ WebBrowser.maybeCompleteAuthSession();
 
 const nonceGen = (length: number) => {
   let result = '';
-  let characters =
+  const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  let charactersLength = characters.length;
+  const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
@@ -118,14 +118,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const authParam: Partial<Google.GoogleAuthRequestConfig> = {
     responseType: ResponseType.IdToken,
-    expoClientId: Constants.manifest?.extra?.EXPO_GOOGLE_CLIENT_ID,
+    expoClientId: Constants.expoConfig?.extra?.EXPO_GOOGLE_CLIENT_ID,
   };
 
-  if (Constants.manifest?.extra?.APP_ENV === 'production') {
-    authParam.clientId = Constants.manifest?.extra?.GOOGLE_CLIENT_ID;
+  if (Constants.expoConfig?.extra?.APP_ENV === 'production') {
+    authParam.clientId = Constants.expoConfig?.extra?.GOOGLE_CLIENT_ID;
     authParam.androidClientId =
-      Constants.manifest?.extra?.ANDROID_GOOGLE_CLIENT_ID;
-    authParam.iosClientId = Constants.manifest?.extra?.IOS_GOOGLE_CLIENT_ID;
+      Constants.expoConfig?.extra?.ANDROID_GOOGLE_CLIENT_ID;
+    authParam.iosClientId = Constants.expoConfig?.extra?.IOS_GOOGLE_CLIENT_ID;
   }
 
   //console.log('authParam:', authParam);

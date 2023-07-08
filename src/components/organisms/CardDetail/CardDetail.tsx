@@ -98,7 +98,7 @@ const CardDetail: React.FC<Props> = (props) => {
               source={require('../../../img/icon/icon_like.png')}
               width={60}
               height={60}
-              resizeMode="contain"
+              contentFit="contain"
               testID="like"
             />
           </View>
@@ -109,7 +109,7 @@ const CardDetail: React.FC<Props> = (props) => {
               source={require('../../../img/icon/icon_dislike.png')}
               width={60}
               height={60}
-              resizeMode="contain"
+              contentFit="contain"
               testID="dislike"
             />
           </View>
