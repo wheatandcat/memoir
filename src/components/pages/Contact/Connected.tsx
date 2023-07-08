@@ -11,7 +11,7 @@ import Text from 'components/atoms/Text';
 
 type Props = {};
 
-const url = Constants.manifest?.extra?.INQUIRY_API || '';
+const url = Constants.expoConfig?.extra?.INQUIRY_API || '';
 
 export type ConnectedType = {
   userID: string;

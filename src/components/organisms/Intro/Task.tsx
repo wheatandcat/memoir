@@ -25,7 +25,7 @@ const Task: React.FC<Props> = (props) => {
               source={require('../../../img/common/intro_06.png')}
               width={95}
               height={95}
-              resizeMode="contain"
+              contentFit="contain"
             />
           </View>
           <View mt={2}>

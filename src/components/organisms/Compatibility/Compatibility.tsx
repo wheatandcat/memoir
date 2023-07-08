@@ -39,7 +39,7 @@ const Compatibility: React.FC<Props> = (props) => {
             source={require('../../../img/icon/icon_like.png')}
             width={props.size}
             height={props.size}
-            resizeMode="contain"
+            contentFit="contain"
           />
         </TouchableWithoutFeedback>
       </View>
@@ -52,7 +52,7 @@ const Compatibility: React.FC<Props> = (props) => {
             source={require('../../../img/icon/icon_dislike.png')}
             width={props.size}
             height={props.size}
-            resizeMode="contain"
+            contentFit="contain"
           />
         </TouchableWithoutFeedback>
       </View>

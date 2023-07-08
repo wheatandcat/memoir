@@ -29,7 +29,7 @@ const Card: React.FC<Props> = (props) => {
             source={props.source}
             width={95}
             height={95}
-            resizeMode="contain"
+            contentFit="contain"
           />
         </View>
         <View mt={4}>

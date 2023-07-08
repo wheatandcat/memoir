@@ -68,7 +68,7 @@ const usePerformance = (props: Props) => {
   }, []);
 
   const onOutPutTraceData = useCallback(async () => {
-    if (Constants.manifest?.extra?.APP_ENV !== 'review') {
+    if (Constants.expoConfig?.extra?.APP_ENV !== 'review') {
       return;
     }
 
@@ -90,9 +90,7 @@ const usePerformance = (props: Props) => {
         (time > 0 && traceItemRef.current.time > time)
       ) {
         console.log(
-          red +
-            `☠️: [action:${props.traceName}]がalertConfigの想定より処理が重くなっているので確認お願いします` +
-            reset
+          `${red}☠️: [action:${props.traceName}]がalertConfigの想定より処理が重くなっているので確認お願いします${reset}`
         );
       }
     }
