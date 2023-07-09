@@ -20,7 +20,7 @@ const Notification: React.FC<Props> = (props) => {
             source={require('../../../img/icon/icon_edit.png')}
             width={35}
             height={35}
-            resizeMode="contain"
+            contentFit="contain"
           />
         </View>
         <View>

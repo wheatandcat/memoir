@@ -37,3 +37,4 @@ release-service-account.json
 *.log
 coverage
 testResults.json
+storybook.requires.js

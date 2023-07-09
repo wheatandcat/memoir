@@ -1,9 +1,8 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
 import { View } from 'react-native';
-import Text from './';
+import Text from '.';
 
-storiesOf('atoms', module).add('Text', () => (
+const Story = () => (
   <View>
     <Text size="xl2">size:xl2</Text>
     <Text size="xl">size:xl</Text>
@@ -42,4 +41,11 @@ storiesOf('atoms', module).add('Text', () => (
     <Text variants="logo">variants:logo</Text>
     <Text>default</Text>
   </View>
-));
+);
+
+export default {
+  title: 'Text',
+  component: Story,
+};
+
+export const Default = {};

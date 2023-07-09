@@ -21,11 +21,12 @@
     "store:upload": "yarn init:app:production && eas build --profile=production --platform all --non-interactive --auto-submit --no-wait",
     "loki:test": "sh scripts/visual-testing/setup.sh && yarn loki test ; sh scripts/storybook/setup.sh",
     "loki:update": "sh scripts/visual-testing/setup.sh && rm -rf .loki/reference/*.png && yarn loki update ; sh scripts/storybook/setup.sh",
-    "storybook-server": "(adb reverse tcp:7007 tcp:7007 > /dev/null || true) && echo 'y' | start-storybook -p 7007 | react-native start --projectRoot storybook --watchFolders $PWD",
-    "storybook": "yarn init:storybook && yarn storybook-server",
-    "storybook:ios": "yarn init:storybook && yarn expo:start --ios",
-    "storybook:android": "yarn init:storybook && yarn expo:start --android",
-    "prestorybook": "rnstl",
+    "start-server": "react-native-storybook-server",
+    "storybook-generate": "sb-rn-get-stories",
+    "storybook-watch": "sb-rn-watcher",
+    "storybook": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start",
+    "storybook:ios": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --ios",
+    "storybook:android": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --android",
     "build-storybook": "build-storybook",
     "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
@@ -113,13 +114,16 @@
     "@graphql-codegen/typed-document-node": "^2.3.4",
     "@graphql-codegen/typescript-operations": "^2.5.4",
     "@graphql-eslint/eslint-plugin": "^1.1.2",
+    "@react-native-community/datetimepicker": "^6.7.3",
     "@react-native-community/eslint-config": "^3.0.0",
     "@react-native-community/eslint-plugin": "^1.1.0",
-    "@storybook/addon-actions": "^6.5.12",
-    "@storybook/addon-knobs": "^6.4.0",
-    "@storybook/addon-links": "^6.5.12",
-    "@storybook/react-native": "^5.3.23",
-    "@storybook/react-native-server": "^5.3.23",
+    "@react-native-community/slider": "^4.4.2",
+    "@storybook/addon-actions": "^6.5.14",
+    "@storybook/addon-controls": "^6.5.14",
+    "@storybook/addon-ondevice-actions": "^6.5.1",
+    "@storybook/addon-ondevice-controls": "^6.5.1",
+    "@storybook/react-native": "^6.5.1",
+    "@storybook/react-native-server": "^6.5.4",
     "@testing-library/jest-native": "^4.0.11",
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "^11.0.0",
@@ -136,6 +140,7 @@
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.5.0",
     "babel-plugin-module-resolver": "^4.1.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-react": "^7.24.0",
@@ -151,7 +156,6 @@
     "loki": "^0.30.3",
     "mockdate": "^3.0.5",
     "msw": "^0.45.0",
-    "react-native-storybook-loader": "^2.0.4",
     "react-test-renderer": "^18.2.0",
     "reg-keygen-git-hash-plugin": "^0.12.1",
     "reg-notify-github-plugin": "^0.12.1",
@@ -161,15 +165,6 @@
     "ts-unused-exports": "^8.0.0",
     "typescript": "^4.9.4",
     "typesync": "^0.9.2"
-  },
-  "config": {
-    "react-native-storybook-loader": {
-      "searchDir": [
-        "./src"
-      ],
-      "pattern": "**/stories.*",
-      "outputFile": "./storybook/storyLoader.js"
-    }
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [

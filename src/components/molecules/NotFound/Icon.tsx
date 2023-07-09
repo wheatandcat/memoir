@@ -23,7 +23,7 @@ const Icon: React.FC<Props> = (props) => {
   const no = dayjs(props.date).day() % 10;
 
   return (
-    <Image source={icons[no]} width={90} height={90} resizeMode="contain" />
+    <Image source={icons[no]} width={90} height={90} contentFit="contain" />
   );
 };
 
