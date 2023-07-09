@@ -1,7 +1,7 @@
 import Blinking from './Blinking';
 
 export default {
-  title: 'Blinking',
+  title: 'atoms/Blinking',
   component: Blinking,
 };
 

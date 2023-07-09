@@ -21,7 +21,6 @@ import DateText from 'components/molecules/Memoir/DateText';
 import Divider from 'components/atoms/Divider';
 import Loading from 'components/molecules/Overlay/Loading';
 import { Item } from 'hooks/useItemsInPeriodPaging';
-import { useConfig } from 'containers/Config';
 import { uploadImageAsync, deleteImageAsync, resizeImage } from 'lib/image';
 import { v4 as uuidv4 } from 'uuid';
 import Image from 'components/atoms/Image';
@@ -79,8 +78,6 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 };
 
 const ScreenShot: React.FC<Props> = (props) => {
-  const { env } = useConfig();
-
   const viewShot1 = useRef<ViewShot>(null);
   const viewShot2 = useRef<ViewShot>(null);
   const viewShot3 = useRef<ViewShot>(null);
@@ -177,7 +174,7 @@ const ScreenShot: React.FC<Props> = (props) => {
   const sliceItemCount = Math.floor(getData().length / 20) + 1;
 
   const onCapture = useCallback(async () => {
-    if (env === 'storybook') {
+    if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
       //storybookの場合はスルーさせる
       return;
     }
@@ -211,7 +208,7 @@ const ScreenShot: React.FC<Props> = (props) => {
     }
 
     if (res.uri) onShare(res.uri);
-  }, [onShare, env, sliceItemCount, props.startDate, props.endDate]);
+  }, [onShare, sliceItemCount, props.startDate, props.endDate]);
 
   const onLoadEnd = useCallback(() => {
     count.current = count.current + 1;

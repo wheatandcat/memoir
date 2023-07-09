@@ -1,12 +1,15 @@
 ---
-to: <%= absPath %>/stories.tsx
+to: <%= absPath %>/<%= component_name %>.stories.tsx
 ---
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
 import <%= navigationName %>, { Props } from './<%= component_name %>';
 
 const props = (): Props => ({});
 
-storiesOf('<%= storiesPath %>', module).add('<%= component_name %>', () => (
-  <<%= navigationName %> {...props()} />
-));
+export default {
+  title: '<%= storiesPath %>'
+  component: <%= navigationName %>,
+  parameters: {
+    ...props(),
+  }
+};

@@ -71,7 +71,7 @@ const Story = () => (
 );
 
 export default {
-  title: 'Button',
+  title: 'atoms/Button',
   component: Story,
 };
 

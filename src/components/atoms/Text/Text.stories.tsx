@@ -44,7 +44,7 @@ const Story = () => (
 );
 
 export default {
-  title: 'Text',
+  title: 'atoms/Text',
   component: Story,
 };
 

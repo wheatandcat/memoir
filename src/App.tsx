@@ -9,7 +9,6 @@ import { RootSiblingParent } from 'react-native-root-siblings';
 import makeApolloClient from 'lib/apollo';
 import useIsFirstRender from 'hooks/useIsFirstRender';
 import Notification from 'containers/Notification';
-import Config from 'containers/Config';
 import { getFirestoreApp } from 'lib/firebase';
 import { getAppConfig, defaultAppConfig, AppConfig } from 'lib/appConfig';
 import Maintenance from 'components/templates/Maintenance/Page';
@@ -108,15 +107,13 @@ function App() {
     <ActionSheetProvider>
       <SafeAreaProvider>
         <ApolloProvider client={client}>
-          <Config>
-            <Notification>
-              <RecoilRoot>
-                <RootSiblingParent>
-                  <WithProvider />
-                </RootSiblingParent>
-              </RecoilRoot>
-            </Notification>
-          </Config>
+          <Notification>
+            <RecoilRoot>
+              <RootSiblingParent>
+                <WithProvider />
+              </RootSiblingParent>
+            </RecoilRoot>
+          </Notification>
         </ApolloProvider>
       </SafeAreaProvider>
     </ActionSheetProvider>
