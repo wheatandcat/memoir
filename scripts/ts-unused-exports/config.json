@@ -7,6 +7,7 @@
     "containers/tmp/*",
     "src/queries/api/index.ts",
     "src/queries/api/mocks.ts",
-    "src/components/organisms/Memoir/ScreenShot.ios.tsx"
+    "src/components/organisms/Memoir/ScreenShot.ios.tsx",
+    "\\.stories\\.tsx"
   ]
 }
