@@ -27,7 +27,6 @@
     "storybook": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --android",
-    "build-storybook": "build-storybook",
     "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
     "codegen": "yarn download:schema.graphqls &  TZ=Asia/Tokyo graphql-codegen",
