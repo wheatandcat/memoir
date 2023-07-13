@@ -1,12 +1,15 @@
 ---
-to: <%= templatePath %>/stories.tsx
+to: <%= templatePath %>/Page.stories.tsx
 ---
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
 import Page, { Props } from './Page';
 
 const props = (): Props => ({});
 
-storiesOf('<%= storiesPath %>', module).add('Page', () => (
-  <Page {...props()} />
-));
+export default {
+  title: '<%= storiesPath %>'
+  component: Page,
+  parameters: {
+    ...props(),
+  }
+};

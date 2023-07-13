@@ -40,6 +40,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     IMAGE_MERGE_API: process.env.IMAGE_MERGE_API,
     INQUIRY_API: process.env.INQUIRY_API,
     APP_ENV: process.env.APP_ENV,
+    storybookEnabled: process.env.STORYBOOK_ENABLED,
   },
   name: 'memoir',
   scheme: 'com.wheatandcat.memoir',

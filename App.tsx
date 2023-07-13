@@ -5,6 +5,7 @@ import * as Font from 'expo-font';
 import { RobotoCondensed_700Bold } from '@expo-google-fonts/roboto-condensed';
 import { NotoSansJP_700Bold } from '@expo-google-fonts/noto-sans-jp';
 import { LogBox } from 'react-native';
+import Constants from 'expo-constants';
 import App from './src/App';
 
 /*
@@ -75,10 +76,16 @@ const AppContainer = () => {
   );
 };
 
-export default AppContainer;
+let AppEntryPoint = AppContainer;
+
+if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
+  AppEntryPoint = require('./.storybook').default;
+}
 
 const styles = StyleSheet.create({
   root: {
     flex: 1,
   },
 });
+
+export default AppEntryPoint;

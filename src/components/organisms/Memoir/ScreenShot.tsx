@@ -19,8 +19,8 @@ import DateText from 'components/molecules/Memoir/DateText';
 import Divider from 'components/atoms/Divider';
 import Loading from 'components/molecules/Overlay/Loading';
 import { Item } from 'hooks/useItemsInPeriodPaging';
-import { useConfig } from 'containers/Config';
 import Image from 'components/atoms/Image';
+import Constants from 'expo-constants';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {
@@ -74,8 +74,6 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 };
 
 const ScreenShot: React.FC<Props> = (props) => {
-  const { env } = useConfig();
-
   const viewShot = useRef<ViewShot>(null);
   const navigation = useNavigation();
   const count = useRef(0);
@@ -107,15 +105,15 @@ const ScreenShot: React.FC<Props> = (props) => {
   );
 
   const onCapture = useCallback(async () => {
-    if (env === 'storybook') {
+    if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
       //storybookの場合はスルーさせる
       return;
     }
 
     const url = await viewShot.current?.capture?.();
 
-    if (url) onShare('file://' + url);
-  }, [onShare, env]);
+    if (url) onShare(`file://${url}`);
+  }, [onShare]);
 
   const onLoadEnd = useCallback(() => {
     count.current = count.current + 1;
@@ -139,45 +137,43 @@ const ScreenShot: React.FC<Props> = (props) => {
     };
   });
 
-  const data = dateItems
-    .map((v1) => {
-      const sameDateItems = props.items.filter(
-        (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+  const data = dateItems.flatMap((v1) => {
+    const sameDateItems = props.items.filter(
+      (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+    );
+
+    const item: RenderedItem[] = sameDateItems.map((v2, index) => {
+      const user: User | undefined = props.users.find(
+        (v) => v.id === v2.userID
       );
 
-      const item: RenderedItem[] = sameDateItems.map((v2, index) => {
-        const user: User | undefined = props.users.find(
-          (v) => v.id === v2.userID
-        );
-
-        return {
-          date: null,
-          contents: {
-            ...v2,
-            user: user || {
-              id: '',
-              displayName: '',
-              image: '',
-            },
+      return {
+        date: null,
+        contents: {
+          ...v2,
+          user: user || {
+            id: '',
+            displayName: '',
+            image: '',
           },
-          last: sameDateItems.length === index + 1,
-          width: windowWidth,
-          onLoadEnd: onLoadEnd,
-        };
-      });
-
-      const categoryID = item.map((v) => Number(v.contents?.categoryID));
-
-      const dateItem: RenderedItem = {
-        date: v1.date,
-        categoryID: getModeCountMax(categoryID),
+        },
+        last: sameDateItems.length === index + 1,
         width: windowWidth,
-        onLoadEnd: () => null,
+        onLoadEnd: onLoadEnd,
       };
+    });
 
-      return [dateItem, ...item];
-    })
-    .flat();
+    const categoryID = item.map((v) => Number(v.contents?.categoryID));
+
+    const dateItem: RenderedItem = {
+      date: v1.date,
+      categoryID: getModeCountMax(categoryID),
+      width: windowWidth,
+      onLoadEnd: () => null,
+    };
+
+    return [dateItem, ...item];
+  });
 
   return (
     <>
