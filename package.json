@@ -113,7 +113,6 @@
     "@graphql-codegen/typed-document-node": "^2.3.4",
     "@graphql-codegen/typescript-operations": "^2.5.4",
     "@graphql-eslint/eslint-plugin": "^1.1.2",
-    "@react-native-community/datetimepicker": "^6.7.3",
     "@react-native-community/eslint-config": "^3.0.0",
     "@react-native-community/eslint-plugin": "^1.1.0",
     "@react-native-community/slider": "^4.4.2",
