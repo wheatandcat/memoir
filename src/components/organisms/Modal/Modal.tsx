@@ -30,7 +30,7 @@ const Modal: React.FC<Props> = (props) => {
   return (
     <RNModal
       isVisible={props.isVisible}
-      onBackdropPress={props.onClose}
+      onBackdropPress={undefined}
       animationIn="fadeInDown"
       animationOut="fadeOutUp"
       testID={props.testID}
