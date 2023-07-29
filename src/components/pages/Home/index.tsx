@@ -77,7 +77,7 @@ export const Home: React.FC<Props> = (props) => {
   );
 };
 
-export const HomeScreenOption = (title: string = '') => {
+export const HomeScreenOption = (title = '') => {
   return {
     title,
     headerStyle: {
