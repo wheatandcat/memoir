@@ -49,12 +49,12 @@ const renderItem: React.FC<RenderedItemProps> = ({ item }) => {
 };
 
 const MonthInput: React.FC<Props> = (props) => {
-  const months = (): Month[] => {
+  const months = useCallback((): Month[] => {
     const index = Number(props.month);
     const first = props.months.slice(index - 1, 12);
     const last = props.months.slice(0, index - 1);
     return [...first, ...last];
-  };
+  }, [props.month, props.months]);
 
   const [monthItems] = useState(months());
 
@@ -76,6 +76,8 @@ const MonthInput: React.FC<Props> = (props) => {
         month: v,
         onPress: props.onPress,
       }))}
+      firstItem={-1}
+      initialNumToRender={6}
       renderItem={renderItemCall}
       sliderWidth={windowWidth}
       itemWidth={75}
