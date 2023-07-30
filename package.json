@@ -130,7 +130,6 @@
     "@types/jest": "^26.0.24",
     "@types/react": "~18.0.27",
     "@types/react-dom": "~18.0.10",
-    "@types/react-native": "~0.70.6",
     "@types/react-native-app-link": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^4.28.2",
     "@typescript-eslint/eslint-plugin-tslint": "^4.28.2",
