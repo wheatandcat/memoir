@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { RecoilRoot } from 'recoil';
+import * as SplashScreen from 'expo-splash-screen';
 import { AppState } from 'react-native';
 import * as Sentry from 'sentry-expo';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
@@ -70,6 +71,7 @@ function App() {
 
     const apolloClient = await makeApolloClient();
     setClient(apolloClient);
+    await SplashScreen.hideAsync();
   };
 
   useEffect(() => {

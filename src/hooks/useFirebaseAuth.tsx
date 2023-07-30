@@ -8,7 +8,7 @@ import { useRecoilValueLoadable, useRecoilState } from 'recoil';
 import { useCallback, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 import { getFirebaseAuthApp } from 'lib/firebase';
-import { storageKey, getItem, removeItem } from 'lib/storage';
+import { storageKey, getItem, setItem, removeItem } from 'lib/storage';
 import { existAuthUserID } from 'store/selectors';
 import { authUserState, userState } from 'store/atoms';
 import Auth from 'lib/auth';
@@ -62,6 +62,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const [getUser, userQuery] = useLazyQuery(UserDocument, {
     onCompleted: (data) => {
+      setItem(storageKey.AUTHENTICATED_USER_ID_KEY, data?.user?.id);
       setUser((s) => ({
         ...s,
         id: data?.user?.id || '',
@@ -141,9 +142,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const setSession = useCallback(
     async (refresh = false) => {
-      const idToken = await auth.setSession(refresh);
+      const auid = await getItem(storageKey.AUTHENTICATED_USER_ID_KEY);
+      if (auid) {
+        getUser();
+      } else {
+        getExistAuthUser();
+      }
 
-      getExistAuthUser();
+      const idToken = await auth.setSession(refresh);
 
       if (idToken) {
         const authUID = await getItem(storageKey.AUTH_UID_KEY);
@@ -154,7 +160,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser, getExistAuthUser]
+    [setAuthUser, getUser, getExistAuthUser]
   );
 
   const firebaseLogin = useCallback(
@@ -225,6 +231,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const onLogout = useCallback(async () => {
     await auth.logout();
+    await removeItem(storageKey.AUTHENTICATED_USER_ID_KEY);
     await removeItem(storageKey.USER_ID_KEY);
 
     setAuthUser({

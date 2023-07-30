@@ -118,6 +118,8 @@ const DayInput: React.FC<Props> = (props) => {
         day: v,
         onPress: props.onPress,
       }))}
+      firstItem={-1}
+      initialNumToRender={6}
       renderItem={renderItemCall}
       sliderWidth={windowWidth}
       itemWidth={55}
