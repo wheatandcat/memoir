@@ -142,14 +142,13 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
   const setSession = useCallback(
     async (refresh = false) => {
+      const idToken = await auth.setSession(refresh);
       const auid = await getItem(storageKey.AUTHENTICATED_USER_ID_KEY);
       if (auid) {
         getUser();
       } else {
         getExistAuthUser();
       }
-
-      const idToken = await auth.setSession(refresh);
 
       if (idToken) {
         const authUID = await getItem(storageKey.AUTH_UID_KEY);
@@ -167,11 +166,11 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     async (credential: OAuthCredential) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
-          console.log(error);
+          console.log('error:', error);
         }
       );
 
-      console.log(data);
+      console.log('data:', data);
 
       const ok = await setSession(true);
 

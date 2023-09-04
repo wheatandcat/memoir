@@ -42,7 +42,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     APP_ENV: process.env.APP_ENV,
     storybookEnabled: process.env.STORYBOOK_ENABLED,
     eas: {
-      projectId: process.env.PROJECT_ID,
+      projectId: 'bfea9b28-88f3-4e5a-a351-d8ea456c0830',
     },
   },
   name: 'memoir',
