@@ -6,7 +6,7 @@ if (process.env.APP_ENV !== 'production') {
   require('dotenv').config();
 }
 
-const version: string = '1.7.0';
+const version: string = '1.8.0';
 const unix = dayjs().unix().toString();
 
 const appConfig = () => {
@@ -41,6 +41,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     INQUIRY_API: process.env.INQUIRY_API,
     APP_ENV: process.env.APP_ENV,
     storybookEnabled: process.env.STORYBOOK_ENABLED,
+    eas: {
+      projectId: 'bfea9b28-88f3-4e5a-a351-d8ea456c0830',
+    },
   },
   name: 'memoir',
   scheme: 'com.wheatandcat.memoir',
