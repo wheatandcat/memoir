@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "memoir",
+    "slug": "memoir",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/ios-icon.png",
+    "scheme": "memoir",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.wheatandcat.memoir2"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "backgroundColor": "#E3C95D",
+        "foregroundImage": "./assets/android-icon.png"
+      }
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/images/splash-icon.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff"
+        }
+      ]
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
