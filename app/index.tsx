@@ -1,5 +1,5 @@
-import { Text } from "react-native";
+import { Text } from 'react-native';
 
 export default function Page() {
-  return <Text>Top-level page</Text>;
+  return <Text>Top-level pageeeaaaa</Text>;
 }

@@ -1,16 +1,16 @@
 {
   "expo": {
-    "name": "memoir",
-    "slug": "memoir",
+    "name": "memoir2",
+    "slug": "memoir2",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/ios-icon.png",
-    "scheme": "memoir",
+    "scheme": "memoir2",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.wheatandcat.memoir2"
+      "bundleIdentifier": "com.wheatandcat.memoir"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,10 +23,10 @@
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
+          "image": "./assets/splash.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
+          "backgroundColor": "#E3C95D"
         }
       ]
     ],

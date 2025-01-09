@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.0",
+    "@expo/vector-icons": "^14.0.2",
     "@expo-google-fonts/inter": "^0.2.0",
     "@expo-google-fonts/noto-sans-jp": "^0.2.0",
     "@expo-google-fonts/roboto-condensed": "^0.2.0",
@@ -46,8 +47,8 @@
     "@react-native-community/datetimepicker": "8.2.0",
     "@react-native-community/masked-view": "0.1.11",
     "@react-native-picker/picker": "2.9.0",
-    "@react-navigation/native": "^6.0.10",
-    "@react-navigation/stack": "^6.2.1",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/native": "^7.0.14",
     "@types/compare-versions": "^3.3.0",
     "@types/react-native-snap-carousel": "^3.8.5",
     "@types/uuid": "^8.3.4",
@@ -57,6 +58,7 @@
     "expo-apple-authentication": "~7.1.2",
     "expo-application": "~6.0.1",
     "expo-auth-session": "~6.0.1",
+    "expo-blur": "~14.0.1",
     "expo-clipboard": "~7.0.0",
     "expo-constants": "~17.0.3",
     "expo-crypto": "~14.0.1",
@@ -64,6 +66,7 @@
     "expo-file-system": "~18.0.6",
     "expo-font": "~13.0.2",
     "expo-gl": "~15.0.2",
+    "expo-haptics": "~14.0.0",
     "expo-image": "~2.0.3",
     "expo-image-manipulator": "~13.0.5",
     "expo-image-picker": "~16.0.3",
@@ -75,7 +78,9 @@
     "expo-sharing": "~13.0.0",
     "expo-splash-screen": "~0.29.18",
     "expo-status-bar": "~2.0.0",
-    "expo-updates": "~0.26.10",
+    "expo-symbols": "~0.2.0",
+    "expo-system-ui": "~4.0.6",
+    "expo-updates": "~0.26.11",
     "expo-web-browser": "~14.0.1",
     "firebase": "^9.12.1",
     "graphql": "^16.6.0",
@@ -97,6 +102,7 @@
     "react-native-snap-carousel": "https://github.com/LovebugLLC/react-native-snap-carousel.git",
     "react-native-switch-selector": "2.1.4",
     "react-native-view-shot": "~4.0.3",
+    "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "recoil": "^0.7.6",
     "sentry-expo": "~7.0.0",
@@ -166,10 +172,6 @@
     "*.{js,ts,tsx}": [
       "yarn eslint --fix"
     ]
-  },
-  "resolutions": {
-    "@types/react": "^18.0.8",
-    "**/@types/react": "^18.0.8"
   },
   "expo": {
     "doctor": {
