@@ -1,12 +1,18 @@
 import { router } from 'expo-router';
 import { Text, View } from 'react-native';
-import Page from '@/features/top/components/Page';
+import Page from '@/features/top/components/Connected';
+import useUser from '@/hooks/useUser';
 import { useSession } from '../ctx';
 
 export default function SignIn() {
   const { signIn } = useSession();
   return (
-    <Page loading={false} onAppleLogin={() => {}} onGoogleLogin={() => {}} />
+    <Page
+      onSkip={() => {}}
+      setCreate={() => {}}
+      create={false}
+      isExistUser={false}
+    />
   );
 
   /**

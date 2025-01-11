@@ -1,11 +1,11 @@
 import  { memo,type FC } from 'react';
 import { StyleSheet, Platform, TouchableOpacity } from 'react-native';
 import theme from 'config/theme';
-import View from 'components/atoms/View';
-import Text from 'components/atoms/Text';
-import Image from 'components/atoms/Image';
+import View from '@/components/elements/View';
+import Text from '@/components/elements/Text';
+import Image from '@/components/elements/Image';
 import * as AppleAuthentication from 'expo-apple-authentication';
-import type { UseFirebaseAuth } from 'hooks/useFirebaseAuth';
+import type { UseFirebaseAuth } from '@/hooks/useFirebaseAuth';
 
 export type Props = {
   onAppleLogin: UseFirebaseAuth['onAppleLogin'];
@@ -30,7 +30,7 @@ const Form: FC<Props> = (props) => {
           <View style={styles.googleButton}>
             <View>
               <Image
-                source={require('../../../img/icon/icon_google.png')}
+                source={require('@/src/img/icon/icon_google.png')}
                 width={25}
                 height={25}
               />

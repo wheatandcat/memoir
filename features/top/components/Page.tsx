@@ -6,14 +6,14 @@ import {
   Platform,
 } from 'react-native';
 import type { ConnectedType } from '@/src/components/pages/Top/Connected';
-import View from '@/src/components/atoms/View';
-import Text from '@/src/components/atoms/Text';
+import View from '@/components/elements/View';
+import Text from '@/components/elements/Text';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import theme from 'config/theme';
-import Form, { type Props as FormProps } from '@/src/components/organisms/Login/Form';
+import Form, { type Props as FormProps } from '@/components/layouts/Login/Form';
 import { StatusBar } from 'expo-status-bar';
-import Image from '@/src/components/atoms/Image';
-import Loading from '@/src/components/molecules/Overlay/Loading';
+import Image from '@/components/elements/Image';
+import Loading from '@/components/layouts/Overlay/Loading';
 
 export type Props = ConnectedType & FormProps & {};
 

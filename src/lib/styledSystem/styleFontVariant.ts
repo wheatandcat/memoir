@@ -1,4 +1,4 @@
-import { TextStyle } from 'react-native';
+import type { TextStyle } from 'react-native';
 import { variants } from 'config/theme';
 
 export type FontVariants = keyof typeof variants.text;

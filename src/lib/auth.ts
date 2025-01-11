@@ -1,4 +1,4 @@
-import { onAuthStateChanged, User, signOut } from 'firebase/auth';
+import { onAuthStateChanged,  signOut, type User } from 'firebase/auth';
 import { storageKey, setItem, getItem, removeItem } from 'lib/storage';
 import dayjs from 'lib/dayjs';
 import { getFirebaseAuthApp } from 'lib/firebase';

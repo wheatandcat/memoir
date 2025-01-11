@@ -1,11 +1,10 @@
 import  { type FC,memo, useCallback, useState } from 'react';
 import { Platform } from 'react-native';
-import useFirebaseAuth from 'hooks/useFirebaseAuth';
+import useFirebaseAuth from '@/hooks/useFirebaseAuth';
 import { useSetRecoilState } from 'recoil';
-import { homeItemsState } from 'store/atoms';
-import TemplateTop from 'components/templates/Top/Page';
-import Intro from 'components/pages/Intro/Intro';
-import { homeState } from 'store/atoms';
+import { homeItemsState,homeState } from 'store/atoms';
+import Intro from '@/features/top/intro/components/index';
+import Page from './Page';
 
 export type Props = {
   onSkip: () => void;
@@ -66,7 +65,7 @@ const Connected: FC<Props> = (props) => {
   }
 
   return (
-    <TemplateTop
+    <Page
       loading={loading}
       onLogin={onLogin}
       onAppleLogin={async () => {

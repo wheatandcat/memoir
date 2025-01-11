@@ -5,8 +5,8 @@ import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
 import Divider from 'components/atoms/Divider';
 import type { UseFirebaseAuth } from '@/src/hooks/useFirebaseAuth';
-import Form from '@/src/components/organisms/Login/Form';
-import Loading from '@/src/components/molecules/Overlay/Loading';
+import Form from '@/components/layouts/Login/Form';
+import Loading from '@/components/layouts/Overlay/Loading';
 
 export type Props = {
   loading: boolean;
