@@ -23,6 +23,7 @@ const appConfig = () => {
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
+  newArchEnabled: true,
   extra: {
     API_HOST: process.env.API_HOST,
     FIRE_BASE_API_KEY: process.env.FIRE_BASE_API_KEY,

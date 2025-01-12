@@ -4,6 +4,8 @@ import useFirebaseAuth from '@/hooks/useFirebaseAuth';
 import { useSetRecoilState } from 'recoil';
 import { homeItemsState,homeState } from 'store/atoms';
 import Intro from '@/features/top/intro/components/index';
+import { useSession } from '@/ctx';
+import { router } from 'expo-router';
 import Page from './Page';
 
 export type Props = {
@@ -20,6 +22,7 @@ export type ConnectedType = {
 };
 
 const Connected: FC<Props> = (props) => {
+  const { signIn } = useSession();
   const setHomeState = useSetRecoilState(homeState);
   const [loading, setLoading] = useState(false);
 
@@ -53,8 +56,9 @@ const Connected: FC<Props> = (props) => {
       openAddItemModal: true,
     });
 
-    props.setCreate(false);
-  }, [setHomeState, props]);
+    signIn();
+    router.replace('/');
+  }, [setHomeState, signIn]);
 
   if (!setupAuth) {
     return null;

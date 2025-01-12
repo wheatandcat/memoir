@@ -112,6 +112,7 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
+    "@biomejs/biome": "1.9.4",
     "@expo/config": "^10.0.0",
     "@graphql-codegen/cli": "^2.13.7",
     "@graphql-codegen/gql-tag-operations-preset": "^1.6.0",

@@ -1,6 +1,6 @@
 import React from 'react';
-import View from 'components/atoms/View';
-import Text from 'components/atoms/Text';
+import View from '@/components/elements/View';
+import Text from '@/components/elements/Text';
 import Loading, { Props } from './Loading';
 
 const props = (): Props => ({

@@ -1,3 +1,8 @@
 {
-  "cSpell.ignoreWords": ["firestore", "wheatandcat"]
+  "cSpell.ignoreWords": ["firestore", "wheatandcat"],
+  "editor.formatOnSave": true, // 保存時のフォーマット有効化
+  "[javascript][typescript][javascriptreact][typescriptreact][json][jsonc]": {
+    "editor.tabSize": 2, // インデントのサイズ指定（biome.jsonと合わせる）
+    "editor.defaultFormatter": "biomejs.biome" // フォーマッターの指定
+  }
 }

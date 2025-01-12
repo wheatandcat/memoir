@@ -20,7 +20,6 @@ import {
   type OAuthCredential,
   signInWithCredential,
   onAuthStateChanged,
-  GoogleAuthProvider,
   OAuthProvider,
 } from 'firebase/auth';
 import { useLazyQuery, useMutation } from '@apollo/client';
