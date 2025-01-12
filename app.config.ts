@@ -103,7 +103,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   web: {
     favicon: './assets/favicon.png',
   },
-  plugins: ['sentry-expo'],
+  plugins: [
+    'sentry-expo',
+    [
+      'expo-font',
+      {
+        fonts: [
+          'node_modules/@expo-google-fonts/roboto-condensed/RobotoCondensed_700Bold.ttf',
+          'node_modules/@expo-google-fonts/noto-sans-jp/NotoSansJP_700Bold.ttf',
+        ],
+      },
+    ],
+  ],
   description: '',
   hooks: {
     postPublish: [

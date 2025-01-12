@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from 'react';
+import { memo, useCallback, useState, type FC } from 'react';
 import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import * as Notifications from 'expo-notifications';
 import { setItem, storageKey } from 'lib/storage';
@@ -8,17 +8,15 @@ import { useRecoilValue } from 'recoil';
 import { userState } from 'store/atoms';
 import View from '@/components/elements/View';
 import Text from '@/components/elements/Text';
-import Divider from 'components/atoms/Divider';
-import TextInput from 'components/atoms/TextInput';
+import Divider from '@/components/elements/Divider';
+import TextInput from '@/components/elements/TextInput';
 import Button from '@/components/elements/Button';
 import theme from 'config/theme';
 import Auth from 'lib/auth';
 
 const auth = new Auth();
 
-type Props = {};
-
-const Menu: FC<Props> = () => {
+const Debug: FC = () => {
   const user = useRecoilValue(userState);
   const [userID, setUserID] = useState('');
 
@@ -117,7 +115,7 @@ const Menu: FC<Props> = () => {
   );
 };
 
-export default memo(Menu);
+export default memo(Debug);
 
 const styles = StyleSheet.create({
   root: {},

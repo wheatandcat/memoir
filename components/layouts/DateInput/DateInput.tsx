@@ -3,12 +3,12 @@ import { StyleSheet, TouchableOpacity } from 'react-native';
 import Divider from '@/components/elements/Divider';
 import View from '@/components/elements/View';
 import dayjs from 'lib/dayjs';
-import InputYear from 'components/molecules/DateInput/Years';
-import InputMonth from 'components/molecules/DateInput/Months';
-import InputDay from 'components/molecules/DateInput/Days';
 import usePrevious from 'hooks/usePrevious';
 import Text from '@/components/elements/Text';
 import theme from 'config/theme';
+import InputYear from './Years';
+import InputMonth from './Months';
+import InputDay from './Days';
 
 const years = () => {
   const lastYear = dayjs().year();

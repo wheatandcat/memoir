@@ -4,6 +4,7 @@ import useSentryBreadcrumb from 'hooks/useSentryBreadcrumb';
 import IconButton from '@/components/layouts/IconButton';
 import View from '@/components/elements/View';
 import { Stack } from 'expo-router';
+import theme from 'config/theme';
 import Connected from './Connected';
 
 type State = {
@@ -42,6 +43,10 @@ export const Home: FC = () => {
     <>
       <Stack.Screen
         options={{
+          title: '',
+          headerStyle: {
+            backgroundColor: theme().color.primary.main,
+          },
           headerRight: () => (
             <View pr={2} pb={1}>
               <IconButton

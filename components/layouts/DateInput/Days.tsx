@@ -99,7 +99,7 @@ const DayInput: React.FC<Props> = (props) => {
     } else if (currentIndex === selectIndex - 1) {
       carouselRef.current?.snapToNext?.();
     }
-  }, [index, selectIndex]);
+  }, [selectIndex]);
 
   const windowWidth = useWindowDimensions().width;
 

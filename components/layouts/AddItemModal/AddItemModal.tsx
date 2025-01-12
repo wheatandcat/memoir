@@ -15,9 +15,9 @@ import theme from 'config/theme';
 export type Props = {
   item?: NewItem;
   isVisible: boolean;
-  loading: boolean;
   date: string;
   edit?: boolean;
+  loading?: boolean;
   onClose: () => void;
   onAdd: (newItem: NewItem) => void;
 };
@@ -42,6 +42,7 @@ const initialState = (date: string, item?: NewItem): State => {
 
 const AddItemModal: FC<Props> = ({
   edit = false,
+  loading = false,
   ...props
 }) => {
   const [state, setState] = useState<State>(
@@ -94,7 +95,7 @@ const AddItemModal: FC<Props> = ({
     };
 
     props.onAdd(item);
-  }, [props, state]);
+  }, [props.onAdd, state]);
 
   const valid = useCallback(() => {
     if (state.title === '') {
@@ -113,7 +114,7 @@ const AddItemModal: FC<Props> = ({
       isVisible={props.isVisible}
       title={dayjs(props.date).format('YYYY.MM.DD / ddd')}
       titleElement={
-        props.edit ? (
+        edit ? (
           <TouchableOpacity onPress={() => setOpenDate(!openDate)}>
             <View>
               <Text variants="middle" textAlign="center">
@@ -125,14 +126,14 @@ const AddItemModal: FC<Props> = ({
       }
       onClose={props.onClose}
       buttonTitle="入力"
-      disabledButton={!valid() && !props.loading}
+      disabledButton={!valid() && !loading}
       onPress={onAdd}
-      loading={props.loading}
+      loading={loading}
       testID="add_item_modal"
     >
       <View style={styles.root} py={2} px={3}>
         <DateTimePickerModal
-          isVisible={openDate && !!props.edit}
+          isVisible={openDate && !!edit}
           mode="date"
           locale="ja"
           confirmTextIOS="完了"

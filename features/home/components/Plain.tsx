@@ -3,7 +3,7 @@ import type {
   ItemsByDateQuery as Query,
   ItemQueryVariables as Variables,
 } from 'queries/api/index';
-import ErrorPage from 'components/organisms/Error/Error';
+import ErrorPage from '@/components/layouts/Error/Error';
 import type { QueryResult } from '@apollo/client';
 import type { ConnectedType } from "./type";
 import Page from './Page';

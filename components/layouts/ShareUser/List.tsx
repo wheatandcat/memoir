@@ -27,14 +27,14 @@ const List: FC<Props> = (props) => {
       <View>
         <AddButton onAdd={props.onAdd} />
       </View>
-      {relationships.map((v, index) => {
+      {relationships.map((v) => {
         if (v == null) {
-          return <View key={index} style={styles.block} />;
+          return <View key={-1} style={styles.block} />;
         }
 
         return (
           <User
-            key={index}
+            key={v.id}
             loading={props.deleting}
             user={v.user as UserType}
             onDeleteRelationship={props.onDeleteRelationship}

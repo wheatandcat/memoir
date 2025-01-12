@@ -34,14 +34,14 @@ const Text: FC<Props> = ({
   ...props
 }) => {
   const style = {
-    ...styleFontVariant(props),
+    ...styleFontVariant({ variants }),
     ...styleFontSize(props),
     ...styleFontWeight(props),
     ...styleFontColor(props),
     ...styleFontLineHeight(props),
   } as TextStyle;
 
-  return <RNText {...props} style={enhanceStyle(style, props)} />;
+  return <RNText {...props} style={enhanceStyle(style, { ...props, fontFamily })} />;
 };
 
 const enhanceStyle = (style: TextStyle, props: Props) => {
@@ -50,7 +50,8 @@ const enhanceStyle = (style: TextStyle, props: Props) => {
 
   const r = {
     ...style,
-    fontFamily: props.fontFamily,
+    fontFamily: props.fontFamily ,
+    
   };
 
   if (Platform.OS === 'android') {

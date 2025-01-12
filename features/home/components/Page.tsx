@@ -6,10 +6,10 @@ import Cards from '@/components/layouts/Cards/Cards';
 import SettingModal from '@/components/layouts/SettingModal';
 import AddItemModal from '@/components/layouts/AddItemModal';
 import InputDateWrap from '@/components/layouts/InputDateWrap/InputDateWrap';
-import type { ConnectedType } from "./type";
 import GestureRecognizerWrap from '@/components/layouts/Home/GestureRecognizerWrap';
 import type { ItemQuery } from 'queries/api/index';
 import theme from 'config/theme';
+import type { ConnectedType } from "./type";
 
 type Item = ItemQuery['item'];
 
