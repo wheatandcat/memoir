@@ -6,27 +6,28 @@ import Connected from "./Connected";
 type MemoirParams = {
   startDate: string;
   endDate: string;
-  // NOTE: ナビゲーションにstring以外のパラメータを直接渡せないので一旦コメントアウト
-  /*
+  data: string;
+};
+
+type Data = {
   userIDList?: string[];
   categoryID?: number;
   like?: boolean;
   dislike?: boolean;
-  search?: boolean;
-  */
 };
 
 const MemoirScreenShot: React.FC = () => {
-  const { startDate, endDate } = useLocalSearchParams<MemoirParams>();
+  const { startDate, endDate, data } = useLocalSearchParams<MemoirParams>();
+  const parsedData = JSON.parse(data) as Data;
 
   return (
     <Connected
       startDate={startDate}
       endDate={endDate}
-      selectedUserIDList={[]}
-      categoryID={0}
-      like={true}
-      dislike={true}
+      selectedUserIDList={parsedData.userIDList ?? []}
+      categoryID={parsedData.categoryID ?? 0}
+      like={parsedData.like ?? true}
+      dislike={parsedData.dislike ?? true}
     />
   );
 };

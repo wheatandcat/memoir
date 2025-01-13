@@ -1,13 +1,11 @@
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import useHomeItems from "hooks/useHomeItems";
-import usePerformance, { traceEvent } from "hooks/usePerformance";
 import dayjs from "lib/dayjs";
 import { CreateItemDocument, type NewItem } from "queries/api/index";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
-import type { Interaction as SchedulerInteraction } from "scheduler/tracing";
 import { homeDateState, homeItemsState, homeState } from "store/atoms";
 import Plain from "./Plain";
 
@@ -27,9 +25,6 @@ const initialState = (openAddItemModal: boolean): State => ({
 const Connected: React.FC<Props> = (props) => {
 	const router = useRouter();
 	const home = useRecoilValue(homeState);
-	const { onStartTrace, onEndTrace } = usePerformance({
-		traceName: traceEvent.TRACE_EVENT_VIEW_HOME_CHANGE_DATE,
-	});
 	const [addItemLoading, setAddItemLoading] = useState(false);
 
 	const [state, setState] = useState<State>(
@@ -74,13 +69,11 @@ const Connected: React.FC<Props> = (props) => {
 
 	const onChangeDate = useCallback(
 		(date: string) => {
-			onStartTrace(1500);
-
 			setHomeDate({
 				date: dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"),
 			});
 		},
-		[setHomeDate, onStartTrace],
+		[setHomeDate],
 	);
 
 	const onItem = useCallback(
@@ -108,30 +101,6 @@ const Connected: React.FC<Props> = (props) => {
 			},
 		});
 	}, [router]);
-
-	const onRender = useCallback(
-		(
-			id: string,
-			_: "mount" | "update",
-			actualDuration: number,
-			baseDuration: number,
-			startTime: number,
-			commitTime: number,
-			interactions: Set<SchedulerInteraction>,
-		) => {
-			const data = {
-				id,
-				actualDuration,
-				baseDuration,
-				startTime,
-				commitTime,
-				interactions,
-			};
-
-			onEndTrace(data);
-		},
-		[onEndTrace],
-	);
 
 	return (
 		<Plain

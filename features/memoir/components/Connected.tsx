@@ -8,7 +8,6 @@ import {
 } from 'queries/api/index';
 import { type FC, memo, useCallback, useState } from 'react';
 import { useRecoilValue } from 'recoil';
-import type { Interaction as SchedulerInteraction } from 'scheduler/tracing';
 import { userState } from 'store/atoms';
 import Plain from './Plain';
 import type { User } from './type';
@@ -38,9 +37,6 @@ const Connected: FC<Props> = (props) => {
   const [isFilter, setIsFilter] = useState<boolean>(false);
   const user = useRecoilValue(userState);
   const router = useRouter();
-  const { onStartTrace, onEndTrace } = usePerformance({
-    traceName: traceEvent.TRACE_EVENT_VIEW_MEMOIR,
-  });
 
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
@@ -118,16 +114,16 @@ const Connected: FC<Props> = (props) => {
     }
 
     router.push({
-      pathname: '/memoir/screenShot',
+      pathname: '/memoir/screen-shot',
       params: {
         startDate: props.startDate,
         endDate: props.endDate,
-        /*
-        selectedUserIDList: tSelectedUserIDList,
-        categoryID: props.categoryID,
-        like: props.like,
-        dislike: props.dislike,
-        */
+        data: JSON.stringify({
+          selectedUserIDList: tSelectedUserIDList,
+          categoryID: props.categoryID,
+          like: props.like,
+          dislike: props.dislike,
+        }),
       },
     });
   }, [
@@ -135,35 +131,10 @@ const Connected: FC<Props> = (props) => {
     props.endDate,
     router.push,
     selectedUserIDList,
+    props.categoryID,
+    props.like,
+    props.dislike,
   ]);
-
-  const onRender = useCallback(
-    (
-      id: string,
-      phase: 'mount' | 'update',
-      actualDuration: number,
-      baseDuration: number,
-      startTime: number,
-      commitTime: number,
-      interactions: Set<SchedulerInteraction>
-    ) => {
-      const data = {
-        id,
-        actualDuration,
-        baseDuration,
-        startTime,
-        commitTime,
-        interactions,
-      };
-
-      if (phase === 'mount') {
-        onStartTrace(3000);
-      } else if (phase === 'update') {
-        onEndTrace(data);
-      }
-    },
-    [onEndTrace, onStartTrace]
-  );
 
   return (
     <Plain

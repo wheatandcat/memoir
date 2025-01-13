@@ -1,24 +1,24 @@
+import Divider from '@/components/elements/Divider';
+import Text from '@/components/elements/Text';
+import View from '@/components/elements/View';
+import Debug from '@/components/layouts/Debug/Debug';
+import Modal from '@/components/layouts/Modal';
+import theme from 'config/theme';
+import { useNotification } from 'containers/Notification';
+import * as Device from 'expo-device';
+import { ActivityAction, startActivityAsync } from 'expo-intent-launcher';
+import { useRouter } from "expo-router";
+import { removeItem, storageKey } from 'lib/storage';
 import  { type FC, memo, useCallback } from 'react';
 import {
-  StyleSheet,
-  TouchableOpacity,
+  Alert,
   Linking,
   Platform,
-  Alert,
+  StyleSheet,
+  TouchableOpacity,
 } from 'react-native';
-import { useSetRecoilState, useRecoilValue } from 'recoil';
-import { useNavigation } from '@react-navigation/native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Modal from '@/components/layouts/Modal';
-import Divider from '@/components/elements/Divider';
-import * as Device from 'expo-device';
-import { startActivityAsync, ActivityAction } from 'expo-intent-launcher';
-import theme from 'config/theme';
-import Debug from '@/components/layouts/Debug/Debug';
-import { useNotification } from 'containers/Notification';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { authUserState, userState } from 'store/atoms';
-import { storageKey, removeItem } from 'lib/storage';
 
 export type Props = {
   isVisible: boolean;
@@ -26,7 +26,7 @@ export type Props = {
 };
 
 const SettingModal: FC<Props> = (props) => {
-  const navigation = useNavigation<any>();
+	const router = useRouter();
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
   const setUser = useSetRecoilState(userState);
@@ -34,44 +34,44 @@ const SettingModal: FC<Props> = (props) => {
   const onLicence = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('SettingLicence');
-  }, [navigation, props]);
+    router.push('/setting/licence');
+  }, [router, props]);
 
   const onMyPage = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('MyPage');
-  }, [navigation, props]);
+    router.push('/my-page');
+  }, [router, props]);
 
   const onSettingMemoir = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('SettingMemoir');
-  }, [navigation, props]);
+    router.push('/setting/memoir');
+  }, [router, props]);
 
   const onPrivacy = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('Privacy');
-  }, [navigation, props]);
+    router.push('/setting/privacy');
+  }, [router, props]);
 
   const onTerms = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('Terms');
-  }, [navigation, props]);
+    router.push('/setting/terms');
+  }, [router, props]);
 
   const onContact = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('Contact');
-  }, [navigation, props]);
+    router.push('/setting/contact');
+  }, [router, props]);
 
   const onSettingDataManagement = useCallback(() => {
     props.onClose();
 
-    navigation.navigate('SettingDataManagement');
-  }, [navigation, props]);
+    router.push('/setting/data-management');
+  }, [router, props]);
 
   const onLogout = useCallback(async () => {
     await removeItem(storageKey.USER_ID_KEY);
@@ -112,7 +112,7 @@ const SettingModal: FC<Props> = (props) => {
           text: '登録する',
           onPress: () => {
             props.onClose();
-            navigation.navigate('MyPage');
+            router.push('/my-page');
           },
         },
       ]);
@@ -122,8 +122,8 @@ const SettingModal: FC<Props> = (props) => {
 
     props.onClose();
 
-    navigation.navigate('Search');
-  }, [navigation, props, authUser.uid]);
+    router.push('/search');
+  }, [router, props, authUser.uid]);
 
   return (
     <Modal isVisible={props.isVisible} title="設定" onClose={props.onClose}>
