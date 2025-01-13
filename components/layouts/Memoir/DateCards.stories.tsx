@@ -1,10 +1,10 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import { StyleSheet } from 'react-native';
 import View from '@/components/elements/View';
-import theme from 'config/theme';
-import DateCards, { Props } from './DateCards';
 import { items } from '__mockData__/item';
+import theme from 'config/theme';
+import React from 'react';
+import { StyleSheet } from 'react-native';
+import { mockFn } from 'storyBookUtils/index';
+import DateCards, { type Props } from './DateCards';
 
 const props = (): Props => ({
   items: items().map((v) => ({ ...v, userID: 'test' })),

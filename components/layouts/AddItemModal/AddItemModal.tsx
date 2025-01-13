@@ -1,16 +1,16 @@
-import  { memo, useState, useCallback, useEffect, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import Modal from '@/components/layouts/Modal';
+import Text from '@/components/elements/Text';
 import TextInput from '@/components/elements/TextInput';
+import View from '@/components/elements/View';
 import Categories from '@/components/layouts/Categories';
 import Compatibility from '@/components/layouts/Compatibility/Compatibility';
-import Text from '@/components/elements/Text';
+import Modal from '@/components/layouts/Modal';
+import theme from 'config/theme';
+import usePrevious from 'hooks/usePrevious';
 import dayjs from 'lib/dayjs';
 import type { NewItem } from 'queries/api/index';
-import usePrevious from 'hooks/usePrevious';
+import  { type FC, memo, useCallback, useEffect, useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import theme from 'config/theme';
 
 export type Props = {
   item?: NewItem;

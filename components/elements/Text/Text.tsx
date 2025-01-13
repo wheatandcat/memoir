@@ -1,14 +1,14 @@
-import type { FC } from 'react';
-import {
-  Text as RNText,
-  type TextStyle,
-  type TextProps,
-  Platform,
-} from 'react-native';
-import { type FontSize, styleFontSize } from 'lib/styledSystem/styleFontSize';
-import { type FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
 import { type FontColor, styleFontColor } from 'lib/styledSystem/styleFontColor';
 import { styleFontLineHeight } from 'lib/styledSystem/styleFontLineHeight';
+import { type FontSize, styleFontSize } from 'lib/styledSystem/styleFontSize';
+import { type FontWeight, styleFontWeight } from 'lib/styledSystem/styleFontWeight';
+import type { FC } from 'react';
+import {
+  Platform,
+  Text as RNText,
+  type TextProps,
+  type TextStyle,
+} from 'react-native';
 
 import {
   type FontVariants,

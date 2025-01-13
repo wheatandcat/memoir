@@ -1,11 +1,11 @@
-import { memo, useEffect, useState, type FC } from 'react';
-import { StyleSheet, useWindowDimensions,  type ViewStyle } from 'react-native';
-import View from '@/components/elements/View';
+import Category from '@/components/elements/Category';
 import Text from '@/components/elements/Text';
-import Category from 'components/atoms/Category';
+import View from '@/components/elements/View';
+import UserImage from '@/components/layouts/User/Image';
 import theme from 'config/theme';
 import type { Item } from 'queries/api/index';
-import UserImage from 'components/molecules/User/Image';
+import { type FC, memo, useEffect, useState } from 'react';
+import { StyleSheet, type ViewStyle, useWindowDimensions  } from 'react-native';
 
 type User = {
   id: string;

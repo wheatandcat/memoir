@@ -2,12 +2,9 @@ overwrite: true
 schema:
   - ./schema.graphqls
 documents:
-  - './src/queries/**/*.gql'
+  - "./src/queries/**/*.gql"
 generates:
   ./src/queries/api/index.ts:
-    hooks:
-      afterOneFileWrite:
-        - pnpm codegen:lint:fix
     plugins:
       - typescript
       - typescript-operations
@@ -18,12 +15,9 @@ generates:
     config:
       minify: true
   ./src/queries/api/mocks.ts:
-    hooks:
-      afterOneFileWrite:
-        - pnpm prettier --write ./src/queries/api/mocks.ts
     plugins:
       - typescript-mock-data:
-          typesFile: './index.ts'
+          typesFile: "./index.ts"
           terminateCircularRelationships: true
           scalars:
             Time: moment

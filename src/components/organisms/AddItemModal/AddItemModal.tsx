@@ -1,16 +1,17 @@
-import React, { memo, useState, useCallback, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from 'components/atoms/View';
-import Modal from 'components/organisms/Modal';
-import TextInput from 'components/atoms/TextInput';
-import Categories from 'components/organisms/Categories';
-import Compatibility from 'components/organisms/Compatibility/Compatibility';
-import Text from 'components/atoms/Text';
-import dayjs from 'lib/dayjs';
-import type { NewItem } from 'queries/api/index';
-import usePrevious from 'hooks/usePrevious';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import theme from 'config/theme';
+import Text from "components/atoms/Text";
+import TextInput from "components/atoms/TextInput";
+import View from "components/atoms/View";
+import Categories from "components/organisms/Categories";
+import Compatibility from "components/organisms/Compatibility/Compatibility";
+import Modal from "components/organisms/Modal";
+import theme from "config/theme";
+import usePrevious from "hooks/usePrevious";
+import dayjs from "lib/dayjs";
+import type { NewItem } from "queries/api/index";
+import type React from "react";
+import { memo, useCallback, useEffect, useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export type Props = {
   item?: NewItem;
@@ -32,7 +33,7 @@ type State = {
 
 const initialState = (date: string, item?: NewItem): State => {
   return {
-    title: item?.title || '',
+    title: item?.title || "",
     categoryID: item?.categoryID || null,
     date: new Date(date),
     like: item?.like || false,
@@ -40,7 +41,11 @@ const initialState = (date: string, item?: NewItem): State => {
   };
 };
 
-const AddItemModal: React.FC<Props> = (props) => {
+const AddItemModal: React.FC<Props> = ({
+  edit = false,
+  loading = false,
+  ...props
+}) => {
   const [state, setState] = useState<State>(
     initialState(props.date, props.item)
   );
@@ -85,16 +90,16 @@ const AddItemModal: React.FC<Props> = (props) => {
     const item: NewItem = {
       title: state.title,
       categoryID: state.categoryID || 0,
-      date: dayjs(state.date).format('YYYY-MM-DDT00:00:00+09:00'),
+      date: dayjs(state.date).format("YYYY-MM-DDT00:00:00+09:00"),
       like: state.like,
       dislike: state.dislike,
     };
 
     props.onAdd(item);
-  }, [props, state]);
+  }, [props.onAdd, state]);
 
   const valid = useCallback(() => {
-    if (state.title === '') {
+    if (state.title === "") {
       return false;
     }
 
@@ -108,13 +113,13 @@ const AddItemModal: React.FC<Props> = (props) => {
   return (
     <Modal
       isVisible={props.isVisible}
-      title={dayjs(props.date).format('YYYY.MM.DD / ddd')}
+      title={dayjs(props.date).format("YYYY.MM.DD / ddd")}
       titleElement={
-        props.edit ? (
+        edit ? (
           <TouchableOpacity onPress={() => setOpenDate(!openDate)}>
             <View>
               <Text variants="middle" textAlign="center">
-                {dayjs(state.date).format('YYYY.MM.DD / ddd')}
+                {dayjs(state.date).format("YYYY.MM.DD / ddd")}
               </Text>
             </View>
           </TouchableOpacity>
@@ -122,14 +127,14 @@ const AddItemModal: React.FC<Props> = (props) => {
       }
       onClose={props.onClose}
       buttonTitle="入力"
-      disabledButton={!valid() && !props.loading}
+      disabledButton={!valid() && !loading}
       onPress={onAdd}
-      loading={props.loading}
+      loading={loading}
       testID="add_item_modal"
     >
       <View style={styles.root} py={2} px={3}>
         <DateTimePickerModal
-          isVisible={openDate && !!props.edit}
+          isVisible={openDate && !!edit}
           mode="date"
           locale="ja"
           confirmTextIOS="完了"
@@ -169,10 +174,6 @@ const AddItemModal: React.FC<Props> = (props) => {
 };
 
 export default memo(AddItemModal);
-
-AddItemModal.defaultProps = {
-  edit: false,
-};
 
 const styles = StyleSheet.create({
   root: {},
