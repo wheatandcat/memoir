@@ -4,11 +4,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import dayjs from "lib/dayjs";
 import { type NewItem, CreateItemDocument } from "queries/api/index";
 import { useMutation } from "@apollo/client";
-import {
-	homeDateState,
-	homeItemsState,
-	homeState,
-} from "store/atoms";
+import { homeDateState, homeItemsState, homeState } from "store/atoms";
 import useHomeItems from "hooks/useHomeItems";
 import usePerformance, { traceEvent } from "hooks/usePerformance";
 import type { Interaction as SchedulerInteraction } from "scheduler/tracing";
@@ -89,13 +85,9 @@ const Connected: React.FC<Props> = (props) => {
 
 	const onItem = useCallback(
 		(itemID: string) => {
-			router.push(`/item/${itemID}`);
-			/*
-         id: itemID,
-        date: homeDate.date,
-      */
+			router.push(`/items/${itemID}?date=${dayjs(homeDate.date).format("YYYY-MM-DD")}`);
 		},
-		[router],
+		[router, homeDate.date],
 	);
 
 	const onMemoir = useCallback(() => {

@@ -7,7 +7,7 @@ import Categories from 'components/organisms/Categories';
 import Compatibility from 'components/organisms/Compatibility/Compatibility';
 import Text from 'components/atoms/Text';
 import dayjs from 'lib/dayjs';
-import { NewItem } from 'queries/api/index';
+import type { NewItem } from 'queries/api/index';
 import usePrevious from 'hooks/usePrevious';
 import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import theme from 'config/theme';

@@ -35,6 +35,7 @@ const GestureRecognizerWrap: FC<Props> = (props) => {
   }, [props]);
 
   const onPanGestureEvent = useCallback(
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     (event: HandlerStateChangeEvent<any>) => {
       const { nativeEvent } = event;
 

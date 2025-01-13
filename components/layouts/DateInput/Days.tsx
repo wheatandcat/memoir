@@ -61,7 +61,7 @@ const renderItem: FC<RenderedItemProps> = ({ item }) => {
 const DayInput: React.FC<Props> = (props) => {
   const prevFirstDay = usePrevious(props.days[0]);
   const index = Number(props.day);
-  const carouselRef = useRef<Carousel<any>>(null);
+  const carouselRef = useRef<CarouselStatic<RenderedItem>>(null);
 
   const days = useCallback((): string[] => {
     const first = props.days.slice(index - 1, props.days.length);

@@ -58,7 +58,7 @@ const MonthInput: React.FC<Props> = (props) => {
 
   const [monthItems] = useState(months());
 
-  const carouselRef = useRef<Carousel<any>>(null);
+  const carouselRef = useRef<Carousel<RenderedItem>>(null);
   const windowWidth = useWindowDimensions().width;
 
   const renderItemCall = useCallback(

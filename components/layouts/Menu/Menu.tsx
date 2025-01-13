@@ -1,13 +1,14 @@
 import { type FC, memo, useState, useCallback, useRef } from 'react';
 import {
+  Modal,
   StyleSheet,
   type ViewStyle,
   View as RNView,
   TouchableOpacity,
+  TouchableWithoutFeedback
 } from 'react-native';
 import theme from 'config/theme';
 import IconButton from '@/components/layouts/IconButton';
-import RNModal from 'react-native-modal';
 import type { FontColor } from 'lib/styledSystem/styleFontColor';
 import View from '@/components/elements/View';
 import Text from '@/components/elements/Text';
@@ -78,17 +79,18 @@ const Menu: FC<Props> = (props) => {
           onPress={onOpen}
           testID="menu"
         />
-        <RNModal
-          isVisible={open}
-          onBackdropPress={() => setOpen(!open)}
-          animationIn="fadeInRight"
-          animationOut="fadeOutRight"
-          backdropOpacity={0}
-          animationOutTiming={100}
-          onModalHide={onModalHide}
+        <Modal
+          visible={open}
+          transparent
+          onRequestClose={() => {
+            setOpen(!open)
+          }}
+          animationType="fade"
+          onDismiss={onModalHide}
           testID="menu_modal"
         >
-          <View style={[style, styles.menuItem]}>
+          <TouchableWithoutFeedback onPress={() => setOpen(!open)}>
+            <View style={[style, styles.menuItem]}>
             {props.items.map((item, index) => (
               <View key={item.text}>
                 <TouchableOpacity
@@ -102,8 +104,9 @@ const Menu: FC<Props> = (props) => {
                 {index < props.items.length - 1 && <Divider />}
               </View>
             ))}
-          </View>
-        </RNModal>
+            </View>
+          </TouchableWithoutFeedback>
+        </Modal>
       </RNView>
     </>
   );
