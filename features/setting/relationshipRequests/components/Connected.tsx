@@ -1,33 +1,21 @@
-import React, { memo, useState, useCallback } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import useRelationshipRequestsPaging from '@/hooks/useRelationshipRequestsPaging';
+import { useMutation, useQuery } from '@apollo/client';
+import { useRouter } from "expo-router";
 import {
-  RelationshipRequestsDocument,
   AcceptRelationshipRequestDocument,
   NgRelationshipRequestDocument,
-  RelationshipRequestsQueryVariables as Variables,
+  RelationshipRequestsDocument,
+  type RelationshipRequestsQueryVariables as Variables,
 } from 'queries/api/index';
+import type React from 'react';
+import { memo, useCallback, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import useRelationshipRequestsPaging from 'hooks/useRelationshipRequestsPaging';
-import { useQuery, useMutation } from '@apollo/client';
 import Plain from './Plain';
-import { ScreenNavigationProp as RelationshipRequestsScreenNavigationProp } from './';
 
-type Props = {
-  onCallback: () => void;
-};
-
-export type ConnectedType = {
-  acceptRequesting: boolean;
-  ngRequesting: boolean;
-  onLoadMore: (after: string | null) => void;
-  onOK: (followedId: string) => void;
-  onNG: (followedId: string) => void;
-};
-
-const Connected: React.FC<Props> = (props) => {
+const Connected: React.FC = () => {
   const [endCursor, setEndCursor] = useState('');
   const [reloadKey, setReloadKey] = useState('');
-  const navigation = useNavigation<RelationshipRequestsScreenNavigationProp>();
+  const router = useRouter();
 
   const queryResult = useQuery(RelationshipRequestsDocument, {
     variables: {
@@ -56,14 +44,15 @@ const Connected: React.FC<Props> = (props) => {
       reset();
       setEndCursor('');
       setReloadKey(uuidv4());
-      props.onCallback();
 
       const followerId = data.acceptRelationshipRequest.followerId;
       const user = items.find((v) => v.followerId === followerId);
-
-      navigation.navigate('SettingAcceptedRelationship', {
-        displayName: user?.user?.displayName || '',
-        image: user?.user?.image || '',
+      router.push({
+        pathname: '/setting/accepted-relationship',
+        params: {
+          displayName: user?.user?.displayName || '',
+          image: user?.user?.image || '',
+        },
       });
     },
   });
@@ -73,7 +62,6 @@ const Connected: React.FC<Props> = (props) => {
         reset();
         setEndCursor('');
         setReloadKey(uuidv4());
-        props.onCallback();
       },
     });
 

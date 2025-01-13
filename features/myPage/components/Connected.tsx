@@ -61,11 +61,10 @@ const Connected: React.FC = () => {
             skip: false,
           },
         });
-      }
 
-      // NOTE: relationshipRequestsから戻ったときに表示
-      relationshipRequestsData.refetch?.();
-      relationshipsData.refetch?.();
+        relationshipRequestsData.refetch?.();
+        relationshipsData.refetch?.();
+      }
     }, [
       authUser.uid,
       getRelationshipRequests,
