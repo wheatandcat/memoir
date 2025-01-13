@@ -1,10 +1,10 @@
-import React from 'react';
-import { View as RNView, ViewStyle, ViewProps } from 'react-native';
-import { SpaceProps, styleSpace } from 'lib/styledSystem/styleSpace';
+import type { FC } from 'react';
+import { View as RNView, type ViewStyle, type ViewProps } from 'react-native';
+import { type SpaceProps, styleSpace } from 'lib/styledSystem/styleSpace';
 
 type Props = ViewProps & SpaceProps;
 
-const View: React.FC<Props> = (props) => {
+const View: FC<Props> = (props) => {
   const style = {
     ...styleSpace(props),
   } as ViewStyle;

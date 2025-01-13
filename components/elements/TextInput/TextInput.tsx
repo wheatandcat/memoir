@@ -1,9 +1,9 @@
-import React from 'react';
+import type { FC } from 'react';
 import {
   TextInput as RNTextInput,
-  TextInputProps,
+  type TextInputProps,
   StyleSheet,
-  TextStyle,
+  type TextStyle,
 } from 'react-native';
 import View from 'components/atoms/View';
 import theme from 'config/theme';
@@ -11,7 +11,7 @@ import useAutoFocusInput from 'hooks/useAutoFocusInput';
 
 type Props = TextInputProps;
 
-const TextInput: React.FC<Props> = (props) => {
+const TextInput: FC<Props> = (props) => {
   const autoFocusProps = useAutoFocusInput(props.autoFocus || false);
 
   const style: TextStyle[] = [styles.text];

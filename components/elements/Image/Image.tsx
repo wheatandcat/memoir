@@ -1,13 +1,13 @@
-import React from 'react';
-import { Image as RNImage, ImageProps, ImageStyle } from 'expo-image';
+import type { FC } from "react";
+import { Image as RNImage, type ImageProps, type ImageStyle } from "expo-image";
 
 export type Props = ImageProps & {
   style?: ImageStyle;
-  width?: number | string;
-  height?: number | string;
+  width?: number;
+  height?: number;
 };
 
-const Image: React.FC<Props> = (props) => {
+const Image: FC<Props> = (props) => {
   const { width, height, ...imageProps } = props;
   const style: ImageStyle = {};
   if (width) style.width = width;

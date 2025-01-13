@@ -27,10 +27,9 @@
     "storybook": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --android",
-    "lint": "eslint --ext .js,.ts,.tsx 'src/**'",
+    "lint": "expo lint",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
     "codegen": "pnpm download:schema.graphqls &  TZ=Asia/Tokyo graphql-codegen",
-    "codegen:lint:fix": "eslint --fix ./src/queries/api/index.ts",
     "test": "jest",
     "prepare": "husky install",
     "unused-exports": "node ./scripts/ts-unused-exports",
@@ -119,7 +118,6 @@
     "@graphql-codegen/introspection": "^2.2.1",
     "@graphql-codegen/typed-document-node": "^2.3.4",
     "@graphql-codegen/typescript-operations": "^2.5.4",
-    "@graphql-eslint/eslint-plugin": "^1.1.2",
     "@react-native-community/eslint-config": "^3.0.0",
     "@react-native-community/eslint-plugin": "^1.1.0",
     "@react-native-community/slider": "4.5.5",
@@ -133,22 +131,14 @@
     "@testing-library/react-hooks": "^8.0.1",
     "@testing-library/react-native": "^11.0.0",
     "@types/babel__core": "~7.1.15",
-    "@types/eslint": "^7.28.0",
     "@types/jest": "^26.0.24",
     "@types/react": "~18.3.12",
     "@types/react-dom": "~18.3.1",
     "@types/react-native-app-link": "^1.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.2",
-    "@typescript-eslint/eslint-plugin-tslint": "^4.28.2",
-    "@typescript-eslint/parser": "^4.28.2",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.5.0",
     "babel-plugin-module-resolver": "^4.1.0",
     "cross-env": "^7.0.3",
-    "eslint": "^7.30.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-react": "^7.24.0",
-    "eslint-plugin-react-native": "^3.11.0",
     "graphql-codegen-typescript-mock-data": "^2.2.5",
     "husky": "^8.0.1",
     "hygen": "^6.2.11",
@@ -172,7 +162,7 @@
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
-      "pnpm eslint --fix"
+      "pnpm lint"
     ]
   },
   "expo": {

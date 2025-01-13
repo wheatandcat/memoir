@@ -1,11 +1,11 @@
-import React from 'react';
-import { View, StyleSheet, ViewStyle } from 'react-native';
+import type { FC } from 'react';
+import { View, StyleSheet, type ViewStyle } from 'react-native';
 import theme from 'config/theme';
-import { SpaceProps, styleSpace } from 'lib/styledSystem/styleSpace';
+import { type SpaceProps, styleSpace } from 'lib/styledSystem/styleSpace';
 
 type Props = {} & SpaceProps;
 
-const Divider: React.FC<Props> = (props) => {
+const Divider: FC<Props> = (props) => {
   const style = {
     ...styleSpace(props),
   } as ViewStyle;

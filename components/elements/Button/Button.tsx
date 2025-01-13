@@ -7,8 +7,8 @@ import {
   Platform,
 } from 'react-native';
 import theme from 'config/theme';
-import View from 'components/atoms/View';
-import Text, { type FontFamily } from 'components/atoms/Text';
+import View from '@/components/elements/View';
+import Text, { type FontFamily } from '@/components/elements/Text';
 
 export type Props = {
   size?: 'sm' | 'base' | 'lg';

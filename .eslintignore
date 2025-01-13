@@ -1,4 +1,0 @@
-*.png
-src/licenses.json
-src/queries/api/index.ts
-src/queries/api/mocks.ts

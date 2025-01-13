@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import { ImageProps } from 'react-native';
+import { memo , type FC} from 'react';
+import type { ImageProps } from 'react-native';
 import Image from 'components/atoms/Image';
 import { icon } from './setting';
 
@@ -8,7 +8,7 @@ type Props = {
   onLoadEnd?: ImageProps['onLoadEnd'];
 };
 
-const Category: React.FC<Props> = (props) => {
+const Category: FC<Props> = (props) => {
   const s = icon(props.categoryID);
 
   return (
