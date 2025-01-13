@@ -81,15 +81,15 @@ const Connected: React.FC = () => {
   }, [router]);
 
   const onUpdateProfile = useCallback(() => {
-    router.push("my-page/updateProfile");
+    router.push("my-page/update-profile");
   }, [router]);
 
   const onAddShareUser = useCallback(() => {
-    router.push("/setting/addShareUser");
+    router.push("/setting/add-share-user");
   }, [router]);
 
   const onRelationshipRequests = useCallback(() => {
-    router.push("/setting/relationshipRequests");
+    router.push("/setting/relationship-requests");
   }, [router]);
 
   const onDeleteRelationship = useCallback(

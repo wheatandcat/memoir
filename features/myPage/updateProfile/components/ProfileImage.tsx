@@ -1,15 +1,15 @@
-import  { memo, useState, useCallback, type FC } from 'react';
-import { StyleSheet, Alert, TouchableOpacity } from 'react-native';
-import {
-  useActionSheet,
-  connectActionSheet,
-} from '@expo/react-native-action-sheet';
-import * as ImagePicker from 'expo-image-picker';
-import View from '@/components/elements/View';
 import Text from '@/components/elements/Text';
-import theme from 'config/theme';
-import { resizeImage } from 'lib/image';
+import View from '@/components/elements/View';
 import UserImage from '@/components/layouts/User/Image';
+import {
+  connectActionSheet,
+  useActionSheet,
+} from '@expo/react-native-action-sheet';
+import theme from 'config/theme';
+import * as ImagePicker from 'expo-image-picker';
+import { resizeImage } from 'lib/image';
+import  { type FC, memo, useCallback, useState } from 'react';
+import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
 
 export type Props = {
   authenticated: boolean;

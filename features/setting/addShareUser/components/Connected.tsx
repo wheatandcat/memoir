@@ -1,46 +1,21 @@
-import React, { memo, useCallback } from 'react';
-import { Alert } from 'react-native';
+import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
 import {
-  InviteQuery,
-  InviteByCodeQueryVariables,
-  CreateRelationshipRequestMutationVariables,
-  CreateRelationshipRequestMutation,
-  InviteDocument,
-  InviteByCodeDocument,
-  UpdateInviteDocument,
   CreateInviteDocument,
   CreateRelationshipRequestDocument,
+  type CreateRelationshipRequestMutationVariables,
+  InviteByCodeDocument,
+  type InviteByCodeQueryVariables,
+  InviteDocument,
+  UpdateInviteDocument,
 } from 'queries/api/index';
+import type React from 'react';
+import { memo, useCallback } from 'react';
+import { Alert } from 'react-native';
 import { useRecoilValue } from 'recoil';
-import { userState, User } from 'store/atoms';
-import { useQuery, useLazyQuery, useMutation } from '@apollo/client';
+import { userState } from 'store/atoms';
 import Plain from './Plain';
 
-type Props = {};
-
-export type Invite = InviteQuery['invite'];
-
-export type ConnectedType = {
-  user: User;
-  requestUser:
-    | CreateRelationshipRequestMutation['createRelationshipRequest']['user']
-    | null;
-  onCreateInvite: () => void;
-  onUpdateInvite: () => void;
-  onSearchInviteCode: (code: string) => void;
-  onCreateRelationshipRequest: (code: string) => void;
-  creating: boolean;
-  updating: boolean;
-  loading: boolean;
-  requesting: boolean;
-  confirmUser: {
-    id: string;
-    displayName: string;
-    image: string;
-  } | null;
-};
-
-const Connected: React.FC<Props> = () => {
+const Connected: React.FC = () => {
   const { loading, data, error, refetch } = useQuery(InviteDocument);
   const [getInviteByCode, inviteByCodeData] = useLazyQuery(
     InviteByCodeDocument,
