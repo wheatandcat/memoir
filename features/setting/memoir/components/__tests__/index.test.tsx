@@ -1,10 +1,10 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
 import { screen } from '@testing-library/react-native';
-import * as useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
 import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
+import * as useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
+import { testRenderer } from 'lib/testUtil';
+import React from 'react';
 
-import IndexPage, { Props } from '../';
+import IndexPage, { type Props } from '../';
 
 const propsData = (): Props =>
   ({

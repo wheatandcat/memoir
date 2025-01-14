@@ -1,25 +1,13 @@
-import React, { memo, useCallback } from 'react';
-import * as Notifications from 'expo-notifications';
-import { useNavigation } from '@react-navigation/native';
-import useMemoirNotificationSetting from 'hooks/useMemoirNotificationSetting';
-import { useNotification } from 'containers/Notification';
-import Plain from './Plain';
-
-type Props = {};
-
-export type ConnectedType = {
-  onSave: (input: Input) => void;
-};
-
-type Input = {
-  dayOfWeek: number;
-  hours: number;
-  minutes: number;
-  notification: boolean;
-};
-
-const Connected: React.FC<Props> = () => {
-  const navigation = useNavigation();
+import { useNotification } from "containers/Notification";
+import * as Notifications from "expo-notifications";
+import { useRouter } from "expo-router";
+import useMemoirNotificationSetting from "hooks/useMemoirNotificationSetting";
+import type React from "react";
+import { memo, useCallback } from "react";
+import Plain from "./Plain";
+import type { Input } from "./type";
+const Connected: React.FC = () => {
+  const router = useRouter();
   const memoirNotificationSetting = useMemoirNotificationSetting();
   const { onPermissionRequest } = useNotification();
 
@@ -35,7 +23,7 @@ const Connected: React.FC<Props> = () => {
           await Notifications.cancelAllScheduledNotificationsAsync();
 
           const trigger = {
-            channelId: 'memoir',
+            channelId: "memoir",
             hour: input.hours,
             minute: input.minutes,
             weekday: input.dayOfWeek,
@@ -45,15 +33,15 @@ const Connected: React.FC<Props> = () => {
           try {
             await Notifications.scheduleNotificationAsync({
               content: {
-                body: 'ふりかえりの時間になりました',
+                body: "ふりかえりの時間になりました",
                 data: {
-                  urlScheme: 'Memoir',
+                  urlScheme: "Memoir",
                 },
               },
               trigger,
             });
           } catch (e) {
-            console.log('err:', e);
+            console.log("err:", e);
           }
         }
       } else {
@@ -63,9 +51,9 @@ const Connected: React.FC<Props> = () => {
 
       memoirNotificationSetting.onSave(input);
 
-      navigation.goBack();
+      router.back();
     },
-    [navigation, memoirNotificationSetting, onPermissionRequest]
+    [router, memoirNotificationSetting, onPermissionRequest]
   );
 
   return (

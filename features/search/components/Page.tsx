@@ -1,46 +1,36 @@
-import Button from 'components/atoms/Button';
-import Divider from 'components/atoms/Divider';
-import Text from 'components/atoms/Text';
-import View from 'components/atoms/View';
-import Compatibility from 'components/organisms/Compatibility/Compatibility';
-import InputCategory from 'components/organisms/Search/Input/InputCategory';
-import InputDate, {
-  type Props as InputDateProps,
-} from 'components/organisms/Search/Input/InputDate';
-import InputUsers from 'components/organisms/Search/Input/InputUsers';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import type { User } from 'queries/api/index';
-import type React from 'react';
-import { memo, useState } from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
-
+import Button from "@/components/elements/Button";
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import Compatibility from "@/components/layouts/Compatibility/Compatibility";
+import InputCategory from "@/components/layouts/Search/Input/InputCategory";
+import InputDate from "@/components/layouts/Search/Input/InputDate";
+import InputUsers from "@/components/layouts/Search/Input/InputUsers";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import type { User } from "queries/api/index";
+import { type FC, memo, useState } from "react";
+import { ScrollView, StyleSheet } from "react-native";
+import type { Input } from "./type";
 export type Props = {
-  users: Pick<User, 'id' | 'image'>[];
+  users: Pick<User, "id" | "image">[];
   onSearch: (input: State) => void;
 };
 
-export type State = {
-  startDate: InputDateProps['startDate'];
-  endDate: InputDateProps['endDate'];
-  userIDList: string[];
-  categoryID: number;
-  like: boolean;
-  dislike: boolean;
-};
+export type State = Input;
 
 const initialState = (): State => ({
   startDate: new Date(
-    dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00')
+    dayjs().add(-6, "day").format("YYYY-MM-DDT00:00:00+09:00")
   ),
-  endDate: new Date(dayjs().format('YYYY-MM-DDT00:00:00+09:00')),
+  endDate: new Date(dayjs().format("YYYY-MM-DDT00:00:00+09:00")),
   userIDList: [],
   categoryID: 0,
   like: false,
   dislike: false,
 });
 
-const Page: React.FC<Props> = (props) => {
+const Page: FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
 
   const error = dayjs(state.startDate).isAfter(state.endDate);
@@ -103,7 +93,7 @@ const Page: React.FC<Props> = (props) => {
               lineHeight={20}
               color="secondaryLight"
             >
-              カテゴリー{'\n'}※1つのみ選択可能
+              カテゴリー{"\n"}※1つのみ選択可能
             </Text>
           </View>
           <InputCategory
@@ -170,25 +160,25 @@ const Page: React.FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.light,
-    height: '100%',
+    height: "100%",
   },
   inner: {
-    alignItems: 'center',
-    width: '100%',
+    alignItems: "center",
+    width: "100%",
     marginBottom: theme().space(6),
   },
   divider: {
-    width: '80%',
+    width: "80%",
   },
   actionContainer: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
     bottom: theme().space(3),
   },
 
   action: {
-    width: '80%',
+    width: "80%",
   },
 });
 

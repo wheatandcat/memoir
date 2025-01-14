@@ -1,11 +1,11 @@
-import React, { memo, useState, useCallback } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
 import Text from '@/components/elements/Text';
+import View from '@/components/elements/View';
 import theme from 'config/theme';
-import RNPickerSelect from 'react-native-picker-select';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
 import dayjs from 'lib/dayjs';
+import  { type FC, memo, useCallback,useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
+import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import RNPickerSelect from 'react-native-picker-select';
 
 export type Props = {
   dayOfWeek: number;

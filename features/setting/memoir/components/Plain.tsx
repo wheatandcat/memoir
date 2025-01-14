@@ -1,8 +1,9 @@
-import React, { memo } from 'react';
-import Loading from 'components/atoms/Loading';
-import TemplateSettingMemoir from 'components/templates/Setting/Memoir/Page';
-import { State as MemoirNotificationSettingState } from 'hooks/useMemoirNotificationSetting';
-import { ConnectedType } from './Connected';
+import Loading from "@/components/elements/Loading";
+import type { State as MemoirNotificationSettingState } from "@/hooks/useMemoirNotificationSetting";
+import type React from "react";
+import { memo } from "react";
+import Page from "./Page";
+import type { ConnectedType } from "./type";
 
 type Props = ConnectedType & {
   data: MemoirNotificationSettingState;
@@ -13,7 +14,7 @@ const Plain: React.FC<Props> = (props) => {
   if (props.loading) return <Loading />;
 
   return (
-    <TemplateSettingMemoir
+    <Page
       onSave={props.onSave}
       dayOfWeek={props.data.dayOfWeek}
       hours={props.data.hours}

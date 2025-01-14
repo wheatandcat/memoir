@@ -8,19 +8,23 @@ import Connected from './Connected';
 type MemoirParams = {
   startDate: string;
   endDate: string;
-  // NOTE: ナビゲーションにstring以外のパラメータを直接渡せないので一旦コメントアウト
-  /*
+    data: string;
+};
+
+
+type Data = {
   userIDList?: string[];
   categoryID?: number;
   like?: boolean;
   dislike?: boolean;
   search?: boolean;
-  */
 };
+
 
 const Memoir: FC = () => {
   useSentryBreadcrumb();
-  const { startDate, endDate } = useLocalSearchParams<MemoirParams>();
+  const { startDate, endDate, data } = useLocalSearchParams<MemoirParams>();
+  const parsedData = JSON.parse(data) as Data;
 
   return (
     <Connected
@@ -28,11 +32,11 @@ const Memoir: FC = () => {
         startDate || dayjs().add(-6, 'day').format('YYYY-MM-DDT00:00:00+09:00')
       }
       endDate={endDate || dayjs().format('YYYY-MM-DDT00:00:00+09:00')}
-      userIDList={[]}
-      categoryID={0}
-      like={true}
-      dislike={true}
-      search={true}
+      userIDList={parsedData.userIDList ?? []}
+      categoryID={parsedData.categoryID ?? 0}
+      like={parsedData.like ?? true}
+      dislike={parsedData.dislike ?? true}
+      search={parsedData.search ?? false}
     />
   );
 };
