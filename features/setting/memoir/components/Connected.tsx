@@ -1,7 +1,7 @@
+import useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
 import { useNotification } from "containers/Notification";
 import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
-import useMemoirNotificationSetting from "hooks/useMemoirNotificationSetting";
 import type React from "react";
 import { memo, useCallback } from "react";
 import Plain from "./Plain";

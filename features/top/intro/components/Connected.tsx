@@ -1,23 +1,12 @@
-import { memo, useCallback, type FC } from "react";
-import * as Notifications from "expo-notifications";
-import useMemoirNotificationSetting from "hooks/useMemoirNotificationSetting";
+import useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
 import { useNotification } from "containers/Notification";
+import * as Notifications from "expo-notifications";
+import { type FC, memo, useCallback } from "react";
 import Plain from "./Plain";
+import type { Input } from "./type";
 
 type Props = {
 	onFinish: () => void;
-};
-
-export type ConnectedType = {
-	onSaveNotification: (input: Input, callback: () => void) => void;
-	onFinish: () => void;
-};
-
-type Input = {
-	dayOfWeek: number;
-	hours: number;
-	minutes: number;
-	notification: boolean;
 };
 
 const Connected: FC<Props> = (props) => {

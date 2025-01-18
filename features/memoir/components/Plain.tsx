@@ -1,6 +1,6 @@
 import ErrorPage from "@/components/layouts/Error/Error";
+import type { Item, ItemsInPeriodPageInfo } from "@/hooks/useItemsInPeriodPaging";
 import type { QueryResult } from "@apollo/client";
-import type { Item, ItemsInPeriodPageInfo } from "hooks/useItemsInPeriodPaging";
 import type {
   ItemsInPeriodQuery as Query,
   ItemsInPeriodQueryVariables as Variables,

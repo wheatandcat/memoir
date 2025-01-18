@@ -1,18 +1,18 @@
-import React from "react";
-import { graphql } from "msw";
-import { ItemDocument, UpdateItemDocument } from "queries/api/index";
-import { item } from "__mockData__/item";
-import * as Recoil from "recoil";
-import * as useHomeItems from "hooks/useHomeItems";
-import { testRenderer } from "lib/testUtil";
+import * as useHomeItems from "@/hooks/useHomeItems";
 import {
+	fireEvent,
 	screen,
 	waitFor,
-	fireEvent,
 	waitForElementToBeRemoved,
 } from "@testing-library/react-native";
-import ItemDetail, { Props } from "../";
-import { Props as ConnectedProps } from "../Connected";
+import { item } from "__mockData__/item";
+import { testRenderer } from "lib/testUtil";
+import { graphql } from "msw";
+import { ItemDocument, UpdateItemDocument } from "queries/api/index";
+import React from "react";
+import * as Recoil from "recoil";
+import ItemDetail, { type Props } from "../";
+import type { Props as ConnectedProps } from "../Connected";
 
 const propsData = (props?: Partial<ConnectedProps>): Props =>
 	({

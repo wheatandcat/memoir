@@ -1,30 +1,30 @@
-import { type FC, memo, useRef, useCallback, useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  useWindowDimensions,
-  Alert,
-  View as RNView,
-} from 'react-native';
+import Divider from '@/components/elements/Divider';
+import Image from '@/components/elements/Image';
+import Loading from '@/components/elements/Loading';
+import View from '@/components/elements/View';
+import DateText from '@/components/layouts/Memoir/DateText';
+import Header from '@/components/layouts/Memoir/Header';
+import type { Props as PlainProps } from '@/features/memoir/components/Plain';
+import type { Item } from '@/hooks/useItemsInPeriodPaging';
+import { useNavigation } from '@react-navigation/native';
+import theme from 'config/theme';
+import Constants from 'expo-constants';
 import * as FileSystem from 'expo-file-system';
 import * as Sharing from 'expo-sharing';
-import ViewShot from 'react-native-view-shot';
-import View from '@/components/elements/View';
-import { useNavigation } from '@react-navigation/native';
 import dayjs from 'lib/dayjs';
-import theme from 'config/theme';
-import type { Props as PlainProps } from 'components/pages/Memoir/ScreenShot/Plain';
-import type { User as TUser } from 'store/atoms';
-import Header from 'components/molecules/Memoir/Header';
+import { deleteImageAsync, resizeImage, uploadImageAsync } from 'lib/image';
 import { getModeCountMax } from 'lib/utility';
-import DateText from 'components/molecules/Memoir/DateText';
-import Divider from 'components/atoms/Divider';
-import Loading from 'components/molecules/Overlay/Loading';
-import type { Item } from 'hooks/useItemsInPeriodPaging';
-import { uploadImageAsync, deleteImageAsync, resizeImage } from 'lib/image';
+import { type FC, memo, useCallback, useRef, useState } from 'react';
+import {
+  Alert,
+  View as RNView,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
+import ViewShot from 'react-native-view-shot';
+import type { User as TUser } from 'store/atoms';
 import { v4 as uuidv4 } from 'uuid';
-import Image from '@/components/elements/Image';
-import Constants from 'expo-constants';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {

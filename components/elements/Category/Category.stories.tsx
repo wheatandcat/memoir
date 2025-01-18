@@ -1,10 +1,10 @@
-import React from 'react';
-import View from 'components/atoms/View';
-import Category from './Category';
-import setting from './setting';
+import View from "@/components/elements/View";
+import React from "react";
+import Category from "./Category";
+import setting from "./setting";
 
 export default {
-  title: 'atoms',
+  title: "atoms",
 };
 
 export const _Category = () => (

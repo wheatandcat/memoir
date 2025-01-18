@@ -1,7 +1,7 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
 import { screen } from '@testing-library/react-native';
-import Button, { Props } from '../';
+import { testRenderer } from 'lib/testUtil';
+import React from 'react';
+import Button, { type Props } from '../';
 
 const propsData = (): Props => ({
   size: 'sm',
@@ -12,7 +12,7 @@ const propsData = (): Props => ({
   onPress: jest.fn(),
 });
 
-describe('components/atoms/Button/Button.tsx', () => {
+describe('@/components/elements/Button/Button.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Button {...propsData()} />)();
     expect(screen.findAllByText('title')).toBeTruthy();

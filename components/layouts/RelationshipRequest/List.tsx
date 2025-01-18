@@ -1,11 +1,11 @@
-import { type FC, memo, useCallback } from 'react';
-import { StyleSheet, FlatList, type ListRenderItemInfo } from 'react-native';
+import Loading from '@/components/elements/Loading';
 import View from '@/components/elements/View';
-import Loading from 'components/atoms/Loading';
+import type { Props as TemplatesProps } from '@/features/setting/relationshipRequests/components/Page';
 import theme from 'config/theme';
-import Card from 'components/organisms/RelationshipRequest/Card';
-import NotFound from 'components/molecules/RelationshipRequest/NotFound';
-import type { Props as TemplatesProps } from 'components/templates/Setting/RelationshipRequests/Page';
+import { type FC, memo, useCallback } from 'react';
+import { FlatList, type ListRenderItemInfo, StyleSheet } from 'react-native';
+import Card from './Card';
+import NotFound from './NotFound';
 
 export type Props = TemplatesProps;
 

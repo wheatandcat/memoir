@@ -1,14 +1,14 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
+import Text from '@/components/elements/Text';
+import View from '@/components/elements/View';
+import Notification from '@/components/layouts/RelationshipRequest/Notification';
+import ShareUsers from '@/components/layouts/ShareUser/List';
+import UserImage from '@/components/layouts/User/Image';
+import type { ConnectedType } from '@/features/myPage/components/type';
 import { MaterialIcons } from '@expo/vector-icons';
 import theme from 'config/theme';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
+import { type FC, memo } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import type { User } from 'store/atoms';
-import UserImage from 'components/molecules/User/Image';
-import ShareUsers from 'components/organisms/ShareUser/List';
-import Notification from 'components/organisms/RelationshipRequest/Notification';
-import type { ConnectedType } from 'components/pages/MyPage/Connected';
 
 export type Props = {
   user: User;

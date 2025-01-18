@@ -1,6 +1,6 @@
-import { memo , type FC} from 'react';
+import Image from '@/components/elements/Image';
+import { type FC, memo  } from 'react';
 import type { ImageProps } from 'react-native';
-import Image from 'components/atoms/Image';
 import { icon } from './setting';
 
 type Props = {

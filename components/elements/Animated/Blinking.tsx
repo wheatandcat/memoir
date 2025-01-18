@@ -1,6 +1,7 @@
-import React, { useRef, useEffect, memo } from 'react';
-import { Animated } from 'react-native';
-import useIsFirstRender from 'hooks/useIsFirstRender';
+import useIsFirstRender from "@/hooks/useIsFirstRender";
+import type React from "react";
+import { memo, useEffect, useRef } from "react";
+import { Animated } from "react-native";
 
 export type Props = {
   children?: React.ReactNode;

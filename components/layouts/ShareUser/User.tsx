@@ -1,11 +1,11 @@
-import  { memo, useCallback, type FC } from 'react';
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import View from '@/components/elements/View';
 import Text from '@/components/elements/Text';
-import UserImage from 'components/molecules/User/Image';
-import type { User as UserType } from 'store/atoms';
-import theme from 'config/theme';
+import View from '@/components/elements/View';
+import UserImage from '@/components/layouts/User/Image';
 import type { ConnectedType } from 'components/pages/MyPage/Connected';
+import theme from 'config/theme';
+import  { type FC, memo, useCallback } from 'react';
+import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
+import type { User as UserType } from 'store/atoms';
 
 export type Props = {
   loading: boolean;

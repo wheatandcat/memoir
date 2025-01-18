@@ -1,10 +1,10 @@
 import Loading from "@/components/elements/Loading";
 import ErrorPage from "@/components/layouts/Error/Error";
-import type { QueryResult } from "@apollo/client";
 import type {
   RelationshipRequest,
   RelationshipRequestsPageInfo,
-} from "hooks/useRelationshipRequestsPaging";
+} from "@/hooks/useRelationshipRequestsPaging";
+import type { QueryResult } from "@apollo/client";
 import type {
   RelationshipRequestsQuery as Query,
   RelationshipRequestsQueryVariables as Variables,

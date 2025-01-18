@@ -1,12 +1,12 @@
-import React, { useState, useCallback } from 'react';
-import useUser from 'hooks/useUser';
-import Top from 'components/pages/Top/Connected';
-import useFirebaseAuth from 'hooks/useFirebaseAuth';
-import AppLoading from 'components/templates/App/Loading';
-import { screenState } from 'store/atoms';
-import { useRecoilValue } from 'recoil';
-import SeeYouAgain from 'components/templates/SeeYouAgain/SeeYouAgain';
-import Router from './Router';
+import useFirebaseAuth from "@/hooks/useFirebaseAuth";
+import useUser from "@/hooks/useUser";
+import Top from "components/pages/Top/Connected";
+import AppLoading from "components/templates/App/Loading";
+import SeeYouAgain from "components/templates/SeeYouAgain/SeeYouAgain";
+import React, { useState, useCallback } from "react";
+import { useRecoilValue } from "recoil";
+import { screenState } from "store/atoms";
+import Router from "./Router";
 
 const WithProvider = () => {
   const { setupAuth } = useFirebaseAuth();

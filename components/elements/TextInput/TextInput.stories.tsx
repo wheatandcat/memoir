@@ -1,9 +1,9 @@
-import React from 'react';
-import View from 'components/atoms/View';
-import TextInput from './';
+import View from "@/components/elements/View";
+import React from "react";
+import TextInput from "./";
 
 export default {
-  title: 'atoms',
+  title: "atoms",
 };
 
 export const _TextInput = () => (
@@ -13,5 +13,5 @@ export const _TextInput = () => (
 );
 
 _TextInput.story = {
-  name: 'TextInput',
+  name: "TextInput",
 };

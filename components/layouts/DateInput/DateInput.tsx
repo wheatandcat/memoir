@@ -1,14 +1,14 @@
-import { type FC, memo, useState, useCallback, useEffect } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
 import Divider from '@/components/elements/Divider';
-import View from '@/components/elements/View';
-import dayjs from 'lib/dayjs';
-import usePrevious from 'hooks/usePrevious';
 import Text from '@/components/elements/Text';
+import View from '@/components/elements/View';
+import usePrevious from '@/hooks/usePrevious';
 import theme from 'config/theme';
-import InputYear from './Years';
-import InputMonth from './Months';
+import dayjs from 'lib/dayjs';
+import { type FC, memo, useCallback, useEffect, useState } from 'react';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import InputDay from './Days';
+import InputMonth from './Months';
+import InputYear from './Years';
 
 const years = () => {
   const lastYear = dayjs().year();

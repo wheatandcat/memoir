@@ -1,7 +1,7 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
 import { screen } from '@testing-library/react-native';
-import Image, { Props } from '../';
+import { testRenderer } from 'lib/testUtil';
+import React from 'react';
+import Image, { type Props } from '../';
 
 const propsData = (): Props => ({
   source: require('../../../img/categories/category_book.png'),
@@ -10,7 +10,7 @@ const propsData = (): Props => ({
   testID: 'test-id-image',
 });
 
-describe('components/atoms/Image/Image.tsx', () => {
+describe('@/components/elements/Image/Image.tsx', () => {
   it('正常にrenderすること', () => {
     testRenderer(<Image {...propsData()} />)();
     expect(screen.findByTestId('test-id-image')).toBeTruthy();

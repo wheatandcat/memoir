@@ -1,26 +1,26 @@
-import { type FC, memo, useRef, useCallback, useState } from 'react';
-import {
-  StyleSheet,
-  ScrollView,
-  useWindowDimensions,
-  Alert,
-} from 'react-native';
-import * as Sharing from 'expo-sharing';
-import ViewShot from 'react-native-view-shot';
-import View from '@/components/elements/View';
-import { useNavigation } from '@react-navigation/native';
-import dayjs from 'lib/dayjs';
-import theme from 'config/theme';
-import type { Props as PlainProps } from 'components/pages/Memoir/ScreenShot/Plain';
-import type { User as TUser } from 'store/atoms';
-import Header from 'components/molecules/Memoir/Header';
-import { getModeCountMax } from 'lib/utility';
-import DateText from 'components/molecules/Memoir/DateText';
-import Divider from 'components/atoms/Divider';
-import Loading from 'components/molecules/Overlay/Loading';
-import type { Item } from 'hooks/useItemsInPeriodPaging';
+import Divider from '@/components/elements/Divider';
 import Image from '@/components/elements/Image';
+import View from '@/components/elements/View';
+import DateText from '@/components/layouts/Memoir/DateText';
+import Header from '@/components/layouts/Memoir/Header';
+import Loading from '@/components/layouts/Overlay/Loading';
+import type { Props as PlainProps } from '@/features/memoir/screenShot/components/Plain';
+import type { Item } from '@/hooks/useItemsInPeriodPaging';
+import { useNavigation } from '@react-navigation/native';
+import theme from 'config/theme';
 import Constants from 'expo-constants';
+import * as Sharing from 'expo-sharing';
+import dayjs from 'lib/dayjs';
+import { getModeCountMax } from 'lib/utility';
+import { type FC, memo, useCallback, useRef, useState } from 'react';
+import {
+  Alert,
+  ScrollView,
+  StyleSheet,
+  useWindowDimensions,
+} from 'react-native';
+import ViewShot from 'react-native-view-shot';
+import type { User as TUser } from 'store/atoms';
 import Card from './Card';
 
 export type Props = Pick<PlainProps, 'users'> & {

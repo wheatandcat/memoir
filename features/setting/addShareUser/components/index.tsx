@@ -1,4 +1,4 @@
-import useSentryBreadcrumb from "hooks/useSentryBreadcrumb";
+import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
 import type React from "react";
 import { memo } from "react";
 import Connected from "./Connected";

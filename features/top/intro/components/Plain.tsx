@@ -1,8 +1,8 @@
-import { memo, type FC } from "react";
-import { StyleSheet } from "react-native";
 import Loading from "@/components/elements/Loading";
-import type { State as MemoirNotificationSettingState } from "hooks/useMemoirNotificationSetting";
 import View from "@/components/elements/View";
+import type { State as MemoirNotificationSettingState } from "@/hooks/useMemoirNotificationSetting";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
 import type { ConnectedType } from "./Connected";
 import Page from "./Page";
 

@@ -1,24 +1,24 @@
-import { memo, useState, useCallback, useRef, type FC } from "react";
-import {
-	StyleSheet,
-	useWindowDimensions,
-	ScrollView,
-	type ViewStyle,
-	type NativeSyntheticEvent,
-	type NativeScrollEvent,
-	ImageBackground,
-	TouchableWithoutFeedback,
-} from "react-native";
-import { StatusBar } from "expo-status-bar";
-import { SafeAreaView } from "react-native-safe-area-context";
-import View from "components/atoms/View";
-import Text from "components/atoms/Text";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
 import theme from "config/theme";
-import IntroCard from "components/molecules/Intro/Card";
-import type { ConnectedType } from "@/features/top/intro/components/Connected";
 import { useNotification } from "containers/Notification";
+import { StatusBar } from "expo-status-bar";
+import { type FC, memo, useCallback, useRef, useState } from "react";
+import {
+	ImageBackground,
+	type NativeScrollEvent,
+	type NativeSyntheticEvent,
+	ScrollView,
+	StyleSheet,
+	TouchableWithoutFeedback,
+	type ViewStyle,
+	useWindowDimensions,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import IntroCard from "./Card";
 import Notification from "./Notification";
 import Task from "./Task";
+import type { ConnectedType } from "./type";
 
 export type Props = ConnectedType & {
 	dayOfWeek: number;

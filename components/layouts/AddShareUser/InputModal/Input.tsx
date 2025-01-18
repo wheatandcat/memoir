@@ -1,9 +1,9 @@
-import { memo, type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import theme from 'config/theme';
-import InputCode from 'components/molecules/InputCode/InputCode';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import InputCode from "@/components/layouts/InputCode/InputCode";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
 
 export type Props = {
   code: string;

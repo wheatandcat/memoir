@@ -1,14 +1,14 @@
-import { useEffect, useCallback, useState } from 'react';
-import { useRecoilValueLoadable, useRecoilState } from 'recoil';
-import * as Sentry from 'sentry-expo';
-import { existUserID } from 'store/selectors';
-import 'react-native-get-random-values';
-import { v4 as uuidv4 } from 'uuid';
-import { userState } from 'store/atoms';
-import { CreateUserDocument, UserDocument } from 'queries/api/index';
-import { storageKey, setItem } from 'lib/storage';
-import usePrevious from 'hooks/usePrevious';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import { useCallback, useEffect, useState } from "react";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import * as Sentry from "sentry-expo";
+import { existUserID } from "store/selectors";
+import "react-native-get-random-values";
+import usePrevious from "@/hooks/usePrevious";
+import { useLazyQuery, useMutation } from "@apollo/client";
+import { setItem, storageKey } from "lib/storage";
+import { CreateUserDocument, UserDocument } from "queries/api/index";
+import { userState } from "store/atoms";
+import { v4 as uuidv4 } from "uuid";
 
 const useUser = () => {
   const [setupUser, setSetupUser] = useState(false);
@@ -26,10 +26,10 @@ const useUser = () => {
     onCompleted: (data) => {
       setUser((s) => ({
         ...s,
-        id: data?.user?.id || '',
-        userID: data?.user?.id || '',
-        displayName: data?.user?.displayName || '',
-        image: data?.user?.image || '',
+        id: data?.user?.id || "",
+        userID: data?.user?.id || "",
+        displayName: data?.user?.displayName || "",
+        image: data?.user?.image || "",
       }));
     },
   });
@@ -39,7 +39,7 @@ const useUser = () => {
   const [createUserMutation] = useMutation(CreateUserDocument, {
     async onCompleted({ createUser }) {
       await setItem(storageKey.USER_ID_KEY, createUser.id);
-      setUser({ id: createUser.id, userID: '', displayName: '', image: '' });
+      setUser({ id: createUser.id, userID: "", displayName: "", image: "" });
     },
   });
 
@@ -70,7 +70,7 @@ const useUser = () => {
   }, [user.id, getUser, userID.contents, setupUser]);
 
   useEffect(() => {
-    if (userID.state === 'hasValue') {
+    if (userID.state === "hasValue") {
       setup();
     }
   }, [userID, setup]);

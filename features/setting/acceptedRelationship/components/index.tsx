@@ -1,5 +1,5 @@
+import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
 import { useLocalSearchParams } from "expo-router";
-import useSentryBreadcrumb from "hooks/useSentryBreadcrumb";
 import type React from "react";
 import { memo } from "react";
 import { useRecoilValue } from "recoil";

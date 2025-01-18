@@ -1,12 +1,12 @@
-import { memo, type FC } from "react";
-import { StyleSheet } from "react-native";
-import theme from "config/theme";
-import View from "components/atoms/View";
-import Text from "components/atoms/Text";
-import Divider from "components/atoms/Divider";
-import type { UseFirebaseAuth } from "@/src/hooks/useFirebaseAuth";
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
 import Form from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
+import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
 
 export type Props = {
 	loading: boolean;

@@ -1,6 +1,6 @@
-import { memo, type FC } from "react";
-import useSentryBreadcrumb from "hooks/useSentryBreadcrumb";
+import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
 import { useLocalSearchParams } from "expo-router";
+import { type FC, memo } from "react";
 import Connected from "./Connected";
 
 const ItemDetail: FC = () => {

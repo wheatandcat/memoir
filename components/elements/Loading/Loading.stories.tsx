@@ -1,9 +1,9 @@
-import React from 'react';
-import View from 'components/atoms/View';
-import Loading from './';
+import View from "@/components/elements/View";
+import React from "react";
+import Loading from "./";
 
 export default {
-  title: 'atoms',
+  title: "atoms",
 };
 
 export const _Loading = () => (

@@ -1,8 +1,8 @@
-import  { memo, type FC } from 'react';
-import { StyleSheet } from 'react-native';
+import ALoading from '@/components/elements/Loading';
 import View from '@/components/elements/View';
 import theme from 'config/theme';
-import ALoading from 'components/atoms/Loading';
+import  { type FC, memo } from 'react';
+import { StyleSheet } from 'react-native';
 
 
 const Loading: FC = () => {

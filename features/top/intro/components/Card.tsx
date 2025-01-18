@@ -1,14 +1,14 @@
-import { memo, type FC } from "react";
+import Image from "@/components/elements/Image";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
 import {
-	StyleSheet,
 	ImageBackground,
 	type ImageSourcePropType,
+	StyleSheet,
 	TouchableWithoutFeedback,
 } from "react-native";
-import View from "@/components/elements/View";
-import Text from "@/components/elements/Text";
-import Image from "@/components/elements/Image";
-import theme from "config/theme";
 
 export type Props = {
 	source: ImageSourcePropType;
@@ -19,7 +19,7 @@ export type Props = {
 const Card: FC<Props> = (props) => {
 	return (
 		<ImageBackground
-			source={require("@/img/common/frame.png")}
+			source={require("@/src/img/common/frame.png")}
 			resizeMode="cover"
 			style={styles.image}
 		>
