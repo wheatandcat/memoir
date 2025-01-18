@@ -1,4 +1,4 @@
-import Page from "@/features/setting/relationshipRequests/components";
+import Page from "@/features/setting/dataManagement/components";
 import theme from "config/theme";
 import { Stack } from "expo-router";
 
@@ -7,7 +7,7 @@ export default function Index() {
     <>
       <Stack.Screen
         options={{
-          title: "共有メンバー申請",
+          title: "データ管理",
           headerBackTitle: "",
           headerStyle: {
             backgroundColor: theme().color.primary.main,

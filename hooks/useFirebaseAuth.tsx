@@ -1,28 +1,28 @@
+import { useLazyQuery, useMutation } from '@apollo/client';
 import * as AppleAuthentication from 'expo-apple-authentication';
-import * as WebBrowser from 'expo-web-browser';
-import { v4 as uuidv4 } from 'uuid';
 import * as Crypto from 'expo-crypto';
-import { useRecoilValueLoadable, useRecoilState } from 'recoil';
-import { useCallback, useEffect, useState } from 'react';
-import { Alert } from 'react-native';
-import { getFirebaseAuthApp } from 'lib/firebase';
-import { storageKey, getItem, setItem, removeItem } from 'lib/storage';
-import { existAuthUserID } from 'store/selectors';
-import { authUserState, userState } from 'store/atoms';
-import Auth from 'lib/auth';
-import  {
-  CreateAuthUserDocument,
-  ExistAuthUserDocument,
-  UserDocument,
-  type CreateAuthUserMutationVariables,
-} from 'queries/api/index';
+import * as WebBrowser from 'expo-web-browser';
 import {
   type OAuthCredential,
-  signInWithCredential,
-  onAuthStateChanged,
   OAuthProvider,
+  onAuthStateChanged,
+  signInWithCredential,
 } from 'firebase/auth';
-import { useLazyQuery, useMutation } from '@apollo/client';
+import Auth from 'lib/auth';
+import { getFirebaseAuthApp } from 'lib/firebase';
+import { getItem, removeItem, setItem, storageKey } from 'lib/storage';
+import  {
+  CreateAuthUserDocument,
+  type CreateAuthUserMutationVariables,
+  ExistAuthUserDocument,
+  UserDocument,
+} from 'queries/api/index';
+import { useCallback, useEffect, useState } from 'react';
+import { Alert } from 'react-native';
+import { useRecoilState, useRecoilValueLoadable } from 'recoil';
+import { authUserState, userState } from 'store/atoms';
+import { existAuthUserID } from 'store/selectors';
+import { v4 as uuidv4 } from 'uuid';
 
 const auth = new Auth();
 const appAuth = getFirebaseAuthApp();

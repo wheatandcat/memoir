@@ -33,7 +33,7 @@ const ProfileImage: FC<Props> = (props) => {
     }
 
     const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      mediaTypes: ["images"],
       allowsEditing: true,
       allowsMultipleSelection: false,
       aspect: [1, 1],

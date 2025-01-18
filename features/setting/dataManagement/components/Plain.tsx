@@ -1,8 +1,9 @@
-import React, { memo } from 'react';
-import ErrorPage from 'components/organisms/Error/Error';
-import TemplateDataManagement from 'components/templates/Setting/DataManagement/Page';
-import { ApolloError } from '@apollo/client';
-import { ConnectedType } from './Connected';
+import ErrorPage from "@/components/layouts/Error/Error";
+import type { ApolloError } from "@apollo/client";
+import type React from "react";
+import { memo } from "react";
+import Page from "./Page";
+import type { ConnectedType } from "./type";
 
 type Props = ConnectedType & {
   loading: boolean;
@@ -13,10 +14,11 @@ const Plain: React.FC<Props> = (props) => {
   if (props.error) return <ErrorPage error={props.error} />;
 
   return (
-    <TemplateDataManagement
+    <Page
       loading={props.loading}
       onDelete={props.onDelete}
       disabledDeleteButton={props.disabledDeleteButton}
+      showActionSheetWithOptions={() => null}
     />
   );
 };

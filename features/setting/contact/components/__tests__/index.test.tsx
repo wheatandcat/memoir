@@ -1,7 +1,6 @@
 import React from 'react';
 import { testRenderer } from 'lib/testUtil';
 import { screen } from '@testing-library/react-native';
-import * as Recoil from 'recoil';
 import IndexPage, { Props } from '../';
 
 const propsData = (): Props =>
@@ -9,22 +8,18 @@ const propsData = (): Props =>
     navigation: {
       setParams: jest.fn(),
       navigate: jest.fn(),
+      setOptions: jest.fn(),
+      addListener: jest.fn(),
     },
     route: {
       params: {},
     },
   } as any);
 
-describe('components/pages/Setting/AcceptedRelationship/index.tsx', () => {
-  beforeEach(() => {
-    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
-      id: 'test-id',
-      displayName: 'test-name',
-    }));
-  });
-
-  it('正常にrenderすること', () => {
+describe('components/pages/Contact/index.tsx', () => {
+  it('正常にrenderすること', async () => {
     testRenderer(<IndexPage {...propsData()} />)();
-    expect(screen.findAllByText('一覧に戻る')).toBeTruthy();
+
+    expect(screen.findAllByText('コメント')).toBeTruthy();
   });
 });

@@ -1,29 +1,22 @@
-import React, { memo, useCallback } from 'react';
-import { DeleteUserDocument, RelationshipsDocument } from 'queries/api/index';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import useFirebaseAuth from 'hooks/useFirebaseAuth';
-import Loading from 'components/atoms/Loading';
-import { deleteImageAsync } from 'lib/image';
-import { userState, screenState } from 'store/atoms';
-import { useQuery, useMutation } from '@apollo/client';
-import Plain from './Plain';
+import Loading from "@/components/elements/Loading";
+import useFirebaseAuth from "@/hooks/useFirebaseAuth";
+import { useMutation, useQuery } from "@apollo/client";
+import { deleteImageAsync } from "lib/image";
+import { DeleteUserDocument, RelationshipsDocument } from "queries/api/index";
+import type React from "react";
+import { memo, useCallback } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { screenState, userState } from "store/atoms";
+import Plain from "./Plain";
 
-type Props = {};
-
-export type ConnectedType = {
-  loading: boolean;
-  disabledDeleteButton: boolean;
-  onDelete: () => void;
-};
-
-const Connected: React.FC<Props> = () => {
+const Connected: React.FC = () => {
   const user = useRecoilValue(userState);
   const setScreenState = useSetRecoilState(screenState);
   const { setupAuth, onLogout } = useFirebaseAuth(true);
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
-        after: '',
+        after: "",
         first: 1,
       },
       skip: true,
