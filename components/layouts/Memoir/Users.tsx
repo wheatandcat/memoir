@@ -1,19 +1,19 @@
-import View from '@/components/elements/View';
-import UserButton from '@/components/layouts/User/Button';
-import UserImage from '@/components/layouts/User/Image';
-import type { Props as PlainProps } from '@/features/memoir/components/Plain';
-import theme from 'config/theme';
-import type { User } from 'queries/api/index';
-import type React from 'react';
-import { memo, useCallback } from 'react';
-import { ScrollView, StyleSheet, type ViewStyle } from 'react-native';
+import View from "@/components/elements/View";
+import UserButton from "@/components/layouts/User/Button";
+import UserImage from "@/components/layouts/User/Image";
+import type { Props as PlainProps } from "@/features/memoir/components/Plain";
+import theme from "config/theme";
+import type { User } from "queries/api/index";
+import type React from "react";
+import { memo, useCallback } from "react";
+import { ScrollView, StyleSheet, type ViewStyle } from "react-native";
 
-type Users = Pick<User, 'id' | 'image'>[];
+type Users = Pick<User, "id" | "image">[];
 
 export type Props = {
   users: Users;
-  selectedUserIDList: PlainProps['selectedUserIDList'];
-  onChangeUserID: PlainProps['onChangeUserID'];
+  selectedUserIDList: PlainProps["selectedUserIDList"];
+  onChangeUserID: PlainProps["onChangeUserID"];
   center?: boolean;
   size?: number;
 };
@@ -24,7 +24,7 @@ const Users: React.FC<Props> = (props) => {
       const userIDList = [...props.selectedUserIDList, uid];
       props.onChangeUserID(userIDList);
     },
-    [props]
+    [props],
   );
 
   const onRemove = useCallback(
@@ -32,7 +32,7 @@ const Users: React.FC<Props> = (props) => {
       const userIDList = props.selectedUserIDList.filter((v) => v !== uid);
       props.onChangeUserID(userIDList);
     },
-    [props]
+    [props],
   );
 
   const style: ViewStyle[] = [styles.root];
@@ -46,7 +46,7 @@ const Users: React.FC<Props> = (props) => {
       <View style={style}>
         {props.users.map((v) => {
           const selected = !!props.selectedUserIDList.find(
-            (uid) => v.id === uid
+            (uid) => v.id === uid,
           );
 
           if (selected) {
@@ -84,7 +84,7 @@ export default memo(Users);
 
 const styles = StyleSheet.create({
   root: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   left: {
     marginLeft: theme().space(4),

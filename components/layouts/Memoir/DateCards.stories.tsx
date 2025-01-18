@@ -1,35 +1,35 @@
-import View from '@/components/elements/View';
-import { items } from '__mockData__/item';
-import theme from 'config/theme';
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import { mockFn } from 'storyBookUtils/index';
-import DateCards, { type Props } from './DateCards';
+import View from "@/components/elements/View";
+import { items } from "__mockData__/item";
+import theme from "config/theme";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { mockFn } from "storyBookUtils/index";
+import DateCards, { type Props } from "./DateCards";
 
 const props = (): Props => ({
-  items: items().map((v) => ({ ...v, userID: 'test' })),
+  items: items().map((v) => ({ ...v, userID: "test" })),
   pageInfo: {
     hasNextPage: false,
-    endCursor: '',
+    endCursor: "",
   },
-  onLoadMore: mockFn('onLoadMore'),
+  onLoadMore: mockFn("onLoadMore"),
   loading: false,
-  startDate: '2020-01-01',
-  endDate: '2020-01-07',
+  startDate: "2020-01-01",
+  endDate: "2020-01-07",
   users: [
     {
-      id: 'test',
-      displayName: 'suzuki',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test",
+      displayName: "suzuki",
+      image: "https://placehold.jp/150x150.png",
     },
   ],
-  selectedUserIDList: ['test'],
-  onChangeUserID: mockFn('onChangeUserID'),
+  selectedUserIDList: ["test"],
+  onChangeUserID: mockFn("onChangeUserID"),
   search: false,
 });
 
 export default {
-  title: 'organisms/Memoir/DateCards',
+  title: "organisms/Memoir/DateCards",
 };
 
 export const Default = () => (
@@ -39,7 +39,7 @@ export const Default = () => (
 );
 
 Default.story = {
-  name: 'default',
+  name: "default",
 };
 
 export const Loading = () => (
@@ -49,12 +49,12 @@ export const Loading = () => (
 );
 
 Loading.story = {
-  name: 'loading',
+  name: "loading",
 };
 
 const styles = StyleSheet.create({
   root: {
-    height: '100%',
+    height: "100%",
     backgroundColor: theme().color.background.main,
   },
 });

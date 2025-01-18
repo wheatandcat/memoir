@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { ItemsByDateDocument } from 'queries/api/index';
-import { homeDateState, homeItemsState } from 'store/atoms';
-import usePrevious from '@/hooks/usePrevious';
-import { useLazyQuery } from '@apollo/client';
+import usePrevious from "@/hooks/usePrevious";
+import { useLazyQuery } from "@apollo/client";
+import { ItemsByDateDocument } from "queries/api/index";
+import { useEffect, useState } from "react";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { homeDateState, homeItemsState } from "store/atoms";
 
 const useHomeItems = () => {
   const [getItemsByDate, { data, loading, error, refetch, client }] =
@@ -25,14 +25,14 @@ const useHomeItems = () => {
   useEffect(() => {
     if (prevLoading !== null && !loading) {
       const items = (data?.itemsByDate || []).map((v) => ({
-        id: v?.id || '',
-        title: v?.title || '',
+        id: v?.id || "",
+        title: v?.title || "",
         categoryID: v?.categoryID || 1,
-        date: v?.date || '',
+        date: v?.date || "",
         like: v?.like || false,
         dislike: v?.dislike || false,
-        createdAt: v?.createdAt || '',
-        updatedAt: v?.updatedAt || '',
+        createdAt: v?.createdAt || "",
+        updatedAt: v?.updatedAt || "",
       }));
       setHomeItemsState({ items });
       setApiLoading(false);

@@ -1,8 +1,8 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import { item } from '__mockData__/item';
-import CardDetail, { Props } from '../CardDetail';
+import { screen } from "@testing-library/react-native";
+import { item } from "__mockData__/item";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import CardDetail, { type Props } from "../CardDetail";
 
 const propsData = (): Props => ({
   title: item().title,
@@ -14,9 +14,9 @@ const propsData = (): Props => ({
   onDeleteItem: jest.fn(),
 });
 
-describe('components/organisms/CardDetail/CardDetail.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/CardDetail/CardDetail.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<CardDetail {...propsData()} />)();
-    expect(screen.findAllByText('買い物')).toBeTruthy();
+    expect(screen.findAllByText("買い物")).toBeTruthy();
   });
 });

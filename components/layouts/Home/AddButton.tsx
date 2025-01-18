@@ -1,8 +1,8 @@
-import  { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import { MaterialIcons } from '@expo/vector-icons';
-import theme from 'config/theme';
+import View from "@/components/elements/View";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 type Props = {
   onPress: () => void;
@@ -25,9 +25,9 @@ export default memo(AddButton);
 const styles = StyleSheet.create({
   addButton: {
     backgroundColor: theme().color.base.main,
-    width: '100%',
+    width: "100%",
     height: 75,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

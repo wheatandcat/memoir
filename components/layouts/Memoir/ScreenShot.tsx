@@ -1,35 +1,35 @@
-import Divider from '@/components/elements/Divider';
-import Image from '@/components/elements/Image';
-import View from '@/components/elements/View';
-import DateText from '@/components/layouts/Memoir/DateText';
-import Header from '@/components/layouts/Memoir/Header';
-import Loading from '@/components/layouts/Overlay/Loading';
-import type { Props as PlainProps } from '@/features/memoir/screenShot/components/Plain';
-import type { Item } from '@/hooks/useItemsInPeriodPaging';
-import { useNavigation } from '@react-navigation/native';
-import theme from 'config/theme';
-import Constants from 'expo-constants';
-import * as Sharing from 'expo-sharing';
-import dayjs from 'lib/dayjs';
-import { getModeCountMax } from 'lib/utility';
-import { type FC, memo, useCallback, useRef, useState } from 'react';
+import Divider from "@/components/elements/Divider";
+import Image from "@/components/elements/Image";
+import View from "@/components/elements/View";
+import DateText from "@/components/layouts/Memoir/DateText";
+import Header from "@/components/layouts/Memoir/Header";
+import Loading from "@/components/layouts/Overlay/Loading";
+import type { Props as PlainProps } from "@/features/memoir/screenShot/components/Plain";
+import type { Item } from "@/hooks/useItemsInPeriodPaging";
+import { useNavigation } from "@react-navigation/native";
+import theme from "config/theme";
+import Constants from "expo-constants";
+import * as Sharing from "expo-sharing";
+import dayjs from "lib/dayjs";
+import { getModeCountMax } from "lib/utility";
+import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
   ScrollView,
   StyleSheet,
   useWindowDimensions,
-} from 'react-native';
-import ViewShot from 'react-native-view-shot';
-import type { User as TUser } from 'store/atoms';
-import Card from './Card';
+} from "react-native";
+import ViewShot from "react-native-view-shot";
+import type { User as TUser } from "store/atoms";
+import Card from "./Card";
 
-export type Props = Pick<PlainProps, 'users'> & {
+export type Props = Pick<PlainProps, "users"> & {
   startDate: string;
   endDate: string;
   items: Item[];
 };
 
-type User = Omit<TUser, 'userID'> & {
+type User = Omit<TUser, "userID"> & {
   id: string;
 };
 
@@ -55,7 +55,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
     <View>
       <View mb={3} mx={3}>
         <Card
-          title={props?.contents?.title || ''}
+          title={props?.contents?.title || ""}
           categoryID={props?.contents?.categoryID || 0}
           user={props?.contents?.user as User}
           onLoadEnd={props.onLoadEnd}
@@ -64,7 +64,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
       </View>
       {!!props.last && (
         <Image
-          source={require('@/src/img/icon/border_dotted.png')}
+          source={require("@/src/img/icon/border_dotted.png")}
           width={props.width}
           height={2}
         />
@@ -85,9 +85,9 @@ const ScreenShot: FC<Props> = (props) => {
     async (uri: string) => {
       const ok = await Sharing.isAvailableAsync();
       if (!ok) {
-        Alert.alert('エラー', '共有機能を利用できませんでした', [
+        Alert.alert("エラー", "共有機能を利用できませんでした", [
           {
-            text: '戻る',
+            text: "戻る",
             onPress: () => {
               navigation.goBack();
             },
@@ -101,11 +101,11 @@ const ScreenShot: FC<Props> = (props) => {
 
       navigation.goBack();
     },
-    [navigation]
+    [navigation],
   );
 
   const onCapture = useCallback(async () => {
-    if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
+    if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
       //storybookの場合はスルーさせる
       return;
     }
@@ -125,7 +125,7 @@ const ScreenShot: FC<Props> = (props) => {
   }, [props.items, onCapture]);
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -139,12 +139,12 @@ const ScreenShot: FC<Props> = (props) => {
 
   const data = dateItems.flatMap((v1) => {
     const sameDateItems = props.items.filter(
-      (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
     );
 
     const item: RenderedItem[] = sameDateItems.map((v2, index) => {
       const user: User | undefined = props.users.find(
-        (v) => v.id === v2.userID
+        (v) => v.id === v2.userID,
       );
 
       return {
@@ -152,9 +152,9 @@ const ScreenShot: FC<Props> = (props) => {
         contents: {
           ...v2,
           user: user || {
-            id: '',
-            displayName: '',
-            image: '',
+            id: "",
+            displayName: "",
+            image: "",
           },
         },
         last: sameDateItems.length === index + 1,
@@ -180,7 +180,7 @@ const ScreenShot: FC<Props> = (props) => {
       <ScrollView style={styles.root} testID="screen-shot">
         <ViewShot
           ref={viewShot}
-          options={{ format: 'jpg' }}
+          options={{ format: "jpg" }}
           style={styles.screen}
         >
           <Header startDate={props.startDate} endDate={props.endDate} isTitle />
@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     flex: 1,
-    width: '100%',
+    width: "100%",
     paddingTop: theme().space(4),
   },
   screen: {

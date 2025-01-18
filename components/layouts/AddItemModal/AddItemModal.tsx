@@ -1,16 +1,16 @@
-import Text from '@/components/elements/Text';
-import TextInput from '@/components/elements/TextInput';
-import View from '@/components/elements/View';
-import Categories from '@/components/layouts/Categories';
-import Compatibility from '@/components/layouts/Compatibility/Compatibility';
-import Modal from '@/components/layouts/Modal';
-import usePrevious from '@/hooks/usePrevious';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import type { NewItem } from 'queries/api/index';
-import  { type FC, memo, useCallback, useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
+import Text from "@/components/elements/Text";
+import TextInput from "@/components/elements/TextInput";
+import View from "@/components/elements/View";
+import Categories from "@/components/layouts/Categories";
+import Compatibility from "@/components/layouts/Compatibility/Compatibility";
+import Modal from "@/components/layouts/Modal";
+import usePrevious from "@/hooks/usePrevious";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import type { NewItem } from "queries/api/index";
+import { type FC, memo, useCallback, useEffect, useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export type Props = {
   item?: NewItem;
@@ -32,7 +32,7 @@ type State = {
 
 const initialState = (date: string, item?: NewItem): State => {
   return {
-    title: item?.title || '',
+    title: item?.title || "",
     categoryID: item?.categoryID || null,
     date: new Date(date),
     like: item?.like || false,
@@ -46,7 +46,7 @@ const AddItemModal: FC<Props> = ({
   ...props
 }) => {
   const [state, setState] = useState<State>(
-    initialState(props.date, props.item)
+    initialState(props.date, props.item),
   );
   const prevIsVisible = usePrevious(props.isVisible);
   const [openDate, setOpenDate] = useState(false);
@@ -89,7 +89,7 @@ const AddItemModal: FC<Props> = ({
     const item: NewItem = {
       title: state.title,
       categoryID: state.categoryID || 0,
-      date: dayjs(state.date).format('YYYY-MM-DDT00:00:00+09:00'),
+      date: dayjs(state.date).format("YYYY-MM-DDT00:00:00+09:00"),
       like: state.like,
       dislike: state.dislike,
     };
@@ -98,7 +98,7 @@ const AddItemModal: FC<Props> = ({
   }, [props.onAdd, state]);
 
   const valid = useCallback(() => {
-    if (state.title === '') {
+    if (state.title === "") {
       return false;
     }
 
@@ -112,13 +112,13 @@ const AddItemModal: FC<Props> = ({
   return (
     <Modal
       isVisible={props.isVisible}
-      title={dayjs(props.date).format('YYYY.MM.DD / ddd')}
+      title={dayjs(props.date).format("YYYY.MM.DD / ddd")}
       titleElement={
         edit ? (
           <TouchableOpacity onPress={() => setOpenDate(!openDate)}>
             <View>
               <Text variants="middle" textAlign="center">
-                {dayjs(state.date).format('YYYY.MM.DD / ddd')}
+                {dayjs(state.date).format("YYYY.MM.DD / ddd")}
               </Text>
             </View>
           </TouchableOpacity>

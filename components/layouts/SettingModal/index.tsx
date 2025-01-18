@@ -1,4 +1,4 @@
-import SettingModal from './SettingModal';
+import SettingModal from "./SettingModal";
 
-export * from './SettingModal';
+export * from "./SettingModal";
 export default SettingModal;

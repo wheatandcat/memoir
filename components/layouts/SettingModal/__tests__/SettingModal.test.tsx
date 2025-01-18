@@ -1,23 +1,23 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import * as Recoil from 'recoil';
-import SettingModal, { Props } from '../';
+import { screen } from "@testing-library/react-native";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import * as Recoil from "recoil";
+import SettingModal, { type Props } from "../";
 
 const propsData = (): Props => ({
   isVisible: true,
   onClose: jest.fn(),
 });
 
-describe('components/organisms//SettingModal.tsx', () => {
+describe("components/organisms//SettingModal.tsx", () => {
   beforeEach(() => {
-    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
-      uid: 'abc',
+    jest.spyOn(Recoil, "useRecoilValue").mockImplementation((): any => ({
+      uid: "abc",
     }));
   });
 
-  it('正常にrenderすること', () => {
+  it("正常にrenderすること", () => {
     testRenderer(<SettingModal {...propsData()} />)();
-    expect(screen.findAllByText('データ管理')).toBeTruthy();
+    expect(screen.findAllByText("データ管理")).toBeTruthy();
   });
 });

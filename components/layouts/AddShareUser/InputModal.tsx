@@ -1,12 +1,12 @@
-import  { memo, useState, useCallback, type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import Modal from '@/components/layouts/Modal';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import type { ConnectedType } from 'components/pages/Setting/AddShareUser/Connected';
-import Input from './InputModal/Input';
-import Sent from './InputModal/Sent';
-import Confirm from './InputModal/Confirm';
+import View from "@/components/elements/View";
+import Modal from "@/components/layouts/Modal";
+import type { ConnectedType } from "components/pages/Setting/AddShareUser/Connected";
+import theme from "config/theme";
+import { type FC, memo, useCallback, useState } from "react";
+import { StyleSheet } from "react-native";
+import Confirm from "./InputModal/Confirm";
+import Input from "./InputModal/Input";
+import Sent from "./InputModal/Sent";
 
 export type Props = {
   isVisible: boolean;
@@ -19,17 +19,17 @@ export type Props = {
   onClose: () => void;
 } & Pick<
   ConnectedType,
-  'onSearchInviteCode' | 'requesting' | 'onCreateRelationshipRequest'
+  "onSearchInviteCode" | "requesting" | "onCreateRelationshipRequest"
 >;
 
 const InputModal: FC<Props> = (props) => {
-  const [code, setCode] = useState<string>('');
+  const [code, setCode] = useState<string>("");
 
-  const send = props.displayName !== '';
+  const send = props.displayName !== "";
 
   const onPress = useCallback(() => {
     if (send) {
-      setCode('');
+      setCode("");
       props.onClose();
     } else {
       props.onCreateRelationshipRequest(code);
@@ -50,14 +50,14 @@ const InputModal: FC<Props> = (props) => {
 
   const buttonTitle = useCallback(() => {
     if (send) {
-      return 'とじる';
+      return "とじる";
     }
 
     if (props.isConfirm) {
       return undefined;
     }
 
-    return '送信';
+    return "送信";
   }, [send, props.isConfirm]);
 
   const height = useCallback(() => {
@@ -70,10 +70,10 @@ const InputModal: FC<Props> = (props) => {
 
   const title = useCallback(() => {
     if (send || props.isConfirm) {
-      return '';
+      return "";
     }
 
-    return '共有メンバー追加';
+    return "共有メンバー追加";
   }, [send, props.isConfirm]);
 
   return (
@@ -81,7 +81,7 @@ const InputModal: FC<Props> = (props) => {
       isVisible={props.isVisible}
       title={title()}
       onClose={() => {
-        setCode('');
+        setCode("");
         props.onClose();
       }}
       buttonTitle={buttonTitle()}
@@ -98,11 +98,11 @@ const InputModal: FC<Props> = (props) => {
             if (props.isConfirm) {
               return (
                 <Confirm
-                  displayName={props.confirmUser?.displayName || ''}
-                  image={props.confirmUser?.image || ''}
+                  displayName={props.confirmUser?.displayName || ""}
+                  image={props.confirmUser?.image || ""}
                   requesting={props.requesting}
                   onNG={() => {
-                    setCode('');
+                    setCode("");
                     props.onClose();
                   }}
                   onOK={() => props.onSearchInviteCode(code)}
@@ -121,9 +121,9 @@ const InputModal: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.light,
-    width: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "center",
   },
   inner: {
     width: 320,

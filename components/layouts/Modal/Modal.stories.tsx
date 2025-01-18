@@ -1,11 +1,11 @@
-import React from 'react';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import { mockFn } from 'storyBookUtils/index';
-import Modal from './';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import Modal from "./";
 
 export default {
-  title: 'organisms',
+  title: "organisms",
 };
 
 export const _Modal = () => (
@@ -13,7 +13,7 @@ export const _Modal = () => (
     <Modal
       title="タイトル"
       isVisible={true}
-      onClose={mockFn('onClose')}
+      onClose={mockFn("onClose")}
       loading={false}
     >
       <View pt={5}>

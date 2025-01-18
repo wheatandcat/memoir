@@ -1,8 +1,8 @@
-import { type FC, memo } from 'react';
-import { StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { ScrollView, StyleSheet, TouchableOpacity } from "react-native";
 
 type Props = {
   year: string;
@@ -18,7 +18,7 @@ const YearInput: FC<Props> = (props) => {
           <TouchableOpacity key={year} onPress={() => props.onPress(year)}>
             <View style={styles.yearItem}>
               <Text
-                color={String(year) === props.year ? 'primary' : 'secondary'}
+                color={String(year) === props.year ? "primary" : "secondary"}
               >
                 {year}
               </Text>
@@ -34,7 +34,7 @@ export default memo(YearInput);
 
 const styles = StyleSheet.create({
   years: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   yearItem: {
     paddingRight: theme().space(2),

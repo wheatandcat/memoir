@@ -1,17 +1,17 @@
-import  { memo, useState, useCallback, type FC } from 'react';
-import { StyleSheet, useWindowDimensions } from 'react-native';
-import * as Clipboard from 'expo-clipboard';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Button from '@/components/elements/Button';
-import theme from 'config/theme';
-import UserImage from '@/components/layouts/User/Image';
-import type { User } from 'store/atoms';
-import type { Invite } from 'components/pages/Setting/AddShareUser/Connected';
-import Loading from '@/components/elements/Loading';
-import Toast from 'react-native-root-toast';
-import IconButton from '@/components/layouts/IconButton';
-import TutorialModal from './TutorialModal';
+import Button from "@/components/elements/Button";
+import Loading from "@/components/elements/Loading";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import IconButton from "@/components/layouts/IconButton";
+import UserImage from "@/components/layouts/User/Image";
+import type { Invite } from "components/pages/Setting/AddShareUser/Connected";
+import theme from "config/theme";
+import * as Clipboard from "expo-clipboard";
+import { type FC, memo, useCallback, useState } from "react";
+import { StyleSheet, useWindowDimensions } from "react-native";
+import Toast from "react-native-root-toast";
+import type { User } from "store/atoms";
+import TutorialModal from "./TutorialModal";
 
 export type Props = {
   user: User;
@@ -30,7 +30,7 @@ const InviteCard: FC<Props> = (props) => {
   const onCopyInviteCode = useCallback(() => {
     Clipboard.setStringAsync(props.invite.code);
 
-    const toast = Toast.show('招待コードがコピーされました', {
+    const toast = Toast.show("招待コードがコピーされました", {
       duration: Toast.durations.LONG,
       position: height - 150,
       shadow: true,
@@ -59,10 +59,10 @@ const InviteCard: FC<Props> = (props) => {
           <View style={styles.user}>
             <UserImage image={props.user.image} size={80} />
             <View py={3}>
-              <Text size="sm">{props.user.displayName || '未設定'}</Text>
+              <Text size="sm">{props.user.displayName || "未設定"}</Text>
             </View>
           </View>
-          {props.invite.code === '' ? (
+          {props.invite.code === "" ? (
             <View pt={4}>
               <Button
                 title="招待コードを作成する"
@@ -86,9 +86,9 @@ const InviteCard: FC<Props> = (props) => {
                         </Text>
                       </View>
                       <Text size="lg" color="primary" textAlign="left">
-                        {props.invite.code.substr(0, 2)}{' '}
-                        {props.invite.code.substr(2, 2)}{' '}
-                        {props.invite.code.substr(4, 2)}{' '}
+                        {props.invite.code.substr(0, 2)}{" "}
+                        {props.invite.code.substr(2, 2)}{" "}
+                        {props.invite.code.substr(4, 2)}{" "}
                         {props.invite.code.substr(6, 2)}
                       </Text>
                     </View>
@@ -118,7 +118,7 @@ const InviteCard: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: theme().color.background.light,
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: theme().space(4),
     borderRadius: 25,
     borderWidth: StyleSheet.hairlineWidth,
@@ -128,23 +128,23 @@ const styles = StyleSheet.create({
     width: 320,
   },
   user: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   invite: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: theme().space(3),
     paddingHorizontal: theme().space(5),
   },
   code: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'flex-end',
+    flexDirection: "row",
+    justifyContent: "space-around",
+    alignItems: "flex-end",
     width: 200,
     height: 50,
   },
   loading: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 50,
   },
 });

@@ -1,6 +1,6 @@
-import React from 'react';
-import { View } from 'react-native';
-import Text from '.';
+import React from "react";
+import { View } from "react-native";
+import Text from ".";
 
 const Story = () => (
   <View>
@@ -44,7 +44,7 @@ const Story = () => (
 );
 
 export default {
-  title: 'atoms/Text',
+  title: "atoms/Text",
   component: Story,
 };
 

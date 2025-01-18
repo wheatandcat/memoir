@@ -1,15 +1,15 @@
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import UserImage from '@/components/layouts/User/Image';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import UserImage from "@/components/layouts/User/Image";
 import {
   connectActionSheet,
   useActionSheet,
-} from '@expo/react-native-action-sheet';
-import theme from 'config/theme';
-import * as ImagePicker from 'expo-image-picker';
-import { resizeImage } from 'lib/image';
-import  { type FC, memo, useCallback, useState } from 'react';
-import { Alert, StyleSheet, TouchableOpacity } from 'react-native';
+} from "@expo/react-native-action-sheet";
+import theme from "config/theme";
+import * as ImagePicker from "expo-image-picker";
+import { resizeImage } from "lib/image";
+import { type FC, memo, useCallback, useState } from "react";
+import { Alert, StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
   authenticated: boolean;
@@ -24,10 +24,10 @@ const ProfileImage: FC<Props> = (props) => {
   const pickImageLibrary = useCallback(async () => {
     const mediaLibrary =
       await ImagePicker.requestMediaLibraryPermissionsAsync();
-    if (mediaLibrary.status !== 'granted') {
+    if (mediaLibrary.status !== "granted") {
       Alert.alert(
-        '注意',
-        'memoirアプリのカメラのアクセス許可をONにしてください'
+        "注意",
+        "memoirアプリのカメラのアクセス許可をONにしてください",
       );
       return;
     }
@@ -49,10 +49,10 @@ const ProfileImage: FC<Props> = (props) => {
 
   const pickImageCamera = useCallback(async () => {
     const camera = await ImagePicker.requestCameraPermissionsAsync();
-    if (camera.status !== 'granted') {
+    if (camera.status !== "granted") {
       Alert.alert(
-        '注意',
-        'memoirアプリのカメラのアクセス許可をONにしてください'
+        "注意",
+        "memoirアプリのカメラのアクセス許可をONにしてください",
       );
     }
 
@@ -71,13 +71,13 @@ const ProfileImage: FC<Props> = (props) => {
 
   const onUpdateImage = useCallback(() => {
     if (!props.authenticated) {
-      Alert.alert('注意', '画像はログインしないと変更できません');
+      Alert.alert("注意", "画像はログインしないと変更できません");
       return;
     }
 
     showActionSheetWithOptions(
       {
-        options: ['ライブラリから選択', '写真を撮る', 'キャンセル'],
+        options: ["ライブラリから選択", "写真を撮る", "キャンセル"],
         cancelButtonIndex: 2,
       },
       (buttonIndex) => {
@@ -86,7 +86,7 @@ const ProfileImage: FC<Props> = (props) => {
         } else if (buttonIndex === 1) {
           pickImageCamera();
         }
-      }
+      },
     );
   }, [
     showActionSheetWithOptions,
@@ -116,7 +116,7 @@ const ProfileImage: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 

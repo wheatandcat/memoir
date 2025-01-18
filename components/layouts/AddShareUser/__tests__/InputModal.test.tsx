@@ -1,11 +1,11 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import InputDialog, { Props } from '../InputModal';
+import { screen } from "@testing-library/react-native";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import InputDialog, { type Props } from "../InputModal";
 
 const propsData = (): Props => ({
   isVisible: true,
-  displayName: '',
+  displayName: "",
   requesting: false,
   onClose: jest.fn(),
   onSearchInviteCode: jest.fn(),
@@ -14,9 +14,9 @@ const propsData = (): Props => ({
   onCreateRelationshipRequest: jest.fn(),
 });
 
-describe('components/organisms/AddShareUser/InputModal.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/AddShareUser/InputModal.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<InputDialog {...propsData()} />)();
-    expect(screen.findAllByText('送信')).toBeTruthy();
+    expect(screen.findAllByText("送信")).toBeTruthy();
   });
 });

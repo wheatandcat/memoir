@@ -1,9 +1,9 @@
-import React from 'react';
-import { View } from 'react-native';
-import Divider from './';
+import React from "react";
+import { View } from "react-native";
+import Divider from "./";
 
 export default {
-  title: 'atoms',
+  title: "atoms",
 };
 
 export const _Divider = () => (

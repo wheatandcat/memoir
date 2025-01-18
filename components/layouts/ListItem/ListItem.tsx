@@ -1,9 +1,9 @@
-import type { FC } from 'react';
-import { StyleSheet, TouchableOpacity, type ViewStyle } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import View from '@/components/elements/View';
-import Text, { type FontFamily } from '@/components/elements/Text';
-import theme from 'config/theme';
+import Text, { type FontFamily } from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import type { FC } from "react";
+import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
 
 type Props = {
   title: string;
@@ -14,7 +14,7 @@ type Props = {
 
 const ListItem: FC<Props> = ({
   divider = false,
-  fontFamily = 'RobotoCondensed-Bold',
+  fontFamily = "RobotoCondensed-Bold",
   ...props
 }) => {
   const style: ViewStyle = {};
@@ -43,13 +43,13 @@ const ListItem: FC<Props> = ({
 
 const styles = StyleSheet.create({
   root: {
-    width: '100%',
+    width: "100%",
     borderTopWidth: StyleSheet.hairlineWidth,
     borderColor: theme().color.base.main,
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    alignItems: "center",
+    justifyContent: "space-between",
     paddingHorizontal: theme().space(3),
   },
 });

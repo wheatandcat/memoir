@@ -1,19 +1,19 @@
-import Loading from '@/components/elements/Loading';
-import View from '@/components/elements/View';
-import type { Props as TemplatesProps } from '@/features/setting/relationshipRequests/components/Page';
-import theme from 'config/theme';
-import { type FC, memo, useCallback } from 'react';
-import { FlatList, type ListRenderItemInfo, StyleSheet } from 'react-native';
-import Card from './Card';
-import NotFound from './NotFound';
+import Loading from "@/components/elements/Loading";
+import View from "@/components/elements/View";
+import type { Props as TemplatesProps } from "@/features/setting/relationshipRequests/components/Page";
+import theme from "config/theme";
+import { type FC, memo, useCallback } from "react";
+import { FlatList, type ListRenderItemInfo, StyleSheet } from "react-native";
+import Card from "./Card";
+import NotFound from "./NotFound";
 
 export type Props = TemplatesProps;
 
-type RenderedItem = ArrayType<Props['items']>;
+type RenderedItem = ArrayType<Props["items"]>;
 
 const renderItem = (
   { item, index }: ListRenderItemInfo<RenderedItem>,
-  props: Props
+  props: Props,
 ) => {
   return (
     <View key={`${index}-contents`}>
@@ -45,7 +45,7 @@ const List: FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item, props);
     },
-    [props]
+    [props],
   );
 
   const handleLoadMore = useCallback(() => {
@@ -73,7 +73,7 @@ const List: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    height: '100%',
+    height: "100%",
   },
   footer: {
     paddingTop: theme().space(2),

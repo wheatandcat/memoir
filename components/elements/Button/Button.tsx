@@ -1,17 +1,17 @@
-import type { FC } from 'react';
+import Text, { type FontFamily } from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import type { FC } from "react";
 import {
+  ActivityIndicator,
+  Platform,
   StyleSheet,
   TouchableOpacity,
-  ActivityIndicator,
   type ViewStyle,
-  Platform,
-} from 'react-native';
-import theme from 'config/theme';
-import View from '@/components/elements/View';
-import Text, { type FontFamily } from '@/components/elements/Text';
+} from "react-native";
 
 export type Props = {
-  size?: 'sm' | 'base' | 'lg';
+  size?: "sm" | "base" | "lg";
   width?: number;
   title: string;
   loading?: boolean;
@@ -22,8 +22,8 @@ export type Props = {
 };
 
 const Button: FC<Props> = ({
-  size = 'base',
-  fontFamily = 'NotoSansJP-Bold',
+  size = "base",
+  fontFamily = "NotoSansJP-Bold",
   ...props
 }) => {
   let configSize = theme().button.size[size];
@@ -61,7 +61,7 @@ const Button: FC<Props> = ({
           textAlign="center"
           size={configSize.fontSize}
           lineHeight={
-            Platform.OS === 'android' && size === 'lg' ? 30 : undefined
+            Platform.OS === "android" && size === "lg" ? 30 : undefined
           }
           fontWeight="bold"
           color="baseDark"
@@ -79,7 +79,7 @@ const Button: FC<Props> = ({
         <Text
           textAlign="center"
           lineHeight={
-            Platform.OS === 'android' && size === 'lg' ? 30 : undefined
+            Platform.OS === "android" && size === "lg" ? 30 : undefined
           }
           size={configSize.fontSize}
           fontWeight="bold"
@@ -96,13 +96,13 @@ const Button: FC<Props> = ({
 const styles = StyleSheet.create({
   button: {
     backgroundColor: theme().color.primary.main,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   disabledButton: {
     backgroundColor: theme().color.base.main,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

@@ -1,18 +1,18 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import InputModal, { Props as InputModalProps } from './InputModal';
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import InputModal, { type Props as InputModalProps } from "./InputModal";
 
 const inputModalProps = (): InputModalProps => ({
   isVisible: true,
-  displayName: '',
+  displayName: "",
   requesting: false,
-  onClose: mockFn('onClose'),
-  onSearchInviteCode: mockFn('onSearchInviteCode'),
-  onCreateRelationshipRequest: mockFn('onCreateRelationshipRequest'),
+  onClose: mockFn("onClose"),
+  onSearchInviteCode: mockFn("onSearchInviteCode"),
+  onCreateRelationshipRequest: mockFn("onCreateRelationshipRequest"),
 });
 
 export default {
-  title: 'organisms/AddShareUser/InputModal',
+  title: "organisms/AddShareUser/InputModal",
 };
 
 export const 入力画面 = () => <InputModal {...inputModalProps()} />;
@@ -27,7 +27,7 @@ export const 確認 = () => (
   <InputModal
     {...inputModalProps()}
     isConfirm={true}
-    confirmUser={{ displayName: 'suzuki', image: '' }}
+    confirmUser={{ displayName: "suzuki", image: "" }}
   />
 );
 

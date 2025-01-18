@@ -1,5 +1,5 @@
+import { type ImageProps, type ImageStyle, Image as RNImage } from "expo-image";
 import type { FC } from "react";
-import { Image as RNImage, type ImageProps, type ImageStyle } from "expo-image";
 
 export type Props = ImageProps & {
   style?: ImageStyle;

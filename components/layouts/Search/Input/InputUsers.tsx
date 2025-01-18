@@ -1,15 +1,15 @@
-import { type FC, memo } from 'react';
-import { StyleSheet, type ViewStyle } from 'react-native';
-import View from '@/components/elements/View';
-import type { User } from 'queries/api/index';
+import View from "@/components/elements/View";
 import UserButton, {
   type Props as UserButtonProps,
-} from '@/components/layouts/User/Button';
+} from "@/components/layouts/User/Button";
+import type { User } from "queries/api/index";
+import { type FC, memo } from "react";
+import { StyleSheet, type ViewStyle } from "react-native";
 
 export type Props = {
-  users: Pick<User, 'id' | 'image'>[];
+  users: Pick<User, "id" | "image">[];
   userIDList: string[];
-} & Pick<UserButtonProps, 'onAdd' | 'onRemove'>;
+} & Pick<UserButtonProps, "onAdd" | "onRemove">;
 
 const InputUsers: FC<Props> = (props) => {
   const style: ViewStyle[] = [styles.users];
@@ -36,12 +36,12 @@ const InputUsers: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   users: {
-    flexWrap: 'wrap',
-    alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
+    flexWrap: "wrap",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
   },
-  userMulti: { width: '80%' },
+  userMulti: { width: "80%" },
 });
 
 export default memo(InputUsers);

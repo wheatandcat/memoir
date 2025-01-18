@@ -1,18 +1,15 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, type ImageProps } from 'react-native';
-import Image from '@/components/elements/Image';
-import theme from 'config/theme';
+import Image from "@/components/elements/Image";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { type ImageProps, StyleSheet } from "react-native";
 
 export type Props = {
   image: string | null;
   size?: number;
-  onLoadEnd?: ImageProps['onLoadEnd'];
+  onLoadEnd?: ImageProps["onLoadEnd"];
 };
 
-const UserImage: FC<Props> = ({
-  size = 100,
-  ...props
-}) => {
+const UserImage: FC<Props> = ({ size = 100, ...props }) => {
   return (
     <>
       {props.image ? (
@@ -26,7 +23,7 @@ const UserImage: FC<Props> = ({
         />
       ) : (
         <Image
-          source={require('@/src/img/icon/icon_account_default.png')}
+          source={require("@/src/img/icon/icon_account_default.png")}
           width={size}
           height={size}
           style={styles.noImage}

@@ -1,11 +1,15 @@
-import { type FC, memo } from 'react';
-import { TouchableWithoutFeedback, StyleSheet, type ViewStyle } from 'react-native';
-import theme from 'config/theme';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Category from '@/components/elements/Category';
-import { icon } from '@/components/elements/Category/setting';
-import { categoryBorderStyle } from 'lib/category';
+import Category from "@/components/elements/Category";
+import { icon } from "@/components/elements/Category/setting";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { categoryBorderStyle } from "lib/category";
+import { type FC, memo } from "react";
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+  type ViewStyle,
+} from "react-native";
 
 type Props = {
   categoryID: number;
@@ -63,13 +67,13 @@ const styles = StyleSheet.create({
     paddingVertical: theme().space(0),
     paddingLeft: theme().space(2),
     marginVertical: theme().space(1),
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   image: {
     width: 80,
     height: 80,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   selected: {
     backgroundColor: theme().color.primary.light,

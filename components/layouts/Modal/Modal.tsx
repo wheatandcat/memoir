@@ -1,11 +1,11 @@
-import type { FC } from 'react';
-import { StyleSheet, ScrollView, Platform,  type ViewStyle } from 'react-native';
-import theme from 'config/theme';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Button from '@/components/elements/Button';
-import RNModal from 'react-native-modal';
-import IconButton from '@/components/layouts/IconButton';
+import Button from "@/components/elements/Button";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import IconButton from "@/components/layouts/IconButton";
+import theme from "config/theme";
+import type { FC } from "react";
+import { Platform, ScrollView, StyleSheet, type ViewStyle } from "react-native";
+import RNModal from "react-native-modal";
 
 export type Props = {
   isVisible: boolean;
@@ -58,7 +58,7 @@ const Modal: FC<Props> = (props) => {
         {Boolean(props.buttonTitle) && (
           <View mx={3} mb={3}>
             <Button
-              title={props.buttonTitle || ''}
+              title={props.buttonTitle || ""}
               size="lg"
               onPress={() => props.onPress?.()}
               disabled={props.disabledButton}
@@ -75,27 +75,27 @@ export default Modal;
 
 const styles = StyleSheet.create({
   root: {
-    width: '100%',
+    width: "100%",
     backgroundColor: theme().color.background.light,
     borderRadius: 30,
-    position: 'relative',
+    position: "relative",
     ...Platform.select({
       ios: {
-        height: '80%',
+        height: "80%",
       },
       android: {
-        height: '100%',
+        height: "100%",
       },
     }),
   },
   header: {
-    alignItems: 'center',
+    alignItems: "center",
   },
   title: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   close: {
-    position: 'absolute',
+    position: "absolute",
     top: theme().space(3),
     left: theme().space(3),
   },

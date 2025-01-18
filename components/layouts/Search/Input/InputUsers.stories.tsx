@@ -1,39 +1,39 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import InputUsers, { Props as InputUsersProps } from './InputUsers';
-import { mockFn } from 'storyBookUtils/index';
+import View from "@/components/elements/View";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { mockFn } from "storyBookUtils/index";
+import InputUsers, { type Props as InputUsersProps } from "./InputUsers";
 
 const inputUsers = (): InputUsersProps => ({
   users: [
     {
-      id: 'test1',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test1",
+      image: "https://placehold.jp/150x150.png",
     },
     {
-      id: 'test2',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test2",
+      image: "https://placehold.jp/150x150.png",
     },
     {
-      id: 'test3',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test3",
+      image: "https://placehold.jp/150x150.png",
     },
     {
-      id: 'test4',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test4",
+      image: "https://placehold.jp/150x150.png",
     },
     {
-      id: 'test5',
-      image: 'https://placehold.jp/150x150.png',
+      id: "test5",
+      image: "https://placehold.jp/150x150.png",
     },
   ],
   userIDList: [],
-  onAdd: mockFn('onAdd'),
-  onRemove: mockFn('onRemove'),
+  onAdd: mockFn("onAdd"),
+  onRemove: mockFn("onRemove"),
 });
 
 export default {
-  title: 'organisms/Search/Input/InputUsers',
+  title: "organisms/Search/Input/InputUsers",
 };
 
 export const _1人 = () => (
@@ -68,8 +68,8 @@ export const _5人 = () => (
 
 const styles = StyleSheet.create({
   center: {
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    width: "100%",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

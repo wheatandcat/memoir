@@ -27,7 +27,7 @@ const Page: React.FC<Props> = (props) => {
         if (buttonIndex === 0) {
           props.onDelete();
         }
-      }
+      },
     );
   }, [showActionSheetWithOptions, props]);
 

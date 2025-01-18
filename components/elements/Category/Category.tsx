@@ -1,11 +1,11 @@
-import Image from '@/components/elements/Image';
-import { type FC, memo  } from 'react';
-import type { ImageProps } from 'react-native';
-import { icon } from './setting';
+import Image from "@/components/elements/Image";
+import { type FC, memo } from "react";
+import type { ImageProps } from "react-native";
+import { icon } from "./setting";
 
 type Props = {
   categoryID: number;
-  onLoadEnd?: ImageProps['onLoadEnd'];
+  onLoadEnd?: ImageProps["onLoadEnd"];
 };
 
 const Category: FC<Props> = (props) => {

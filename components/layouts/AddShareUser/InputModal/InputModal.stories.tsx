@@ -1,28 +1,28 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import Input, { Props as InputProps } from './Input';
-import Sent, { Props as SentProps } from './Sent';
-import Confirm, { Props as ConfirmProps } from './Confirm';
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import Confirm, { type Props as ConfirmProps } from "./Confirm";
+import Input, { type Props as InputProps } from "./Input";
+import Sent, { type Props as SentProps } from "./Sent";
 
 const inputProps = (): InputProps => ({
-  code: '',
-  onChange: mockFn('onChange'),
+  code: "",
+  onChange: mockFn("onChange"),
 });
 
 const sentProps = (): SentProps => ({
-  displayName: 'スズキ',
+  displayName: "スズキ",
 });
 
 const confirmProps = (): ConfirmProps => ({
-  displayName: 'スズキ',
-  image: '',
-  onNG: mockFn('onNG'),
-  onOK: mockFn('onOK'),
+  displayName: "スズキ",
+  image: "",
+  onNG: mockFn("onNG"),
+  onOK: mockFn("onOK"),
   requesting: false,
 });
 
 export default {
-  title: 'organisms/AddShareUser/InputModal',
+  title: "organisms/AddShareUser/InputModal",
 };
 
 export const _Input = () => <Input {...inputProps()} />;

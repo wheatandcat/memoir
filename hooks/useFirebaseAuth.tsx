@@ -1,28 +1,28 @@
-import { useLazyQuery, useMutation } from '@apollo/client';
-import * as AppleAuthentication from 'expo-apple-authentication';
-import * as Crypto from 'expo-crypto';
-import * as WebBrowser from 'expo-web-browser';
+import { useLazyQuery, useMutation } from "@apollo/client";
+import * as AppleAuthentication from "expo-apple-authentication";
+import * as Crypto from "expo-crypto";
+import * as WebBrowser from "expo-web-browser";
 import {
   type OAuthCredential,
   OAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
-} from 'firebase/auth';
-import Auth from 'lib/auth';
-import { getFirebaseAuthApp } from 'lib/firebase';
-import { getItem, removeItem, setItem, storageKey } from 'lib/storage';
-import  {
+} from "firebase/auth";
+import Auth from "lib/auth";
+import { getFirebaseAuthApp } from "lib/firebase";
+import { getItem, removeItem, setItem, storageKey } from "lib/storage";
+import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
   ExistAuthUserDocument,
   UserDocument,
-} from 'queries/api/index';
-import { useCallback, useEffect, useState } from 'react';
-import { Alert } from 'react-native';
-import { useRecoilState, useRecoilValueLoadable } from 'recoil';
-import { authUserState, userState } from 'store/atoms';
-import { existAuthUserID } from 'store/selectors';
-import { v4 as uuidv4 } from 'uuid';
+} from "queries/api/index";
+import { useCallback, useEffect, useState } from "react";
+import { Alert } from "react-native";
+import { useRecoilState, useRecoilValueLoadable } from "recoil";
+import { authUserState, userState } from "store/atoms";
+import { existAuthUserID } from "store/selectors";
+import { v4 as uuidv4 } from "uuid";
 
 const auth = new Auth();
 const appAuth = getFirebaseAuthApp();
@@ -30,9 +30,9 @@ const appAuth = getFirebaseAuthApp();
 WebBrowser.maybeCompleteAuthSession();
 
 const nonceGen = (length: number) => {
-  let result = '';
+  let result = "";
   const characters =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   const charactersLength = characters.length;
   for (let i = 0; i < length; i++) {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
@@ -60,10 +60,10 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       setItem(storageKey.AUTHENTICATED_USER_ID_KEY, data?.user?.id);
       setUser((s) => ({
         ...s,
-        id: data?.user?.id || '',
-        userID: data?.user?.id || '',
-        displayName: data?.user?.displayName || '',
-        image: data?.user?.image || '',
+        id: data?.user?.id || "",
+        userID: data?.user?.id || "",
+        displayName: data?.user?.displayName || "",
+        image: data?.user?.image || "",
       }));
     },
   });
@@ -74,16 +74,16 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       setUser({
         id,
-        userID: '',
-        displayName: '',
-        image: '',
+        userID: "",
+        displayName: "",
+        image: "",
       });
 
       setSetup(true);
     },
     async onError() {
       // エラーになった場合はログアウトさせる
-      Alert.alert('エラー', 'ログインに失敗した');
+      Alert.alert("エラー", "ログインに失敗した");
       onLogout();
     },
   });
@@ -109,11 +109,10 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
           getUser();
         }
       },
-    }
+    },
   );
 
-  const onGoogleLogin = useCallback(() => {
-  }, []);
+  const onGoogleLogin = useCallback(() => {}, []);
 
   const setSession = useCallback(
     async (refresh = false) => {
@@ -134,32 +133,31 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser, getUser, getExistAuthUser]
+    [setAuthUser, getUser, getExistAuthUser],
   );
 
   const firebaseLogin = useCallback(
     async (credential: OAuthCredential) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
-          console.log('error:', error);
-        }
+          console.log("error:", error);
+        },
       );
 
-      console.log('data:', data);
+      console.log("data:", data);
 
       const ok = await setSession(true);
 
       return ok;
     },
-    [setSession]
+    [setSession],
   );
-
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
       Crypto.CryptoDigestAlgorithm.SHA256,
-      nonce
+      nonce,
     );
 
     try {
@@ -170,16 +168,16 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
         ],
         nonce: digestedNonce,
       });
-      const provider = new OAuthProvider('apple.com');
+      const provider = new OAuthProvider("apple.com");
       const credential = provider.credential({
-        idToken: result.identityToken || '',
+        idToken: result.identityToken || "",
         rawNonce: nonce,
       });
 
       firebaseLogin(credential);
     } catch (e) {
-      console.log('error:', e);
-      Alert.alert('ログインに失敗しました');
+      console.log("error:", e);
+      Alert.alert("ログインに失敗しました");
       errorCallback?.();
     }
   }, [firebaseLogin, errorCallback]);
@@ -192,7 +190,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     setAuthUser({
       uid: null,
     });
-    setUser({ id: null, userID: '', displayName: '', image: '' });
+    setUser({ id: null, userID: "", displayName: "", image: "" });
 
     userQuery.client?.clearStore();
     existAuthUserQuery.client?.clearStore();
@@ -202,7 +200,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     if (authUser.uid) {
       return;
     }
-    if (authUserID.state === 'hasValue') {
+    if (authUserID.state === "hasValue") {
       if (authUserID.contents) {
         setAuthUser({ uid: authUserID.contents });
       }
@@ -219,7 +217,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
           setAuthUser({
             uid: null,
           });
-          setUser({ id: null, userID: '', displayName: '', image: '' });
+          setUser({ id: null, userID: "", displayName: "", image: "" });
         }
 
         setSetup(true);

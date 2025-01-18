@@ -1,13 +1,13 @@
-import View from '@/components/elements/View';
-import useAutoFocusInput from '@/hooks/useAutoFocusInput';
-import theme from 'config/theme';
-import type { FC } from 'react';
+import View from "@/components/elements/View";
+import useAutoFocusInput from "@/hooks/useAutoFocusInput";
+import theme from "config/theme";
+import type { FC } from "react";
 import {
   TextInput as RNTextInput,
   StyleSheet,
   type TextInputProps,
   type TextStyle,
-} from 'react-native';
+} from "react-native";
 
 type Props = TextInputProps;
 
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   text: {
     color: theme().color.secondary.main,
     fontSize: theme().fontSizes.lg,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     paddingBottom: theme().space(1),
   },
   underLine: {

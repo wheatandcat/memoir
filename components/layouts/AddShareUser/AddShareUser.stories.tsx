@@ -1,10 +1,12 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import { invite } from '__mockData__/Invite';
-import { user } from '__mockData__/user';
-import InviteCard, { Props as InviteCardProps } from './InviteCard';
-import InputInvite, { Props as InputInviteProps } from './InputInvite';
-import TutorialModal, { Props as TutorialModalProps } from './TutorialModal';
+import { invite } from "__mockData__/Invite";
+import { user } from "__mockData__/user";
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import InputInvite, { type Props as InputInviteProps } from "./InputInvite";
+import InviteCard, { type Props as InviteCardProps } from "./InviteCard";
+import TutorialModal, {
+  type Props as TutorialModalProps,
+} from "./TutorialModal";
 
 const inviteCardProps = (): InviteCardProps => ({
   loading: false,
@@ -13,40 +15,40 @@ const inviteCardProps = (): InviteCardProps => ({
   invite: invite(),
   user: {
     ...user(),
-    userID: '',
+    userID: "",
   },
-  onCreateInvite: mockFn('onCreateInvite'),
-  onUpdateInvite: mockFn('onUpdateInvite'),
+  onCreateInvite: mockFn("onCreateInvite"),
+  onUpdateInvite: mockFn("onUpdateInvite"),
 });
 const inputInviteProps = (): InputInviteProps => ({
-  onOpen: mockFn('onOpen'),
+  onOpen: mockFn("onOpen"),
 });
 const tutorialModalProps = (): TutorialModalProps => ({
   isVisible: true,
-  onClose: mockFn('onClose'),
-  onPress: mockFn('onPress'),
+  onClose: mockFn("onClose"),
+  onPress: mockFn("onPress"),
 });
 
 export default {
-  title: 'organisms/AddShareUser',
+  title: "organisms/AddShareUser",
 };
 
 export const _InviteCard = () => <InviteCard {...inviteCardProps()} />;
 
 _InviteCard.story = {
-  name: 'InviteCard',
+  name: "InviteCard",
 };
 
 export const _InputInvite = () => <InputInvite {...inputInviteProps()} />;
 
 _InputInvite.story = {
-  name: 'InputInvite',
+  name: "InputInvite",
 };
 
 export const _TutorialModal = () => <TutorialModal {...tutorialModalProps()} />;
 
 _TutorialModal.story = {
-  name: 'TutorialModal',
+  name: "TutorialModal",
 
   parameters: {
     loki: { skip: true },

@@ -1,8 +1,12 @@
-import { memo, type FC } from 'react';
-import { TouchableWithoutFeedback, StyleSheet, type ViewStyle } from 'react-native';
-import Image from '@/components/elements/Image';
-import theme from 'config/theme';
-import View from '@/components/elements/View';
+import Image from "@/components/elements/Image";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import {
+  StyleSheet,
+  TouchableWithoutFeedback,
+  type ViewStyle,
+} from "react-native";
 
 type Props = {
   like: boolean;
@@ -13,11 +17,7 @@ type Props = {
   onDislike: () => void;
 };
 
-const Compatibility: FC<Props> = ({
-  size = 64,
-  opacity = false,
-  ...props
-}) => {
+const Compatibility: FC<Props> = ({ size = 64, opacity = false, ...props }) => {
   const likeStyle: ViewStyle[] = [styles.image];
   const dislikeStyle: ViewStyle[] = [styles.image];
   if (props.like && !opacity) {
@@ -40,7 +40,7 @@ const Compatibility: FC<Props> = ({
       <View style={likeStyle}>
         <TouchableWithoutFeedback onPress={props.onLike} testID="input_like">
           <Image
-            source={require('@/src/img/icon/icon_like.png')}
+            source={require("@/src/img/icon/icon_like.png")}
             width={size}
             height={size}
             contentFit="contain"
@@ -53,7 +53,7 @@ const Compatibility: FC<Props> = ({
           testID="input_dislike"
         >
           <Image
-            source={require('@/src/img/icon/icon_dislike.png')}
+            source={require("@/src/img/icon/icon_dislike.png")}
             width={size}
             height={size}
             contentFit="contain"
@@ -68,18 +68,18 @@ export default memo(Compatibility);
 
 const styles = StyleSheet.create({
   root: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100%",
     height: 95,
   },
   image: {
     marginHorizontal: theme().space(2),
     width: 90,
     height: 90,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   selected: {
     backgroundColor: theme().color.primary.light,

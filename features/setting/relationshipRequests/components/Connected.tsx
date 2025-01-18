@@ -1,20 +1,20 @@
-import useRelationshipRequestsPaging from '@/hooks/useRelationshipRequestsPaging';
-import { useMutation, useQuery } from '@apollo/client';
+import useRelationshipRequestsPaging from "@/hooks/useRelationshipRequestsPaging";
+import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import {
   AcceptRelationshipRequestDocument,
   NgRelationshipRequestDocument,
   RelationshipRequestsDocument,
   type RelationshipRequestsQueryVariables as Variables,
-} from 'queries/api/index';
-import type React from 'react';
-import { memo, useCallback, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import Plain from './Plain';
+} from "queries/api/index";
+import type React from "react";
+import { memo, useCallback, useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+import Plain from "./Plain";
 
 const Connected: React.FC = () => {
-  const [endCursor, setEndCursor] = useState('');
-  const [reloadKey, setReloadKey] = useState('');
+  const [endCursor, setEndCursor] = useState("");
+  const [reloadKey, setReloadKey] = useState("");
   const router = useRouter();
 
   const queryResult = useQuery(RelationshipRequestsDocument, {
@@ -26,14 +26,14 @@ const Connected: React.FC = () => {
       skip: false,
       reloadKey,
     } as Variables & { reloadKey: string },
-    nextFetchPolicy: 'network-only',
+    nextFetchPolicy: "network-only",
   });
 
   const { items, pageInfo, reset } = useRelationshipRequestsPaging(
     queryResult,
     {
       merge: true,
-    }
+    },
   );
 
   const [
@@ -42,16 +42,16 @@ const Connected: React.FC = () => {
   ] = useMutation(AcceptRelationshipRequestDocument, {
     onCompleted(data) {
       reset();
-      setEndCursor('');
+      setEndCursor("");
       setReloadKey(uuidv4());
 
       const followerId = data.acceptRelationshipRequest.followerId;
       const user = items.find((v) => v.followerId === followerId);
       router.push({
-        pathname: '/setting/accepted-relationship',
+        pathname: "/setting/accepted-relationship",
         params: {
-          displayName: user?.user?.displayName || '',
-          image: user?.user?.image || '',
+          displayName: user?.user?.displayName || "",
+          image: user?.user?.image || "",
         },
       });
     },
@@ -60,13 +60,13 @@ const Connected: React.FC = () => {
     useMutation(NgRelationshipRequestDocument, {
       onCompleted() {
         reset();
-        setEndCursor('');
+        setEndCursor("");
         setReloadKey(uuidv4());
       },
     });
 
   const onLoadMore = useCallback((after: string | null) => {
-    setEndCursor(after || '');
+    setEndCursor(after || "");
   }, []);
 
   const onOK = useCallback(
@@ -88,7 +88,7 @@ const Connected: React.FC = () => {
       acceptRelationshipRequestMutation,
       acceptRelationshipRequestMutationData.loading,
       ngRelationshipRequestMutationData.loading,
-    ]
+    ],
   );
   const onNG = useCallback(
     (followedId: string) => {
@@ -109,7 +109,7 @@ const Connected: React.FC = () => {
       ngRelationshipRequestMutation,
       acceptRelationshipRequestMutationData.loading,
       ngRelationshipRequestMutationData.loading,
-    ]
+    ],
   );
 
   return (

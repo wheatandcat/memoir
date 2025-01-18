@@ -1,9 +1,9 @@
-import  {memo,type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import SwitchSelector from 'react-native-switch-selector';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import theme from 'config/theme';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
+import SwitchSelector from "react-native-switch-selector";
 
 export type Props = {
   push: number;
@@ -11,8 +11,8 @@ export type Props = {
 };
 
 const options = [
-  { label: 'OFF', value: 0 },
-  { label: 'ON', value: 1 },
+  { label: "OFF", value: 0 },
+  { label: "ON", value: 1 },
 ];
 
 const Notification: FC<Props> = (props) => {
@@ -54,13 +54,13 @@ const Notification: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   title: {
     marginTop: theme().space(5),
-    flexDirection: 'row',
+    flexDirection: "row",
     height: 50,
-    alignItems: 'center',
-    justifyContent: 'space-around',
+    alignItems: "center",
+    justifyContent: "space-around",
   },
   line: {
-    width: '30%',
+    width: "30%",
     backgroundColor: theme().color.base.dark,
     height: StyleSheet.hairlineWidth,
     marginHorizontal: theme().space(3),
@@ -68,9 +68,9 @@ const styles = StyleSheet.create({
   push: {
     marginTop: theme().space(4),
     paddingHorizontal: theme().space(4),
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   pushInput: {
     width: 139,

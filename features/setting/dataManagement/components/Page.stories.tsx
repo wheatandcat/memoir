@@ -1,16 +1,15 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import Page, { type Props } from './Page';
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import Page, { type Props } from "./Page";
 
 const props = (): Props => ({
   loading: false,
   disabledDeleteButton: false,
-  onDelete: mockFn('onDelete'),
-
+  onDelete: mockFn("onDelete"),
 });
 
 export default {
-  title: 'templates/Setting/DataManagement',
+  title: "templates/Setting/DataManagement",
 };
 
 export const _Page = () => (

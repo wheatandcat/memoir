@@ -1,8 +1,8 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import { item } from '__mockData__/item';
-import AddItemModal, { Props } from '../';
+import { screen } from "@testing-library/react-native";
+import { item } from "__mockData__/item";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import AddItemModal, { type Props } from "../";
 
 const propsData = (): Props => ({
   item: {
@@ -14,14 +14,14 @@ const propsData = (): Props => ({
   },
   isVisible: true,
   loading: false,
-  date: '2020-01-01',
+  date: "2020-01-01",
   onAdd: jest.fn(),
   onClose: jest.fn(),
 });
 
-describe('components/organisms/AddItemModal/AddItemModal.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/AddItemModal/AddItemModal.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<AddItemModal {...propsData()} />)();
-    expect(screen.findAllByText('入力')).toBeTruthy();
+    expect(screen.findAllByText("入力")).toBeTruthy();
   });
 });

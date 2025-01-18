@@ -1,13 +1,13 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import Modal, { Props } from '../';
+import { screen } from "@testing-library/react-native";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import Modal, { type Props } from "../";
 
 const propsData = (): Props => ({
   isVisible: true,
   loading: false,
-  title: 'title',
-  buttonTitle: 'buttonTitle',
+  title: "title",
+  buttonTitle: "buttonTitle",
   disabledButton: false,
   height: 100,
   onClose: jest.fn(),
@@ -15,9 +15,9 @@ const propsData = (): Props => ({
   children: <div>children</div>,
 });
 
-describe('components/organisms/Modal/Modal.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/Modal/Modal.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<Modal {...propsData()} />)();
-    expect(screen.findAllByText('buttonTitle')).toBeTruthy();
+    expect(screen.findAllByText("buttonTitle")).toBeTruthy();
   });
 });

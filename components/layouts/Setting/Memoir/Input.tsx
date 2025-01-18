@@ -1,11 +1,11 @@
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import  { type FC, memo, useCallback,useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import RNPickerSelect from 'react-native-picker-select';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useCallback, useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+import RNPickerSelect from "react-native-picker-select";
 
 export type Props = {
   dayOfWeek: number;
@@ -15,13 +15,13 @@ export type Props = {
 };
 
 const dayOfWeekItems = [
-  { label: '日', value: 1, key: 1 },
-  { label: '月', value: 2, key: 2 },
-  { label: '火', value: 3, key: 3 },
-  { label: '水', value: 4, key: 4 },
-  { label: '木', value: 5, key: 5 },
-  { label: '金', value: 6, key: 6 },
-  { label: '土', value: 7, key: 7 },
+  { label: "日", value: 1, key: 1 },
+  { label: "月", value: 2, key: 2 },
+  { label: "火", value: 3, key: 3 },
+  { label: "水", value: 4, key: 4 },
+  { label: "木", value: 5, key: 5 },
+  { label: "金", value: 6, key: 6 },
+  { label: "土", value: 7, key: 7 },
 ];
 
 const Input: FC<Props> = (props) => {
@@ -32,7 +32,7 @@ const Input: FC<Props> = (props) => {
       setOpenTime(false);
       props.onChangeTime(val);
     },
-    [props]
+    [props],
   );
 
   return (
@@ -83,7 +83,7 @@ const Input: FC<Props> = (props) => {
               style={styles.numberInput}
               onPress={() => setOpenTime(true)}
             >
-              {dayjs(props.time).format('HH:mm')}
+              {dayjs(props.time).format("HH:mm")}
             </Text>
           </TouchableOpacity>
           <DateTimePickerModal
@@ -108,8 +108,8 @@ const Input: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   input: {
-    justifyContent: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    flexDirection: "row",
   },
   inputItem: {},
   numberInput: {},

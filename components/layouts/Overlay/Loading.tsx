@@ -1,12 +1,12 @@
-import  { memo, useEffect, useState,type FC } from 'react';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo, useEffect, useState } from "react";
 import {
-  StyleSheet,
   ActivityIndicator,
+  StyleSheet,
   useWindowDimensions,
-} from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import theme from 'config/theme';
+} from "react-native";
 
 export type Props = {
   text: string;
@@ -37,19 +37,18 @@ const Loading: FC<Props> = (props) => {
             fontFamily="NotoSansJP-Bold"
             textAlign="center"
           >
-            {props.text}{' '}
-            {(() => {
+            {props.text} {(() => {
               if (count % 3 === 0) {
-                return '.';
+                return ".";
               }
               if (count % 3 === 1) {
-                return '..';
+                return "..";
               }
               if (count % 3 === 2) {
-                return '...';
+                return "...";
               }
 
-              return '';
+              return "";
             })()}
           </Text>
         </View>
@@ -61,16 +60,16 @@ const Loading: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: `${theme().color.secondary.dark}99`,
-    height: '100%',
-    width: '100%',
-    justifyContent: 'center',
-    position: 'absolute',
+    height: "100%",
+    width: "100%",
+    justifyContent: "center",
+    position: "absolute",
     top: 0,
     left: 0,
   },
   loading: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
 

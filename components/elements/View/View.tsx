@@ -1,6 +1,6 @@
-import type { FC } from 'react';
-import { View as RNView, type ViewStyle, type ViewProps } from 'react-native';
-import { type SpaceProps, styleSpace } from 'lib/styledSystem/styleSpace';
+import { type SpaceProps, styleSpace } from "lib/styledSystem/styleSpace";
+import type { FC } from "react";
+import { View as RNView, type ViewProps, type ViewStyle } from "react-native";
 
 type Props = ViewProps & SpaceProps;
 

@@ -17,7 +17,7 @@ type Option = {
 
 const useItemsInPeriodPaging = (
   props: Props,
-  option: Option = { merge: false }
+  option: Option = { merge: false },
 ) => {
   const { data, loading } = props;
   const [nodes, setNodes] = useState<Item[]>([]);
@@ -30,7 +30,9 @@ const useItemsInPeriodPaging = (
     if (option.merge) {
       const tmp = new Set();
       setNodes((s) =>
-        [...s, ...getNodes(data)].filter((n) => !tmp.has(n.id) && tmp.add(n.id))
+        [...s, ...getNodes(data)].filter(
+          (n) => !tmp.has(n.id) && tmp.add(n.id),
+        ),
       );
     } else {
       setNodes(getNodes(data));

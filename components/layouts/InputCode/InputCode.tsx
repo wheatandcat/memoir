@@ -35,7 +35,7 @@ const InputCode: React.FC<Props> = (props) => {
   useFocusEffect(
     useCallback(() => {
       timeout.current = Number(
-        setTimeout(() => textInputRef.current?.focus(), 300)
+        setTimeout(() => textInputRef.current?.focus(), 300),
       );
 
       return () => {
@@ -43,7 +43,7 @@ const InputCode: React.FC<Props> = (props) => {
           clearTimeout(timeout.current);
         }
       };
-    }, [])
+    }, []),
   );
 
   const handlePress = useCallback(() => {
@@ -64,7 +64,7 @@ const InputCode: React.FC<Props> = (props) => {
 
       props.onChange(text.toUpperCase());
     },
-    [value, props]
+    [value, props],
   );
 
   const handleKeyPress = useCallback(
@@ -75,7 +75,7 @@ const InputCode: React.FC<Props> = (props) => {
         props.onChange(r);
       }
     },
-    [props, value]
+    [props, value],
   );
 
   return (

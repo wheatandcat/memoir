@@ -24,13 +24,13 @@ const Connected: React.FC = () => {
     RelationshipRequestsDocument,
     {
       fetchPolicy: "network-only",
-    }
+    },
   );
   const [getRelationships, relationshipsData] = useLazyQuery(
     RelationshipsDocument,
     {
       fetchPolicy: "network-only",
-    }
+    },
   );
   const [deleteRelationshipMutation, deleteRelationshipMutationData] =
     useMutation(DeleteRelationshipDocument, {
@@ -72,7 +72,7 @@ const Connected: React.FC = () => {
       userQuery,
       relationshipRequestsData,
       relationshipsData,
-    ])
+    ]),
   );
 
   const onLogin = useCallback(() => {
@@ -99,7 +99,7 @@ const Connected: React.FC = () => {
         },
       });
     },
-    [deleteRelationshipMutation]
+    [deleteRelationshipMutation],
   );
 
   if (!setupAuth || userQuery.loading) {

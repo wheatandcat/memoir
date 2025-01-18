@@ -20,7 +20,7 @@ const Plain: React.FC<Props> = (props) => {
   if (props.loading) return <Loading />;
 
   const items = (props.data?.itemsInPeriod?.edges || []).map(
-    (v) => v.node
+    (v) => v.node,
   ) as Item[];
 
   return (

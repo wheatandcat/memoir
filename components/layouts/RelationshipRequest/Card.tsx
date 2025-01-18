@@ -1,14 +1,14 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import theme from 'config/theme';
-import UserImage from '@/components/layouts/User/Image';
-import Divider from '@/components/elements/Divider';
-import type { Props as TemplatesProps } from 'components/templates/Setting/RelationshipRequests/Page';
-import dayjs from 'lib/dayjs';
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import UserImage from "@/components/layouts/User/Image";
+import type { Props as TemplatesProps } from "components/templates/Setting/RelationshipRequests/Page";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import { type FC, memo } from "react";
+import { ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 
-export type Props = ArrayType<TemplatesProps['items']> & {
+export type Props = ArrayType<TemplatesProps["items"]> & {
   acceptRequesting: boolean;
   ngRequesting: boolean;
   onOK: () => void;
@@ -16,29 +16,29 @@ export type Props = ArrayType<TemplatesProps['items']> & {
 };
 
 const Card: FC<Props> = (props) => {
-  const diffDay = dayjs().diff(props.createdAt, 'days');
+  const diffDay = dayjs().diff(props.createdAt, "days");
 
   return (
     <>
       <View style={styles.root}>
         <View style={styles.imageWrap}>
-          <UserImage image={props.user?.image || ''} size={80} />
+          <UserImage image={props.user?.image || ""} size={80} />
         </View>
         <View style={styles.user}>
           <View style={styles.nameWrap}>
             <View>
               <Text size="sm" textAlign="left">
-                {props.user?.displayName || ''}
+                {props.user?.displayName || ""}
               </Text>
             </View>
             <View pr={3}>
               <Text size="sm" textAlign="left">
                 {(() => {
                   if (diffDay === 0) {
-                    return '今日';
+                    return "今日";
                   }
                   if (diffDay > 2) {
-                    return '2日以上前';
+                    return "2日以上前";
                   }
                   return `${diffDay}日前`;
                 })()}
@@ -82,29 +82,29 @@ const Card: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    flexDirection: 'row',
-    width: '100%',
+    flexDirection: "row",
+    width: "100%",
     paddingHorizontal: theme().space(1),
     paddingVertical: theme().space(2),
   },
   imageWrap: {
-    justifyContent: 'center',
-    width: '25%',
+    justifyContent: "center",
+    width: "25%",
     paddingLeft: theme().space(1),
   },
   user: {
-    width: '75%',
+    width: "75%",
     paddingVertical: theme().space(2),
   },
   nameWrap: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
     paddingVertical: theme().space(1),
   },
   buttonWrap: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     width: 215,
     paddingVertical: theme().space(2),
   },
@@ -113,16 +113,16 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     width: 90,
     height: 38,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   removeButton: {
     backgroundColor: theme().color.base.main,
     borderRadius: 25,
     width: 90,
     height: 38,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

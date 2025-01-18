@@ -1,9 +1,9 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import InputDateWrap from './InputDateWrap';
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import InputDateWrap from "./InputDateWrap";
 
 export default {
-  title: 'organisms',
+  title: "organisms",
 };
 
 export const _InputDateWrap = () => (
@@ -11,6 +11,6 @@ export const _InputDateWrap = () => (
 );
 
 _InputDateWrap.story = {
-  name: 'InputDateWrap',
+  name: "InputDateWrap",
   parameters: { loki: { skip: true } },
 };

@@ -1,10 +1,10 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import theme from 'config/theme';
-import View from './';
+import theme from "config/theme";
+import React from "react";
+import { StyleSheet } from "react-native";
+import View from "./";
 
 export default {
-  title: 'atoms',
+  title: "atoms",
 };
 
 export const _View = () => (

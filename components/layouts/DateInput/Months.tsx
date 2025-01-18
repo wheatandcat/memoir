@@ -1,14 +1,14 @@
-import { type FC, memo, useCallback, useRef, useState } from 'react';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
+  type ListRenderItemInfo,
   StyleSheet,
   TouchableWithoutFeedback,
   useWindowDimensions,
-  type ListRenderItemInfo,
-} from 'react-native';
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import Carousel from 'react-native-snap-carousel';
+} from "react-native";
+import Carousel from "react-native-snap-carousel";
 
 type Month = {
   label: string;
@@ -38,7 +38,7 @@ const renderItem: FC<RenderedItemProps> = ({ item }) => {
       <View style={styles.monthItem}>
         <Text
           color={
-            String(item.month.value) === item.value ? 'primary' : 'secondary'
+            String(item.month.value) === item.value ? "primary" : "secondary"
           }
         >
           {item.month.label}
@@ -65,7 +65,7 @@ const MonthInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   return (

@@ -1,9 +1,9 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Image from '@/components/elements/Image';
-import theme from 'config/theme';
+import Image from "@/components/elements/Image";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 type Props = {
   onPress: () => void;
@@ -16,7 +16,7 @@ const MemoirButton: FC<Props> = (props) => {
         <View style={styles.memoirButton}>
           <View>
             <Image
-              source={require('@/src/img/icon/main.png')}
+              source={require("@/src/img/icon/main.png")}
               width={30}
               height={30}
             />
@@ -34,16 +34,16 @@ export default memo(MemoirButton);
 
 const styles = StyleSheet.create({
   root: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
-    width: '100%',
+    width: "100%",
   },
   memoirButton: {
     backgroundColor: theme().color.primary.main,
-    width: '100%',
+    width: "100%",
     height: 55,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
 });

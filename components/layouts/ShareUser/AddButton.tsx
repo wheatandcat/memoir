@@ -1,8 +1,8 @@
-import  { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import { MaterialIcons } from '@expo/vector-icons';
+import View from "@/components/elements/View";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
   onAdd: () => void;
@@ -24,8 +24,8 @@ const styles = StyleSheet.create({
     width: 100,
     height: 100,
     borderRadius: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

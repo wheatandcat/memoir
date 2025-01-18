@@ -1,7 +1,7 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import IndexPage, { Props } from '../';
+import { screen } from "@testing-library/react-native";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import IndexPage, { type Props } from "../";
 
 const propsData = (): Props =>
   ({
@@ -14,12 +14,12 @@ const propsData = (): Props =>
     route: {
       params: {},
     },
-  } as any);
+  }) as any;
 
-describe('components/pages/Contact/index.tsx', () => {
-  it('正常にrenderすること', async () => {
+describe("components/pages/Contact/index.tsx", () => {
+  it("正常にrenderすること", async () => {
     testRenderer(<IndexPage {...propsData()} />)();
 
-    expect(screen.findAllByText('コメント')).toBeTruthy();
+    expect(screen.findAllByText("コメント")).toBeTruthy();
   });
 });

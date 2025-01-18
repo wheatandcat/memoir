@@ -1,18 +1,18 @@
-import { type FC, memo, useState, useCallback, useRef } from 'react';
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import IconButton from "@/components/layouts/IconButton";
+import theme from "config/theme";
+import type { FontColor } from "lib/styledSystem/styleFontColor";
+import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Modal,
-  StyleSheet,
-  type ViewStyle,
   View as RNView,
+  StyleSheet,
   TouchableOpacity,
-  TouchableWithoutFeedback
-} from 'react-native';
-import theme from 'config/theme';
-import IconButton from '@/components/layouts/IconButton';
-import type { FontColor } from 'lib/styledSystem/styleFontColor';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Divider from '@/components/elements/Divider';
+  TouchableWithoutFeedback,
+  type ViewStyle,
+} from "react-native";
 
 export type Item = {
   text: string;
@@ -83,7 +83,7 @@ const Menu: FC<Props> = (props) => {
           visible={open}
           transparent
           onRequestClose={() => {
-            setOpen(!open)
+            setOpen(!open);
           }}
           animationType="fade"
           onDismiss={onModalHide}
@@ -91,19 +91,19 @@ const Menu: FC<Props> = (props) => {
         >
           <TouchableWithoutFeedback onPress={() => setOpen(!open)}>
             <View style={[style, styles.menuItem]}>
-            {props.items.map((item, index) => (
-              <View key={item.text}>
-                <TouchableOpacity
-                  onPress={() => onPress(item, index)}
-                  testID={item.testID}
-                >
-                  <View p={3}>
-                    <Text color={item.color}>{item.text}</Text>
-                  </View>
-                </TouchableOpacity>
-                {index < props.items.length - 1 && <Divider />}
-              </View>
-            ))}
+              {props.items.map((item, index) => (
+                <View key={item.text}>
+                  <TouchableOpacity
+                    onPress={() => onPress(item, index)}
+                    testID={item.testID}
+                  >
+                    <View p={3}>
+                      <Text color={item.color}>{item.text}</Text>
+                    </View>
+                  </TouchableOpacity>
+                  {index < props.items.length - 1 && <Divider />}
+                </View>
+              ))}
             </View>
           </TouchableWithoutFeedback>
         </Modal>
@@ -114,11 +114,11 @@ const Menu: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   menu: {
-    position: 'relative',
+    position: "relative",
     zIndex: 1,
   },
   menuItem: {
-    position: 'absolute',
+    position: "absolute",
     borderWidth: StyleSheet.hairlineWidth,
     borderColor: theme().color.secondary.main,
     backgroundColor: theme().color.background.light,

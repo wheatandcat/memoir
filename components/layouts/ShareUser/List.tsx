@@ -1,16 +1,16 @@
-import { memo, type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import type { ConnectedType } from 'components/pages/MyPage/Connected';
-import type { User as UserType } from 'store/atoms';
-import User from './User';
-import AddButton from './AddButton';
+import View from "@/components/elements/View";
+import type { ConnectedType } from "components/pages/MyPage/Connected";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
+import type { User as UserType } from "store/atoms";
+import AddButton from "./AddButton";
+import User from "./User";
 
 export type Props = {
-  deleting: ConnectedType['deleting'];
-  relationships: ConnectedType['relationships'];
-  onDeleteRelationship: ConnectedType['onDeleteRelationship'];
+  deleting: ConnectedType["deleting"];
+  relationships: ConnectedType["relationships"];
+  onDeleteRelationship: ConnectedType["onDeleteRelationship"];
   onAdd: () => void;
 };
 
@@ -48,11 +48,11 @@ const List: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    width: '100%',
+    width: "100%",
     padding: theme().space(3),
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
   },
   block: {
     width: 110,

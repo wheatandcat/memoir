@@ -1,4 +1,4 @@
-import { type MutableRefObject, useCallback, useState } from 'react';
+import { type MutableRefObject, useCallback, useState } from "react";
 
 const useSafeState = (unmountRef: unknown, defaultValue: unknown) => {
   const [state, changeState] = useState(defaultValue);
@@ -9,7 +9,7 @@ const useSafeState = (unmountRef: unknown, defaultValue: unknown) => {
         changeState(v);
       }
     },
-    [unmountRef]
+    [unmountRef],
   );
 
   return [state, wrapChangeState];

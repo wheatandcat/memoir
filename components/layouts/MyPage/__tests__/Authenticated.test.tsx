@@ -1,14 +1,14 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import { user } from '__mockData__/user';
-import { relationships } from '__mockData__/relationship';
-import Authenticated, { Props } from '../Authenticated';
+import { screen } from "@testing-library/react-native";
+import { relationships } from "__mockData__/relationship";
+import { user } from "__mockData__/user";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import Authenticated, { type Props } from "../Authenticated";
 
 const propsData = (): Props => ({
   user: {
     ...user(),
-    userID: '',
+    userID: "",
   },
   relationships: relationships(),
   relationshipRequestCount: 3,
@@ -20,9 +20,9 @@ const propsData = (): Props => ({
   onDeleteRelationship: jest.fn(),
 });
 
-describe('components/organisms/MyPage/Authenticated.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/MyPage/Authenticated.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<Authenticated {...propsData()} />)();
-    expect(screen.findAllByText('共有メンバー')).toBeTruthy();
+    expect(screen.findAllByText("共有メンバー")).toBeTruthy();
   });
 });

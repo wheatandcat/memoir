@@ -1,28 +1,28 @@
-import { memo, useCallback, useState, type FC } from 'react';
-import { StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import * as Notifications from 'expo-notifications';
-import { setItem, storageKey } from 'lib/storage';
-import * as Updates from 'expo-updates';
-import * as Clipboard from 'expo-clipboard';
-import { useRecoilValue } from 'recoil';
-import { userState } from 'store/atoms';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Divider from '@/components/elements/Divider';
-import TextInput from '@/components/elements/TextInput';
-import Button from '@/components/elements/Button';
-import theme from 'config/theme';
-import Auth from 'lib/auth';
+import Button from "@/components/elements/Button";
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import TextInput from "@/components/elements/TextInput";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import * as Clipboard from "expo-clipboard";
+import * as Notifications from "expo-notifications";
+import * as Updates from "expo-updates";
+import Auth from "lib/auth";
+import { setItem, storageKey } from "lib/storage";
+import { type FC, memo, useCallback, useState } from "react";
+import { Alert, StyleSheet, TouchableOpacity } from "react-native";
+import { useRecoilValue } from "recoil";
+import { userState } from "store/atoms";
 
 const auth = new Auth();
 
 const Debug: FC = () => {
   const user = useRecoilValue(userState);
-  const [userID, setUserID] = useState('');
+  const [userID, setUserID] = useState("");
 
   const onCopyUserID = useCallback(() => {
-    Clipboard.setStringAsync(user.userID || '');
-    Alert.alert('コピーしました');
+    Clipboard.setStringAsync(user.userID || "");
+    Alert.alert("コピーしました");
   }, [user.userID]);
 
   const onCopyToken = useCallback(async () => {
@@ -30,16 +30,16 @@ const Debug: FC = () => {
     console.log(`Bearer ${token}`);
 
     await Clipboard.setStringAsync(`Bearer ${token}`);
-    Alert.alert('コピーしました');
+    Alert.alert("コピーしました");
   }, []);
 
   const onChangeUserID = useCallback(async () => {
-    if (!userID || userID === '') {
-      Alert.alert('ユーザーIDの指定がありません');
+    if (!userID || userID === "") {
+      Alert.alert("ユーザーIDの指定がありません");
       return;
     }
     await setItem(storageKey.USER_ID_KEY, userID);
-    Alert.alert('アプリを再起動します');
+    Alert.alert("アプリを再起動します");
     Updates.reloadAsync();
   }, [userID]);
 
@@ -48,20 +48,20 @@ const Debug: FC = () => {
       await Notifications.getPermissionsAsync();
     let finalStatus = existingStatus;
 
-    if (existingStatus !== 'granted') {
+    if (existingStatus !== "granted") {
       const { status } = await Notifications.requestPermissionsAsync();
       finalStatus = status;
     }
 
-    if (finalStatus !== 'granted') {
+    if (finalStatus !== "granted") {
       return false;
     }
 
     Notifications.scheduleNotificationAsync({
       content: {
-        body: 'Push通知テスト',
+        body: "Push通知テスト",
         data: {
-          urlScheme: 'MyPage',
+          urlScheme: "MyPage",
         },
       },
       trigger: {
@@ -69,7 +69,7 @@ const Debug: FC = () => {
       },
     });
 
-    Alert.alert('3秒後に通知を設定しました');
+    Alert.alert("3秒後に通知を設定しました");
   }, []);
 
   return (
@@ -120,16 +120,16 @@ export default memo(Debug);
 const styles = StyleSheet.create({
   root: {},
   input: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    width: '100%',
+    flexDirection: "row",
+    alignItems: "center",
+    width: "100%",
   },
   inputText: {
-    width: '70%',
+    width: "70%",
     marginVertical: theme().space(2),
   },
   inputButton: {
-    width: '30%',
+    width: "30%",
     margin: theme().space(2),
   },
 });

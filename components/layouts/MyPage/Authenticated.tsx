@@ -1,29 +1,29 @@
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import Notification from '@/components/layouts/RelationshipRequest/Notification';
-import ShareUsers from '@/components/layouts/ShareUser/List';
-import UserImage from '@/components/layouts/User/Image';
-import type { ConnectedType } from '@/features/myPage/components/type';
-import { MaterialIcons } from '@expo/vector-icons';
-import theme from 'config/theme';
-import { type FC, memo } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import type { User } from 'store/atoms';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import Notification from "@/components/layouts/RelationshipRequest/Notification";
+import ShareUsers from "@/components/layouts/ShareUser/List";
+import UserImage from "@/components/layouts/User/Image";
+import type { ConnectedType } from "@/features/myPage/components/type";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import type { User } from "store/atoms";
 
 export type Props = {
   user: User;
   relationshipRequestCount: number;
 } & Pick<
   ConnectedType,
-  | 'onUpdateProfile'
-  | 'onLogout'
-  | 'onLogout'
-  | 'onRelationshipRequests'
-  | 'onAddShareUser'
-  | 'relationshipRequestCount'
-  | 'relationships'
-  | 'deleting'
-  | 'onDeleteRelationship'
+  | "onUpdateProfile"
+  | "onLogout"
+  | "onLogout"
+  | "onRelationshipRequests"
+  | "onAddShareUser"
+  | "relationshipRequestCount"
+  | "relationships"
+  | "deleting"
+  | "onDeleteRelationship"
 >;
 
 const Authenticated: FC<Props> = (props) => {
@@ -39,7 +39,7 @@ const Authenticated: FC<Props> = (props) => {
           <TouchableOpacity onPress={props.onUpdateProfile}>
             <View style={styles.userInfo}>
               <Text>
-                {props.user?.displayName || '表示名の設定がありません'}
+                {props.user?.displayName || "表示名の設定がありません"}
               </Text>
               <MaterialIcons
                 name="chevron-right"
@@ -91,37 +91,37 @@ const Authenticated: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    height: '100%',
+    height: "100%",
   },
   user: {
-    width: '100%',
-    alignItems: 'center',
+    width: "100%",
+    alignItems: "center",
   },
   userInfo: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
   },
   logout: {
     backgroundColor: theme().color.primary.main,
     width: 200,
     paddingVertical: theme().space(3),
     borderRadius: 25,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
   share: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
   divider: {
     height: 1,
     backgroundColor: theme().color.base.main,
-    width: '25%',
+    width: "25%",
     marginHorizontal: theme().space(3),
   },
   action: {
-    alignItems: 'center',
+    alignItems: "center",
   },
 });
 

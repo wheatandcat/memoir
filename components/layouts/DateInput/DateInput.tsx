@@ -1,14 +1,14 @@
-import Divider from '@/components/elements/Divider';
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import usePrevious from '@/hooks/usePrevious';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import { type FC, memo, useCallback, useEffect, useState } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import InputDay from './Days';
-import InputMonth from './Months';
-import InputYear from './Years';
+import Divider from "@/components/elements/Divider";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import usePrevious from "@/hooks/usePrevious";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useCallback, useEffect, useState } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
+import InputDay from "./Days";
+import InputMonth from "./Months";
+import InputYear from "./Years";
 
 const years = () => {
   const lastYear = dayjs().year();
@@ -22,51 +22,51 @@ const years = () => {
 };
 const months = [
   {
-    label: '1/Jun',
+    label: "1/Jun",
     value: 1,
   },
   {
-    label: '2/Feb',
+    label: "2/Feb",
     value: 2,
   },
   {
-    label: '3/Mar',
+    label: "3/Mar",
     value: 3,
   },
   {
-    label: '4/Apr',
+    label: "4/Apr",
     value: 4,
   },
   {
-    label: '5/May',
+    label: "5/May",
     value: 5,
   },
   {
-    label: '6/Jun',
+    label: "6/Jun",
     value: 6,
   },
   {
-    label: '7/Jul',
+    label: "7/Jul",
     value: 7,
   },
   {
-    label: '8/Aug',
+    label: "8/Aug",
     value: 8,
   },
   {
-    label: '9/Sep',
+    label: "9/Sep",
     value: 9,
   },
   {
-    label: '10/Oct',
+    label: "10/Oct",
     value: 10,
   },
   {
-    label: '11/Nov',
+    label: "11/Nov",
     value: 11,
   },
   {
-    label: '12/Dec',
+    label: "12/Dec",
     value: 12,
   },
 ];
@@ -75,7 +75,7 @@ const getDays = (date: string): string[] => {
   const end = dayjs(date).daysInMonth();
   const items = [];
   for (let i = 0; i < end; i++) {
-    items.push(dayjs(date).date(1).add(i, 'days').format('YYYY-MM-DD'));
+    items.push(dayjs(date).date(1).add(i, "days").format("YYYY-MM-DD"));
   }
 
   return items;
@@ -92,7 +92,7 @@ type State = {
 };
 
 const initialState = (props: Props): State => ({
-  date: dayjs(props.date).format('YYYY-MM-DD'),
+  date: dayjs(props.date).format("YYYY-MM-DD"),
 });
 
 const DateInput: FC<Props> = (props) => {
@@ -115,7 +115,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date]
+    [state.date],
   );
 
   const onMonth = useCallback(
@@ -124,12 +124,12 @@ const DateInput: FC<Props> = (props) => {
 
       if (dayjs(date).month() + 1 !== Number(month)) {
         // 設定月に、その日が存在しない場合は、月の末日を設定
-        date = dayjs(date).add(-1, 'month').endOf('month').format('YYYY-MM-DD');
+        date = dayjs(date).add(-1, "month").endOf("month").format("YYYY-MM-DD");
       }
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date]
+    [state.date],
   );
 
   const onDay = useCallback(
@@ -138,11 +138,11 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date]
+    [state.date],
   );
 
   const onToday = useCallback(() => {
-    const date = dayjs().format('YYYY-MM-DD');
+    const date = dayjs().format("YYYY-MM-DD");
 
     if (props.isItemDetail) {
       props.onChange(date);
@@ -155,7 +155,7 @@ const DateInput: FC<Props> = (props) => {
     <View>
       <View pl={2} py={2}>
         <InputYear
-          year={dayjs(state.date).format('YYYY')}
+          year={dayjs(state.date).format("YYYY")}
           years={years()}
           onPress={onYear}
         />
@@ -163,7 +163,7 @@ const DateInput: FC<Props> = (props) => {
       <Divider my={2} />
       <View pl={2}>
         <InputMonth
-          month={dayjs(state.date).format('M')}
+          month={dayjs(state.date).format("M")}
           months={months}
           onPress={onMonth}
         />
@@ -172,7 +172,7 @@ const DateInput: FC<Props> = (props) => {
         <View pb={2} style={styles.dateInput}>
           <View style={styles.date}>
             <InputDay
-              day={dayjs(state.date).format('D')}
+              day={dayjs(state.date).format("D")}
               days={getDays(state.date)}
               onPress={onDay}
             />
@@ -195,16 +195,16 @@ const DateInput: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   dateInput: {
-    alignItems: 'center',
-    justifyContent: 'flex-start',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "flex-start",
+    flexDirection: "row",
   },
   date: {
-    width: '80%',
-    overflow: 'hidden',
+    width: "80%",
+    overflow: "hidden",
   },
   buttonRoot: {
-    width: '20%',
+    width: "20%",
     marginHorizontal: theme().space(2),
     height: 30,
   },
@@ -213,8 +213,8 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     height: 35,
     width: 60,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 

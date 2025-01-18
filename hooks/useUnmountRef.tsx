@@ -6,7 +6,7 @@ const useUnmountRef = () => {
     () => () => {
       unmountRef.current = true;
     },
-    []
+    [],
   );
   return unmountRef;
 };

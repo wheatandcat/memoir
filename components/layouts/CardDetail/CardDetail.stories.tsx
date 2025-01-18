@@ -1,12 +1,12 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import { mockFn } from 'storyBookUtils/index';
-import CardDetail from './CardDetail';
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { mockFn } from "storyBookUtils/index";
+import CardDetail from "./CardDetail";
 
 export default {
-  title: 'organisms/CardDetail',
+  title: "organisms/CardDetail",
 };
 
 export const Default = () => (
@@ -17,8 +17,8 @@ export const Default = () => (
       like={false}
       dislike={false}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
-      onOpenUpdateItem={mockFn('onOpenUpdateItem')}
-      onDeleteItem={mockFn('onDeleteItem')}
+      onOpenUpdateItem={mockFn("onOpenUpdateItem")}
+      onDeleteItem={mockFn("onDeleteItem")}
     />
   </View>
 );
@@ -31,8 +31,8 @@ export const Like = () => (
       like={true}
       dislike={false}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
-      onOpenUpdateItem={mockFn('onOpenUpdateItem')}
-      onDeleteItem={mockFn('onDeleteItem')}
+      onOpenUpdateItem={mockFn("onOpenUpdateItem")}
+      onDeleteItem={mockFn("onDeleteItem")}
     />
   </View>
 );
@@ -45,8 +45,8 @@ export const Dislike = () => (
       like={false}
       dislike={true}
       title="とても長いタイトルの本を読んだことがあって次もまた長いタイトルの本を読む"
-      onOpenUpdateItem={mockFn('onOpenUpdateItem')}
-      onDeleteItem={mockFn('onDeleteItem')}
+      onOpenUpdateItem={mockFn("onOpenUpdateItem")}
+      onDeleteItem={mockFn("onDeleteItem")}
     />
   </View>
 );
@@ -54,6 +54,6 @@ export const Dislike = () => (
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
-    height: '100%',
+    height: "100%",
   },
 });

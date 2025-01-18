@@ -1,9 +1,9 @@
-import  { memo, type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Button from '@/components/elements/Button';
-import theme from 'config/theme';
+import Button from "@/components/elements/Button";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
 
 export type Props = {
   onOpen: () => void;
@@ -32,7 +32,7 @@ const InputInvite: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   card: {
     backgroundColor: theme().color.background.light,
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: theme().space(4),
     borderRadius: 25,
     borderWidth: StyleSheet.hairlineWidth,
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     width: 320,
   },
   invite: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingVertical: theme().space(3),
   },
 });

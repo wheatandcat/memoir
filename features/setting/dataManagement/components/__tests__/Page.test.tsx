@@ -1,7 +1,7 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import Page, { Props } from '../Page';
+import { screen } from "@testing-library/react-native";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import Page, { type Props } from "../Page";
 
 const propsData = (): Props => ({
   loading: false,
@@ -9,9 +9,9 @@ const propsData = (): Props => ({
   onDelete: jest.fn(),
 });
 
-describe('components/templates/DataManagement/Page.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/templates/DataManagement/Page.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<Page {...propsData()} />)();
-    expect(screen.findAllByText('アカウント削除')).toBeTruthy();
+    expect(screen.findAllByText("アカウント削除")).toBeTruthy();
   });
 });

@@ -1,10 +1,10 @@
-import * as useMemoirNotificationSetting from '@/hooks/useMemoirNotificationSetting';
-import { screen } from '@testing-library/react-native';
-import { memoirNotificationSetting } from '__mockData__/memoirNotificationSetting';
-import { testRenderer } from 'lib/testUtil';
-import React from 'react';
+import * as useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
+import { screen } from "@testing-library/react-native";
+import { memoirNotificationSetting } from "__mockData__/memoirNotificationSetting";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
 
-import IndexPage, { type Props } from '../';
+import IndexPage, { type Props } from "../";
 
 const propsData = (): Props =>
   ({
@@ -15,12 +15,12 @@ const propsData = (): Props =>
     route: {
       params: {},
     },
-  } as any);
+  }) as any;
 
-describe('components/pages/Setting/Memoir/index.tsx', () => {
+describe("components/pages/Setting/Memoir/index.tsx", () => {
   beforeEach(() => {
     jest
-      .spyOn(useMemoirNotificationSetting, 'default')
+      .spyOn(useMemoirNotificationSetting, "default")
       .mockImplementation((): any => ({
         ...memoirNotificationSetting(),
         loading: false,
@@ -28,8 +28,8 @@ describe('components/pages/Setting/Memoir/index.tsx', () => {
       }));
   });
 
-  it('正常にrenderすること', () => {
+  it("正常にrenderすること", () => {
     testRenderer(<IndexPage {...propsData()} />)();
-    expect(screen.findAllByText('保存')).toBeTruthy();
+    expect(screen.findAllByText("保存")).toBeTruthy();
   });
 });

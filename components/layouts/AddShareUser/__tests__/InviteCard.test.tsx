@@ -1,9 +1,9 @@
-import React from 'react';
-import { testRenderer } from 'lib/testUtil';
-import { screen } from '@testing-library/react-native';
-import { invite } from '__mockData__/Invite';
-import { user } from '__mockData__/user';
-import InviteCard, { Props } from '../InviteCard';
+import { screen } from "@testing-library/react-native";
+import { invite } from "__mockData__/Invite";
+import { user } from "__mockData__/user";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import InviteCard, { type Props } from "../InviteCard";
 
 const propsData = (): Props => ({
   loading: false,
@@ -12,15 +12,15 @@ const propsData = (): Props => ({
   invite: invite(),
   user: {
     ...user(),
-    userID: '',
+    userID: "",
   },
   onCreateInvite: jest.fn(),
   onUpdateInvite: jest.fn(),
 });
 
-describe('components/organisms/AddShareUser/InviteCard.tsx', () => {
-  it('正常にrenderすること', () => {
+describe("components/organisms/AddShareUser/InviteCard.tsx", () => {
+  it("正常にrenderすること", () => {
     testRenderer(<InviteCard {...propsData()} />)();
-    expect(screen.findAllByText('招待コードをコピー')).toBeTruthy();
+    expect(screen.findAllByText("招待コードをコピー")).toBeTruthy();
   });
 });

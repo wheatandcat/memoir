@@ -1,18 +1,18 @@
-import { memo, type FC } from 'react';
+import Category from "@/components/elements/Category";
+import setting from "@/components/elements/Category/setting";
+import Image from "@/components/elements/Image";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import { categoryBorderStyle } from "lib/category";
+import type { Item } from "queries/api/index";
+import { type FC, memo } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
-  useWindowDimensions,
   type ViewStyle,
-} from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Category from '@/components/elements/Category';
-import theme from 'config/theme';
-import Image from '@/components/elements/Image';
-import type { Item } from 'queries/api/index';
-import setting from '@/components/elements/Category/setting';
-import { categoryBorderStyle } from 'lib/category';
+  useWindowDimensions,
+} from "react-native";
 
 type User = {
   id: string;
@@ -20,8 +20,8 @@ type User = {
 };
 
 export type Props = {
-  title: Item['title'];
-  categoryID: Item['categoryID'];
+  title: Item["title"];
+  categoryID: Item["categoryID"];
   user?: User;
   onPress: () => void;
 };
@@ -34,7 +34,7 @@ const Card: FC<Props> = (props) => {
   };
   if (props.user) {
     titleStyle.height = 60;
-    titleStyle.justifyContent = 'flex-end';
+    titleStyle.justifyContent = "flex-end";
   }
 
   const rootStyle = { height: 75 };
@@ -43,7 +43,7 @@ const Card: FC<Props> = (props) => {
   }
 
   const category = setting().icon.find(
-    (v) => v.id === props.categoryID
+    (v) => v.id === props.categoryID,
   )?.category;
   const categoryStyle: ViewStyle[] = [
     rootStyle,
@@ -66,7 +66,7 @@ const Card: FC<Props> = (props) => {
           {!!props.user?.id && (
             <View style={styles.user}>
               <Image
-                source={require('@/src/img/icon/account.png')}
+                source={require("@/src/img/icon/account.png")}
                 width={20}
                 height={20}
               />
@@ -86,8 +86,8 @@ export default memo(Card);
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.light,
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderLeftWidth: 5,
   },
   title: {
@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
   },
   user: {
     paddingVertical: theme().space(2),
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });

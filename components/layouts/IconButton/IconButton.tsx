@@ -1,31 +1,28 @@
-import { memo, type FC } from 'react';
-import { TouchableOpacity, StyleSheet, type ViewStyle } from 'react-native';
-import View from '@/components/elements/View';
-import theme from 'config/theme';
-import { MaterialIcons } from '@expo/vector-icons';
+import View from "@/components/elements/View";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
 
 type Name =
-  | 'more-vert'
-  | 'more-horiz'
-  | 'close'
-  | 'favorite'
-  | 'favorite-border'
-  | 'highlight-off'
-  | 'refresh';
+  | "more-vert"
+  | "more-horiz"
+  | "close"
+  | "favorite"
+  | "favorite-border"
+  | "highlight-off"
+  | "refresh";
 
 type Props = {
   name: Name;
-  size?: 'sm' | 'base' | 'lg';
+  size?: "sm" | "base" | "lg";
   testID?: string;
   color?: string;
   outline?: boolean;
   onPress: () => void;
 };
 
-const IconButton: FC<Props> = ({
-  size = 'base',
-  ...props
-}) => {
+const IconButton: FC<Props> = ({ size = "base", ...props }) => {
   const iconSize = theme().icon.size[size];
 
   const button: ViewStyle[] = [];

@@ -1,16 +1,16 @@
-import useItemsInPeriodPaging from '@/hooks/useItemsInPeriodPaging';
-import usePerformance, { traceEvent } from '@/hooks/usePerformance';
-import { useQuery } from '@apollo/client';
+import useItemsInPeriodPaging from "@/hooks/useItemsInPeriodPaging";
+import usePerformance, { traceEvent } from "@/hooks/usePerformance";
+import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
-} from 'queries/api/index';
-import { type FC, memo, useCallback, useState } from 'react';
-import { useRecoilValue } from 'recoil';
-import { userState } from 'store/atoms';
-import Plain from './Plain';
-import type { User } from './type';
+} from "queries/api/index";
+import { type FC, memo, useCallback, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { userState } from "store/atoms";
+import Plain from "./Plain";
+import type { User } from "./type";
 
 type Props = {
   startDate: string;
@@ -28,7 +28,7 @@ type State = {
 };
 
 const initialState = (userIDList: string[] | undefined) => ({
-  after: '',
+  after: "",
   userIDList,
 });
 
@@ -41,7 +41,7 @@ const Connected: FC<Props> = (props) => {
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {
-        after: '',
+        after: "",
         first: 5,
       },
       skip: false,
@@ -63,7 +63,7 @@ const Connected: FC<Props> = (props) => {
     variables: {
       input,
     },
-    fetchPolicy: 'network-only',
+    fetchPolicy: "network-only",
   });
 
   const { items, pageInfo, reset } = useItemsInPeriodPaging(queryResult, {
@@ -85,21 +85,21 @@ const Connected: FC<Props> = (props) => {
       setState((s) => ({
         ...s,
         userIDList,
-        after: '',
+        after: "",
       }));
     },
-    [reset]
+    [reset],
   );
 
   const users: User[] = [
-    { id: user.userID || '', displayName: user.displayName, image: user.image },
+    { id: user.userID || "", displayName: user.displayName, image: user.image },
   ];
 
   const relationships = relationshipsQuery.data?.relationships?.edges || [];
   const relationshipUsers: User[] = relationships.map((v) => ({
-    id: v?.node?.user?.id || '',
-    displayName: v?.node?.user?.displayName || '',
-    image: v?.node?.user?.image || '',
+    id: v?.node?.user?.id || "",
+    displayName: v?.node?.user?.displayName || "",
+    image: v?.node?.user?.image || "",
   }));
 
   const tUsers = [...users, ...relationshipUsers];
@@ -107,14 +107,14 @@ const Connected: FC<Props> = (props) => {
 
   const onScreenShot = useCallback(() => {
     let tSelectedUserIDList: string[] | undefined = selectedUserIDList.filter(
-      (v) => v !== ''
+      (v) => v !== "",
     );
     if (tSelectedUserIDList.length === 0) {
       tSelectedUserIDList = undefined;
     }
 
     router.push({
-      pathname: '/memoir/screen-shot',
+      pathname: "/memoir/screen-shot",
       params: {
         startDate: props.startDate,
         endDate: props.endDate,

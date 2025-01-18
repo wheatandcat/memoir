@@ -1,21 +1,18 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import type { User } from 'queries/api/index';
-import UserImage from '@/components/layouts/User/Image';
+import View from "@/components/elements/View";
+import UserImage from "@/components/layouts/User/Image";
+import type { User } from "queries/api/index";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
-  user: Pick<User, 'id' | 'image'>;
+  user: Pick<User, "id" | "image">;
   selected: boolean;
-  onAdd: (id: User['id']) => void;
-  onRemove: (id: User['id']) => void;
+  onAdd: (id: User["id"]) => void;
+  onRemove: (id: User["id"]) => void;
   size?: number;
 };
 
-const Users: FC<Props> = ({
-  size = 70,
-  ...props
-}) => {
+const Users: FC<Props> = ({ size = 70, ...props }) => {
   if (props.selected) {
     return (
       <View m={2}>

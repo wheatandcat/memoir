@@ -1,23 +1,23 @@
-import { useMutation } from '@apollo/client';
+import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
-import { uploadImageAsync } from 'lib/image';
+import { uploadImageAsync } from "lib/image";
 import {
   UpdateUserDocument,
   type UpdateUserMutationVariables,
   type User,
-} from 'queries/api/index';
-import Page from './Page';;
-import type React from 'react';
-import { memo, useCallback } from 'react';
-import { Alert } from 'react-native';
-import { useRecoilState, useRecoilValue } from 'recoil';
-import { authUserState,userState } from 'store/atoms';
-import { v4 as uuidv4 } from 'uuid';
+} from "queries/api/index";
+import Page from "./Page";
+import type React from "react";
+import { memo, useCallback } from "react";
+import { Alert } from "react-native";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { authUserState, userState } from "store/atoms";
+import { v4 as uuidv4 } from "uuid";
 
 const Connected: React.FC = () => {
   const [user, setUser] = useRecoilState(userState);
   const authUser = useRecoilValue(authUserState);
-	const router = useRouter();
+  const router = useRouter();
   const [updateUserMutation, updateUserMutationData] = useMutation(
     UpdateUserDocument,
     {
@@ -26,7 +26,7 @@ const Connected: React.FC = () => {
           displayName: data.updateUser.displayName,
         };
 
-        if (data.updateUser.image !== '') {
+        if (data.updateUser.image !== "") {
           param.image = data.updateUser.image;
         }
 
@@ -39,9 +39,9 @@ const Connected: React.FC = () => {
       },
       async onError() {
         // エラーになった場合はログアウトさせる
-        Alert.alert('エラー', '保存に失敗しました');
+        Alert.alert("エラー", "保存に失敗しました");
       },
-    }
+    },
   );
 
   const onSave = useCallback(
@@ -49,18 +49,18 @@ const Connected: React.FC = () => {
       const variables: UpdateUserMutationVariables = {
         input: {
           displayName: input.displayName,
-          image: '',
+          image: "",
         },
       };
 
-      if (input.image !== '' && user.image !== input.image) {
+      if (input.image !== "" && user.image !== input.image) {
         const image = await uploadImageAsync(input.image, user?.id || uuidv4());
         variables.input.image = image;
       }
 
       updateUserMutation({ variables });
     },
-    [updateUserMutation, user.image, user.id]
+    [updateUserMutation, user.image, user.id],
   );
 
   return (

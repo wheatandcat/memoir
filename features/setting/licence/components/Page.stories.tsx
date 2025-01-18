@@ -1,8 +1,8 @@
-import React from 'react';
-import Page from './Page';
+import React from "react";
+import Page from "./Page";
 
 export default {
-  title: 'templates/Setting/Licence',
+  title: "templates/Setting/Licence",
 };
 
 export const _Page = () => <Page />;

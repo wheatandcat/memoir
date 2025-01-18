@@ -1,4 +1,4 @@
-import CategoryButton from './CategoryButton';
+import CategoryButton from "./CategoryButton";
 
-export * from './CategoryButton';
+export * from "./CategoryButton";
 export default CategoryButton;

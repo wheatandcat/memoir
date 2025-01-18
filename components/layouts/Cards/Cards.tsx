@@ -1,13 +1,13 @@
-import { memo, type FC } from 'react';
-import { ActivityIndicator, StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import Card from '@/components/layouts/Card';
-import AddButton from '@/components/layouts/Home/AddButton';
-import type { ItemQuery } from 'queries/api/index';
-import NotFound from '@/components/layouts/Home/NotFound';
-import theme from 'config/theme';
+import View from "@/components/elements/View";
+import Card from "@/components/layouts/Card";
+import AddButton from "@/components/layouts/Home/AddButton";
+import NotFound from "@/components/layouts/Home/NotFound";
+import theme from "config/theme";
+import type { ItemQuery } from "queries/api/index";
+import { type FC, memo } from "react";
+import { ActivityIndicator, StyleSheet } from "react-native";
 
-type Item = ItemQuery['item'];
+type Item = ItemQuery["item"];
 
 export type Props = {
   date: string;
@@ -33,9 +33,9 @@ const Cards: FC<Props> = (props) => {
         {(props.items || []).map((v) => (
           <View key={v?.id} mb={3} mx={3}>
             <Card
-              title={v?.title || ''}
+              title={v?.title || ""}
               categoryID={v?.categoryID || 0}
-              onPress={() => props.onItem(v?.id || '')}
+              onPress={() => props.onItem(v?.id || "")}
             />
           </View>
         ))}
@@ -52,8 +52,8 @@ export default memo(Cards);
 const styles = StyleSheet.create({
   root: {},
   loading: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
     height: 75,
     backgroundColor: theme().color.background.light,
   },

@@ -1,10 +1,10 @@
-import  { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import UserImage from '@/components/layouts/User/Image';
-import theme from 'config/theme';
-import Button from '@/components/elements/Button';
+import Button from "@/components/elements/Button";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import UserImage from "@/components/layouts/User/Image";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
   displayName: string;
@@ -18,11 +18,11 @@ const Confirm: FC<Props> = (props) => {
   return (
     <View style={styles.invite}>
       <View style={styles.imageWrap}>
-        <UserImage image={props.image || ''} size={50} />
+        <UserImage image={props.image || ""} size={50} />
       </View>
       <Text textAlign="center">
         <Text color="primary">{props.displayName}</Text> さんに共有の申請を
-        {'\n'}送りますか？
+        {"\n"}送りますか？
       </Text>
       <View style={styles.action}>
         <View mx={2}>
@@ -49,18 +49,18 @@ const Confirm: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   imageWrap: {
-    justifyContent: 'center',
+    justifyContent: "center",
     marginBottom: theme().space(3),
   },
   invite: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: theme().space(3),
     paddingBottom: theme().space(2),
   },
   action: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
     paddingTop: theme().space(4),
   },
   removeButton: {
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     borderRadius: 7,
     width: 120,
     height: 40,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

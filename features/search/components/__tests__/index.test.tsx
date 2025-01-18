@@ -1,13 +1,13 @@
-import React from 'react';
-import * as Recoil from 'recoil';
-import { testRenderer } from 'lib/testUtil';
 import {
   screen,
   waitFor,
   waitForElementToBeRemoved,
-} from '@testing-library/react-native';
-import { user } from '__mockData__/user';
-import IndexPage, { Props } from '../';
+} from "@testing-library/react-native";
+import { user } from "__mockData__/user";
+import { testRenderer } from "lib/testUtil";
+import React from "react";
+import * as Recoil from "recoil";
+import IndexPage, { type Props } from "../";
 
 const propsData = (): Props =>
   ({
@@ -18,22 +18,22 @@ const propsData = (): Props =>
     route: {
       params: {},
     },
-  } as any);
+  }) as any;
 
-describe('components/pages/Search/index.tsx', () => {
+describe("components/pages/Search/index.tsx", () => {
   beforeEach(() => {
-    jest.spyOn(Recoil, 'useRecoilValue').mockImplementation((): any => ({
+    jest.spyOn(Recoil, "useRecoilValue").mockImplementation((): any => ({
       ...user(),
     }));
   });
 
-  it('正常にrenderすること', async () => {
+  it("正常にrenderすること", async () => {
     testRenderer(<IndexPage {...propsData()} />)();
 
-    await waitForElementToBeRemoved(() => screen.getByTestId('atoms_loading'));
+    await waitForElementToBeRemoved(() => screen.getByTestId("atoms_loading"));
 
     await waitFor(async () => {
-      expect(screen.findByText('検索')).toBeTruthy();
+      expect(screen.findByText("検索")).toBeTruthy();
     });
   });
 });

@@ -1,14 +1,14 @@
-import React from 'react';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Loading, { Props } from './Loading';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import React from "react";
+import Loading, { type Props } from "./Loading";
 
 const props = (): Props => ({
-  text: 'テスト',
+  text: "テスト",
 });
 
 export default {
-  title: 'molecules/Overlay',
+  title: "molecules/Overlay",
 };
 
 export const _Loading = () => (

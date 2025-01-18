@@ -21,7 +21,7 @@ export type State = Input;
 
 const initialState = (): State => ({
   startDate: new Date(
-    dayjs().add(-6, "day").format("YYYY-MM-DDT00:00:00+09:00")
+    dayjs().add(-6, "day").format("YYYY-MM-DDT00:00:00+09:00"),
   ),
   endDate: new Date(dayjs().format("YYYY-MM-DDT00:00:00+09:00")),
   userIDList: [],

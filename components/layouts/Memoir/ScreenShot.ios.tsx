@@ -1,39 +1,39 @@
-import Divider from '@/components/elements/Divider';
-import Image from '@/components/elements/Image';
-import Loading from '@/components/elements/Loading';
-import View from '@/components/elements/View';
-import DateText from '@/components/layouts/Memoir/DateText';
-import Header from '@/components/layouts/Memoir/Header';
-import type { Props as PlainProps } from '@/features/memoir/components/Plain';
-import type { Item } from '@/hooks/useItemsInPeriodPaging';
-import { useNavigation } from '@react-navigation/native';
-import theme from 'config/theme';
-import Constants from 'expo-constants';
-import * as FileSystem from 'expo-file-system';
-import * as Sharing from 'expo-sharing';
-import dayjs from 'lib/dayjs';
-import { deleteImageAsync, resizeImage, uploadImageAsync } from 'lib/image';
-import { getModeCountMax } from 'lib/utility';
-import { type FC, memo, useCallback, useRef, useState } from 'react';
+import Divider from "@/components/elements/Divider";
+import Image from "@/components/elements/Image";
+import Loading from "@/components/elements/Loading";
+import View from "@/components/elements/View";
+import DateText from "@/components/layouts/Memoir/DateText";
+import Header from "@/components/layouts/Memoir/Header";
+import type { Props as PlainProps } from "@/features/memoir/components/Plain";
+import type { Item } from "@/hooks/useItemsInPeriodPaging";
+import { useNavigation } from "@react-navigation/native";
+import theme from "config/theme";
+import Constants from "expo-constants";
+import * as FileSystem from "expo-file-system";
+import * as Sharing from "expo-sharing";
+import dayjs from "lib/dayjs";
+import { deleteImageAsync, resizeImage, uploadImageAsync } from "lib/image";
+import { getModeCountMax } from "lib/utility";
+import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
   View as RNView,
   ScrollView,
   StyleSheet,
   useWindowDimensions,
-} from 'react-native';
-import ViewShot from 'react-native-view-shot';
-import type { User as TUser } from 'store/atoms';
-import { v4 as uuidv4 } from 'uuid';
-import Card from './Card';
+} from "react-native";
+import ViewShot from "react-native-view-shot";
+import type { User as TUser } from "store/atoms";
+import { v4 as uuidv4 } from "uuid";
+import Card from "./Card";
 
-export type Props = Pick<PlainProps, 'users'> & {
+export type Props = Pick<PlainProps, "users"> & {
   startDate: string;
   endDate: string;
   items: Item[];
 };
 
-type User = Omit<TUser, 'userID'> & {
+type User = Omit<TUser, "userID"> & {
   id: string;
 };
 
@@ -59,7 +59,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
     <View>
       <View mb={3} mx={3}>
         <Card
-          title={props?.contents?.title || ''}
+          title={props?.contents?.title || ""}
           categoryID={props?.contents?.categoryID || 0}
           user={props?.contents?.user as User}
           onLoadEnd={props.onLoadEnd}
@@ -68,7 +68,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
       </View>
       {!!props.last && (
         <Image
-          source={require('@/src/img/icon/border_dotted.png')}
+          source={require("@/src/img/icon/border_dotted.png")}
           width={props.width}
           height={2}
         />
@@ -94,9 +94,9 @@ const ScreenShot: FC<Props> = (props) => {
     async (uri: string) => {
       const ok = await Sharing.isAvailableAsync();
       if (!ok) {
-        Alert.alert('エラー', '共有機能を利用できませんでした', [
+        Alert.alert("エラー", "共有機能を利用できませんでした", [
           {
-            text: '戻る',
+            text: "戻る",
             onPress: () => {
               navigation.goBack();
             },
@@ -110,11 +110,11 @@ const ScreenShot: FC<Props> = (props) => {
 
       navigation.goBack();
     },
-    [navigation]
+    [navigation],
   );
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format('YYYY-MM-DD')))
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -130,12 +130,12 @@ const ScreenShot: FC<Props> = (props) => {
     (loadEnd?: () => void) => {
       const data = dateItems.flatMap((v1) => {
         const sameDateItems = props.items.filter(
-          (v2) => dayjs(v2.date).format('YYYY-MM-DD') === v1.date
+          (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
         );
 
         const item: RenderedItem[] = sameDateItems.map((v2, index) => {
           const user: User | undefined = props.users.find(
-            (v) => v.id === v2.userID
+            (v) => v.id === v2.userID,
           );
 
           return {
@@ -143,9 +143,9 @@ const ScreenShot: FC<Props> = (props) => {
             contents: {
               ...v2,
               user: user || {
-                id: '',
-                displayName: '',
-                image: '',
+                id: "",
+                displayName: "",
+                image: "",
               },
             },
             last: sameDateItems.length === index + 1,
@@ -168,13 +168,13 @@ const ScreenShot: FC<Props> = (props) => {
 
       return data;
     },
-    [props, windowWidth, dateItems]
+    [props, windowWidth, dateItems],
   );
 
   const sliceItemCount = Math.floor(getData().length / 20) + 1;
 
   const onCapture = useCallback(async () => {
-    if (Constants.expoConfig?.extra?.storybookEnabled === 'true') {
+    if (Constants.expoConfig?.extra?.storybookEnabled === "true") {
       //storybookの場合はスルーさせる
       return;
     }
@@ -184,23 +184,23 @@ const ScreenShot: FC<Props> = (props) => {
     for (let i = 0; i < sliceItemCount; i++) {
       const ref = getViewShotRef(i);
       const url = await ref.current?.capture?.();
-      const uri = await resizeImage(url || '');
+      const uri = await resizeImage(url || "");
       const uploadURL = await uploadImageAsync(uri, `public/${uuidv4()}`);
       const u = uploadURL
-        .replace(Constants.expoConfig?.extra?.STORAGE_URL || '', '')
-        .split('?')[0];
+        .replace(Constants.expoConfig?.extra?.STORAGE_URL || "", "")
+        .split("?")[0];
       urlList.push(u);
       deleteImageURL.push(uploadURL);
     }
 
-    const param = urlList.join(',');
-    const fileName = `${dayjs(props.startDate).format('YYYYMMDD')}_${dayjs(
-      props.endDate
-    ).format('YYYYMMDD')}_memoir`;
+    const param = urlList.join(",");
+    const fileName = `${dayjs(props.startDate).format("YYYYMMDD")}_${dayjs(
+      props.endDate,
+    ).format("YYYYMMDD")}_memoir`;
 
     const res = await FileSystem.downloadAsync(
       `${Constants.expoConfig?.extra?.IMAGE_MERGE_API}?images=${param}`,
-      `${FileSystem.documentDirectory}${fileName}.png`
+      `${FileSystem.documentDirectory}${fileName}.png`,
     );
 
     for (let i = 0; i < deleteImageURL.length; i++) {
@@ -254,7 +254,7 @@ const ScreenShot: FC<Props> = (props) => {
           const ref = getViewShotRef(key);
 
           return (
-            <ViewShot ref={ref} options={{ format: 'jpg' }} key={key}>
+            <ViewShot ref={ref} options={{ format: "jpg" }} key={key}>
               <RNView style={styles.inner}>
                 {key === 0 && (
                   <Header
@@ -280,7 +280,7 @@ const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.background.main,
     flex: 1,
-    width: '100%',
+    width: "100%",
     paddingTop: theme().space(4),
   },
   inner: {

@@ -1,8 +1,8 @@
-import { memo, type FC, type ReactNode } from 'react';
-import { StyleSheet, View } from 'react-native';
-import DateInput from '@/components/layouts/DateInput/DateInput';
-import theme from 'config/theme';
-import FocusAwareStatusBar from '@/components/layouts/FocusAwareStatusBar';
+import DateInput from "@/components/layouts/DateInput/DateInput";
+import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
+import theme from "config/theme";
+import { type FC, type ReactNode, memo } from "react";
+import { StyleSheet, View } from "react-native";
 
 type Props = {
   date: string;
@@ -34,7 +34,7 @@ export default memo<FC<Props>>(InputDateWrap);
 
 const styles = StyleSheet.create({
   root: {
-    height: '100%',
-    position: 'relative',
+    height: "100%",
+    position: "relative",
   },
 });

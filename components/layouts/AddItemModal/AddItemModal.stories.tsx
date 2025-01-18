@@ -1,10 +1,10 @@
-import React from 'react';
-import View from '@/components/elements/View';
-import { mockFn } from 'storyBookUtils/index';
-import AddItemModal from './';
+import View from "@/components/elements/View";
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import AddItemModal from "./";
 
 export default {
-  title: 'organisms',
+  title: "organisms",
 };
 
 export const _AddItemModal = () => (
@@ -13,13 +13,13 @@ export const _AddItemModal = () => (
       isVisible
       loading={false}
       date="2020-01-01"
-      onClose={mockFn('onClose')}
-      onAdd={mockFn('onCategory')}
+      onClose={mockFn("onClose")}
+      onAdd={mockFn("onCategory")}
     />
   </View>
 );
 
 _AddItemModal.story = {
-  name: 'AddItemModal',
+  name: "AddItemModal",
   parameters: { loki: { skip: true } },
 };

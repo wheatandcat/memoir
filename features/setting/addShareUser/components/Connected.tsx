@@ -1,4 +1,4 @@
-import { useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import {
   CreateInviteDocument,
   CreateRelationshipRequestDocument,
@@ -7,21 +7,21 @@ import {
   type InviteByCodeQueryVariables,
   InviteDocument,
   UpdateInviteDocument,
-} from 'queries/api/index';
-import type React from 'react';
-import { memo, useCallback } from 'react';
-import { Alert } from 'react-native';
-import { useRecoilValue } from 'recoil';
-import { userState } from 'store/atoms';
-import Plain from './Plain';
+} from "queries/api/index";
+import type React from "react";
+import { memo, useCallback } from "react";
+import { Alert } from "react-native";
+import { useRecoilValue } from "recoil";
+import { userState } from "store/atoms";
+import Plain from "./Plain";
 
 const Connected: React.FC = () => {
   const { loading, data, error, refetch } = useQuery(InviteDocument);
   const [getInviteByCode, inviteByCodeData] = useLazyQuery(
     InviteByCodeDocument,
     {
-      fetchPolicy: 'network-only',
-    }
+      fetchPolicy: "network-only",
+    },
   );
 
   const [createRelationshipRequestMutation, relationshipRequestMutationData] =
@@ -35,9 +35,9 @@ const Connected: React.FC = () => {
         refetch();
       },
       onError() {
-        Alert.alert('エラー', '作成に失敗しました');
+        Alert.alert("エラー", "作成に失敗しました");
       },
-    }
+    },
   );
   const [updateInviteMutation, updateInviteMutationData] = useMutation(
     UpdateInviteDocument,
@@ -46,9 +46,9 @@ const Connected: React.FC = () => {
         refetch();
       },
       onError() {
-        Alert.alert('エラー', '更新に失敗しました');
+        Alert.alert("エラー", "更新に失敗しました");
       },
-    }
+    },
   );
 
   const onCreateInvite = useCallback(() => {
@@ -68,7 +68,7 @@ const Connected: React.FC = () => {
       };
       createRelationshipRequestMutation({ variables });
     },
-    [createRelationshipRequestMutation]
+    [createRelationshipRequestMutation],
   );
 
   const onCreateRelationshipRequest = useCallback(
@@ -78,7 +78,7 @@ const Connected: React.FC = () => {
       };
       getInviteByCode({ variables });
     },
-    [getInviteByCode]
+    [getInviteByCode],
   );
 
   return (

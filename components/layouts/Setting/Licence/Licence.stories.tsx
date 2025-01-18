@@ -1,8 +1,8 @@
-import React from 'react';
-import LicenceList from './LicenceList';
+import React from "react";
+import LicenceList from "./LicenceList";
 
 export default {
-  title: 'organisms/Setting',
+  title: "organisms/Setting",
 };
 
 export const Licence = () => <LicenceList />;

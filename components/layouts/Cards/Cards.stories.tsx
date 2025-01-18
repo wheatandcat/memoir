@@ -1,19 +1,19 @@
-import React from 'react';
-import { mockFn } from 'storyBookUtils/index';
-import { items } from '__mockData__/item';
-import Cards, { Props } from './Cards';
+import { items } from "__mockData__/item";
+import React from "react";
+import { mockFn } from "storyBookUtils/index";
+import Cards, { type Props } from "./Cards";
 
 const props = (loading: boolean): Props => ({
   items: items(),
-  onItem: mockFn('onItem'),
-  onAddItem: mockFn('onAddItem'),
+  onItem: mockFn("onItem"),
+  onAddItem: mockFn("onAddItem"),
   loading,
   addItemLoading: false,
-  date: '2021-02-21',
+  date: "2021-02-21",
 });
 
 export default {
-  title: 'organisms/Cards',
+  title: "organisms/Cards",
 };
 
 export const デフォルト = () => <Cards {...props(false)} />;

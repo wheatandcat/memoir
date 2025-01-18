@@ -1,10 +1,10 @@
-import { memo, type FC } from 'react';
-import { StyleSheet, TouchableOpacity } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Image from '@/components/elements/Image';
-import theme from 'config/theme';
-import { MaterialIcons } from '@expo/vector-icons';
+import Image from "@/components/elements/Image";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import { MaterialIcons } from "@expo/vector-icons";
+import theme from "config/theme";
+import { type FC, memo } from "react";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
   count: number;
@@ -17,7 +17,7 @@ const Notification: FC<Props> = (props) => {
       <View style={styles.root}>
         <View>
           <Image
-            source={require('@/src/img/icon/icon_edit.png')}
+            source={require("@/src/img/icon/icon_edit.png")}
             width={35}
             height={35}
             contentFit="contain"
@@ -37,11 +37,11 @@ const Notification: FC<Props> = (props) => {
 const styles = StyleSheet.create({
   root: {
     backgroundColor: theme().color.primary.light,
-    width: '100%',
+    width: "100%",
     height: 60,
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    flexDirection: 'row',
+    alignItems: "center",
+    justifyContent: "space-between",
+    flexDirection: "row",
     paddingHorizontal: theme().space(2),
   },
 });

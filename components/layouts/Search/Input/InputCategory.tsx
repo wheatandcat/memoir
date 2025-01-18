@@ -1,8 +1,8 @@
-import { memo, type FC } from 'react';
-import { StyleSheet } from 'react-native';
-import View from '@/components/elements/View';
-import setting from '@/components/elements/Category/setting';
-import CategoryButton from '@/components/layouts/CategoryButton';
+import setting from "@/components/elements/Category/setting";
+import View from "@/components/elements/View";
+import CategoryButton from "@/components/layouts/CategoryButton";
+import { type FC, memo } from "react";
+import { StyleSheet } from "react-native";
 
 export type Props = {
   categoryID: number;
@@ -61,9 +61,9 @@ const InputCategory: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   category: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
 

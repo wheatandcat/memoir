@@ -1,19 +1,19 @@
-import { memo, useCallback, type FC } from 'react';
+import Category from "@/components/elements/Category";
+import setting from "@/components/elements/Category/setting";
+import Image from "@/components/elements/Image";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import Menu, { type Item as MenuItem } from "@/components/layouts/Menu/Menu";
+import theme from "config/theme";
+import { categoryBorderStyle } from "lib/category";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useCallback } from "react";
 import {
-  StyleSheet,
-  useWindowDimensions,
-  type ViewStyle,
   Alert,
-} from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import Image from '@/components/elements/Image';
-import Category from '@/components/elements/Category';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import setting from '@/components/elements/Category/setting';
-import { categoryBorderStyle } from 'lib/category';
-import Menu, { type Item as MenuItem } from '@/components/layouts/Menu/Menu';
+  StyleSheet,
+  type ViewStyle,
+  useWindowDimensions,
+} from "react-native";
 
 export type Props = {
   title: string;
@@ -33,7 +33,7 @@ const CardDetail: FC<Props> = (props) => {
   };
 
   const category = setting().icon.find(
-    (v) => v.id === props.categoryID
+    (v) => v.id === props.categoryID,
   )?.category;
   const categoryStyle: ViewStyle[] = [
     styles.root,
@@ -43,19 +43,19 @@ const CardDetail: FC<Props> = (props) => {
   const menuItem = useCallback(
     (): MenuItem[] => [
       {
-        text: '削除',
-        color: 'error',
+        text: "削除",
+        color: "error",
         onPress: (callback?: () => void) => {
           Alert.alert(
-            '削除しますか？',
-            '',
+            "削除しますか？",
+            "",
             [
               {
-                text: 'キャンセル',
-                style: 'cancel',
+                text: "キャンセル",
+                style: "cancel",
               },
               {
-                text: '削除する',
+                text: "削除する",
                 onPress: () => {
                   props.onDeleteItem();
                   callback?.();
@@ -64,29 +64,29 @@ const CardDetail: FC<Props> = (props) => {
             ],
             {
               cancelable: true,
-            }
+            },
           );
         },
         removeMenu: false,
       },
       {
-        text: '編集',
-        color: 'secondary',
-        testID: 'edit',
+        text: "編集",
+        color: "secondary",
+        testID: "edit",
         onPress: () => {
           props.onOpenUpdateItem();
         },
         removeMenu: true,
       },
     ],
-    [props]
+    [props],
   );
 
   return (
     <View style={categoryStyle}>
       <View style={styles.header}>
         <View>
-          <Text>{dayjs(props.date).format('YYYY.MM.DD / ddd')}</Text>
+          <Text>{dayjs(props.date).format("YYYY.MM.DD / ddd")}</Text>
         </View>
         <Menu items={menuItem()} />
       </View>
@@ -95,7 +95,7 @@ const CardDetail: FC<Props> = (props) => {
         {props.like && (
           <View px={3}>
             <Image
-              source={require('@/src/img/icon/icon_like.png')}
+              source={require("@/src/img/icon/icon_like.png")}
               width={60}
               height={60}
               contentFit="contain"
@@ -106,7 +106,7 @@ const CardDetail: FC<Props> = (props) => {
         {props.dislike && (
           <View px={3}>
             <Image
-              source={require('@/src/img/icon/icon_dislike.png')}
+              source={require("@/src/img/icon/icon_dislike.png")}
               width={60}
               height={60}
               contentFit="contain"
@@ -133,23 +133,23 @@ const styles = StyleSheet.create({
     paddingVertical: theme().space(2),
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     zIndex: 1,
   },
   title: {
     paddingBottom: theme().space(4),
   },
   icon: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
     paddingVertical: theme().space(4),
   },
   footer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
 });

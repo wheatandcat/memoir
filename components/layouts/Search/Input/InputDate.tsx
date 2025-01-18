@@ -1,10 +1,10 @@
-import { type FC, memo, useState } from 'react';
-import { StyleSheet, TouchableOpacity, type ViewStyle } from 'react-native';
-import View from '@/components/elements/View';
-import Text from '@/components/elements/Text';
-import theme from 'config/theme';
-import DateTimePickerModal from 'react-native-modal-datetime-picker';
-import dayjs from 'lib/dayjs';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useState } from "react";
+import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
+import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export type Props = {
   startDate: Date;
@@ -28,8 +28,8 @@ const InputDate: FC<Props> = (props) => {
     <View pt={3} style={styles.inputDate}>
       <View style={dateText}>
         <TouchableOpacity onPress={() => setOpenStartDate(true)}>
-          <Text variants="middle" color={props.error ? 'error' : 'secondary'}>
-            {dayjs(props.startDate).format('YYYY.MM.DD')}
+          <Text variants="middle" color={props.error ? "error" : "secondary"}>
+            {dayjs(props.startDate).format("YYYY.MM.DD")}
           </Text>
         </TouchableOpacity>
         <DateTimePickerModal
@@ -48,12 +48,12 @@ const InputDate: FC<Props> = (props) => {
         />
       </View>
       <View mx={2}>
-        <Text color={props.error ? 'error' : 'secondary'}>-</Text>
+        <Text color={props.error ? "error" : "secondary"}>-</Text>
       </View>
       <View style={dateText}>
         <TouchableOpacity onPress={() => setOpenEndDate(true)}>
-          <Text variants="middle" color={props.error ? 'error' : 'secondary'}>
-            {dayjs(props.endDate).format('YYYY.MM.DD')}
+          <Text variants="middle" color={props.error ? "error" : "secondary"}>
+            {dayjs(props.endDate).format("YYYY.MM.DD")}
           </Text>
         </TouchableOpacity>
         <DateTimePickerModal
@@ -77,9 +77,9 @@ const InputDate: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   inputDate: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "row",
   },
   dateText: {
     borderColor: theme().color.secondary.main,

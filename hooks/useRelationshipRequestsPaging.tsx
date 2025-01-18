@@ -21,7 +21,7 @@ type Option = {
 
 const useRelationshipRequestsPaging = (
   props: Props,
-  option: Option = { merge: false }
+  option: Option = { merge: false },
 ) => {
   const { data, loading } = props;
   const [nodes, setNodes] = useState<RelationshipRequest[]>([]);
@@ -34,7 +34,9 @@ const useRelationshipRequestsPaging = (
     if (option.merge) {
       const tmp = new Set();
       setNodes((s) =>
-        [...s, ...getNodes(data)].filter((n) => !tmp.has(n.id) && tmp.add(n.id))
+        [...s, ...getNodes(data)].filter(
+          (n) => !tmp.has(n.id) && tmp.add(n.id),
+        ),
       );
     } else {
       setNodes(getNodes(data));
@@ -63,5 +65,5 @@ const getPageInfo = (data: Query | undefined) =>
 
 const getNodes = (data: Query | undefined) =>
   (data?.relationshipRequests?.edges || []).map(
-    (w) => w?.node
+    (w) => w?.node,
   ) as RelationshipRequest[];

@@ -9,8 +9,10 @@ import Page from "./Page";
 const SettingAcceptedRelationship: React.FC = (props) => {
   useSentryBreadcrumb();
   const user = useRecoilValue(userState);
-  const { displayName, image } =
-    useLocalSearchParams<{ displayName: string; image: string }>();
+  const { displayName, image } = useLocalSearchParams<{
+    displayName: string;
+    image: string;
+  }>();
 
   return <Page user={user} displayName={displayName} image={image} />;
 };

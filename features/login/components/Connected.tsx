@@ -1,19 +1,19 @@
-import useFirebaseAuth from '@/hooks/useFirebaseAuth';
-import useHomeItems from '@/hooks/useHomeItems';
-import { useMutation } from '@apollo/client';
-import { useNavigation } from '@react-navigation/native';
-import { useNotification } from 'containers/Notification';
-import { getItem, storageKey } from 'lib/storage';
+import useFirebaseAuth from "@/hooks/useFirebaseAuth";
+import useHomeItems from "@/hooks/useHomeItems";
+import { useMutation } from "@apollo/client";
+import { useNavigation } from "@react-navigation/native";
+import { useNotification } from "containers/Notification";
+import { getItem, storageKey } from "lib/storage";
 import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
-} from 'queries/api/index';
-import type React from 'react';
-import { memo, useCallback, useEffect, useState } from 'react';
-import { Alert } from 'react-native';
-import { useRecoilValue } from 'recoil';
-import { authUserState } from 'store/atoms';
-import Page from './Page';
+} from "queries/api/index";
+import type React from "react";
+import { memo, useCallback, useEffect, useState } from "react";
+import { Alert } from "react-native";
+import { useRecoilValue } from "recoil";
+import { authUserState } from "store/atoms";
+import Page from "./Page";
 
 const Connected: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -21,7 +21,7 @@ const Connected: React.FC = () => {
     true,
     () => {
       setLoading(false);
-    }
+    },
   );
   const { refetch } = useHomeItems();
   const { onPermissionRequest } = useNotification();
@@ -37,7 +37,7 @@ const Connected: React.FC = () => {
     },
     async onError() {
       // エラーになった場合はログアウトさせる
-      Alert.alert('エラー', 'ログインに失敗した');
+      Alert.alert("エラー", "ログインに失敗した");
       onLogout();
     },
   });

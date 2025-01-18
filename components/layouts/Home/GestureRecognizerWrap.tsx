@@ -1,19 +1,19 @@
-import { memo, useCallback, type FC } from 'react';
-import { StyleSheet, type ViewStyle } from 'react-native';
-import View from '@/components/elements/View';
-import dayjs from 'lib/dayjs';
-import type { ConnectedType } from '@/features/home/components/type';
+import View from "@/components/elements/View";
+import type { ConnectedType } from "@/features/home/components/type";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useCallback } from "react";
+import { StyleSheet, type ViewStyle } from "react-native";
 import {
   GestureHandlerRootView,
+  type HandlerStateChangeEvent,
   PanGestureHandler,
   ScrollView,
-  type HandlerStateChangeEvent,
-} from 'react-native-gesture-handler';
+} from "react-native-gesture-handler";
 
 type Props = {
   date: string;
   children: React.ReactNode;
-} & Pick<ConnectedType, 'onChangeDate' | 'items'>;
+} & Pick<ConnectedType, "onChangeDate" | "items">;
 
 const velocityThreshold = 0.3;
 const directionalOffsetThreshold = 80;
@@ -27,11 +27,11 @@ const isValidSwipe = (velocity: number, directionalOffset: number) => {
 
 const GestureRecognizerWrap: FC<Props> = (props) => {
   const onSwipeLeft = useCallback(() => {
-    props.onChangeDate(dayjs(props.date).add(1, 'day').format('YYYY-MM-DD'));
+    props.onChangeDate(dayjs(props.date).add(1, "day").format("YYYY-MM-DD"));
   }, [props]);
 
   const onSwipeRight = useCallback(() => {
-    props.onChangeDate(dayjs(props.date).add(-1, 'day').format('YYYY-MM-DD'));
+    props.onChangeDate(dayjs(props.date).add(-1, "day").format("YYYY-MM-DD"));
   }, [props]);
 
   const onPanGestureEvent = useCallback(
@@ -53,7 +53,7 @@ const GestureRecognizerWrap: FC<Props> = (props) => {
         onSwipeLeft();
       }
     },
-    [onSwipeRight, onSwipeLeft]
+    [onSwipeRight, onSwipeLeft],
   );
 
   const style: ViewStyle[] = [styles.inner];
@@ -78,12 +78,12 @@ export default memo<React.FC<Props>>(GestureRecognizerWrap);
 
 const styles = StyleSheet.create({
   inner: {
-    height: '100%',
+    height: "100%",
   },
   scroll: {
-    height: '100%',
+    height: "100%",
   },
   root: {
-    height: '100%',
+    height: "100%",
   },
 });

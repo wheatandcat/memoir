@@ -1,11 +1,11 @@
-import Category from '@/components/elements/Category';
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import UserImage from '@/components/layouts/User/Image';
-import theme from 'config/theme';
-import type { Item } from 'queries/api/index';
-import { type FC, memo, useEffect, useState } from 'react';
-import { StyleSheet, type ViewStyle, useWindowDimensions  } from 'react-native';
+import Category from "@/components/elements/Category";
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import UserImage from "@/components/layouts/User/Image";
+import theme from "config/theme";
+import type { Item } from "queries/api/index";
+import { type FC, memo, useEffect, useState } from "react";
+import { StyleSheet, type ViewStyle, useWindowDimensions } from "react-native";
 
 type User = {
   id: string;
@@ -14,8 +14,8 @@ type User = {
 };
 
 export type Props = {
-  title: Item['title'];
-  categoryID: Item['categoryID'];
+  title: Item["title"];
+  categoryID: Item["categoryID"];
   user: User;
   onLoadEnd?: () => void;
 };
@@ -56,7 +56,7 @@ const Card: FC<Props> = (props) => {
             onLoadEnd={() => setEndUserImage(true)}
           />
           <View pl={2}>
-            <Text variants="small">{props.user?.displayName || '未設定'}</Text>
+            <Text variants="small">{props.user?.displayName || "未設定"}</Text>
           </View>
         </View>
       </View>
@@ -68,14 +68,14 @@ export default memo(Card);
 
 const styles = StyleSheet.create({
   root: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginBottom: theme().space(2),
   },
   title: {},
   user: {
     paddingVertical: theme().space(2),
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
   },
 });

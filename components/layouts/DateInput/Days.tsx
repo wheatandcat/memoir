@@ -1,16 +1,16 @@
-import Text from '@/components/elements/Text';
-import View from '@/components/elements/View';
-import usePrevious from '@/hooks/usePrevious';
-import theme from 'config/theme';
-import dayjs from 'lib/dayjs';
-import { type FC, memo, useCallback, useEffect, useRef, useState } from 'react';
+import Text from "@/components/elements/Text";
+import View from "@/components/elements/View";
+import usePrevious from "@/hooks/usePrevious";
+import theme from "config/theme";
+import dayjs from "lib/dayjs";
+import { type FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   type ListRenderItemInfo,
   StyleSheet,
   TouchableWithoutFeedback,
   useWindowDimensions,
-} from 'react-native';
-import Carousel from 'react-native-snap-carousel';
+} from "react-native";
+import Carousel from "react-native-snap-carousel";
 
 type Props = {
   day: string;
@@ -28,29 +28,29 @@ type RenderedItemProps = ListRenderItemInfo<RenderedItem>;
 
 const getDayOfWeekColor = (selected: boolean) => {
   if (selected) {
-    return 'primary';
+    return "primary";
   }
 
-  return 'secondary';
+  return "secondary";
 };
 
 const renderItem: FC<RenderedItemProps> = ({ item }) => {
-  const selected = dayjs(item.day).format('D') === item.value;
+  const selected = dayjs(item.day).format("D") === item.value;
 
   return (
     <TouchableWithoutFeedback
-      onPress={() => item.onPress(dayjs(item.day).format('DD'))}
+      onPress={() => item.onPress(dayjs(item.day).format("DD"))}
     >
       <View style={styles.dayItem}>
-        <Text textAlign="center" color={selected ? 'primary' : 'secondary'}>
-          {dayjs(item.day).format('D')}
-          {'\n'}
+        <Text textAlign="center" color={selected ? "primary" : "secondary"}>
+          {dayjs(item.day).format("D")}
+          {"\n"}
           <Text
             textAlign="center"
             variants="small"
             color={getDayOfWeekColor(selected)}
           >
-            {dayjs(item.day).format('dd')}
+            {dayjs(item.day).format("dd")}
           </Text>
         </Text>
       </View>
@@ -74,7 +74,7 @@ const DayInput: React.FC<Props> = (props) => {
   const [dayItems, setDayItems] = useState(days());
 
   const selectIndex = dayItems.findIndex(
-    (v) => Number(dayjs(v).format('D')) === index
+    (v) => Number(dayjs(v).format("D")) === index,
   );
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const DayInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   return (

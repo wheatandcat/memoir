@@ -15,7 +15,7 @@ const Input: FC<Props> = (props) => {
     <>
       <View style={styles.invite}>
         <Text>
-          振り返りを共有したいユーザーの{'\n'}
+          振り返りを共有したいユーザーの{"\n"}
           招待コードを入力してください
         </Text>
       </View>
@@ -28,7 +28,7 @@ const Input: FC<Props> = (props) => {
 
 const styles = StyleSheet.create({
   invite: {
-    alignItems: 'center',
+    alignItems: "center",
     paddingTop: theme().space(3),
     paddingBottom: theme().space(2),
   },

@@ -32,7 +32,7 @@ const Connected: React.FC = () => {
         await onLogout();
         setScreenState({ seeYouAgain: true });
       },
-    }
+    },
   );
 
   const onDelete = useCallback(() => {
