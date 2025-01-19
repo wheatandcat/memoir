@@ -1,7 +1,7 @@
-import { State as MemoirNotificationSettingState } from 'hooks/useMemoirNotificationSetting';
+import type { State as MemoirNotificationSettingState } from "@/hooks/useMemoirNotificationSetting";
 
 export const memoirNotificationSetting = (
-  option?: Partial<MemoirNotificationSettingState>
+  option?: Partial<MemoirNotificationSettingState>,
 ): MemoirNotificationSettingState => ({
   dayOfWeek: 1,
   hours: 0,

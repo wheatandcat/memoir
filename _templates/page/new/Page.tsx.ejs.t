@@ -6,7 +6,7 @@ import { StyleSheet } from 'react-native';
 import { ConnectedType } from 'components/pages/<%= componentName %>/Connected';
 import View from 'components/atoms/View';
 import Text from 'components/atoms/Text';
-import theme from 'config/theme';
+import theme from '@/config/theme';
 
 export type Props = ConnectedType & {};
 

@@ -1,3 +1,9 @@
 {
-  "cSpell.ignoreWords": ["firestore", "wheatandcat"]
+  "cSpell.ignoreWords": ["firestore", "wheatandcat"],
+  "editor.codeActionsOnSave": {
+    "quickfix.biome": "explicit",
+    "source.organizeImports.biome": "explicit"
+  },
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true
 }

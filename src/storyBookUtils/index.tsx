@@ -1,5 +1,5 @@
-import { Alert } from 'react-native';
+import { Alert } from "react-native";
 
 export const mockFn = (msg?: string) => (): any => {
-  Alert.alert(msg ?? 'テスト');
+  Alert.alert(msg ?? "テスト");
 };

@@ -11,13 +11,8 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "components/*": ["src/components/*"],
-      "config/*": ["src/config/*"],
-      "lib/*": ["src/lib/*"],
+      "@/*": ["./*"],
       "storyBookUtils/*": ["src/storyBookUtils/*"],
-      "store/*": ["src/store/*"],
-      "containers/*": ["src/containers/*"],
-      "hooks/*": ["src/hooks/*"],
       "queries/*": ["src/queries/*"],
       "__mockData__/*": ["src/__mockData__/*"],
       "mocks/*": ["src/mocks/*"]
@@ -25,5 +20,6 @@
     "typeRoots": ["node_modules/@types", "src/@types"]
   },
   "exclude": ["node_modules", "scripts/send-metrics"],
-  "extends": "expo/tsconfig.base"
+  "extends": "expo/tsconfig.base",
+  "include": ["**/*.ts", "**/*.tsx"]
 }

@@ -1,8 +1,8 @@
-import dayjs from 'dayjs';
-import { $ } from 'zx';
+import dayjs from "dayjs";
+import { $ } from "zx";
 
 export const getJestResult = async () => {
-  let r = {
+  const r = {
     time: 0,
     numTotalTests: 0,
   };
@@ -22,7 +22,7 @@ export const getJestResult = async () => {
     const items = JSON.parse(testResults.stdout);
     const startTime = items[0].startTime;
     const endTime = items[items.length - 1].endTime;
-    const time = dayjs(endTime).diff(dayjs(startTime), 'milliseconds');
+    const time = dayjs(endTime).diff(dayjs(startTime), "milliseconds");
 
     r.time = time;
   } catch (err) {

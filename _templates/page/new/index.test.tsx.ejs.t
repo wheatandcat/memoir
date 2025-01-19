@@ -2,7 +2,7 @@
 to: <%= absPath %>/__tests__/index.test.tsx
 ---
 import React from 'react';
-import { testRenderer } from 'lib/testUtil';
+import { testRenderer } from '@/lib/testUtil';
 import { screen } from '@testing-library/react-native';
 import IndexPage, { Props } from '../';
 

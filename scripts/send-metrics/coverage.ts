@@ -1,7 +1,7 @@
-import { $ } from 'zx';
+import { $ } from "zx";
 
 export const aggregateCoverages = async () => {
-  let r = {
+  const r = {
     coverageBranches: 0,
     coverageFunctions: 0,
     coverageLines: 0,

@@ -1,21 +1,21 @@
-import { ExpoConfig, ConfigContext } from '@expo/config';
+import type { ConfigContext, ExpoConfig } from "@expo/config";
 
-import dayjs from 'dayjs';
-import 'dayjs/locale/ja';
-if (process.env.APP_ENV !== 'production') {
-  require('dotenv').config();
+import dayjs from "dayjs";
+import "dayjs/locale/ja";
+if (process.env.APP_ENV !== "production") {
+  require("dotenv").config();
 }
 
-const version: string = '1.8.0';
+const version: string = "1.8.0";
 const unix = dayjs().unix().toString();
 
 const appConfig = () => {
   const ios: any = {};
   const android: any = {};
 
-  if (process.env.APP_ENV === 'production') {
-    ios.googleServicesFile = './GoogleService-Info.plist';
-    android.googleServicesFile = './google-services.json';
+  if (process.env.APP_ENV === "production") {
+    ios.googleServicesFile = "./GoogleService-Info.plist";
+    android.googleServicesFile = "./google-services.json";
   }
 
   return { ios, android };
@@ -23,6 +23,7 @@ const appConfig = () => {
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
+  newArchEnabled: true,
   extra: {
     API_HOST: process.env.API_HOST,
     FIRE_BASE_API_KEY: process.env.FIRE_BASE_API_KEY,
@@ -42,78 +43,77 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     APP_ENV: process.env.APP_ENV,
     storybookEnabled: process.env.STORYBOOK_ENABLED,
     eas: {
-      projectId: 'bfea9b28-88f3-4e5a-a351-d8ea456c0830',
+      projectId: "bfea9b28-88f3-4e5a-a351-d8ea456c0830",
     },
   },
-  name: 'memoir',
-  scheme: 'com.wheatandcat.memoir',
-  slug: 'memoir',
+  name: "memoir",
+  scheme: "com.wheatandcat.memoir",
+  slug: "memoir",
   version,
-  orientation: 'portrait',
-  icon: './assets/ios-icon.png',
-  jsEngine: 'hermes',
+  orientation: "portrait",
+  icon: "./assets/ios-icon.png",
+  jsEngine: "hermes",
   splash: {
-    image: './assets/splash.png',
-    resizeMode: 'contain',
-    backgroundColor: '#E3C95D',
+    image: "./assets/splash.png",
+    resizeMode: "contain",
+    backgroundColor: "#E3C95D",
   },
   updates: {
     enabled: false,
-    checkAutomatically: 'ON_LOAD',
+    checkAutomatically: "ON_LOAD",
     fallbackToCacheTimeout: 30000,
   },
   notification: {
-    icon: './assets/notification.png',
-    color: '#E3C95D',
+    icon: "./assets/notification.png",
+    color: "#E3C95D",
   },
-  assetBundlePatterns: ['**/*'],
+  assetBundlePatterns: ["**/*"],
   ios: {
     ...appConfig().ios,
     supportsTablet: false,
     usesAppleSignIn: true,
-    userInterfaceStyle: 'automatic',
+    userInterfaceStyle: "automatic",
     buildNumber: unix,
-    bundleIdentifier: 'com.wheatandcat.memoir',
+    bundleIdentifier: "com.wheatandcat.memoir",
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
-      NSPhotoLibraryUsageDescription: 'ユーザーの画像設定に使用します',
+      NSPhotoLibraryUsageDescription: "ユーザーの画像設定に使用します",
       NSCameraUsageDescription:
-        'ユーザーの画像設定のためにカメラを使用します。',
+        "ユーザーの画像設定のためにカメラを使用します。",
       NSMicrophoneUsageDescription:
-        'ユーザーの画像設定のためにカメラを使用します。',
-      CFBundleDevelopmentRegion: 'ja_JP',
+        "ユーザーの画像設定のためにカメラを使用します。",
+      CFBundleDevelopmentRegion: "ja_JP",
     },
   },
   android: {
     ...appConfig().android,
-    package: 'com.wheatandcat.memoir',
+    package: "com.wheatandcat.memoir",
     permissions: [
-      'CAMERA',
-      'READ_EXTERNAL_STORAGE',
-      'WRITE_EXTERNAL_STORAGE',
-      'RECEIVE_BOOT_COMPLETED',
+      "CAMERA",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_EXTERNAL_STORAGE",
+      "RECEIVE_BOOT_COMPLETED",
     ],
     versionCode: Number(unix.substring(0, unix.length - 3)),
     adaptiveIcon: {
-      backgroundColor: '#E3C95D',
-      foregroundImage: './assets/android-icon.png',
+      backgroundColor: "#E3C95D",
+      foregroundImage: "./assets/android-icon.png",
     },
   },
   web: {
-    favicon: './assets/favicon.png',
+    favicon: "./assets/favicon.png",
   },
-  plugins: ['sentry-expo'],
-  description: '',
-  hooks: {
-    postPublish: [
+  plugins: [
+    "sentry-expo",
+    [
+      "expo-font",
       {
-        file: 'sentry-expo/upload-sourcemaps',
-        config: {
-          organization: process.env.SENTRY_ORGANIZATION,
-          project: process.env.SENTRY_PROJECT,
-          authToken: process.env.SENTRY_AUTH_TOKEN,
-        },
+        fonts: [
+          "node_modules/@expo-google-fonts/roboto-condensed/RobotoCondensed_700Bold.ttf",
+          "node_modules/@expo-google-fonts/noto-sans-jp/NotoSansJP_700Bold.ttf",
+        ],
       },
     ],
-  },
+  ],
+  description: "",
 });
