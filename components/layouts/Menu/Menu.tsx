@@ -4,14 +4,15 @@ import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import type { FontColor } from "@/lib/styledSystem/styleFontColor";
-import { type FC, memo, useCallback, useRef, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useRef, useState } from "react";
+import type { ViewStyle } from "react-native";
 import {
   Modal,
   View as RNView,
   StyleSheet,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  type ViewStyle,
 } from "react-native";
 
 export type Item = {

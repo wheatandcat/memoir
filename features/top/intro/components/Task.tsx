@@ -3,9 +3,10 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import AddButton from "@/components/layouts/Home/AddButton";
 import theme from "@/config/theme";
-import type { ConnectedType } from "@/features/top/intro/components/Connected";
+import type { ConnectedType } from "@/features/top/intro/components/type";
 import { StatusBar } from "expo-status-bar";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 

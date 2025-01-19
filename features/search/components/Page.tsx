@@ -9,7 +9,8 @@ import InputUsers from "@/components/layouts/Search/Input/InputUsers";
 import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
 import type { User } from "queries/api/index";
-import { type FC, memo, useState } from "react";
+import type { FC } from "react";
+import { memo, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import type { Input } from "./type";
 export type Props = {
@@ -21,7 +22,7 @@ export type State = Input;
 
 const initialState = (): State => ({
   startDate: new Date(
-    dayjs().add(-6, "day").format("YYYY-MM-DDT00:00:00+09:00"),
+    dayjs().add(-6, "day").format("YYYY-MM-DDT00:00:00+09:00")
   ),
   endDate: new Date(dayjs().format("YYYY-MM-DDT00:00:00+09:00")),
   userIDList: [],

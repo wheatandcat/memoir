@@ -1,5 +1,4 @@
 import useItemsInPeriodPaging from "@/hooks/useItemsInPeriodPaging";
-import usePerformance, { traceEvent } from "@/hooks/usePerformance";
 import { userState } from "@/store/atoms";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
@@ -7,7 +6,8 @@ import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
 } from "queries/api/index";
-import { type FC, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 import type { User } from "./type";
@@ -88,7 +88,7 @@ const Connected: FC<Props> = (props) => {
         after: "",
       }));
     },
-    [reset],
+    [reset]
   );
 
   const users: User[] = [
@@ -107,7 +107,7 @@ const Connected: FC<Props> = (props) => {
 
   const onScreenShot = useCallback(() => {
     let tSelectedUserIDList: string[] | undefined = selectedUserIDList.filter(
-      (v) => v !== "",
+      (v) => v !== ""
     );
     if (tSelectedUserIDList.length === 0) {
       tSelectedUserIDList = undefined;

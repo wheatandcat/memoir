@@ -3,8 +3,10 @@ import UserButton, {
   type Props as UserButtonProps,
 } from "@/components/layouts/User/Button";
 import type { User } from "queries/api/index";
-import { type FC, memo } from "react";
-import { StyleSheet, type ViewStyle } from "react-native";
+import type { FC } from "react";
+import { memo } from "react";
+import type { ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
 
 export type Props = {
   users: Pick<User, "id" | "image">[];

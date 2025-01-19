@@ -2,8 +2,10 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo, useState } from "react";
-import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
+import type { FC } from "react";
+import { memo, useState } from "react";
+import type { ViewStyle } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
 export type Props = {

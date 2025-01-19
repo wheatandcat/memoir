@@ -1,7 +1,8 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { type FC, memo, useEffect, useState } from "react";
+import type { FC } from "react";
+import { memo, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -37,7 +38,8 @@ const Loading: FC<Props> = (props) => {
             fontFamily="NotoSansJP-Bold"
             textAlign="center"
           >
-            {props.text} {(() => {
+            {props.text}{" "}
+            {(() => {
               if (count % 3 === 0) {
                 return ".";
               }

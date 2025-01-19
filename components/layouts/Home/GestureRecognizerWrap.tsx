@@ -1,11 +1,12 @@
 import View from "@/components/elements/View";
 import type { ConnectedType } from "@/features/home/components/type";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo, useCallback } from "react";
+import type { FC } from "react";
+import { memo, useCallback } from "react";
 import { StyleSheet, type ViewStyle } from "react-native";
+import type { HandlerStateChangeEvent } from "react-native-gesture-handler";
 import {
   GestureHandlerRootView,
-  type HandlerStateChangeEvent,
   PanGestureHandler,
   ScrollView,
 } from "react-native-gesture-handler";

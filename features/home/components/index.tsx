@@ -1,6 +1,7 @@
 import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
 import * as Notifications from "expo-notifications";
-import { type FC, memo, useCallback, useEffect } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useEffect } from "react";
 import Connected from "./Connected";
 
 type Props = {

@@ -1,6 +1,7 @@
 import Image from "@/components/elements/Image";
 import theme from "@/config/theme";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { type ImageProps, StyleSheet } from "react-native";
 
 export type Props = {

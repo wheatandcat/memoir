@@ -1,5 +1,6 @@
 import Image from "@/components/elements/Image";
-import { type FC, memo } from "react";
+import { memo } from "react";
+import type { FC } from "react";
 import type { ImageProps } from "react-native";
 import { icon } from "./setting";
 

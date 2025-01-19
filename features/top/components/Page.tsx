@@ -4,9 +4,10 @@ import View from "@/components/elements/View";
 import Form, { type Props as FormProps } from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
 import theme from "@/config/theme";
-import type { ConnectedType } from "@/src/components/pages/Top/Connected";
+import type { ConnectedType } from "@/features/top/components/Connected";
 import { StatusBar } from "expo-status-bar";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import {
   ImageBackground,
   Platform,

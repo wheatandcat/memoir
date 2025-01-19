@@ -5,7 +5,8 @@ import Form from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
 import theme from "@/config/theme";
 import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { StyleSheet } from "react-native";
 
 export type Props = {

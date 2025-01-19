@@ -1,9 +1,10 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { type FC, memo, useCallback, useRef, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useRef, useState } from "react";
+import type { ListRenderItemInfo } from "react-native";
 import {
-  type ListRenderItemInfo,
   StyleSheet,
   TouchableWithoutFeedback,
   useWindowDimensions,
@@ -65,7 +66,7 @@ const MonthInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    [],
+    []
   );
 
   return (

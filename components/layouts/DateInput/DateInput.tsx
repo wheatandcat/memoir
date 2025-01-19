@@ -4,7 +4,8 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo, useCallback, useEffect, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import InputDay from "./Days";
 import InputMonth from "./Months";
@@ -115,7 +116,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onMonth = useCallback(
@@ -129,7 +130,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onDay = useCallback(
@@ -138,7 +139,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onToday = useCallback(() => {

@@ -7,7 +7,8 @@ import Menu, { type Item as MenuItem } from "@/components/layouts/Menu/Menu";
 import theme from "@/config/theme";
 import { categoryBorderStyle } from "@/lib/category";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo, useCallback } from "react";
+import type { FC } from "react";
+import { memo, useCallback } from "react";
 import {
   Alert,
   StyleSheet,

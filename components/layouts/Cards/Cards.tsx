@@ -4,7 +4,8 @@ import AddButton from "@/components/layouts/Home/AddButton";
 import NotFound from "@/components/layouts/Home/NotFound";
 import theme from "@/config/theme";
 import type { ItemQuery } from "queries/api/index";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";
 
 type Item = ItemQuery["item"];

@@ -8,8 +8,8 @@ import type {
   ItemsInPeriodQuery as Query,
   ItemsInPeriodQueryVariables as Variables,
 } from "queries/api/index";
-import type React from "react";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import Page from "./Page";
 import type { ConnectedType } from "./type";
 

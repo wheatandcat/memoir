@@ -3,9 +3,10 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo, useCallback, useEffect, useRef, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useEffect, useRef, useState } from "react";
+import type { ListRenderItemInfo } from "react-native";
 import {
-  type ListRenderItemInfo,
   StyleSheet,
   TouchableWithoutFeedback,
   useWindowDimensions,
@@ -74,7 +75,7 @@ const DayInput: React.FC<Props> = (props) => {
   const [dayItems, setDayItems] = useState(days());
 
   const selectIndex = dayItems.findIndex(
-    (v) => Number(dayjs(v).format("D")) === index,
+    (v) => Number(dayjs(v).format("D")) === index
   );
 
   useEffect(() => {
@@ -107,7 +108,7 @@ const DayInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    [],
+    []
   );
 
   return (

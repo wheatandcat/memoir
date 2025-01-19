@@ -4,7 +4,8 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import * as AppleAuthentication from "expo-apple-authentication";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {

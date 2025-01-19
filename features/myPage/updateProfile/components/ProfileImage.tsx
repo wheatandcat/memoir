@@ -8,7 +8,8 @@ import {
   useActionSheet,
 } from "@expo/react-native-action-sheet";
 import * as ImagePicker from "expo-image-picker";
-import { type FC, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
@@ -27,7 +28,7 @@ const ProfileImage: FC<Props> = (props) => {
     if (mediaLibrary.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください",
+        "memoirアプリのカメラのアクセス許可をONにしてください"
       );
       return;
     }
@@ -52,7 +53,7 @@ const ProfileImage: FC<Props> = (props) => {
     if (camera.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください",
+        "memoirアプリのカメラのアクセス許可をONにしてください"
       );
     }
 
@@ -86,7 +87,7 @@ const ProfileImage: FC<Props> = (props) => {
         } else if (buttonIndex === 1) {
           pickImageCamera();
         }
-      },
+      }
     );
   }, [
     showActionSheetWithOptions,

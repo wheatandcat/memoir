@@ -4,8 +4,10 @@ import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
 import type { Item } from "queries/api/index";
-import { type FC, memo, useEffect, useState } from "react";
-import { StyleSheet, type ViewStyle, useWindowDimensions } from "react-native";
+import type { FC } from "react";
+import { memo, useEffect, useState } from "react";
+import type { ViewStyle } from "react-native";
+import { StyleSheet, useWindowDimensions } from "react-native";
 
 type User = {
   id: string;

@@ -1,8 +1,9 @@
 import View from "@/components/elements/View";
 import ListItem from "@/components/layouts/ListItem";
-import licenses from "@/src/licenses.json";
+import licenses from "@/features/setting/licence/components/licenses.json";
 import * as Linking from "expo-linking";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 
 const items = [
   {

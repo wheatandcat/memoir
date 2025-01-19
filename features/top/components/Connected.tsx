@@ -3,7 +3,8 @@ import Intro from "@/features/top/intro/components/index";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import { homeItemsState, homeState } from "@/store/atoms";
 import { router } from "expo-router";
-import { type FC, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useState } from "react";
 import { Platform } from "react-native";
 import { useSetRecoilState } from "recoil";
 import Page from "./Page";
@@ -31,7 +32,7 @@ const Connected: FC<Props> = (props) => {
     () => {
       setLoading(false);
       props.setCreate(false);
-    },
+    }
   );
 
   const setHomeItemsState = useSetRecoilState(homeItemsState);

@@ -4,10 +4,10 @@ import View from "@/components/elements/View";
 import Input from "@/components/layouts/Setting/Memoir/Input";
 import NotificationToggle from "@/components/layouts/Setting/Memoir/Notification";
 import theme from "@/config/theme";
-import type { ConnectedType } from "@/features/top/intro/components/Connected";
+import type { ConnectedType } from "@/features/top/intro/components/type";
 import dayjs from "@/lib/dayjs";
 import { StatusBar } from "expo-status-bar";
-import { type FC, memo, useState } from "react";
+import { memo, useState } from "react";
 import { StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -23,8 +23,11 @@ const Notification: React.FC<Props> = (props) => {
   const [dayOfWeek, setDayOfWeek] = useState(props.dayOfWeek);
   const [time, setTime] = useState(
     dayjs(
-      `0000-01-01T${`${props.hours}`.padStart(2, "0")}:${`${props.minutes}`.padStart(2, "0")}:00`,
-    ).toDate(),
+      `0000-01-01T${`${props.hours}`.padStart(
+        2,
+        "0"
+      )}:${`${props.minutes}`.padStart(2, "0")}:00`
+    ).toDate()
   );
   const [push, setPush] = useState(props.notification ? 1 : 0);
 
@@ -59,7 +62,7 @@ const Notification: React.FC<Props> = (props) => {
                     minutes: dayjs(time).minute(),
                     notification: push === 1,
                   },
-                  props.onNext,
+                  props.onNext
                 )
               }
               width={200}

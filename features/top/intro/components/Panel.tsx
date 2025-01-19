@@ -3,15 +3,18 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import { useNotification } from "@/containers/Notification";
 import { StatusBar } from "expo-status-bar";
-import { type FC, memo, useCallback, useRef, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useRef, useState } from "react";
+import type {
+  NativeScrollEvent,
+  NativeSyntheticEvent,
+  ViewStyle,
+} from "react-native";
 import {
   ImageBackground,
-  type NativeScrollEvent,
-  type NativeSyntheticEvent,
   ScrollView,
   StyleSheet,
   TouchableWithoutFeedback,
-  type ViewStyle,
   useWindowDimensions,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
@@ -46,7 +49,7 @@ const Intro: FC<Props> = (props) => {
         setPage(nextPage);
       }
     },
-    [page, width, props],
+    [page, width, props]
   );
 
   const onSkip = useCallback(() => {

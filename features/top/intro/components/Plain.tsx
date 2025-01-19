@@ -1,9 +1,10 @@
 import Loading from "@/components/elements/Loading";
 import View from "@/components/elements/View";
+import type { ConnectedType } from "@/features/top/intro/components/type";
 import type { State as MemoirNotificationSettingState } from "@/hooks/useMemoirNotificationSetting";
-import { type FC, memo } from "react";
+import { memo } from "react";
+import type { FC } from "react";
 import { StyleSheet } from "react-native";
-import type { ConnectedType } from "./Connected";
 import Page from "./Page";
 
 type Props = ConnectedType & {

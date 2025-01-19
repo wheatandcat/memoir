@@ -8,7 +8,8 @@ import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import dayjs from "@/lib/dayjs";
 import type { NewItem } from "queries/api/index";
-import { type FC, memo, useCallback, useEffect, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 
@@ -46,7 +47,7 @@ const AddItemModal: FC<Props> = ({
   ...props
 }) => {
   const [state, setState] = useState<State>(
-    initialState(props.date, props.item),
+    initialState(props.date, props.item)
   );
   const prevIsVisible = usePrevious(props.isVisible);
   const [openDate, setOpenDate] = useState(false);

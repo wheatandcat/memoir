@@ -1,7 +1,8 @@
 import DateInput from "@/components/layouts/DateInput/DateInput";
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import theme from "@/config/theme";
-import { type FC, type ReactNode, memo } from "react";
+import type { FC, ReactNode } from "react";
+import { memo } from "react";
 import { StyleSheet, View } from "react-native";
 
 type Props = {

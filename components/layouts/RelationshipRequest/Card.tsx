@@ -5,7 +5,8 @@ import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
 import type { Props as TemplatesProps } from "@/features/setting/relationshipRequests/components/Page";
 import dayjs from "@/lib/dayjs";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = ArrayType<TemplatesProps["items"]> & {

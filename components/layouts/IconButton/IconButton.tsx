@@ -1,8 +1,10 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import { MaterialIcons } from "@expo/vector-icons";
-import { type FC, memo } from "react";
-import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
+import type { FC } from "react";
+import { memo } from "react";
+import type { ViewStyle } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 type Name =
   | "more-vert"

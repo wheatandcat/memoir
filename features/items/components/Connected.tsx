@@ -3,15 +3,14 @@ import dayjs from "@/lib/dayjs";
 import { homeDateState } from "@/store/atoms";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
+import type { DeleteItem, NewItem, UpdateItem } from "queries/api/index";
 import {
-  type DeleteItem,
   DeleteItemDocument,
   ItemDocument,
-  type NewItem,
-  type UpdateItem,
   UpdateItemDocument,
 } from "queries/api/index";
-import { type FC, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useState } from "react";
 import { useSetRecoilState } from "recoil";
 import Plain from "./Plain";
 
@@ -101,7 +100,7 @@ const Connected: FC<Props> = (props) => {
       setUpdateItemLoading(true);
       updateItemMutation({ variables });
     },
-    [updateItemMutation, props.itemID],
+    [updateItemMutation, props.itemID]
   );
 
   const [deleteItemMutation] = useMutation(DeleteItemDocument, {
@@ -130,7 +129,7 @@ const Connected: FC<Props> = (props) => {
 
       router.back();
     },
-    [router, setHomeDate],
+    [router, setHomeDate]
   );
 
   return (

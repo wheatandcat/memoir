@@ -1,6 +1,7 @@
-import type { ConnectedType } from "@/features/top/intro/components/Connected";
 import IntroPanel from "@/features/top/intro/components/Panel";
-import { type FC, memo } from "react";
+import type { ConnectedType } from "@/features/top/intro/components/type";
+import type { FC } from "react";
+import { memo } from "react";
 
 export type Props = ConnectedType & {
   dayOfWeek: number;

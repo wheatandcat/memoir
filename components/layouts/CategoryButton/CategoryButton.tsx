@@ -4,12 +4,9 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import { categoryBorderStyle } from "@/lib/category";
-import { type FC, memo } from "react";
-import {
-  StyleSheet,
-  TouchableWithoutFeedback,
-  type ViewStyle,
-} from "react-native";
+import type { FC } from "react";
+import { memo } from "react";
+import { StyleSheet, TouchableWithoutFeedback, type ViewStyle } from "react-native";
 
 type Props = {
   categoryID: number;

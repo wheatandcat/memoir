@@ -3,7 +3,8 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {

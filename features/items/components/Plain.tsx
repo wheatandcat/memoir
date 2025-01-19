@@ -4,7 +4,8 @@ import type {
   ItemQuery as Query,
   ItemQueryVariables as Variables,
 } from "queries/api/index";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import Page from "./Page";
 import type { ConnectedType } from "./type";
 

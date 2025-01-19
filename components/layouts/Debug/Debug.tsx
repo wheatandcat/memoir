@@ -10,7 +10,8 @@ import { userState } from "@/store/atoms";
 import * as Clipboard from "expo-clipboard";
 import * as Notifications from "expo-notifications";
 import * as Updates from "expo-updates";
-import { type FC, memo, useCallback, useState } from "react";
+import type { FC } from "react";
+import { memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
 import { useRecoilValue } from "recoil";
 

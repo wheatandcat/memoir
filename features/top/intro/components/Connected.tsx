@@ -1,7 +1,8 @@
 import { useNotification } from "@/containers/Notification";
 import useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
 import * as Notifications from "expo-notifications";
-import { type FC, memo, useCallback } from "react";
+import type { FC } from "react";
+import { memo, useCallback } from "react";
 import Plain from "./Plain";
 import type { Input } from "./type";
 
@@ -53,7 +54,7 @@ const Connected: FC<Props> = (props) => {
       memoirNotificationSetting.onSave(input);
       callback();
     },
-    [memoirNotificationSetting, onPermissionRequest],
+    [memoirNotificationSetting, onPermissionRequest]
   );
 
   return (

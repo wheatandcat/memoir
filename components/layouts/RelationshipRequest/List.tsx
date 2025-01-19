@@ -2,8 +2,10 @@ import Loading from "@/components/elements/Loading";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { Props as TemplatesProps } from "@/features/setting/relationshipRequests/components/Page";
-import { type FC, memo, useCallback } from "react";
-import { FlatList, type ListRenderItemInfo, StyleSheet } from "react-native";
+import type { FC } from "react";
+import { memo, useCallback } from "react";
+import type { ListRenderItemInfo } from "react-native";
+import { FlatList, StyleSheet } from "react-native";
 import Card from "./Card";
 import NotFound from "./NotFound";
 
@@ -13,7 +15,7 @@ type RenderedItem = ArrayType<Props["items"]>;
 
 const renderItem = (
   { item, index }: ListRenderItemInfo<RenderedItem>,
-  props: Props,
+  props: Props
 ) => {
   return (
     <View key={`${index}-contents`}>
@@ -45,7 +47,7 @@ const List: FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item, props);
     },
-    [props],
+    [props]
   );
 
   const handleLoadMore = useCallback(() => {

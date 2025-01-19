@@ -7,8 +7,10 @@ import SettingModal from "@/components/layouts/SettingModal";
 import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
 import type { ItemQuery } from "queries/api/index";
-import { type FC, memo } from "react";
-import { StyleSheet, type ViewStyle } from "react-native";
+import type { FC } from "react";
+import { memo } from "react";
+import type { ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
 import type { ConnectedType } from "./type";
 
 type Item = ItemQuery["item"];

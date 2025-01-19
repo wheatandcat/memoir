@@ -1,7 +1,8 @@
 import setting from "@/components/elements/Category/setting";
 import View from "@/components/elements/View";
 import CategoryButton from "@/components/layouts/CategoryButton";
-import { type FC, memo } from "react";
+import type { FC } from "react";
+import { memo } from "react";
 import { StyleSheet } from "react-native";
 
 export type Props = {
