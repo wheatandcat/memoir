@@ -1,4 +1,4 @@
-import Constants from 'expo-constants';
+import Constants from "expo-constants";
 
 export const firebaseConfig = {
   apiKey: Constants.expoConfig?.extra?.FIRE_BASE_API_KEY,

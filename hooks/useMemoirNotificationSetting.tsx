@@ -49,7 +49,7 @@ const useMemoirNotificationSetting = () => {
   const onSave = useCallback(async (item: State) => {
     return await setItem(
       storageKey.MEMOIR_NOTIFICATION_KEY,
-      JSON.stringify(item)
+      JSON.stringify(item),
     );
   }, []);
 

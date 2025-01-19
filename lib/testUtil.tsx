@@ -1,26 +1,26 @@
-import React from 'react';
-import { RecoilRoot } from 'recoil';
-import { GraphQLHandler, GraphQLRequest } from 'msw';
 import {
   ApolloClient,
   ApolloProvider,
-  createHttpLink,
   InMemoryCache,
-} from '@apollo/client';
-import { render } from '@testing-library/react-native';
-import { server } from 'mocks/server';
-import fetch from 'cross-fetch';
-import { NavigationContainer } from '@react-navigation/native';
+  createHttpLink,
+} from "@apollo/client";
+import { NavigationContainer } from "@react-navigation/native";
+import { render } from "@testing-library/react-native";
+import fetch from "cross-fetch";
+import { server } from "mocks/server";
+import type { GraphQLHandler, GraphQLRequest } from "msw";
+import type React from "react";
+import { RecoilRoot } from "recoil";
 
 const link = createHttpLink({
-  uri: 'http://localhost:8080/query',
+  uri: "http://localhost:8080/query",
   fetch,
-  credentials: 'same-origin',
+  credentials: "same-origin",
 });
 
 const client = new ApolloClient({
   link,
-  uri: 'http://localhost:8080/query',
+  uri: "http://localhost:8080/query",
   cache: new InMemoryCache(),
 });
 
@@ -35,6 +35,6 @@ export const testRenderer =
         <NavigationContainer>
           <ApolloProvider client={client}>{children}</ApolloProvider>
         </NavigationContainer>
-      </RecoilRoot>
+      </RecoilRoot>,
     );
   };

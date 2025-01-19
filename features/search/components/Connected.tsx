@@ -40,7 +40,7 @@ const Connected: React.FC = () => {
         params: param,
       });
     },
-    [router]
+    [router],
   );
 
   const users: User[] = [

@@ -2,51 +2,51 @@ const SPACE = [2, 4, 8, 16, 32, 64, 128, 256, 512] as const;
 
 const baseColor = {
   primary: {
-    light: '#F9E281',
-    main: '#E3C95D',
-    dark: '#D2B849',
+    light: "#F9E281",
+    main: "#E3C95D",
+    dark: "#D2B849",
   },
   secondary: {
-    light: '#5E5166',
-    main: '#362740',
-    dark: '#2B1F32',
+    light: "#5E5166",
+    main: "#362740",
+    dark: "#2B1F32",
   },
   base: {
-    light: '#F2F2F2',
-    main: '#D8D7D6',
-    dark: '#B8B8B8',
+    light: "#F2F2F2",
+    main: "#D8D7D6",
+    dark: "#B8B8B8",
   },
   accent1: {
-    light: '#9DF18F',
-    main: '#59CC46',
-    dark: '#46AE35',
+    light: "#9DF18F",
+    main: "#59CC46",
+    dark: "#46AE35",
   },
   accent2: {
-    light: '#FFEE5C',
-    main: '#FFE600',
-    dark: '#E5CE00',
+    light: "#FFEE5C",
+    main: "#FFE600",
+    dark: "#E5CE00",
   },
   error: {
-    light: '#F680B2',
-    main: '#E93581',
-    dark: '#CA1D65',
+    light: "#F680B2",
+    main: "#E93581",
+    dark: "#CA1D65",
   },
   background: {
-    light: '#FFFFFF',
-    main: '#F2F2F2',
-    dark: '#D8D7D6',
+    light: "#FFFFFF",
+    main: "#F2F2F2",
+    dark: "#D8D7D6",
   },
-  transparent: 'transparent',
-  gradation: ['#F5F5F5', '#F2F2F2'],
+  transparent: "transparent",
+  gradation: ["#F5F5F5", "#F2F2F2"],
 };
 
 const category = {
   color: {
-    category1: '#FF8383',
-    category2: '#FFE600',
-    category3: '#9BDC5A',
-    category4: '#5AD4DC',
-    category5: '#DE9FE9',
+    category1: "#FF8383",
+    category2: "#FFE600",
+    category3: "#9BDC5A",
+    category4: "#5AD4DC",
+    category5: "#DE9FE9",
   },
 };
 
@@ -60,15 +60,15 @@ const FONT_SIZE = {
 };
 
 type FontWeight = {
-  thin: '100';
-  normal: '400';
-  bold: 'bold';
+  thin: "100";
+  normal: "400";
+  bold: "bold";
 };
 
 const FONT_WEIGHT: FontWeight = {
-  thin: '100',
-  normal: '400',
-  bold: 'bold',
+  thin: "100",
+  normal: "400",
+  bold: "bold",
 };
 
 const FONT_COLOR = {
@@ -84,10 +84,10 @@ const FONT_COLOR = {
 };
 
 type ButtonSizeType = {
-  fontSize: 'sm' | 'base' | 'lg' | 'xl';
+  fontSize: "sm" | "base" | "lg" | "xl";
   padding: number;
   borderRadius: number;
-  loadingSize: 'small' | 'large';
+  loadingSize: "small" | "large";
   height: number;
 };
 
@@ -102,24 +102,24 @@ type ButtonType = {
 const BUTTON: ButtonType = {
   size: {
     sm: {
-      fontSize: 'sm',
+      fontSize: "sm",
       padding: SPACE[3],
       borderRadius: 7,
-      loadingSize: 'small',
+      loadingSize: "small",
       height: 40,
     },
     base: {
-      fontSize: 'base',
+      fontSize: "base",
       padding: SPACE[2],
       borderRadius: 10,
-      loadingSize: 'small',
+      loadingSize: "small",
       height: 50,
     },
     lg: {
-      fontSize: 'lg',
+      fontSize: "lg",
       padding: SPACE[3],
       borderRadius: 15,
-      loadingSize: 'large',
+      loadingSize: "large",
       height: 58,
     },
   },

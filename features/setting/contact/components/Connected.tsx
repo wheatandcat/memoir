@@ -50,7 +50,7 @@ const Connected: React.FC = () => {
       userID: user.userID || "無し",
       env: "アプリ",
       device: `${Platform.OS}/${Platform.Version}/${Device.modelName}/${String(
-        Device.osInternalBuildId
+        Device.osInternalBuildId,
       )}`,
       category: "フィードバックを送信",
     };

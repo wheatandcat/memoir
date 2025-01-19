@@ -45,24 +45,27 @@ export const styleSpace = (props: SpaceProps) => {
       const value = props[key] as Value;
       const mappedProperties = getProperties(key);
 
-      return mappedProperties.reduce((acc: any, k: string) => {
-        acc[k] = theme().space(value);
-        return acc;
-      }, {} as { [k: string]: number });
+      return mappedProperties.reduce(
+        (acc: any, k: string) => {
+          acc[k] = theme().space(value);
+          return acc;
+        },
+        {} as { [k: string]: number },
+      );
     })
     .reduce(
       (acc, m) => ({
         ...acc,
         ...m,
       }),
-      {}
+      {},
     );
 };
 
 const getProperties = (key: string) => {
   const [a, b] = key.split("") as [
     keyof typeof properties,
-    keyof typeof directions
+    keyof typeof directions,
   ];
   const property = properties[a];
   const direction = directions[b] || "";

@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio } from 'react-native';
+import { Dimensions, PixelRatio } from "react-native";
 
 const DEVICES = {
   iPhoneSe: { width: 640 },
@@ -6,12 +6,12 @@ const DEVICES = {
 };
 
 const fetchDeviceWidth = () =>
-  Dimensions.get('window').width * PixelRatio.get();
+  Dimensions.get("window").width * PixelRatio.get();
 
-const devices = ['iPhoneSE', 'iPhone8', 'other'] as const;
+const devices = ["iPhoneSE", "iPhone8", "other"] as const;
 
 type IosSelectorProps = {
-  [k in typeof devices[number]]?: any;
+  [k in (typeof devices)[number]]?: any;
 };
 
 const iosSelector = ({ iPhoneSE, iPhone8, other }: IosSelectorProps) => {

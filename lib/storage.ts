@@ -1,21 +1,21 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 // ログイン前のユーザーID
-const USER_ID_KEY = 'USER_ID' as const;
+const USER_ID_KEY = "USER_ID" as const;
 // ログイン後のAuth UID
-const AUTH_UID_KEY = 'AUTH_UID' as const;
+const AUTH_UID_KEY = "AUTH_UID" as const;
 // Auth id token
-const AUTH_ID_TOKEN_KEY = 'AUTH_ID_TOKEN' as const;
+const AUTH_ID_TOKEN_KEY = "AUTH_ID_TOKEN" as const;
 // Auth id tokenの期限
-const AUTH_ID_TOKEN_EXPIRATION_KEY = 'AUTH_ID_TOKEN_EXPIRATION' as const;
+const AUTH_ID_TOKEN_EXPIRATION_KEY = "AUTH_ID_TOKEN_EXPIRATION" as const;
 // ログイン後のユーザーID
-const AUTHENTICATED_USER_ID_KEY = 'AUTHENTICATED_USER_ID' as const;
+const AUTHENTICATED_USER_ID_KEY = "AUTHENTICATED_USER_ID" as const;
 // 振り返りの設定
-const MEMOIR_NOTIFICATION_KEY = 'MEMOIR_NOTIFICATION_KEY' as const;
+const MEMOIR_NOTIFICATION_KEY = "MEMOIR_NOTIFICATION_KEY" as const;
 // OTA updateのリリース
-const UPDATES_RELEASE_KEY = 'RELEASE_KEY' as const;
+const UPDATES_RELEASE_KEY = "RELEASE_KEY" as const;
 // OTA updateのリリーススキップ
-const UPDATES_SKIPPED_KEY = 'SKIPPED_KEY' as const;
+const UPDATES_SKIPPED_KEY = "SKIPPED_KEY" as const;
 
 export const storageKey = {
   USER_ID_KEY,
@@ -44,7 +44,7 @@ export const getItem = async (key: StorageValues): Promise<string | null> => {
 
 export const setItem = async (
   key: StorageValues,
-  data: string
+  data: string,
 ): Promise<boolean> => {
   try {
     await AsyncStorage.setItem(key, data);

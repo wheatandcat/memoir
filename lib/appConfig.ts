@@ -4,7 +4,7 @@ import {
   getDocs,
   limit,
   query,
-} from 'firebase/firestore';
+} from "firebase/firestore";
 
 export type AppConfig = {
   maintenance: boolean;
@@ -15,13 +15,13 @@ export type AppConfig = {
 
 export const defaultAppConfig = () => ({
   maintenance: false,
-  maintenanceMessage: '',
+  maintenanceMessage: "",
   maintenancePeriod: null,
-  supportVersion: '1.0.0',
+  supportVersion: "1.0.0",
 });
 
 export const getAppConfig = async (db: Firestore): Promise<AppConfig> => {
-  const ref = collection(db, 'appConfig');
+  const ref = collection(db, "appConfig");
   const q = await query(ref, limit(1));
 
   const querySnapshot = await getDocs(q);

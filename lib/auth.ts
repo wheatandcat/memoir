@@ -1,7 +1,7 @@
-import dayjs from '@/lib/dayjs';
-import { getFirebaseAuthApp } from '@/lib/firebase';
-import { getItem, removeItem, setItem, storageKey } from '@/lib/storage';
-import { type User, onAuthStateChanged,  signOut } from 'firebase/auth';
+import dayjs from "@/lib/dayjs";
+import { getFirebaseAuthApp } from "@/lib/firebase";
+import { getItem, removeItem, setItem, storageKey } from "@/lib/storage";
+import { type User, onAuthStateChanged, signOut } from "firebase/auth";
 
 const auth = getFirebaseAuthApp();
 
@@ -31,7 +31,7 @@ class Auth {
     await setItem(storageKey.AUTH_ID_TOKEN_KEY, result.token);
     await setItem(
       storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY,
-      String(result.claims.exp)
+      String(result.claims.exp),
     );
 
     return result.token;

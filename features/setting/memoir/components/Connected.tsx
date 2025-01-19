@@ -53,7 +53,7 @@ const Connected: React.FC = () => {
 
       router.back();
     },
-    [router, memoirNotificationSetting, onPermissionRequest]
+    [router, memoirNotificationSetting, onPermissionRequest],
   );
 
   return (
