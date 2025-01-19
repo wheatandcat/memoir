@@ -1,6 +1,6 @@
 import useIsFirstRender from "@/hooks/useIsFirstRender";
-import dayjs from "lib/dayjs";
-import { getItem, setItem, storageKey } from "lib/storage";
+import dayjs from "@/lib/dayjs";
+import { getItem, setItem, storageKey } from "@/lib/storage";
 import { useCallback, useEffect, useState } from "react";
 
 export type State = {
@@ -49,7 +49,7 @@ const useMemoirNotificationSetting = () => {
   const onSave = useCallback(async (item: State) => {
     return await setItem(
       storageKey.MEMOIR_NOTIFICATION_KEY,
-      JSON.stringify(item),
+      JSON.stringify(item)
     );
   }, []);
 

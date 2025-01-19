@@ -1,7 +1,7 @@
 import Loading from "@/components/elements/Loading";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import type { Props as TemplatesProps } from "@/features/setting/relationshipRequests/components/Page";
-import theme from "config/theme";
 import { type FC, memo, useCallback } from "react";
 import { FlatList, type ListRenderItemInfo, StyleSheet } from "react-native";
 import Card from "./Card";

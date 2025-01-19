@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
 import type { ConnectedType } from "@/features/home/components/type";
-import dayjs from "lib/dayjs";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo, useCallback } from "react";
 import { StyleSheet, type ViewStyle } from "react-native";
 import {

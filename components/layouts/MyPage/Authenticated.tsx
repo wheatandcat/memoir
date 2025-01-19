@@ -3,12 +3,12 @@ import View from "@/components/elements/View";
 import Notification from "@/components/layouts/RelationshipRequest/Notification";
 import ShareUsers from "@/components/layouts/ShareUser/List";
 import UserImage from "@/components/layouts/User/Image";
+import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/myPage/components/type";
+import type { User } from "@/store/atoms";
 import { MaterialIcons } from "@expo/vector-icons";
-import theme from "config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-import type { User } from "store/atoms";
 
 export type Props = {
   user: User;

@@ -3,12 +3,13 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Debug from "@/components/layouts/Debug/Debug";
 import Modal from "@/components/layouts/Modal";
-import theme from "config/theme";
-import { useNotification } from "containers/Notification";
+import theme from "@/config/theme";
+import { useNotification } from "@/containers/Notification";
+import { removeItem, storageKey } from "@/lib/storage";
+import { authUserState, userState } from "@/store/atoms";
 import * as Device from "expo-device";
 import { ActivityAction, startActivityAsync } from "expo-intent-launcher";
 import { useRouter } from "expo-router";
-import { removeItem, storageKey } from "lib/storage";
 import { type FC, memo, useCallback } from "react";
 import {
   Alert,
@@ -18,7 +19,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { authUserState, userState } from "store/atoms";
 
 export type Props = {
   isVisible: boolean;

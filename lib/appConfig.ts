@@ -1,9 +1,9 @@
 import {
-  Firestore,
+  type Firestore,
   collection,
-  query,
-  limit,
   getDocs,
+  limit,
+  query,
 } from 'firebase/firestore';
 
 export type AppConfig = {

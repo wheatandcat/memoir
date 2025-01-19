@@ -1,7 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
-import { useNotification } from "containers/Notification";
+import theme from "@/config/theme";
+import { useNotification } from "@/containers/Notification";
 import { StatusBar } from "expo-status-bar";
 import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
@@ -83,48 +83,48 @@ const Intro: FC<Props> = (props) => {
           ref={scrollViewRef}
         >
           <ImageBackground
-            source={require("@/src/img/common/frame.png")}
+            source={require("@/assets/img/common/frame.png")}
             resizeMode="cover"
             style={[styles.image, style]}
           >
             <IntroCard
-              source={require("@/src/img/common/intro_01.png")}
+              source={require("@/assets/img/common/intro_01.png")}
               text={"記録する\nふりかえる\n共有する"}
               onNext={onNext}
             />
           </ImageBackground>
 
           <ImageBackground
-            source={require("@/src/img/common/frame.png")}
+            source={require("@/assets/img/common/frame.png")}
             resizeMode="cover"
             style={[styles.image, style]}
           >
             <IntroCard
-              source={require("@/src/img/common/intro_02.png")}
+              source={require("@/assets/img/common/intro_02.png")}
               text={"memoirは\nタスクを記録して\n"}
               onNext={onNext}
             />
           </ImageBackground>
 
           <ImageBackground
-            source={require("@/src/img/common/frame.png")}
+            source={require("@/assets/img/common/frame.png")}
             resizeMode="cover"
             style={[styles.image, style]}
           >
             <IntroCard
-              source={require("@/src/img/common/intro_03.png")}
+              source={require("@/assets/img/common/intro_03.png")}
               text={"定期的に\n「ふりかえる」\nアプリです"}
               onNext={onNext}
             />
           </ImageBackground>
 
           <ImageBackground
-            source={require("@/src/img/common/frame.png")}
+            source={require("@/assets/img/common/frame.png")}
             resizeMode="cover"
             style={[styles.image, style]}
           >
             <IntroCard
-              source={require("@/src/img/common/intro_04.png")}
+              source={require("@/assets/img/common/intro_04.png")}
               text={"まずは\n初期設定を\nしてください"}
               onNext={onNext}
             />

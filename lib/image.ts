@@ -1,12 +1,12 @@
-import { getFirebaseStorageApp } from 'lib/firebase';
+import { getFirebaseStorageApp } from "@/lib/firebase";
+import * as FileSystem from "expo-file-system";
+import * as ImageManipulator from "expo-image-manipulator";
 import {
+  deleteObject,
+  getDownloadURL,
   ref,
   uploadBytes,
-  getDownloadURL,
-  deleteObject,
-} from 'firebase/storage';
-import * as ImageManipulator from 'expo-image-manipulator';
-import * as FileSystem from 'expo-file-system';
+} from "firebase/storage";
 
 export const uploadImageAsync = async (
   uri: string,
@@ -14,15 +14,15 @@ export const uploadImageAsync = async (
 ): Promise<string> => {
   const blob: any = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function () {
+    xhr.onload = () => {
       resolve(xhr.response);
     };
-    xhr.onerror = function (e) {
-      console.log('image upload error:', e);
-      reject(new TypeError('Network request failed'));
+    xhr.onerror = (e) => {
+      console.log("image upload error:", e);
+      reject(new TypeError("Network request failed"));
     };
-    xhr.responseType = 'blob';
-    xhr.open('GET', uri, true);
+    xhr.responseType = "blob";
+    xhr.open("GET", uri, true);
     xhr.send(null);
   });
 
@@ -57,7 +57,7 @@ export const resizeImage = async (uri: string): Promise<string> => {
 
   const size = fileInfo.exists ? fileInfo.size : 0;
 
-  console.log('file-size:', size);
+  console.log("file-size:", size);
 
   return result.uri;
 };

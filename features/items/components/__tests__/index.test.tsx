@@ -1,4 +1,5 @@
 import * as useHomeItems from "@/hooks/useHomeItems";
+import { testRenderer } from "@/lib/testUtil";
 import {
   fireEvent,
   screen,
@@ -6,7 +7,6 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
 import { item } from "__mockData__/item";
-import { testRenderer } from "lib/testUtil";
 import { graphql } from "msw";
 import { ItemDocument, UpdateItemDocument } from "queries/api/index";
 import React from "react";

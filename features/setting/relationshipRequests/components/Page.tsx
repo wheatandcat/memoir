@@ -1,7 +1,7 @@
 import View from "@/components/elements/View";
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import List from "@/components/layouts/RelationshipRequest/List";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type React from "react";
 import { memo } from "react";
 import { StyleSheet } from "react-native";

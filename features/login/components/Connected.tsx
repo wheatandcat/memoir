@@ -1,9 +1,10 @@
+import { useNotification } from "@/containers/Notification";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import useHomeItems from "@/hooks/useHomeItems";
+import { getItem, storageKey } from "@/lib/storage";
+import { authUserState } from "@/store/atoms";
 import { useMutation } from "@apollo/client";
 import { useNavigation } from "@react-navigation/native";
-import { useNotification } from "containers/Notification";
-import { getItem, storageKey } from "lib/storage";
 import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
@@ -12,7 +13,6 @@ import type React from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { useRecoilValue } from "recoil";
-import { authUserState } from "store/atoms";
 import Page from "./Page";
 
 const Connected: React.FC = () => {

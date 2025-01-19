@@ -1,9 +1,9 @@
-import { selector } from 'recoil';
-import { storageKey, getItem } from 'lib/storage';
-import { authUserState } from 'store/atoms';
+import { getItem, storageKey } from "@/lib/storage";
+import { authUserState } from "@/store/atoms";
+import { selector } from "recoil";
 
 export const existUserID = selector({
-  key: 'existUser',
+  key: "existUser",
   get: async () => {
     const uid = await getItem(storageKey.USER_ID_KEY);
 
@@ -16,7 +16,7 @@ export const existUserID = selector({
 });
 
 export const existAuthUserID = selector({
-  key: 'existAuthUser',
+  key: "existAuthUser",
   get: async ({ get }) => {
     get(authUserState);
     const uid = await getItem(storageKey.AUTH_UID_KEY);

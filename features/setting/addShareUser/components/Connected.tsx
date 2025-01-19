@@ -1,3 +1,4 @@
+import { userState } from "@/store/atoms";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import {
   CreateInviteDocument,
@@ -12,7 +13,6 @@ import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 import Plain from "./Plain";
 
 const Connected: React.FC = () => {

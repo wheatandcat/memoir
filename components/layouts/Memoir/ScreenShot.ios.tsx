@@ -4,16 +4,17 @@ import Loading from "@/components/elements/Loading";
 import View from "@/components/elements/View";
 import DateText from "@/components/layouts/Memoir/DateText";
 import Header from "@/components/layouts/Memoir/Header";
+import theme from "@/config/theme";
 import type { Props as PlainProps } from "@/features/memoir/components/Plain";
 import type { Item } from "@/hooks/useItemsInPeriodPaging";
+import dayjs from "@/lib/dayjs";
+import { deleteImageAsync, resizeImage, uploadImageAsync } from "@/lib/image";
+import { getModeCountMax } from "@/lib/utility";
+import type { User as TUser } from "@/store/atoms";
 import { useNavigation } from "@react-navigation/native";
-import theme from "config/theme";
 import Constants from "expo-constants";
 import * as FileSystem from "expo-file-system";
 import * as Sharing from "expo-sharing";
-import dayjs from "lib/dayjs";
-import { deleteImageAsync, resizeImage, uploadImageAsync } from "lib/image";
-import { getModeCountMax } from "lib/utility";
 import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
@@ -23,7 +24,6 @@ import {
   useWindowDimensions,
 } from "react-native";
 import ViewShot from "react-native-view-shot";
-import type { User as TUser } from "store/atoms";
 import { v4 as uuidv4 } from "uuid";
 import Card from "./Card";
 
@@ -68,7 +68,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
       </View>
       {!!props.last && (
         <Image
-          source={require("@/src/img/icon/border_dotted.png")}
+          source={require("@/assets/img/icon/border_dotted.png")}
           width={props.width}
           height={2}
         />

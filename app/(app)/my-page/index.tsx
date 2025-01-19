@@ -1,5 +1,5 @@
+import theme from "@/config/theme";
 import Page from "@/features/myPage/components";
-import theme from "config/theme";
 import { Stack } from "expo-router";
 
 export default function Index() {

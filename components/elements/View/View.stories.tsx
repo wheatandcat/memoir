@@ -1,4 +1,4 @@
-import theme from "config/theme";
+import theme from "@/config/theme";
 import React from "react";
 import { StyleSheet } from "react-native";
 import View from "./";

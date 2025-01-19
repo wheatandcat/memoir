@@ -1,19 +1,20 @@
+import theme from '@/config/theme';
+import { useMutation } from '@apollo/client';
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
-import React, {
-  memo,
-  useRef,
-  useContext,
-  useCallback,
-  createContext,
-} from 'react';
-import { Platform } from 'react-native';
 import {
   CreatePushTokenDocument,
-  CreatePushTokenMutationVariables,
+  type CreatePushTokenMutationVariables,
 } from 'queries/api/index';
-import theme from 'config/theme';
-import { useMutation } from '@apollo/client';
+import type React from 'react';
+import {
+  createContext,
+  memo,
+  useCallback,
+  useContext,
+  useRef,
+} from 'react';
+import { Platform } from 'react-native';
 
 const Context = createContext<ContextProps>({});
 const { Provider } = Context;

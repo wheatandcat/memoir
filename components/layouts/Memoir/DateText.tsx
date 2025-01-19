@@ -1,8 +1,8 @@
 import Category from "@/components/elements/Category";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import dayjs from "@/lib/dayjs";
 import type React from "react";
 import { memo } from "react";
 import { StyleSheet } from "react-native";

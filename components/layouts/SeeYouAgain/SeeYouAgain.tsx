@@ -2,12 +2,12 @@ import Button from "@/components/elements/Button";
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import { screenState } from "@/store/atoms";
 import { type FC, memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useSetRecoilState } from "recoil";
-import { screenState } from "store/atoms";
 
 const SeeYouAgain: FC = () => {
   const setScreenState = useSetRecoilState(screenState);
@@ -19,7 +19,7 @@ const SeeYouAgain: FC = () => {
           <View style={styles.inner}>
             <View pt={4} pb={5}>
               <Image
-                source={require("@/src/img/icon/trust.png")}
+                source={require("@/assets/img/icon/trust.png")}
                 width={100}
                 height={100}
                 contentFit="contain"

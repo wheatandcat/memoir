@@ -1,5 +1,6 @@
 import useItemsInPeriodPaging from "@/hooks/useItemsInPeriodPaging";
 import usePerformance, { traceEvent } from "@/hooks/usePerformance";
+import { userState } from "@/store/atoms";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import {
@@ -8,7 +9,6 @@ import {
 } from "queries/api/index";
 import { type FC, memo, useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 import Plain from "./Plain";
 import type { User } from "./type";
 

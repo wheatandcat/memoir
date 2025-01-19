@@ -1,10 +1,10 @@
-import { Slot } from 'expo-router';
-import { RecoilRoot } from 'recoil';
-import { ApolloProvider } from '@apollo/client';
-import makeApolloClient from 'lib/apollo';
-import { ActionSheetProvider } from '@expo/react-native-action-sheet';
-import { SessionProvider } from '@/ctx';
-import * as SplashScreen from 'expo-splash-screen';
+import { SessionProvider } from "@/ctx";
+import makeApolloClient from "@/lib/apollo";
+import { ApolloProvider } from "@apollo/client";
+import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import { Slot } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
+import { RecoilRoot } from "recoil";
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 500);

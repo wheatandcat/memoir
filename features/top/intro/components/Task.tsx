@@ -2,8 +2,8 @@ import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import AddButton from "@/components/layouts/Home/AddButton";
+import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/top/intro/components/Connected";
-import theme from "config/theme";
 import { StatusBar } from "expo-status-bar";
 import { type FC, memo } from "react";
 import { StyleSheet } from "react-native";
@@ -22,7 +22,7 @@ const Task: FC<Props> = (props) => {
         <View style={styles.inner}>
           <View py={5}>
             <Image
-              source={require("@/src/img/common/intro_06.png")}
+              source={require("@/assets/img/common/intro_06.png")}
               width={95}
               height={95}
               contentFit="contain"

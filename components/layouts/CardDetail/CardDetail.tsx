@@ -4,9 +4,9 @@ import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Menu, { type Item as MenuItem } from "@/components/layouts/Menu/Menu";
-import theme from "config/theme";
-import { categoryBorderStyle } from "lib/category";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import { categoryBorderStyle } from "@/lib/category";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo, useCallback } from "react";
 import {
   Alert,
@@ -95,7 +95,7 @@ const CardDetail: FC<Props> = (props) => {
         {props.like && (
           <View px={3}>
             <Image
-              source={require("@/src/img/icon/icon_like.png")}
+              source={require("@/assets/img/icon/icon_like.png")}
               width={60}
               height={60}
               contentFit="contain"
@@ -106,7 +106,7 @@ const CardDetail: FC<Props> = (props) => {
         {props.dislike && (
           <View px={3}>
             <Image
-              source={require("@/src/img/icon/icon_dislike.png")}
+              source={require("@/assets/img/icon/icon_dislike.png")}
               width={60}
               height={60}
               contentFit="contain"

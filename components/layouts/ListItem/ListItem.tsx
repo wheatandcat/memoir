@@ -1,7 +1,7 @@
 import Text, { type FontFamily } from "@/components/elements/Text";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import { MaterialIcons } from "@expo/vector-icons";
-import theme from "config/theme";
 import type { FC } from "react";
 import { StyleSheet, TouchableOpacity, type ViewStyle } from "react-native";
 

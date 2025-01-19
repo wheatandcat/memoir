@@ -1,6 +1,6 @@
-import { StyleSheet, ViewStyle } from 'react-native';
-import theme from 'config/theme';
-import master from 'lib/master';
+import theme from '@/config/theme';
+import master from '@/lib/master';
+import { StyleSheet, type ViewStyle } from 'react-native';
 
 export const categoryBorderStyle = (category: number): ViewStyle => {
   switch (category) {

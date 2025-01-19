@@ -1,11 +1,11 @@
+import dayjs from "@/lib/dayjs";
+import { userState } from "@/store/atoms";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
-import dayjs from "lib/dayjs";
 import { RelationshipsDocument } from "queries/api/index";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 import Plain from "./Plain";
 import type { Input, User } from "./type";
 
@@ -40,7 +40,7 @@ const Connected: React.FC = () => {
         params: param,
       });
     },
-    [router],
+    [router]
   );
 
   const users: User[] = [

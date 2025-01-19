@@ -1,5 +1,5 @@
 import Image from "@/components/elements/Image";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import { type ImageProps, StyleSheet } from "react-native";
 
@@ -23,7 +23,7 @@ const UserImage: FC<Props> = ({ size = 100, ...props }) => {
         />
       ) : (
         <Image
-          source={require("@/src/img/icon/icon_account_default.png")}
+          source={require("@/assets/img/icon/icon_account_default.png")}
           width={size}
           height={size}
           style={styles.noImage}

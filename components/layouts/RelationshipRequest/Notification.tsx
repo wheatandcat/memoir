@@ -1,8 +1,8 @@
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import { MaterialIcons } from "@expo/vector-icons";
-import theme from "config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
@@ -17,7 +17,7 @@ const Notification: FC<Props> = (props) => {
       <View style={styles.root}>
         <View>
           <Image
-            source={require("@/src/img/icon/icon_edit.png")}
+            source={require("@/assets/img/icon/icon_edit.png")}
             width={35}
             height={35}
             contentFit="contain"

@@ -1,9 +1,9 @@
 import Divider from "@/components/elements/Divider";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo, useCallback, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import InputDay from "./Days";

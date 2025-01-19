@@ -1,5 +1,5 @@
-import type { TextStyle } from 'react-native';
-import { variants } from 'config/theme';
+import { variants } from "@/config/theme";
+import type { TextStyle } from "react-native";
 
 export type FontVariants = keyof typeof variants.text;
 
@@ -12,7 +12,7 @@ export const styleFontVariant = (props: Props): TextStyle => {
     return {};
   }
 
-  const item = variants.text[props.variants ?? 'body'];
+  const item = variants.text[props.variants ?? "body"];
 
   return {
     fontSize: item.size,

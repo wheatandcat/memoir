@@ -1,7 +1,7 @@
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 
@@ -16,7 +16,7 @@ const MemoirButton: FC<Props> = (props) => {
         <View style={styles.memoirButton}>
           <View>
             <Image
-              source={require("@/src/img/icon/main.png")}
+              source={require("@/assets/img/icon/main.png")}
               width={30}
               height={30}
             />

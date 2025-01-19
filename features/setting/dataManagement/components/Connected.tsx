@@ -1,12 +1,12 @@
 import Loading from "@/components/elements/Loading";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
+import { deleteImageAsync } from "@/lib/image";
+import { screenState, userState } from "@/store/atoms";
 import { useMutation, useQuery } from "@apollo/client";
-import { deleteImageAsync } from "lib/image";
 import { DeleteUserDocument, RelationshipsDocument } from "queries/api/index";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { screenState, userState } from "store/atoms";
 import Plain from "./Plain";
 
 const Connected: React.FC = () => {
@@ -32,7 +32,7 @@ const Connected: React.FC = () => {
         await onLogout();
         setScreenState({ seeYouAgain: true });
       },
-    },
+    }
   );
 
   const onDelete = useCallback(() => {

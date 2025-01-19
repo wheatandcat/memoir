@@ -1,5 +1,5 @@
+import dayjs from "@/lib/dayjs";
 import Constants from "expo-constants";
-import dayjs from "lib/dayjs";
 import { useCallback, useEffect, useRef } from "react";
 import { Platform } from "react-native";
 
@@ -90,7 +90,7 @@ const usePerformance = (props: Props) => {
         (time > 0 && traceItemRef.current.time > time)
       ) {
         console.log(
-          `${red}☠️: [action:${props.traceName}]がalertConfigの想定より処理が重くなっているので確認お願いします${reset}`,
+          `${red}☠️: [action:${props.traceName}]がalertConfigの想定より処理が重くなっているので確認お願いします${reset}`
         );
       }
     }
@@ -108,7 +108,7 @@ const usePerformance = (props: Props) => {
         traceTimeoutIdRef.current = setTimeout(onOutPutTraceData, timeout);
       }
     },
-    [onOutPutTraceData],
+    [onOutPutTraceData]
   );
 
   const onEndTrace = useCallback(async (_?: any) => {

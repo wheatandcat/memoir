@@ -1,3 +1,4 @@
+import { userState } from "@/store/atoms";
 import { useQuery } from "@apollo/client";
 import {
   ItemsInPeriodDocument,
@@ -6,7 +7,6 @@ import {
 import type React from "react";
 import { memo } from "react";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 import Plain from "./Plain";
 import type { User } from "./type";
 

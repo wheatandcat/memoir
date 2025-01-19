@@ -4,13 +4,13 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
 import UserImage from "@/components/layouts/User/Image";
-import type { Invite } from "components/pages/Setting/AddShareUser/Connected";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import type { Invite } from "@/features/setting/addShareUser/components/type";
+import type { User } from "@/store/atoms";
 import * as Clipboard from "expo-clipboard";
 import { type FC, memo, useCallback, useState } from "react";
 import { StyleSheet, useWindowDimensions } from "react-native";
 import Toast from "react-native-root-toast";
-import type { User } from "store/atoms";
 import TutorialModal from "./TutorialModal";
 
 export type Props = {

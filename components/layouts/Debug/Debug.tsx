@@ -3,16 +3,16 @@ import Divider from "@/components/elements/Divider";
 import Text from "@/components/elements/Text";
 import TextInput from "@/components/elements/TextInput";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import Auth from "@/lib/auth";
+import { setItem, storageKey } from "@/lib/storage";
+import { userState } from "@/store/atoms";
 import * as Clipboard from "expo-clipboard";
 import * as Notifications from "expo-notifications";
 import * as Updates from "expo-updates";
-import Auth from "lib/auth";
-import { setItem, storageKey } from "lib/storage";
 import { type FC, memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 
 const auth = new Auth();
 

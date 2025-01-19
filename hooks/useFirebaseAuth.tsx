@@ -1,3 +1,8 @@
+import Auth from "@/lib/auth";
+import { getFirebaseAuthApp } from "@/lib/firebase";
+import { getItem, removeItem, setItem, storageKey } from "@/lib/storage";
+import { authUserState, userState } from "@/store/atoms";
+import { existAuthUserID } from "@/store/selectors";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as Crypto from "expo-crypto";
@@ -8,9 +13,6 @@ import {
   onAuthStateChanged,
   signInWithCredential,
 } from "firebase/auth";
-import Auth from "lib/auth";
-import { getFirebaseAuthApp } from "lib/firebase";
-import { getItem, removeItem, setItem, storageKey } from "lib/storage";
 import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
@@ -20,8 +22,6 @@ import {
 import { useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
-import { authUserState, userState } from "store/atoms";
-import { existAuthUserID } from "store/selectors";
 import { v4 as uuidv4 } from "uuid";
 
 const auth = new Auth();

@@ -1,4 +1,4 @@
-import type { User as TUser } from "store/atoms";
+import type { User as TUser } from "@/store/atoms";
 
 type Props = {
   startDate: string;

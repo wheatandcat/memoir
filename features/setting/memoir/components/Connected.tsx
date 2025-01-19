@@ -1,5 +1,5 @@
+import { useNotification } from "@/containers/Notification";
 import useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
-import { useNotification } from "containers/Notification";
 import * as Notifications from "expo-notifications";
 import { useRouter } from "expo-router";
 import type React from "react";
@@ -53,7 +53,7 @@ const Connected: React.FC = () => {
 
       router.back();
     },
-    [router, memoirNotificationSetting, onPermissionRequest],
+    [router, memoirNotificationSetting, onPermissionRequest]
   );
 
   return (

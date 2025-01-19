@@ -1,13 +1,13 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
+import theme from "@/config/theme";
+import { resizeImage } from "@/lib/image";
 import {
   connectActionSheet,
   useActionSheet,
 } from "@expo/react-native-action-sheet";
-import theme from "config/theme";
 import * as ImagePicker from "expo-image-picker";
-import { resizeImage } from "lib/image";
 import { type FC, memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
 

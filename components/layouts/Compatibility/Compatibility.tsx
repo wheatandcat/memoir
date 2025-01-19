@@ -1,6 +1,6 @@
 import Image from "@/components/elements/Image";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import {
   StyleSheet,
@@ -40,7 +40,7 @@ const Compatibility: FC<Props> = ({ size = 64, opacity = false, ...props }) => {
       <View style={likeStyle}>
         <TouchableWithoutFeedback onPress={props.onLike} testID="input_like">
           <Image
-            source={require("@/src/img/icon/icon_like.png")}
+            source={require("@/assets/img/icon/icon_like.png")}
             width={size}
             height={size}
             contentFit="contain"
@@ -53,7 +53,7 @@ const Compatibility: FC<Props> = ({ size = 64, opacity = false, ...props }) => {
           testID="input_dislike"
         >
           <Image
-            source={require("@/src/img/icon/icon_dislike.png")}
+            source={require("@/assets/img/icon/icon_dislike.png")}
             width={size}
             height={size}
             contentFit="contain"

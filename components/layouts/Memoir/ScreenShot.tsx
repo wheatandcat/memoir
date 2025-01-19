@@ -4,14 +4,15 @@ import View from "@/components/elements/View";
 import DateText from "@/components/layouts/Memoir/DateText";
 import Header from "@/components/layouts/Memoir/Header";
 import Loading from "@/components/layouts/Overlay/Loading";
+import theme from "@/config/theme";
 import type { Props as PlainProps } from "@/features/memoir/screenShot/components/Plain";
 import type { Item } from "@/hooks/useItemsInPeriodPaging";
+import dayjs from "@/lib/dayjs";
+import { getModeCountMax } from "@/lib/utility";
+import type { User as TUser } from "@/store/atoms";
 import { useNavigation } from "@react-navigation/native";
-import theme from "config/theme";
 import Constants from "expo-constants";
 import * as Sharing from "expo-sharing";
-import dayjs from "lib/dayjs";
-import { getModeCountMax } from "lib/utility";
 import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
@@ -20,7 +21,6 @@ import {
   useWindowDimensions,
 } from "react-native";
 import ViewShot from "react-native-view-shot";
-import type { User as TUser } from "store/atoms";
 import Card from "./Card";
 
 export type Props = Pick<PlainProps, "users"> & {
@@ -64,7 +64,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
       </View>
       {!!props.last && (
         <Image
-          source={require("@/src/img/icon/border_dotted.png")}
+          source={require("@/assets/img/icon/border_dotted.png")}
           width={props.width}
           height={2}
         />

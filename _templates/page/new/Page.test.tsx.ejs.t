@@ -2,7 +2,7 @@
 to: <%= templatePath %>/__tests__/Page.test.tsx
 ---
 import React from 'react';
-import { testRenderer } from 'lib/testUtil';
+import { testRenderer } from '@/lib/testUtil';
 import { screen } from '@testing-library/react-native';
 import Page, { Props } from '../Page';
 

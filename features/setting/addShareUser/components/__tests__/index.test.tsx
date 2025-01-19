@@ -1,9 +1,9 @@
+import { testRenderer } from "@/lib/testUtil";
 import {
   screen,
   waitFor,
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
-import { testRenderer } from "lib/testUtil";
 import React from "react";
 import * as Recoil from "recoil";
 import IndexPage from "../";

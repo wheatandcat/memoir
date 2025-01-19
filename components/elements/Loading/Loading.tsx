@@ -1,5 +1,5 @@
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type { FC } from "react";
 import { ActivityIndicator } from "react-native";
 

@@ -1,9 +1,9 @@
-import { AppConfig } from 'lib/appConfig';
+import type { AppConfig } from "@/lib/appConfig";
 
 export const appConfig = (option?: Partial<AppConfig>): AppConfig => ({
   maintenance: false,
-  maintenanceMessage: '',
+  maintenanceMessage: "",
   maintenancePeriod: null,
-  supportVersion: '1.0.0',
+  supportVersion: "1.0.0",
   ...option,
 });

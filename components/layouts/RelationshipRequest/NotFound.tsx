@@ -1,7 +1,7 @@
 import Button from "@/components/elements/Button";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo } from "react";

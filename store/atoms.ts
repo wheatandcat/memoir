@@ -1,8 +1,8 @@
-import { atom } from 'recoil';
-import dayjs from 'lib/dayjs';
-import { ItemQuery } from 'queries/api/index';
+import dayjs from "@/lib/dayjs";
+import type { ItemQuery } from "queries/api/index";
+import { atom } from "recoil";
 
-export type Item = NonNullable<ItemQuery['item']>;
+export type Item = NonNullable<ItemQuery["item"]>;
 
 export type User = {
   id: string | null;
@@ -13,13 +13,13 @@ export type User = {
 
 const initialUserState = (): User => ({
   id: null,
-  userID: '',
-  displayName: '',
-  image: '',
+  userID: "",
+  displayName: "",
+  image: "",
 });
 
 export const userState = atom<User>({
-  key: 'userState',
+  key: "userState",
   default: initialUserState(),
 });
 
@@ -28,11 +28,11 @@ type HomeDate = {
 };
 
 const initialHomeDateState = (): HomeDate => ({
-  date: dayjs().format('YYYY-MM-DDT00:00:00+09:00'),
+  date: dayjs().format("YYYY-MM-DDT00:00:00+09:00"),
 });
 
 export const homeDateState = atom<HomeDate>({
-  key: 'homeDateState',
+  key: "homeDateState",
   default: initialHomeDateState(),
 });
 
@@ -45,7 +45,7 @@ const initialHomeItemsState = (): HomeItems => ({
 });
 
 export const homeItemsState = atom<HomeItems>({
-  key: 'homeItemsState',
+  key: "homeItemsState",
   default: initialHomeItemsState(),
 });
 
@@ -58,7 +58,7 @@ const initialAuthUserState = (): AuthUser => ({
 });
 
 export const authUserState = atom<AuthUser>({
-  key: 'authUserState',
+  key: "authUserState",
   default: initialAuthUserState(),
 });
 
@@ -71,7 +71,7 @@ const initialHomeState = (): HomeState => ({
 });
 
 export const homeState = atom<HomeState>({
-  key: 'homeState',
+  key: "homeState",
   default: initialHomeState(),
 });
 
@@ -84,6 +84,6 @@ const initialScreenState = (): Screen => ({
 });
 
 export const screenState = atom<Screen>({
-  key: 'screenState',
+  key: "screenState",
   default: initialScreenState(),
 });

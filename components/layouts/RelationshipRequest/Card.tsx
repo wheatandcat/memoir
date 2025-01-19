@@ -2,9 +2,9 @@ import Divider from "@/components/elements/Divider";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
-import type { Props as TemplatesProps } from "components/templates/Setting/RelationshipRequests/Page";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import type { Props as TemplatesProps } from "@/features/setting/relationshipRequests/components/Page";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo } from "react";
 import { ActivityIndicator, StyleSheet, TouchableOpacity } from "react-native";
 

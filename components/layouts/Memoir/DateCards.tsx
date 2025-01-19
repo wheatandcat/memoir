@@ -7,10 +7,10 @@ import DateText from "@/components/layouts/Memoir/DateText";
 import Header from "@/components/layouts/Memoir/Header";
 import NotFound from "@/components/layouts/Memoir/NotFound";
 import Users from "@/components/layouts/Memoir/Users";
-import type { Props as PlainProps } from "components/pages/Memoir/Plain";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
-import { getModeCountMax } from "lib/utility";
+import theme from "@/config/theme";
+import type { Props as PlainProps } from "@/features/memoir/components/Plain";
+import dayjs from "@/lib/dayjs";
+import { getModeCountMax } from "@/lib/utility";
 import { type FC, memo, useCallback } from "react";
 import {
   FlatList,
@@ -72,7 +72,7 @@ const renderItem = ({ item }: ListRenderItemInfo<RenderedItem>) => {
       </View>
       {!!item?.last && (
         <Image
-          source={require("@/src/img/icon/border_dotted.png")}
+          source={require("@/assets/img/icon/border_dotted.png")}
           width={item.width}
           height={2}
         />

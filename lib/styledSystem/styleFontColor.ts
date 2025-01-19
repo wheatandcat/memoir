@@ -1,7 +1,7 @@
-import { TextStyle } from 'react-native';
-import theme from 'config/theme';
+import theme from "@/config/theme";
+import type { TextStyle } from "react-native";
 
-export type FontColor = keyof ReturnType<typeof theme>['fontColors'];
+export type FontColor = keyof ReturnType<typeof theme>["fontColors"];
 
 type Props = {
   color?: FontColor;

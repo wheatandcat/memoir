@@ -4,8 +4,8 @@ import GestureRecognizerWrap from "@/components/layouts/Home/GestureRecognizerWr
 import MemoirButton from "@/components/layouts/Home/MemoirButton";
 import InputDateWrap from "@/components/layouts/InputDateWrap/InputDateWrap";
 import SettingModal from "@/components/layouts/SettingModal";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import dayjs from "@/lib/dayjs";
 import type { ItemQuery } from "queries/api/index";
 import { type FC, memo } from "react";
 import { StyleSheet, type ViewStyle } from "react-native";

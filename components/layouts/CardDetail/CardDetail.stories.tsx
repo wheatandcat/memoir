@@ -1,5 +1,5 @@
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { mockFn } from "storyBookUtils/index";

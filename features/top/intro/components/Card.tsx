@@ -1,7 +1,7 @@
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import {
   ImageBackground,
@@ -19,7 +19,7 @@ export type Props = {
 const Card: FC<Props> = (props) => {
   return (
     <ImageBackground
-      source={require("@/src/img/common/frame.png")}
+      source={require("@/assets/img/common/frame.png")}
       resizeMode="cover"
       style={styles.image}
     >

@@ -1,7 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Modal from "@/components/layouts/Modal";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet } from "react-native";
 

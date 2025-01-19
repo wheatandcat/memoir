@@ -2,8 +2,8 @@ import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Modal from "@/components/layouts/Modal";
+import theme from "@/config/theme";
 import useAutoFocusInput from "@/hooks/useAutoFocusInput";
-import theme from "config/theme";
 import * as Clipboard from "expo-clipboard";
 import type React from "react";
 import { memo, useCallback } from "react";
@@ -65,7 +65,7 @@ const Page: React.FC<Props> = (props) => {
       >
         <View style={styles.modal}>
           <Image
-            source={require("@/src/img/common/intro_06.png")}
+            source={require("@/assets/img/common/intro_06.png")}
             width={100}
             height={100}
             contentFit="contain"

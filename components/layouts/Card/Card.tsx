@@ -3,8 +3,8 @@ import setting from "@/components/elements/Category/setting";
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
-import { categoryBorderStyle } from "lib/category";
+import theme from "@/config/theme";
+import { categoryBorderStyle } from "@/lib/category";
 import type { Item } from "queries/api/index";
 import { type FC, memo } from "react";
 import {
@@ -66,7 +66,7 @@ const Card: FC<Props> = (props) => {
           {!!props.user?.id && (
             <View style={styles.user}>
               <Image
-                source={require("@/src/img/icon/account.png")}
+                source={require("@/assets/img/icon/account.png")}
                 width={20}
                 height={20}
               />

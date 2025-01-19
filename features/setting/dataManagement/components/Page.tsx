@@ -1,11 +1,11 @@
 import Button from "@/components/elements/Button";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import {
   connectActionSheet,
   useActionSheet,
 } from "@expo/react-native-action-sheet";
-import theme from "config/theme";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { StyleSheet } from "react-native";
@@ -27,7 +27,7 @@ const Page: React.FC<Props> = (props) => {
         if (buttonIndex === 0) {
           props.onDelete();
         }
-      },
+      }
     );
   }, [showActionSheetWithOptions, props]);
 

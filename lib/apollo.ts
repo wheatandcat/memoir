@@ -1,18 +1,18 @@
-import { setContext } from '@apollo/client/link/context';
-import { Alert } from 'react-native';
-import { onError } from '@apollo/client/link/error';
+import Auth from "@/lib/auth";
+import { errorCode } from "@/lib/error";
+import { getItem, removeItem, storageKey } from "@/lib/storage";
 import {
   ApolloClient,
-  InMemoryCache,
-  createHttpLink,
   ApolloLink,
+  InMemoryCache,
   concat,
-} from '@apollo/client';
-import { storageKey, getItem, removeItem } from 'lib/storage';
-import Auth from 'lib/auth';
-import * as Sentry from 'sentry-expo';
-import { errorCode } from 'lib/error';
-import Constants from 'expo-constants';
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+import { onError } from "@apollo/client/link/error";
+import Constants from "expo-constants";
+import { Alert } from "react-native";
+import * as Sentry from "sentry-expo";
 
 const cache = new InMemoryCache();
 const auth = new Auth();
@@ -30,7 +30,7 @@ const makeApolloClient = () => {
     const param: Param = {};
     const token = await auth.getIdToken();
 
-    console.log('token:', token);
+    console.log("token:", token);
 
     if (token) {
       param.Authorization = `Bearer ${token}`;
@@ -52,9 +52,9 @@ const makeApolloClient = () => {
 
   const middlewareLink = new ApolloLink((operation, forward) => {
     console.log(
-      'operation:',
+      "operation:",
       operation.operationName,
-      ',variables:',
+      ",variables:",
       operation.variables
     );
 
@@ -68,7 +68,7 @@ const makeApolloClient = () => {
     if ((error.graphQLErrors || []).length > 0) {
       const graphQLErrors = error.graphQLErrors || [
         {
-          message: 'エラー発生しました',
+          message: "エラー発生しました",
           extensions: { code: errorCode.CodeDefault },
         },
       ];
@@ -77,25 +77,25 @@ const makeApolloClient = () => {
 
       let message = graphQLErrors[0].message;
       if (code === errorCode.CodeValidation) {
-        message = graphQLErrors[0].message.split(':')?.[1] || message;
+        message = graphQLErrors[0].message.split(":")?.[1] || message;
       }
 
       Sentry.Native.withScope((scope) => {
-        scope.setTag('kind', 'GraphQL');
-        scope.setTag('operationName', error.operation.operationName);
-        scope.setExtra('query', error.operation.query.loc?.source?.body || '');
-        scope.setExtra('variables', error.operation.variables);
-        scope.setExtra('errorCode', code);
+        scope.setTag("kind", "GraphQL");
+        scope.setTag("operationName", error.operation.operationName);
+        scope.setExtra("query", error.operation.query.loc?.source?.body || "");
+        scope.setExtra("variables", error.operation.variables);
+        scope.setExtra("errorCode", code);
         Sentry.Native.captureMessage(message);
       });
 
-      console.log('error: operation:', error.operation.operationName, message);
+      console.log("error: operation:", error.operation.operationName, message);
 
-      Alert.alert('エラー', message, [
+      Alert.alert("エラー", message, [
         {
-          text: 'OK',
+          text: "OK",
           onPress: async () => {
-            if (message.trim() === 'User Invalid') {
+            if (message.trim() === "User Invalid") {
               await auth.logout();
               await removeItem(storageKey.USER_ID_KEY);
             }

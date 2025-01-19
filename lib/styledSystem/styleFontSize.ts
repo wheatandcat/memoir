@@ -1,7 +1,7 @@
-import { TextStyle } from 'react-native';
-import theme from 'config/theme';
+import theme from "@/config/theme";
+import type { TextStyle } from "react-native";
 
-export type FontSize = keyof ReturnType<typeof theme>['fontSizes'];
+export type FontSize = keyof ReturnType<typeof theme>["fontSizes"];
 
 type Props = {
   size?: FontSize;

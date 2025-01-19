@@ -1,13 +1,13 @@
 import {
   type FontColor,
   styleFontColor,
-} from "lib/styledSystem/styleFontColor";
-import { styleFontLineHeight } from "lib/styledSystem/styleFontLineHeight";
-import { type FontSize, styleFontSize } from "lib/styledSystem/styleFontSize";
+} from "@/lib/styledSystem/styleFontColor";
+import { styleFontLineHeight } from "@/lib/styledSystem/styleFontLineHeight";
+import { type FontSize, styleFontSize } from "@/lib/styledSystem/styleFontSize";
 import {
   type FontWeight,
   styleFontWeight,
-} from "lib/styledSystem/styleFontWeight";
+} from "@/lib/styledSystem/styleFontWeight";
 import type { FC } from "react";
 import {
   Platform,
@@ -19,7 +19,7 @@ import {
 import {
   type FontVariants,
   styleFontVariant,
-} from "lib/styledSystem/styleFontVariant";
+} from "@/lib/styledSystem/styleFontVariant";
 
 export type FontFamily = "RobotoCondensed-Bold" | "NotoSansJP-Bold";
 

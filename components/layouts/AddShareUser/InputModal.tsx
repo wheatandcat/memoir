@@ -1,7 +1,7 @@
 import View from "@/components/elements/View";
 import Modal from "@/components/layouts/Modal";
-import type { ConnectedType } from "components/pages/Setting/AddShareUser/Connected";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import type { ConnectedType } from "@/features/setting/addShareUser/components/type";
 import { type FC, memo, useCallback, useState } from "react";
 import { StyleSheet } from "react-native";
 import Confirm from "./InputModal/Confirm";

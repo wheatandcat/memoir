@@ -1,18 +1,18 @@
+import { uploadImageAsync } from "@/lib/image";
+import { authUserState, userState } from "@/store/atoms";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
-import { uploadImageAsync } from "lib/image";
 import {
   UpdateUserDocument,
   type UpdateUserMutationVariables,
   type User,
 } from "queries/api/index";
-import Page from "./Page";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { authUserState, userState } from "store/atoms";
 import { v4 as uuidv4 } from "uuid";
+import Page from "./Page";
 
 const Connected: React.FC = () => {
   const [user, setUser] = useRecoilState(userState);

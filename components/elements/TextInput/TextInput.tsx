@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import useAutoFocusInput from "@/hooks/useAutoFocusInput";
-import theme from "config/theme";
 import type { FC } from "react";
 import {
   TextInput as RNTextInput,

@@ -3,12 +3,12 @@ import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import type { User } from "@/store/atoms";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import type { User } from "store/atoms";
 
 export type Props = {
   user: User;
@@ -38,7 +38,7 @@ const Page: React.FC<Props> = (props) => {
           </View>
           <View m={4}>
             <Image
-              source={require("@/src/img/icon/icon_cracker.png")}
+              source={require("@/assets/img/icon/icon_cracker.png")}
               width={100}
               height={100}
             />

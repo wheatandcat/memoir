@@ -1,5 +1,5 @@
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type React from "react";
 import { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";

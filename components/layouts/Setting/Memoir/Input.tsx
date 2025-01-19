@@ -1,7 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo, useCallback, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";

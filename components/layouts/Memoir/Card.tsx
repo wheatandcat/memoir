@@ -2,7 +2,7 @@ import Category from "@/components/elements/Category";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type { Item } from "queries/api/index";
 import { type FC, memo, useEffect, useState } from "react";
 import { StyleSheet, type ViewStyle, useWindowDimensions } from "react-native";

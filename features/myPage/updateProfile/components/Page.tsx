@@ -3,11 +3,11 @@ import Text from "@/components/elements/Text";
 import TextInput from "@/components/elements/TextInput";
 import View from "@/components/elements/View";
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import type { User } from "@/store/atoms";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { StyleSheet } from "react-native";
-import type { User } from "store/atoms";
 import ProfileImage from "./ProfileImage";
 import type { ConnectedType } from "./type";
 

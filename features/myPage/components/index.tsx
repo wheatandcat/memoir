@@ -1,5 +1,5 @@
+import theme from "@/config/theme";
 import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
-import theme from "config/theme";
 import type React from "react";
 import Connected from "./Connected";
 

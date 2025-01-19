@@ -1,7 +1,7 @@
-import { TextStyle } from 'react-native';
-import theme from 'config/theme';
+import theme from "@/config/theme";
+import type { TextStyle } from "react-native";
 
-export type FontWeight = keyof ReturnType<typeof theme>['fontWeights'];
+export type FontWeight = keyof ReturnType<typeof theme>["fontWeights"];
 
 type Props = {
   fontWeight?: FontWeight;

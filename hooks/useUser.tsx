@@ -1,13 +1,13 @@
+import { existUserID } from "@/store/selectors";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import * as Sentry from "sentry-expo";
-import { existUserID } from "store/selectors";
 import "react-native-get-random-values";
 import usePrevious from "@/hooks/usePrevious";
+import { setItem, storageKey } from "@/lib/storage";
+import { userState } from "@/store/atoms";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { setItem, storageKey } from "lib/storage";
 import { CreateUserDocument, UserDocument } from "queries/api/index";
-import { userState } from "store/atoms";
 import { v4 as uuidv4 } from "uuid";
 
 const useUser = () => {

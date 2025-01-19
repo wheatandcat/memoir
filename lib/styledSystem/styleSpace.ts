@@ -1,4 +1,4 @@
-import theme from 'config/theme';
+import theme from "@/config/theme";
 
 type Value = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 export type SpaceProps = {
@@ -22,17 +22,17 @@ type SpaceKeys = keyof SpaceProps;
 const REG = /^[mp][trblxy]?$/;
 
 const properties = {
-  m: 'margin',
-  p: 'padding',
+  m: "margin",
+  p: "padding",
 } as const;
 
 const directions = {
-  t: 'Top',
-  r: 'Right',
-  b: 'Bottom',
-  l: 'Left',
-  x: ['Left', 'Right'],
-  y: ['Top', 'Bottom'],
+  t: "Top",
+  r: "Right",
+  b: "Bottom",
+  l: "Left",
+  x: ["Left", "Right"],
+  y: ["Top", "Bottom"],
 } as const;
 
 export const styleSpace = (props: SpaceProps) => {
@@ -60,15 +60,15 @@ export const styleSpace = (props: SpaceProps) => {
 };
 
 const getProperties = (key: string) => {
-  const [a, b] = key.split('') as [
+  const [a, b] = key.split("") as [
     keyof typeof properties,
     keyof typeof directions
   ];
   const property = properties[a];
-  const direction = directions[b] || '';
+  const direction = directions[b] || "";
 
   if (Array.isArray(direction)) {
-    let dirMap: string[] = [];
+    const dirMap: string[] = [];
     direction.forEach((m: string) => dirMap.push(m));
     return dirMap.map((dir: string) => property + dir);
   } else {

@@ -1,5 +1,5 @@
+import type { Item } from "@/store/atoms";
 import type { NewItem } from "queries/api/index";
-import type { Item } from "store/atoms";
 
 export type ConnectedType = {
   items: Item[];

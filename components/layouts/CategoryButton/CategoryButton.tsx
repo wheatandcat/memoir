@@ -2,8 +2,8 @@ import Category from "@/components/elements/Category";
 import { icon } from "@/components/elements/Category/setting";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
-import { categoryBorderStyle } from "lib/category";
+import theme from "@/config/theme";
+import { categoryBorderStyle } from "@/lib/category";
 import { type FC, memo } from "react";
 import {
   StyleSheet,

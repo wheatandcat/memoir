@@ -1,10 +1,10 @@
+import { testRenderer } from "@/lib/testUtil";
 import {
   screen,
   waitFor,
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
 import { user } from "__mockData__/user";
-import { testRenderer } from "lib/testUtil";
 import React from "react";
 import * as Recoil from "recoil";
 import IndexPage, { type Props } from "../";

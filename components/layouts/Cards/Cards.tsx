@@ -2,7 +2,7 @@ import View from "@/components/elements/View";
 import Card from "@/components/layouts/Card";
 import AddButton from "@/components/layouts/Home/AddButton";
 import NotFound from "@/components/layouts/Home/NotFound";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type { ItemQuery } from "queries/api/index";
 import { type FC, memo } from "react";
 import { ActivityIndicator, StyleSheet } from "react-native";

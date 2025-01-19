@@ -3,8 +3,8 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Input from "@/components/layouts/Setting/Memoir/Input";
 import Notification from "@/components/layouts/Setting/Memoir/Notification";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import theme from "@/config/theme";
+import dayjs from "@/lib/dayjs";
 import type React from "react";
 import { memo, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";
@@ -22,9 +22,9 @@ const Page: React.FC<Props> = (props) => {
   const [time, setTime] = useState(
     dayjs(
       `0000-01-01T${`00${props.hours}`.slice(-2)}:${`00${props.minutes}`.slice(
-        -2,
-      )}:00`,
-    ).toDate(),
+        -2
+      )}:00`
+    ).toDate()
   );
 
   const [push, setPush] = useState(props.notification ? 1 : 0);

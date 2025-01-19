@@ -1,8 +1,8 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
+import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
-import theme from "config/theme";
-import dayjs from "lib/dayjs";
+import dayjs from "@/lib/dayjs";
 import { type FC, memo, useCallback, useEffect, useRef, useState } from "react";
 import {
   type ListRenderItemInfo,

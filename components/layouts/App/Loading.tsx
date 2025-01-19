@@ -1,6 +1,6 @@
 import ALoading from "@/components/elements/Loading";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet } from "react-native";
 

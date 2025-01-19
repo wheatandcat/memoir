@@ -2,7 +2,7 @@ import Button from "@/components/elements/Button";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
-import theme from "config/theme";
+import theme from "@/config/theme";
 import type { FC } from "react";
 import { Platform, ScrollView, StyleSheet, type ViewStyle } from "react-native";
 import RNModal from "react-native-modal";

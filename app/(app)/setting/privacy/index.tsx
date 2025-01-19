@@ -1,4 +1,4 @@
-import theme from "config/theme";
+import theme from "@/config/theme";
 import { Stack } from "expo-router";
 import type React from "react";
 import { memo } from "react";

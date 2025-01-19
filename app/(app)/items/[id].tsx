@@ -1,14 +1,14 @@
-import { Stack } from 'expo-router';
-import Page from '@/features/items/components';
-import theme from 'config/theme';
+import theme from "@/config/theme";
+import Page from "@/features/items/components";
+import { Stack } from "expo-router";
 
 export default function Index() {
   return (
     <>
       <Stack.Screen
         options={{
-          title: '',
-          headerBackTitle: '',
+          title: "",
+          headerBackTitle: "",
           headerStyle: {
             backgroundColor: theme().color.primary.main,
           },

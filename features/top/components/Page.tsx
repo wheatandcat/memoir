@@ -3,8 +3,8 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Form, { type Props as FormProps } from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
+import theme from "@/config/theme";
 import type { ConnectedType } from "@/src/components/pages/Top/Connected";
-import theme from "config/theme";
 import { StatusBar } from "expo-status-bar";
 import { type FC, memo } from "react";
 import {
@@ -25,14 +25,14 @@ const Page: FC<Props> = (props) => {
         <SafeAreaView>
           <View style={styles.inner}>
             <ImageBackground
-              source={require("@/src/img/common/frame.png")}
+              source={require("@/assets/img/common/frame.png")}
               resizeMode="cover"
               style={styles.image}
             >
               <View style={styles.title}>
                 <View>
                   <Image
-                    source={require("@/src/img/common/logo.png")}
+                    source={require("@/assets/img/common/logo.png")}
                     width={384 / 2}
                     height={84 / 2}
                   />

@@ -1,15 +1,9 @@
 {
   "compilerOptions": {
-    "types": [
-      "jest",
-      "node"
-    ],
+    "types": ["jest", "node"],
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
-    "lib": [
-      "dom",
-      "esnext"
-    ],
+    "lib": ["dom", "esnext"],
     "moduleResolution": "node",
     "noEmit": true,
     "skipLibCheck": true,
@@ -17,52 +11,15 @@
     "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": [
-        "./*"
-      ],
-      "components/*": [
-        "src/components/*"
-      ],
-      "config/*": [
-        "src/config/*"
-      ],
-      "lib/*": [
-        "src/lib/*"
-      ],
-      "storyBookUtils/*": [
-        "src/storyBookUtils/*"
-      ],
-      "store/*": [
-        "src/store/*"
-      ],
-      "containers/*": [
-        "src/containers/*"
-      ],
-      "hooks/*": [
-        "src/hooks/*"
-      ],
-      "queries/*": [
-        "src/queries/*"
-      ],
-      "__mockData__/*": [
-        "src/__mockData__/*"
-      ],
-      "mocks/*": [
-        "src/mocks/*"
-      ]
+      "@/*": ["./*"],
+      "storyBookUtils/*": ["src/storyBookUtils/*"],
+      "queries/*": ["src/queries/*"],
+      "__mockData__/*": ["src/__mockData__/*"],
+      "mocks/*": ["src/mocks/*"]
     },
-    "typeRoots": [
-      "node_modules/@types",
-      "src/@types"
-    ]
+    "typeRoots": ["node_modules/@types", "src/@types"]
   },
-  "exclude": [
-    "node_modules",
-    "scripts/send-metrics"
-  ],
+  "exclude": ["node_modules", "scripts/send-metrics"],
   "extends": "expo/tsconfig.base",
-  "include": [
-    "**/*.ts",
-    "**/*.tsx"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

@@ -2,8 +2,8 @@ import Divider from "@/components/elements/Divider";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
-import theme from "config/theme";
-import type { FontColor } from "lib/styledSystem/styleFontColor";
+import theme from "@/config/theme";
+import type { FontColor } from "@/lib/styledSystem/styleFontColor";
 import { type FC, memo, useCallback, useRef, useState } from "react";
 import {
   Modal,

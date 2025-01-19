@@ -1,6 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import theme from "config/theme";
+import theme from "@/config/theme";
+import { userState } from "@/store/atoms";
 import Constants from "expo-constants";
 import * as Device from "expo-device";
 import { useRouter } from "expo-router";
@@ -9,7 +10,6 @@ import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { Alert, Platform, TouchableOpacity } from "react-native";
 import { useRecoilValue } from "recoil";
-import { userState } from "store/atoms";
 import Page from "./Page";
 
 const url = Constants.expoConfig?.extra?.INQUIRY_API || "";
@@ -50,7 +50,7 @@ const Connected: React.FC = () => {
       userID: user.userID || "無し",
       env: "アプリ",
       device: `${Platform.OS}/${Platform.Version}/${Device.modelName}/${String(
-        Device.osInternalBuildId,
+        Device.osInternalBuildId
       )}`,
       category: "フィードバックを送信",
     };

@@ -1,5 +1,5 @@
+import { useNotification } from "@/containers/Notification";
 import useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
-import { useNotification } from "containers/Notification";
 import * as Notifications from "expo-notifications";
 import { type FC, memo, useCallback } from "react";
 import Plain from "./Plain";

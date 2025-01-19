@@ -3,8 +3,8 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Form from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
+import theme from "@/config/theme";
 import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
-import theme from "config/theme";
 import { type FC, memo } from "react";
 import { StyleSheet } from "react-native";
 

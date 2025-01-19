@@ -1,6 +1,6 @@
 import useSentryBreadcrumb from "@/hooks/useSentryBreadcrumb";
+import dayjs from "@/lib/dayjs";
 import { useLocalSearchParams } from "expo-router";
-import dayjs from "lib/dayjs";
 import { type FC, memo } from "react";
 import Connected from "./Connected";
 

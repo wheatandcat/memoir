@@ -1,11 +1,11 @@
 import { useSession } from "@/ctx";
 import Intro from "@/features/top/intro/components/index";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
+import { homeItemsState, homeState } from "@/store/atoms";
 import { router } from "expo-router";
 import { type FC, memo, useCallback, useState } from "react";
 import { Platform } from "react-native";
 import { useSetRecoilState } from "recoil";
-import { homeItemsState, homeState } from "store/atoms";
 import Page from "./Page";
 
 export type Props = {

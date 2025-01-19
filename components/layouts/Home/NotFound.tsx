@@ -1,7 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import NotFoundIcon from "@/components/layouts/NotFound/Icon";
-import dayjs from "lib/dayjs";
+import dayjs from "@/lib/dayjs";
 import type { FC } from "react";
 import { StyleSheet } from "react-native";
 
