@@ -21,6 +21,10 @@ jobs:
           cache: 'pnpm'
       - name: Install node_modules
         run: pnpm install
+      - name: download schema
+        run: pnpm download:schema.graphqls
+      - name: check download schema
+        run: cat ./schema.graphqls
       - name: codegen
         run: pnpm codegen
       - name: tsc

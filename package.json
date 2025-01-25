@@ -29,7 +29,7 @@
     "storybook:android": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --android",
     "format": "npx @biomejs/biome check --write ./*",
     "download:schema.graphqls": "curl -L -O https://raw.githubusercontent.com/wheatandcat/memoir-backend/main/graph/schema.graphqls",
-    "codegen": "pnpm download:schema.graphqls &  TZ=Asia/Tokyo graphql-codegen",
+    "codegen": "pnpm download:schema.graphqls & TZ=Asia/Tokyo graphql-codegen",
     "test": "jest",
     "test:watch": "jest --watch",
     "lint:ci": "biome ci",
