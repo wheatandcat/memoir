@@ -55,7 +55,7 @@ const Connected: FC<Props> = (props) => {
       memoirNotificationSetting.onSave(input);
       callback();
     },
-    [memoirNotificationSetting, onPermissionRequest]
+    [memoirNotificationSetting, onPermissionRequest],
   );
 
   return (

@@ -13,7 +13,7 @@ const propsData = (): Props => ({
 describe("components/templates/DataManagement/Page.tsx", () => {
   it("正常にrenderすること", () => {
     testRenderer(
-      <Page {...propsData()} showActionSheetWithOptions={jest.fn()} />
+      <Page {...propsData()} showActionSheetWithOptions={jest.fn()} />,
     )();
     expect(screen.findAllByText("アカウント削除")).toBeTruthy();
   });

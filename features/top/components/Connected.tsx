@@ -32,7 +32,7 @@ const Connected: FC<Props> = (props) => {
     () => {
       setLoading(false);
       props.setCreate(false);
-    }
+    },
   );
 
   const setHomeItemsState = useSetRecoilState(homeItemsState);

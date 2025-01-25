@@ -18,14 +18,13 @@ jobs:
       - name: Cache node_modules
         uses: actions/cache@v3
         with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          path: ~/.cache/pnpm
+          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
           restore-keys:
             ${{ runner.os }}-memoir-
       - name: Install node_modules
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
+        run: pnpm install
       - name: codegen
-        run: yarn codegen
+        run: pnpm codegen
       - name: lint
-        run: yarn lint
+        run: pnpm lint:ci

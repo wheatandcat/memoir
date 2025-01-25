@@ -75,7 +75,7 @@ const DayInput: React.FC<Props> = (props) => {
   const [dayItems, setDayItems] = useState(days());
 
   const selectIndex = dayItems.findIndex(
-    (v) => Number(dayjs(v).format("D")) === index
+    (v) => Number(dayjs(v).format("D")) === index,
   );
 
   useEffect(() => {
@@ -108,7 +108,7 @@ const DayInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   return (

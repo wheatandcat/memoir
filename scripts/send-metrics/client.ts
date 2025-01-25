@@ -1,4 +1,4 @@
-import { createRequire } from "module";
+import { createRequire } from "node:module";
 import { cert, initializeApp } from "firebase-admin/app";
 import { type Timestamp, getFirestore } from "firebase-admin/firestore";
 const require = createRequire(import.meta.url);

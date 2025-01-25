@@ -54,7 +54,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      })
+      }),
     );
 
     await waitFor(async () => {
@@ -90,7 +90,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      })
+      }),
     );
 
     /*

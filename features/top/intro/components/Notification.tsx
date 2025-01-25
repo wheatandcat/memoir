@@ -25,9 +25,9 @@ const Notification: React.FC<Props> = (props) => {
     dayjs(
       `0000-01-01T${`${props.hours}`.padStart(
         2,
-        "0"
-      )}:${`${props.minutes}`.padStart(2, "0")}:00`
-    ).toDate()
+        "0",
+      )}:${`${props.minutes}`.padStart(2, "0")}:00`,
+    ).toDate(),
   );
   const [push, setPush] = useState(props.notification ? 1 : 0);
 
@@ -62,7 +62,7 @@ const Notification: React.FC<Props> = (props) => {
                     minutes: dayjs(time).minute(),
                     notification: push === 1,
                   },
-                  props.onNext
+                  props.onNext,
                 )
               }
               width={200}

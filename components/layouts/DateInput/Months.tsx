@@ -66,7 +66,7 @@ const MonthInput: React.FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   return (

@@ -28,9 +28,9 @@ export const getAppConfig = async (db: Firestore): Promise<AppConfig> => {
 
   const records: any = [];
 
-  querySnapshot.forEach((doc) => {
+  for (const doc of querySnapshot.docs) {
     records.push(doc.data());
-  });
+  }
 
   if (!records || !records[0]) {
     return defaultAppConfig();

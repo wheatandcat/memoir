@@ -19,11 +19,11 @@ const modeCount = (data: number[]) => {
     return b.count - a.count;
   });
 
-  mode.forEach((value) => {
+  for (const value of mode) {
     if (value.count === mode[0].count) {
       valueArr.push(value.mode);
     }
-  });
+  }
 
   return valueArr;
 };

@@ -34,6 +34,6 @@ export const testRenderer =
         <NavigationContainer>
           <ApolloProvider client={client}>{children}</ApolloProvider>
         </NavigationContainer>
-      </RecoilRoot>
+      </RecoilRoot>,
     );
   };

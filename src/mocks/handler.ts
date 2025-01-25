@@ -121,7 +121,7 @@ export const handlers = [
           createRelationshipRequest: aRelationshipRequest(),
         },
       });
-    }
+    },
   ),
   graphql.mutation(DeleteUserDocument, ({ query, variables }) => {
     return HttpResponse.json({
@@ -148,7 +148,7 @@ export const handlers = [
           acceptRelationshipRequest: aRelationshipRequest(),
         },
       });
-    }
+    },
   ),
   graphql.mutation(NgRelationshipRequestDocument, ({ query, variables }) => {
     return HttpResponse.json({
