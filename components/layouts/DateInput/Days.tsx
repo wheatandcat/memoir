@@ -62,7 +62,7 @@ const renderItem: FC<RenderedItemProps> = ({ item }) => {
 const DayInput: React.FC<Props> = (props) => {
   const prevFirstDay = usePrevious(props.days[0]);
   const index = Number(props.day);
-  const carouselRef = useRef<CarouselStatic<RenderedItem>>(null);
+  const carouselRef = useRef<Carousel<RenderedItem>>(null);
 
   const days = useCallback((): string[] => {
     const first = props.days.slice(index - 1, props.days.length);
@@ -104,7 +104,7 @@ const DayInput: React.FC<Props> = (props) => {
 
   const windowWidth = useWindowDimensions().width;
 
-  const renderItemCall = useCallback(
+  const renderItemCall: any = useCallback(
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },

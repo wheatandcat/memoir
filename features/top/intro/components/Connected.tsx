@@ -25,11 +25,12 @@ const Connected: FC<Props> = (props) => {
         if (ok) {
           //await Notifications.cancelAllScheduledNotificationsAsync();
 
-          const trigger = {
+          const trigger: Notifications.CalendarTriggerInput = {
+            type: Notifications.SchedulableTriggerInputTypes.CALENDAR,
+            repeats: true,
             hour: input.hours,
             minute: input.minutes,
             weekday: input.dayOfWeek,
-            repeats: true,
           };
 
           try {

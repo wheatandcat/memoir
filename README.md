@@ -43,13 +43,13 @@
 ### iOS
 
 ```bash
-$ yarn ios
+$ pnpm ios
 ```
 
 ### Android
 
 ```bash
-$ yarn android
+$ pnpm android
 ```
 
 ## ビルド
@@ -59,14 +59,14 @@ $ yarn android
 #### dev
 
 ```bash
-$ yarn ios:build:dev
+$ pnpm ios:build:dev
 $ expo start --dev-client
 ```
 
 #### production
 
 ```bash
-$ yarn ios:build
+$ pnpm ios:build
 ```
 
 ### Android
@@ -74,20 +74,20 @@ $ yarn ios:build
 #### dev
 
 ```bash
-$ yarn android:build:dev
+$ pnpm android:build:dev
 $ expo start --dev-client
 ```
 
 #### production
 
 ```bash
-$ yarn android:build
+$ pnpm android:build
 ```
 
 ## ビルド & ストアアップロード
 
 ```bash
-$ yarn store:upload
+$ pnpm store:upload
 ```
 
 ## Storybook
@@ -95,13 +95,13 @@ $ yarn store:upload
 ### 起動
 
 ```bash
-$ yarn storybook:ios
+$ pnpm storybook:ios
 ```
 
 ### Storybook Server
 
 ```bash
-$ yarn start-server
+$ pnpm start-server
 ```
 
 # コード生成
@@ -109,19 +109,19 @@ $ yarn start-server
 ## 新規画面作成
 
 ```bash
-$ yarn hygen page new
+$ pnpm hygen page new
 ```
 
 ## コンポーネント作成
 
 ```bash
-$ yarn hygen component new
+$ pnpm hygen component new
 ```
 
 ## テストコード追加
 
 ```bash
-$ yarn hygen test new
+$ pnpm hygen test new
 ```
 
 # ライセンスの出力
@@ -135,13 +135,13 @@ $ npx npm-license-crawler --dependencies --production --onlyDirectDependencies -
 ## 画像更新
 
 ```bash
-$ yarn loki:update
+$ pnpm loki:update
 ```
 
 ## ローカル比較
 
 ```bash
-$ yarn loki:test
+$ pnpm loki:test
 ```
 
 ## reg-suit

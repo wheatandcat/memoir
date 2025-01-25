@@ -1,4 +1,4 @@
-type Input = {
+export type Input = {
   displayName: string;
   image: string;
 };

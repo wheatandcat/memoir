@@ -1,6 +1,6 @@
-import 'react-native';
-import 'react-native-gesture-handler/jestSetup';
-import { server } from 'mocks/server';
+import "react-native";
+import "react-native-gesture-handler/jestSetup";
+import { server } from "mocks/server";
 
 beforeAll(() => {
   jest.useFakeTimers();
@@ -16,31 +16,31 @@ afterAll(() => {
   jest.useRealTimers();
 });
 
-jest.mock('expo-notifications', () => ({
-  ...jest.requireActual('expo-notifications'),
+jest.mock("expo-notifications", () => ({
+  ...jest.requireActual("expo-notifications"),
   getAllScheduledNotificationsAsync: () => [],
 }));
 
-jest.mock('firebase/auth', () => ({
+jest.mock("firebase/auth", () => ({
   getAuth: jest.fn(),
   onAuthStateChanged: jest.fn(),
   signOut: jest.fn(),
 }));
 
-jest.mock('expo-font', () => ({
-  ...jest.requireActual('expo-font'),
+jest.mock("expo-font", () => ({
+  ...jest.requireActual("expo-font"),
   loadAsync: jest.fn(),
 }));
 
-jest.mock('@react-native-async-storage/async-storage', () => ({
+jest.mock("@react-native-async-storage/async-storage", () => ({
   setItem: jest.fn(),
   getItem: jest.fn(),
   removeItem: jest.fn(),
 }));
 
-jest.mock('hooks/useSentryBreadcrumb', () => jest.fn());
+jest.mock("@/hooks/useSentryBreadcrumb", () => jest.fn());
 
-jest.mock('react-native/Libraries/Linking/Linking', () => ({
+jest.mock("react-native/Libraries/Linking/Linking", () => ({
   addEventListener: jest.fn(),
   removeEventListener: jest.fn(),
   openURL: jest.fn(),
@@ -48,8 +48,8 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
   getInitialURL: jest.fn(),
 }));
 
-jest.mock('@react-navigation/native', () => {
-  const actualNav = jest.requireActual('@react-navigation/native');
+jest.mock("@react-navigation/native", () => {
+  const actualNav = jest.requireActual("@react-navigation/native");
   return {
     ...actualNav,
     useNavigation: () => ({
@@ -59,33 +59,37 @@ jest.mock('@react-navigation/native', () => {
       setOptions: jest.fn(),
     }),
     useRoute: () => ({
-      name: 'test',
+      name: "test",
     }),
     useFocusEffect: jest.fn(),
     useIsFocused: jest.fn(),
   };
 });
 
-jest.mock('lib/firebase', () => {
+jest.mock("@/lib/firebase", () => {
   return {
     getFirestoreApp: jest.fn(),
     getFirebaseStorageApp: jest.fn(),
     getFirebaseAuthApp: jest.fn(),
   };
 });
-jest.mock('firebase/storage', () => ({
+jest.mock("firebase/storage", () => ({
   ref: jest.fn(),
   uploadBytes: jest.fn(),
   getDownloadURL: jest.fn(),
   deleteObject: jest.fn(),
 }));
 
-jest.mock('uuid', () => ({
+jest.mock("@expo/vector-icons", () => ({
+  MaterialIcons: () => "MaterialIcons",
+}));
+
+jest.mock("uuid", () => ({
   v4: jest.fn(),
 }));
 
-jest.mock('../../../img/common/frame.png');
-jest.mock('../../../img/common/intro_01.png');
-jest.mock('../../../img/common/intro_02.png');
-jest.mock('../../../img/common/intro_03.png');
-jest.mock('../../../img/common/intro_04.png');
+jest.mock("@/assets/img/common/frame.png");
+jest.mock("@/assets/img/common/intro_01.png");
+jest.mock("@/assets/img/common/intro_02.png");
+jest.mock("@/assets/img/common/intro_03.png");
+jest.mock("@/assets/img/common/intro_04.png");

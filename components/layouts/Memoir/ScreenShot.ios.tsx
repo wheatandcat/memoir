@@ -272,7 +272,7 @@ const ScreenShot: FC<Props> = (props) => {
           );
         })}
       </ScrollView>
-      {loading && <Loading text="作成中" />}
+      {loading && <Loading />}
     </>
   );
 };

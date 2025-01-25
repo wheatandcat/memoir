@@ -3,19 +3,16 @@ import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import { memoirNotificationSetting } from "__mockData__/memoirNotificationSetting";
 import React from "react";
+import Page from "../Page";
+import type { Props } from "../Page";
 
-import IndexPage, { type Props } from "../";
-
-const propsData = (): Props =>
-  ({
-    navigation: {
-      setParams: jest.fn(),
-      navigate: jest.fn(),
-    },
-    route: {
-      params: {},
-    },
-  }) as any;
+const propsData = (): Props => ({
+  dayOfWeek: 0,
+  hours: 0,
+  minutes: 0,
+  notification: false,
+  onSave: jest.fn(),
+});
 
 describe("components/pages/Setting/Memoir/index.tsx", () => {
   beforeEach(() => {
@@ -29,7 +26,7 @@ describe("components/pages/Setting/Memoir/index.tsx", () => {
   });
 
   it("正常にrenderすること", () => {
-    testRenderer(<IndexPage {...propsData()} />)();
+    testRenderer(<Page {...propsData()} />)();
     expect(screen.findAllByText("保存")).toBeTruthy();
   });
 });

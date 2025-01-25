@@ -5,22 +5,11 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
 import React from "react";
-import IndexPage, { type Props } from "../";
-
-const propsData = (): Props =>
-  ({
-    navigation: {
-      setParams: jest.fn(),
-      navigate: jest.fn(),
-    },
-    route: {
-      params: {},
-    },
-  }) as any;
+import IndexPage from "../";
 
 describe("components/pages/Setting/RelationshipRequests/index.tsx", () => {
   it("正常にrenderすること", async () => {
-    testRenderer(<IndexPage {...propsData()} />)();
+    testRenderer(<IndexPage />)();
 
     await waitForElementToBeRemoved(() => screen.getByTestId("atoms_loading"));
 

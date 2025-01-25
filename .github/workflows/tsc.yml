@@ -10,23 +10,23 @@ jobs:
   tsc:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
-          node-version: 16.x
-          cache: yarn
+          node-version: 20.x
+          cache: pnpm
       - name: Cache node_modules
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
           restore-keys:
             ${{ runner.os }}-memoir-
       - name: Install node_modules
-        if: steps.cache.outputs.cache-hit != 'true'
-        run: yarn install
+        run: pnpm install
       - name: codegen
-        run: yarn codegen
+        run: pnpm codegen
       - name: tsc
-        run: yarn tsc
+        run: pnpm tsc
+
 

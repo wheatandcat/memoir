@@ -1,4 +1,4 @@
-import { graphql } from "msw";
+import { HttpResponse, graphql } from "msw";
 import {
   AcceptRelationshipRequestDocument,
   CreateInviteDocument,
@@ -29,133 +29,139 @@ import {
 } from "queries/api/mocks";
 
 export const handlers = [
-  graphql.query(ItemDocument, (req, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(ItemDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         item: {
           ...anItem(),
-          id: req.variables.id,
+          id: variables.id,
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(UpdateItemDocument, (req, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(UpdateItemDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         updateItem: {
-          id: req.variables.input.id,
-          date: req.variables.input.date,
+          id: variables.input.id,
+          date: variables.input.date,
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(DeleteItemDocument, (req, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(DeleteItemDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         deleteItem: {
-          id: req.variables.input.id,
+          id: variables.input.id,
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(ItemsByDateDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(ItemsByDateDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         itemsByDate: [{ ...anItem(), categoryID: 1 }],
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(ItemsInPeriodDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(ItemsInPeriodDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         itemsInPeriod: {
           pageInfo: aPageInfo(),
           edges: [anItemsInPeriodEdge()],
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(RelationshipsDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(RelationshipsDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         relationships: {
           pageInfo: aPageInfo(),
           edges: [aRelationshipEdge()],
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(InviteDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(InviteDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         invite: anInvite(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(InviteByCodeDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(InviteByCodeDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         inviteByCode: aUser(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(UpdateInviteDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(UpdateInviteDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         updateInvite: anInvite(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(CreateInviteDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(CreateInviteDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         createInvite: anInvite(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(CreateRelationshipRequestDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
-        createRelationshipRequest: aRelationshipRequest(),
-      }),
-    );
-  }),
-  graphql.mutation(DeleteUserDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(
+    CreateRelationshipRequestDocument,
+    ({ query, variables }) => {
+      return HttpResponse.json({
+        data: {
+          createRelationshipRequest: aRelationshipRequest(),
+        },
+      });
+    }
+  ),
+  graphql.mutation(DeleteUserDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         deleteUser: aUser(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.query(RelationshipRequestsDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.query(RelationshipRequestsDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         relationshipRequests: {
           pageInfo: aPageInfo(),
           edges: [aRelationshipRequestEdge()],
         },
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(AcceptRelationshipRequestDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
-        acceptRelationshipRequest: aRelationshipRequest(),
-      }),
-    );
-  }),
-  graphql.mutation(NgRelationshipRequestDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(
+    AcceptRelationshipRequestDocument,
+    ({ query, variables }) => {
+      return HttpResponse.json({
+        data: {
+          acceptRelationshipRequest: aRelationshipRequest(),
+        },
+      });
+    }
+  ),
+  graphql.mutation(NgRelationshipRequestDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         ngRelationshipRequest: aRelationshipRequest(),
-      }),
-    );
+      },
+    });
   }),
-  graphql.mutation(UpdateUserDocument, (_, res, ctx) => {
-    return res(
-      ctx.data({
+  graphql.mutation(UpdateUserDocument, ({ query, variables }) => {
+    return HttpResponse.json({
+      data: {
         updateUser: aUser(),
-      }),
-    );
+      },
+    });
   }),
 ];

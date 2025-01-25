@@ -30,7 +30,7 @@ const List: FC<Props> = (props) => {
       </View>
       {relationships.map((v) => {
         if (v == null) {
-          return <View key={-1} style={styles.block} />;
+          return null;
         }
 
         return (
