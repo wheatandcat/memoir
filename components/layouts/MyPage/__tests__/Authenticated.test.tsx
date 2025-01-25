@@ -3,7 +3,8 @@ import { screen } from "@testing-library/react-native";
 import { relationships } from "__mockData__/relationship";
 import { user } from "__mockData__/user";
 import React from "react";
-import Authenticated, { type Props } from "../Authenticated";
+import Authenticated from "../Authenticated";
+import type { Props } from "../Authenticated";
 
 const propsData = (): Props => ({
   user: {

@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Form, { type Props } from "../Form";
+import Form from "../Form";
+import type { Props } from "../Form";
 
 const propsData = (): Props => ({
   onAppleLogin: jest.fn(),

@@ -2,8 +2,10 @@ import { relationships } from "__mockData__/relationship";
 import { user } from "__mockData__/user";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import List, { type Props as ListProps } from "./List";
-import User, { type Props as UserProps } from "./User";
+import List from "./List";
+import type { Props as ListProps } from "./List";
+import User from "./User";
+import type { Props as UserProps } from "./User";
 
 const listProps = (): ListProps => ({
   relationships: relationships(),

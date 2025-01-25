@@ -1,7 +1,8 @@
 import { users } from "__mockData__/user";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Page, { type Props } from "./Page";
+import Page from "./Page";
+import type { Props } from "./Page";
 
 const props = (userLength = 5): Props => ({
   users: users().slice(0, userLength),

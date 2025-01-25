@@ -1,6 +1,7 @@
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import InputCode, { type Props } from "./InputCode";
+import InputCode from "./InputCode";
+import type { Props } from "./InputCode";
 
 const props = (): Props => ({
   value: "",

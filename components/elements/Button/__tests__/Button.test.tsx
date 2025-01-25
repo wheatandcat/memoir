@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Button, { type Props } from "../";
+import Button from "../";
+import type { Props } from "../";
 
 const propsData = (): Props => ({
   size: "sm",

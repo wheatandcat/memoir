@@ -2,7 +2,8 @@ import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import { item } from "__mockData__/item";
 import React from "react";
-import AddItemModal, { type Props } from "../";
+import AddItemModal from "../";
+import type { Props } from "../";
 
 const propsData = (): Props => ({
   item: {

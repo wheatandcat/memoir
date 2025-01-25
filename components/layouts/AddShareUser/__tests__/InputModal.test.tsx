@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import InputDialog, { type Props } from "../InputModal";
+import InputDialog from "../InputModal";
+import type { Props } from "../InputModal";
 
 const propsData = (): Props => ({
   isVisible: true,

@@ -1,6 +1,7 @@
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import InputModal, { type Props as InputModalProps } from "./InputModal";
+import InputModal from "./InputModal";
+import type { Props as InputModalProps } from "./InputModal";
 
 const inputModalProps = (): InputModalProps => ({
   isVisible: true,

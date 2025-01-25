@@ -1,7 +1,9 @@
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Input, { type Props as InputProps } from "./Input";
-import Notification, { type Props as NotificationProps } from "./Notification";
+import Input from "./Input";
+import type { Props as InputProps } from "./Input";
+import Notification from "./Notification";
+import type { Props as NotificationProps } from "./Notification";
 
 const inputProps = (): InputProps => ({
   dayOfWeek: 0,

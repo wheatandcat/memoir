@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Image, { type Props } from "../";
+import Image from "../";
+import type { Props } from "../";
 
 const propsData = (): Props => ({
   source: require("../../../img/categories/category_book.png"),

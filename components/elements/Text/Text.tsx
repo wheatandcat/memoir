@@ -1,25 +1,15 @@
-import {
-  type FontColor,
-  styleFontColor,
-} from "@/lib/styledSystem/styleFontColor";
+import type { FontColor } from "@/lib/styledSystem/styleFontColor";
+import { styleFontColor } from "@/lib/styledSystem/styleFontColor";
 import { styleFontLineHeight } from "@/lib/styledSystem/styleFontLineHeight";
-import { type FontSize, styleFontSize } from "@/lib/styledSystem/styleFontSize";
-import {
-  type FontWeight,
-  styleFontWeight,
-} from "@/lib/styledSystem/styleFontWeight";
+import { styleFontSize } from "@/lib/styledSystem/styleFontSize";
+import type { FontSize } from "@/lib/styledSystem/styleFontSize";
+import type { FontVariants } from "@/lib/styledSystem/styleFontVariant";
+import { styleFontVariant } from "@/lib/styledSystem/styleFontVariant";
+import { styleFontWeight } from "@/lib/styledSystem/styleFontWeight";
+import type { FontWeight } from "@/lib/styledSystem/styleFontWeight";
 import type { FC } from "react";
-import {
-  Platform,
-  Text as RNText,
-  type TextProps,
-  type TextStyle,
-} from "react-native";
-
-import {
-  type FontVariants,
-  styleFontVariant,
-} from "@/lib/styledSystem/styleFontVariant";
+import { Platform, Text as RNText } from "react-native";
+import type { TextProps, TextStyle } from "react-native";
 
 export type FontFamily = "RobotoCondensed-Bold" | "NotoSansJP-Bold";
 

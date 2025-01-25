@@ -1,7 +1,8 @@
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import Form, { type Props as FormProps } from "@/components/layouts/Login/Form";
+import Form from "@/components/layouts/Login/Form";
+import type { Props as FormProps } from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
 import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/top/components/Connected";

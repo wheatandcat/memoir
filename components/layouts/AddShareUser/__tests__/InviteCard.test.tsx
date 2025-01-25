@@ -3,7 +3,8 @@ import { screen } from "@testing-library/react-native";
 import { invite } from "__mockData__/Invite";
 import { user } from "__mockData__/user";
 import React from "react";
-import InviteCard, { type Props } from "../InviteCard";
+import InviteCard from "../InviteCard";
+import type { Props } from "../InviteCard";
 
 const propsData = (): Props => ({
   loading: false,

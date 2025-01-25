@@ -2,7 +2,8 @@ import View from "@/components/elements/View";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { mockFn } from "storyBookUtils/index";
-import InputUsers, { type Props as InputUsersProps } from "./InputUsers";
+import InputUsers from "./InputUsers";
+import type { Props as InputUsersProps } from "./InputUsers";
 
 const inputUsers = (): InputUsersProps => ({
   users: [

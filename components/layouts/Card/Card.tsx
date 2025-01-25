@@ -11,9 +11,9 @@ import { memo } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
-  type ViewStyle,
   useWindowDimensions,
 } from "react-native";
+import type { ViewStyle } from "react-native";
 
 type User = {
   id: string;
@@ -44,7 +44,7 @@ const Card: FC<Props> = (props) => {
   }
 
   const category = setting().icon.find(
-    (v) => v.id === props.categoryID,
+    (v) => v.id === props.categoryID
   )?.category;
   const categoryStyle: ViewStyle[] = [
     rootStyle,

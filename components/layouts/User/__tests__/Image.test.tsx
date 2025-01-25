@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Image, { type Props } from "../Image";
+import Image from "../Image";
+import type { Props } from "../Image";
 
 const propsData = (): Props => ({ image: null });
 
