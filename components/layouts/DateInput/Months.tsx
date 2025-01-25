@@ -62,11 +62,11 @@ const MonthInput: React.FC<Props> = (props) => {
   const carouselRef = useRef<Carousel<RenderedItem>>(null);
   const windowWidth = useWindowDimensions().width;
 
-  const renderItemCall = useCallback(
+  const renderItemCall: any = useCallback(
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   return (

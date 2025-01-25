@@ -94,7 +94,7 @@ const DateCards: FC<Props> = (props) => {
   const windowWidth = useWindowDimensions().width;
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD")))
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -108,12 +108,12 @@ const DateCards: FC<Props> = (props) => {
 
   const data = dateItems.flatMap((v1) => {
     const sameDateItems = props.items.filter(
-      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date
+      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
     );
 
     const item: RenderedItem[] = sameDateItems.map((v2, index) => {
       const user: User | undefined = props.users.find(
-        (v) => v.id === v2.userID
+        (v) => v.id === v2.userID,
       );
 
       return {
@@ -146,7 +146,7 @@ const DateCards: FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item);
     },
-    []
+    [],
   );
 
   const handleLoadMore = useCallback(() => {

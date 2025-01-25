@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import TutorialModal, { type Props } from "../TutorialModal";
+import TutorialModal from "../TutorialModal";
+import type { Props } from "../TutorialModal";
 
 const propsData = (): Props => ({
   isVisible: true,

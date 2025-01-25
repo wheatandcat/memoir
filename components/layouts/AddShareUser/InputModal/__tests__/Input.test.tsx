@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Input, { type Props } from "../Input";
+import Input from "../Input";
+import type { Props } from "../Input";
 
 const propsData = (): Props => ({
   code: "",

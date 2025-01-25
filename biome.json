@@ -7,7 +7,12 @@
   },
   "files": {
     "ignoreUnknown": false,
-    "ignore": [],
+    "ignore": [
+      "node_modules",
+      "src/queries/api/mocks.ts",
+      "src/queries/api/index.ts",
+      ".expo/types/router.d.ts"
+    ],
     "include": ["**/*.ts", "**/*.tsx"]
   },
   "formatter": {
@@ -21,7 +26,11 @@
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off"
+      }
     }
   },
   "javascript": {

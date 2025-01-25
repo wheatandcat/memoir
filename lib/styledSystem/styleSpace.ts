@@ -53,13 +53,10 @@ export const styleSpace = (props: SpaceProps) => {
         {} as { [k: string]: number },
       );
     })
-    .reduce(
-      (acc, m) => ({
-        ...acc,
-        ...m,
-      }),
-      {},
-    );
+    .reduce((acc, m) => {
+      Object.assign(acc, m);
+      return acc;
+    }, {});
 };
 
 const getProperties = (key: string) => {
@@ -72,9 +69,11 @@ const getProperties = (key: string) => {
 
   if (Array.isArray(direction)) {
     const dirMap: string[] = [];
-    direction.forEach((m: string) => dirMap.push(m));
+    for (const m of direction) {
+      dirMap.push(m);
+    }
     return dirMap.map((dir: string) => property + dir);
-  } else {
-    return [property + direction];
   }
+
+  return [property + direction];
 };

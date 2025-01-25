@@ -1,7 +1,8 @@
 import { relationshipRequests } from "__mockData__/relationshipRequest";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Page, { type Props } from "./Page";
+import Page from "./Page";
+import type { Props } from "./Page";
 
 const props = (): Props => ({
   items: relationshipRequests(),

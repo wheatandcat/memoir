@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Sent, { type Props } from "../Sent";
+import Sent from "../Sent";
+import type { Props } from "../Sent";
 
 const propsData = (): Props => ({
   displayName: "test",

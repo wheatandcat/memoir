@@ -3,18 +3,15 @@ import setting from "@/components/elements/Category/setting";
 import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
-import Menu, { type Item as MenuItem } from "@/components/layouts/Menu/Menu";
+import Menu from "@/components/layouts/Menu/Menu";
+import type { Item as MenuItem } from "@/components/layouts/Menu/Menu";
 import theme from "@/config/theme";
 import { categoryBorderStyle } from "@/lib/category";
 import dayjs from "@/lib/dayjs";
 import type { FC } from "react";
 import { memo, useCallback } from "react";
-import {
-  Alert,
-  StyleSheet,
-  type ViewStyle,
-  useWindowDimensions,
-} from "react-native";
+import { Alert, StyleSheet, useWindowDimensions } from "react-native";
+import type { ViewStyle } from "react-native";
 
 export type Props = {
   title: string;

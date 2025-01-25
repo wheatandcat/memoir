@@ -13,6 +13,7 @@ import { Alert } from "react-native";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 import Page from "./Page";
+import type { Input } from "./type";
 
 const Connected: React.FC = () => {
   const [user, setUser] = useRecoilState(userState);

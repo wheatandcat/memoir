@@ -1,7 +1,8 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import React from "react";
-import Loading, { type Props } from "./Loading";
+import Loading from "./Loading";
+import type { Props } from "./Loading";
 
 const props = (): Props => ({
   text: "テスト",

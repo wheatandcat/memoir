@@ -1,10 +1,8 @@
 import React from "react";
-import Loading, { type Props } from "./Loading";
-
-const props = (): Props => ({});
+import Loading from "./Loading";
 
 export default {
   title: "templates/App",
 };
 
-export const _Loading = () => <Loading {...props()} />;
+export const _Loading = () => <Loading />;

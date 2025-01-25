@@ -1,7 +1,8 @@
 import { items } from "__mockData__/item";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Cards, { type Props } from "./Cards";
+import Cards from "./Cards";
+import type { Props } from "./Cards";
 
 const props = (loading: boolean): Props => ({
   items: items(),

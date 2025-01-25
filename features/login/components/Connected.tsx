@@ -4,7 +4,7 @@ import useHomeItems from "@/hooks/useHomeItems";
 import { getItem, storageKey } from "@/lib/storage";
 import { authUserState } from "@/store/atoms";
 import { useMutation } from "@apollo/client";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
@@ -27,12 +27,12 @@ const Connected: React.FC = () => {
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
   const authenticated = !!authUser.uid;
-  const navigation = useNavigation();
+  const router = useRouter();
   const [createAuthUserMutation] = useMutation(CreateAuthUserDocument, {
     async onCompleted() {
       onPermissionRequest?.(async () => {
         await refetch?.();
-        navigation.goBack();
+        router.back();
       });
     },
     async onError() {

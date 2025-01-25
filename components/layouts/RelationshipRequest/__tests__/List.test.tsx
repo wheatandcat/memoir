@@ -3,7 +3,8 @@ import { screen } from "@testing-library/react-native";
 import { relationshipRequests } from "__mockData__/relationshipRequest";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import List, { type Props } from "../List";
+import List from "../List";
+import type { Props } from "../List";
 
 const propsData = (): Props => ({
   items: relationshipRequests(),

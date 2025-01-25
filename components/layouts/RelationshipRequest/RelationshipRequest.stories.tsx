@@ -4,9 +4,12 @@ import {
 } from "__mockData__/relationshipRequest";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Card, { type Props as CardProps } from "./Card";
-import List, { type Props as ListProps } from "./List";
-import Notification, { type Props as NotificationProps } from "./Notification";
+import Card from "./Card";
+import type { Props as CardProps } from "./Card";
+import List from "./List";
+import type { Props as ListProps } from "./List";
+import Notification from "./Notification";
+import type { Props as NotificationProps } from "./Notification";
 
 const notificationProps = (): NotificationProps => ({
   count: 3,

@@ -2,10 +2,8 @@ import theme from "@/config/theme";
 import { useMutation } from "@apollo/client";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
-import {
-  CreatePushTokenDocument,
-  type CreatePushTokenMutationVariables,
-} from "queries/api/index";
+import { CreatePushTokenDocument } from "queries/api/index";
+import type { CreatePushTokenMutationVariables } from "queries/api/index";
 import type React from "react";
 import { createContext, memo, useCallback, useContext, useRef } from "react";
 import { Platform } from "react-native";
@@ -42,8 +40,6 @@ const Notification: React.FC<Props> = memo((props) => {
     async (callback: () => void) => {
       requestCallback.current = callback;
 
-      let token;
-
       if (!Device.isDevice) {
         //Alert.alert('端末から実行してくだださい');
         await requestCallback.current();
@@ -64,7 +60,7 @@ const Notification: React.FC<Props> = memo((props) => {
         return false;
       }
 
-      token = (await Notifications.getExpoPushTokenAsync()).data;
+      const token = (await Notifications.getExpoPushTokenAsync()).data;
       console.log(token);
 
       if (Platform.OS === "android") {

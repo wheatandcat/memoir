@@ -4,7 +4,8 @@ import { items } from "__mockData__/item";
 import React from "react";
 import { StyleSheet } from "react-native";
 import { mockFn } from "storyBookUtils/index";
-import DateCards, { type Props } from "./DateCards";
+import DateCards from "./DateCards";
+import type { Props } from "./DateCards";
 
 const props = (): Props => ({
   items: items().map((v) => ({ ...v, userID: "test" })),

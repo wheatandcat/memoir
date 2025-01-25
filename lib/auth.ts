@@ -1,7 +1,8 @@
 import dayjs from "@/lib/dayjs";
 import { getFirebaseAuthApp } from "@/lib/firebase";
 import { getItem, removeItem, setItem, storageKey } from "@/lib/storage";
-import { type User, onAuthStateChanged, signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import type { User } from "firebase/auth";
 
 const auth = getFirebaseAuthApp();
 

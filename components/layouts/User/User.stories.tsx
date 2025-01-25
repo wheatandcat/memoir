@@ -1,5 +1,6 @@
 import React from "react";
-import Image, { type Props } from "./Image";
+import Image from "./Image";
+import type { Props } from "./Image";
 
 const props = (): Props => ({ image: null });
 

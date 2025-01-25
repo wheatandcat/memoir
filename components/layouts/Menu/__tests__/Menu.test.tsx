@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
-import { screen } from "@testing-library/react-native";
+import { fireEvent, screen } from "@testing-library/react-native";
 import React from "react";
-import Menu, { type Props } from "../Menu";
+import Menu from "../Menu";
+import type { Props } from "../Menu";
 
 const propsData = (): Props => ({
   items: [
@@ -15,8 +16,9 @@ const propsData = (): Props => ({
 });
 
 describe("components/organisms/Menu/Menu.tsx", () => {
-  it("正常にrenderすること", () => {
+  it("正常にrenderすること", async () => {
     testRenderer(<Menu {...propsData()} />)();
-    expect(screen.findByTestId("menu_modal")).toBeTruthy();
+
+    expect(screen.findByTestId("menu")).toBeTruthy();
   });
 });

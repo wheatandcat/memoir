@@ -2,7 +2,8 @@ import { invite } from "__mockData__/Invite";
 import { user } from "__mockData__/user";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Page, { type Props } from "./Page";
+import Page from "./Page";
+import type { Props } from "./Page";
 
 const props = (): Props => ({
   invite: invite(),

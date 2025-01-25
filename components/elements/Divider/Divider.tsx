@@ -1,7 +1,9 @@
 import theme from "@/config/theme";
-import { type SpaceProps, styleSpace } from "@/lib/styledSystem/styleSpace";
+import { styleSpace } from "@/lib/styledSystem/styleSpace";
+import type { SpaceProps } from "@/lib/styledSystem/styleSpace";
 import type { FC } from "react";
-import { StyleSheet, View, type ViewStyle } from "react-native";
+import { StyleSheet, View } from "react-native";
+import type { ViewStyle } from "react-native";
 
 type Props = {} & SpaceProps;
 

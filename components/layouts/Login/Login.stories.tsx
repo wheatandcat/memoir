@@ -1,6 +1,7 @@
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Form, { type Props } from "./Form";
+import Form from "./Form";
+import type { Props } from "./Form";
 
 const props = (): Props => ({
   onAppleLogin: mockFn("onAppleLogin"),

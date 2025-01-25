@@ -3,7 +3,8 @@ import type { ConnectedType } from "@/features/home/components/type";
 import dayjs from "@/lib/dayjs";
 import type { FC } from "react";
 import { memo, useCallback } from "react";
-import { StyleSheet, type ViewStyle } from "react-native";
+import { StyleSheet } from "react-native";
+import type { ViewStyle } from "react-native";
 import type { HandlerStateChangeEvent } from "react-native-gesture-handler";
 import {
   GestureHandlerRootView,
@@ -36,7 +37,6 @@ const GestureRecognizerWrap: FC<Props> = (props) => {
   }, [props]);
 
   const onPanGestureEvent = useCallback(
-    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
     (event: HandlerStateChangeEvent<any>) => {
       const { nativeEvent } = event;
 

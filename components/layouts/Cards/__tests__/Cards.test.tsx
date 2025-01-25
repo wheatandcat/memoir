@@ -2,7 +2,8 @@ import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import { items } from "__mockData__/item";
 import React from "react";
-import Cards, { type Props } from "../Cards";
+import Cards from "../Cards";
+import type { Props } from "../Cards";
 
 const propsData = (): Props => ({
   date: "2020-01-01",

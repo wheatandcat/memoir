@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import InputCategory, { type Props } from "../InputCategory";
+import InputCategory from "../InputCategory";
+import type { Props } from "../InputCategory";
 
 const propsData = (): Props => ({
   categoryID: 0,

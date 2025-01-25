@@ -15,7 +15,7 @@ type RenderedItem = ArrayType<Props["items"]>;
 
 const renderItem = (
   { item, index }: ListRenderItemInfo<RenderedItem>,
-  props: Props
+  props: Props,
 ) => {
   return (
     <View key={`${index}-contents`}>
@@ -47,7 +47,7 @@ const List: FC<Props> = (props) => {
     (item: ListRenderItemInfo<RenderedItem>) => {
       return renderItem(item, props);
     },
-    [props]
+    [props],
   );
 
   const handleLoadMore = useCallback(() => {

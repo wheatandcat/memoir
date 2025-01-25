@@ -7,18 +7,7 @@ import {
 import { user } from "__mockData__/user";
 import React from "react";
 import * as Recoil from "recoil";
-import IndexPage, { type Props } from "../";
-
-const propsData = (): Props =>
-  ({
-    navigation: {
-      setParams: jest.fn(),
-      navigate: jest.fn(),
-    },
-    route: {
-      params: {},
-    },
-  }) as any;
+import IndexPage from "../";
 
 describe("components/pages/Search/index.tsx", () => {
   beforeEach(() => {
@@ -28,7 +17,7 @@ describe("components/pages/Search/index.tsx", () => {
   });
 
   it("正常にrenderすること", async () => {
-    testRenderer(<IndexPage {...propsData()} />)();
+    testRenderer(<IndexPage />)();
 
     await waitForElementToBeRemoved(() => screen.getByTestId("atoms_loading"));
 

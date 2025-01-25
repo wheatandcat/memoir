@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import InputInvite, { type Props } from "../InputInvite";
+import InputInvite from "../InputInvite";
+import type { Props } from "../InputInvite";
 
 const propsData = (): Props => ({
   onOpen: jest.fn(),

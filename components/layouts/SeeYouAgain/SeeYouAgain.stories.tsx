@@ -1,13 +1,11 @@
 import React from "react";
-import SeeYouAgain, { type Props } from "./SeeYouAgain";
-
-const props = (): Props => ({});
+import SeeYouAgain from "./SeeYouAgain";
 
 export default {
   title: "templates/SeeYouAgain",
 };
 
-export const _SeeYouAgain = () => <SeeYouAgain {...props()} />;
+export const _SeeYouAgain = () => <SeeYouAgain />;
 
 _SeeYouAgain.story = {
   name: "SeeYouAgain",

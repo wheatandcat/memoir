@@ -10,8 +10,8 @@ import type { Item } from "@/hooks/useItemsInPeriodPaging";
 import dayjs from "@/lib/dayjs";
 import { getModeCountMax } from "@/lib/utility";
 import type { User as TUser } from "@/store/atoms";
-import { useNavigation } from "@react-navigation/native";
 import Constants from "expo-constants";
+import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";
 import type { FC } from "react";
 import { memo, useCallback, useRef, useState } from "react";
@@ -76,7 +76,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 
 const ScreenShot: FC<Props> = (props) => {
   const viewShot = useRef<ViewShot>(null);
-  const navigation = useNavigation();
+  const router = useRouter();
   const count = useRef(0);
   const [loading, setLoading] = useState(true);
 
@@ -90,7 +90,7 @@ const ScreenShot: FC<Props> = (props) => {
           {
             text: "戻る",
             onPress: () => {
-              navigation.goBack();
+              router.back();
             },
           },
         ]);
@@ -100,9 +100,9 @@ const ScreenShot: FC<Props> = (props) => {
 
       await Sharing.shareAsync(uri);
 
-      navigation.goBack();
+      router.back();
     },
-    [navigation]
+    [router],
   );
 
   const onCapture = useCallback(async () => {
@@ -126,7 +126,7 @@ const ScreenShot: FC<Props> = (props) => {
   }, [props.items, onCapture]);
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD")))
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -140,12 +140,12 @@ const ScreenShot: FC<Props> = (props) => {
 
   const data = dateItems.flatMap((v1) => {
     const sameDateItems = props.items.filter(
-      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date
+      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
     );
 
     const item: RenderedItem[] = sameDateItems.map((v2, index) => {
       const user: User | undefined = props.users.find(
-        (v) => v.id === v2.userID
+        (v) => v.id === v2.userID,
       );
 
       return {

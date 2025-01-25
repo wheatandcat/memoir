@@ -2,7 +2,8 @@ import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import { user } from "__mockData__/user";
 import React from "react";
-import Page, { type Props } from "../Page";
+import Page from "../Page";
+import type { Props } from "../Page";
 
 const propsData = (): Props => ({
   user: {

@@ -1,7 +1,8 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Notification, { type Props } from "../Notification";
+import Notification from "../Notification";
+import type { Props } from "../Notification";
 
 const propsData = (): Props => ({
   push: 0,

@@ -1,7 +1,8 @@
 import useSafeState from "@/hooks/useSafeState";
 import useUnmountRef from "@/hooks/useUnmountRef";
 import type React from "react";
-import { type ReactNode, useEffect } from "react";
+import { useEffect } from "react";
+import type { ReactNode } from "react";
 
 type Props = {
   delayCount: number;

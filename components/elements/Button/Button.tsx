@@ -1,13 +1,14 @@
-import Text, { type FontFamily } from "@/components/elements/Text";
+import Text from "@/components/elements/Text";
+import type { FontFamily } from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { FC } from "react";
+import type { ViewStyle } from "react-native";
 import {
   ActivityIndicator,
   Platform,
   StyleSheet,
   TouchableOpacity,
-  type ViewStyle,
 } from "react-native";
 
 export type Props = {

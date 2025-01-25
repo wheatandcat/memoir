@@ -2,7 +2,8 @@ import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import { users } from "__mockData__/user";
 import React from "react";
-import InputUsers, { type Props } from "../InputUsers";
+import InputUsers from "../InputUsers";
+import type { Props } from "../InputUsers";
 
 const propsData = (): Props => ({
   users: users(),

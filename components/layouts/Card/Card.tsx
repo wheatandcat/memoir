@@ -11,9 +11,9 @@ import { memo } from "react";
 import {
   StyleSheet,
   TouchableOpacity,
-  type ViewStyle,
   useWindowDimensions,
 } from "react-native";
+import type { ViewStyle } from "react-native";
 
 type User = {
   id: string;

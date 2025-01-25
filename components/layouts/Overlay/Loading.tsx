@@ -38,8 +38,7 @@ const Loading: FC<Props> = (props) => {
             fontFamily="NotoSansJP-Bold"
             textAlign="center"
           >
-            {props.text}{" "}
-            {(() => {
+            {props.text} {(() => {
               if (count % 3 === 0) {
                 return ".";
               }

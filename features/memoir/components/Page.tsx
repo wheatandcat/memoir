@@ -5,7 +5,7 @@ import DateCards from "@/components/layouts/Memoir/DateCards";
 import ShareButton from "@/components/layouts/Memoir/ShareButton";
 import theme from "@/config/theme";
 import { iosSelector } from "@/lib/responsive";
-import { useNavigation } from "@react-navigation/native";
+import { useRouter } from "expo-router";
 import type React from "react";
 import { memo } from "react";
 import { Platform, StyleSheet } from "react-native";
@@ -29,7 +29,7 @@ export type Props = Pick<
 };
 
 const Page: React.FC<Props> = (props) => {
-  const navigation = useNavigation();
+  const router = useRouter();
 
   return (
     <>
@@ -63,7 +63,7 @@ const Page: React.FC<Props> = (props) => {
             <IconButton
               name="highlight-off"
               size="base"
-              onPress={() => navigation.goBack()}
+              onPress={() => router.back()}
             />
           </View>
         </View>

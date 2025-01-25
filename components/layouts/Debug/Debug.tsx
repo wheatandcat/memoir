@@ -66,6 +66,7 @@ const Debug: FC = () => {
         },
       },
       trigger: {
+        type: Notifications.SchedulableTriggerInputTypes.TIME_INTERVAL,
         seconds: 3,
       },
     });

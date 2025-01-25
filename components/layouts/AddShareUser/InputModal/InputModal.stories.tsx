@@ -1,8 +1,11 @@
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
-import Confirm, { type Props as ConfirmProps } from "./Confirm";
-import Input, { type Props as InputProps } from "./Input";
-import Sent, { type Props as SentProps } from "./Sent";
+import Confirm from "./Confirm";
+import type { Props as ConfirmProps } from "./Confirm";
+import Input from "./Input";
+import type { Props as InputProps } from "./Input";
+import Sent from "./Sent";
+import type { Props as SentProps } from "./Sent";
 
 const inputProps = (): InputProps => ({
   code: "",
