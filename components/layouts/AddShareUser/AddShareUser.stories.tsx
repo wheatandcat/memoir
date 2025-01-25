@@ -3,9 +3,9 @@ import { user } from "__mockData__/user";
 import React from "react";
 import { mockFn } from "storyBookUtils/index";
 import InputInvite from "./InputInvite";
-import  type { Props as InputInviteProps } from "./InputInvite";
+import type { Props as InputInviteProps } from "./InputInvite";
 import InviteCard from "./InviteCard";
-import  type { Props as InviteCardProps } from "./InviteCard";
+import type { Props as InviteCardProps } from "./InviteCard";
 import TutorialModal, {
   type Props as TutorialModalProps,
 } from "./TutorialModal";

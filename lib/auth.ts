@@ -32,7 +32,7 @@ class Auth {
     await setItem(storageKey.AUTH_ID_TOKEN_KEY, result.token);
     await setItem(
       storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY,
-      String(result.claims.exp)
+      String(result.claims.exp),
     );
 
     return result.token;

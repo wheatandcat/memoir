@@ -23,7 +23,7 @@
     "loki:update": "rm -rf .loki/reference/*.png && pnpm loki update ; sh scripts/storybook/setup.sh",
     "start-server": "react-native-storybook-server",
     "storybook-generate": "sb-rn-get-stories",
-    "storybook-watc   h": "sb-rn-watcher",
+    "storybook-watch": "sb-rn-watcher",
     "storybook": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start",
     "storybook:ios": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --ios",
     "storybook:android": "sb-rn-get-stories && cross-env STORYBOOK_ENABLED='true' expo start --android",

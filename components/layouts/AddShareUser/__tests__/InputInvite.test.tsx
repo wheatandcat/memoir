@@ -13,8 +13,8 @@ describe("components/organisms/AddShareUser/InputInvite.tsx", () => {
     testRenderer(<InputInvite {...propsData()} />)();
     expect(
       screen.findAllByText(
-        "共有メンバーに追加したいユーザーの招待コードを入力してください"
-      )
+        "共有メンバーに追加したいユーザーの招待コードを入力してください",
+      ),
     ).toBeTruthy();
   });
 });
