@@ -11,17 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: pnpm/action-setup@v4
         with:
-          node-version: 20.x
-          cache: pnpm
-      - name: Cache node_modules
-        uses: actions/cache@v3
+          version: 10
+      - name: Install Node.js
+        uses: actions/setup-node@v4
         with:
-          path: ~/.cache/pnpm
-          key: ${{ runner.os }}-memoir-${{ hashFiles(format('{0}{1}', github.workspace, '/pnpm-lock.yaml')) }}
-          restore-keys:
-            ${{ runner.os }}-memoir-
+          node-version: 20
+          cache: 'pnpm'
       - name: Install node_modules
         run: pnpm install
       - name: codegen
