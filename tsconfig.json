@@ -8,7 +8,7 @@
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": true,
+    "strict": false,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./*"],
