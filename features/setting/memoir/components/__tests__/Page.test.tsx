@@ -1,7 +1,7 @@
 import * as useMemoirNotificationSetting from "@/hooks/useMemoirNotificationSetting";
 import { testRenderer } from "@/lib/testUtil";
+import { memoirNotificationSetting } from "@/mocks/__mockData__/memoirNotificationSetting";
 import { screen } from "@testing-library/react-native";
-import { memoirNotificationSetting } from "__mockData__/memoirNotificationSetting";
 import React from "react";
 import Page from "../Page";
 import type { Props } from "../Page";

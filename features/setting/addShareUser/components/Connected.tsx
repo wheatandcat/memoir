@@ -1,5 +1,3 @@
-import { userState } from "@/store/atoms";
-import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import {
   CreateInviteDocument,
   CreateRelationshipRequestDocument,
@@ -8,7 +6,9 @@ import {
   type InviteByCodeQueryVariables,
   InviteDocument,
   UpdateInviteDocument,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { userState } from "@/store/atoms";
+import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";

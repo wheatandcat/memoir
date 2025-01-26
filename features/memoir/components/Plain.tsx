@@ -3,11 +3,11 @@ import type {
   Item,
   ItemsInPeriodPageInfo,
 } from "@/hooks/useItemsInPeriodPaging";
-import type { QueryResult } from "@apollo/client";
 import type {
   ItemsInPeriodQuery as Query,
   ItemsInPeriodQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import type { FC } from "react";
 import { memo } from "react";
 import Page from "./Page";

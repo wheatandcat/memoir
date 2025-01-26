@@ -1,7 +1,7 @@
-import { invite } from "__mockData__/Invite";
-import { user } from "__mockData__/user";
+import { invite } from "@/mocks/__mockData__/Invite";
+import { user } from "@/mocks/__mockData__/user";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import InputInvite from "./InputInvite";
 import type { Props as InputInviteProps } from "./InputInvite";
 import InviteCard from "./InviteCard";

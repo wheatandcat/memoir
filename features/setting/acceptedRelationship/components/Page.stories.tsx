@@ -1,4 +1,4 @@
-import { user } from "__mockData__/user";
+import { user } from "@/mocks/__mockData__/user";
 import React from "react";
 import Page from "./Page";
 import type { Props } from "./Page";

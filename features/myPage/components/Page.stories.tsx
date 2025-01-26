@@ -1,7 +1,7 @@
-import { relationships } from "__mockData__/relationship";
-import { user } from "__mockData__/user";
+import { relationships } from "@/mocks/__mockData__/relationship";
+import { user } from "@/mocks/__mockData__/user";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import Page from "./Page";
 import type { Props } from "./Page";
 

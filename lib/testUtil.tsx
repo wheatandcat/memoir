@@ -1,3 +1,4 @@
+import { server } from "@/mocks/server";
 import {
   ApolloClient,
   ApolloProvider,
@@ -7,7 +8,6 @@ import {
 import { NavigationContainer } from "@react-navigation/native";
 import { render } from "@testing-library/react-native";
 import fetch from "cross-fetch";
-import { server } from "mocks/server";
 import type { GraphQLHandler } from "msw";
 import type React from "react";
 import { RecoilRoot } from "recoil";

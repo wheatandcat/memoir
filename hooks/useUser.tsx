@@ -5,9 +5,9 @@ import * as Sentry from "sentry-expo";
 import "react-native-get-random-values";
 import usePrevious from "@/hooks/usePrevious";
 import { setItem, storageKey } from "@/lib/storage";
+import { CreateUserDocument, UserDocument } from "@/queries/api/index";
 import { userState } from "@/store/atoms";
 import { useLazyQuery, useMutation } from "@apollo/client";
-import { CreateUserDocument, UserDocument } from "queries/api/index";
 import { v4 as uuidv4 } from "uuid";
 
 const useUser = () => {

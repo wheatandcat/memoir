@@ -1,6 +1,6 @@
 import { testRenderer } from "@/lib/testUtil";
+import { relationships } from "@/mocks/__mockData__/relationship";
 import { screen } from "@testing-library/react-native";
-import { relationships } from "__mockData__/relationship";
 import React from "react";
 import List, { type Props } from "../List";
 

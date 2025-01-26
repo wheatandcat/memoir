@@ -1,6 +1,6 @@
 import { testRenderer } from "@/lib/testUtil";
+import { item } from "@/mocks/__mockData__/item";
 import { screen } from "@testing-library/react-native";
-import { item } from "__mockData__/item";
 import React from "react";
 import CardDetail from "../CardDetail";
 import type { Props } from "../CardDetail";

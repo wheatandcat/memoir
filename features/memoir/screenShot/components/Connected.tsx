@@ -1,9 +1,9 @@
-import { userState } from "@/store/atoms";
-import { useQuery } from "@apollo/client";
 import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { userState } from "@/store/atoms";
+import { useQuery } from "@apollo/client";
 import type React from "react";
 import { memo } from "react";
 import { useRecoilValue } from "recoil";

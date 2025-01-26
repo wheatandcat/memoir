@@ -1,9 +1,9 @@
 import Loading from "@/components/elements/Loading";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import { deleteImageAsync } from "@/lib/image";
+import { DeleteUserDocument, RelationshipsDocument } from "@/queries/api/index";
 import { screenState, userState } from "@/store/atoms";
 import { useMutation, useQuery } from "@apollo/client";
-import { DeleteUserDocument, RelationshipsDocument } from "queries/api/index";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";

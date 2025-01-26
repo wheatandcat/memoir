@@ -1,10 +1,10 @@
 import Loading from "@/components/elements/Loading";
 import ErrorPage from "@/components/layouts/Error/Error";
-import type { QueryResult } from "@apollo/client";
 import type {
   InviteQuery as Query,
   InviteQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import type React from "react";
 import { memo } from "react";
 import Page from "./Page";

@@ -2,9 +2,9 @@ overwrite: true
 schema:
   - ./schema.graphqls
 documents:
-  - "./src/queries/**/*.gql"
+  - "./queries/**/*.gql"
 generates:
-  ./src/queries/api/index.ts:
+  ./queries/api/index.ts:
     plugins:
       - typescript
       - typescript-operations
@@ -14,7 +14,7 @@ generates:
       - introspection
     config:
       minify: true
-  ./src/queries/api/mocks.ts:
+  ./queries/api/mocks.ts:
     plugins:
       - typescript-mock-data:
           typesFile: "./index.ts"

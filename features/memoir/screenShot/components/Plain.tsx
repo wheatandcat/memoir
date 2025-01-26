@@ -1,11 +1,11 @@
 import Loading from "@/components/elements/Loading";
 import ErrorPage from "@/components/layouts/Error/Error";
 import type { Item } from "@/hooks/useItemsInPeriodPaging";
-import type { QueryResult } from "@apollo/client";
 import type {
   ItemsInPeriodQuery as Query,
   ItemsInPeriodQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import type React from "react";
 import { memo } from "react";
 import Page from "./Page";

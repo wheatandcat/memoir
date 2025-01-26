@@ -1,6 +1,6 @@
 import "react-native";
 import "react-native-gesture-handler/jestSetup";
-import { server } from "mocks/server";
+import { server } from "@/mocks/server";
 
 beforeAll(() => {
   jest.useFakeTimers();

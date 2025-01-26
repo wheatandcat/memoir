@@ -1,8 +1,8 @@
 import setting from "@/components/elements/Category/setting";
 import View from "@/components/elements/View";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
 import { ScrollView, StyleSheet } from "react-native";
-import { mockFn } from "storyBookUtils/index";
 import CategoryButton from "./CategoryButton";
 
 export default {

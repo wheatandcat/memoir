@@ -1,9 +1,9 @@
 import {
   relationshipRequest,
   relationshipRequests,
-} from "__mockData__/relationshipRequest";
+} from "@/mocks/__mockData__/relationshipRequest";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import Card from "./Card";
 import type { Props as CardProps } from "./Card";
 import List from "./List";

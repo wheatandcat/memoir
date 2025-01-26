@@ -1,8 +1,8 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
 import { StyleSheet } from "react-native";
-import { mockFn } from "storyBookUtils/index";
 import CardDetail from "./CardDetail";
 
 export default {

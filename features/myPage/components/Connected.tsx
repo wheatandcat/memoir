@@ -1,13 +1,13 @@
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
-import { authUserState } from "@/store/atoms";
-import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
-import { useFocusEffect, useRouter } from "expo-router";
 import {
   DeleteRelationshipDocument,
   RelationshipRequestsDocument,
   RelationshipsDocument,
   UserDocument,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { authUserState } from "@/store/atoms";
+import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
+import { useFocusEffect, useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { useRecoilValue } from "recoil";

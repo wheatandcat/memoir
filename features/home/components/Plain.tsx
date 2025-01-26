@@ -1,9 +1,9 @@
 import ErrorPage from "@/components/layouts/Error/Error";
-import type { QueryResult } from "@apollo/client";
 import type {
   ItemsByDateQuery as Query,
   ItemQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import type { FC } from "react";
 import { memo } from "react";
 import Page from "./Page";

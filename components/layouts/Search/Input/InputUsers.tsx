@@ -2,7 +2,7 @@ import View from "@/components/elements/View";
 import UserButton, {
   type Props as UserButtonProps,
 } from "@/components/layouts/User/Button";
-import type { User } from "queries/api/index";
+import type { User } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo } from "react";
 import type { ViewStyle } from "react-native";

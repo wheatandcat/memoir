@@ -2,6 +2,12 @@ import { useSession } from "@/ctx";
 import Auth from "@/lib/auth";
 import { getFirebaseAuthApp } from "@/lib/firebase";
 import { getItem, removeItem, setItem, storageKey } from "@/lib/storage";
+import {
+  CreateAuthUserDocument,
+  ExistAuthUserDocument,
+  UserDocument,
+} from "@/queries/api/index";
+import type { CreateAuthUserMutationVariables } from "@/queries/api/index";
 import { authUserState, userState } from "@/store/atoms";
 import { existAuthUserID } from "@/store/selectors";
 import { useLazyQuery, useMutation } from "@apollo/client";
@@ -14,12 +20,6 @@ import {
   signInWithCredential,
 } from "firebase/auth";
 import type { OAuthCredential } from "firebase/auth";
-import {
-  CreateAuthUserDocument,
-  ExistAuthUserDocument,
-  UserDocument,
-} from "queries/api/index";
-import type { CreateAuthUserMutationVariables } from "queries/api/index";
 import { useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";

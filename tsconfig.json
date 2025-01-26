@@ -11,13 +11,9 @@
     "strict": false,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"],
-      "storyBookUtils/*": ["src/storyBookUtils/*"],
-      "queries/*": ["src/queries/*"],
-      "__mockData__/*": ["src/__mockData__/*"],
-      "mocks/*": ["src/mocks/*"]
+      "@/*": ["./*"]
     },
-    "typeRoots": ["node_modules/@types", "src/@types"]
+    "typeRoots": ["node_modules/@types", "@types"]
   },
   "exclude": ["node_modules", "scripts/send-metrics"],
   "extends": "expo/tsconfig.base",

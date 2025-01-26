@@ -1,5 +1,5 @@
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import DateInput from "./DateInput";
 
 export default {

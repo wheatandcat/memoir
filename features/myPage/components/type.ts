@@ -1,5 +1,5 @@
 import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
-import type { RelationshipsQuery } from "queries/api/index";
+import type { RelationshipsQuery } from "@/queries/api/index";
 
 export type Relationship = NonNullable<
   EdgesNode<RelationshipsQuery["relationships"]>

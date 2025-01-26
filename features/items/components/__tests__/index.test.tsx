@@ -1,15 +1,15 @@
 import * as useHomeItems from "@/hooks/useHomeItems";
 import { testRenderer } from "@/lib/testUtil";
+import { item } from "@/mocks/__mockData__/item";
+import { ItemDocument, UpdateItemDocument } from "@/queries/api/index";
 import {
   fireEvent,
   screen,
   waitFor,
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
-import { item } from "__mockData__/item";
 import * as expoRouter from "expo-router";
 import { HttpResponse, graphql } from "msw";
-import { ItemDocument, UpdateItemDocument } from "queries/api/index";
 import React from "react";
 import * as Recoil from "recoil";
 import ItemDetail from "../";

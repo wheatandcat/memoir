@@ -1,8 +1,8 @@
 import dayjs from "@/lib/dayjs";
+import { RelationshipsDocument } from "@/queries/api/index";
 import { userState } from "@/store/atoms";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
-import { RelationshipsDocument } from "queries/api/index";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { useRecoilValue } from "recoil";
