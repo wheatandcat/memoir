@@ -18,7 +18,6 @@ export type Props = {
   ConnectedType,
   | "onUpdateProfile"
   | "onLogout"
-  | "onLogout"
   | "onRelationshipRequests"
   | "onAddShareUser"
   | "relationshipRequestCount"

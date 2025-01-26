@@ -1,3 +1,4 @@
+import { useSession } from "@/ctx";
 import Auth from "@/lib/auth";
 import { getFirebaseAuthApp } from "@/lib/firebase";
 import { getItem, removeItem, setItem, storageKey } from "@/lib/storage";
@@ -8,17 +9,17 @@ import * as AppleAuthentication from "expo-apple-authentication";
 import * as Crypto from "expo-crypto";
 import * as WebBrowser from "expo-web-browser";
 import {
-  type OAuthCredential,
   OAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
 } from "firebase/auth";
+import type { OAuthCredential } from "firebase/auth";
 import {
   CreateAuthUserDocument,
-  type CreateAuthUserMutationVariables,
   ExistAuthUserDocument,
   UserDocument,
 } from "queries/api/index";
+import type { CreateAuthUserMutationVariables } from "queries/api/index";
 import { useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
@@ -43,6 +44,7 @@ const nonceGen = (length: number) => {
 export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 
 const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
+  const { signOut } = useSession();
   const [setup, setSetup] = useState(false);
   const authUserID = useRecoilValueLoadable(existAuthUserID);
   const [authUser, setAuthUser] = useRecoilState(authUserState);
@@ -109,7 +111,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
           getUser();
         }
       },
-    },
+    }
   );
 
   const onGoogleLogin = useCallback(() => {}, []);
@@ -133,7 +135,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser, getUser, getExistAuthUser],
+    [setAuthUser, getUser, getExistAuthUser]
   );
 
   const firebaseLogin = useCallback(
@@ -141,7 +143,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
           console.log("error:", error);
-        },
+        }
       );
 
       console.log("data:", data);
@@ -150,14 +152,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return ok;
     },
-    [setSession],
+    [setSession]
   );
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
       Crypto.CryptoDigestAlgorithm.SHA256,
-      nonce,
+      nonce
     );
 
     try {
@@ -194,7 +196,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
     userQuery.client?.clearStore();
     existAuthUserQuery.client?.clearStore();
-  }, [setAuthUser, setUser, userQuery.client, existAuthUserQuery.client]);
+    signOut();
+  }, [
+    setAuthUser,
+    setUser,
+    userQuery.client,
+    existAuthUserQuery.client,
+    signOut,
+  ]);
 
   useEffect(() => {
     if (authUser.uid) {

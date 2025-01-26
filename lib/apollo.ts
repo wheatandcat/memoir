@@ -36,6 +36,7 @@ const makeApolloClient = () => {
       param.Authorization = `Bearer ${token}`;
     } else {
       const userID = await getItem(storageKey.USER_ID_KEY);
+      console.log("userID:", userID);
 
       if (userID) {
         param.UserID = userID;
@@ -55,7 +56,7 @@ const makeApolloClient = () => {
       "operation:",
       operation.operationName,
       ",variables:",
-      operation.variables,
+      operation.variables
     );
 
     return forward(operation).map((data) => {
@@ -108,7 +109,7 @@ const makeApolloClient = () => {
   return new ApolloClient({
     link: concat(
       middlewareLink,
-      errorLink.concat(authLink.concat(createHttpLink({ uri }))),
+      errorLink.concat(authLink.concat(createHttpLink({ uri })))
     ),
     cache: cache,
   });

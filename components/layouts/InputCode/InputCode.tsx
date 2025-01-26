@@ -1,7 +1,7 @@
 import Blinking from "@/components/elements/Animated/Blinking";
 import Text from "@/components/elements/Text";
 import theme from "@/config/theme";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from 'expo-router';
 import type React from "react";
 import { memo, useCallback, useRef, useState } from "react";
 import {

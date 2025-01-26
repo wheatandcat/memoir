@@ -1,8 +1,7 @@
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import { authUserState } from "@/store/atoms";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
-import { useFocusEffect } from "@react-navigation/native";
-import { useRouter } from "expo-router";
+import { useFocusEffect, useRouter } from "expo-router";
 import {
   DeleteRelationshipDocument,
   RelationshipRequestsDocument,
@@ -24,13 +23,13 @@ const Connected: React.FC = () => {
     RelationshipRequestsDocument,
     {
       fetchPolicy: "network-only",
-    },
+    }
   );
   const [getRelationships, relationshipsData] = useLazyQuery(
     RelationshipsDocument,
     {
       fetchPolicy: "network-only",
-    },
+    }
   );
   const [deleteRelationshipMutation, deleteRelationshipMutationData] =
     useMutation(DeleteRelationshipDocument, {
@@ -61,18 +60,8 @@ const Connected: React.FC = () => {
             skip: false,
           },
         });
-
-        relationshipRequestsData.refetch?.();
-        relationshipsData.refetch?.();
       }
-    }, [
-      authUser.uid,
-      getRelationshipRequests,
-      getRelationships,
-      userQuery,
-      relationshipRequestsData,
-      relationshipsData,
-    ]),
+    }, [authUser.uid, getRelationshipRequests, getRelationships, userQuery])
   );
 
   const onLogin = useCallback(() => {
@@ -99,7 +88,7 @@ const Connected: React.FC = () => {
         },
       });
     },
-    [deleteRelationshipMutation],
+    [deleteRelationshipMutation]
   );
 
   if (!setupAuth || userQuery.loading) {

@@ -5,6 +5,7 @@ import Debug from "@/components/layouts/Debug/Debug";
 import Modal from "@/components/layouts/Modal";
 import theme from "@/config/theme";
 import { useNotification } from "@/containers/Notification";
+import { useSession } from "@/ctx";
 import { removeItem, storageKey } from "@/lib/storage";
 import { authUserState, userState } from "@/store/atoms";
 import * as Device from "expo-device";
@@ -31,6 +32,7 @@ const SettingModal: FC<Props> = (props) => {
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
   const setUser = useSetRecoilState(userState);
+  const { signOut } = useSession();
 
   const onLicence = useCallback(() => {
     props.onClose();
@@ -79,7 +81,8 @@ const SettingModal: FC<Props> = (props) => {
     await removeItem(storageKey.AUTH_UID_KEY);
 
     setUser({ id: null, userID: "", displayName: "", image: "" });
-  }, [setUser]);
+    signOut();
+  }, [setUser, signOut]);
 
   const onPushNotificationSetting = useCallback(() => {
     if (Platform.OS === "ios") {

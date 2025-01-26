@@ -49,7 +49,7 @@ const Intro: FC<Props> = (props) => {
         setPage(nextPage);
       }
     },
-    [page, width, props],
+    [page, width, props]
   );
 
   const onSkip = useCallback(() => {
