@@ -37,15 +37,17 @@ const Connected: FC<Props> = (props) => {
 
   const setHomeItemsState = useSetRecoilState(homeItemsState);
 
-  const onLogin = useCallback(() => {
+  const onLogin = useCallback(async () => {
     setLoading(true);
 
     if (Platform.OS === "ios") {
-      onAppleLogin();
+      await onAppleLogin();
     } else {
-      onGoogleLogin();
+      await onGoogleLogin();
     }
-  }, [onAppleLogin, onGoogleLogin]);
+    signIn();
+    router.replace("/");
+  }, [onAppleLogin, onGoogleLogin, signIn]);
 
   const onSkip = useCallback(() => {
     setHomeItemsState({ items: [] });

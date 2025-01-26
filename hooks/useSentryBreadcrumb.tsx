@@ -1,5 +1,6 @@
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useRoute } from "@react-navigation/native";
 import type { Breadcrumb } from "@sentry/types";
+import { useNavigation } from "expo-router";
 import { useCallback, useEffect } from "react";
 import * as Sentry from "sentry-expo";
 

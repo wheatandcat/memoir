@@ -1,5 +1,5 @@
 import usePrevious from "@/hooks/usePrevious";
-import { useFocusEffect } from "@react-navigation/native";
+import { useFocusEffect } from "expo-router";
 import { useRef } from "react";
 import type { TextInput } from "react-native";
 

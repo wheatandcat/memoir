@@ -36,6 +36,7 @@ const makeApolloClient = () => {
       param.Authorization = `Bearer ${token}`;
     } else {
       const userID = await getItem(storageKey.USER_ID_KEY);
+      console.log("userID:", userID);
 
       if (userID) {
         param.UserID = userID;
