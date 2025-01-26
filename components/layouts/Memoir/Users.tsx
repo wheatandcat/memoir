@@ -3,7 +3,7 @@ import UserButton from "@/components/layouts/User/Button";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
 import type { Props as PlainProps } from "@/features/memoir/components/Plain";
-import type { User } from "queries/api/index";
+import type { User } from "@/queries/api/index";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { ScrollView, StyleSheet, type ViewStyle } from "react-native";

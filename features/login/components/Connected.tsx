@@ -2,13 +2,13 @@ import { useNotification } from "@/containers/Notification";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import useHomeItems from "@/hooks/useHomeItems";
 import { getItem, storageKey } from "@/lib/storage";
-import { authUserState } from "@/store/atoms";
-import { useMutation } from "@apollo/client";
-import { useRouter } from "expo-router";
 import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { authUserState } from "@/store/atoms";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";

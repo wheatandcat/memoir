@@ -1,4 +1,4 @@
-import type { RelationshipsQuery } from "queries/api/index";
+import type { RelationshipsQuery } from "@/queries/api/index";
 import { user } from "./user";
 
 export type Relationship = NonNullable<

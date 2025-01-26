@@ -9,8 +9,8 @@
     "ignoreUnknown": false,
     "ignore": [
       "node_modules",
-      "src/queries/api/mocks.ts",
-      "src/queries/api/index.ts",
+      "queries/api/mocks.ts",
+      "queries/api/index.ts",
       ".expo/types/router.d.ts"
     ],
     "include": ["**/*.ts", "**/*.tsx"]

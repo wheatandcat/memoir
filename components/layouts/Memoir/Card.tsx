@@ -3,7 +3,7 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
-import type { Item } from "queries/api/index";
+import type { Item } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo, useEffect, useState } from "react";
 import type { ViewStyle } from "react-native";

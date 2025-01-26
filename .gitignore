@@ -17,8 +17,8 @@ storyLoader.js
 .expo-shared/assets.json
 
 schema.json
-src/queries/api/index.ts
-src/queries/api/mocks.ts
+queries/api/index.ts
+queries/api/mocks.ts
 schema.graphqls
 GoogleService-Info.plist
 .env

@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
-import type { User } from "queries/api/index";
+import type { User } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";

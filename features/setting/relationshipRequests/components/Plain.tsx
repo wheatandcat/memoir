@@ -4,11 +4,11 @@ import type {
   RelationshipRequest,
   RelationshipRequestsPageInfo,
 } from "@/hooks/useRelationshipRequestsPaging";
-import type { QueryResult } from "@apollo/client";
 import type {
   RelationshipRequestsQuery as Query,
   RelationshipRequestsQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import type React from "react";
 import { memo } from "react";
 import Page from "./Page";

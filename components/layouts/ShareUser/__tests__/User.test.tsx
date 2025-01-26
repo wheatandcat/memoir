@@ -1,6 +1,6 @@
 import { testRenderer } from "@/lib/testUtil";
+import { user } from "@/mocks/__mockData__/user";
 import { screen } from "@testing-library/react-native";
-import { user } from "__mockData__/user";
 import React from "react";
 import User, { type Props } from "../User";
 

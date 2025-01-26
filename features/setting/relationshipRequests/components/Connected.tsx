@@ -1,12 +1,12 @@
 import useRelationshipRequestsPaging from "@/hooks/useRelationshipRequestsPaging";
-import { useMutation, useQuery } from "@apollo/client";
-import { useRouter } from "expo-router";
 import {
   AcceptRelationshipRequestDocument,
   NgRelationshipRequestDocument,
   RelationshipRequestsDocument,
   type RelationshipRequestsQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { useMutation, useQuery } from "@apollo/client";
+import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { v4 as uuidv4 } from "uuid";

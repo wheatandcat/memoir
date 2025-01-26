@@ -1,5 +1,5 @@
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import Input from "./Input";
 import type { Props as InputProps } from "./Input";
 import Notification from "./Notification";

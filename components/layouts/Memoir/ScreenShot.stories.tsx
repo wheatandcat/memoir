@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { items } from "__mockData__/item";
+import { items } from "@/mocks/__mockData__/item";
 import React from "react";
 import { StyleSheet } from "react-native";
 import ScreenShot, { type Props as ScreenShotProps } from "./ScreenShot";

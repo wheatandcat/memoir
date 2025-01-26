@@ -1,7 +1,7 @@
 import usePrevious from "@/hooks/usePrevious";
+import { ItemsByDateDocument } from "@/queries/api/index";
 import { homeDateState, homeItemsState } from "@/store/atoms";
 import { useLazyQuery } from "@apollo/client";
-import { ItemsByDateDocument } from "queries/api/index";
 import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 

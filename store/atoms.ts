@@ -1,5 +1,5 @@
 import dayjs from "@/lib/dayjs";
-import type { ItemQuery } from "queries/api/index";
+import type { ItemQuery } from "@/queries/api/index";
 import { atom } from "recoil";
 
 export type Item = NonNullable<ItemQuery["item"]>;

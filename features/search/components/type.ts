@@ -1,5 +1,5 @@
 import type { Props as InputDateProps } from "@/components/layouts/Search/Input/InputDate";
-import type { User as TUser } from "queries/api/index";
+import type { User as TUser } from "@/queries/api/index";
 
 export type User = Pick<TUser, "id" | "image">;
 

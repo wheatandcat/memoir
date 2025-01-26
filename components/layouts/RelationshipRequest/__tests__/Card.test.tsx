@@ -1,6 +1,6 @@
 import { testRenderer } from "@/lib/testUtil";
+import { relationshipRequest } from "@/mocks/__mockData__/relationshipRequest";
 import { screen } from "@testing-library/react-native";
-import { relationshipRequest } from "__mockData__/relationshipRequest";
 import React from "react";
 import Card from "../Card";
 import type { Props } from "../Card";

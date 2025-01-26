@@ -1,4 +1,4 @@
-import type { ItemQuery } from "queries/api/index";
+import type { ItemQuery } from "@/queries/api/index";
 type Item = NonNullable<ItemQuery["item"]>;
 
 export const item = (option?: Partial<Item>): Item => ({

@@ -5,7 +5,7 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import { categoryBorderStyle } from "@/lib/category";
-import type { Item } from "queries/api/index";
+import type { Item } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo } from "react";
 import {

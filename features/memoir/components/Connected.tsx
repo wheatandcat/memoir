@@ -1,11 +1,11 @@
 import useItemsInPeriodPaging from "@/hooks/useItemsInPeriodPaging";
-import { userState } from "@/store/atoms";
-import { useQuery } from "@apollo/client";
-import { useRouter } from "expo-router";
 import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { userState } from "@/store/atoms";
+import { useQuery } from "@apollo/client";
+import { useRouter } from "expo-router";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
 import { useRecoilValue } from "recoil";

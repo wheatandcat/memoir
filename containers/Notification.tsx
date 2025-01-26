@@ -1,9 +1,9 @@
 import theme from "@/config/theme";
+import { CreatePushTokenDocument } from "@/queries/api/index";
+import type { CreatePushTokenMutationVariables } from "@/queries/api/index";
 import { useMutation } from "@apollo/client";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
-import { CreatePushTokenDocument } from "queries/api/index";
-import type { CreatePushTokenMutationVariables } from "queries/api/index";
 import type React from "react";
 import { createContext, memo, useCallback, useContext, useRef } from "react";
 import { Platform } from "react-native";

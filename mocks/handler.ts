@@ -1,4 +1,3 @@
-import { HttpResponse, graphql } from "msw";
 import {
   AcceptRelationshipRequestDocument,
   CreateInviteDocument,
@@ -16,7 +15,7 @@ import {
   UpdateInviteDocument,
   UpdateItemDocument,
   UpdateUserDocument,
-} from "queries/api/index";
+} from "@/queries/api/index";
 import {
   aPageInfo,
   aRelationshipEdge,
@@ -26,7 +25,8 @@ import {
   anInvite,
   anItem,
   anItemsInPeriodEdge,
-} from "queries/api/mocks";
+} from "@/queries/api/mocks";
+import { HttpResponse, graphql } from "msw";
 
 export const handlers = [
   graphql.query(ItemDocument, ({ query, variables }) => {

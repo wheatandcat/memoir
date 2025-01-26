@@ -8,7 +8,7 @@ import InputDate from "@/components/layouts/Search/Input/InputDate";
 import InputUsers from "@/components/layouts/Search/Input/InputUsers";
 import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
-import type { User } from "queries/api/index";
+import type { User } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo, useState } from "react";
 import { ScrollView, StyleSheet } from "react-native";

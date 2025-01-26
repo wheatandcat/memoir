@@ -1,6 +1,6 @@
-import { memoirNotificationSetting } from "__mockData__/memoirNotificationSetting";
+import { memoirNotificationSetting } from "@/mocks/__mockData__/memoirNotificationSetting";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import Page, { type Props } from "./Page";
 
 const props = (): Props => ({

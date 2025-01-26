@@ -1,4 +1,4 @@
-import { item } from "__mockData__/item";
+import { item } from "@/mocks/__mockData__/item";
 import React from "react";
 import Card from "./Card";
 

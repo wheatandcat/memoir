@@ -6,7 +6,7 @@ import InputDateWrap from "@/components/layouts/InputDateWrap/InputDateWrap";
 import SettingModal from "@/components/layouts/SettingModal";
 import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
-import type { ItemQuery } from "queries/api/index";
+import type { ItemQuery } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo } from "react";
 import type { ViewStyle } from "react-native";

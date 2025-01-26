@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import AddItemModal from "./";
 
 export default {

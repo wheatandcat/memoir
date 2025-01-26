@@ -1,5 +1,5 @@
+import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
-import { mockFn } from "storyBookUtils/index";
 import Confirm from "./Confirm";
 import type { Props as ConfirmProps } from "./Confirm";
 import Input from "./Input";

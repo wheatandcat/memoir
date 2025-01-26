@@ -7,7 +7,7 @@ import Modal from "@/components/layouts/Modal";
 import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import dayjs from "@/lib/dayjs";
-import type { NewItem } from "queries/api/index";
+import type { NewItem } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";

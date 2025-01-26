@@ -1,12 +1,12 @@
 import { uploadImageAsync } from "@/lib/image";
-import { authUserState, userState } from "@/store/atoms";
-import { useMutation } from "@apollo/client";
-import { useRouter } from "expo-router";
 import {
   UpdateUserDocument,
   type UpdateUserMutationVariables,
   type User,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import { authUserState, userState } from "@/store/atoms";
+import { useMutation } from "@apollo/client";
+import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";

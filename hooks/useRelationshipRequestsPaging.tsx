@@ -1,8 +1,8 @@
-import type { QueryResult } from "@apollo/client";
 import type {
   RelationshipRequestsQuery as Query,
   RelationshipRequestsQueryVariables as Variables,
-} from "queries/api/index";
+} from "@/queries/api/index";
+import type { QueryResult } from "@apollo/client";
 import { useCallback, useEffect, useState } from "react";
 
 type QueryHookResult = QueryResult<Query, Variables>;
