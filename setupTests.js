@@ -61,8 +61,15 @@ jest.mock("@react-navigation/native", () => {
     useRoute: () => ({
       name: "test",
     }),
-    useFocusEffect: jest.fn(),
     useIsFocused: jest.fn(),
+  };
+});
+
+jest.mock("expo-router", () => {
+  const actualRouter = jest.requireActual("expo-router");
+  return {
+    ...actualRouter,
+    useFocusEffect: jest.fn(),
   };
 });
 

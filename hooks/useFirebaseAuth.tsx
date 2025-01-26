@@ -111,7 +111,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
           getUser();
         }
       },
-    }
+    },
   );
 
   const onGoogleLogin = useCallback(() => {}, []);
@@ -135,7 +135,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser, getUser, getExistAuthUser]
+    [setAuthUser, getUser, getExistAuthUser],
   );
 
   const firebaseLogin = useCallback(
@@ -143,7 +143,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
           console.log("error:", error);
-        }
+        },
       );
 
       console.log("data:", data);
@@ -152,14 +152,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return ok;
     },
-    [setSession]
+    [setSession],
   );
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
       Crypto.CryptoDigestAlgorithm.SHA256,
-      nonce
+      nonce,
     );
 
     try {
