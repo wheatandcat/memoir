@@ -3,7 +3,11 @@ import useUser from "@/hooks/useUser";
 import { NotoSansJP_700Bold } from "@expo-google-fonts/noto-sans-jp";
 import { RobotoCondensed_700Bold } from "@expo-google-fonts/roboto-condensed";
 import * as Font from "expo-font";
+import { SplashScreen } from "expo-router";
 import { useCallback, useState } from "react";
+
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 500);
 
 export default function SignIn() {
   const { user, onSaveWhenNotLogin } = useUser();
