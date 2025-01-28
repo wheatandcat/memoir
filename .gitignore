@@ -33,6 +33,7 @@ credentials.json
 release.keystore
 release.keystore2
 eas.json
+_eas.json
 release-service-account.json
 *.log
 coverage
