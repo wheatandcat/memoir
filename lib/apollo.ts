@@ -12,7 +12,6 @@ import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
 import Constants from "expo-constants";
 import { Alert } from "react-native";
-import * as Sentry from "sentry-expo";
 
 const cache = new InMemoryCache();
 const auth = new Auth();
@@ -81,6 +80,7 @@ const makeApolloClient = () => {
         message = graphQLErrors[0].message.split(":")?.[1] || message;
       }
 
+      /*
       Sentry.Native.withScope((scope) => {
         scope.setTag("kind", "GraphQL");
         scope.setTag("operationName", error.operation.operationName);
@@ -89,6 +89,7 @@ const makeApolloClient = () => {
         scope.setExtra("errorCode", code);
         Sentry.Native.captureMessage(message);
       });
+      */
 
       console.log("error: operation:", error.operation.operationName, message);
 

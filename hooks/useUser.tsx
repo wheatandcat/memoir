@@ -1,7 +1,6 @@
 import { existUserID } from "@/store/selectors";
 import { useCallback, useEffect, useState } from "react";
 import { useRecoilState, useRecoilValueLoadable } from "recoil";
-import * as Sentry from "sentry-expo";
 import "react-native-get-random-values";
 import usePrevious from "@/hooks/usePrevious";
 import { setItem, storageKey } from "@/lib/storage";
@@ -78,9 +77,11 @@ const useUser = () => {
   useEffect(() => {
     if (user.id) {
       if (user.id !== prevUserID) {
+        /*
         Sentry.Native.setUser({
           id: user.id,
         });
+        */
       }
     }
   }, [user.id, prevUserID]);

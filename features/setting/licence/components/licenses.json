@@ -299,12 +299,6 @@
     "licenseUrl": "https://github.com/lawnstarter/react-native-picker-select/raw/master/LICENSE",
     "parents": "memoir"
   },
-  "react-native-reanimated": {
-    "licenses": "MIT",
-    "repository": "https://github.com/software-mansion/react-native-reanimated",
-    "licenseUrl": "https://github.com/software-mansion/react-native-reanimated/raw/master/LICENSE",
-    "parents": "memoir"
-  },
   "react-native-root-toast": {
     "licenses": "MIT",
     "repository": "https://github.com/magicismight/react-native-root-toast",
@@ -315,12 +309,6 @@
     "licenses": "MIT",
     "repository": "https://github.com/th3rdwave/react-native-safe-area-context",
     "licenseUrl": "https://github.com/th3rdwave/react-native-safe-area-context/raw/master/LICENSE",
-    "parents": "memoir"
-  },
-  "react-native-screens": {
-    "licenses": "MIT",
-    "repository": "https://github.com/software-mansion/react-native-screens",
-    "licenseUrl": "https://github.com/software-mansion/react-native-screens/raw/master/LICENSE",
     "parents": "memoir"
   },
   "react-native-snap-carousel": {
@@ -363,12 +351,6 @@
     "licenses": "MIT",
     "repository": "https://github.com/facebookexperimental/Recoil",
     "licenseUrl": "https://github.com/facebookexperimental/Recoil/raw/master/LICENSE",
-    "parents": "memoir"
-  },
-  "sentry-expo": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/sentry-expo",
-    "licenseUrl": "https://github.com/expo/sentry-expo",
     "parents": "memoir"
   },
   "uuid": {

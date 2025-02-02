@@ -1,10 +1,7 @@
 import type { ConfigContext, ExpoConfig } from "@expo/config";
-
 import dayjs from "dayjs";
 import "dayjs/locale/ja";
-if (process.env.APP_ENV !== "production") {
-  require("dotenv").config();
-}
+import "dotenv/config";
 
 const version: string = "1.8.0";
 const unix = dayjs().unix().toString();
@@ -104,7 +101,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/favicon.png",
   },
   plugins: [
-    "sentry-expo",
+    "expo-asset",
     [
       "expo-font",
       {
