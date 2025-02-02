@@ -101,7 +101,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/favicon.png",
   },
   plugins: [
-    "sentry-expo",
+    "expo-asset",
     [
       "expo-font",
       {

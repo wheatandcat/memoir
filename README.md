@@ -38,12 +38,25 @@
 
 # コマンド
 
-## ローカル起動
+## 診断
+
+```bash
+$ npx expo-doctor
+```
+
 
 ### iOS
 
+#### 初回のみeas build
+
 ```bash
-$ pnpm ios
+$ pnpm ios:build:dev
+```
+
+#### 起動
+
+```bash
+$ pnpm expo:start
 ```
 
 ### Android
