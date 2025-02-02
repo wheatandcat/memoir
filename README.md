@@ -62,7 +62,13 @@ $ pnpm expo:start
 ### Android
 
 ```bash
-$ pnpm android
+$ pnpm android:build:dev
+```
+
+#### 起動
+
+```bash
+$ pnpm expo:start
 ```
 
 ## ビルド
