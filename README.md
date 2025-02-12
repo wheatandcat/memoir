@@ -53,6 +53,12 @@ $ npx expo-doctor
 $ pnpm ios:build:dev
 ```
 
+#### ローカル用のbuild
+
+```bash
+$ npx expo run:ios
+```
+
 #### 起動
 
 ```bash
@@ -61,8 +67,16 @@ $ pnpm expo:start
 
 ### Android
 
+#### 初回のみeas build
+
 ```bash
 $ pnpm android:build:dev
+```
+
+#### ローカル用のbuild
+
+```bash
+$ npx expo run:android
 ```
 
 #### 起動

@@ -5,7 +5,7 @@ import theme from "@/config/theme";
 import type { UseFirebaseAuth } from "@/hooks/useFirebaseAuth";
 import * as AppleAuthentication from "expo-apple-authentication";
 import type { FC } from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 
 export type Props = {
@@ -37,7 +37,7 @@ const Form: FC<Props> = (props) => {
               />
             </View>
             <View px={2}>
-              <Text fontFamily="NotoSansJP-Bold">Googleでログイン</Text>
+              <Text fontFamily="NotoSansJP-Bold">Googleでログイン3</Text>
             </View>
           </View>
         </TouchableOpacity>

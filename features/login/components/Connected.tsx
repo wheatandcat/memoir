@@ -21,7 +21,7 @@ const Connected: React.FC = () => {
     true,
     () => {
       setLoading(false);
-    },
+    }
   );
   const { refetch } = useHomeItems();
   const { onPermissionRequest } = useNotification();
@@ -72,7 +72,7 @@ const Connected: React.FC = () => {
         setLoading(true);
         onAppleLogin();
       }}
-      onGoogleLogin={() => {
+      onGoogleLogin={async () => {
         setLoading(true);
         onGoogleLogin();
       }}

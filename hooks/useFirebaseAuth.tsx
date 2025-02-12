@@ -11,10 +11,12 @@ import type { CreateAuthUserMutationVariables } from "@/queries/api/index";
 import { authUserState, userState } from "@/store/atoms";
 import { existAuthUserID } from "@/store/selectors";
 import { useLazyQuery, useMutation } from "@apollo/client";
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import * as AppleAuthentication from "expo-apple-authentication";
 import * as Crypto from "expo-crypto";
 import * as WebBrowser from "expo-web-browser";
 import {
+  GoogleAuthProvider,
   OAuthProvider,
   onAuthStateChanged,
   signInWithCredential,
@@ -111,10 +113,28 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
           getUser();
         }
       },
-    },
+    }
   );
 
-  const onGoogleLogin = useCallback(() => {}, []);
+  const onGoogleLogin = useCallback(async () => {
+    console.log("001");
+    await GoogleSignin.configure();
+    console.log("002");
+    try {
+      const response = await GoogleSignin.signIn();
+      console.log("003");
+      const googleCredential = GoogleAuthProvider.credential(
+        response.data.idToken
+      );
+      console.log("004");
+      const result = await signInWithCredential(appAuth, googleCredential);
+      console.log("005");
+
+      console.log("result:", result);
+    } catch (error) {
+      console.log("error:", error);
+    }
+  }, []);
 
   const setSession = useCallback(
     async (refresh = false) => {
@@ -135,7 +155,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return idToken;
     },
-    [setAuthUser, getUser, getExistAuthUser],
+    [setAuthUser, getUser, getExistAuthUser]
   );
 
   const firebaseLogin = useCallback(
@@ -143,7 +163,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
           console.log("error:", error);
-        },
+        }
       );
 
       console.log("data:", data);
@@ -152,14 +172,14 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       return ok;
     },
-    [setSession],
+    [setSession]
   );
 
   const onAppleLogin = useCallback(async () => {
     const nonce = nonceGen(32);
     const digestedNonce = await Crypto.digestStringAsync(
       Crypto.CryptoDigestAlgorithm.SHA256,
-      nonce,
+      nonce
     );
 
     try {

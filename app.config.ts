@@ -6,18 +6,6 @@ import "dotenv/config";
 const version: string = "1.8.0";
 const unix = dayjs().unix().toString();
 
-const appConfig = () => {
-  const ios: any = {};
-  const android: any = {};
-
-  if (process.env.APP_ENV === "production") {
-    ios.googleServicesFile = "./GoogleService-Info.plist";
-    android.googleServicesFile = "./google-services.json";
-  }
-
-  return { ios, android };
-};
-
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   newArchEnabled: true,
@@ -66,12 +54,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    ...appConfig().ios,
     supportsTablet: false,
     usesAppleSignIn: true,
     userInterfaceStyle: "automatic",
     buildNumber: unix,
     bundleIdentifier: "com.wheatandcat.memoir",
+    googleServicesFile: "./GoogleService-Info.plist",
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
       NSPhotoLibraryUsageDescription: "ユーザーの画像設定に使用します",
@@ -83,8 +71,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
   android: {
-    ...appConfig().android,
     package: "com.wheatandcat.memoir",
+    googleServicesFile: "./google-services.json",
     permissions: [
       "CAMERA",
       "READ_EXTERNAL_STORAGE",
@@ -111,6 +99,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         ],
       },
     ],
+    ["@react-native-google-signin/google-signin"],
   ],
   description: "",
 });
