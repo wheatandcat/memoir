@@ -91,7 +91,7 @@ android {
         applicationId 'com.wheatandcat.memoir'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1739280
+        versionCode 1740220
         versionName "1.8.0"
     }
     signingConfigs {

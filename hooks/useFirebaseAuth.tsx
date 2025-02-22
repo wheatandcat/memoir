@@ -13,6 +13,7 @@ import { existAuthUserID } from "@/store/selectors";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import * as AppleAuthentication from "expo-apple-authentication";
+import Constants from "expo-constants";
 import * as Crypto from "expo-crypto";
 import * as WebBrowser from "expo-web-browser";
 import {
@@ -58,6 +59,13 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       setSetup(true);
     }
   }, [user.id]);
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: Constants.expoConfig?.extra?.WEB_GOOGLE_CLIENT_ID,
+      offlineAccess: true,
+    });
+  }, []);
 
   const [getUser, userQuery] = useLazyQuery(UserDocument, {
     onCompleted: (data) => {
@@ -116,26 +124,6 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     }
   );
 
-  const onGoogleLogin = useCallback(async () => {
-    console.log("001");
-    await GoogleSignin.configure();
-    console.log("002");
-    try {
-      const response = await GoogleSignin.signIn();
-      console.log("003");
-      const googleCredential = GoogleAuthProvider.credential(
-        response.data.idToken
-      );
-      console.log("004");
-      const result = await signInWithCredential(appAuth, googleCredential);
-      console.log("005");
-
-      console.log("result:", result);
-    } catch (error) {
-      console.log("error:", error);
-    }
-  }, []);
-
   const setSession = useCallback(
     async (refresh = false) => {
       const idToken = await auth.setSession(refresh);
@@ -162,7 +150,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     async (credential: OAuthCredential) => {
       const data = await signInWithCredential(appAuth, credential).catch(
         (error: any) => {
-          console.log("error:", error);
+          console.log("firebaseLogin error:", error);
         }
       );
 
@@ -197,6 +185,22 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
       });
 
       firebaseLogin(credential);
+    } catch (e) {
+      console.log("error:", e);
+      Alert.alert("ログインに失敗しました");
+      errorCallback?.();
+    }
+  }, [firebaseLogin, errorCallback]);
+
+  const onGoogleLogin = useCallback(async () => {
+    try {
+      const response = await GoogleSignin.signIn();
+
+      const googleCredential = GoogleAuthProvider.credential(
+        response.data.idToken
+      );
+
+      firebaseLogin(googleCredential);
     } catch (e) {
       console.log("error:", e);
       Alert.alert("ログインに失敗しました");
