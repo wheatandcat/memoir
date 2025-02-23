@@ -24,7 +24,7 @@ const Users: React.FC<Props> = ({ center = false, size = 70, ...props }) => {
       const userIDList = [...props.selectedUserIDList, uid];
       props.onChangeUserID(userIDList);
     },
-    [props.selectedUserIDList, props.onChangeUserID]
+    [props.selectedUserIDList, props.onChangeUserID],
   );
 
   const onRemove = useCallback(
@@ -32,7 +32,7 @@ const Users: React.FC<Props> = ({ center = false, size = 70, ...props }) => {
       const userIDList = props.selectedUserIDList.filter((v) => v !== uid);
       props.onChangeUserID(userIDList);
     },
-    [props.selectedUserIDList, props.onChangeUserID]
+    [props.selectedUserIDList, props.onChangeUserID],
   );
 
   const style: ViewStyle[] = [styles.root];
@@ -46,7 +46,7 @@ const Users: React.FC<Props> = ({ center = false, size = 70, ...props }) => {
       <View style={style}>
         {props.users.map((v) => {
           const selected = !!props.selectedUserIDList.find(
-            (uid) => v.id === uid
+            (uid) => v.id === uid,
           );
 
           if (selected) {

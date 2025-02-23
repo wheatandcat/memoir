@@ -45,24 +45,6 @@ $ npx expo-doctor
 ```
 
 
-#### 初回のみeas build
-
-```bash
-$ pnpm ios:build:dev
-```
-
-#### ローカル用のbuild
-
-```bash
-$ npx expo run:ios
-```
-
-#### 起動
-
-```bash
-$ pnpm expo:start
-```
-
 ## Android
 
 
