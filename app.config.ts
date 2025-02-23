@@ -87,6 +87,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/favicon.png",
   },
   plugins: [
+    "expo-apple-authentication",
+    "@react-native-google-signin/google-signin",
     "expo-asset",
     [
       "expo-font",
@@ -97,7 +99,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         ],
       },
     ],
-    ["@react-native-google-signin/google-signin"],
   ],
   description: "",
 });

@@ -2133,6 +2133,51 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
+  - RNScreens (4.4.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-RCTImage
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - RNScreens/common (= 4.4.0)
+    - Yoga
+  - RNScreens/common (4.4.0):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.01.01.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-ImageManager
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-RCTImage
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - SDWebImage (5.19.7):
     - SDWebImage/Core (= 5.19.7)
   - SDWebImage/Core (5.19.7)
@@ -2173,7 +2218,7 @@ DEPENDENCIES:
   - "ExpoFont (from `../node_modules/.pnpm/expo-font@13.0.3_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__nvt4y76glvdpphjurhkn2y4bqa/node_modules/expo-font/ios`)"
   - "ExpoGL (from `../node_modules/.pnpm/expo-gl@15.0.4_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__@_arnev5my5ow25zxbkjqzsszyxe/node_modules/expo-gl`)"
   - "ExpoHaptics (from `../node_modules/.pnpm/expo-haptics@14.0.1_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26_yb34qb3dodreecke22wdwnpyt4/node_modules/expo-haptics/ios`)"
-  - "ExpoHead (from `../node_modules/.pnpm/expo-router@4.0.17_yrxh6xpf3gynoqgfmmhdckkjgy/node_modules/expo-router/ios`)"
+  - "ExpoHead (from `../node_modules/.pnpm/expo-router@4.0.17_expo-constants@17.0.5_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7._5zl4t6tohx7fuptgeq6tmbigcu/node_modules/expo-router/ios`)"
   - "ExpoImage (from `../node_modules/.pnpm/expo-image@2.0.4_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__qqkgwgt7jhgjxglj5bckjl3tcm/node_modules/expo-image/ios`)"
   - "ExpoImageManipulator (from `../node_modules/.pnpm/expo-image-manipulator@13.0.6_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel_fs7wwgx6ecz2ma6rgvnfz6asue/node_modules/expo-image-manipulator/ios`)"
   - "ExpoImagePicker (from `../node_modules/.pnpm/expo-image-picker@16.0.5_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core_rg4vcoqh54vj536w2ri4e5pwnu/node_modules/expo-image-picker/ios`)"
@@ -2262,6 +2307,7 @@ DEPENDENCIES:
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - "RNGoogleSignin (from `../node_modules/@react-native-google-signin/google-signin`)"
+  - RNScreens (from `../node_modules/react-native-screens`)
   - "Yoga (from `../node_modules/.pnpm/react-native@0.76.6_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__@types+re_ets3klakhkmcg3y3d7sutifnsa/node_modules/react-native/ReactCommon/yoga`)"
 
 SPEC REPOS:
@@ -2332,7 +2378,7 @@ EXTERNAL SOURCES:
   ExpoHaptics:
     :path: "../node_modules/.pnpm/expo-haptics@14.0.1_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26_yb34qb3dodreecke22wdwnpyt4/node_modules/expo-haptics/ios"
   ExpoHead:
-    :path: "../node_modules/.pnpm/expo-router@4.0.17_yrxh6xpf3gynoqgfmmhdckkjgy/node_modules/expo-router/ios"
+    :path: "../node_modules/.pnpm/expo-router@4.0.17_expo-constants@17.0.5_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7._5zl4t6tohx7fuptgeq6tmbigcu/node_modules/expo-router/ios"
   ExpoImage:
     :path: "../node_modules/.pnpm/expo-image@2.0.4_expo@52.0.28_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__qqkgwgt7jhgjxglj5bckjl3tcm/node_modules/expo-image/ios"
   ExpoImageManipulator:
@@ -2506,6 +2552,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNGoogleSignin:
     :path: "../node_modules/@react-native-google-signin/google-signin"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   Yoga:
     :path: "../node_modules/.pnpm/react-native@0.76.6_@babel+core@7.26.7_@babel+preset-env@7.26.7_@babel+core@7.26.7__@types+re_ets3klakhkmcg3y3d7sutifnsa/node_modules/react-native/ReactCommon/yoga"
 
@@ -2630,6 +2678,7 @@ SPEC CHECKSUMS:
   RNDateTimePicker: 6008d74df8122d6af6d9d08096bff19a8c6ba647
   RNGestureHandler: fc5ce5bf284640d3af6431c3a5c3bc121e98d045
   RNGoogleSignin: edec18754ff4af2cfee46072609ec5a7a754291a
+  RNScreens: d022507f2b6d76c73335e9e35aedcf7bb2f791b0
   SDWebImage: 8a6b7b160b4d710e2a22b6900e25301075c34cb3
   SDWebImageAVIFCoder: 00310d246aab3232ce77f1d8f0076f8c4b021d90
   SDWebImageSVGCoder: 15a300a97ec1c8ac958f009c02220ac0402e936c

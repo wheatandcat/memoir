@@ -45,8 +45,6 @@ $ npx expo-doctor
 ```
 
 
-### iOS
-
 #### 初回のみeas build
 
 ```bash
@@ -65,63 +63,42 @@ $ npx expo run:ios
 $ pnpm expo:start
 ```
 
-### Android
+## Android
 
-#### 初回のみeas build
 
-```bash
-$ pnpm android:build:dev
-```
-
-#### ローカル用のbuild
+### ローカル起動
 
 ```bash
 $ npx expo run:android
 ```
 
-#### 起動
-
-```bash
-$ pnpm expo:start
-```
-
-## ビルド
-
-### iOS
-
-#### dev
-
-```bash
-$ pnpm ios:build:dev
-$ expo start --dev-client
-```
-
-#### production
-
-```bash
-$ pnpm ios:build
-```
-
-### Android
-
-#### dev
-
-```bash
-$ pnpm android:build:dev
-$ expo start --dev-client
-```
-
-#### production
+### productionビルド
 
 ```bash
 $ pnpm android:build
 ```
 
-## ビルド & ストアアップロード
+## iOS
+
+### ローカル起動
+
+```bash
+$ npx expo run:ios
+```
+
+### productionビルド
+
+```bash
+$ pnpm ios:build
+```
+
+## iOS/Android ビルド & ストアアップロード
+
 
 ```bash
 $ pnpm store:upload
 ```
+
 
 ## Storybook
 
