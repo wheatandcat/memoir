@@ -6,18 +6,6 @@ import "dotenv/config";
 const version: string = "1.8.0";
 const unix = dayjs().unix().toString();
 
-const appConfig = () => {
-  const ios: any = {};
-  const android: any = {};
-
-  if (process.env.APP_ENV === "production") {
-    ios.googleServicesFile = "./GoogleService-Info.plist";
-    android.googleServicesFile = "./google-services.json";
-  }
-
-  return { ios, android };
-};
-
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   newArchEnabled: true,
@@ -30,9 +18,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     FIRE_BASE_MESSAGING_SENDER_ID: process.env.FIRE_BASE_MESSAGING_SENDER_ID,
     FIRE_BASE_APP_ID: process.env.FIRE_BASE_APP_ID,
     FIRE_BASE_MEASUREMENT_ID: process.env.FIRE_BASE_MEASUREMENT_ID,
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    EXPO_GOOGLE_CLIENT_ID: process.env.EXPO_GOOGLE_CLIENT_ID,
-    ANDROID_GOOGLE_CLIENT_ID: process.env.ANDROID_GOOGLE_CLIENT_ID,
+    WEB_GOOGLE_CLIENT_ID: process.env.WEB_GOOGLE_CLIENT_ID,
     SENTRY_DSN: process.env.SENTRY_DSN,
     STORAGE_URL: process.env.STORAGE_URL,
     IMAGE_MERGE_API: process.env.IMAGE_MERGE_API,
@@ -66,12 +52,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   assetBundlePatterns: ["**/*"],
   ios: {
-    ...appConfig().ios,
     supportsTablet: false,
     usesAppleSignIn: true,
     userInterfaceStyle: "automatic",
     buildNumber: unix,
     bundleIdentifier: "com.wheatandcat.memoir",
+    googleServicesFile: "./GoogleService-Info.plist",
     infoPlist: {
       CFBundleAllowMixedLocalizations: true,
       NSPhotoLibraryUsageDescription: "ユーザーの画像設定に使用します",
@@ -83,8 +69,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
   android: {
-    ...appConfig().android,
     package: "com.wheatandcat.memoir",
+    googleServicesFile: "./google-services.json",
     permissions: [
       "CAMERA",
       "READ_EXTERNAL_STORAGE",
@@ -101,6 +87,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/favicon.png",
   },
   plugins: [
+    "expo-apple-authentication",
+    "@react-native-google-signin/google-signin",
     "expo-asset",
     [
       "expo-font",

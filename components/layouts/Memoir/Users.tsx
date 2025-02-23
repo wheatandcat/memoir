@@ -18,13 +18,13 @@ export type Props = {
   size?: number;
 };
 
-const Users: React.FC<Props> = (props) => {
+const Users: React.FC<Props> = ({ center = false, size = 70, ...props }) => {
   const onAdd = useCallback(
     (uid: string) => {
       const userIDList = [...props.selectedUserIDList, uid];
       props.onChangeUserID(userIDList);
     },
-    [props],
+    [props.selectedUserIDList, props.onChangeUserID],
   );
 
   const onRemove = useCallback(
@@ -32,12 +32,12 @@ const Users: React.FC<Props> = (props) => {
       const userIDList = props.selectedUserIDList.filter((v) => v !== uid);
       props.onChangeUserID(userIDList);
     },
-    [props],
+    [props.selectedUserIDList, props.onChangeUserID],
   );
 
   const style: ViewStyle[] = [styles.root];
 
-  if (!props.center) {
+  if (!center) {
     style.push(styles.left);
   }
 
@@ -53,7 +53,7 @@ const Users: React.FC<Props> = (props) => {
             if (props.selectedUserIDList.length === 1) {
               return (
                 <View key={v.id} m={2}>
-                  <UserImage size={props.size} image={v.image} />
+                  <UserImage size={size} image={v.image} />
                 </View>
               );
             }
@@ -64,7 +64,7 @@ const Users: React.FC<Props> = (props) => {
               key={v.id}
               user={v}
               selected={selected}
-              size={props.size}
+              size={size}
               onAdd={onAdd}
               onRemove={onRemove}
             />
@@ -73,11 +73,6 @@ const Users: React.FC<Props> = (props) => {
       </View>
     </ScrollView>
   );
-};
-
-Users.defaultProps = {
-  center: false,
-  size: 70,
 };
 
 export default memo(Users);

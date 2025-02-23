@@ -72,7 +72,7 @@ const Connected: React.FC = () => {
         setLoading(true);
         onAppleLogin();
       }}
-      onGoogleLogin={() => {
+      onGoogleLogin={async () => {
         setLoading(true);
         onGoogleLogin();
       }}
