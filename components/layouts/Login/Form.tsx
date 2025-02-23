@@ -37,7 +37,7 @@ const Form: FC<Props> = (props) => {
               />
             </View>
             <View px={2}>
-              <Text fontFamily="NotoSansJP-Bold">Googleでログイン3</Text>
+              <Text fontFamily="NotoSansJP-Bold">Googleでログイン</Text>
             </View>
           </View>
         </TouchableOpacity>

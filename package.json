@@ -111,7 +111,8 @@
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
     "recoil": "^0.7.6",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "react-native-screens": "~4.4.0"
   },
   "devDependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
