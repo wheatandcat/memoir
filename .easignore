@@ -13,3 +13,5 @@ web-report/
 # Project
 .tmp/*
 .env
+/android
+/ios
