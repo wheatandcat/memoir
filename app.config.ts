@@ -36,11 +36,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   orientation: "portrait",
   icon: "./assets/ios-icon.png",
   jsEngine: "hermes",
-  splash: {
-    image: "./assets/splash.png",
-    resizeMode: "contain",
-    backgroundColor: "#E3C95D",
-  },
   updates: {
     enabled: false,
     checkAutomatically: "ON_LOAD",
@@ -97,6 +92,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           "node_modules/@expo-google-fonts/roboto-condensed/RobotoCondensed_700Bold.ttf",
           "node_modules/@expo-google-fonts/noto-sans-jp/NotoSansJP_700Bold.ttf",
         ],
+      },
+    ],
+    [
+      "expo-splash-screen",
+      {
+        backgroundColor: "#E3C95D",
+        image: "./assets/splash.png",
+        dark: {
+          image: "./assets/splash.png",
+          backgroundColor: "#E3C95D",
+        },
+        resizeMode: "contain",
       },
     ],
   ],
