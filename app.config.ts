@@ -106,6 +106,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         resizeMode: "contain",
       },
     ],
+    [
+      "@sentry/react-native/expo",
+      {
+        organization: process.env.SENTRY_ORGANIZATION,
+        project: process.env.SENTRY_PROJECT,
+      },
+    ],
   ],
   description: "",
 });
