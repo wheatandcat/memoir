@@ -7,6 +7,7 @@ import Notification from "containers/Notification";
 import { isRunningInExpoGo } from "expo";
 import Constants from "expo-constants";
 import { Slot } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import { RecoilRoot } from "recoil";
 
 const navigationIntegration = Sentry.reactNavigationIntegration({
@@ -19,6 +20,11 @@ Sentry.init({
   tracesSampleRate: 1.0,
   integrations: [navigationIntegration],
   enableNativeFramesTracking: !isRunningInExpoGo(),
+});
+
+SplashScreen.preventAutoHideAsync();
+SplashScreen.setOptions({
+  duration: 1000,
 });
 
 export default function Root() {

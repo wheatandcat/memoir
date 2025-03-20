@@ -302,6 +302,8 @@ PODS:
     - ExpoModulesCore
   - ExpoSharing (13.0.1):
     - ExpoModulesCore
+  - ExpoSplashScreen (0.29.22):
+    - ExpoModulesCore
   - ExpoSymbols (0.2.2):
     - ExpoModulesCore
   - ExpoSystemUI (4.0.8):
@@ -2252,6 +2254,7 @@ DEPENDENCIES:
   - "ExpoModulesCore (from `../node_modules/.pnpm/expo-modules-core@2.2.3/node_modules/expo-modules-core`)"
   - "ExpoSecureStore (from `../node_modules/.pnpm/expo-secure-store@14.0.1_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babe_943395bd21f55824c9bd8bfc7ca0eed9/node_modules/expo-secure-store/ios`)"
   - "ExpoSharing (from `../node_modules/.pnpm/expo-sharing@13.0.1_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel+cor_ab6ab08142eb45a3419ec5f664c53824/node_modules/expo-sharing/ios`)"
+  - "ExpoSplashScreen (from `../node_modules/.pnpm/expo-splash-screen@0.29.22_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@ba_4b8586f57f1c835354de19d501864dbc/node_modules/expo-splash-screen/ios`)"
   - "ExpoSymbols (from `../node_modules/.pnpm/expo-symbols@0.2.2_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel+core_35d659ed02ceacdb7f5d54299bfce41d/node_modules/expo-symbols/ios`)"
   - "ExpoSystemUI (from `../node_modules/.pnpm/expo-system-ui@4.0.8_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel+co_fe0357a94e73a65490f1fb56c7cf0079/node_modules/expo-system-ui/ios`)"
   - "ExpoWebBrowser (from `../node_modules/.pnpm/expo-web-browser@14.0.2_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel_4b44270b23b7fe5fb7e3db71cb8198f9/node_modules/expo-web-browser/ios`)"
@@ -2423,6 +2426,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/.pnpm/expo-secure-store@14.0.1_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babe_943395bd21f55824c9bd8bfc7ca0eed9/node_modules/expo-secure-store/ios"
   ExpoSharing:
     :path: "../node_modules/.pnpm/expo-sharing@13.0.1_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel+cor_ab6ab08142eb45a3419ec5f664c53824/node_modules/expo-sharing/ios"
+  ExpoSplashScreen:
+    :path: "../node_modules/.pnpm/expo-splash-screen@0.29.22_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@ba_4b8586f57f1c835354de19d501864dbc/node_modules/expo-splash-screen/ios"
   ExpoSymbols:
     :path: "../node_modules/.pnpm/expo-symbols@0.2.2_expo@52.0.39_@babel+core@7.26.9_@babel+preset-env@7.26.9_@babel+core_35d659ed02ceacdb7f5d54299bfce41d/node_modules/expo-symbols/ios"
   ExpoSystemUI:
@@ -2622,6 +2627,7 @@ SPEC CHECKSUMS:
   ExpoModulesCore: 0bcea8c26791a8f0aed1d4a961f1165e1fc657d4
   ExpoSecureStore: d006eea5e316283099d46f80a6b10055b89a6008
   ExpoSharing: c4540ef2e6615a92e05d2bddf019e1f58f27119e
+  ExpoSplashScreen: 643666b96a84e8d97d55fac43926fb4183c692d9
   ExpoSymbols: b9f255ce49868d46a73f30e12859efeb8117bcad
   ExpoSystemUI: ba4507df7d8d15f5e1694a3c7fc6bc3cca3803e5
   ExpoWebBrowser: 6890a769e6c9d83da938dceb9a03e764afc3ec9c
