@@ -2,9 +2,24 @@ import { SessionProvider } from "@/ctx";
 import makeApolloClient from "@/lib/apollo";
 import { ApolloProvider } from "@apollo/client";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
+import * as Sentry from "@sentry/react-native";
 import Notification from "containers/Notification";
+import { isRunningInExpoGo } from "expo";
+import Constants from "expo-constants";
 import { Slot } from "expo-router";
 import { RecoilRoot } from "recoil";
+
+const navigationIntegration = Sentry.reactNavigationIntegration({
+  enableTimeToInitialDisplay: !isRunningInExpoGo(),
+});
+
+Sentry.init({
+  dsn: Constants.expoConfig?.extra?.SENTRY_DSN,
+  debug: Constants.expoConfig?.extra?.APP_ENV !== "production",
+  tracesSampleRate: 1.0,
+  integrations: [navigationIntegration],
+  enableNativeFramesTracking: !isRunningInExpoGo(),
+});
 
 export default function Root() {
   const client = makeApolloClient();
