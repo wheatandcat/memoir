@@ -106,6 +106,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         resizeMode: "contain",
       },
     ],
+    [
+      "@sentry/react-native/expo",
+      {
+        organization: process.env.SENTRY_ORGANIZATION,
+        project: process.env.SENTRY_PROJECT,
+        url: "https://sentry.io/",
+        note: "Use SENTRY_AUTH_TOKEN env to authenticate with Sentry.",
+      },
+    ],
   ],
   description: "",
 });
