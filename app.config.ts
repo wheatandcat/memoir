@@ -111,6 +111,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       {
         organization: process.env.SENTRY_ORGANIZATION,
         project: process.env.SENTRY_PROJECT,
+        url: "https://sentry.io/",
+        note: "Use SENTRY_AUTH_TOKEN env to authenticate with Sentry.",
       },
     ],
   ],

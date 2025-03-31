@@ -46,3 +46,6 @@ build-*.apk
 
 expo-env.d.ts
 # @end expo-cli
+
+.env.local
+sentry.properties

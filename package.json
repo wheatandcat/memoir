@@ -15,8 +15,10 @@
     "ios:clear": "pnpm init:app:dev && pnpm expo:start --ios",
     "android:clear": "pnpm init:app:dev && pnpm expo:start --android -c",
     "ios:build": "pnpm init:app:production && eas build --profile=production -p=ios",
+    "ios:build:local": "pnpm init:app:production && eas build --profile=production -p=ios --local --clear-cache",
     "ios:build:dev": "pnpm init:app:production && eas build --profile=development-simulator -p=ios",
     "android:build": "pnpm init:app:production && eas build --profile=production -p=android",
+    "android:build:local": "pnpm init:app:production && eas build --profile=production -p=android --local",
     "android:build:dev": "pnpm init:app:production && eas build --profile=preview -p=android",
     "store:upload": "pnpm init:app:production && eas build --profile=production --platform all --non-interactive --auto-submit --no-wait",
     "loki:test": "pnpm loki test ; sh scripts/storybook/setup.sh",
@@ -33,9 +35,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint:ci": "biome ci",
-    "prepare": "if [ -d .git ]; then husky install; fi",
+    "prepare": "if [ -d .git ] && [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi",
     "unused-exports": "node ./scripts/ts-unused-exports",
-    "compare-images": "reg-suit sync-expected && reg-suit compare"
+    "compare-images": "reg-suit sync-expected && reg-suit compare",
+    "xcode": "open ios/memoir.xcworkspace"
   },
   "dependencies": {
     "@apollo/client": "^3.12.4",
@@ -52,10 +55,12 @@
     "@react-native-picker/picker": "2.9.0",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
-    "@sentry/react-native": "^6.9.1",
+    "@sentry/cli": "^2.43.0",
+    "@sentry/react-native": "~6.3.0",
     "@types/compare-versions": "^3.3.0",
     "@types/react-native-snap-carousel": "^3.8.5",
     "@types/uuid": "^8.3.4",
+    "babel-plugin-module-resolver": "^4.1.0",
     "compare-versions": "^5.0.1",
     "cross-fetch": "^4.1.0",
     "dayjs": "^1.11.5",
@@ -81,6 +86,7 @@
     "expo-intent-launcher": "~12.0.2",
     "expo-linear-gradient": "~14.0.2",
     "expo-linking": "~7.0.5",
+    "expo-modules-autolinking": "*",
     "expo-notifications": "~0.29.14",
     "expo-router": "~4.0.19",
     "expo-secure-store": "~14.0.1",
@@ -141,7 +147,6 @@
     "@types/react-native-app-link": "^1.0.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.5.0",
-    "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-expo": "^12.0.6",
     "cross-env": "^7.0.3",
     "graphql-codegen-typescript-mock-data": "^2.2.5",
@@ -194,5 +199,10 @@
         ]
       }
     }
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@sentry/cli"
+    ]
   }
 }

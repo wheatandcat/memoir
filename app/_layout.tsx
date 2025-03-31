@@ -1,9 +1,9 @@
+import Notification from "@/containers/Notification";
 import { SessionProvider } from "@/ctx";
 import makeApolloClient from "@/lib/apollo";
 import { ApolloProvider } from "@apollo/client";
 import { ActionSheetProvider } from "@expo/react-native-action-sheet";
 import * as Sentry from "@sentry/react-native";
-import Notification from "containers/Notification";
 import { isRunningInExpoGo } from "expo";
 import Constants from "expo-constants";
 import { Slot } from "expo-router";
@@ -27,7 +27,7 @@ SplashScreen.setOptions({
   duration: 1000,
 });
 
-export default function Root() {
+export default Sentry.wrap(function Root() {
   const client = makeApolloClient();
 
   return (
@@ -43,4 +43,4 @@ export default function Root() {
       </ApolloProvider>
     </ActionSheetProvider>
   );
-}
+});
