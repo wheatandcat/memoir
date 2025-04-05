@@ -1,0 +1,75 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# フロントエンドのコードガイドライン
+
+## 1. 使用技術
+
+ - Expo SDK 52
+ - ナビゲーション: expo-router
+ - 認証: Firebase Authentication
+ - API: GraphQL
+ - 言語: TypeScript
+ - package管理: pnpm
+ - ビルド: EAS Build
+ - 提供プラットフォーム: iOS、Android
+
+## 2. ディレクトリ構造
+
+### 全体の構造
+
+```bash
+.
+├── @types     // グローバルのtypeファイルを配置
+├── app        // expo-routerのファイルベースルーティングに合わせて配置
+├── assets     // アプリ内で使用する画像、フォントファイルを配置
+├── components // 共通で使用するコンポーネントを配置
+├── containers // React Context APIのProviderとConsumerを配置
+├── features   // 各画面固有のコンポーネントと処理のファイルを配置
+├── hooks      // 共有で使用するCustom Hooksを配置
+├── lib        // 共有で使用する関数を配置
+├── mocks      // mswで使用するモックを配置
+├── queries    // graphqlファイルとGraphQL Codegenで自動生成されたファイルを配置
+├── scripts    // アプリから直接参照されない独立したスクリプトを配置
+└── store      // recoilで使用するGlobalで使用する状態値の管理ファイルを配置
+```
+
+
+### featuresの詳細
+
+細かいディレクトリ構造は以下の通り
+
+```bash
+./features
+└── home            // 対象画面のディレクト（例:home画面）
+    ├── hooks       // 画面固有のCustom Hooks
+    └── components  // 画面固有のコンポーネント
+```
+
+### componentsの詳細
+細かいディレクトリ構造は以下の通り
+
+```bash
+./components
+├── elements  // 最小単位のコンポーネントを配置（例:Text、Button）
+└── layouts   // elementsに該当しない共有コンポーネントを配置
+```
+
+## 3. テストコード
+
+ - テスト対象と同じ階層に「対象のファイル名.test.ts」で宣言
+ - APIのモックは、mswを使用して実装
+
+### 4. 状態管理
+- ローカルステート: コンポーネント内での状態管理は `useState`を使用
+- グローバルステート: 必要に応じてContextやRecoilを使用
+
+### 5. ドキュメント
+- コメント: コード内に適切なコメントを記載し、可読性を向上。
+
+
+
+
