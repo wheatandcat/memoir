@@ -1,5 +1,5 @@
 ---
-to: <%= templatePath %>/__tests__/Page.test.tsx
+to: <%= templatePath %>/Page.test.tsx
 ---
 import React from 'react';
 import { testRenderer } from '@/lib/testUtil';
