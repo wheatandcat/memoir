@@ -1,5 +1,5 @@
 ---
-to: <%= absPath %>/__tests__/<%= component_name %>.test.tsx
+to: <%= absPath %>/<%= component_name %>.test.tsx
 ---
 import React from 'react';
 import { testRenderer } from '@/lib/testUtil';
