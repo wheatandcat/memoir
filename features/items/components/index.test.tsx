@@ -12,7 +12,7 @@ import * as expoRouter from "expo-router";
 import { HttpResponse, graphql } from "msw";
 import React from "react";
 import * as Recoil from "recoil";
-import ItemDetail from "../";
+import ItemDetail from "./";
 
 describe("components/pages/ItemDetail/index.tsx", () => {
   beforeEach(() => {
@@ -54,7 +54,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      }),
+      })
     );
 
     await waitFor(async () => {
@@ -90,7 +90,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      }),
+      })
     );
 
     /*

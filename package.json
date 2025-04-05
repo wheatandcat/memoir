@@ -35,7 +35,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "lint:ci": "biome ci",
-    "prepare": "if [ -d .git ] && [ \"$NODE_ENV\" != \"production\" ]; then husky install; fi",
     "unused-exports": "node ./scripts/ts-unused-exports",
     "compare-images": "reg-suit sync-expected && reg-suit compare",
     "xcode": "open ios/memoir.xcworkspace"

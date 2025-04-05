@@ -7,7 +7,7 @@ import {
 } from "@testing-library/react-native";
 import React from "react";
 import * as Recoil from "recoil";
-import IndexPage from "../";
+import IndexPage from "./";
 
 describe("components/pages/Search/index.tsx", () => {
   beforeEach(() => {
