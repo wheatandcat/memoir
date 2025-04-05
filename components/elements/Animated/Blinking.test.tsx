@@ -1,7 +1,7 @@
 import { testRenderer } from "@/lib/testUtil";
 import { screen } from "@testing-library/react-native";
 import React from "react";
-import Blinking, { type Props } from "../Blinking";
+import Blinking, { type Props } from "./Blinking";
 
 const propsData = (): Props => ({});
 
