@@ -1,16 +1,15 @@
 import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
-import { useSession } from "@/ctx";
 import Home from "@/features/home/components";
 import { NotoSansJP_700Bold } from "@expo-google-fonts/noto-sans-jp";
 import { RobotoCondensed_700Bold } from "@expo-google-fonts/roboto-condensed";
 import * as Font from "expo-font";
 import { Stack } from "expo-router";
+import React from "react";
 import { useState } from "react";
 
 export default function Index() {
-  const { signOut } = useSession();
   const [openSetting, setOpenSetting] = useState<boolean>(false);
 
   const [fontsLoaded] = Font.useFonts({
@@ -27,6 +26,7 @@ export default function Index() {
       <Stack.Screen
         options={{
           title: "",
+          headerBackTitle: "",
           headerStyle: {
             backgroundColor: theme().color.primary.main,
           },
@@ -41,6 +41,7 @@ export default function Index() {
           ),
         }}
       />
+
       <Home
         openSettingModal={openSetting}
         onCloseSettingModal={() => setOpenSetting(false)}
