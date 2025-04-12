@@ -22,7 +22,7 @@ type Data = {
 const Memoir: FC = () => {
   useSentryBreadcrumb();
   const { startDate, endDate, data } = useLocalSearchParams<MemoirParams>();
-  console.log(startDate, endDate, data);
+
   const parsedData = data ? JSON.parse(data) : {};
 
   return (

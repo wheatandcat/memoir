@@ -114,7 +114,7 @@ const Connected: FC<Props> = (props) => {
     }
 
     router.push({
-      pathname: "/memoir/screen-shot",
+      pathname: "/screen-shot",
       params: {
         startDate: props.startDate,
         endDate: props.endDate,

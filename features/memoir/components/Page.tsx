@@ -59,13 +59,15 @@ const Page: React.FC<Props> = (props) => {
               disabled={props.items.length === 0}
             />
           </View>
-          <View style={styles.close}>
-            <IconButton
-              name="highlight-off"
-              size="base"
-              onPress={() => router.back()}
-            />
-          </View>
+          {props.search && (
+            <View style={styles.close}>
+              <IconButton
+                name="highlight-off"
+                size="base"
+                onPress={() => router.back()}
+              />
+            </View>
+          )}
         </View>
       </SafeAreaView>
     </>

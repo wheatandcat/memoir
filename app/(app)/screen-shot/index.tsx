@@ -1,5 +1,5 @@
 import theme from "@/config/theme";
-import Page from "@/features/setting/licence/components";
+import Page from "@/features/memoir/screenShot/components";
 import { Stack } from "expo-router";
 import React from "react";
 
@@ -8,12 +8,12 @@ export default function Index() {
     <>
       <Stack.Screen
         options={{
-          title: "ソフトウェアライセンス",
+          title: "共有",
           headerBackTitle: "",
           headerStyle: {
-            backgroundColor: theme().color.primary.main,
+            backgroundColor: theme().color.base.main,
           },
-          headerTintColor: theme().fontColors.secondary,
+          headerShadowVisible: false,
         }}
       />
       <Page />

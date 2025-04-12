@@ -97,7 +97,7 @@ const Connected: React.FC<Props> = (props) => {
     const endDate = dayjs().format("YYYY-MM-DDT00:00:00+09:00");
 
     router.push({
-      pathname: "/memoir",
+      pathname: "/modal",
       params: {
         startDate,
         endDate,
