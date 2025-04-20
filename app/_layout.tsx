@@ -14,15 +14,19 @@ const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
 });
 
-Sentry.init({
-  dsn: Constants.expoConfig?.extra?.SENTRY_DSN,
-  debug: Constants.expoConfig?.extra?.APP_ENV !== "production",
-  tracesSampleRate: 1.0,
-  integrations: [navigationIntegration],
-  enableNativeFramesTracking: !isRunningInExpoGo(),
-});
+if (Constants.expoConfig?.extra?.APP_ENV === "production") {
+  Sentry.init({
+    dsn: Constants.expoConfig?.extra?.SENTRY_DSN,
+    debug: Constants.expoConfig?.extra?.APP_ENV !== "production",
+    tracesSampleRate: 1.0,
+    integrations: [navigationIntegration],
+    enableNativeFramesTracking: !isRunningInExpoGo(),
+  });
+}
 
-SplashScreen.preventAutoHideAsync();
+SplashScreen.preventAutoHideAsync().catch(() => {
+  console.log("SplashScreen.preventAutoHideAsync() error");
+});
 SplashScreen.setOptions({
   duration: 1000,
 });
@@ -31,16 +35,16 @@ export default Sentry.wrap(function Root() {
   const client = makeApolloClient();
 
   return (
-    <ActionSheetProvider>
-      <ApolloProvider client={client}>
-        <Notification>
-          <RecoilRoot>
-            <SessionProvider>
+    <SessionProvider>
+      <ActionSheetProvider>
+        <ApolloProvider client={client}>
+          <Notification>
+            <RecoilRoot>
               <Slot />
-            </SessionProvider>
-          </RecoilRoot>
-        </Notification>
-      </ApolloProvider>
-    </ActionSheetProvider>
+            </RecoilRoot>
+          </Notification>
+        </ApolloProvider>
+      </ActionSheetProvider>
+    </SessionProvider>
   );
 });

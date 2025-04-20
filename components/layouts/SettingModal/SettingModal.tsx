@@ -11,8 +11,7 @@ import { authUserState, userState } from "@/store/atoms";
 import * as Device from "expo-device";
 import { ActivityAction, startActivityAsync } from "expo-intent-launcher";
 import { useRouter } from "expo-router";
-import type { FC } from "react";
-import { memo, useCallback } from "react";
+import React, { memo, useCallback, type FC } from "react";
 import {
   Alert,
   Linking,
