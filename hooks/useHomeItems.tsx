@@ -1,3 +1,4 @@
+import { useSession } from "@/ctx";
 import usePrevious from "@/hooks/usePrevious";
 import { ItemsByDateDocument } from "@/queries/api/index";
 import { homeDateState, homeItemsState } from "@/store/atoms";
@@ -6,8 +7,17 @@ import { useEffect, useState } from "react";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 
 const useHomeItems = () => {
+  const { signOut } = useSession();
+
   const [getItemsByDate, { data, loading, error, refetch, client }] =
-    useLazyQuery(ItemsByDateDocument);
+    useLazyQuery(ItemsByDateDocument, {
+      onError: (error) => {
+        if (error.message.includes("access denied")) {
+          // アプリがアンインストールした場合に、ここでエラーが出るのでログアウトさせる
+          signOut();
+        }
+      },
+    });
   const homeDate = useRecoilValue(homeDateState);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const [apiLoading, setApiLoading] = useState(true);
