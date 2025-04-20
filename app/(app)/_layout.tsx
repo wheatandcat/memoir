@@ -6,7 +6,6 @@ import { Text } from "react-native";
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
-  console.log("session:", session);
   const router = useRouter();
 
   // You can keep the splash screen open, or render a loading screen like we do here.
