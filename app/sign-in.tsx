@@ -10,7 +10,6 @@ SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 500);
 
 export default function SignIn() {
-  console.log("sign-in");
   const { user, onSaveWhenNotLogin } = useUser();
   const [create, setCreate] = useState(false);
 
