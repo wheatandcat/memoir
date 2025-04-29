@@ -23,7 +23,15 @@ export default function AppLayout() {
 
   // This layout can be deferred because it's not the root layout.
   return (
-    <Stack>
+    <Stack
+      screenOptions={{
+        headerBackTitle: "",
+        headerStyle: {
+          backgroundColor: theme().color.primary.main,
+        },
+        headerTintColor: theme().fontColors.secondary,
+      }}
+    >
       <Stack.Screen name="index" />
       <Stack.Screen
         name="modal"

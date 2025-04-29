@@ -1,5 +1,4 @@
 import View from "@/components/elements/View";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import IconButton from "@/components/layouts/IconButton";
 import DateCards from "@/components/layouts/Memoir/DateCards";
 import ShareButton from "@/components/layouts/Memoir/ShareButton";
@@ -7,7 +6,7 @@ import theme from "@/config/theme";
 import { iosSelector } from "@/lib/responsive";
 import { useRouter } from "expo-router";
 import type React from "react";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Platform, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { Props as PlainProps } from "./Plain";
@@ -30,47 +29,51 @@ export type Props = Pick<
 
 const Page: React.FC<Props> = (props) => {
   const router = useRouter();
+  const [showShareButton, setShowShareButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowShareButton(true);
+    }, 1);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.background.main}
-        style="dark"
-      />
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.root}>
-          <View style={styles.inner}>
-            <DateCards
-              startDate={props.startDate}
-              endDate={props.endDate}
-              items={props.items}
-              pageInfo={props.pageInfo}
-              loading={props.loading}
-              onLoadMore={props.onLoadMore}
-              users={props.users}
-              search={props.search}
-              selectedUserIDList={props.selectedUserIDList}
-              onChangeUserID={props.onChangeUserID}
-            />
-          </View>
+    <SafeAreaView style={styles.safe}>
+      <View style={styles.root}>
+        <View style={styles.inner}>
+          <DateCards
+            startDate={props.startDate}
+            endDate={props.endDate}
+            items={props.items}
+            pageInfo={props.pageInfo}
+            loading={props.loading}
+            onLoadMore={props.onLoadMore}
+            users={props.users}
+            search={props.search}
+            selectedUserIDList={props.selectedUserIDList}
+            onChangeUserID={props.onChangeUserID}
+          />
+        </View>
+        {showShareButton && (
           <View style={styles.action}>
             <ShareButton
               onPress={props.onScreenShot}
               disabled={props.items.length === 0}
             />
           </View>
-          {props.search && (
-            <View style={styles.close}>
-              <IconButton
-                name="highlight-off"
-                size="base"
-                onPress={() => router.back()}
-              />
-            </View>
-          )}
-        </View>
-      </SafeAreaView>
-    </>
+        )}
+        {props.search && (
+          <View style={styles.close}>
+            <IconButton
+              name="highlight-off"
+              size="base"
+              onPress={() => router.back()}
+            />
+          </View>
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 

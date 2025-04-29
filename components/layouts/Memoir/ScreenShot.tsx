@@ -13,7 +13,7 @@ import type { User as TUser } from "@/store/atoms";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";
-import type { FC } from "react";
+import type React from "react";
 import { memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
@@ -74,7 +74,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
   );
 };
 
-const ScreenShot: FC<Props> = (props) => {
+const ScreenShot: React.FC<Props> = (props) => {
   const viewShot = useRef<ViewShot>(null);
   const router = useRouter();
   const count = useRef(0);
@@ -167,7 +167,7 @@ const ScreenShot: FC<Props> = (props) => {
     const categoryID = item.map((v) => Number(v.contents?.categoryID));
 
     const dateItem: RenderedItem = {
-      date: v1.date,
+      date: v1.date as string,
       categoryID: getModeCountMax(categoryID),
       width: windowWidth,
       onLoadEnd: () => null,

@@ -8,7 +8,7 @@ import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/top/components/Connected";
 import { StatusBar } from "expo-status-bar";
 import type { FC } from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import {
   ImageBackground,
   Platform,

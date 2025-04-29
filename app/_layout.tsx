@@ -1,3 +1,5 @@
+import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
+import theme from "@/config/theme";
 import Notification from "@/containers/Notification";
 import { SessionProvider } from "@/ctx";
 import makeApolloClient from "@/lib/apollo";
@@ -36,6 +38,10 @@ export default Sentry.wrap(function Root() {
 
   return (
     <SessionProvider>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="dark"
+      />
       <ActionSheetProvider>
         <ApolloProvider client={client}>
           <Notification>

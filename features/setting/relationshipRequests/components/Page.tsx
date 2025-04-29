@@ -1,5 +1,4 @@
 import View from "@/components/elements/View";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import List from "@/components/layouts/RelationshipRequest/List";
 import theme from "@/config/theme";
 import type React from "react";
@@ -22,10 +21,6 @@ export type Props = ConnectedType &
 const Page: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
-        style="light"
-      />
       <List {...props} />
     </View>
   );

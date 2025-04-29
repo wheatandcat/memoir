@@ -2,14 +2,15 @@ import View from "@/components/elements/View";
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import Home from "@/features/home/components";
+import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import { NotoSansJP_700Bold } from "@expo-google-fonts/noto-sans-jp";
 import { RobotoCondensed_700Bold } from "@expo-google-fonts/roboto-condensed";
 import * as Font from "expo-font";
 import { Stack } from "expo-router";
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function Index() {
+  const { setupAuth } = useFirebaseAuth(true);
   const [openSetting, setOpenSetting] = useState<boolean>(false);
 
   const [fontsLoaded] = Font.useFonts({
@@ -17,7 +18,7 @@ export default function Index() {
     "NotoSansJP-Bold": NotoSansJP_700Bold,
   });
 
-  if (!fontsLoaded) {
+  if (!fontsLoaded || !setupAuth) {
     return null;
   }
 
