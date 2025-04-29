@@ -1,6 +1,5 @@
 import DateInput from "@/components/layouts/DateInput/DateInput";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
-import theme from "@/config/theme";
+import React from "react";
 import type { FC, ReactNode } from "react";
 import { memo } from "react";
 import { StyleSheet, View } from "react-native";
@@ -14,20 +13,14 @@ type Props = {
 
 const InputDateWrap: FC<Props> = (props) => {
   return (
-    <>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
-        style="light"
+    <View style={styles.root}>
+      <DateInput
+        date={props.date}
+        onChange={props.onChangeDate}
+        isItemDetail={props.isItemDetail}
       />
-      <View style={styles.root}>
-        <DateInput
-          date={props.date}
-          onChange={props.onChangeDate}
-          isItemDetail={props.isItemDetail}
-        />
-        {props.children}
-      </View>
-    </>
+      {props.children}
+    </View>
   );
 };
 

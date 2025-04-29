@@ -1,5 +1,4 @@
 import View from "@/components/elements/View";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import IconButton from "@/components/layouts/IconButton";
 import DateCards from "@/components/layouts/Memoir/DateCards";
 import ShareButton from "@/components/layouts/Memoir/ShareButton";
@@ -40,47 +39,41 @@ const Page: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.background.main}
-        style="dark"
-      />
-      <SafeAreaView style={styles.safe}>
-        <View style={styles.root}>
-          <View style={styles.inner}>
-            <DateCards
-              startDate={props.startDate}
-              endDate={props.endDate}
-              items={props.items}
-              pageInfo={props.pageInfo}
-              loading={props.loading}
-              onLoadMore={props.onLoadMore}
-              users={props.users}
-              search={props.search}
-              selectedUserIDList={props.selectedUserIDList}
-              onChangeUserID={props.onChangeUserID}
+    <SafeAreaView style={styles.safe}>
+      <View style={styles.root}>
+        <View style={styles.inner}>
+          <DateCards
+            startDate={props.startDate}
+            endDate={props.endDate}
+            items={props.items}
+            pageInfo={props.pageInfo}
+            loading={props.loading}
+            onLoadMore={props.onLoadMore}
+            users={props.users}
+            search={props.search}
+            selectedUserIDList={props.selectedUserIDList}
+            onChangeUserID={props.onChangeUserID}
+          />
+        </View>
+        {showShareButton && (
+          <View style={styles.action}>
+            <ShareButton
+              onPress={props.onScreenShot}
+              disabled={props.items.length === 0}
             />
           </View>
-          {showShareButton && (
-            <View style={styles.action}>
-              <ShareButton
-                onPress={props.onScreenShot}
-                disabled={props.items.length === 0}
-              />
-            </View>
-          )}
-          {props.search && (
-            <View style={styles.close}>
-              <IconButton
-                name="highlight-off"
-                size="base"
-                onPress={() => router.back()}
-              />
-            </View>
-          )}
-        </View>
-      </SafeAreaView>
-    </>
+        )}
+        {props.search && (
+          <View style={styles.close}>
+            <IconButton
+              name="highlight-off"
+              size="base"
+              onPress={() => router.back()}
+            />
+          </View>
+        )}
+      </View>
+    </SafeAreaView>
   );
 };
 

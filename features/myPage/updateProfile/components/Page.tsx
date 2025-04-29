@@ -2,7 +2,6 @@ import Button from "@/components/elements/Button";
 import Text from "@/components/elements/Text";
 import TextInput from "@/components/elements/TextInput";
 import View from "@/components/elements/View";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import theme from "@/config/theme";
 import type { User } from "@/store/atoms";
 import type React from "react";
@@ -43,10 +42,6 @@ const Page: React.FC<Props> = (props) => {
 
   return (
     <View style={styles.root}>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
-        style="light"
-      />
       <ProfileImage
         authenticated={props.authenticated}
         image={props.user.image}

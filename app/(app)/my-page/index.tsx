@@ -8,11 +8,6 @@ export default function Index() {
       <Stack.Screen
         options={{
           title: "マイページ",
-          headerBackTitle: "",
-          headerStyle: {
-            backgroundColor: theme().color.primary.main,
-          },
-          headerTintColor: theme().fontColors.secondary,
         }}
       />
       <Page />

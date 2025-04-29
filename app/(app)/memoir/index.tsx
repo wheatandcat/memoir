@@ -7,6 +7,7 @@ export default function Index() {
     <>
       <Stack.Screen
         options={{
+          title: "memoir",
           headerShown: false,
         }}
       />

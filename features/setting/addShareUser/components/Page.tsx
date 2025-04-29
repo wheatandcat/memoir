@@ -2,7 +2,6 @@ import View from "@/components/elements/View";
 import InputInvite from "@/components/layouts/AddShareUser/InputInvite";
 import InputModal from "@/components/layouts/AddShareUser/InputModal";
 import InviteCard from "@/components/layouts/AddShareUser/InviteCard";
-import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import type React from "react";
@@ -40,10 +39,6 @@ const Page: React.FC<Props> = (props) => {
 
   return (
     <>
-      <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
-        style="light"
-      />
       <InputModal
         isVisible={dialog}
         onClose={() => {
