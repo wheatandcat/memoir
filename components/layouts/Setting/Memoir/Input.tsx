@@ -33,7 +33,7 @@ const Input: FC<Props> = (props) => {
       setOpenTime(false);
       props.onChangeTime(val);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -51,8 +51,9 @@ const Input: FC<Props> = (props) => {
               placeholder: {
                 width: 40,
                 height: 50,
-                color: theme().color.transparent,
+                color: theme().color.secondary.main,
               },
+              inputIOSContainer: { pointerEvents: "none" },
               inputIOS: {
                 fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,

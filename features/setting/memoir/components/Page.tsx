@@ -22,9 +22,9 @@ const Page: React.FC<Props> = (props) => {
   const [time, setTime] = useState(
     dayjs(
       `0000-01-01T${`00${props.hours}`.slice(-2)}:${`00${props.minutes}`.slice(
-        -2,
-      )}:00`,
-    ).toDate(),
+        -2
+      )}:00`
+    ).toDate()
   );
 
   const [push, setPush] = useState(props.notification ? 1 : 0);

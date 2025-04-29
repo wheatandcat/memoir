@@ -5,7 +5,7 @@ import NotAuthenticated from "@/components/layouts/MyPage/NotAuthenticated";
 import theme from "@/config/theme";
 import type { User } from "@/store/atoms";
 import type { FC } from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import type { ConnectedType } from "./type";
 

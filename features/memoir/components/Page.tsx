@@ -7,7 +7,7 @@ import theme from "@/config/theme";
 import { iosSelector } from "@/lib/responsive";
 import { useRouter } from "expo-router";
 import type React from "react";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import { Platform, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { Props as PlainProps } from "./Plain";
@@ -30,6 +30,14 @@ export type Props = Pick<
 
 const Page: React.FC<Props> = (props) => {
   const router = useRouter();
+  const [showShareButton, setShowShareButton] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowShareButton(true);
+    }, 1);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -53,12 +61,14 @@ const Page: React.FC<Props> = (props) => {
               onChangeUserID={props.onChangeUserID}
             />
           </View>
-          <View style={styles.action}>
-            <ShareButton
-              onPress={props.onScreenShot}
-              disabled={props.items.length === 0}
-            />
-          </View>
+          {showShareButton && (
+            <View style={styles.action}>
+              <ShareButton
+                onPress={props.onScreenShot}
+                disabled={props.items.length === 0}
+              />
+            </View>
+          )}
           {props.search && (
             <View style={styles.close}>
               <IconButton
