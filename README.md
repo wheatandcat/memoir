@@ -81,19 +81,18 @@ $ pnpm ios:build
 $ pnpm store:upload
 ```
 
-
 ## Storybook
 
-### 起動
+### iOS起動
 
 ```bash
 $ pnpm storybook:ios
 ```
 
-### Storybook Server
+### Android起動
 
 ```bash
-$ pnpm start-server
+$ pnpm storybook:android
 ```
 
 # コード生成
@@ -120,26 +119,6 @@ $ pnpm hygen test new
 
 ```bash
 $ npx npm-license-crawler --dependencies --production --onlyDirectDependencies --omitVersion --json ./src/licenses.json
-```
-
-# Visual Testing
-
-## 画像更新
-
-```bash
-$ pnpm loki:update
-```
-
-## ローカル比較
-
-```bash
-$ pnpm loki:test
-```
-
-## reg-suit
-
-```bash
-$ npx reg-suit run
 ```
 
 # CI 環境

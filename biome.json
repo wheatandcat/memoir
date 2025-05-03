@@ -11,7 +11,8 @@
       "node_modules",
       "queries/api/mocks.ts",
       "queries/api/index.ts",
-      ".expo/types/router.d.ts"
+      ".expo/types/router.d.ts",
+      ".storybook"
     ],
     "include": ["**/*.ts", "**/*.tsx"]
   },

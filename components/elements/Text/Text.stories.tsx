@@ -2,7 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import Text from ".";
 
-const Story = () => (
+export const Basic = () => (
   <View>
     <Text size="xl2">size:xl2</Text>
     <Text size="xl">size:xl</Text>
@@ -45,7 +45,4 @@ const Story = () => (
 
 export default {
   title: "atoms/Text",
-  component: Story,
 };
-
-export const Default = {};
