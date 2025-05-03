@@ -5,7 +5,7 @@ import Image from "../";
 import type { Props } from "../";
 
 const propsData = (): Props => ({
-  source: require("../../../img/categories/category_book.png"),
+  source: require("@/assets/img/categories/category_book.png"),
   width: 100,
   height: 100,
   testID: "test-id-image",
