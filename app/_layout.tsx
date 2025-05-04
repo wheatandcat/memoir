@@ -1,5 +1,6 @@
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import theme from "@/config/theme";
+import MaintenanceContainer from "@/containers/Maintenance";
 import Notification from "@/containers/Notification";
 import { SessionProvider } from "@/ctx";
 import makeApolloClient from "@/lib/apollo";
@@ -46,7 +47,9 @@ export default Sentry.wrap(function Root() {
         <ApolloProvider client={client}>
           <Notification>
             <RecoilRoot>
-              <Slot />
+              <MaintenanceContainer>
+                <Slot />
+              </MaintenanceContainer>
             </RecoilRoot>
           </Notification>
         </ApolloProvider>
