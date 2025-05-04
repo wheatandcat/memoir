@@ -3,7 +3,7 @@ import React from "react";
 import DateInput from "./DateInput";
 
 export default {
-  title: "organisms/DateInput",
+  title: "components/layouts/DateInput",
 };
 
 export const Default = () => <DateInput date="2021-01-01" onChange={mockFn} />;

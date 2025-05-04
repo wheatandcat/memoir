@@ -3,7 +3,7 @@ import { View } from "react-native";
 import Divider from "./";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _Divider = () => (

@@ -13,7 +13,7 @@ const inputModalProps = (): InputModalProps => ({
 });
 
 export default {
-  title: "organisms/AddShareUser/InputModal",
+  title: "components/layouts/AddShareUser/InputModal",
 };
 
 export const 入力画面 = () => <InputModal {...inputModalProps()} />;

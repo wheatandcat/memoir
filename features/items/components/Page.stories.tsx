@@ -3,7 +3,7 @@ import React from "react";
 import Page from "./Page";
 
 export default {
-  title: "templates/ItemDetail",
+  title: "features/itemDetail",
 };
 
 export const _Page = () => (

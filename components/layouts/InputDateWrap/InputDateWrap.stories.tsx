@@ -3,7 +3,7 @@ import React from "react";
 import InputDateWrap from "./InputDateWrap";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _InputDateWrap = () => (

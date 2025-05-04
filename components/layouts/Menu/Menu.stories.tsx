@@ -3,7 +3,7 @@ import React from "react";
 import Menu from "./Menu";
 
 export default {
-  title: "organisms/Menu",
+  title: "components/layouts/Menu",
 };
 
 export const _Menu = () => (

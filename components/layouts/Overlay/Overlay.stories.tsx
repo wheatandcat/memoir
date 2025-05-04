@@ -9,7 +9,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "molecules/Overlay",
+  title: "components/layouts/Overlay",
 };
 
 export const _Loading = () => (

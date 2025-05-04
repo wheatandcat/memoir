@@ -3,7 +3,7 @@ import React from "react";
 import Compatibility from "./Compatibility";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _Compatibility = () => (

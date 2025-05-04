@@ -4,7 +4,7 @@ import React from "react";
 import IconButton from "./";
 
 export default {
-  title: "molecules",
+  title: "components/layouts",
 };
 
 export const _IconButton = () => (

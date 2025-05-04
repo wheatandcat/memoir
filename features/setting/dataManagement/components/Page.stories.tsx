@@ -9,7 +9,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Setting/DataManagement",
+  title: "features/setting/dataManagement",
 };
 
 export const _Page = () => (

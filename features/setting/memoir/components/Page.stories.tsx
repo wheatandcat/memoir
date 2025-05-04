@@ -9,7 +9,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Setting/Memoir",
+  title: "features/setting/memoir",
 };
 
 export const _Page = () => <Page {...props()} />;

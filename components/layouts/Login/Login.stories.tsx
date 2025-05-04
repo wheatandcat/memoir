@@ -9,7 +9,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "organisms/Login",
+  title: "components/layouts/Login",
 };
 
 export const _Form = () => <Form {...props()} />;

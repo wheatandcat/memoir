@@ -4,7 +4,7 @@ import React from "react";
 import ListItem from "./";
 
 export default {
-  title: "molecules",
+  title: "components/layouts",
 };
 
 export const _ListItem = () => (

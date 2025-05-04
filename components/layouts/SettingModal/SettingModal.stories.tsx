@@ -4,7 +4,7 @@ import React from "react";
 import SettingModal from "./";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _SettingModal = () => (

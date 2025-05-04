@@ -3,7 +3,7 @@ import React from "react";
 import Loading from "./";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _Loading = () => (

@@ -16,7 +16,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/UpdateProfile",
+  title: "features/myPage/updateProfile",
 };
 
 export const _Page = () => <Page {...props()} />;

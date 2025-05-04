@@ -24,7 +24,7 @@ const userProps = (): UserProps => ({
 });
 
 export default {
-  title: "organisms/ShareUser",
+  title: "components/layouts/ShareUser",
 };
 
 export const _List = () => <List {...listProps()} />;

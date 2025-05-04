@@ -13,7 +13,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Setting/AcceptedRelationship",
+  title: "features/setting/acceptedRelationship",
 };
 
 export const _Page = () => <Page {...props()} />;

@@ -4,7 +4,7 @@ import { StyleSheet } from "react-native";
 import View from "./";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _View = () => (

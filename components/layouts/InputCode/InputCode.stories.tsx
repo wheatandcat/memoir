@@ -9,7 +9,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "molecules/InputCode",
+  title: "components/layouts/InputCode",
 };
 
 export const _InputCode = () => <InputCode {...props()} />;

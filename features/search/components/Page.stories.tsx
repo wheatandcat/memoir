@@ -10,7 +10,7 @@ const props = (userLength = 5): Props => ({
 });
 
 export default {
-  title: "templates/Search/Page",
+  title: "features/search/Page",
 };
 
 export const _1人 = () => <Page {...props(1)} />;

@@ -38,7 +38,7 @@ const listProps = (): ListProps => ({
 });
 
 export default {
-  title: "organisms/RelationshipRequest",
+  title: "components/layouts/RelationshipRequest",
 };
 
 export const _Notification = () => <Notification {...notificationProps()} />;

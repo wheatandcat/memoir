@@ -34,7 +34,7 @@ const inputUsers = (): InputUsersProps => ({
 });
 
 export default {
-  title: "organisms/Search/Input/InputUsers",
+  title: "components/layouts/Search/Input/InputUsers",
 };
 
 export const _1人 = () => (

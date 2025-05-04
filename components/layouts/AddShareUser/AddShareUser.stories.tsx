@@ -32,7 +32,7 @@ const tutorialModalProps = (): TutorialModalProps => ({
 });
 
 export default {
-  title: "organisms/AddShareUser",
+  title: "components/layouts/AddShareUser",
 };
 
 export const _InviteCard = () => <InviteCard {...inviteCardProps()} />;

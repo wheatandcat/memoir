@@ -22,7 +22,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/MyPage",
+  title: "features/myPage",
 };
 
 export const ログイン前 = () => <Page {...props()} />;
