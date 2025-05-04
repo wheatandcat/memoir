@@ -5,7 +5,7 @@ import { StyleSheet } from "react-native";
 import Categories from "./Categories";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _Categories = () => (

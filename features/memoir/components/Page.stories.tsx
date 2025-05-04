@@ -28,7 +28,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Memoir/Page",
+  title: "features/memoir/Page",
 };
 
 export const ユーザー1人 = () => <Page {...props()} />;

@@ -30,7 +30,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "organisms/Memoir/DateCards",
+  title: "components/layouts/Memoir/DateCards",
 };
 
 export const Default = () => (

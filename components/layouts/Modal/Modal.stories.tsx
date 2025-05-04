@@ -5,7 +5,7 @@ import React from "react";
 import Modal from "./";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _Modal = () => (

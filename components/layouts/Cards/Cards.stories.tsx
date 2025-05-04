@@ -14,7 +14,7 @@ const props = (loading: boolean): Props => ({
 });
 
 export default {
-  title: "organisms/Cards",
+  title: "components/layouts/Cards",
 };
 
 export const デフォルト = () => <Cards {...props(false)} />;

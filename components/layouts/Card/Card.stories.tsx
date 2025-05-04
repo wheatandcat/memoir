@@ -3,7 +3,7 @@ import React from "react";
 import Card from "./Card";
 
 export default {
-  title: "organisms/Card",
+  title: "components/layouts/Card",
 };
 
 export const _Card = () => (

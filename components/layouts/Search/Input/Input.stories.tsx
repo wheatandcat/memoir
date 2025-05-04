@@ -18,7 +18,7 @@ const inputCategoryProps = (): InputCategoryProps => ({
 });
 
 export default {
-  title: "organisms/Search/Input",
+  title: "components/layouts/Search/Input",
 };
 
 export const _InputDate = () => <InputDate {...inputDateProps()} />;

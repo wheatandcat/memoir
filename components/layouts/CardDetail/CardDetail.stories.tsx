@@ -6,7 +6,7 @@ import { StyleSheet } from "react-native";
 import CardDetail from "./CardDetail";
 
 export default {
-  title: "organisms/CardDetail",
+  title: "components/layouts/CardDetail",
 };
 
 export const Default = () => (

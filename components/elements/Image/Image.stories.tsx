@@ -3,7 +3,7 @@ import React from "react";
 import Image from "./";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _Image = () => (

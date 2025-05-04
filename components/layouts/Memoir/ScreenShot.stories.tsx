@@ -19,7 +19,7 @@ const screenShotProps = (): ScreenShotProps => ({
 });
 
 export default {
-  title: "organisms/Memoir/ScreenShot",
+  title: "components/layouts/Memoir/ScreenShot",
 };
 
 export const _Default = () => (

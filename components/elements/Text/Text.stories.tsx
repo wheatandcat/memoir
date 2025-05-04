@@ -44,5 +44,5 @@ export const Basic = () => (
 );
 
 export default {
-  title: "atoms/Text",
+  title: "components/elements/Text",
 };

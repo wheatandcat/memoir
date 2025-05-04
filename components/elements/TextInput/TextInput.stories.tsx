@@ -3,7 +3,7 @@ import React from "react";
 import TextInput from "./";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _TextInput = () => (

@@ -25,7 +25,7 @@ const confirmProps = (): ConfirmProps => ({
 });
 
 export default {
-  title: "organisms/AddShareUser/InputModal",
+  title: "components/layouts/AddShareUser/InputModal",
 };
 
 export const _Input = () => <Input {...inputProps()} />;

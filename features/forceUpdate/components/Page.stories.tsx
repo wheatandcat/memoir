@@ -2,7 +2,7 @@ import React from "react";
 import Page from "./Page";
 
 export default {
-  title: "templates/ForceUpdate",
+  title: "features/forceUpdate",
 };
 
 export const _Page = () => <Page />;

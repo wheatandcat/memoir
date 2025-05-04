@@ -24,7 +24,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Setting/AddShareUser",
+  title: "features/setting/addShareUser",
 };
 
 export const _Page = () => <Page {...props()} />;

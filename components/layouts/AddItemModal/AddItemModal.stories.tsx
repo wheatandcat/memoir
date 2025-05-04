@@ -4,7 +4,7 @@ import React from "react";
 import AddItemModal from "./";
 
 export default {
-  title: "organisms",
+  title: "components/layouts",
 };
 
 export const _AddItemModal = () => (

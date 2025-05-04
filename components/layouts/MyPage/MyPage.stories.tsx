@@ -34,7 +34,7 @@ const props2 = (): AuthenticatedProps => ({
 });
 
 export default {
-  title: "organisms/MyPage",
+  title: "components/layouts/MyPage",
 };
 
 export const _NotAuthenticated = () => <NotAuthenticated {...props1()} />;

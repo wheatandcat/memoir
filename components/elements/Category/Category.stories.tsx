@@ -4,7 +4,7 @@ import Category from "./Category";
 import setting from "./setting";
 
 export default {
-  title: "atoms",
+  title: "components/elements",
 };
 
 export const _Category = () => (

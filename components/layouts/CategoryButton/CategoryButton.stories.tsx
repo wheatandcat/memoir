@@ -6,7 +6,7 @@ import { ScrollView, StyleSheet } from "react-native";
 import CategoryButton from "./CategoryButton";
 
 export default {
-  title: "molecules",
+  title: "components/layouts",
 };
 
 export const _CategoryButton = () => (

@@ -18,7 +18,7 @@ const notificationProps = (): NotificationProps => ({
 });
 
 export default {
-  title: "organisms/Setting/Memoir",
+  title: "components/layouts/Setting/Memoir",
 };
 
 export const _Input = () => <Input {...inputProps()} />;

@@ -2,7 +2,7 @@ import React from "react";
 import SeeYouAgain from "./SeeYouAgain";
 
 export default {
-  title: "templates/SeeYouAgain",
+  title: "components/layouts/SeeYouAgain",
 };
 
 export const _SeeYouAgain = () => <SeeYouAgain />;

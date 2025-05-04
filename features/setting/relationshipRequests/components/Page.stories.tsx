@@ -16,7 +16,7 @@ const props = (): Props => ({
 });
 
 export default {
-  title: "templates/Setting/RelationshipRequests",
+  title: "features/setting/relationshipRequests",
 };
 
 export const _Page = () => <Page {...props()} />;
