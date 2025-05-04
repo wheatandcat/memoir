@@ -23,7 +23,7 @@ const dialog = () => {
       },
       { text: "いいえ", onPress: () => {}, style: "cancel" },
     ],
-    { cancelable: false }
+    { cancelable: false },
   );
 };
 
@@ -49,7 +49,7 @@ const useUpdateExpo = () => {
       if (update?.manifest?.id) {
         await setItem(
           storageKey.UPDATES_RELEASE_KEY,
-          update?.manifest?.id || ""
+          update?.manifest?.id || "",
         );
         await setItem(storageKey.UPDATES_SKIPPED_KEY, "false");
       }

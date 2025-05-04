@@ -27,7 +27,7 @@ const MaintenanceContainer: React.FC<Props> = memo((props) => {
   const forceUpdate = compare(
     appConfig.supportVersion,
     Constants?.expoConfig?.version || "1.0.0",
-    ">"
+    ">",
   );
 
   const checkAppConfig = useCallback(async () => {
@@ -56,7 +56,7 @@ const MaintenanceContainer: React.FC<Props> = memo((props) => {
         checkAppConfig();
       }
     },
-    [checkAppConfig]
+    [checkAppConfig],
   );
 
   useEffect(() => {
