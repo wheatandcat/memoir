@@ -66,14 +66,13 @@ const MaintenanceContainer: React.FC<Props> = memo((props) => {
     };
   }, [handleUpdate]);
 
-  if (appConfig.maintenance) {
-    return <Maintenance {...appConfig} getMaintenance={checkAppConfig} />;
-  }
-
   if (forceUpdate) {
     return <ForceUpdate />;
   }
 
+  if (appConfig.maintenance) {
+    return <Maintenance {...appConfig} getMaintenance={checkAppConfig} />;
+  }
   return props.children;
 });
 
