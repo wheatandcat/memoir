@@ -22,7 +22,7 @@ const Page: React.FC<Props> = (props) => {
   return (
     <View style={styles.root}>
       <View py={5}>
-        <Text textAlign="center">ただいまメンテンナンス中です。</Text>
+        <Text textAlign="center">ただいまメンテナンス中です。</Text>
       </View>
 
       {!!props.maintenancePeriod && (
