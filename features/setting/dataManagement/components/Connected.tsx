@@ -2,16 +2,17 @@ import Loading from "@/components/elements/Loading";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
 import { deleteImageAsync } from "@/lib/image";
 import { DeleteUserDocument, RelationshipsDocument } from "@/queries/api/index";
-import { screenState, userState } from "@/store/atoms";
+import { userState } from "@/store/atoms";
+import { useScreenStore } from "@/store/screenStore";
 import { useMutation, useQuery } from "@apollo/client";
 import type React from "react";
 import { memo, useCallback } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 
 const Connected: React.FC = () => {
   const user = useRecoilValue(userState);
-  const setScreenState = useSetRecoilState(screenState);
+  const setScreenState = useScreenStore((state) => state.setSeeYouAgain);
   const { setupAuth, onLogout } = useFirebaseAuth(true);
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
@@ -30,7 +31,7 @@ const Connected: React.FC = () => {
           await deleteImageAsync(user.image);
         }
         await onLogout();
-        setScreenState({ seeYouAgain: true });
+        setScreenState(true);
       },
     },
   );

@@ -2,13 +2,13 @@ import useHomeItems from "@/hooks/useHomeItems";
 import dayjs from "@/lib/dayjs";
 import { CreateItemDocument } from "@/queries/api/index";
 import type { NewItem } from "@/queries/api/index";
-import { homeItemsState, homeState } from "@/store/atoms";
 import { useHomeDateStore } from "@/store/homeDateStore";
+import { useHomeItemsStore } from "@/store/homeItemsStore";
+import { useHomeStateStore } from "@/store/homeStateStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 
 type Props = {
@@ -26,7 +26,7 @@ const initialState = (openAddItemModal: boolean): State => ({
 
 const Connected: React.FC<Props> = (props) => {
   const router = useRouter();
-  const home = useRecoilValue(homeState);
+  const home = useHomeStateStore((state) => state.homeState);
   const [addItemLoading, setAddItemLoading] = useState(false);
 
   const [state, setState] = useState<State>(
@@ -34,7 +34,7 @@ const Connected: React.FC<Props> = (props) => {
   );
   const { homeDate, setHomeDate } = useHomeDateStore();
 
-  const homeItems = useRecoilValue(homeItemsState);
+  const homeItems = useHomeItemsStore((state) => state.homeItems);
   const { loading, error, refetch } = useHomeItems();
 
   const onOpenAddItem = useCallback(() => {
