@@ -6,12 +6,11 @@ import {
   ItemDocument,
   UpdateItemDocument,
 } from "@/queries/api/index";
-import { homeDateState } from "@/store/atoms";
+import { useHomeDateStore } from "@/store/homeDateStore";
 import { useMutation, useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
-import { useSetRecoilState } from "recoil";
 import Plain from "./Plain";
 
 export type Props = {
@@ -31,7 +30,7 @@ const Connected: FC<Props> = (props) => {
   const router = useRouter();
   const [state, setState] = useState<State>(initialState());
   const [updateItemLoading, setUpdateItemLoading] = useState(false);
-  const setHomeDate = useSetRecoilState(homeDateState);
+  const { setHomeDate } = useHomeDateStore();
   const homeItems = useHomeItems();
 
   const { loading, data, error, refetch } = useQuery(ItemDocument, {
@@ -100,7 +99,7 @@ const Connected: FC<Props> = (props) => {
       setUpdateItemLoading(true);
       updateItemMutation({ variables });
     },
-    [updateItemMutation, props.itemID],
+    [updateItemMutation, props.itemID]
   );
 
   const [deleteItemMutation] = useMutation(DeleteItemDocument, {
@@ -123,13 +122,11 @@ const Connected: FC<Props> = (props) => {
 
   const onChangeDate = useCallback(
     (date: string) => {
-      setHomeDate({
-        date: dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"),
-      });
+      setHomeDate(dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"));
 
       router.back();
     },
-    [router, setHomeDate],
+    [router, setHomeDate]
   );
 
   return (

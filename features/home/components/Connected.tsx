@@ -2,12 +2,13 @@ import useHomeItems from "@/hooks/useHomeItems";
 import dayjs from "@/lib/dayjs";
 import { CreateItemDocument } from "@/queries/api/index";
 import type { NewItem } from "@/queries/api/index";
-import { homeDateState, homeItemsState, homeState } from "@/store/atoms";
+import { homeItemsState, homeState } from "@/store/atoms";
+import { useHomeDateStore } from "@/store/homeDateStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 
 type Props = {
@@ -29,9 +30,9 @@ const Connected: React.FC<Props> = (props) => {
   const [addItemLoading, setAddItemLoading] = useState(false);
 
   const [state, setState] = useState<State>(
-    initialState(home.openAddItemModal),
+    initialState(home.openAddItemModal)
   );
-  const [homeDate, setHomeDate] = useRecoilState(homeDateState);
+  const { homeDate, setHomeDate } = useHomeDateStore();
 
   const homeItems = useRecoilValue(homeItemsState);
   const { loading, error, refetch } = useHomeItems();
@@ -65,16 +66,14 @@ const Connected: React.FC<Props> = (props) => {
       setAddItemLoading(true);
       createItemMutation({ variables });
     },
-    [createItemMutation],
+    [createItemMutation]
   );
 
   const onChangeDate = useCallback(
     (date: string) => {
-      setHomeDate({
-        date: dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"),
-      });
+      setHomeDate(dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"));
     },
-    [setHomeDate],
+    [setHomeDate]
   );
 
   const onItem = useCallback(
@@ -87,7 +86,7 @@ const Connected: React.FC<Props> = (props) => {
         },
       });
     },
-    [router, homeDate.date],
+    [router, homeDate.date]
   );
 
   const onMemoir = useCallback(() => {

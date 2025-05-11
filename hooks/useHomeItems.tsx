@@ -1,10 +1,11 @@
 import { useSession } from "@/ctx";
 import usePrevious from "@/hooks/usePrevious";
 import { ItemsByDateDocument } from "@/queries/api/index";
-import { homeDateState, homeItemsState } from "@/store/atoms";
+import { homeItemsState } from "@/store/atoms";
+import { useHomeDateStore } from "@/store/homeDateStore";
 import { useLazyQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
-import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 
 const useHomeItems = () => {
   const { signOut } = useSession();
@@ -18,7 +19,7 @@ const useHomeItems = () => {
         }
       },
     });
-  const homeDate = useRecoilValue(homeDateState);
+  const homeDate = useHomeDateStore((state) => state.homeDate);
   const setHomeItemsState = useSetRecoilState(homeItemsState);
   const [apiLoading, setApiLoading] = useState(true);
   const prevLoading = usePrevious(loading);
