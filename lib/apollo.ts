@@ -55,7 +55,7 @@ const makeApolloClient = () => {
       "operation:",
       operation.operationName,
       ",variables:",
-      operation.variables
+      operation.variables,
     );
 
     return forward(operation).map((data) => {
@@ -110,7 +110,7 @@ const makeApolloClient = () => {
   return new ApolloClient({
     link: concat(
       middlewareLink,
-      errorLink.concat(authLink.concat(createHttpLink({ uri })))
+      errorLink.concat(authLink.concat(createHttpLink({ uri }))),
     ),
     cache: cache,
   });
