@@ -99,7 +99,7 @@ const Connected: FC<Props> = (props) => {
       setUpdateItemLoading(true);
       updateItemMutation({ variables });
     },
-    [updateItemMutation, props.itemID]
+    [updateItemMutation, props.itemID],
   );
 
   const [deleteItemMutation] = useMutation(DeleteItemDocument, {
@@ -126,7 +126,7 @@ const Connected: FC<Props> = (props) => {
 
       router.back();
     },
-    [router, setHomeDate]
+    [router, setHomeDate],
   );
 
   return (
