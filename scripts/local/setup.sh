@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cp -r .env.local .env
+cp -r ./env/.env.local .env

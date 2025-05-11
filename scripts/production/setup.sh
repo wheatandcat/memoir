@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cp -r .env.production .env
+cp -r ./env/.env.production .env
