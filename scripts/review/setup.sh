@@ -1,3 +1,3 @@
 #!/bin/sh
 
-cp -r .env.development .env
+cp -r ./env/.env.development .env

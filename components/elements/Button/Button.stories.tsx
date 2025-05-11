@@ -2,7 +2,7 @@ import View from "@/components/elements/View";
 import { mockFn } from "@/storyBookUtils/index";
 import React from "react";
 import { StyleSheet } from "react-native";
-import Button from ".";
+import Button from "./";
 
 const Story = () => (
   <View>

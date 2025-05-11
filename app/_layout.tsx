@@ -13,6 +13,13 @@ import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { RecoilRoot } from "recoil";
 
+/*
+import { removeItem, storageKey } from "@/lib/storage";
+removeItem(storageKey.AUTH_UID_KEY);
+removeItem(storageKey.AUTH_ID_TOKEN_KEY);
+removeItem(storageKey.AUTH_ID_TOKEN_EXPIRATION_KEY);
+*/
+
 const navigationIntegration = Sentry.reactNavigationIntegration({
   enableTimeToInitialDisplay: !isRunningInExpoGo(),
 });

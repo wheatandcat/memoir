@@ -51,7 +51,7 @@ $ npx expo-doctor
 ### ローカル起動
 
 ```bash
-$ npx expo run:android
+$ pnpm dev:android
 ```
 
 ### productionビルド
@@ -65,7 +65,7 @@ $ pnpm android:build
 ### ローカル起動
 
 ```bash
-$ npx expo run:ios
+$ pnpm dev:ios
 ```
 
 ### productionビルド
