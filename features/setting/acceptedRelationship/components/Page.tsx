@@ -4,7 +4,7 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
-import type { User } from "@/store/atoms";
+import type { User } from "@/store/userStore";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo } from "react";

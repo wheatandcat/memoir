@@ -3,15 +3,14 @@ import Image from "@/components/elements/Image";
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { screenState } from "@/store/atoms";
+import { useScreenStore } from "@/store/screenStore";
 import type { FC } from "react";
 import { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSetRecoilState } from "recoil";
 
 const SeeYouAgain: FC = () => {
-  const setScreenState = useSetRecoilState(screenState);
+  const setScreenState = useScreenStore((state) => state.setSeeYouAgain);
 
   return (
     <SafeAreaView>
@@ -34,7 +33,7 @@ const SeeYouAgain: FC = () => {
               <Button
                 title="TOPに戻る"
                 onPress={() => {
-                  setScreenState({ seeYouAgain: false });
+                  setScreenState(false);
                 }}
                 width={200}
               />

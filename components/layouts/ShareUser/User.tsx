@@ -3,7 +3,7 @@ import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/myPage/components/type";
-import type { User as UserType } from "@/store/atoms";
+import type { User as UserType } from "@/store/userStore";
 import type { FC } from "react";
 import { memo, useCallback } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";

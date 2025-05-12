@@ -1,12 +1,12 @@
 import { useSession } from "@/ctx";
 import Intro from "@/features/top/intro/components/index";
 import useFirebaseAuth from "@/hooks/useFirebaseAuth";
-import { homeItemsState, homeState } from "@/store/atoms";
+import { useHomeItemsStore } from "@/store/homeItemsStore";
+import { useHomeStateStore } from "@/store/homeStateStore";
 import { router } from "expo-router";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
 import { Platform } from "react-native";
-import { useSetRecoilState } from "recoil";
 import Page from "./Page";
 
 export type Props = {
@@ -24,7 +24,7 @@ export type ConnectedType = {
 
 const Connected: FC<Props> = (props) => {
   const { signIn } = useSession();
-  const setHomeState = useSetRecoilState(homeState);
+  const setHomeState = useHomeStateStore((state) => state.setOpenAddItemModal);
   const [loading, setLoading] = useState(false);
 
   const { setupAuth, onAppleLogin, onGoogleLogin } = useFirebaseAuth(
@@ -35,7 +35,7 @@ const Connected: FC<Props> = (props) => {
     },
   );
 
-  const setHomeItemsState = useSetRecoilState(homeItemsState);
+  const setHomeItemsState = useHomeItemsStore((state) => state.setHomeItems);
 
   const onLogin = useCallback(async () => {
     setLoading(true);
@@ -50,14 +50,12 @@ const Connected: FC<Props> = (props) => {
   }, [onAppleLogin, onGoogleLogin, signIn]);
 
   const onSkip = useCallback(() => {
-    setHomeItemsState({ items: [] });
+    setHomeItemsState([]);
     props.onSkip();
   }, [props, setHomeItemsState]);
 
   const onFinish = useCallback(() => {
-    setHomeState({
-      openAddItemModal: true,
-    });
+    setHomeState(true);
 
     signIn();
     router.replace("/");

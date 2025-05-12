@@ -7,12 +7,11 @@ import {
   InviteDocument,
   UpdateInviteDocument,
 } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 
 const Connected: React.FC = () => {
@@ -21,13 +20,13 @@ const Connected: React.FC = () => {
     InviteByCodeDocument,
     {
       fetchPolicy: "network-only",
-    },
+    }
   );
 
   const [createRelationshipRequestMutation, relationshipRequestMutationData] =
     useMutation(CreateRelationshipRequestDocument);
 
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const [createInviteMutation, createInviteMutationData] = useMutation(
     CreateInviteDocument,
     {
@@ -37,7 +36,7 @@ const Connected: React.FC = () => {
       onError() {
         Alert.alert("エラー", "作成に失敗しました");
       },
-    },
+    }
   );
   const [updateInviteMutation, updateInviteMutationData] = useMutation(
     UpdateInviteDocument,
@@ -48,7 +47,7 @@ const Connected: React.FC = () => {
       onError() {
         Alert.alert("エラー", "更新に失敗しました");
       },
-    },
+    }
   );
 
   const onCreateInvite = useCallback(() => {
@@ -68,7 +67,7 @@ const Connected: React.FC = () => {
       };
       createRelationshipRequestMutation({ variables });
     },
-    [createRelationshipRequestMutation],
+    [createRelationshipRequestMutation]
   );
 
   const onCreateRelationshipRequest = useCallback(
@@ -78,7 +77,7 @@ const Connected: React.FC = () => {
       };
       getInviteByCode({ variables });
     },
-    [getInviteByCode],
+    [getInviteByCode]
   );
 
   return (

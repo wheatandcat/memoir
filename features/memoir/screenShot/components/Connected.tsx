@@ -2,11 +2,10 @@ import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
 } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useQuery } from "@apollo/client";
 import type React from "react";
 import { memo } from "react";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 import type { User } from "./type";
 
@@ -20,7 +19,7 @@ type Props = {
 };
 
 const Connected: React.FC<Props> = (props) => {
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
 
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {

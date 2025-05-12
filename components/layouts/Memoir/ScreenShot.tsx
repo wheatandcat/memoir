@@ -9,7 +9,7 @@ import type { Props as PlainProps } from "@/features/memoir/screenShot/component
 import type { Item } from "@/hooks/useItemsInPeriodPaging";
 import dayjs from "@/lib/dayjs";
 import { getModeCountMax } from "@/lib/utility";
-import type { User as TUser } from "@/store/atoms";
+import type { User as TUser } from "@/store/userStore";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";
@@ -102,7 +102,7 @@ const ScreenShot: React.FC<Props> = (props) => {
 
       router.back();
     },
-    [router],
+    [router]
   );
 
   const onCapture = useCallback(async () => {
@@ -126,7 +126,7 @@ const ScreenShot: React.FC<Props> = (props) => {
   }, [props.items, onCapture]);
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD")))
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -140,12 +140,12 @@ const ScreenShot: React.FC<Props> = (props) => {
 
   const data = dateItems.flatMap((v1) => {
     const sameDateItems = props.items.filter(
-      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
+      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date
     );
 
     const item: RenderedItem[] = sameDateItems.map((v2, index) => {
       const user: User | undefined = props.users.find(
-        (v) => v.id === v2.userID,
+        (v) => v.id === v2.userID
       );
 
       return {

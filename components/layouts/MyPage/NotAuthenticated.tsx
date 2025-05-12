@@ -4,7 +4,7 @@ import View from "@/components/elements/View";
 import UserImage from "@/components/layouts/User/Image";
 import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/myPage/components/type";
-import type { User } from "@/store/atoms";
+import type { User } from "@/store/userStore";
 import { MaterialIcons } from "@expo/vector-icons";
 import type { FC } from "react";
 import { memo } from "react";
