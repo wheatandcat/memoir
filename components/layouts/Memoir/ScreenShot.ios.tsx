@@ -10,12 +10,13 @@ import type { Item } from "@/hooks/useItemsInPeriodPaging";
 import dayjs from "@/lib/dayjs";
 import { deleteImageAsync, resizeImage, uploadImageAsync } from "@/lib/image";
 import { getModeCountMax } from "@/lib/utility";
-import type { User as TUser } from "@/store/atoms";
+import type { User as TUser } from "@/store/userStore";
 import Constants from "expo-constants";
 import * as FileSystem from "expo-file-system";
 import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";
 import type { FC } from "react";
+import type React from "react";
 import { memo, useCallback, useRef, useState } from "react";
 import {
   Alert,
@@ -111,11 +112,11 @@ const ScreenShot: FC<Props> = (props) => {
 
       router.back();
     },
-    [router],
+    [router]
   );
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD")))
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -131,12 +132,12 @@ const ScreenShot: FC<Props> = (props) => {
     (loadEnd?: () => void) => {
       const data = dateItems.flatMap((v1) => {
         const sameDateItems = props.items.filter(
-          (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
+          (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date
         );
 
         const item: RenderedItem[] = sameDateItems.map((v2, index) => {
           const user: User | undefined = props.users.find(
-            (v) => v.id === v2.userID,
+            (v) => v.id === v2.userID
           );
 
           return {
@@ -169,7 +170,7 @@ const ScreenShot: FC<Props> = (props) => {
 
       return data;
     },
-    [props, windowWidth, dateItems],
+    [props, windowWidth, dateItems]
   );
 
   const sliceItemCount = Math.floor(getData().length / 20) + 1;
@@ -196,12 +197,12 @@ const ScreenShot: FC<Props> = (props) => {
 
     const param = urlList.join(",");
     const fileName = `${dayjs(props.startDate).format("YYYYMMDD")}_${dayjs(
-      props.endDate,
+      props.endDate
     ).format("YYYYMMDD")}_memoir`;
 
     const res = await FileSystem.downloadAsync(
       `${Constants.expoConfig?.extra?.IMAGE_MERGE_API}?images=${param}`,
-      `${FileSystem.documentDirectory}${fileName}.png`,
+      `${FileSystem.documentDirectory}${fileName}.png`
     );
 
     for (let i = 0; i < deleteImageURL.length; i++) {

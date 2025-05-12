@@ -10,6 +10,7 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import { onError } from "@apollo/client/link/error";
+import * as Sentry from "@sentry/react-native";
 import Constants from "expo-constants";
 import { Alert } from "react-native";
 
@@ -55,7 +56,7 @@ const makeApolloClient = () => {
       "operation:",
       operation.operationName,
       ",variables:",
-      operation.variables,
+      operation.variables
     );
 
     return forward(operation).map((data) => {
@@ -80,16 +81,14 @@ const makeApolloClient = () => {
         message = graphQLErrors[0].message.split(":")?.[1] || message;
       }
 
-      /*
-      Sentry.Native.withScope((scope) => {
+      Sentry.withScope((scope) => {
         scope.setTag("kind", "GraphQL");
         scope.setTag("operationName", error.operation.operationName);
         scope.setExtra("query", error.operation.query.loc?.source?.body || "");
         scope.setExtra("variables", error.operation.variables);
         scope.setExtra("errorCode", code);
-        Sentry.Native.captureMessage(message);
+        Sentry.captureMessage(message);
       });
-      */
 
       console.log("error: operation:", error.operation.operationName, message);
 
@@ -110,7 +109,7 @@ const makeApolloClient = () => {
   return new ApolloClient({
     link: concat(
       middlewareLink,
-      errorLink.concat(authLink.concat(createHttpLink({ uri }))),
+      errorLink.concat(authLink.concat(createHttpLink({ uri })))
     ),
     cache: cache,
   });

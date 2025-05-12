@@ -2,7 +2,7 @@ import type {
   CreateRelationshipRequestMutation,
   InviteQuery,
 } from "@/queries/api/index";
-import type { User } from "@/store/atoms";
+import type { User } from "@/store/userStore";
 
 export type ConnectedType = {
   user: User;

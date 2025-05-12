@@ -3,25 +3,6 @@ import { atom } from "recoil";
 
 export type Item = NonNullable<ItemQuery["item"]>;
 
-export type User = {
-  id: string | null;
-  userID: string;
-  displayName: string;
-  image: string;
-};
-
-const initialUserState = (): User => ({
-  id: null,
-  userID: "",
-  displayName: "",
-  image: "",
-});
-
-export const userState = atom<User>({
-  key: "userState",
-  default: initialUserState(),
-});
-
 type AuthUser = {
   uid: string | null;
 };

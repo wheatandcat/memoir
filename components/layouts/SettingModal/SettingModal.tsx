@@ -7,7 +7,8 @@ import theme from "@/config/theme";
 import { useNotification } from "@/containers/Notification";
 import { useSession } from "@/ctx";
 import { removeItem, storageKey } from "@/lib/storage";
-import { authUserState, userState } from "@/store/atoms";
+import { authUserState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import * as Device from "expo-device";
 import { ActivityAction, startActivityAsync } from "expo-intent-launcher";
 import { useRouter } from "expo-router";
@@ -30,7 +31,7 @@ const SettingModal: FC<Props> = (props) => {
   const router = useRouter();
   const { onPermissionRequest } = useNotification();
   const authUser = useRecoilValue(authUserState);
-  const setUser = useSetRecoilState(userState);
+  const { setUser } = useUserStore();
   const { signOut } = useSession();
 
   const onLicence = useCallback(() => {

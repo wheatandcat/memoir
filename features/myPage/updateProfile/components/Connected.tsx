@@ -4,19 +4,20 @@ import {
   type UpdateUserMutationVariables,
   type User,
 } from "@/queries/api/index";
-import { authUserState, userState } from "@/store/atoms";
+import { authUserState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { useRecoilValue } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 import Page from "./Page";
 import type { Input } from "./type";
 
 const Connected: React.FC = () => {
-  const [user, setUser] = useRecoilState(userState);
+  const { user, setUser } = useUserStore();
   const authUser = useRecoilValue(authUserState);
   const router = useRouter();
   const [updateUserMutation, updateUserMutationData] = useMutation(
@@ -31,10 +32,10 @@ const Connected: React.FC = () => {
           param.image = data.updateUser.image;
         }
 
-        setUser((s) => ({
-          ...s,
+        setUser({
+          ...user,
           ...param,
-        }));
+        });
 
         router.back();
       },
@@ -42,7 +43,7 @@ const Connected: React.FC = () => {
         // エラーになった場合はログアウトさせる
         Alert.alert("エラー", "保存に失敗しました");
       },
-    },
+    }
   );
 
   const onSave = useCallback(
@@ -61,7 +62,7 @@ const Connected: React.FC = () => {
 
       updateUserMutation({ variables });
     },
-    [updateUserMutation, user.image, user.id],
+    [updateUserMutation, user.image, user.id]
   );
 
   return (

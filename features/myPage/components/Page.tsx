@@ -2,7 +2,7 @@ import View from "@/components/elements/View";
 import Authenticated from "@/components/layouts/MyPage/Authenticated";
 import NotAuthenticated from "@/components/layouts/MyPage/NotAuthenticated";
 import theme from "@/config/theme";
-import type { User } from "@/store/atoms";
+import type { User } from "@/store/userStore";
 import type { FC } from "react";
 import React, { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";

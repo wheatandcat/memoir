@@ -1,7 +1,7 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/myPage/components/type";
-import type { User as UserType } from "@/store/atoms";
+import type { User as UserType } from "@/store/userStore";
 import type { FC } from "react";
 import { memo } from "react";
 import { StyleSheet } from "react-native";
