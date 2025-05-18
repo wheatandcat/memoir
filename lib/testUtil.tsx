@@ -31,6 +31,6 @@ export const testRenderer =
     return render(
       <NavigationContainer>
         <ApolloProvider client={client}>{children}</ApolloProvider>
-      </NavigationContainer>
+      </NavigationContainer>,
     );
   };

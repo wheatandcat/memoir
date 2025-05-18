@@ -20,7 +20,7 @@ const Connected: React.FC = () => {
     true,
     () => {
       setLoading(false);
-    }
+    },
   );
   const { refetch } = useHomeItems();
   const { onPermissionRequest } = useNotification();

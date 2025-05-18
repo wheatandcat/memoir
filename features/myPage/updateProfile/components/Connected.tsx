@@ -42,7 +42,7 @@ const Connected: React.FC = () => {
         // エラーになった場合はログアウトさせる
         Alert.alert("エラー", "保存に失敗しました");
       },
-    }
+    },
   );
 
   const onSave = useCallback(
@@ -61,7 +61,7 @@ const Connected: React.FC = () => {
 
       updateUserMutation({ variables });
     },
-    [updateUserMutation, user.image, user.id]
+    [updateUserMutation, user.image, user.id],
   );
 
   return (

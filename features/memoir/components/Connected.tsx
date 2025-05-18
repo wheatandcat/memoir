@@ -87,7 +87,7 @@ const Connected: FC<Props> = (props) => {
         after: "",
       }));
     },
-    [reset]
+    [reset],
   );
 
   const users: User[] = [
@@ -106,7 +106,7 @@ const Connected: FC<Props> = (props) => {
 
   const onScreenShot = useCallback(() => {
     let tSelectedUserIDList: string[] | undefined = selectedUserIDList.filter(
-      (v) => v !== ""
+      (v) => v !== "",
     );
     if (tSelectedUserIDList.length === 0) {
       tSelectedUserIDList = undefined;
