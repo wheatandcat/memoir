@@ -8,8 +8,7 @@ import {
   UserDocument,
 } from "@/queries/api/index";
 import type { CreateAuthUserMutationVariables } from "@/queries/api/index";
-import { authUserState } from "@/store/atoms";
-import { existAuthUserID } from "@/store/selectors";
+import { useAuthUserStore } from "@/store/authUserStore";
 import { useUserStore } from "@/store/userStore";
 import { useLazyQuery, useMutation } from "@apollo/client";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
@@ -26,7 +25,6 @@ import {
 import type { OAuthCredential } from "firebase/auth";
 import { useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 
 const auth = new Auth();
@@ -50,9 +48,12 @@ export type UseFirebaseAuth = ReturnType<typeof useFirebaseAuth>;
 const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   const { signOut } = useSession();
   const [setup, setSetup] = useState(false);
-  const authUserID = useRecoilValueLoadable(existAuthUserID);
-  const [authUser, setAuthUser] = useRecoilState(authUserState);
+  const { setAuthUser, initializeAuthUser } = useAuthUserStore();
   const { user, setUser } = useUserStore();
+
+  useEffect(() => {
+    initializeAuthUser();
+  }, [initializeAuthUser]);
 
   useEffect(() => {
     if (user.id) {
@@ -137,9 +138,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       if (idToken) {
         const authUID = await getItem(storageKey.AUTH_UID_KEY);
-        setAuthUser({
-          uid: authUID,
-        });
+        setAuthUser(authUID);
       }
 
       return idToken;
@@ -214,9 +213,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
     await removeItem(storageKey.AUTHENTICATED_USER_ID_KEY);
     await removeItem(storageKey.USER_ID_KEY);
 
-    setAuthUser({
-      uid: null,
-    });
+    setAuthUser(null);
     setUser({ id: null, userID: "", displayName: "", image: "" });
 
     userQuery.client?.clearStore();
@@ -231,26 +228,13 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
   ]);
 
   useEffect(() => {
-    if (authUser.uid) {
-      return;
-    }
-    if (authUserID.state === "hasValue") {
-      if (authUserID.contents) {
-        setAuthUser({ uid: authUserID.contents });
-      }
-    }
-  }, [authUserID, setAuthUser, authUser.uid]);
-
-  useEffect(() => {
     const unsubscribe = onAuthStateChanged(appAuth, (aUser) => {
       if (aUser) {
         setSession(true);
       } else {
         if (!login) {
           // ログアウトした時
-          setAuthUser({
-            uid: null,
-          });
+          setAuthUser(null);
           setUser({ id: null, userID: "", displayName: "", image: "" });
         }
 
