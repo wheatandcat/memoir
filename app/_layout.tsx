@@ -11,7 +11,6 @@ import { isRunningInExpoGo } from "expo";
 import Constants from "expo-constants";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { RecoilRoot } from "recoil";
 
 /*
 import { removeItem, storageKey } from "@/lib/storage";
@@ -53,11 +52,9 @@ export default Sentry.wrap(function Root() {
       <ActionSheetProvider>
         <ApolloProvider client={client}>
           <Notification>
-            <RecoilRoot>
-              <MaintenanceContainer>
-                <Slot />
-              </MaintenanceContainer>
-            </RecoilRoot>
+            <MaintenanceContainer>
+              <Slot />
+            </MaintenanceContainer>
           </Notification>
         </ApolloProvider>
       </ActionSheetProvider>

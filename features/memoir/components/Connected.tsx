@@ -3,12 +3,11 @@ import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
 } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 import type { User } from "./type";
 
@@ -35,7 +34,7 @@ const initialState = (userIDList: string[] | undefined) => ({
 const Connected: FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState(props.userIDList));
   const [isFilter, setIsFilter] = useState<boolean>(false);
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const router = useRouter();
 
   const relationshipsQuery = useQuery(RelationshipsDocument, {

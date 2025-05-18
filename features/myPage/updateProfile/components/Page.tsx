@@ -3,7 +3,7 @@ import Text from "@/components/elements/Text";
 import TextInput from "@/components/elements/TextInput";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import type { User } from "@/store/atoms";
+import type { User } from "@/store/userStore";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { StyleSheet } from "react-native";

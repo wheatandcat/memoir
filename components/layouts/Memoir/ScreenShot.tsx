@@ -9,7 +9,7 @@ import type { Props as PlainProps } from "@/features/memoir/screenShot/component
 import type { Item } from "@/hooks/useItemsInPeriodPaging";
 import dayjs from "@/lib/dayjs";
 import { getModeCountMax } from "@/lib/utility";
-import type { User as TUser } from "@/store/atoms";
+import type { User as TUser } from "@/store/userStore";
 import Constants from "expo-constants";
 import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";

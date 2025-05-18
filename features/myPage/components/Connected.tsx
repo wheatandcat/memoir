@@ -5,18 +5,17 @@ import {
   RelationshipsDocument,
   UserDocument,
 } from "@/queries/api/index";
-import { authUserState } from "@/store/atoms";
+import { useAuthUserStore } from "@/store/authUserStore";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import { useFocusEffect, useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
-import { useRecoilValue } from "recoil";
 import Page from "./Page";
 import type { Relationship } from "./type";
 
 const Connected: React.FC = () => {
   const { setupAuth, onLogout } = useFirebaseAuth(true);
-  const authUser = useRecoilValue(authUserState);
+  const authUser = useAuthUserStore((state) => state.authUser);
   const userQuery = useQuery(UserDocument);
   const router = useRouter();
   const [getRelationshipRequests, relationshipRequestsData] = useLazyQuery(

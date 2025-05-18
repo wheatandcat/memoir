@@ -1,7 +1,7 @@
 import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import Constants from "expo-constants";
 import * as Device from "expo-device";
 import { useRouter } from "expo-router";
@@ -9,7 +9,6 @@ import { Stack } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import { Alert, Platform, TouchableOpacity } from "react-native";
-import { useRecoilValue } from "recoil";
 import Page from "./Page";
 
 const url = Constants.expoConfig?.extra?.INQUIRY_API || "";
@@ -25,7 +24,7 @@ type Request = {
 };
 
 const Connected: React.FC = () => {
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [send, setSend] = useState(false);

@@ -7,7 +7,8 @@ import theme from "@/config/theme";
 import { useNotification } from "@/containers/Notification";
 import { useSession } from "@/ctx";
 import { removeItem, storageKey } from "@/lib/storage";
-import { authUserState, userState } from "@/store/atoms";
+import { useAuthUserStore } from "@/store/authUserStore";
+import { useUserStore } from "@/store/userStore";
 import * as Device from "expo-device";
 import { ActivityAction, startActivityAsync } from "expo-intent-launcher";
 import { useRouter } from "expo-router";
@@ -19,7 +20,6 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { useRecoilValue, useSetRecoilState } from "recoil";
 
 export type Props = {
   isVisible: boolean;
@@ -29,8 +29,8 @@ export type Props = {
 const SettingModal: FC<Props> = (props) => {
   const router = useRouter();
   const { onPermissionRequest } = useNotification();
-  const authUser = useRecoilValue(authUserState);
-  const setUser = useSetRecoilState(userState);
+  const authUser = useAuthUserStore((state) => state.authUser);
+  const { setUser } = useUserStore();
   const { signOut } = useSession();
 
   const onLicence = useCallback(() => {

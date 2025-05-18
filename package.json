@@ -117,8 +117,8 @@
     "react-native-view-shot": "~4.0.3",
     "react-native-web": "~0.19.13",
     "react-native-webview": "13.12.5",
-    "recoil": "^0.7.6",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.0",
+    "zustand": "^5.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.27.1",
@@ -190,7 +190,6 @@
           "graphql-anywhere",
           "graphql-tag",
           "react-native-app-link",
-          "recoil",
           "uuid",
           "@graphql-typed-document-node/core",
           "cross-fetch",

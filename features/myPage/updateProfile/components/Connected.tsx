@@ -4,20 +4,20 @@ import {
   type UpdateUserMutationVariables,
   type User,
 } from "@/queries/api/index";
-import { authUserState, userState } from "@/store/atoms";
+import { useAuthUserStore } from "@/store/authUserStore";
+import { useUserStore } from "@/store/userStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
-import { useRecoilState, useRecoilValue } from "recoil";
 import { v4 as uuidv4 } from "uuid";
 import Page from "./Page";
 import type { Input } from "./type";
 
 const Connected: React.FC = () => {
-  const [user, setUser] = useRecoilState(userState);
-  const authUser = useRecoilValue(authUserState);
+  const { user, setUser } = useUserStore();
+  const authUser = useAuthUserStore((state) => state.authUser);
   const router = useRouter();
   const [updateUserMutation, updateUserMutationData] = useMutation(
     UpdateUserDocument,
@@ -31,10 +31,10 @@ const Connected: React.FC = () => {
           param.image = data.updateUser.image;
         }
 
-        setUser((s) => ({
-          ...s,
+        setUser({
+          ...user,
           ...param,
-        }));
+        });
 
         router.back();
       },

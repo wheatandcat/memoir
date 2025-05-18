@@ -10,12 +10,13 @@ import type { Item } from "@/hooks/useItemsInPeriodPaging";
 import dayjs from "@/lib/dayjs";
 import { deleteImageAsync, resizeImage, uploadImageAsync } from "@/lib/image";
 import { getModeCountMax } from "@/lib/utility";
-import type { User as TUser } from "@/store/atoms";
+import type { User as TUser } from "@/store/userStore";
 import Constants from "expo-constants";
 import * as FileSystem from "expo-file-system";
 import { useRouter } from "expo-router";
 import * as Sharing from "expo-sharing";
 import type { FC } from "react";
+import type React from "react";
 import { memo, useCallback, useRef, useState } from "react";
 import {
   Alert,

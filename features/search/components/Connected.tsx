@@ -1,17 +1,16 @@
 import dayjs from "@/lib/dayjs";
 import { RelationshipsDocument } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback } from "react";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 import type { Input, User } from "./type";
 
 const Connected: React.FC = () => {
   const router = useRouter();
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const relationshipsQuery = useQuery(RelationshipsDocument, {
     variables: {
       input: {

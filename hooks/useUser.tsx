@@ -1,18 +1,20 @@
-import { existUserID } from "@/store/selectors";
 import { useCallback, useEffect, useState } from "react";
-import { useRecoilState, useRecoilValueLoadable } from "recoil";
 import "react-native-get-random-values";
 import usePrevious from "@/hooks/usePrevious";
 import { setItem, storageKey } from "@/lib/storage";
 import { CreateUserDocument, UserDocument } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useLazyQuery, useMutation } from "@apollo/client";
+import * as Sentry from "@sentry/react-native";
 import { v4 as uuidv4 } from "uuid";
 
 const useUser = () => {
   const [setupUser, setSetupUser] = useState(false);
-  const [user, setUser] = useRecoilState(userState);
-  const userID = useRecoilValueLoadable(existUserID);
+  const { loading, uid, user, setUser, initializeUser } = useUserStore();
+
+  useEffect(() => {
+    initializeUser();
+  }, [initializeUser]);
 
   useEffect(() => {
     if (user.id) {
@@ -23,13 +25,13 @@ const useUser = () => {
 
   const [getUser] = useLazyQuery(UserDocument, {
     onCompleted: (data) => {
-      setUser((s) => ({
-        ...s,
+      setUser({
+        ...user,
         id: data?.user?.id || "",
         userID: data?.user?.id || "",
         displayName: data?.user?.displayName || "",
         image: data?.user?.image || "",
-      }));
+      });
     },
   });
 
@@ -60,28 +62,26 @@ const useUser = () => {
       return;
     }
 
-    if (!user.id && !userID.contents) {
+    if (!user.id && !uid) {
       setSetupUser(true);
       return;
     }
 
     getUser();
-  }, [user.id, getUser, userID.contents, setupUser]);
+  }, [getUser, uid, user.id, setupUser]);
 
   useEffect(() => {
-    if (userID.state === "hasValue") {
+    if (!loading) {
       setup();
     }
-  }, [userID, setup]);
+  }, [loading, setup]);
 
   useEffect(() => {
     if (user.id) {
       if (user.id !== prevUserID) {
-        /*
-        Sentry.Native.setUser({
+        Sentry.setUser({
           id: user.id,
         });
-        */
       }
     }
   }, [user.id, prevUserID]);

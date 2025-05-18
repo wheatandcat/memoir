@@ -6,19 +6,18 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import Auth from "@/lib/auth";
 import { setItem, storageKey } from "@/lib/storage";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import * as Clipboard from "expo-clipboard";
 import * as Notifications from "expo-notifications";
 import * as Updates from "expo-updates";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
-import { useRecoilValue } from "recoil";
 
 const auth = new Auth();
 
 const Debug: FC = () => {
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const [userID, setUserID] = useState("");
 
   const onCopyUserID = useCallback(() => {

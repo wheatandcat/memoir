@@ -47,7 +47,6 @@ const LicenceList: FC = () => {
     })
     .map((v) => {
       if (
-        v.name === "recoil" ||
         v.name === "react-native" ||
         v.name === "@react-navigation/native" ||
         v.name === "react-native-gesture-handler" ||

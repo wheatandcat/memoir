@@ -7,12 +7,11 @@ import {
   InviteDocument,
   UpdateInviteDocument,
 } from "@/queries/api/index";
-import { userState } from "@/store/atoms";
+import { useUserStore } from "@/store/userStore";
 import { useLazyQuery, useMutation, useQuery } from "@apollo/client";
 import type React from "react";
 import { memo, useCallback } from "react";
 import { Alert } from "react-native";
-import { useRecoilValue } from "recoil";
 import Plain from "./Plain";
 
 const Connected: React.FC = () => {
@@ -27,7 +26,7 @@ const Connected: React.FC = () => {
   const [createRelationshipRequestMutation, relationshipRequestMutationData] =
     useMutation(CreateRelationshipRequestDocument);
 
-  const user = useRecoilValue(userState);
+  const user = useUserStore((state) => state.user);
   const [createInviteMutation, createInviteMutationData] = useMutation(
     CreateInviteDocument,
     {

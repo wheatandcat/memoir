@@ -6,13 +6,12 @@ import {
   CreateAuthUserDocument,
   type CreateAuthUserMutationVariables,
 } from "@/queries/api/index";
-import { authUserState } from "@/store/atoms";
+import { useAuthUserStore } from "@/store/authUserStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type React from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { Alert } from "react-native";
-import { useRecoilValue } from "recoil";
 import Page from "./Page";
 
 const Connected: React.FC = () => {
@@ -25,7 +24,7 @@ const Connected: React.FC = () => {
   );
   const { refetch } = useHomeItems();
   const { onPermissionRequest } = useNotification();
-  const authUser = useRecoilValue(authUserState);
+  const authUser = useAuthUserStore((state) => state.authUser);
   const authenticated = !!authUser.uid;
   const router = useRouter();
   const [createAuthUserMutation] = useMutation(CreateAuthUserDocument, {

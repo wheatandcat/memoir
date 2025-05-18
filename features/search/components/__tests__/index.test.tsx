@@ -6,16 +6,10 @@ import {
   waitForElementToBeRemoved,
 } from "@testing-library/react-native";
 import React from "react";
-import * as Recoil from "recoil";
+
 import IndexPage from "../";
 
 describe("components/pages/Search/index.tsx", () => {
-  beforeEach(() => {
-    jest.spyOn(Recoil, "useRecoilValue").mockImplementation((): any => ({
-      ...user(),
-    }));
-  });
-
   it("正常にrenderすること", async () => {
     testRenderer(<IndexPage />)();
 
