@@ -62,6 +62,12 @@ $ pnpm android:build
 
 ## iOS
 
+### ローカル起動バージョンアップ後の初回
+
+```bash
+$ pnpm ios:build:dev
+```
+
 ### ローカル起動
 
 ```bash

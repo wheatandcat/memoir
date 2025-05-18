@@ -1,20 +1,39 @@
 {
   "compilerOptions": {
-    "types": ["jest", "node"],
+    "types": [
+      "jest",
+      "node"
+    ],
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "noEmit": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "strict": false,
+    "strict": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": [
+        "./*"
+      ]
     },
-    "typeRoots": ["node_modules/@types", "@types"]
+    "typeRoots": [
+      "node_modules/@types",
+      "@types"
+    ]
   },
-  "exclude": ["node_modules", "scripts/send-metrics"],
+  "exclude": [
+    "node_modules",
+    "scripts/send-metrics"
+  ],
   "extends": "expo/tsconfig.base",
-  "include": ["**/*.ts", "**/*.tsx"]
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    ".expo/types/**/*.ts",
+    "expo-env.d.ts"
+  ]
 }

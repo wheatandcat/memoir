@@ -30,7 +30,7 @@ const Connected: React.FC<Props> = (props) => {
   const [addItemLoading, setAddItemLoading] = useState(false);
 
   const [state, setState] = useState<State>(
-    initialState(home.openAddItemModal),
+    initialState(home.openAddItemModal)
   );
   const { homeDate, setHomeDate } = useHomeDateStore();
 
@@ -66,27 +66,28 @@ const Connected: React.FC<Props> = (props) => {
       setAddItemLoading(true);
       createItemMutation({ variables });
     },
-    [createItemMutation],
+    [createItemMutation]
   );
 
   const onChangeDate = useCallback(
     (date: string) => {
       setHomeDate(dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"));
     },
-    [setHomeDate],
+    [setHomeDate]
   );
 
   const onItem = useCallback(
     (itemID: string) => {
       const date = dayjs(homeDate.date).format("YYYY-MM-DD");
       router.push({
-        pathname: `/items/${itemID}`,
+        pathname: "/items/[id]",
         params: {
+          id: itemID,
           date,
         },
       });
     },
-    [router, homeDate.date],
+    [router, homeDate.date]
   );
 
   const onMemoir = useCallback(() => {
