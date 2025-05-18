@@ -347,12 +347,6 @@
     "licenseUrl": "https://github.com/facebook/react/raw/master/LICENSE",
     "parents": "memoir"
   },
-  "recoil": {
-    "licenses": "MIT",
-    "repository": "https://github.com/facebookexperimental/Recoil",
-    "licenseUrl": "https://github.com/facebookexperimental/Recoil/raw/master/LICENSE",
-    "parents": "memoir"
-  },
   "uuid": {
     "licenses": "MIT",
     "repository": "https://github.com/uuidjs/uuid",

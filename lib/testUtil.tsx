@@ -10,7 +10,6 @@ import { render } from "@testing-library/react-native";
 import fetch from "cross-fetch";
 import type { GraphQLHandler } from "msw";
 import type React from "react";
-import { RecoilRoot } from "recoil";
 
 const link = createHttpLink({
   uri: "http://localhost:8080/query",
@@ -30,10 +29,8 @@ export const testRenderer =
       server.use(responseOverride);
     }
     return render(
-      <RecoilRoot>
-        <NavigationContainer>
-          <ApolloProvider client={client}>{children}</ApolloProvider>
-        </NavigationContainer>
-      </RecoilRoot>,
+      <NavigationContainer>
+        <ApolloProvider client={client}>{children}</ApolloProvider>
+      </NavigationContainer>
     );
   };

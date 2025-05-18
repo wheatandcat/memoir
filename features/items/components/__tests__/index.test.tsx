@@ -11,21 +11,9 @@ import {
 import * as expoRouter from "expo-router";
 import { HttpResponse, graphql } from "msw";
 import React from "react";
-import * as Recoil from "recoil";
 import ItemDetail from "../";
 
 describe("components/pages/ItemDetail/index.tsx", () => {
-  beforeEach(() => {
-    jest
-      .spyOn(Recoil, "useSetRecoilState")
-      .mockImplementation((): any => jest.fn());
-    jest.spyOn(useHomeItems, "default").mockImplementation((): any => ({
-      loading: false,
-      error: null,
-      refetch: jest.fn(),
-    }));
-  });
-
   it("各項目が正しく表示される", async () => {
     jest
       .spyOn(expoRouter, "useLocalSearchParams")
@@ -54,7 +42,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      }),
+      })
     );
 
     await waitFor(async () => {
@@ -90,7 +78,7 @@ describe("components/pages/ItemDetail/index.tsx", () => {
             },
           },
         });
-      }),
+      })
     );
 
     /*

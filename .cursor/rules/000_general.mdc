@@ -43,7 +43,7 @@ alwaysApply: true
 ├── mocks      // mswで使用するモックを配置
 ├── queries    // graphqlファイルとGraphQL Codegenで自動生成されたファイルを配置
 ├── scripts    // アプリから直接参照されない独立したスクリプトを配置
-└── store      // recoilで使用するGlobalで使用する状態値の管理ファイルを配置
+└── store      // zustandで使用するGlobalで使用する状態値の管理ファイルを配置
 ```
 
 
