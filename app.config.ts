@@ -8,7 +8,9 @@ const unix = dayjs().unix().toString();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
+  userInterfaceStyle: "automatic",
   newArchEnabled: true,
+  runtimeVersion: "1.0.0",
   extra: {
     API_HOST: process.env.API_HOST,
     FIRE_BASE_API_KEY: process.env.FIRE_BASE_API_KEY,
@@ -49,7 +51,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   ios: {
     supportsTablet: false,
     usesAppleSignIn: true,
-    userInterfaceStyle: "automatic",
     buildNumber: unix,
     bundleIdentifier: "com.wheatandcat.memoir",
     googleServicesFile: "./GoogleService-Info.plist",
@@ -77,11 +78,13 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#E3C95D",
       foregroundImage: "./assets/android-icon.png",
     },
+    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/favicon.png",
   },
   plugins: [
+    "expo-router",
     "expo-apple-authentication",
     "@react-native-google-signin/google-signin",
     "expo-asset",
@@ -115,5 +118,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       },
     ],
   ],
+  experiments: {
+    typedRoutes: true,
+  },
   description: "",
 });
