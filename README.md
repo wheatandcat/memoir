@@ -47,6 +47,12 @@ $ npx expo-doctor
 
 ## Android
 
+### バージョンアップ後の初回ビルド前に実行
+
+```bash
+$ npx expo prebuild -p android --clean
+```
+
 
 ### ローカル起動
 
@@ -61,6 +67,12 @@ $ pnpm android:build
 ```
 
 ## iOS
+
+### バージョンアップ後の初回ビルド前に実行
+
+```bash
+$ npx expo prebuild -p ios --clean
+```
 
 ### ローカル起動
 
