@@ -1,6 +1,8 @@
-const { getDefaultConfig } = require("expo/metro-config");
+// Use Sentry’s Metro config wrapper (includes debug‑ID injection for sourcemaps)
+const { getSentryExpoConfig } = require("@sentry/react-native/metro");
 
-const config = getDefaultConfig(__dirname);
+// Initialize Metro config via Sentry helper instead of Expo default
+const config = getSentryExpoConfig(__dirname);
 
 // -----------------------------------------------------------------------------
 // Firebase / Expo SDK 53: allow “.cjs” files and use classic Node “exports”
