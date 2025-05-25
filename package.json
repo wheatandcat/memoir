@@ -2,7 +2,7 @@
   "name": "memoir",
   "version": "1.9.0",
   "license": "MIT",
-  "main": "expo-router/entry",
+  "main": "index.ts",
   "scripts": {
     "expo:start": "APP_ENV=review expo start",
     "expo:start:clear": "APP_ENV=review expo start --clear",

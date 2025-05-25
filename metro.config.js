@@ -1,5 +1,8 @@
 // Use Sentry’s Metro config wrapper (includes debug‑ID injection for sourcemaps)
 const { getSentryExpoConfig } = require("@sentry/react-native/metro");
+const withStorybook = require("@storybook/react-native/metro/withStorybook");
+
+const STORYBOOK_ENABLED = process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true";
 
 // Initialize Metro config via Sentry helper instead of Expo default
 const config = getSentryExpoConfig(__dirname);
@@ -20,4 +23,8 @@ config.resolver.unstable_enablePackageExports = false;
 // -----------------------------------------------------------------------------
 // That’s it – export the tweaked config.
 // -----------------------------------------------------------------------------
-module.exports = config;
+// Storybook をバンドルに含めるか切り離すかをここで制御
+module.exports = withStorybook(config, {
+  enabled: STORYBOOK_ENABLED,
+  onDisabledRemoveStorybook: !STORYBOOK_ENABLED,
+});
