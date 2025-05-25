@@ -1,20 +1,21 @@
-const { getSentryExpoConfig } = require("@sentry/react-native/metro");
-const { mergeConfig } = require("@react-native/metro-config");
-const withStorybook = require("@storybook/react-native/metro/withStorybook");
+const { getDefaultConfig } = require("expo/metro-config");
 
-const STORYBOOK_ENABLED = process.env.EXPO_PUBLIC_STORYBOOK_ENABLED === "true";
+const config = getDefaultConfig(__dirname);
 
-const baseConfig = getSentryExpoConfig(__dirname);
+// -----------------------------------------------------------------------------
+// Firebase / Expo SDK 53: allow “.cjs” files and use classic Node “exports”
+// resolution so Firebase sub‑packages are bundled correctly.
+// -----------------------------------------------------------------------------
+config.resolver.sourceExts = config.resolver.sourceExts || [];
+if (!config.resolver.sourceExts.includes("cjs")) {
+  config.resolver.sourceExts.push("cjs");
+}
 
-const customConfig = {
-  resolver: {
-    // Storybook v8 以降で必須
-    unstable_enablePackageExports: true,
-  },
-};
+// Disable the new, stricter “package.json exports” resolution until every
+// dependency (Firebase, React‑Native‑WebView, etc.) ships full export maps.
+config.resolver.unstable_enablePackageExports = false;
 
-// Storybook をバンドルに含めるか切り離すかをここで制御
-module.exports = withStorybook(mergeConfig(baseConfig, customConfig), {
-  enabled: STORYBOOK_ENABLED,
-  onDisabledRemoveStorybook: !STORYBOOK_ENABLED,
-});
+// -----------------------------------------------------------------------------
+// That’s it – export the tweaked config.
+// -----------------------------------------------------------------------------
+module.exports = config;

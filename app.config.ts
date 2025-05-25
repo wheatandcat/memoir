@@ -78,7 +78,6 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#E3C95D",
       foregroundImage: "./assets/android-icon.png",
     },
-    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/favicon.png",
