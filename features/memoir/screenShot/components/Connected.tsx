@@ -1,4 +1,3 @@
-import Auth from "@/lib/auth";
 import {
   ItemsInPeriodDocument,
   RelationshipsDocument,
@@ -9,8 +8,6 @@ import type React from "react";
 import { memo } from "react";
 import Plain from "./Plain";
 import type { User } from "./type";
-
-const auth = new Auth();
 
 type Props = {
   startDate: string;
