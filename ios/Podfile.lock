@@ -2316,8 +2316,30 @@ PODS:
     - ReactCommon/turbomodule/bridging
     - ReactCommon/turbomodule/core
     - Yoga
-  - RNCMaskedView (0.1.11):
-    - React
+  - RNCMaskedView (0.3.2):
+    - DoubleConversion
+    - glog
+    - hermes-engine
+    - RCT-Folly (= 2024.11.18.00)
+    - RCTRequired
+    - RCTTypeSafety
+    - React-Core
+    - React-debug
+    - React-Fabric
+    - React-featureflags
+    - React-graphics
+    - React-hermes
+    - React-ImageManager
+    - React-jsi
+    - React-NativeModulesApple
+    - React-RCTFabric
+    - React-renderercss
+    - React-rendererdebug
+    - React-utils
+    - ReactCodegen
+    - ReactCommon/turbomodule/bridging
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNCPicker (2.11.0):
     - DoubleConversion
     - glog
@@ -2798,7 +2820,7 @@ DEPENDENCIES:
   - ReactCodegen (from `build/generated/ios`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
-  - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
+  - "RNCMaskedView (from `../node_modules/@react-native-masked-view/masked-view`)"
   - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
@@ -3060,7 +3082,7 @@ EXTERNAL SOURCES:
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
-    :path: "../node_modules/@react-native-community/masked-view"
+    :path: "../node_modules/@react-native-masked-view/masked-view"
   RNCPicker:
     :path: "../node_modules/@react-native-picker/picker"
   RNDateTimePicker:
@@ -3205,7 +3227,7 @@ SPEC CHECKSUMS:
   ReactCodegen: fda99a79c866370190e162083a35602fdc314e5d
   ReactCommon: 4d0da92a5eb8da86c08e3ec34bd23ab439fb2461
   RNCAsyncStorage: c1bbcf629d7206d1e19310827848b98d68a4cbaf
-  RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
+  RNCMaskedView: 3e8d6bf9764b519d077986413882959eafceffbc
   RNCPicker: 04b02770d871072243f4a95fa2523b9c3398a2f5
   RNDateTimePicker: eac1f82db8ebabd4a93f8250676f16fe7ca47b99
   RNGestureHandler: ccf4105b125002bd88e39d2a1f2b7e6001bcdf34

@@ -186,7 +186,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       firebaseLogin(credential);
     } catch (e) {
-      console.log("error:", e);
+      console.log("apple login error:", e);
       Alert.alert("ログインに失敗しました");
       errorCallback?.();
     }
@@ -202,7 +202,7 @@ const useFirebaseAuth = (login = false, errorCallback?: () => void) => {
 
       firebaseLogin(googleCredential);
     } catch (e) {
-      console.log("error:", e);
+      console.log("google login error:", e);
       Alert.alert("ログインに失敗しました");
       errorCallback?.();
     }
