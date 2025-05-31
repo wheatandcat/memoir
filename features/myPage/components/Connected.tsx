@@ -68,7 +68,7 @@ const Connected: React.FC = () => {
   }, [router]);
 
   const onUpdateProfile = useCallback(() => {
-    router.push("my-page/update-profile");
+    router.push("/my-page/update-profile");
   }, [router]);
 
   const onAddShareUser = useCallback(() => {

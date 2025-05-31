@@ -80,8 +80,9 @@ const Connected: React.FC<Props> = (props) => {
     (itemID: string) => {
       const date = dayjs(homeDate.date).format("YYYY-MM-DD");
       router.push({
-        pathname: `/items/${itemID}`,
+        pathname: "/items/[id]",
         params: {
+          id: itemID,
           date,
         },
       });

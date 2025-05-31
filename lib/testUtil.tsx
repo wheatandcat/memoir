@@ -5,7 +5,6 @@ import {
   InMemoryCache,
   createHttpLink,
 } from "@apollo/client";
-import { NavigationContainer } from "@react-navigation/native";
 import { render } from "@testing-library/react-native";
 import fetch from "cross-fetch";
 import type { GraphQLHandler } from "msw";
@@ -28,9 +27,5 @@ export const testRenderer =
     if (responseOverride) {
       server.use(responseOverride);
     }
-    return render(
-      <NavigationContainer>
-        <ApolloProvider client={client}>{children}</ApolloProvider>
-      </NavigationContainer>,
-    );
+    return render(<ApolloProvider client={client}>{children}</ApolloProvider>);
   };

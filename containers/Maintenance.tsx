@@ -9,7 +9,6 @@ import { getFirestoreApp } from "@/lib/firebase";
 import { compare } from "compare-versions";
 import Constants from "expo-constants";
 import useIsFirstRender from "hooks/useIsFirstRender";
-import usePrevious from "hooks/usePrevious";
 import type React from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { AppState } from "react-native";
