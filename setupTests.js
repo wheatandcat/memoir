@@ -55,9 +55,11 @@ jest.mock("@react-navigation/native", () => {
     useNavigation: () => ({
       ...actualNav.useNavigation().navigation,
       addListener: jest.fn(),
+      addEventListener: jest.fn(),
       removeEventListener: jest.fn(),
       setOptions: jest.fn(),
     }),
+
     useRoute: () => ({
       name: "test",
     }),
@@ -72,6 +74,15 @@ jest.mock("expo-router", () => {
     useFocusEffect: jest.fn(),
   };
 });
+
+jest.mock("expo-linking", () => ({
+  addEventListener: jest.fn(() => ({ remove: jest.fn() })),
+  removeEventListener: jest.fn(),
+  openURL: jest.fn(),
+  canOpenURL: jest.fn(),
+  getInitialURL: jest.fn(),
+  makeUrl: jest.fn(),
+}));
 
 jest.mock("@/lib/firebase", () => {
   return {

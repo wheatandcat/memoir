@@ -10,4 +10,7 @@ module.exports = {
       "identity-obj-proxy",
   },
   setupFilesAfterEnv: ["<rootDir>setupTests.js"],
+  testEnvironmentOptions: {
+    customExportConditions: [""],
+  },
 };
