@@ -1,3 +1,4 @@
+<!-- I want to review in Japanese. -->
 ## 関連 issue
 
 - fixes #{issue 番号}
