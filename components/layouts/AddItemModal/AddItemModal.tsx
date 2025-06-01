@@ -142,11 +142,10 @@ const AddItemModal: FC<Props> = ({
           is24Hour={true}
           date={state.date}
           onConfirm={(v) => {
-            setOpenDate(false);
             onChangeDate(v);
+            setOpenDate(false);
           }}
           onCancel={() => setOpenDate(false)}
-          onResponderEnd={() => setOpenDate(false)}
         />
         <TextInput
           placeholder="今日何やった？"
