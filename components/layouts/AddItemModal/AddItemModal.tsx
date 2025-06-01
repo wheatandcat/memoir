@@ -47,7 +47,7 @@ const AddItemModal: FC<Props> = ({
   ...props
 }) => {
   const [state, setState] = useState<State>(
-    initialState(props.date, props.item),
+    initialState(props.date, props.item)
   );
   const prevIsVisible = usePrevious(props.isVisible);
   const [openDate, setOpenDate] = useState(false);
@@ -142,11 +142,10 @@ const AddItemModal: FC<Props> = ({
           is24Hour={true}
           date={state.date}
           onConfirm={(v) => {
-            setOpenDate(false);
             onChangeDate(v);
+            setOpenDate(false);
           }}
           onCancel={() => setOpenDate(false)}
-          onResponderEnd={() => setOpenDate(false)}
         />
         <TextInput
           placeholder="今日何やった？"

@@ -6,7 +6,7 @@ import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
 import type { ItemQuery, NewItem } from "@/queries/api/index";
 import type { FC } from "react";
-import { memo } from "react";
+import React, { memo } from "react";
 import { ScrollView, StyleSheet } from "react-native";
 import type { ConnectedType } from "./type";
 
