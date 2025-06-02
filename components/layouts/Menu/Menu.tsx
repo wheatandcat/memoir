@@ -90,21 +90,27 @@ const Menu: FC<Props> = (props) => {
           onDismiss={onModalHide}
           testID="menu_modal"
         >
-          <TouchableWithoutFeedback onPress={() => setOpen(!open)}>
-            <View style={[style, styles.menuItem]}>
-              {props.items.map((item, index) => (
-                <View key={item.text}>
-                  <TouchableOpacity
-                    onPress={() => onPress(item, index)}
-                    testID={item.testID}
-                  >
-                    <View p={3}>
-                      <Text color={item.color}>{item.text}</Text>
+          {/* full‑screen overlay: tap to close */}
+          <TouchableWithoutFeedback onPress={() => setOpen(false)}>
+            <View style={styles.overlay}>
+              {/* inner wrapper prevents overlay press when tapping the menu */}
+              <TouchableWithoutFeedback>
+                <View style={[style, styles.menuItem]}>
+                  {props.items.map((item, index) => (
+                    <View key={item.text}>
+                      <TouchableOpacity
+                        onPress={() => onPress(item, index)}
+                        testID={item.testID}
+                      >
+                        <View p={3}>
+                          <Text color={item.color}>{item.text}</Text>
+                        </View>
+                      </TouchableOpacity>
+                      {index < props.items.length - 1 && <Divider />}
                     </View>
-                  </TouchableOpacity>
-                  {index < props.items.length - 1 && <Divider />}
+                  ))}
                 </View>
-              ))}
+              </TouchableWithoutFeedback>
             </View>
           </TouchableWithoutFeedback>
         </Modal>
@@ -117,6 +123,10 @@ const styles = StyleSheet.create({
   menu: {
     position: "relative",
     zIndex: 1,
+  },
+  overlay: {
+    flex: 1,
+    justifyContent: "flex-start",
   },
   menuItem: {
     position: "absolute",
