@@ -31,7 +31,7 @@ const CardDetail: FC<Props> = (props) => {
   };
 
   const category = setting().icon.find(
-    (v) => v.id === props.categoryID
+    (v) => v.id === props.categoryID,
   )?.category;
   const categoryStyle: ViewStyle[] = [
     styles.root,
@@ -62,7 +62,7 @@ const CardDetail: FC<Props> = (props) => {
             ],
             {
               cancelable: true,
-            }
+            },
           );
         },
         removeMenu: false,
@@ -77,7 +77,7 @@ const CardDetail: FC<Props> = (props) => {
         removeMenu: true,
       },
     ],
-    [props.onOpenUpdateItem, props.onDeleteItem]
+    [props.onOpenUpdateItem, props.onDeleteItem],
   );
 
   return (
