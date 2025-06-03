@@ -77,7 +77,7 @@ const CardDetail: FC<Props> = (props) => {
         removeMenu: true,
       },
     ],
-    [props],
+    [props.onOpenUpdateItem, props.onDeleteItem],
   );
 
   return (
