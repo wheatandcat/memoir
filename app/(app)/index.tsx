@@ -32,7 +32,18 @@ export default function Index() {
             backgroundColor: theme().color.primary.main,
           },
           headerRight: () => (
-            <View pr={2} pb={1}>
+            <View
+              pr={0}
+              pb={0}
+              style={{
+                width: 30,
+                height: 40,
+                justifyContent: "center",
+                alignItems: "center",
+                left: 0,
+                top: 0,
+              }}
+            >
               <IconButton
                 name="more-vert"
                 size="base"

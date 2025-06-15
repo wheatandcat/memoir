@@ -1,13 +1,22 @@
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import { useSession } from "@/ctx";
+import * as NavigationBar from "expo-navigation-bar";
 import { Redirect, Stack, useRouter } from "expo-router";
+import { useEffect } from "react";
 import { Text } from "react-native";
+import { Platform } from "react-native";
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
   const router = useRouter();
 
+  useEffect(() => {
+    if (Platform.OS === "android") {
+      NavigationBar.setPositionAsync("absolute");
+      NavigationBar.setBackgroundColorAsync("transparent");
+    }
+  }, []);
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -25,6 +34,7 @@ export default function AppLayout() {
   return (
     <Stack
       screenOptions={{
+        headerShown: true,
         headerBackTitle: "",
         headerStyle: {
           backgroundColor: theme().color.primary.main,

@@ -1,6 +1,6 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import { MaterialIcons } from "@expo/vector-icons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import type { FC } from "react";
 import { memo } from "react";
 import type { ViewStyle } from "react-native";

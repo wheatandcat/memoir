@@ -116,7 +116,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onMonth = useCallback(
@@ -130,7 +130,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onDay = useCallback(
@@ -139,7 +139,7 @@ const DateInput: FC<Props> = (props) => {
 
       setState((s) => ({ ...s, date }));
     },
-    [state.date],
+    [state.date]
   );
 
   const onToday = useCallback(() => {
