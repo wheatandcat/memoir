@@ -33,7 +33,7 @@ const Input: FC<Props> = (props) => {
       setOpenTime(false);
       props.onChangeTime(val);
     },
-    [props],
+    [props]
   );
 
   return (
@@ -66,8 +66,8 @@ const Input: FC<Props> = (props) => {
                 fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,
                 color: theme().color.secondary.main,
-                width: 40,
-                height: 50,
+                width: 50,
+                height: 65,
                 marginTop: theme().space(2),
                 paddingTop: theme().space(1),
               },
