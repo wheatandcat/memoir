@@ -33,7 +33,7 @@ const Input: FC<Props> = (props) => {
       setOpenTime(false);
       props.onChangeTime(val);
     },
-    [props]
+    [props],
   );
 
   return (
