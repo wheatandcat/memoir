@@ -23,11 +23,11 @@ const Connected: FC<Props> = (props) => {
 
         const ok = await onPermissionRequest(() => null);
         if (ok) {
-          //await Notifications.cancelAllScheduledNotificationsAsync();
+          await Notifications.cancelAllScheduledNotificationsAsync();
 
-          const trigger: Notifications.CalendarTriggerInput = {
-            type: Notifications.SchedulableTriggerInputTypes.CALENDAR,
-            repeats: true,
+          const trigger: Notifications.WeeklyTriggerInput = {
+            type: Notifications.SchedulableTriggerInputTypes.WEEKLY,
+            channelId: "memoir",
             hour: input.hours,
             minute: input.minutes,
             weekday: input.dayOfWeek,
@@ -38,7 +38,7 @@ const Connected: FC<Props> = (props) => {
               content: {
                 body: "ふりかえりの時間になりました",
                 data: {
-                  urlScheme: "Memoir",
+                  url: "com.wheatandcat.memoir://memoir",
                 },
               },
               trigger,
@@ -55,7 +55,7 @@ const Connected: FC<Props> = (props) => {
       memoirNotificationSetting.onSave(input);
       callback();
     },
-    [memoirNotificationSetting, onPermissionRequest],
+    [memoirNotificationSetting, onPermissionRequest]
   );
 
   return (

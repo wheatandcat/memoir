@@ -6,6 +6,7 @@ import type React from "react";
 import { memo, useCallback } from "react";
 import Plain from "./Plain";
 import type { Input } from "./type";
+
 const Connected: React.FC = () => {
   const router = useRouter();
   const memoirNotificationSetting = useMemoirNotificationSetting();
@@ -22,12 +23,12 @@ const Connected: React.FC = () => {
         if (ok) {
           await Notifications.cancelAllScheduledNotificationsAsync();
 
-          const trigger = {
+          const trigger: Notifications.WeeklyTriggerInput = {
+            type: Notifications.SchedulableTriggerInputTypes.WEEKLY,
             channelId: "memoir",
             hour: input.hours,
             minute: input.minutes,
             weekday: input.dayOfWeek,
-            repeats: true,
           };
 
           try {
@@ -35,7 +36,7 @@ const Connected: React.FC = () => {
               content: {
                 body: "ふりかえりの時間になりました",
                 data: {
-                  urlScheme: "Memoir",
+                  url: "com.wheatandcat.memoir://memoir",
                 },
               },
               trigger,
@@ -53,7 +54,7 @@ const Connected: React.FC = () => {
 
       router.back();
     },
-    [router, memoirNotificationSetting, onPermissionRequest],
+    [router, memoirNotificationSetting, onPermissionRequest]
   );
 
   return (
