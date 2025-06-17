@@ -61,7 +61,7 @@ const Debug: FC = () => {
       content: {
         body: "Push通知テスト",
         data: {
-          urlScheme: "MyPage",
+          url: "com.wheatandcat.memoir://my-page",
         },
       },
       trigger: {
