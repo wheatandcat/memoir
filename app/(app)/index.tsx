@@ -26,6 +26,7 @@ export default function Index() {
     <>
       <Stack.Screen
         options={{
+          headerShown: true,
           title: "",
           headerBackTitle: "",
           headerStyle: {

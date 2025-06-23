@@ -12,7 +12,6 @@ import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import { Slot } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
-import { useEffect } from "react";
 import { Linking } from "react-native";
 
 /*
@@ -43,13 +42,6 @@ if (Constants.expoConfig?.extra?.APP_ENV === "production") {
     enableNativeFramesTracking: !isRunningInExpoGo(),
   });
 }
-
-SplashScreen.preventAutoHideAsync().catch(() => {
-  console.log("SplashScreen.preventAutoHideAsync() error");
-});
-SplashScreen.setOptions({
-  duration: 1000,
-});
 
 export default Sentry.wrap(function Root() {
   const client = makeApolloClient();
