@@ -6,17 +6,12 @@ import { Redirect, Stack, useRouter } from "expo-router";
 import { useEffect } from "react";
 import { Text } from "react-native";
 import { Platform } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
   const router = useRouter();
 
-  useEffect(() => {
-    if (Platform.OS === "android") {
-      NavigationBar.setPositionAsync("absolute");
-      NavigationBar.setBackgroundColorAsync("transparent");
-    }
-  }, []);
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
     return <Text>Loading...</Text>;
@@ -32,35 +27,27 @@ export default function AppLayout() {
 
   // This layout can be deferred because it's not the root layout.
   return (
-    <Stack
-      screenOptions={{
-        headerShown: true,
-        headerBackTitle: "",
-        headerStyle: {
-          backgroundColor: theme().color.primary.main,
-        },
-        headerTintColor: theme().fontColors.secondary,
-      }}
-    >
-      <Stack.Screen name="index" />
-      <Stack.Screen
-        name="modal"
-        options={{
-          presentation: "modal",
-          title: "memoir",
-          headerBackTitle: "",
-          headerStyle: {
-            backgroundColor: theme().color.base.main,
-          },
-          headerLeft: () => (
-            <IconButton
-              name="highlight-off"
-              size="base"
-              onPress={() => router.back()}
-            />
-          ),
-        }}
-      />
-    </Stack>
+    <SafeAreaView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+      <Stack screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          name="modal"
+          options={{
+            presentation: "modal",
+            title: "memoir",
+            headerBackTitle: "",
+            headerStyle: {
+              backgroundColor: theme().color.base.main,
+            },
+            headerLeft: () => (
+              <IconButton
+                name="highlight-off"
+                size="base"
+                onPress={() => router.back()}
+              />
+            ),
+          }}
+        />
+      </Stack>
+    </SafeAreaView>
   );
 }
