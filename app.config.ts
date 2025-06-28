@@ -116,6 +116,12 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         note: "Use SENTRY_AUTH_TOKEN env to authenticate with Sentry.",
       },
     ],
+    [
+      "expo-image-picker",
+      {
+        photosPermission: "ユーザーの画像設定に使用します",
+      },
+    ],
   ],
   experiments: {
     typedRoutes: true,

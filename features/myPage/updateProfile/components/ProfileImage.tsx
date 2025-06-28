@@ -33,6 +33,8 @@ const ProfileImage: FC<Props> = (props) => {
       return;
     }
 
+    console.log("pickImageLibrary 002");
+
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
       allowsEditing: true,

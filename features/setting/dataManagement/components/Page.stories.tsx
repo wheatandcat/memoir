@@ -12,6 +12,4 @@ export default {
   title: "features/setting/dataManagement",
 };
 
-export const _Page = () => (
-  <Page {...props()} showActionSheetWithOptions={() => null} />
-);
+export const _Page = () => <Page {...props()} />;
