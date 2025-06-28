@@ -44,7 +44,7 @@
     "@expo-google-fonts/inter": "^0.2.0",
     "@expo-google-fonts/noto-sans-jp": "^0.2.0",
     "@expo-google-fonts/roboto-condensed": "^0.2.0",
-    "@expo/react-native-action-sheet": "^3.13.0",
+    "@expo/react-native-action-sheet": "^4.1.1",
     "@expo/vector-icons": "^14.1.0",
     "@graphql-typed-document-node/core": "^3.2.0",
     "@react-native-async-storage/async-storage": "2.1.2",
@@ -204,6 +204,10 @@
   "pnpm": {
     "onlyBuiltDependencies": [
       "@sentry/cli"
+    ],
+    "ignoredBuiltDependencies": [
+      "msw",
+      "protobufjs"
     ]
   }
 }

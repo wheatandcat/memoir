@@ -18,7 +18,6 @@ const Plain: React.FC<Props> = (props) => {
       loading={props.loading}
       onDelete={props.onDelete}
       disabledDeleteButton={props.disabledDeleteButton}
-      showActionSheetWithOptions={() => null}
     />
   );
 };
