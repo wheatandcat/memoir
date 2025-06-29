@@ -11,7 +11,6 @@ import { isRunningInExpoGo } from "expo";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import { Slot } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
 import { Linking } from "react-native";
 
 /*

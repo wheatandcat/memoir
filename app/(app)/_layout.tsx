@@ -1,11 +1,9 @@
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import { useSession } from "@/ctx";
-import * as NavigationBar from "expo-navigation-bar";
 import { Redirect, Stack, useRouter } from "expo-router";
-import { useEffect } from "react";
 import { Text } from "react-native";
-import { Platform } from "react-native";
+import { Platform, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function AppLayout() {
@@ -25,10 +23,22 @@ export default function AppLayout() {
     return <Redirect href="/sign-in" />;
   }
 
+  const RootView = Platform.OS === "ios" ? View : SafeAreaView;
+
   // This layout can be deferred because it's not the root layout.
   return (
-    <SafeAreaView style={{ flex: 1 }} edges={["top", "left", "right"]}>
-      <Stack screenOptions={{ headerShown: false }}>
+    <RootView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+      <Stack
+        screenOptions={{
+          headerShown: true,
+          title: "",
+          headerBackTitle: "",
+          headerStyle: {
+            backgroundColor: theme().color.primary.main,
+          },
+          headerTintColor: theme().fontColors.secondary,
+        }}
+      >
         <Stack.Screen
           name="modal"
           options={{
@@ -48,6 +58,6 @@ export default function AppLayout() {
           }}
         />
       </Stack>
-    </SafeAreaView>
+    </RootView>
   );
 }
