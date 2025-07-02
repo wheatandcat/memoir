@@ -42,8 +42,6 @@ const Notification: React.FC<Props> = memo((props) => {
     async (callback: () => void) => {
       requestCallback.current = callback;
 
-      console.log("Device.isDevice", Device.isDevice);
-
       if (!Device.isDevice) {
         //Alert.alert('端末から実行してくだださい');
         await requestCallback.current();
@@ -66,15 +64,12 @@ const Notification: React.FC<Props> = memo((props) => {
 
       const projectId = Constants?.expoConfig?.extra?.eas?.projectId;
 
-      console.log("001");
-
       try {
         const token = (
           await Notifications.getExpoPushTokenAsync({
             projectId,
           })
         ).data;
-        console.log("002", token);
 
         if (Platform.OS === "android") {
           Notifications.setNotificationChannelAsync("default", {
