@@ -2,6 +2,7 @@ import theme from "@/config/theme";
 import { CreatePushTokenDocument } from "@/queries/api/index";
 import type { CreatePushTokenMutationVariables } from "@/queries/api/index";
 import { useMutation } from "@apollo/client";
+import Constants from "expo-constants";
 import * as Device from "expo-device";
 import * as Notifications from "expo-notifications";
 import type React from "react";
@@ -41,6 +42,8 @@ const Notification: React.FC<Props> = memo((props) => {
     async (callback: () => void) => {
       requestCallback.current = callback;
 
+      console.log("Device.isDevice", Device.isDevice);
+
       if (!Device.isDevice) {
         //Alert.alert('端末から実行してくだださい');
         await requestCallback.current();
@@ -61,36 +64,49 @@ const Notification: React.FC<Props> = memo((props) => {
         return false;
       }
 
-      const token = (await Notifications.getExpoPushTokenAsync()).data;
-      console.log(token);
+      const projectId = Constants?.expoConfig?.extra?.eas?.projectId;
 
-      if (Platform.OS === "android") {
-        Notifications.setNotificationChannelAsync("default", {
-          name: "default",
-          importance: Notifications.AndroidImportance.MAX,
-          vibrationPattern: [0, 250, 250, 250],
-          lightColor: theme().color.primary.main,
+      console.log("001");
+
+      try {
+        const token = (
+          await Notifications.getExpoPushTokenAsync({
+            projectId,
+          })
+        ).data;
+        console.log("002", token);
+
+        if (Platform.OS === "android") {
+          Notifications.setNotificationChannelAsync("default", {
+            name: "default",
+            importance: Notifications.AndroidImportance.MAX,
+            vibrationPattern: [0, 250, 250, 250],
+            lightColor: theme().color.primary.main,
+          });
+        }
+
+        const variables: CreatePushTokenMutationVariables = {
+          input: {
+            token,
+            deviceID: `${(Device.modelName || "").split(" ").join("")}-${String(
+              Device.osInternalBuildId || ""
+            )
+              .split(" ")
+              .join("")}`,
+          },
+        };
+
+        createPushTokenMutation({
+          variables,
         });
+
+        return true;
+      } catch (error) {
+        console.log("003", error);
+        return false;
       }
-
-      const variables: CreatePushTokenMutationVariables = {
-        input: {
-          token,
-          deviceID: `${(Device.modelName || "").split(" ").join("")}-${String(
-            Device.osInternalBuildId || "",
-          )
-            .split(" ")
-            .join("")}`,
-        },
-      };
-
-      createPushTokenMutation({
-        variables,
-      });
-
-      return true;
     },
-    [createPushTokenMutation],
+    [createPushTokenMutation]
   );
 
   return <Provider value={{ onPermissionRequest }}>{props.children}</Provider>;
