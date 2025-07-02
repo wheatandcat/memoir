@@ -80,6 +80,14 @@ $ npx expo prebuild -p ios --clean
 $ pnpm dev:ios
 ```
 
+### ローカル実機で起動
+
+```bash
+$ pnpm dev:ios:device
+```
+
+iPhoneにアプリがインストールされたらQRコードを読み取ると起動します。
+
 ### productionビルド
 
 ```bash
