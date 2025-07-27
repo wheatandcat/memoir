@@ -49,3 +49,4 @@ expo-env.d.ts
 
 .env.local
 sentry.properties
+*-firebase.json

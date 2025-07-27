@@ -83,6 +83,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     favicon: "./assets/favicon.png",
   },
   plugins: [
+    "expo-notifications",
     "expo-router",
     "expo-apple-authentication",
     "@react-native-google-signin/google-signin",
