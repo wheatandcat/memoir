@@ -86,7 +86,7 @@ const Notification: React.FC<Props> = memo((props) => {
           input: {
             token,
             deviceID: `${(Device.modelName || "").split(" ").join("")}-${String(
-              Device.osInternalBuildId || ""
+              Device.osInternalBuildId || "",
             )
               .split(" ")
               .join("")}`,
@@ -104,7 +104,7 @@ const Notification: React.FC<Props> = memo((props) => {
         return false;
       }
     },
-    [createPushTokenMutation]
+    [createPushTokenMutation],
   );
 
   return <Provider value={{ onPermissionRequest }}>{props.children}</Provider>;
