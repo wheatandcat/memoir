@@ -39,7 +39,14 @@ const Page: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safe}>
+    <SafeAreaView
+      style={styles.safe}
+      edges={
+        Platform.OS === "android"
+          ? ["left", "right", "bottom"]
+          : ["top", "left", "right", "bottom"]
+      }
+    >
       <View style={styles.close}>
         <IconButton
           name="highlight-off"
