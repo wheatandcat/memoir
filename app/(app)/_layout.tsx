@@ -1,3 +1,4 @@
+import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import { useSession } from "@/ctx";
@@ -28,6 +29,10 @@ export default function AppLayout() {
   // This layout can be deferred because it's not the root layout.
   return (
     <RootView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="light"
+      />
       <Stack
         screenOptions={{
           headerShown: true,
@@ -43,18 +48,7 @@ export default function AppLayout() {
           name="modal"
           options={{
             presentation: "modal",
-            title: "memoir",
-            headerBackTitle: "",
-            headerStyle: {
-              backgroundColor: theme().color.base.main,
-            },
-            headerLeft: () => (
-              <IconButton
-                name="highlight-off"
-                size="base"
-                onPress={() => router.back()}
-              />
-            ),
+            headerShown: false,
           }}
         />
       </Stack>

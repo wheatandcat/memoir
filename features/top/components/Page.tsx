@@ -6,6 +6,7 @@ import type { Props as FormProps } from "@/components/layouts/Login/Form";
 import Loading from "@/components/layouts/Overlay/Loading";
 import theme from "@/config/theme";
 import type { ConnectedType } from "@/features/top/components/Connected";
+import * as SplashScreen from "expo-splash-screen";
 import { StatusBar } from "expo-status-bar";
 import type { FC } from "react";
 import React, { memo } from "react";
@@ -21,7 +22,7 @@ export type Props = ConnectedType & FormProps & {};
 
 const Page: FC<Props> = (props) => {
   return (
-    <>
+    <View onLayout={() => SplashScreen.hideAsync()}>
       <View style={styles.root}>
         <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
         <SafeAreaView>
@@ -90,7 +91,7 @@ const Page: FC<Props> = (props) => {
         </SafeAreaView>
         {props.loading && <Loading text="ログイン中" />}
       </View>
-    </>
+    </View>
   );
 };
 

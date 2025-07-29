@@ -7,7 +7,6 @@ import { SplashScreen } from "expo-router";
 import { useCallback, useState } from "react";
 
 SplashScreen.preventAutoHideAsync();
-setTimeout(SplashScreen.hideAsync, 500);
 
 export default function SignIn() {
   const { user, onSaveWhenNotLogin } = useUser();
