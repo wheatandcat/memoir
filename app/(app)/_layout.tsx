@@ -1,18 +1,13 @@
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
-import IconButton from "@/components/layouts/IconButton";
 import theme from "@/config/theme";
 import { useSession } from "@/ctx";
-import { Redirect, Stack, useRouter } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import { Text } from "react-native";
 import { Platform, View } from "react-native";
-import {
-  SafeAreaView,
-  useSafeAreaInsets,
-} from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
-  const router = useRouter();
   const insets = useSafeAreaInsets();
 
   // You can keep the splash screen open, or render a loading screen like we do here.

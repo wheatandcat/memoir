@@ -11,9 +11,7 @@ import { isRunningInExpoGo } from "expo";
 import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import { Slot } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { Linking } from "react-native";
-import { SafeAreaProvider } from "react-native-safe-area-context";
 
 /*
 import { removeItem, storageKey } from "@/lib/storage";
