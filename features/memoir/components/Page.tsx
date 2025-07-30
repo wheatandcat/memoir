@@ -39,21 +39,16 @@ const Page: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <SafeAreaView
-      style={styles.safe}
-      edges={
-        Platform.OS === "android"
-          ? ["left", "right", "bottom"]
-          : ["top", "left", "right", "bottom"]
-      }
-    >
-      <View style={styles.close}>
-        <IconButton
-          name="highlight-off"
-          size="base"
-          onPress={() => router.back()}
-        />
-      </View>
+    <SafeAreaView style={styles.safe} edges={["left", "right", "bottom"]}>
+      {!props.search && (
+        <View style={styles.close}>
+          <IconButton
+            name="highlight-off"
+            size="base"
+            onPress={() => router.back()}
+          />
+        </View>
+      )}
       <View style={styles.root}>
         <View style={styles.inner}>
           <DateCards
