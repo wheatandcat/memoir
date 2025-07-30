@@ -1,14 +1,14 @@
-import IconButton from "@/components/layouts/IconButton";
+import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
 import theme from "@/config/theme";
 import { useSession } from "@/ctx";
-import { Redirect, Stack, useRouter } from "expo-router";
+import { Redirect, Stack } from "expo-router";
 import { Text } from "react-native";
 import { Platform, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export default function AppLayout() {
   const { session, isLoading } = useSession();
-  const router = useRouter();
+  const insets = useSafeAreaInsets();
 
   // You can keep the splash screen open, or render a loading screen like we do here.
   if (isLoading) {
@@ -23,11 +23,18 @@ export default function AppLayout() {
     return <Redirect href="/sign-in" />;
   }
 
-  const RootView = Platform.OS === "ios" ? View : SafeAreaView;
-
   // This layout can be deferred because it's not the root layout.
   return (
-    <RootView style={{ flex: 1 }} edges={["top", "left", "right"]}>
+    <View
+      style={{
+        flex: 1,
+        paddingTop: Platform.OS === "android" ? insets.top : 0,
+      }}
+    >
+      <FocusAwareStatusBar
+        backgroundColor={theme().color.primary.main}
+        style="light"
+      />
       <Stack
         screenOptions={{
           headerShown: true,
@@ -43,21 +50,10 @@ export default function AppLayout() {
           name="modal"
           options={{
             presentation: "modal",
-            title: "memoir",
-            headerBackTitle: "",
-            headerStyle: {
-              backgroundColor: theme().color.base.main,
-            },
-            headerLeft: () => (
-              <IconButton
-                name="highlight-off"
-                size="base"
-                onPress={() => router.back()}
-              />
-            ),
+            headerShown: false,
           }}
         />
       </Stack>
-    </RootView>
+    </View>
   );
 }

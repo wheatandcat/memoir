@@ -1,3 +1,4 @@
+import View from "@/components/elements/View";
 import useHomeItems from "@/hooks/useHomeItems";
 import dayjs from "@/lib/dayjs";
 import { CreateItemDocument } from "@/queries/api/index";
@@ -7,6 +8,7 @@ import { useHomeItemsStore } from "@/store/homeItemsStore";
 import { useHomeStateStore } from "@/store/homeStateStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
+import * as SplashScreen from "expo-splash-screen";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import Plain from "./Plain";
@@ -106,22 +108,24 @@ const Connected: React.FC<Props> = (props) => {
   }, [router]);
 
   return (
-    <Plain
-      items={homeItems.items}
-      loading={loading}
-      error={error}
-      addItemLoading={addItemLoading}
-      date={dayjs(homeDate.date).format("YYYY-MM-DD")}
-      openAddItemModal={state.openAddItemModal}
-      openSettingModal={props.openSettingModal}
-      onAddItem={onAddItem}
-      onChangeDate={onChangeDate}
-      onCloseAddItem={onCloseAddItem}
-      onCloseSettingModal={props.onCloseSettingModal}
-      onItem={onItem}
-      onMemoir={onMemoir}
-      onOpenAddItem={onOpenAddItem}
-    />
+    <View onLayout={() => SplashScreen.hideAsync()}>
+      <Plain
+        items={homeItems.items}
+        loading={loading}
+        error={error}
+        addItemLoading={addItemLoading}
+        date={dayjs(homeDate.date).format("YYYY-MM-DD")}
+        openAddItemModal={state.openAddItemModal}
+        openSettingModal={props.openSettingModal}
+        onAddItem={onAddItem}
+        onChangeDate={onChangeDate}
+        onCloseAddItem={onCloseAddItem}
+        onCloseSettingModal={props.onCloseSettingModal}
+        onItem={onItem}
+        onMemoir={onMemoir}
+        onOpenAddItem={onOpenAddItem}
+      />
+    </View>
   );
 };
 

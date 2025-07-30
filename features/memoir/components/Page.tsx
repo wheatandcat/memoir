@@ -39,7 +39,16 @@ const Page: React.FC<Props> = (props) => {
   }, []);
 
   return (
-    <SafeAreaView style={styles.safe}>
+    <SafeAreaView style={styles.safe} edges={["left", "right", "bottom"]}>
+      {!props.search && (
+        <View style={styles.close}>
+          <IconButton
+            name="highlight-off"
+            size="base"
+            onPress={() => router.back()}
+          />
+        </View>
+      )}
       <View style={styles.root}>
         <View style={styles.inner}>
           <DateCards
@@ -60,15 +69,6 @@ const Page: React.FC<Props> = (props) => {
             <ShareButton
               onPress={props.onScreenShot}
               disabled={props.items.length === 0}
-            />
-          </View>
-        )}
-        {props.search && (
-          <View style={styles.close}>
-            <IconButton
-              name="highlight-off"
-              size="base"
-              onPress={() => router.back()}
             />
           </View>
         )}
@@ -95,11 +95,8 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   close: {
-    position: "absolute",
-    top: 0,
-    left: theme().space(2),
-    backgroundColor: theme().color.background.main,
-    borderRadius: 25,
+    paddingLeft: theme().space(2),
+    paddingTop: theme().space(3),
   },
 });
 

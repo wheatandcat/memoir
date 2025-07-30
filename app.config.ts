@@ -78,6 +78,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#E3C95D",
       foregroundImage: "./assets/android-icon.png",
     },
+    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/favicon.png",
@@ -121,6 +122,15 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       "expo-image-picker",
       {
         photosPermission: "ユーザーの画像設定に使用します",
+      },
+    ],
+    [
+      "react-native-edge-to-edge",
+      {
+        android: {
+          parentTheme: "Default",
+          enforceNavigationBarContrast: true,
+        },
       },
     ],
   ],
