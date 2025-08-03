@@ -128,8 +128,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       "react-native-edge-to-edge",
       {
         android: {
-          parentTheme: "Default",
-          enforceNavigationBarContrast: true,
+          parentTheme: "EdgeToEdge",
+          enforceNavigationBarContrast: false,
         },
       },
     ],

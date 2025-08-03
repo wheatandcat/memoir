@@ -48,8 +48,9 @@ export default Sentry.wrap(function Root() {
   return (
     <SessionProvider>
       <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
+        backgroundColor="transparent"
         style="dark"
+        translucent
       />
       <ActionSheetProvider>
         <ApolloProvider client={client}>
