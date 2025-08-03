@@ -8,7 +8,6 @@ import { useHomeItemsStore } from "@/store/homeItemsStore";
 import { useHomeStateStore } from "@/store/homeStateStore";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
-import * as SplashScreen from "expo-splash-screen";
 import type React from "react";
 import { memo, useCallback, useState } from "react";
 import Plain from "./Plain";
@@ -108,7 +107,7 @@ const Connected: React.FC<Props> = (props) => {
   }, [router]);
 
   return (
-    <View onLayout={() => SplashScreen.hideAsync()}>
+    <View>
       <Plain
         items={homeItems.items}
         loading={loading}
