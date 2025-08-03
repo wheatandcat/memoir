@@ -3,6 +3,7 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import usePrevious from "@/hooks/usePrevious";
 import dayjs from "@/lib/dayjs";
+import * as SplashScreen from "expo-splash-screen";
 import type { FC } from "react";
 import { memo, useCallback, useEffect, useRef, useState } from "react";
 import type { ListRenderItemInfo } from "react-native";
@@ -131,6 +132,9 @@ const DayInput: React.FC<Props> = (props) => {
       loop
       loopClonesPerSide={dayItems.length}
       removeClippedSubviews
+      onLayout={() => {
+        SplashScreen.hideAsync();
+      }}
     />
   );
 };
