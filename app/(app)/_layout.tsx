@@ -28,12 +28,12 @@ export default function AppLayout() {
     <View
       style={{
         flex: 1,
-        paddingTop: Platform.OS === "android" ? insets.top : 0,
       }}
     >
       <FocusAwareStatusBar
-        backgroundColor={theme().color.primary.main}
+        backgroundColor="transparent"
         style="light"
+        translucent
       />
       <Stack
         screenOptions={{

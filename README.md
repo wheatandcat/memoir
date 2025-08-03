@@ -115,25 +115,6 @@ $ pnpm storybook:ios
 $ pnpm storybook:android
 ```
 
-# コード生成
-
-## 新規画面作成
-
-```bash
-$ pnpm hygen page new
-```
-
-## コンポーネント作成
-
-```bash
-$ pnpm hygen component new
-```
-
-## テストコード追加
-
-```bash
-$ pnpm hygen test new
-```
 
 # ライセンスの出力
 
