@@ -10,7 +10,7 @@ import { useMutation } from "@apollo/client";
 import { useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import type React from "react";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import Plain from "./Plain";
 
 type Props = {
@@ -32,7 +32,7 @@ const Connected: React.FC<Props> = (props) => {
   const [addItemLoading, setAddItemLoading] = useState(false);
 
   const [state, setState] = useState<State>(
-    initialState(home.openAddItemModal),
+    initialState(home.openAddItemModal)
   );
   const { homeDate, setHomeDate } = useHomeDateStore();
 
@@ -68,14 +68,14 @@ const Connected: React.FC<Props> = (props) => {
       setAddItemLoading(true);
       createItemMutation({ variables });
     },
-    [createItemMutation],
+    [createItemMutation]
   );
 
   const onChangeDate = useCallback(
     (date: string) => {
       setHomeDate(dayjs(date).format("YYYY-MM-DDT00:00:00+09:00"));
     },
-    [setHomeDate],
+    [setHomeDate]
   );
 
   const onItem = useCallback(
@@ -89,7 +89,7 @@ const Connected: React.FC<Props> = (props) => {
         },
       });
     },
-    [router, homeDate.date],
+    [router, homeDate.date]
   );
 
   const onMemoir = useCallback(() => {
@@ -107,8 +107,14 @@ const Connected: React.FC<Props> = (props) => {
     });
   }, [router]);
 
+  useEffect(() => {
+    if (!loading) {
+      SplashScreen.hideAsync();
+    }
+  }, [loading]);
+
   return (
-    <View onLayout={() => SplashScreen.hideAsync()}>
+    <View>
       <Plain
         items={homeItems.items}
         loading={loading}
