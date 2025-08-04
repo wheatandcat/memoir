@@ -35,7 +35,7 @@ const Connected: React.FC = () => {
         }),
       };
       router.push({
-        pathname: "/memoir",
+        pathname: "/modal",
         params: param,
       });
     },
