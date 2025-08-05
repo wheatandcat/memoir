@@ -65,16 +65,15 @@ const CardDetail: FC<Props> = (props) => {
             },
           );
         },
-        removeMenu: false,
       },
       {
         text: "編集",
         color: "secondary",
         testID: "edit",
-        onPress: () => {
+        onPress: (callback?: () => void) => {
           props.onOpenUpdateItem();
+          callback?.();
         },
-        removeMenu: true,
       },
     ],
     [props.onOpenUpdateItem, props.onDeleteItem],

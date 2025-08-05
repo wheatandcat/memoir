@@ -43,7 +43,7 @@ const Page: React.FC<Props> = (props) => {
           : ["left", "right", "top"]
       }
     >
-      <StatusBar style="dark" />
+      <StatusBar style={Platform.OS === "ios" ? "light" : "dark"} />
       <View style={styles.close}>
         <IconButton
           name="highlight-off"
