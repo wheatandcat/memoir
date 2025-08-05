@@ -1,5 +1,5 @@
 import { testRenderer } from "@/lib/testUtil";
-import { fireEvent, screen } from "@testing-library/react-native";
+import { screen } from "@testing-library/react-native";
 import React from "react";
 import Menu from "../Menu";
 import type { Props } from "../Menu";
@@ -10,7 +10,6 @@ const propsData = (): Props => ({
       text: "text",
       color: "primary",
       onPress: jest.fn(),
-      removeMenu: false,
     },
   ],
 });

@@ -33,7 +33,7 @@ const Notification: React.FC<Props> = (props) => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
+      <StatusBar style="dark" />
       <View style={styles.header}>
         <Text textAlign="center">初期設定</Text>
       </View>

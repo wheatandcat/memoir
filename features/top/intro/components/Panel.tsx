@@ -74,7 +74,7 @@ const Intro: FC<Props> = (props) => {
 
   return (
     <>
-      <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
+      <StatusBar style="dark" />
       <View style={styles.wrap}>
         <ScrollView
           style={styles.wrap}

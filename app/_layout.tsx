@@ -1,5 +1,4 @@
 import FocusAwareStatusBar from "@/components/layouts/FocusAwareStatusBar";
-import theme from "@/config/theme";
 import MaintenanceContainer from "@/containers/Maintenance";
 import Notification from "@/containers/Notification";
 import { SessionProvider } from "@/ctx";
@@ -47,11 +46,7 @@ export default Sentry.wrap(function Root() {
 
   return (
     <SessionProvider>
-      <FocusAwareStatusBar
-        backgroundColor="transparent"
-        style="dark"
-        translucent
-      />
+      <FocusAwareStatusBar style="dark" translucent />
       <ActionSheetProvider>
         <ApolloProvider client={client}>
           <Notification>

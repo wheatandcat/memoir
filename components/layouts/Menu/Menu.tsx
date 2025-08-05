@@ -20,7 +20,6 @@ export type Item = {
   color: FontColor;
   testID?: string;
   onPress: (callback?: () => void) => void;
-  removeMenu: boolean;
 };
 
 export type Props = {
@@ -31,7 +30,6 @@ type State = { viewX: number; viewY: number };
 
 const Menu: FC<Props> = (props) => {
   const [open, setOpen] = useState(false);
-  const [key, setKey] = useState<number | null>(null);
   const [state, setState] = useState<State>({ viewX: 0, viewY: 0 });
   const viewRef = useRef<RNView>(null);
 
@@ -44,22 +42,14 @@ const Menu: FC<Props> = (props) => {
     });
   }, []);
 
-  const onPress = useCallback((item: Item, index: number) => {
-    if (item.removeMenu) {
-      setKey(index);
+  const onPress = useCallback((item: Item) => {
+    if (item.text === "削除") {
       setOpen(false);
+      item.onPress();
     } else {
       item.onPress(() => setOpen(false));
     }
   }, []);
-
-  const onModalHide = useCallback(() => {
-    if (key === null) {
-      return;
-    }
-
-    props.items[key].onPress();
-  }, [props, key]);
 
   const style: ViewStyle = {
     top: state.viewY + 20,
@@ -67,7 +57,6 @@ const Menu: FC<Props> = (props) => {
   };
 
   const onOpen = useCallback(() => {
-    setKey(null);
     setOpen(!open);
   }, [open]);
 
@@ -87,30 +76,29 @@ const Menu: FC<Props> = (props) => {
             setOpen(!open);
           }}
           animationType="fade"
-          onDismiss={onModalHide}
+          onDismiss={() => setOpen(false)}
           testID="menu_modal"
         >
           {/* full‑screen overlay: tap to close */}
           <TouchableWithoutFeedback onPress={() => setOpen(false)}>
             <View style={styles.overlay}>
               {/* inner wrapper prevents overlay press when tapping the menu */}
-              <TouchableWithoutFeedback>
-                <View style={[style, styles.menuItem]}>
-                  {props.items.map((item, index) => (
-                    <View key={item.text}>
-                      <TouchableOpacity
-                        onPress={() => onPress(item, index)}
-                        testID={item.testID}
-                      >
-                        <View p={3}>
-                          <Text color={item.color}>{item.text}</Text>
-                        </View>
-                      </TouchableOpacity>
-                      {index < props.items.length - 1 && <Divider />}
-                    </View>
-                  ))}
-                </View>
-              </TouchableWithoutFeedback>
+
+              <View style={[style, styles.menuItem]}>
+                {props.items.map((item, index) => (
+                  <View key={item.text}>
+                    <TouchableOpacity
+                      onPress={() => onPress(item)}
+                      testID={item.testID}
+                    >
+                      <View p={3}>
+                        <Text color={item.color}>{item.text}</Text>
+                      </View>
+                    </TouchableOpacity>
+                    {index < props.items.length - 1 && <Divider />}
+                  </View>
+                ))}
+              </View>
             </View>
           </TouchableWithoutFeedback>
         </Modal>

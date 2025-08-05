@@ -24,7 +24,7 @@ const Page: FC<Props> = (props) => {
   return (
     <View onLayout={() => SplashScreen.hideAsync()}>
       <View style={styles.root}>
-        <StatusBar backgroundColor={theme().color.primary.main} style="dark" />
+        <StatusBar style="dark" />
         <SafeAreaView>
           <View style={styles.inner}>
             <ImageBackground
