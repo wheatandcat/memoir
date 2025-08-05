@@ -10,7 +10,6 @@ import { memo } from "react";
 import { Platform, StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { Props as PlainProps } from "./Plain";
 
 export type Props = Pick<
@@ -31,7 +30,6 @@ export type Props = Pick<
 
 const Page: React.FC<Props> = (props) => {
   const router = useRouter();
-  const insets = useSafeAreaInsets();
 
   const height =
     Dimensions.get("window").height - (Platform.OS === "ios" ? 122 : 104);
