@@ -4,7 +4,7 @@ import theme from "@/config/theme";
 import dayjs from "@/lib/dayjs";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity, useColorScheme } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import RNPickerSelect from "react-native-picker-select";
 
@@ -27,6 +27,7 @@ const dayOfWeekItems = [
 
 const Input: FC<Props> = (props) => {
   const [openTime, setOpenTime] = useState(false);
+  const colorScheme = useColorScheme();
 
   const onChangeTime = useCallback(
     (val: Date) => {
@@ -47,17 +48,19 @@ const Input: FC<Props> = (props) => {
             value={props.dayOfWeek}
             onValueChange={props.onChangeDayOfWeek}
             items={dayOfWeekItems}
+            darkTheme={colorScheme === "dark"}
             style={{
               placeholder: {
                 width: 40,
                 height: 50,
                 color: theme().color.secondary.main,
               },
-              inputIOSContainer: { pointerEvents: "none" },
+              inputIOSContainer: {
+                pointerEvents: "none",
+              },
               inputIOS: {
                 fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,
-                color: theme().color.secondary.main,
                 width: 40,
                 height: 50,
                 paddingTop: theme().space(3),
@@ -65,7 +68,6 @@ const Input: FC<Props> = (props) => {
               inputAndroid: {
                 fontSize: theme().fontSizes.xl,
                 fontWeight: theme().fontWeights.bold,
-                color: theme().color.secondary.main,
                 width: 50,
                 height: 65,
                 marginTop: theme().space(2),
