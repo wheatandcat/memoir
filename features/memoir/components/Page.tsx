@@ -3,11 +3,12 @@ import IconButton from "@/components/layouts/IconButton";
 import DateCards from "@/components/layouts/Memoir/DateCards";
 import ShareButton from "@/components/layouts/Memoir/ShareButton";
 import theme from "@/config/theme";
-import { iosSelector } from "@/lib/responsive";
 import { useRouter } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import type React from "react";
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 import { Platform, StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import type { Props as PlainProps } from "./Plain";
 
@@ -29,27 +30,28 @@ export type Props = Pick<
 
 const Page: React.FC<Props> = (props) => {
   const router = useRouter();
-  const [showShareButton, setShowShareButton] = useState(false);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowShareButton(true);
-    }, 1);
-    return () => clearTimeout(timer);
-  }, []);
+  const height =
+    Dimensions.get("window").height - (Platform.OS === "ios" ? 122 : 104);
 
   return (
-    <SafeAreaView style={styles.safe} edges={["left", "right", "bottom"]}>
-      {!props.search && (
-        <View style={styles.close}>
-          <IconButton
-            name="highlight-off"
-            size="base"
-            onPress={() => router.back()}
-          />
-        </View>
-      )}
-      <View style={styles.root}>
+    <SafeAreaView
+      style={styles.safe}
+      edges={
+        Platform.OS === "ios"
+          ? ["left", "right", "bottom"]
+          : ["left", "right", "top"]
+      }
+    >
+      <StatusBar style="dark" />
+      <View style={styles.close}>
+        <IconButton
+          name="highlight-off"
+          size="base"
+          onPress={() => router.back()}
+        />
+      </View>
+      <View style={[styles.root, { height }]}>
         <View style={styles.inner}>
           <DateCards
             startDate={props.startDate}
@@ -64,14 +66,13 @@ const Page: React.FC<Props> = (props) => {
             onChangeUserID={props.onChangeUserID}
           />
         </View>
-        {showShareButton && (
-          <View style={styles.action}>
-            <ShareButton
-              onPress={props.onScreenShot}
-              disabled={props.items.length === 0}
-            />
-          </View>
-        )}
+
+        <View style={styles.action}>
+          <ShareButton
+            onPress={props.onScreenShot}
+            disabled={props.items.length === 0}
+          />
+        </View>
       </View>
     </SafeAreaView>
   );
@@ -83,16 +84,14 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   root: {
-    height: "100%",
     backgroundColor: theme().color.background.main,
   },
   inner: {
     height: "100%",
   },
   action: {
-    bottom: iosSelector({ iPhone8: 30, other: 0 }),
-    height: Platform.OS === "ios" ? 22 : 55,
-    position: "absolute",
+    bottom: 48,
+    height: 22,
   },
   close: {
     paddingLeft: theme().space(2),
