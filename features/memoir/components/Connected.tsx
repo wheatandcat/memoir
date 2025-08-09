@@ -8,6 +8,7 @@ import { useQuery } from "@apollo/client";
 import { useRouter } from "expo-router";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
+import { confirmButtonStyles } from "react-native-modal-datetime-picker";
 import Plain from "./Plain";
 import type { User } from "./type";
 
@@ -44,6 +45,31 @@ const Connected: FC<Props> = (props) => {
         first: 5,
       },
       skip: false,
+    },
+    onCompleted: (data) => {
+      if (props.userIDList && props.userIDList.length > 0) {
+        return;
+      }
+
+      // props.userIDListの設定がない場合は全ユーザー選択状態に設定
+      const tUserIDList: string[] = [];
+
+      if (user?.userID) {
+        tUserIDList.push(user?.userID);
+      }
+
+      if (data.relationships.edges?.length > 0) {
+        const tUserIDList2 = data.relationships.edges.map(
+          (v) => v?.node?.user?.id || "",
+        );
+
+        tUserIDList.push(...tUserIDList2);
+      }
+
+      setState((s) => ({
+        ...s,
+        userIDList: tUserIDList,
+      }));
     },
   });
 

@@ -11,19 +11,13 @@ type MemoirParams = {
   data: string;
 };
 
-type Data = {
-  userIDList?: string[];
-  categoryID?: number;
-  like?: boolean;
-  dislike?: boolean;
-  search?: boolean;
-};
-
 const Memoir: FC = () => {
   useSentryBreadcrumb();
   const { startDate, endDate, data } = useLocalSearchParams<MemoirParams>();
 
   const parsedData = data ? JSON.parse(data) : {};
+
+  console.log("parsedData", parsedData.userIDList);
 
   return (
     <Connected
