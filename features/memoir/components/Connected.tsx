@@ -60,7 +60,7 @@ const Connected: FC<Props> = (props) => {
 
       if (data.relationships.edges?.length > 0) {
         const tUserIDList2 = data.relationships.edges.map(
-          (v) => v?.node?.user?.id || ""
+          (v) => v?.node?.user?.id || "",
         );
 
         tUserIDList.push(...tUserIDList2);
@@ -113,7 +113,7 @@ const Connected: FC<Props> = (props) => {
         after: "",
       }));
     },
-    [reset]
+    [reset],
   );
 
   const users: User[] = [
@@ -132,7 +132,7 @@ const Connected: FC<Props> = (props) => {
 
   const onScreenShot = useCallback(() => {
     let tSelectedUserIDList: string[] | undefined = selectedUserIDList.filter(
-      (v) => v !== ""
+      (v) => v !== "",
     );
     if (tSelectedUserIDList.length === 0) {
       tSelectedUserIDList = undefined;
