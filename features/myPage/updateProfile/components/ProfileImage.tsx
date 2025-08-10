@@ -11,6 +11,7 @@ import * as ImagePicker from "expo-image-picker";
 import type { FC } from "react";
 import { memo, useCallback, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type Props = {
   authenticated: boolean;
@@ -21,6 +22,7 @@ export type Props = {
 const ProfileImage: FC<Props> = (props) => {
   const [image, setImage] = useState<string | null>(props.image);
   const { showActionSheetWithOptions } = useActionSheet();
+  const insets = useSafeAreaInsets();
 
   const pickImageLibrary = useCallback(async () => {
     const mediaLibrary =
@@ -82,6 +84,9 @@ const ProfileImage: FC<Props> = (props) => {
       {
         options: ["ライブラリから選択", "写真を撮る", "キャンセル"],
         cancelButtonIndex: 2,
+        containerStyle: {
+          paddingBottom: insets.bottom,
+        },
       },
       (buttonIndex) => {
         if (buttonIndex === 0) {
@@ -96,6 +101,7 @@ const ProfileImage: FC<Props> = (props) => {
     pickImageLibrary,
     pickImageCamera,
     props.authenticated,
+    insets.bottom,
   ]);
 
   return (

@@ -9,12 +9,14 @@ import {
 import type React from "react";
 import { memo, useCallback } from "react";
 import { StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { ConnectedType } from "./type";
 
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
   const { showActionSheetWithOptions } = useActionSheet();
+  const insets = useSafeAreaInsets();
 
   const onCheck = useCallback(() => {
     showActionSheetWithOptions(
@@ -22,6 +24,9 @@ const Page: React.FC<Props> = (props) => {
         options: ["完全に削除する", "キャンセル"],
         destructiveButtonIndex: 0,
         cancelButtonIndex: 1,
+        containerStyle: {
+          paddingBottom: insets.bottom,
+        },
       },
       (buttonIndex) => {
         if (buttonIndex === 0) {
@@ -29,7 +34,7 @@ const Page: React.FC<Props> = (props) => {
         }
       },
     );
-  }, [showActionSheetWithOptions, props]);
+  }, [showActionSheetWithOptions, props.onDelete, insets.bottom]);
 
   return (
     <View style={styles.root}>
