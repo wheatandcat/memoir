@@ -17,8 +17,6 @@ const Memoir: FC = () => {
 
   const parsedData = data ? JSON.parse(data) : {};
 
-  console.log("parsedData", parsedData.userIDList);
-
   return (
     <Connected
       startDate={

@@ -44,6 +44,7 @@ const Connected: React.FC<Props> = (props) => {
         after: "",
       },
     },
+    fetchPolicy: "network-only",
   });
 
   const users: User[] = [

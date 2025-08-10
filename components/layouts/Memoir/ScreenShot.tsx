@@ -181,7 +181,10 @@ const ScreenShot: React.FC<Props> = (props) => {
       <ScrollView style={styles.root} testID="screen-shot">
         <ViewShot
           ref={viewShot}
-          options={{ format: "jpg" }}
+          options={{
+            format: "jpg",
+            useRenderInContext: true,
+          }}
           style={styles.screen}
         >
           <Header startDate={props.startDate} endDate={props.endDate} isTitle />

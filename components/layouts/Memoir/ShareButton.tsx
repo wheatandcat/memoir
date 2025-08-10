@@ -2,7 +2,7 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { FC } from "react";
-import { memo } from "react";
+import { memo, useEffect, useState } from "react";
 import {
   StyleSheet,
   TouchableWithoutFeedback,
@@ -16,8 +16,19 @@ type Props = {
 
 const ShareButton: FC<Props> = (props) => {
   const windowWidth = useWindowDimensions().width;
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisplay(true);
+    }, 100);
+  }, []);
 
   const style = { width: windowWidth };
+
+  if (!display) {
+    return null;
+  }
 
   if (props.disabled) {
     return (
@@ -50,7 +61,7 @@ const styles = StyleSheet.create({
   memoirButton: {
     backgroundColor: theme().color.primary.main,
     width: "100%",
-    height: 55,
+    height: 60,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
