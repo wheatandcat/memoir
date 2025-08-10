@@ -6,10 +6,12 @@ import theme from "@/config/theme";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import type React from "react";
-import { memo } from "react";
-import { Platform, StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { memo, useEffect, useState } from "react";
+import { Dimensions, Platform, StyleSheet } from "react-native";
+import {
+  SafeAreaView,
+  useSafeAreaInsets,
+} from "react-native-safe-area-context";
 import type { Props as PlainProps } from "./Plain";
 
 export type Props = Pick<
@@ -30,6 +32,9 @@ export type Props = Pick<
 
 const Page: React.FC<Props> = (props) => {
   const router = useRouter();
+  const insets = useSafeAreaInsets();
+
+  const bottom = insets.bottom;
 
   const height =
     Dimensions.get("window").height - (Platform.OS === "ios" ? 122 : 104);
@@ -43,6 +48,7 @@ const Page: React.FC<Props> = (props) => {
           : ["left", "right", "top"]
       }
     >
+      <Bottom disabled={props.items.length === 0} />
       <StatusBar style={Platform.OS === "ios" ? "light" : "dark"} />
       <View style={styles.close}>
         <IconButton
@@ -67,7 +73,7 @@ const Page: React.FC<Props> = (props) => {
           />
         </View>
 
-        <View style={styles.action}>
+        <View style={[styles.action, { bottom: 58 - bottom / 2 }]}>
           <ShareButton
             onPress={props.onScreenShot}
             disabled={props.items.length === 0}
@@ -75,6 +81,33 @@ const Page: React.FC<Props> = (props) => {
         </View>
       </View>
     </SafeAreaView>
+  );
+};
+
+type BottomProps = {
+  disabled: boolean;
+};
+
+const Bottom: React.FC<BottomProps> = (props) => {
+  const [display, setDisplay] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setDisplay(true);
+    }, 100);
+  }, []);
+
+  if (!display) {
+    return null;
+  }
+
+  return (
+    <View
+      style={[
+        styles.bottom,
+        props.disabled ? styles.bottomColorDisabled : styles.bottomColor,
+      ]}
+    />
   );
 };
 
@@ -90,12 +123,26 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   action: {
-    bottom: 48,
-    height: 22,
+    bottom: 55,
+    backgroundColor: theme().color.primary.main,
   },
   close: {
     paddingLeft: theme().space(2),
     paddingTop: theme().space(3),
+  },
+  bottom: {
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 20,
+    backgroundColor: theme().color.primary.main,
+  },
+  bottomColor: {
+    backgroundColor: theme().color.primary.main,
+  },
+  bottomColorDisabled: {
+    backgroundColor: theme().color.base.dark,
   },
 });
 

@@ -60,6 +60,16 @@ $ npx expo prebuild -p android --clean
 $ pnpm dev:android
 ```
 
+
+### ローカルで実機で起動
+
+```bash
+$ pnpm dev:android:device
+```
+
+端末にアプリがインストールされたらQRコードを読み取ると起動します。
+
+
 ### productionビルド
 
 ```bash
@@ -80,13 +90,13 @@ $ npx expo prebuild -p ios --clean
 $ pnpm dev:ios
 ```
 
-### ローカル実機で起動
+### ローカルで実機で起動
 
 ```bash
 $ pnpm dev:ios:device
 ```
 
-iPhoneにアプリがインストールされたらQRコードを読み取ると起動します。
+端末にアプリがインストールされたらQRコードを読み取ると起動します。
 
 ### productionビルド
 

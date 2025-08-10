@@ -102,7 +102,7 @@ const ScreenShot: React.FC<Props> = (props) => {
 
       router.back();
     },
-    [router],
+    [router]
   );
 
   const onCapture = useCallback(async () => {
@@ -126,7 +126,7 @@ const ScreenShot: React.FC<Props> = (props) => {
   }, [props.items, onCapture]);
 
   const dates = Array.from(
-    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD"))),
+    new Set(props.items.map((v) => dayjs(v.date).format("YYYY-MM-DD")))
   );
 
   const dateItems = dates.sort().map((date) => {
@@ -140,12 +140,12 @@ const ScreenShot: React.FC<Props> = (props) => {
 
   const data = dateItems.flatMap((v1) => {
     const sameDateItems = props.items.filter(
-      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date,
+      (v2) => dayjs(v2.date).format("YYYY-MM-DD") === v1.date
     );
 
     const item: RenderedItem[] = sameDateItems.map((v2, index) => {
       const user: User | undefined = props.users.find(
-        (v) => v.id === v2.userID,
+        (v) => v.id === v2.userID
       );
 
       return {
@@ -181,7 +181,10 @@ const ScreenShot: React.FC<Props> = (props) => {
       <ScrollView style={styles.root} testID="screen-shot">
         <ViewShot
           ref={viewShot}
-          options={{ format: "jpg" }}
+          options={{
+            format: "jpg",
+            useRenderInContext: true,
+          }}
           style={styles.screen}
         >
           <Header startDate={props.startDate} endDate={props.endDate} isTitle />
