@@ -1,6 +1,5 @@
 import View from "@/components/elements/View";
 import theme from "@/config/theme";
-import useAutoFocusInput from "@/hooks/useAutoFocusInput";
 import type { FC } from "react";
 import {
   TextInput as RNTextInput,
@@ -12,8 +11,6 @@ import {
 type Props = TextInputProps;
 
 const TextInput: FC<Props> = (props) => {
-  const autoFocusProps = useAutoFocusInput(props.autoFocus || false);
-
   const style: TextStyle[] = [styles.text];
   if (props.style) {
     style.push(props.style as TextStyle);
@@ -23,7 +20,6 @@ const TextInput: FC<Props> = (props) => {
     <View>
       <RNTextInput
         {...props}
-        {...autoFocusProps}
         placeholderTextColor={theme().color.base.main}
         style={style}
         autoCapitalize="none"

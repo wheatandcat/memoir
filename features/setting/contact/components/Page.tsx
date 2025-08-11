@@ -3,7 +3,6 @@ import Text from "@/components/elements/Text";
 import View from "@/components/elements/View";
 import Modal from "@/components/layouts/Modal";
 import theme from "@/config/theme";
-import useAutoFocusInput from "@/hooks/useAutoFocusInput";
 import * as Clipboard from "expo-clipboard";
 import type React from "react";
 import { memo, useCallback } from "react";
@@ -14,8 +13,6 @@ import type { ConnectedType } from "./type";
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
-  const autoFocusProps = useAutoFocusInput(true, 500);
-
   const onCopyUserID = useCallback(() => {
     Clipboard.setStringAsync(props.userID);
   }, [props.userID]);
@@ -51,8 +48,7 @@ const Page: React.FC<Props> = (props) => {
           autoCapitalize="none"
           onChangeText={props.onChangeText}
           maxLength={300}
-          blurOnSubmit={false}
-          {...autoFocusProps}
+          autoFocus
         />
       </View>
       <Modal
