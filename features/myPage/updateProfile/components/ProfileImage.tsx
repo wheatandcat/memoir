@@ -35,8 +35,6 @@ const ProfileImage: FC<Props> = (props) => {
       return;
     }
 
-    console.log("pickImageLibrary 002");
-
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
       allowsEditing: true,
@@ -50,7 +48,7 @@ const ProfileImage: FC<Props> = (props) => {
       props.onChangeImage(uri);
       setImage(uri);
     }
-  }, [props]);
+  }, [props.onChangeImage]);
 
   const pickImageCamera = useCallback(async () => {
     const camera = await ImagePicker.requestCameraPermissionsAsync();
@@ -72,7 +70,7 @@ const ProfileImage: FC<Props> = (props) => {
       props.onChangeImage(uri);
       setImage(uri);
     }
-  }, [props]);
+  }, [props.onChangeImage]);
 
   const onUpdateImage = useCallback(() => {
     if (!props.authenticated) {

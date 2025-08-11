@@ -12,6 +12,7 @@ import {
   StyleSheet,
   type ViewStyle,
 } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 export type Props = {
   isVisible: boolean;
@@ -28,10 +29,19 @@ export type Props = {
 };
 
 const AppModal: FC<Props> = (props) => {
+  const insets = useSafeAreaInsets();
   const style: ViewStyle[] = [styles.root];
   if (props.height) {
     style.push({ height: props.height });
   }
+
+  const overlayStyle = [
+    styles.overlay,
+    {
+      paddingTop: Platform.OS === "android" ? insets.top : 0,
+      paddingBottom: Platform.OS === "android" ? insets.bottom : 0,
+    },
+  ];
 
   return (
     <View style={styles.container}>
@@ -39,9 +49,10 @@ const AppModal: FC<Props> = (props) => {
         visible={props.isVisible}
         transparent
         animationType="fade"
+        statusBarTranslucent
         testID={props.testID}
       >
-        <View style={styles.overlay}>
+        <View style={overlayStyle}>
           <View style={style}>
             <View p={3} style={styles.header}>
               <View style={styles.close}>
