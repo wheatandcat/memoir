@@ -30,12 +30,10 @@ const ProfileImage: FC<Props> = (props) => {
     if (mediaLibrary.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください",
+        "memoirアプリのカメラのアクセス許可をONにしてください"
       );
       return;
     }
-
-    console.log("pickImageLibrary 002");
 
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ["images"],
@@ -50,14 +48,14 @@ const ProfileImage: FC<Props> = (props) => {
       props.onChangeImage(uri);
       setImage(uri);
     }
-  }, [props]);
+  }, [props.onChangeImage]);
 
   const pickImageCamera = useCallback(async () => {
     const camera = await ImagePicker.requestCameraPermissionsAsync();
     if (camera.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください",
+        "memoirアプリのカメラのアクセス許可をONにしてください"
       );
     }
 
@@ -72,7 +70,7 @@ const ProfileImage: FC<Props> = (props) => {
       props.onChangeImage(uri);
       setImage(uri);
     }
-  }, [props]);
+  }, [props.onChangeImage]);
 
   const onUpdateImage = useCallback(() => {
     if (!props.authenticated) {
@@ -94,7 +92,7 @@ const ProfileImage: FC<Props> = (props) => {
         } else if (buttonIndex === 1) {
           pickImageCamera();
         }
-      },
+      }
     );
   }, [
     showActionSheetWithOptions,
