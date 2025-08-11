@@ -30,7 +30,7 @@ const ProfileImage: FC<Props> = (props) => {
     if (mediaLibrary.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください"
+        "memoirアプリのカメラのアクセス許可をONにしてください",
       );
       return;
     }
@@ -55,7 +55,7 @@ const ProfileImage: FC<Props> = (props) => {
     if (camera.status !== "granted") {
       Alert.alert(
         "注意",
-        "memoirアプリのカメラのアクセス許可をONにしてください"
+        "memoirアプリのカメラのアクセス許可をONにしてください",
       );
     }
 
@@ -92,7 +92,7 @@ const ProfileImage: FC<Props> = (props) => {
         } else if (buttonIndex === 1) {
           pickImageCamera();
         }
-      }
+      },
     );
   }, [
     showActionSheetWithOptions,

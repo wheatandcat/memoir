@@ -6,7 +6,6 @@ import theme from "@/config/theme";
 import type React from "react";
 import type { FC } from "react";
 import {
-  Dimensions,
   Modal,
   Platform,
   ScrollView,
@@ -30,61 +29,68 @@ export type Props = {
 };
 
 const AppModal: FC<Props> = (props) => {
+  const insets = useSafeAreaInsets();
   const style: ViewStyle[] = [styles.root];
   if (props.height) {
     style.push({ height: props.height });
   }
 
+  const overlayStyle = [
+    styles.overlay,
+    {
+      paddingTop: Platform.OS === "android" ? insets.top : 0,
+      paddingBottom: Platform.OS === "android" ? insets.bottom : 0,
+    },
+  ];
+
   return (
-    <>
-      <View style={styles.container}>
-        <Modal
-          visible={props.isVisible}
-          transparent
-          animationType="fade"
-          testID={props.testID}
-        >
-          <View style={styles.overlay}>
-            <View style={style}>
-              <View p={3} style={styles.header}>
-                <View style={styles.close}>
-                  <IconButton name="close" onPress={props.onClose} />
-                </View>
-                <View style={styles.title}>
-                  {props.titleElement ? (
-                    <>{props.titleElement}</>
-                  ) : (
-                    <View>
-                      <Text variants="middle" textAlign="center">
-                        {props.title}
-                      </Text>
-                    </View>
-                  )}
-                </View>
+    <View style={styles.container}>
+      <Modal
+        visible={props.isVisible}
+        transparent
+        animationType="fade"
+        statusBarTranslucent
+        testID={props.testID}
+      >
+        <View style={overlayStyle}>
+          <View style={style}>
+            <View p={3} style={styles.header}>
+              <View style={styles.close}>
+                <IconButton name="close" onPress={props.onClose} />
               </View>
-              <ScrollView
-                keyboardShouldPersistTaps="always"
-                removeClippedSubviews
-              >
-                <View px={3}>{props.children}</View>
-              </ScrollView>
-              {Boolean(props.buttonTitle) && (
-                <View mx={3} mb={3}>
-                  <Button
-                    title={props.buttonTitle || ""}
-                    size="lg"
-                    onPress={() => props.onPress?.()}
-                    disabled={props.disabledButton}
-                    loading={props.loading}
-                  />
-                </View>
-              )}
+              <View style={styles.title}>
+                {props.titleElement ? (
+                  <>{props.titleElement}</>
+                ) : (
+                  <View>
+                    <Text variants="middle" textAlign="center">
+                      {props.title}
+                    </Text>
+                  </View>
+                )}
+              </View>
             </View>
+            <ScrollView
+              keyboardShouldPersistTaps="always"
+              removeClippedSubviews
+            >
+              <View px={3}>{props.children}</View>
+            </ScrollView>
+            {Boolean(props.buttonTitle) && (
+              <View mx={3} mb={3}>
+                <Button
+                  title={props.buttonTitle || ""}
+                  size="lg"
+                  onPress={() => props.onPress?.()}
+                  disabled={props.disabledButton}
+                  loading={props.loading}
+                />
+              </View>
+            )}
           </View>
-        </Modal>
-      </View>
-      {props.isVisible && <View style={styles.overlay2} />}
-    </>
+        </View>
+      </Modal>
+    </View>
   );
 };
 
@@ -102,14 +108,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     paddingHorizontal: theme().space(2),
-    paddingVertical: theme().space(1),
-  },
-  overlay2: {
-    backgroundColor: "rgba(0,0,0,0.5)",
-    bottom: 0,
-    zIndex: 1,
-    width: "100%",
-    height: "100%",
   },
   root: {
     width: "100%",
