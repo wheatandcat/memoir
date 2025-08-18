@@ -4,29 +4,38 @@ import View from "@/components/elements/View";
 import theme from "@/config/theme";
 import type { FC } from "react";
 import { memo } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
+import { Platform, StyleSheet, TouchableOpacity } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 type Props = {
   onPress: () => void;
 };
 
 const MemoirButton: FC<Props> = (props) => {
+  const insets = useSafeAreaInsets();
+
   return (
-    <View style={styles.root}>
-      <TouchableOpacity onPress={props.onPress}>
-        <View style={styles.memoirButton}>
-          <View>
-            <Image
-              source={require("@/assets/img/icon/main.png")}
-              width={30}
-              height={30}
-            />
+    <View style={[styles.root]}>
+      <View
+        style={{
+          paddingBottom: Platform.OS === "ios" ? 0 : insets.bottom - 20,
+        }}
+      >
+        <TouchableOpacity onPress={props.onPress}>
+          <View style={[styles.memoirButton]}>
+            <View>
+              <Image
+                source={require("@/assets/img/icon/main.png")}
+                width={30}
+                height={30}
+              />
+            </View>
+            <View>
+              <Text>今週のmemoirを確認する</Text>
+            </View>
           </View>
-          <View>
-            <Text>今週のmemoirを確認する</Text>
-          </View>
-        </View>
-      </TouchableOpacity>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -38,6 +47,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 0,
     width: "100%",
+    backgroundColor: theme().color.primary.main,
   },
   memoirButton: {
     backgroundColor: theme().color.primary.main,

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   memoirButton: {
     backgroundColor: theme().color.primary.main,
     width: "100%",
-    height: 60,
+    height: 55,
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",

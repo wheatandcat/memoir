@@ -6,7 +6,7 @@ import theme from "@/config/theme";
 import { useRouter } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import type React from "react";
-import { memo, useEffect, useState } from "react";
+import { memo } from "react";
 import { Dimensions, Platform, StyleSheet } from "react-native";
 import {
   SafeAreaView,
@@ -34,10 +34,10 @@ const Page: React.FC<Props> = (props) => {
   const router = useRouter();
   const insets = useSafeAreaInsets();
 
-  const bottom = insets.bottom;
-
   const height =
     Dimensions.get("window").height - (Platform.OS === "ios" ? 122 : 104);
+
+  const disabled = props.items.length === 0;
 
   return (
     <SafeAreaView
@@ -45,10 +45,9 @@ const Page: React.FC<Props> = (props) => {
       edges={
         Platform.OS === "ios"
           ? ["left", "right", "bottom"]
-          : ["left", "right", "top"]
+          : ["left", "right", "top", "bottom"]
       }
     >
-      <Bottom disabled={props.items.length === 0} />
       <StatusBar style={Platform.OS === "ios" ? "light" : "dark"} />
       <View style={styles.close}>
         <IconButton
@@ -72,42 +71,21 @@ const Page: React.FC<Props> = (props) => {
             onChangeUserID={props.onChangeUserID}
           />
         </View>
-
-        <View style={[styles.action, { bottom: 58 - bottom / 2 }]}>
-          <ShareButton
-            onPress={props.onScreenShot}
-            disabled={props.items.length === 0}
-          />
-        </View>
+      </View>
+      <View
+        style={[
+          styles.action,
+          {
+            backgroundColor: disabled
+              ? theme().color.base.dark
+              : theme().color.primary.main,
+            paddingBottom: Platform.OS === "ios" ? 0 : insets.bottom - 20,
+          },
+        ]}
+      >
+        <ShareButton onPress={props.onScreenShot} disabled={disabled} />
       </View>
     </SafeAreaView>
-  );
-};
-
-type BottomProps = {
-  disabled: boolean;
-};
-
-const Bottom: React.FC<BottomProps> = (props) => {
-  const [display, setDisplay] = useState(false);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setDisplay(true);
-    }, 100);
-  }, []);
-
-  if (!display) {
-    return null;
-  }
-
-  return (
-    <View
-      style={[
-        styles.bottom,
-        props.disabled ? styles.bottomColorDisabled : styles.bottomColor,
-      ]}
-    />
   );
 };
 
@@ -116,15 +94,14 @@ const styles = StyleSheet.create({
     position: "relative",
     flex: 1,
   },
-  root: {
-    backgroundColor: theme().color.background.main,
-  },
+  root: {},
   inner: {
     height: "100%",
   },
   action: {
-    bottom: 55,
-    backgroundColor: theme().color.primary.main,
+    position: "absolute",
+    bottom: 0,
+    width: "100%",
   },
   close: {
     paddingLeft: theme().space(2),
