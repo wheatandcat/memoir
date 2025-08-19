@@ -11,8 +11,10 @@ import dayjs from "@/lib/dayjs";
 import type { User } from "@/queries/api/index";
 import type { FC } from "react";
 import { memo, useState } from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { Platform, ScrollView, StyleSheet } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import type { Input } from "./type";
+
 export type Props = {
   users: Pick<User, "id" | "image">[];
   onSearch: (input: State) => void;
@@ -33,6 +35,7 @@ const initialState = (): State => ({
 
 const Page: FC<Props> = (props) => {
   const [state, setState] = useState<State>(initialState());
+  const insets = useSafeAreaInsets();
 
   const error = dayjs(state.startDate).isAfter(state.endDate);
 
@@ -144,7 +147,12 @@ const Page: FC<Props> = (props) => {
           </View>
         </View>
       </ScrollView>
-      <View style={styles.actionContainer}>
+      <View
+        style={[
+          styles.actionContainer,
+          { paddingBottom: Platform.OS === "ios" ? 0 : insets.bottom },
+        ]}
+      >
         <View style={styles.action}>
           <Button
             title="検索"

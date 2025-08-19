@@ -11,6 +11,7 @@ import Constants from "expo-constants";
 import * as Notifications from "expo-notifications";
 import { Slot } from "expo-router";
 import { Linking } from "react-native";
+import { SystemBars } from "react-native-edge-to-edge";
 
 /*
 import { removeItem, storageKey } from "@/lib/storage";
@@ -47,6 +48,7 @@ export default Sentry.wrap(function Root() {
   return (
     <SessionProvider>
       <FocusAwareStatusBar style="dark" translucent />
+      <SystemBars style="dark" />
       <ActionSheetProvider>
         <ApolloProvider client={client}>
           <Notification>
