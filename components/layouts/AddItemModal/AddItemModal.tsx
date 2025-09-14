@@ -47,7 +47,7 @@ const AddItemModal: FC<Props> = ({
   ...props
 }) => {
   const [state, setState] = useState<State>(
-    initialState(props.date, props.item)
+    initialState(props.date, props.item),
   );
   const prevIsVisible = usePrevious(props.isVisible);
   const [openDate, setOpenDate] = useState(false);
