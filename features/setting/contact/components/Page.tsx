@@ -5,14 +5,25 @@ import Modal from "@/components/layouts/Modal";
 import theme from "@/config/theme";
 import * as Clipboard from "expo-clipboard";
 import type React from "react";
-import { memo, useCallback } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { TextInput as RNTextInput } from "react-native";
+import { memo, useCallback, useEffect, useRef } from "react";
+import {
+  TextInput as RNTextInput,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 import type { ConnectedType } from "./type";
 
 export type Props = ConnectedType & {};
 
 const Page: React.FC<Props> = (props) => {
+  const textInputRef = useRef<RNTextInput>(null);
+
+  useEffect(() => {
+    const id = setTimeout(() => textInputRef.current?.focus(), 100);
+
+    return () => clearTimeout(id);
+  }, []);
+
   const onCopyUserID = useCallback(() => {
     Clipboard.setStringAsync(props.userID);
   }, [props.userID]);
@@ -44,11 +55,11 @@ const Page: React.FC<Props> = (props) => {
         </View>
         <RNTextInput
           multiline
+          ref={textInputRef}
           style={styles.inputText}
           autoCapitalize="none"
           onChangeText={props.onChangeText}
           maxLength={300}
-          autoFocus
         />
       </View>
       <Modal
