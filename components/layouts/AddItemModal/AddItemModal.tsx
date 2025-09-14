@@ -150,8 +150,8 @@ const AddItemModal: FC<Props> = ({
         <TextInput
           placeholder="今日何やった？"
           onChangeText={onChangeTitle}
-          autoFocus
           returnKeyType="done"
+          autoFocus
           defaultValue={state.title}
           style={state.title ? styles.input : styles.placeholder}
         />
