@@ -47,7 +47,7 @@
       </dict>
     </array>
     <key>CFBundleVersion</key>
-    <string>1758419075</string>
+    <string>1758423319</string>
     <key>LSMinimumSystemVersion</key>
     <string>12.0</string>
     <key>LSRequiresIPhoneOS</key>
@@ -69,6 +69,8 @@
     <array>
       <string>$(PRODUCT_BUNDLE_IDENTIFIER).expo.index_route</string>
     </array>
+    <key>RCTNewArchEnabled</key>
+    <true/>
     <key>UIAppFonts</key>
     <array>
       <string>RobotoCondensed_700Bold.ttf</string>

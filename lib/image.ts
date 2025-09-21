@@ -1,5 +1,4 @@
 import { getFirebaseStorageApp } from "@/lib/firebase";
-import * as FileSystem from "expo-file-system";
 import * as ImageManipulator from "expo-image-manipulator";
 import {
   deleteObject,
@@ -10,7 +9,7 @@ import {
 
 export const uploadImageAsync = async (
   uri: string,
-  fileName: string,
+  fileName: string
 ): Promise<string> => {
   const blob: any = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -50,14 +49,13 @@ export const resizeImage = async (uri: string): Promise<string> => {
         },
       },
     ],
-    { compress: 0, format: ImageManipulator.SaveFormat.PNG },
+    { compress: 0, format: ImageManipulator.SaveFormat.PNG }
   );
 
+  /*
   const fileInfo = await FileSystem.getInfoAsync(result.uri, { size: true });
-
   const size = fileInfo.exists ? fileInfo.size : 0;
-
   console.log("file-size:", size);
-
+  */
   return result.uri;
 };
