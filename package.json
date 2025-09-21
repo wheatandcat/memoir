@@ -205,7 +205,8 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "@sentry/cli"
+      "@sentry/cli",
+      "esbuild"
     ],
     "ignoredBuiltDependencies": [
       "msw",
