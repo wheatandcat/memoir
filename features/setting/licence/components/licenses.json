@@ -143,12 +143,6 @@
     "licenseUrl": "https://github.com/expo/expo",
     "parents": "memoir"
   },
-  "expo-file-system": {
-    "licenses": "MIT",
-    "repository": "https://github.com/expo/expo",
-    "licenseUrl": "https://github.com/expo/expo",
-    "parents": "memoir"
-  },
   "expo-font": {
     "licenses": "MIT",
     "repository": "https://github.com/expo/expo",
