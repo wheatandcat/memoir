@@ -9,7 +9,7 @@ import {
 
 export const uploadImageAsync = async (
   uri: string,
-  fileName: string
+  fileName: string,
 ): Promise<string> => {
   const blob: any = await new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
@@ -49,7 +49,7 @@ export const resizeImage = async (uri: string): Promise<string> => {
         },
       },
     ],
-    { compress: 0, format: ImageManipulator.SaveFormat.PNG }
+    { compress: 0, format: ImageManipulator.SaveFormat.PNG },
   );
 
   /*
