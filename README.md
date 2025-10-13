@@ -81,6 +81,7 @@ $ pnpm android:build
 ### バージョンアップ後の初回ビルド前に実行
 
 ```bash
+$ rm -rf ~/Library/Developer/Xcode/DerivedData/*
 $ npx expo prebuild -p ios --clean
 ```
 
