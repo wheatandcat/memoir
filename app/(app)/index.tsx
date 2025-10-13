@@ -37,8 +37,8 @@ export default function Index() {
               pr={0}
               pb={0}
               style={{
-                width: 30,
-                height: 40,
+                width: 37,
+                height: 37,
                 justifyContent: "center",
                 alignItems: "center",
                 left: 0,
