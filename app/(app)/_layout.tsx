@@ -28,7 +28,7 @@ export default function AppLayout() {
         flex: 1,
       }}
     >
-      <FocusAwareStatusBar style="dark" translucent />
+      <FocusAwareStatusBar style="dark" />
       <Stack
         screenOptions={{
           headerShown: true,

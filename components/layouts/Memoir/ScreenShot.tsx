@@ -21,7 +21,7 @@ import {
   StyleSheet,
   useWindowDimensions,
 } from "react-native";
-import ViewShot from "react-native-view-shot";
+import ViewShot, { type ViewShotRef } from "react-native-view-shot";
 import Card from "./Card";
 
 export type Props = Pick<PlainProps, "users"> & {
@@ -75,7 +75,7 @@ const RenderItem: React.FC<RenderedItem> = (props) => {
 };
 
 const ScreenShot: React.FC<Props> = (props) => {
-  const viewShot = useRef<ViewShot>(null);
+  const viewShot = useRef<ViewShotRef>(null);
   const router = useRouter();
   const count = useRef(0);
   const [loading, setLoading] = useState(true);

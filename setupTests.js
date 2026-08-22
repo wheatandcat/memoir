@@ -60,30 +60,12 @@ jest.mock("react-native-safe-area-context", () => {
   };
 });
 
-jest.mock("@react-navigation/native", () => {
-  const actualNav = jest.requireActual("@react-navigation/native");
-  return {
-    ...actualNav,
-    useNavigation: () => ({
-      ...actualNav.useNavigation().navigation,
-      addListener: jest.fn(),
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      setOptions: jest.fn(),
-    }),
-
-    useRoute: () => ({
-      name: "test",
-    }),
-    useIsFocused: jest.fn(),
-  };
-});
-
 jest.mock("expo-router", () => {
   const actualRouter = jest.requireActual("expo-router");
   return {
     ...actualRouter,
     useFocusEffect: jest.fn(),
+    useIsFocused: jest.fn(),
   };
 });
 
