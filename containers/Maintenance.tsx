@@ -1,5 +1,6 @@
 import ForceUpdate from "@/features/forceUpdate/components/Page";
 import Maintenance from "@/features/maintenance/components/Page";
+import useIsFirstRender from "@/hooks/useIsFirstRender";
 import {
   type AppConfig,
   defaultAppConfig,
@@ -8,7 +9,6 @@ import {
 import { getFirestoreApp } from "@/lib/firebase";
 import { compare } from "compare-versions";
 import Constants from "expo-constants";
-import useIsFirstRender from "hooks/useIsFirstRender";
 import type React from "react";
 import { memo, useCallback, useEffect, useState } from "react";
 import { AppState } from "react-native";

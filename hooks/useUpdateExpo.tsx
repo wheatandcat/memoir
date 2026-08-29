@@ -1,5 +1,5 @@
+import { getItem, setItem, storageKey } from "@/lib/storage";
 import * as Updates from "expo-updates";
-import { getItem, setItem, storageKey } from "lib/storage";
 import { useCallback } from "react";
 import { Alert } from "react-native";
 

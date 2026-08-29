@@ -3,13 +3,12 @@ import dayjs from "dayjs";
 import "dayjs/locale/ja";
 import "dotenv/config";
 
-const version: string = "1.9.2";
+const version: string = "1.9.4";
 const unix = dayjs().unix().toString();
 
 export default ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   userInterfaceStyle: "automatic",
-  newArchEnabled: true,
   runtimeVersion: "1.0.0",
   extra: {
     API_HOST: process.env.API_HOST,
@@ -37,15 +36,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   version,
   orientation: "portrait",
   icon: "./assets/ios-icon.png",
-  jsEngine: "hermes",
   updates: {
     enabled: false,
     checkAutomatically: "ON_LOAD",
     fallbackToCacheTimeout: 30000,
-  },
-  notification: {
-    icon: "./assets/notification.png",
-    color: "#E3C95D",
   },
   assetBundlePatterns: ["**/*"],
   ios: {
@@ -78,13 +72,18 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       backgroundColor: "#E3C95D",
       foregroundImage: "./assets/android-icon.png",
     },
-    edgeToEdgeEnabled: true,
   },
   web: {
     favicon: "./assets/favicon.png",
   },
   plugins: [
-    "expo-notifications",
+    [
+      "expo-notifications",
+      {
+        icon: "./assets/notification.png",
+        color: "#E3C95D",
+      },
+    ],
     "expo-router",
     "expo-apple-authentication",
     "@react-native-google-signin/google-signin",

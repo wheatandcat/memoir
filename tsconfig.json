@@ -8,10 +8,10 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./*"]
     },
+    "customConditions": [],
     "typeRoots": ["node_modules/@types", "@types"]
   },
   "exclude": ["node_modules", "scripts/send-metrics"],

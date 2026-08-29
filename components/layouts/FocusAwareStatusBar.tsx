@@ -1,4 +1,4 @@
-import { useIsFocused } from "@react-navigation/native";
+import { useIsFocused } from "expo-router";
 import { StatusBar, type StatusBarProps } from "expo-status-bar";
 import type { FC } from "react";
 

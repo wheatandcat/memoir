@@ -47,7 +47,7 @@ export default Sentry.wrap(function Root() {
 
   return (
     <SessionProvider>
-      <FocusAwareStatusBar style="dark" translucent />
+      <FocusAwareStatusBar style="dark" />
       <SystemBars style="dark" />
       <ActionSheetProvider>
         <ApolloProvider client={client}>

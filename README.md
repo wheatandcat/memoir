@@ -50,7 +50,7 @@ $ npx expo-doctor
 ### バージョンアップ後の初回ビルド前に実行
 
 ```bash
-$ npx expo prebuild -p android --clean
+$ npx expo prebuild --clean
 ```
 
 
