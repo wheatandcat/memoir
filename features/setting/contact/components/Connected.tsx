@@ -84,13 +84,20 @@ const Connected: React.FC = () => {
           headerStyle: {
             backgroundColor: theme().color.primary.main,
           },
-          headerRight: () => (
-            <View pr={2} mr={1}>
-              <TouchableOpacity onPress={onContact}>
-                <Text>送信</Text>
-              </TouchableOpacity>
-            </View>
-          ),
+          unstable_headerRightItems: () => [
+            {
+              type: "custom",
+              // iOS 26 の Liquid Glass の背景を出さず、Expo 54 までの見た目を維持する
+              hidesSharedBackground: true,
+              element: (
+                <View pr={2} mr={1}>
+                  <TouchableOpacity onPress={onContact}>
+                    <Text>送信</Text>
+                  </TouchableOpacity>
+                </View>
+              ),
+            },
+          ],
         }}
       />
       <Page

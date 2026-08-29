@@ -8,34 +8,34 @@
 
 /* Begin PBXBuildFile section */
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
-		2E315FFF896133C890FB0012 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C26FABF9040B4200BCEA2001 /* ExpoModulesProvider.swift */; };
+		3396F671B69C390B64367882 /* ExpoModulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56C642A3B6B0AED934A93E /* ExpoModulesProvider.swift */; };
 		3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */; };
-		4200FB5BD96A41B8AE13BBF3 /* NotoSansJP_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E1BCAAF1CB8348C19A0784EB /* NotoSansJP_700Bold.ttf */; };
-		9106A6A4208D44EFB48F6781 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AFC18C7898A64CDB85DFD826 /* GoogleService-Info.plist */; };
-		A4C690896A6A8B8F98688400 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 5104F5C87992A61951B6E1F1 /* PrivacyInfo.xcprivacy */; };
-		AC5645A9DD6C32B650545CB8 /* libPods-memoir.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7558F772F8F68608E8D33C3 /* libPods-memoir.a */; };
+		698065C2CFF24374B0F17856 /* NotoSansJP_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D774A12B72E84D5AAC84822C /* NotoSansJP_700Bold.ttf */; };
+		777B8CC91226881290293443 /* libPods-memoir.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA7C15C8E5720A994B7E4144 /* libPods-memoir.a */; };
+		88B447D9795A42EDAF3E7D5C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BE48726A952B4C59A49C6D08 /* GoogleService-Info.plist */; };
 		BB2F792D24A3F905000567C9 /* Expo.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB2F792C24A3F905000567C9 /* Expo.plist */; };
-		D86A222E3E5D47D7A20FF9A7 /* RobotoCondensed_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 17780A40004241D683C16A42 /* RobotoCondensed_700Bold.ttf */; };
+		C1A9F4A2465D42C1A1CB190E /* RobotoCondensed_700Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13B18C660A564D8E96B599E1 /* RobotoCondensed_700Bold.ttf */; };
 		F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11748412D0307B40044C1D9 /* AppDelegate.swift */; };
+		F4A01BA84BBC617772B30B82 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 947ECBD58F2CC702F3180BD9 /* PrivacyInfo.xcprivacy */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		13B07F961A680F5B00A75B9A /* memoir.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoir.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = memoir/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = memoir/Info.plist; sourceTree = "<group>"; };
-		17780A40004241D683C16A42 /* RobotoCondensed_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = RobotoCondensed_700Bold.ttf; path = "../node_modules/@expo-google-fonts/roboto-condensed/RobotoCondensed_700Bold.ttf"; sourceTree = "<group>"; };
-		5104F5C87992A61951B6E1F1 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = memoir/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		599A45E8C550F537D10FD8DB /* Pods-memoir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memoir.debug.xcconfig"; path = "Target Support Files/Pods-memoir/Pods-memoir.debug.xcconfig"; sourceTree = "<group>"; };
-		6F02E03D815FFD40BBB5CB5B /* Pods-memoir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memoir.release.xcconfig"; path = "Target Support Files/Pods-memoir/Pods-memoir.release.xcconfig"; sourceTree = "<group>"; };
-		A7558F772F8F68608E8D33C3 /* libPods-memoir.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-memoir.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B18C660A564D8E96B599E1 /* RobotoCondensed_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = RobotoCondensed_700Bold.ttf; path = "../node_modules/@expo-google-fonts/roboto-condensed/RobotoCondensed_700Bold.ttf"; sourceTree = "<group>"; };
+		18882C319B2BF966A36C2230 /* Pods-memoir.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memoir.debug.xcconfig"; path = "Target Support Files/Pods-memoir/Pods-memoir.debug.xcconfig"; sourceTree = "<group>"; };
+		3E56C642A3B6B0AED934A93E /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-memoir/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
+		947ECBD58F2CC702F3180BD9 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = memoir/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = SplashScreen.storyboard; path = memoir/SplashScreen.storyboard; sourceTree = "<group>"; };
-		AFC18C7898A64CDB85DFD826 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "memoir/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB2F792C24A3F905000567C9 /* Expo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Expo.plist; sourceTree = "<group>"; };
-		C26FABF9040B4200BCEA2001 /* ExpoModulesProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ExpoModulesProvider.swift; path = "Pods/Target Support Files/Pods-memoir/ExpoModulesProvider.swift"; sourceTree = "<group>"; };
-		E1BCAAF1CB8348C19A0784EB /* NotoSansJP_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NotoSansJP_700Bold.ttf; path = "../node_modules/@expo-google-fonts/noto-sans-jp/NotoSansJP_700Bold.ttf"; sourceTree = "<group>"; };
+		BE48726A952B4C59A49C6D08 /* GoogleService-Info.plist */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "memoir/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D774A12B72E84D5AAC84822C /* NotoSansJP_700Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = NotoSansJP_700Bold.ttf; path = "../node_modules/@expo-google-fonts/noto-sans-jp/NotoSansJP_700Bold.ttf"; sourceTree = "<group>"; };
+		EA7C15C8E5720A994B7E4144 /* libPods-memoir.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-memoir.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F11748412D0307B40044C1D9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = memoir/AppDelegate.swift; sourceTree = "<group>"; };
 		F11748442D0722820044C1D9 /* memoir-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "memoir-Bridging-Header.h"; path = "memoir/memoir-Bridging-Header.h"; sourceTree = "<group>"; };
+		F74E2DDE0028605A845594DB /* Pods-memoir.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-memoir.release.xcconfig"; path = "Target Support Files/Pods-memoir/Pods-memoir.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,13 +43,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC5645A9DD6C32B650545CB8 /* libPods-memoir.a in Frameworks */,
+				777B8CC91226881290293443 /* libPods-memoir.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		10091CC7A9BE7721E55F7C68 /* memoir */ = {
+			isa = PBXGroup;
+			children = (
+				3E56C642A3B6B0AED934A93E /* ExpoModulesProvider.swift */,
+			);
+			name = memoir;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* memoir */ = {
 			isa = PBXGroup;
 			children = (
@@ -59,8 +67,8 @@
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				AA286B85B6C04FC6940260E9 /* SplashScreen.storyboard */,
-				AFC18C7898A64CDB85DFD826 /* GoogleService-Info.plist */,
-				5104F5C87992A61951B6E1F1 /* PrivacyInfo.xcprivacy */,
+				BE48726A952B4C59A49C6D08 /* GoogleService-Info.plist */,
+				947ECBD58F2CC702F3180BD9 /* PrivacyInfo.xcprivacy */,
 			);
 			name = memoir;
 			sourceTree = "<group>";
@@ -69,17 +77,19 @@
 			isa = PBXGroup;
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
-				A7558F772F8F68608E8D33C3 /* libPods-memoir.a */,
+				EA7C15C8E5720A994B7E4144 /* libPods-memoir.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		7800C6DD5386F291EF0BB4E6 /* ExpoModulesProviders */ = {
+		6D39D350067B47B4B826D692 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C6A56C47F2D4CD2764EE5C9D /* memoir */,
+				13B18C660A564D8E96B599E1 /* RobotoCondensed_700Bold.ttf */,
+				D774A12B72E84D5AAC84822C /* NotoSansJP_700Bold.ttf */,
 			);
-			name = ExpoModulesProviders;
+			name = Resources;
+			path = "";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -96,9 +106,9 @@
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				B32724FD6C564CB684020E0A /* Resources */,
-				A180EC87C7E7FF068C39CBEA /* Pods */,
-				7800C6DD5386F291EF0BB4E6 /* ExpoModulesProviders */,
+				6D39D350067B47B4B826D692 /* Resources */,
+				E428E22834655DE1130FFBB6 /* Pods */,
+				F3A815F4DEDE29ED418E7E82 /* ExpoModulesProviders */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -113,26 +123,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		A180EC87C7E7FF068C39CBEA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				599A45E8C550F537D10FD8DB /* Pods-memoir.debug.xcconfig */,
-				6F02E03D815FFD40BBB5CB5B /* Pods-memoir.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		B32724FD6C564CB684020E0A /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				17780A40004241D683C16A42 /* RobotoCondensed_700Bold.ttf */,
-				E1BCAAF1CB8348C19A0784EB /* NotoSansJP_700Bold.ttf */,
-			);
-			name = Resources;
-			path = "";
-			sourceTree = "<group>";
-		};
 		BB2F792B24A3F905000567C9 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,12 +132,22 @@
 			path = memoir/Supporting;
 			sourceTree = "<group>";
 		};
-		C6A56C47F2D4CD2764EE5C9D /* memoir */ = {
+		E428E22834655DE1130FFBB6 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C26FABF9040B4200BCEA2001 /* ExpoModulesProvider.swift */,
+				18882C319B2BF966A36C2230 /* Pods-memoir.debug.xcconfig */,
+				F74E2DDE0028605A845594DB /* Pods-memoir.release.xcconfig */,
 			);
-			name = memoir;
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F3A815F4DEDE29ED418E7E82 /* ExpoModulesProviders */ = {
+			isa = PBXGroup;
+			children = (
+				10091CC7A9BE7721E55F7C68 /* memoir */,
+			);
+			name = ExpoModulesProviders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,15 +158,15 @@
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "memoir" */;
 			buildPhases = (
 				08A4A3CD28434E44B6B9DE2E /* [CP] Check Pods Manifest.lock */,
-				801ED42FA86C5B3B47743AC9 /* [Expo] Configure project */,
+				E7331E43B911431906D2302C /* [Expo] Configure project */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */,
-				0E381531AD6E4F40909B7A25 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
-				F4482E960BF6417F88F81E1B /* Upload Debug Symbols to Sentry */,
-				169D0697F2705C8401796FFD /* [CP] Embed Pods Frameworks */,
+				48BAE3327D3140E9AA5E4EC6 /* [Expo Dev Launcher] Strip Local Network Keys for Release */,
+				8EAAEC2EB744454A9145BBB8 /* Upload Debug Symbols to Sentry */,
+				2692B8BCF2462D8846427F9E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,10 +218,10 @@
 				BB2F792D24A3F905000567C9 /* Expo.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				3E461D99554A48A4959DE609 /* SplashScreen.storyboard in Resources */,
-				9106A6A4208D44EFB48F6781 /* GoogleService-Info.plist in Resources */,
-				D86A222E3E5D47D7A20FF9A7 /* RobotoCondensed_700Bold.ttf in Resources */,
-				4200FB5BD96A41B8AE13BBF3 /* NotoSansJP_700Bold.ttf in Resources */,
-				A4C690896A6A8B8F98688400 /* PrivacyInfo.xcprivacy in Resources */,
+				88B447D9795A42EDAF3E7D5C /* GoogleService-Info.plist in Resources */,
+				C1A9F4A2465D42C1A1CB190E /* RobotoCondensed_700Bold.ttf in Resources */,
+				698065C2CFF24374B0F17856 /* NotoSansJP_700Bold.ttf in Resources */,
+				F4A01BA84BBC617772B30B82 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,21 +267,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		0E381531AD6E4F40909B7A25 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
-		};
-		169D0697F2705C8401796FFD /* [CP] Embed Pods Frameworks */ = {
+		2692B8BCF2462D8846427F9E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,6 +312,20 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-memoir/Pods-memoir-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		48BAE3327D3140E9AA5E4EC6 /* [Expo Dev Launcher] Strip Local Network Keys for Release */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[Expo Dev Launcher] Strip Local Network Keys for Release";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Strip dev-launcher-specific local network permission keys from non-Debug builds\n# This only removes _expo._tcp Bonjour services and the dev-launcher usage description.\n# Other Bonjour services and custom descriptions are preserved for production use.\n\nif [ \"$CONFIGURATION\" != \"Debug\" ]; then\n  PLIST_PATH=\"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n  if [ -f \"$PLIST_PATH\" ]; then\n    # Check if NSBonjourServices exists\n    if /usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" >/dev/null 2>&1; then\n      # Get the count of services\n      COUNT=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n\n      # Remove _expo._tcp\n      for ((i=COUNT-1; i>=0; i--)); do\n        SERVICE=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n        if echo \"$SERVICE\" | grep -q \"_expo._tcp\"; then\n          /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices:$i\" \"$PLIST_PATH\" 2>/dev/null || true\n        fi\n      done\n\n      # If the array is now empty, remove it entirely\n      REMAINING=$(/usr/libexec/PlistBuddy -c \"Print :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null | grep \"^    \" | wc -l | tr -d ' ')\n      if [ \"$REMAINING\" -eq \"0\" ]; then\n        /usr/libexec/PlistBuddy -c \"Delete :NSBonjourServices\" \"$PLIST_PATH\" 2>/dev/null || true\n      fi\n    fi\n\n    # Only delete the description if it matches the dev-launcher default text\n    DESC=$(/usr/libexec/PlistBuddy -c \"Print :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || echo \"\")\n    if echo \"$DESC\" | grep -q \"Expo Dev Launcher\"; then\n      /usr/libexec/PlistBuddy -c \"Delete :NSLocalNetworkUsageDescription\" \"$PLIST_PATH\" 2>/dev/null || true\n    fi\n  fi\nfi\n";
 		};
 		800E24972A6A228C8D4807E9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -385,7 +385,21 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-memoir/Pods-memoir-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		801ED42FA86C5B3B47743AC9 /* [Expo] Configure project */ = {
+		8EAAEC2EB744454A9145BBB8 /* Upload Debug Symbols to Sentry */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Upload Debug Symbols to Sentry";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/bin/sh `${NODE_BINARY:-node} --print \"require('path').dirname(require.resolve('@sentry/react-native/package.json')) + '/scripts/sentry-xcode-debug-files.sh'\"`";
+		};
+		E7331E43B911431906D2302C /* [Expo] Configure project */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
@@ -409,20 +423,6 @@
 			shellPath = /bin/sh;
 			shellScript = "# This script configures Expo modules and generates the modules provider file.\nbash -l -c \"./Pods/Target\\ Support\\ Files/Pods-memoir/expo-configure-project.sh\"\n";
 		};
-		F4482E960BF6417F88F81E1B /* Upload Debug Symbols to Sentry */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Upload Debug Symbols to Sentry";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/bin/sh `${NODE_BINARY:-node} --print \"require('path').dirname(require.resolve('@sentry/react-native/package.json')) + '/scripts/sentry-xcode-debug-files.sh'\"`";
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -431,7 +431,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F11748422D0307B40044C1D9 /* AppDelegate.swift in Sources */,
-				2E315FFF896133C890FB0012 /* ExpoModulesProvider.swift in Sources */,
+				3396F671B69C390B64367882 /* ExpoModulesProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,7 +440,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 599A45E8C550F537D10FD8DB /* Pods-memoir.debug.xcconfig */;
+			baseConfigurationReference = 18882C319B2BF966A36C2230 /* Pods-memoir.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -480,7 +480,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F02E03D815FFD40BBB5CB5B /* Pods-memoir.release.xcconfig */;
+			baseConfigurationReference = F74E2DDE0028605A845594DB /* Pods-memoir.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -575,7 +575,7 @@
 					"$(inherited)",
 					"-DRCT_REMOVE_LEGACY_ARCH=1",
 				);
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_supports-color@8.1.1__@react-native+jest-preset@_704f3e4a99b39651247108e26ab98778/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
@@ -638,7 +638,7 @@
 					"$(inherited)",
 					"-DRCT_REMOVE_LEGACY_ARCH=1",
 				);
-				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
+				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/.pnpm/react-native@0.85.3_@babel+core@7.29.7_supports-color@8.1.1__@react-native+jest-preset@_704f3e4a99b39651247108e26ab98778/node_modules/react-native";
 				SDKROOT = iphoneos;
 				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				USE_HERMES = true;
