@@ -47,7 +47,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1787389348</string>
+	<string>1787991789</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSMinimumSystemVersion</key>
 	<string>12.0</string>
 	<key>LSRequiresIPhoneOS</key>

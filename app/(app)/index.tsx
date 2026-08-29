@@ -32,26 +32,33 @@ export default function Index() {
           headerStyle: {
             backgroundColor: theme().color.primary.main,
           },
-          headerRight: () => (
-            <View
-              pr={0}
-              pb={0}
-              style={{
-                width: 37,
-                height: 37,
-                justifyContent: "center",
-                alignItems: "center",
-                left: 0,
-                top: 0,
-              }}
-            >
-              <IconButton
-                name="more-vert"
-                size="base"
-                onPress={() => setOpenSetting(true)}
-              />
-            </View>
-          ),
+          unstable_headerRightItems: () => [
+            {
+              type: "custom",
+              // iOS 26 の Liquid Glass の背景を出さず、Expo 54 までの見た目を維持する
+              hidesSharedBackground: true,
+              element: (
+                <View
+                  pr={0}
+                  pb={0}
+                  style={{
+                    width: 37,
+                    height: 37,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    left: 0,
+                    top: 0,
+                  }}
+                >
+                  <IconButton
+                    name="more-vert"
+                    size="base"
+                    onPress={() => setOpenSetting(true)}
+                  />
+                </View>
+              ),
+            },
+          ],
         }}
       />
 
