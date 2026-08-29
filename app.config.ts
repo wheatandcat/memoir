@@ -49,6 +49,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     bundleIdentifier: "com.wheatandcat.memoir",
     googleServicesFile: "./GoogleService-Info.plist",
     infoPlist: {
+      ITSAppUsesNonExemptEncryption: false,
       CFBundleAllowMixedLocalizations: true,
       NSPhotoLibraryUsageDescription: "ユーザーの画像設定に使用します",
       NSCameraUsageDescription:

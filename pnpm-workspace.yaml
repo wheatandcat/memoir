@@ -1,0 +1,6 @@
+allowBuilds:
+  '@biomejs/biome': true
+  '@sentry/cli': true
+  esbuild: true
+  msw: false
+  protobufjs: false

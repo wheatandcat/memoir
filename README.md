@@ -50,7 +50,7 @@ $ npx expo-doctor
 ### バージョンアップ後の初回ビルド前に実行
 
 ```bash
-$ npx expo prebuild --clean
+$ npx expo prebuild -p android --clean
 ```
 
 
@@ -130,7 +130,7 @@ $ pnpm storybook:android
 # ライセンスの出力
 
 ```bash
-$ npx npm-license-crawler --dependencies --production --onlyDirectDependencies --omitVersion --json ./src/licenses.json
+$ npx npm-license-crawler --dependencies --production --onlyDirectDependencies --omitVersion --json ./features/setting/licence/components/licenses.json
 ```
 
 # CI 環境

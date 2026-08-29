@@ -142,6 +142,8 @@
     "@types/babel__core": "~7.1.15",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.10.10",
+    "@types/react": "~19.2.2",
+    "@types/react-dom": "~19.2.2",
     "@types/react-native-app-link": "^1.0.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-inline-dotenv": "^1.5.0",
@@ -200,15 +202,5 @@
         ]
       }
     }
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@sentry/cli",
-      "esbuild"
-    ],
-    "ignoredBuiltDependencies": [
-      "msw",
-      "protobufjs"
-    ]
   }
 }
