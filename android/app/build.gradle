@@ -94,8 +94,8 @@ android {
         applicationId 'com.wheatandcat.memoir'
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1787389
-        versionName "1.9.2"
+        versionCode 1787390
+        versionName "1.9.4"
 
         buildConfigField "String", "REACT_NATIVE_RELEASE_LEVEL", "\"${findProperty('reactNativeReleaseLevel') ?: 'stable'}\""
     }
